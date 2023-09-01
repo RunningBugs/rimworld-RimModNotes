@@ -3,6 +3,8 @@ obj/
 bin/
 PublishedFileId.txt
 
+mono_crash.*
+
 
 # /*/Assemblies
 # /*/Assemblies/*.pdb

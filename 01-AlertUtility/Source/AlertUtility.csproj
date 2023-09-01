@@ -27,27 +27,35 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<Reference Include="Assembly-CSharp">
-			<HintPath>..\..\..\..\..\..\..\..\..\..\mine\workspace\rimworld\RimWorld\RimWorldLinux_Data\Managed\Assembly-CSharp.dll</HintPath>
-			<Private>false</Private>
+		  <HintPath>..\..\..\RimWorld\RimWorldLinux_Data\Managed\Assembly-CSharp.dll</HintPath>
+		  <Private>false</Private>
 		</Reference>
 		<Reference Include="0Harmony">
-			<HintPath>..\..\..\..\..\..\workshop\content\294100\2009463077\Current\Assemblies\0Harmony.dll</HintPath>
-			<Private>false</Private>
+		  <HintPath>..\..\..\Harmony\Current\Assemblies\0Harmony.dll</HintPath>
+		  <Private>false</Private>
+		</Reference>
+		<Reference Include="HugsLib">
+		  <HintPath>..\..\..\HugsLib\Assemblies\HugsLib.dll</HintPath>
+		  <Private>false</Private>
 		</Reference>
 		<Reference Include="UnityEngine">
-			<HintPath>..\..\..\..\RimWorldLinux_Data\Managed\UnityEngine.dll</HintPath>
-			<Private>false</Private>
+		  <HintPath>..\..\..\RimWorld\RimWorldLinux_Data\Managed\UnityEngine.dll</HintPath>
+		  <Private>false</Private>
 		</Reference>
 		<Reference Include="UnityEngine.IMGUIModule">
-			<HintPath>..\..\..\..\RimWorldLinux_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
-			<Private>false</Private>
+		  <HintPath>..\..\..\RimWorld\RimWorldLinux_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+		  <Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.TextCoreModule">
+		  <HintPath>..\..\..\RimWorld\RimWorldLinux_Data\Managed\UnityEngine.TextCoreModule.dll</HintPath>
+		  <Private>false</Private>
 		</Reference>
 		<Reference Include="UnityEngine.TextRenderingModule">
-		  <HintPath>..\..\..\..\..\..\..\..\..\..\mine\workspace\rimworld\RimWorld\RimWorldLinux_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+		  <HintPath>..\..\..\RimWorld\RimWorldLinux_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
 		  <Private>false</Private>
 		</Reference>
 		<Reference Include="UnityEngine.CoreModule">
-		  <HintPath>..\..\..\..\..\..\..\..\..\..\mine\workspace\rimworld\RimWorld\RimWorldLinux_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+		  <HintPath>..\..\..\RimWorld\RimWorldLinux_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
 		  <Private>false</Private>
 		</Reference>
 	</ItemGroup>
