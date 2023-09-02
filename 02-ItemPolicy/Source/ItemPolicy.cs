@@ -28,6 +28,22 @@ namespace _ItemPolicy
         {
         }
 
+        public ItemPolicy MergePolicy(ItemPolicy p2)
+        {
+            ItemPolicy res = new ItemPolicy();
+
+            foreach (var (key, val) in this.data)
+            {
+                res.data[key] = val;
+            }
+
+            foreach (var (key, val) in p2.data)
+            {
+                res.data[key] = val;
+            }
+            return res;
+        }
+
         public void ExposeData()
         {
             Scribe_Collections.Look(ref data, "_ItemPolicy.ItemPolicy", LookMode.Def, LookMode.Value);

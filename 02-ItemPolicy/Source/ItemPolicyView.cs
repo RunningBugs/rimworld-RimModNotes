@@ -40,6 +40,33 @@ namespace _ItemPolicy
         protected override IEnumerable<Pawn> Pawns => PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive_FreeColonists.Where((Pawn pawn) => !pawn.DevelopmentalStage.Baby());
     }
 
+    public class PawnColumnWorker_CopyPasteItemPolicy : PawnColumnWorker_CopyPaste
+    {
+        private static ItemPolicy clipboard;
+
+        protected override bool AnythingInClipboard => clipboard != null;
+
+        public override void DoCell(Rect rect, Pawn pawn, PawnTable table)
+        {
+            if (ItemPolicyUtility.policies.ContainsKey(pawn))
+            {
+                base.DoCell(rect, pawn, table);
+            }
+        }
+
+        protected override void CopyFrom(Pawn p)
+        {
+            clipboard = ItemPolicyUtility.GetPawnPolicy(p);
+        }
+
+        protected override void PasteTo(Pawn p)
+        {
+            ItemPolicy policy = ItemPolicyUtility.GetPawnPolicy(p);
+            policy = policy.MergePolicy(clipboard);
+            ItemPolicyUtility.policies[p] = policy;
+        }
+    }
+
     public class PawnColumnWorker_ItemPolicy : PawnColumnWorker
     {
         private const int TopAreaHeight = 65;
@@ -95,16 +122,6 @@ namespace _ItemPolicy
             this.pawn = pawn;
         }
 
-        private void LogDictKeys<Key, _>(Dictionary<Key, _> dict)
-        {
-            string msg = "log dict:";
-            foreach (var (key, _) in dict)
-            {
-                msg += $" {key}";
-            }
-            Log.Warning(msg);
-        }
-
         public override void DoWindowContents(Rect inRect)
         {
             var view = new Listing_Standard(GameFont.Small);
@@ -135,8 +152,6 @@ namespace _ItemPolicy
                 if (Widgets.ButtonInvisible(labelWithIconBox))
                 {
                     ItemPolicyUtility.SetItemPolicyEntry(pawn, def, 0);
-                    //Log.Warning($"buttonInvis add {def.defName} to dict");
-                    LogDictKeys(policy.data);
                 }
             }
             Widgets.EndScrollView();
@@ -181,15 +196,11 @@ namespace _ItemPolicy
             for (var i = 0; i < defsToChange.Count; ++i)
             {
                 ItemPolicyUtility.SetItemPolicyEntry(pawn, defsToChange[i], changeToValues[i]);
-                //Log.Warning($"add {defsToChange[i].defName} {changeToValues[i]} to dict");
-                LogDictKeys(policy.data);
             }
 
             foreach (var def in defsToRemove)
             {
                 ItemPolicyUtility.RemoveItemPolicyEntry(pawn, def);
-                //Log.Warning($"remove {def.defName} to dict");
-                LogDictKeys(policy.data);
             }
 
             currentSettingsView.End();

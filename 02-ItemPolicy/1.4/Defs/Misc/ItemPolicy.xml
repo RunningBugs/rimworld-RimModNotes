@@ -17,11 +17,21 @@
             <li>LabelShortWithIcon</li>
             <li MayRequire="Ludeon.RimWorld.Ideology">Ideo</li>
             <li MayRequire="Ludeon.RimWorld.Biotech">Xenotype</li>
-            <li>GapTiny</li>
+            <li>Gap</li>
+            <li>CopyPasteItemPolicy</li>
+            <li>Gap</li>
             <li>ItemPolicy</li>
-            <li>RemainingSpace</li>
+            <li>Gap</li>
+            <!-- <li>RemainingSpace</li> -->
         </columns>
     </PawnTableDef>
+
+    <PawnColumnDef>
+        <defName>CopyPasteItemPolicy</defName>
+        <!-- <label>item policy</label> -->
+        <workerClass>_ItemPolicy.PawnColumnWorker_CopyPasteItemPolicy</workerClass>
+        <sortable>false</sortable>
+    </PawnColumnDef>
 
     <PawnColumnDef>
         <defName>ItemPolicy</defName>

@@ -93,6 +93,10 @@ namespace _ItemPolicy
         {
             var policy = GetPawnPolicy(pawn);
             policy.data.Remove(itemDef);
+            if (policy.data.Count == 0)
+            {
+                policies.Remove(pawn);
+            }
         }
     }
 
@@ -114,7 +118,6 @@ namespace _ItemPolicy
             }
             foreach (var (def, count) in ItemPolicyUtility.GetPawnPolicy(pawn).data)
             {
-                //Log.Warning($"{pawn.inventory.Count(def)} < {count}");
                 if (pawn.inventory.Count(def) < count)
                 {
                     Thing thing = FindThingFor(pawn, def);
