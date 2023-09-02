@@ -175,7 +175,7 @@ namespace _ItemPolicy
                 if (Widgets.ButtonInvisible(labelWithIconBox))
                 {
                     ItemPolicyUtility.SetItemPolicyEntry(pawn, def, 0);
-                    Log.Warning($"buttonInvis add {def.defName} to dict");
+                    //Log.Warning($"buttonInvis add {def.defName} to dict");
                     LogDictKeys(policy.data);
                 }
             }
@@ -221,14 +221,14 @@ namespace _ItemPolicy
             for (var i = 0; i < defsToChange.Count; ++i)
             {
                 ItemPolicyUtility.SetItemPolicyEntry(pawn, defsToChange[i], changeToValues[i]);
-                Log.Warning($"add {defsToChange[i].defName} {changeToValues[i]} to dict");
+                //Log.Warning($"add {defsToChange[i].defName} {changeToValues[i]} to dict");
                 LogDictKeys(policy.data);
             }
 
             foreach (var def in defsToRemove)
             {
                 ItemPolicyUtility.RemoveItemPolicyEntry(pawn, def);
-                Log.Warning($"remove {def.defName} to dict");
+                //Log.Warning($"remove {def.defName} to dict");
                 LogDictKeys(policy.data);
             }
 
@@ -355,7 +355,7 @@ namespace _ItemPolicy
             }
             foreach (var (def, count) in ItemPolicyUtility.GetPawnPolicy(pawn).data)
             {
-                Log.Warning($"{pawn.inventory.Count(def)} < {count}");
+                //Log.Warning($"{pawn.inventory.Count(def)} < {count}");
                 if (pawn.inventory.Count(def) < count)
                 {
                     Thing thing = FindThingFor(pawn, def);
