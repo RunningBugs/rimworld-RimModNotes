@@ -29,7 +29,7 @@ namespace _ItemPolicy
             {
                 if (def.label == null) continue;
 
-                if (def.thingClass == typeof(Thing) || def.thingClass == typeof(ThingWithComps))
+                if (def.thingClass.IsSubclassOf(typeof(Thing)) || def.thingClass.IsSubclassOf(typeof(ThingWithComps)))
                 {
                     ItemPolicyUtility.AddDef(def);
                 }

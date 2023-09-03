@@ -2,8 +2,8 @@
 <Defs>
 
     <MainButtonDef>
-        <defName>Items</defName>
-        <label>Items</label>
+        <defName>ItemPolicyMainButton</defName>
+        <label>ItemPolicy</label>
         <description>Choose which items that pawns should carry when available</description>
         <tabWindowClass>_ItemPolicy.MainTabWindow_Items</tabWindowClass>
         <order>10</order>
@@ -11,7 +11,7 @@
     </MainButtonDef>
 
     <PawnTableDef>
-        <defName>Items</defName>
+        <defName>ItemPolicyPawnTable</defName>
         <workerClass>PawnTable_PlayerPawns</workerClass>
         <columns>
             <li>LabelShortWithIcon</li>
@@ -20,7 +20,7 @@
             <li>Gap</li>
             <li>CopyPasteItemPolicy</li>
             <li>Gap</li>
-            <li>ItemPolicy</li>
+            <li>ItemPolicyPawnColumn</li>
             <li>Gap</li>
             <!-- <li>RemainingSpace</li> -->
         </columns>
@@ -34,10 +34,10 @@
     </PawnColumnDef>
 
     <PawnColumnDef>
-        <defName>ItemPolicy</defName>
+        <defName>ItemPolicyPawnColumn</defName>
         <label>item policy</label>
         <workerClass>_ItemPolicy.PawnColumnWorker_ItemPolicy</workerClass>
-        <sortable>true</sortable>
+        <sortable>false</sortable>
     </PawnColumnDef>
 
     <!-- <ConceptDef ParentName="NotedOpportunisticBase">

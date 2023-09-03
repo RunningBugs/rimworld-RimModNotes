@@ -14,7 +14,7 @@ namespace _ItemPolicy
     [DefOf]
     public static class ItemsMainButtonDefOf
     {
-        public static MainButtonDef Items;
+        public static MainButtonDef ItemPolicyMainButton;
 
         static ItemsMainButtonDefOf()
         {
@@ -25,7 +25,7 @@ namespace _ItemPolicy
     [DefOf]
     public static class ItemsPawnTableDefOf
     {
-        public static PawnTableDef Items;
+        public static PawnTableDef ItemPolicyPawnTable;
 
         static ItemsPawnTableDefOf()
         {
@@ -35,7 +35,7 @@ namespace _ItemPolicy
 
     public class MainTabWindow_Items : MainTabWindow_PawnTable
     {
-        protected override PawnTableDef PawnTableDef => ItemsPawnTableDefOf.Items;
+        protected override PawnTableDef PawnTableDef => ItemsPawnTableDefOf.ItemPolicyPawnTable;
 
         protected override IEnumerable<Pawn> Pawns => PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive_FreeColonists.Where((Pawn pawn) => !pawn.DevelopmentalStage.Baby());
     }
@@ -80,7 +80,7 @@ namespace _ItemPolicy
 
         public override void DoCell(Rect rect, Pawn pawn, PawnTable table)
         {
-            if (Widgets.ButtonText(rect, "ManageItemPolicies".Translate()))
+            if (Widgets.ButtonText(rect, "SetItemPolicy".Translate()))
             {
                 Find.WindowStack.TryRemove(typeof(MainTabWindow_Items));
                 Find.WindowStack.Add(new Dialog_ItemPolicy(pawn));
@@ -89,12 +89,12 @@ namespace _ItemPolicy
 
         public override int GetMinWidth(PawnTable table)
         {
-            return Mathf.Max(base.GetMinWidth(table), Mathf.CeilToInt(194f));
+            return Mathf.Max(base.GetMinWidth(table), Mathf.CeilToInt(100f));
         }
 
         public override int GetOptimalWidth(PawnTable table)
         {
-            return Mathf.Clamp(Mathf.CeilToInt(251f), GetMinWidth(table), GetMaxWidth(table));
+            return Mathf.Clamp(Mathf.CeilToInt(120f), GetMinWidth(table), GetMaxWidth(table));
         }
 
         public override int GetMinHeaderHeight(PawnTable table)
@@ -117,6 +117,8 @@ namespace _ItemPolicy
         private Vector2 scrollPos2;
         private List<ThingDef> defsToShow = new List<ThingDef>();
 
+        public override Vector2 InitialSize => new Vector2(500f, 632f);
+
         public Dialog_ItemPolicy(Pawn pawn)
         {
             this.pawn = pawn;
@@ -125,25 +127,29 @@ namespace _ItemPolicy
         public override void DoWindowContents(Rect inRect)
         {
             var view = new Listing_Standard(GameFont.Small);
+            view.maxOneColumn = true;
             view.Begin(inRect);
             Text.Anchor = TextAnchor.MiddleLeft;
 
             var buttonLine = view.GetRect(Text.LineHeight);
             var margin = 0.99f;
-            if (Widgets.ButtonText(buttonLine.RightHalf().RightPart(margin), "CloseDialogItemPolicy".Translate()))
+            if (Widgets.ButtonText(buttonLine.RightHalf().RightPart(margin), "CloseButton".Translate()))
             {
                 Find.WindowStack.TryRemove(typeof(Dialog_ItemPolicy));
             }
             searchWidget.OnGUI(buttonLine.LeftHalf().LeftPart(margin), FilterOnChange);
             view.Gap();
+            view.GapLine();
+            view.Gap();
             //==============================================
             var policy = ItemPolicyUtility.GetPawnPolicy(pawn);
-            var searchResultLine = view.GetRect(Text.LineHeight * 3);
             var labelHeight = Text.LineHeight * 1.5f;
 
+            var searchResultLine = view.GetRect(labelHeight * 5);
             var searchResultInnerRect = new Rect(0f, 0f, searchResultLine.width - 16f, labelHeight * defsToShow.Count);
             Widgets.BeginScrollView(searchResultLine, ref scrollPos, searchResultInnerRect);
             var searchResultView = new Listing_Standard();
+            searchResultView.maxOneColumn = true;
             searchResultView.Begin(searchResultInnerRect);
             foreach (var def in defsToShow)
             {
@@ -151,19 +157,21 @@ namespace _ItemPolicy
                 Widgets.DefLabelWithIcon(labelWithIconBox, def);
                 if (Widgets.ButtonInvisible(labelWithIconBox))
                 {
-                    ItemPolicyUtility.SetItemPolicyEntry(pawn, def, 0);
+                    ItemPolicyUtility.SetItemPolicyEntry(pawn, def, 1);
                 }
             }
             Widgets.EndScrollView();
             searchResultView.End();
             view.Gap();
+            view.GapLine();
+            view.Gap();
             //==============================================
 
-            //policy = ItemPolicyUtility.GetPawnPolicy(pawn);
             var currentSettingsLine = view.GetRect(labelHeight * 10);
-            var currentSettingsInnerRect = new Rect(0f, 0f, currentSettingsLine.width - 16f, labelHeight * (policy.data.Count) + 1);
+            var currentSettingsInnerRect = new Rect(0f, 0f, currentSettingsLine.width - 16f, labelHeight * (policy.data.Count));
             Widgets.BeginScrollView(currentSettingsLine, ref scrollPos2, currentSettingsInnerRect);
             var currentSettingsView = new Listing_Standard();
+            currentSettingsView.maxOneColumn = true;
             currentSettingsView.Begin(currentSettingsInnerRect);
 
             List<ThingDef> defsToChange = new List<ThingDef>();
@@ -179,7 +187,7 @@ namespace _ItemPolicy
                 var rightBox = labelWithIconBox.RightHalf();
                 var textFieldBox = rightBox.LeftPartPixels(rightBox.width - labelHeight);
                 var iconBox = textFieldBox.RightBoxPixels(labelHeight);
-                Widgets.TextFieldNumericLabeled<int>(textFieldBox, "Count".Translate(), ref num, ref editBuffer);
+                Widgets.TextFieldNumericLabeled<int>(textFieldBox, "TakeToInventoryColumnLabel".Translate(), ref num, ref editBuffer);
                 if (num != count)
                 {
                     defsToChange.Add(def);
