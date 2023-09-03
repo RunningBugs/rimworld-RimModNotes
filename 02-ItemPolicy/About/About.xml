@@ -7,18 +7,21 @@
 		<li>1.4</li>
 	</supportedVersions>
 
-	<modDependencies>
-		<!-- <li>
-			<packageId>brrainz.harmony</packageId>
-			<displayName>Harmony</displayName>
-			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
-			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
-		</li> -->
-	</modDependencies>
+	<description>Item Policies Mod for RimWorld
 
-	<incompatibleWith>
-		<!-- <li>username.modname</li> -->
-	</incompatibleWith>
-
-	<description>A simple tool to help set up items to keep in pawns' inventories</description>
+		The Item Policies Mod offers players a tool to designate specific items for pawns to carry in their inventories, enhancing strategic inventory management and gameplay.
+		
+		Features:
+		
+		Distinct Inventory Management: This mod has a similar functionality with Carry More mod, with a totally different underlining implementation.The Item Policies Mod allows players to directly search for and set item quantities without delving into XML file modifications.
+		
+		Customizable Item Policies: Within the Item Policies main menu, players can establish item policies for individual pawns. The mod introduces a feature to copy and paste these settings between pawns, with the pasting function combining the policies.
+		
+		Inventory Check Mechanism: Consistent with standard RimWorld mechanics, pawns periodically review their inventory for medicine, typically every 6000 to 9000 ticks. This mod ensures pawns also assess their inventory for both medicine and items specified in the policies within a similar game tick range.
+		
+		
+		
+		Description text generated using AI with author's own text as reference.
+		Mod published in MIT license at https://github.com/lisanhu/rimworld-RimModNotes.git 
+		Folder name 02-ItemPolicy</description>
 </ModMetaData>
