@@ -1,7 +1,6 @@
 obj/
 .vs/
 bin/
-PublishedFileId.txt
 
 mono_crash.*
 
