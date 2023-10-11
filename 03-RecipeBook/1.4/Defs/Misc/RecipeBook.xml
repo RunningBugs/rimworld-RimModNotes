@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+    <!-- <MainButtonDef>
+        <defName>ItemPolicyMainButton</defName>
+        <label>ItemPolicy</label>
+        <description>Choose which items that pawns should carry when available</description>
+        <tabWindowClass>_ItemPolicy.MainTabWindow_Items</tabWindowClass>
+        <order>10</order>
+        <closesWorldView>true</closesWorldView>
+    </MainButtonDef> -->
+</Defs>

@@ -13,7 +13,7 @@ namespace AlertUtility
         static LoadingScreen()
         {
             Log.Message("AlertUtility loaded successfully!");
-            var harmony = new Harmony("com.RunningBugs.MyWeapons");
+            var harmony = new Harmony("com.RunningBugs.AlertUtility");
             harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
     }

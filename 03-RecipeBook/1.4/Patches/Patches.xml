@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <!-- <Operation Class="PatchOperationInsert">
+        <xpath>Defs/ThinkTreeDef[defName="Humanlike"]/thinkRoot[@Class="ThinkNode_Priority"]/subNodes/li[@Class="ThinkNode_ConditionalColonist"]/subNodes/li[tagToGive="TakeForInventoryStock"]/subNodes/li[@Class="JobGiver_TakeForInventoryStock"]</xpath>
+        <value>
+            <li Class="_ItemPolicy.JobGiver_TakeItemForInventoryStock">
+                <leaveJoinableLordIfIssuesJob>true</leaveJoinableLordIfIssuesJob>
+            </li>
+        </value>
+    </Operation> -->
+</Patch>

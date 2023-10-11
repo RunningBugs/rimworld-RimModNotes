@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.RecipeBook</packageId>
+	<name>RecipeBook</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.4</li>
+	</supportedVersions>
+
+	<description>RecipeBook mod description</description>
+</ModMetaData>

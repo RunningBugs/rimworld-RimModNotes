@@ -34,6 +34,8 @@ namespace _ItemPolicy
                     ItemPolicyUtility.AddDef(def);
                 }
             }
+
+            Log.Message("Successfully Initialized!");
         }
 
         private List<Pawn> keys = new List<Pawn>();
