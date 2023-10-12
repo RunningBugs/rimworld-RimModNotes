@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.WeatherControlDeviceContZh</packageId>
+	<name>WeatherControlDeviceCont_zh</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.4</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>mlie.weathercontroldevice</packageId>
+			<displayName>Weather Control Device (Continued)</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2584797720</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+
+	<description>天气控制器的简体中文翻译</description>
+</ModMetaData>

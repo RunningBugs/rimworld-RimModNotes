@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+    <BCS_WeatherMachine.label>天气控制上行信号装置</BCS_WeatherMachine.label>
+    <!-- Through use of complex algorithms, this device attempts to hack into defunct terraforming satellites to change the weather in a localized area.-->
+    <BCS_WeatherMachine.description>通过破解停用的气象改造卫星，实现对本地天气的控制。</BCS_WeatherMachine.description>
+
+</LanguageData>

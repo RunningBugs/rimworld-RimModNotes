@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="BCS_WeatherMachine"]/comps/li[@Class="CompProperties_Usable"]/useLabel[text()="Clear"]</xpath>
+        <value>
+            <useLabel>晴</useLabel>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="BCS_WeatherMachine"]/comps/li[@Class="CompProperties_Usable"]/useLabel[text()="Rain"]</xpath>
+        <value>
+            <useLabel>雨</useLabel>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="BCS_WeatherMachine"]/comps/li[@Class="CompProperties_Usable"]/useLabel[text()="Rainy Thunderstorm"]</xpath>
+        <value>
+            <useLabel>暴风雨</useLabel>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="BCS_WeatherMachine"]/comps/li[@Class="CompProperties_Usable"]/useLabel[text()="Dry Thunderstorm"]</xpath>
+        <value>
+            <useLabel>旱天雷</useLabel>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="BCS_WeatherMachine"]/comps/li[@Class="CompProperties_Usable"]/useLabel[text()="Foggy Rain"]</xpath>
+        <value>
+            <useLabel>雾雨</useLabel>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="BCS_WeatherMachine"]/comps/li[@Class="CompProperties_Usable"]/useLabel[text()="Foggy"]</xpath>
+        <value>
+            <useLabel>雾</useLabel>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="BCS_WeatherMachine"]/comps/li[@Class="CompProperties_Usable"]/useLabel[text()="Blizzard"]</xpath>
+        <value>
+            <useLabel>大雪</useLabel>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="BCS_WeatherMachine"]/comps/li[@Class="CompProperties_Usable"]/useLabel[text()="Snow"]</xpath>
+        <value>
+            <useLabel>小雪</useLabel>
+        </value>
+    </Operation>    
+</Patch>
