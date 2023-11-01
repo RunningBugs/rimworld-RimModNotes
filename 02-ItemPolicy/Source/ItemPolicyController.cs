@@ -127,10 +127,29 @@ namespace _ItemPolicy
                     {
                         Job job = JobMaker.MakeJob(JobDefOf.TakeCountToInventory, thing);
                         job.count = Mathf.Min(b: count - pawn.inventory.Count(thing.def), a: thing.stackCount);
+                        // find a bug here, sometimes, when the item is in the inventory, the job is still created
+                        //  this is because a bug in the vanilla code, the pawn.inventory.Count(thing.def) is not updated (including pawn.inventory.innerContainer)
+                        //  so the job.count is always 0, and the job is always created
+                        //  Meanwhile, when saving the game, the item will appear in the inventory, but the inventory.Count and inventory.innerContainer is still not updated
+
+                        // Log.Message("Found " + thing.Label);
+                        // Log.Message("job: " + job.ToString());
+                        // Log.Message("job count: " + job.count);
+                        // Log.Message("thing position: " + thing.Position.x + ", " + thing.Position.y + ", " + thing.Position.z);
+                        // Log.Message("inventory count: " + pawn.inventory.Count(thing.def));
+                        // Log.Message("b: " + (count - pawn.inventory.Count(thing.def)));
+                        // Log.Message("a: " + thing.stackCount);
+
+                        // foreach (Thing item in pawn.inventory.innerContainer)
+                        // {
+                        //     Log.Message("item: " + item.ToString());
+                        //     Log.Message("item count: " + item.stackCount);
+                        // }
                         return job;
                     }
                 }
             }
+            // pawn.mindState.nextInventoryStockTick = Find.TickManager.TicksGame + Rand.Range(6000, 9000);
             return null;
         }
 
