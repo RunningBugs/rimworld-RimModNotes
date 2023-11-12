@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<ticks>Ticks</ticks>
+	<hours>Hores</hours>
+	<days>Dies</days>
+	<years>Anys</years>
+	<SetTimer>Fixar temporitzador:</SetTimer>
+    <TicksToAlert>Temps fins l'alerta (pots usar decimals): </TicksToAlert>
+    <LetterMessage>Missatje de recordatori:</LetterMessage>
+    <Set>Fixar</Set>
+    <TimerTimeOut>Temps esgotat: {0}</TimerTimeOut>
+    <TicksToAlertExplaination>Els ticks es refereixen als ticks al joc. Una hora són 2500 ticks, un dia 60000. A velocitat I, 60 tick/seg en la vida real, velocitat II 180tick/seg i la velocitat por III son 360ticks/seg. En cas de la velocitat IV, 900ticks/seg (si el teu PC és capaç de funcionar a aquesta velocitat)</TicksToAlertExplaination>
+    <AlreaySet>Temporitzadors posats: </AlreaySet>
+	<RealSeconds>Segons reals restants</RealSeconds>
+	<GameHours>Hores de joc restants</GameHours>
+	<GameDays>Diess de joc restants</GameDays>
+</LanguageData>
