@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
+    <ticks>Ticks</ticks>
+    <hours>Hours</hours>
+    <days>Days</days>
+    <years>Years</years>
     <SetTimer>Set up Timer</SetTimer>
     <TicksToAlert>Time to Alert(can use float): </TicksToAlert>
     <LetterMessage>Reminder Message:</LetterMessage>
@@ -7,4 +11,7 @@
     <TimerTimeOut>Time Up: {0}</TimerTimeOut>
     <TicksToAlertExplaination>ticks refered to in-game ticks, one game hour is 2500 ticks, one day is 60000 ticks. In speed I, 60 ticks is about 1 real world second, speed II is 180 ticks per second, speed III is 360 ticks per second, speed IV is 900 ticks per second (If your machine is capable of running at that speed)</TicksToAlertExplaination>
     <AlreaySet>Timers already set: </AlreaySet>
+    <RealSeconds>real seconds later</RealSeconds>
+    <GameHours>game hours later</GameHours>
+    <GameDays>game days later</GameDays>
 </LanguageData>

@@ -82,17 +82,20 @@ namespace AlertUtility
                 {
                     //  If left real time is less than 10s, then show seconds instead of game hours
                     float secs = diff / ticksPerRealSec;
-                    events_string += $"{e.message}    {secs:F2} real seconds later\n";
+                    var tpl = "RealSeconds".Translate();
+                    events_string += $"{e.message}    {secs:F2} {tpl}\n";
                 }
                 else if (diff <= GenDate.TicksPerDay)
                 {
                     float hours = diff / GenDate.TicksPerHour;
-                    events_string += $"{e.message}    {hours:F2} game hours later\n";
+                    var tpl = "GameHours".Translate();
+                    events_string += $"{e.message}    {hours:F2} {tpl}\n";
                 }
                 else
                 {
                     float days = diff / GenDate.TicksPerDay;
-                    events_string += $"{e.message}    {days:F2} game days later\n";
+                    var tpl = "GameDays".Translate();
+                    events_string += $"{e.message}    {days:F2} {tpl}\n";
                 }
 
             }
@@ -165,10 +168,10 @@ namespace AlertUtility
             // Unit selection: ticks, hours, days, years
             //  Could create a RadioButtonGroup function
             List<string> labels = new List<string>();
-            labels.Add("ticks");
-            labels.Add("hours");
-            labels.Add("days");
-            labels.Add("years");
+            labels.Add("ticks".Translate());
+            labels.Add("hours".Translate());
+            labels.Add("days".Translate());
+            labels.Add("years".Translate());
             //Log.Warning($"{unit}");
             unit = radioButtonGroupHorizontal(listView.GetRect(Text.LineHeight), labels, unit);
             //Log.Warning($"{unit}");
