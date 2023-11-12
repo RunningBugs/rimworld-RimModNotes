@@ -14,7 +14,7 @@ namespace AlertUtility
         {
             if (worldView) return;
             bool flag = Find.WindowStack.IsOpen(typeof(TimerSetWindow));
-            row.ToggleableIcon(ref flag, ContentFinder<Texture2D>.Get("UI/timer_mail", true), "WriteMailToFuture".Translate(), SoundDefOf.Mouseover_ButtonToggle, (string)null);
+            row.ToggleableIcon(ref flag, ContentFinder<Texture2D>.Get("UI/timer_mail", true), "AlertUtility".Translate(), SoundDefOf.Mouseover_ButtonToggle, (string)null);
             if (flag != Find.WindowStack.IsOpen(typeof(TimerSetWindow)))
             {
                 if (!Find.WindowStack.IsOpen(typeof(TimerSetWindow)))
@@ -31,12 +31,16 @@ namespace AlertUtility
 
     public class TimerSetWindow : Window
     {
-        public override Vector2 InitialSize => new Vector2(600f, 450f);
+        public override Vector2 InitialSize => new Vector2(800f, 450f);
 
         private string buffer = "0";
         private string txtBuffer = "";
         private int unit = 0;
         Vector2 scrollbarPos;
+
+        public TimerSetWindow() : base() {
+            this.draggable = true;
+        }
 
         public float TickRateMultiplier(TimeSpeed speed)
         {

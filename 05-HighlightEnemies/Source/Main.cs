@@ -28,35 +28,34 @@ namespace _HightlightEnemies
 
         private DesignationDef desDef = DefDatabase<DesignationDef>.GetNamed("HE_Mark");
 
-        // private List<IntVec3> cells = new List<IntVec3>();
         public EnemyHighlighter(Map map) : base(map) { }
-
-        public static EnemyHighlighter GetEnemyHighlighter() => Find.CurrentMap.GetComponent<EnemyHighlighter>();
 
         public override void FinalizeInit()
         {
-
         }
 
         public override void MapComponentTick()
         {
             base.MapComponentTick();
+        }
+
+        public void Highlight()
+        {
+            var manager = Find.CurrentMap.designationManager;
+
             foreach (var thing in Find.CurrentMap.spawnedThings)
             {
-                if (thing.Faction != null && thing.Faction.HostileTo(Faction.OfPlayer))
+                if (GenHostility.HostileTo(thing, Faction.OfPlayer) && manager.DesignationOn(thing, desDef) == null)
                 {
-                    var manager = thing.Map.designationManager;
-
-                    if (showEnemies && manager.DesignationOn(thing, desDef) == null)
-                    {
-                        manager.AddDesignation(new Designation(thing, desDef));
-                    }
-                    else if (!showEnemies && manager.DesignationOn(thing, desDef) != null)
-                    {
-                        manager.RemoveAllDesignationsOfDef(desDef);
-                    }
+                    manager.AddDesignation(new Designation(thing, desDef));
                 }
             }
+        }
+
+        public void DeHighlight()
+        {
+            var manager = Find.CurrentMap.designationManager;
+            manager.RemoveAllDesignationsOfDef(desDef);
         }
 
         [StaticConstructorOnStartup]
@@ -78,9 +77,19 @@ namespace _HightlightEnemies
             {
                 if (worldView) return;
 
-                var eh = EnemyHighlighter.GetEnemyHighlighter();
+                var eh = Find.CurrentMap.GetComponent<EnemyHighlighter>();
+                if (eh != null)
+                {
+                    bool before = eh.showEnemies;
+                    row.ToggleableIcon(ref eh.showEnemies, ContentFinder<Texture2D>.Get("HE/UI/Alarm", true), "HighlightEnemies".Translate(), SoundDefOf.Mouseover_ButtonToggle, (string)null);
 
-                row.ToggleableIcon(ref eh.showEnemies, ContentFinder<Texture2D>.Get("HE/UI/Alarm", true), "HighlightEnemies".Translate(), SoundDefOf.Mouseover_ButtonToggle, (string)null);
+                    if (!before && eh.showEnemies)
+                    {
+                        eh.Highlight();
+                    } else if (before && !eh.showEnemies) {
+                        eh.DeHighlight();
+                    }
+                }
             }
         }
 
