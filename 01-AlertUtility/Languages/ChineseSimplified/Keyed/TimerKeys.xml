@@ -11,7 +11,7 @@
     <TimerTimeOut>时间到：{0}</TimerTimeOut>
     <TicksToAlertExplaination>ticks这里指的是游戏内的ticks，在游戏里一小时有2500ticks，一天有24小时即60000ticks。同时，如果不暂停，在机器性能足够的最慢速一档下，游戏内60ticks大概是现实中的一秒，二档180ticks，三档360ticks，四档每秒最高可以有900ticks，如果机器性能不够一秒可能达不到这个ticks数</TicksToAlertExplaination>
     <AlreaySet>已设倒计时：</AlreaySet>
-    <RealSeconds>现实时间后</RealSeconds>
+    <RealSeconds>现实秒数后</RealSeconds>
     <GameHours>游戏小时后</GameHours>
     <GameDays>游戏日后</GameDays>
 </LanguageData>
