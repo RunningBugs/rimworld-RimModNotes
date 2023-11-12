@@ -33,13 +33,19 @@ namespace AlertUtility
     {
         public override Vector2 InitialSize => new Vector2(800f, 450f);
 
+        private static Texture2D RadioButOffTex;
+        private static Texture2D RadioButOnTex;
+
         private string buffer = "0";
         private string txtBuffer = "";
         private int unit = 0;
         Vector2 scrollbarPos;
 
-        public TimerSetWindow() : base() {
+        public TimerSetWindow() : base()
+        {
             this.draggable = true;
+            RadioButOffTex = ContentFinder<Texture2D>.Get("UI/Widgets/RadioButOff");
+            RadioButOnTex = ContentFinder<Texture2D>.Get("UI/Widgets/RadioButOn");
         }
 
         public float TickRateMultiplier(TimeSpeed speed)
@@ -113,6 +119,27 @@ namespace AlertUtility
             base.PreOpen();
         }
 
+        private static void RadioButtonDraw(float x, float y, bool chosen)
+        {
+            Color color = GUI.color;
+            GUI.color = Color.white;
+            GUI.DrawTexture(image: (!chosen) ? RadioButOffTex : RadioButOnTex, position: new Rect(x, y, 24f, 24f));
+            GUI.color = color;
+        }
+
+        private static bool RadioButtonLabeled(Rect rect, string labelText, bool chosen)
+        {
+            Rect labelRect = new Rect(rect.x, rect.y, rect.width - 28f, rect.height);
+            Rect radioButtonRect = new Rect(rect.x + rect.width - 24f, rect.y + rect.height / 2f - 12f, 24f, 24f);
+            TextAnchor anchor = Text.Anchor;
+            Text.Anchor = TextAnchor.MiddleRight;
+            Widgets.Label(labelRect, labelText);
+            Text.Anchor = anchor;
+            bool num = Widgets.ButtonInvisible(rect);
+            RadioButtonDraw(radioButtonRect.x, radioButtonRect.y, chosen);
+            return num;
+        }
+
         private int radioButtonGroupHorizontal(Rect inRect, List<string> labels, int res)
         {
             int count = labels.Count;
@@ -130,7 +157,7 @@ namespace AlertUtility
             {
                 for (int i = 0; i < count; ++i)
                 {
-                    if (Widgets.RadioButtonLabeled(rects[i].LeftHalf().Rounded(), labels[i], i == res))
+                    if (RadioButtonLabeled(rects[i].Rounded(), labels[i], i == res))
                     {
                         num = i;
                     }
@@ -188,8 +215,11 @@ namespace AlertUtility
             txtBuffer = listView.TextEntryLabeled("LetterMessage".Translate(), txtBuffer, 2);
             listView.Gap();
 
-            bool close = listView.ButtonText("Set".Translate());
-            if (close)
+            Rect buttonLine = listView.GetRect(30f);
+            Rect setButtonRect = buttonLine.LeftHalf().ContractedBy(2f);
+            Rect closeButtonRect = buttonLine.RightHalf().ContractedBy(2f);
+
+            if (Widgets.ButtonText(setButtonRect, "Set".Translate()))
             {
                 int ticksToAlert = Find.TickManager.TicksGame;
                 int multiplier = getMultiplier(unit);
@@ -197,6 +227,14 @@ namespace AlertUtility
                 AlertUtility.Add(new AlertUtility.Event((int)(ticksToAlert + real_ticks), txtBuffer));
                 Find.WindowStack.TryRemove(typeof(TimerSetWindow));
             }
+
+            GUI.color = new Color(1f, 0.3f, 0.35f);
+            if (Widgets.ButtonText(closeButtonRect, "CloseButton".Translate()))
+            {
+                Find.WindowStack.TryRemove(typeof(TimerSetWindow));
+            }
+            GUI.color = Color.white;
+
 
             listView.Gap();
 
