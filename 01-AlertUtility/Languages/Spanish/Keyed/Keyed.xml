@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
-    <SetTimer>Establecer temporizador:</SetTimer>
+	<ticks>Ticks</ticks>
+	<hours>Horas</hours>
+	<days>Dias</days>
+	<years>Años</years>
+	<SetTimer>Establecer temporizador:</SetTimer>
     <TicksToAlert>Tiempo hasta la alerta(puedes usar decimales): </TicksToAlert>
     <LetterMessage>Mensaje de recordatorio:</LetterMessage>
     <Set>Establecer</Set>
     <TimerTimeOut>Tiempo agotado: {0}</TimerTimeOut>
     <TicksToAlertExplaination>Los ticks se refieren  a los ticks en el juego. Una hora son 2500 ticks, un día 60000. En la velocidad I, 60 tick/seg en la vida real, velocidad II 180tick/seg y la velocidad por III son 360ticks/seg. En caso de la velocidad IV, 900ticks/seg (si tu PC es capaz de trabajar a esa velocidad)</TicksToAlertExplaination>
     <AlreaySet>Temporizadores ya puestos: </AlreaySet>
+	<RealSeconds>Segundos reales restantes</RealSeconds>
+	<GameHours>Horas de juego restantes</GameHours>
+	<GameDays>Días de juego restantes</GameDays>
 </LanguageData>
