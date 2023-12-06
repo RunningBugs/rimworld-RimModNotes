@@ -1,7 +1,6 @@
 ﻿using RimWorld;
 using Verse;
 using Verse.AI;
-using RimWorld.Planet;
 
 using System.Collections.Generic;
 using System.Linq;
@@ -104,9 +103,11 @@ namespace _ItemPolicy
 
     public class JobGiver_TakeItemForInventoryStock : ThinkNode_JobGiver
     {
-        private const int InventoryStockCheckIntervalMin = 6000;
+        // private const int InventoryStockCheckIntervalMin = 6000;
 
-        private const int InventoryStockCheckIntervalMax = 9000;
+        // private const int InventoryStockCheckIntervalMax = 9000;
+
+        // private static int lastInventoryStockTick = -9999;
 
         protected override Job TryGiveJob(Pawn pawn)
         {
@@ -114,6 +115,10 @@ namespace _ItemPolicy
             {
                 return null;
             }
+            // if (Find.TickManager.TicksGame < lastInventoryStockTick)
+            // {
+            //     return null;
+            // }
             if (pawn.inventory.UnloadEverything)
             {
                 return null;
@@ -123,33 +128,25 @@ namespace _ItemPolicy
                 if (pawn.inventory.Count(def) < count)
                 {
                     Thing thing = FindThingFor(pawn, def);
-                    if (thing != null)
+                    // Log.Message("thing null: " + (thing == null));
+                    float weight = MassUtility.GearAndInventoryMass(pawn);
+                    float capable = MassUtility.Capacity(pawn);
+                    float mass = thing != null ? thing.GetStatValue(StatDefOf.Mass) : capable + 1;
+                    if (thing != null && weight + mass <= capable)
                     {
                         Job job = JobMaker.MakeJob(JobDefOf.TakeCountToInventory, thing);
                         job.count = Mathf.Min(b: count - pawn.inventory.Count(thing.def), a: thing.stackCount);
-                        // find a bug here, sometimes, when the item is in the inventory, the job is still created
-                        //  this is because a bug in the vanilla code, the pawn.inventory.Count(thing.def) is not updated (including pawn.inventory.innerContainer)
-                        //  so the job.count is always 0, and the job is always created
-                        //  Meanwhile, when saving the game, the item will appear in the inventory, but the inventory.Count and inventory.innerContainer is still not updated
+                        long max_to_hold = mass > 0 ? (long)((capable - weight) / mass) : job.count;   //  using long to hold items that are too light that can have too many items to hold which may lead to data overflow; when mass is 0 or less, we assume the cap is job.count
 
-                        // Log.Message("Found " + thing.Label);
-                        // Log.Message("job: " + job.ToString());
-                        // Log.Message("job count: " + job.count);
-                        // Log.Message("thing position: " + thing.Position.x + ", " + thing.Position.y + ", " + thing.Position.z);
-                        // Log.Message("inventory count: " + pawn.inventory.Count(thing.def));
-                        // Log.Message("b: " + (count - pawn.inventory.Count(thing.def)));
-                        // Log.Message("a: " + thing.stackCount);
-
-                        // foreach (Thing item in pawn.inventory.innerContainer)
-                        // {
-                        //     Log.Message("item: " + item.ToString());
-                        //     Log.Message("item count: " + item.stackCount);
-                        // }
+                        job.count = (int)Mathf.Min(job.count, max_to_hold); // since job.count is int, we won't be able to overflow now
                         return job;
                     }
                 }
             }
-            // pawn.mindState.nextInventoryStockTick = Find.TickManager.TicksGame + Rand.Range(6000, 9000);
+            // if (!thingsToTake)
+            // {
+            //     lastInventoryStockTick = pawn.mindState.nextInventoryStockTick > 0 ? pawn.mindState.nextInventoryStockTick : Find.TickManager.TicksGame + Rand.Range(InventoryStockCheckIntervalMin, InventoryStockCheckIntervalMax);
+            // }
             return null;
         }
 

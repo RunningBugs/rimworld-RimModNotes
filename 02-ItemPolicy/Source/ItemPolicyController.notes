@@ -1,0 +1,29 @@
+﻿Some code to check whether Building is in the policy
+
+// // Log.Message("def: " + def.label + "(" + def.defName + ")" + ", count: " + count + ", inventory count: " + pawn.inventory.Count(def));
+// if (def.thingClass.IsSubclassOf(typeof(Building)))
+// {
+
+// }
+// else 
+
+=======
+
+// find a bug here, sometimes, when the item is in the inventory, the job is still created
+//  this might be because a bug in the vanilla code, the pawn.inventory.Count(thing.def) is not updated (including pawn.inventory.innerContainer)
+//  so the job.count is always 0, and the job is always created
+//  Meanwhile, when saving the game, the item will appear in the inventory, but the inventory.Count and inventory.innerContainer is still not updated
+
+// Log.Message("Found " + thing.Label);
+// Log.Message("job: " + job.ToString());
+// Log.Message("job count: " + job.count);
+// Log.Message("thing position: " + thing.Position.x + ", " + thing.Position.y + ", " + thing.Position.z);
+// Log.Message("inventory count: " + pawn.inventory.Count(thing.def));
+// Log.Message("b: " + (count - pawn.inventory.Count(thing.def)));
+// Log.Message("a: " + thing.stackCount);
+
+// foreach (Thing item in pawn.inventory.innerContainer)
+// {
+//     Log.Message("item: " + item.ToString());
+//     Log.Message("item count: " + item.stackCount);
+// }
