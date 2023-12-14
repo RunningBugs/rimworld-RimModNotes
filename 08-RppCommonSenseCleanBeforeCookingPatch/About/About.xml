@@ -27,8 +27,8 @@
 	</incompatibleWith>
 
 	<description>
-		CommonSense模组的工作前清扫功能很好用，但是Misc.Robots++的万能机无法在工作前清扫（其他的工作机器人不能进行清扫工作），本模组对CommonSense模组中的Utility.IncapableOfCleaning函数进行了修改，使万能机也能在工作前清扫。
+		CommonSense模组的工作前清扫功能很好用，但是Misc.Robots++的万能机无法在工作前清扫（其他的工作机器人不能进行清扫工作），本模组对CommonSense模组中的Utility.IncapableOfCleaning函数进行了修改，使万能机也能在工作前清扫。特别感谢CommonSense作者avilmask的帮助。
 
-		CommonSense Mod's Clean Before Work function is very useful, but Misc.Robots++'s OmniBot cannot clean before work (other work robots cannot clean), this mod modifies the Utility.IncapableOfCleaning function in the CommonSense mod to make the OmniBot clean before work.
+		CommonSense Mod's Clean Before Work function is very useful, but Misc.Robots++'s OmniBot cannot clean before work (other work robots cannot clean), this mod modifies the Utility.IncapableOfCleaning function in the CommonSense mod to make the OmniBot clean before work. Special thanks to CommonSense author avilmask for his help.
 	</description>
 </ModMetaData>

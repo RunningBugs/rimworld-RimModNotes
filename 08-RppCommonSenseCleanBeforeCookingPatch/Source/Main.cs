@@ -33,7 +33,7 @@ namespace RPP_Patch
 
 
     [HarmonyPatch(typeof(Utility), "IncapableOfCleaning")]
-    static class Patch
+    static class PatchCommonSenseUtilityIncapableOfCleaning
     {
         /**
          * Original method with minor changes
@@ -51,9 +51,8 @@ namespace RPP_Patch
                 pawn.workSettings == null || !pawn.workSettings.WorkIsActive(Utility.CleaningDef);
         }
 
-        static void Postfix(bool __result, Pawn pawn)
+        static void Postfix(ref bool __result, Pawn pawn)
         {
-            Log.Warning("RPP_Patch: started origin: " + $"{pawn.Name}: {__result}");
             if (!__result)
             {
                 return;
@@ -61,15 +60,6 @@ namespace RPP_Patch
             if (pawn.def.defName.StartsWith("RPP_Bot_"))
             {
                 __result = IncapableOfCleaning(pawn);
-                Log.Warning("RPP_Patch: " + pawn.def.defName + $" is ({__result}) incapable of cleaning");
-                Log.Warning("RPP_Patch: " + $"inspecting: {Settings.adv_cleaning}");
-                // Toil FilthList = new Toil();
-                // Job curJob = FilthList.actor.jobs.curJob;
-                // LocalTargetInfo A = curJob.GetTarget(TargetIndex.A);
-                // DoCleanComp comp;
-                // //  {Settings.clean_gizmo} {(comp = A.Thing?.TryGetComp<DoCleanComp>()) == null} {comp.Active}
-                // Log.Warning("RPP_Patch: " + $"inspecting: {Settings.adv_cleaning}");
-                // Log.Warning("RPP_Patch: " + $"inspecting: {Settings.adv_cleaning}");
             }
             return;
         }
