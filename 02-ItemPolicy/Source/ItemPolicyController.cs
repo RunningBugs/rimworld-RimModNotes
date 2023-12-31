@@ -7,8 +7,44 @@ using System.Linq;
 
 using UnityEngine;
 
+using HarmonyLib;
+using System;
+
 namespace _ItemPolicy
 {
+
+    // [HarmonyPatch(typeof(Toils_Haul), "ErrorCheckForCarry")]
+    // class Patch {
+    //     public static void Postfix(Pawn pawn, Thing haulThing, bool __result) {
+    //         Log.Warning("ErrorCheckForCarry: " + __result);
+    //         Log.Warning($"pawn: {pawn}, haulThing: {haulThing}");
+    //         int num = Math.Min(2, haulThing.stackCount);
+    //         Log.Warning($"num: {num}, checkEmbrace: {pawn.CurJob.checkEncumbrance}");
+    //     } 
+    // }
+
+//     [HarmonyPatch(typeof(Toils_Haul))]
+// #pragma warning disable IDE0300 // Simplify collection initialization
+//     [HarmonyPatch("TakeToInventory", new Type[] { typeof(TargetIndex), typeof(int) })]
+// #pragma warning restore IDE0300 // Simplify collection initialization
+//     class Patch
+//     {
+//         public static void Postfix(TargetIndex ind, int count)
+//         {
+//             Log.Warning($"TakeToInventory: {ind}, {count}");
+//         }
+//     }
+
+    [HarmonyPatch(typeof(Pawn_InventoryTracker))]
+    class Patches {
+        [HarmonyPatch("GetDirectlyHeldThings")]
+        [HarmonyPostfix]
+        public static void GetDirectlyHeldThings(Pawn_InventoryTracker __instance, ref ThingOwner __result) {
+            // Log.Warning($"GetDirectlyHeldThings: {__result.Count}");
+        }
+    }
+
+
     public class ItemPolicyUtility : GameComponent
     {
         public static Dictionary<Pawn, ItemPolicy> policies = new Dictionary<Pawn, ItemPolicy>();
@@ -101,34 +137,59 @@ namespace _ItemPolicy
         }
     }
 
+    static class PawnStateTracker
+    {
+        private static Dictionary<Pawn, int> nextInventoryStockTick = new Dictionary<Pawn, int>();
+
+        public static int GetNextInventoryStockTick(Pawn pawn)
+        {
+            if (!nextInventoryStockTick.ContainsKey(pawn))
+            {
+                nextInventoryStockTick[pawn] = -9999;
+            }
+            return nextInventoryStockTick[pawn];
+        }
+
+        public static void SetNextInventoryStockTick(Pawn pawn, int tick)
+        {
+            nextInventoryStockTick[pawn] = tick;
+        }
+    }
+
     public class JobGiver_TakeItemForInventoryStock : ThinkNode_JobGiver
     {
         // private const int InventoryStockCheckIntervalMin = 6000;
+        private const int InventoryStockCheckIntervalMin = 6000;
 
         // private const int InventoryStockCheckIntervalMax = 9000;
+        private const int InventoryStockCheckIntervalMax = 9000;
 
         // private static int lastInventoryStockTick = -9999;
 
         protected override Job TryGiveJob(Pawn pawn)
         {
-            if (Find.TickManager.TicksGame < pawn.mindState.nextInventoryStockTick)
+            var nextInventoryStockTick = PawnStateTracker.GetNextInventoryStockTick(pawn);
+            if (Find.TickManager.TicksGame < nextInventoryStockTick)
             {
                 return null;
             }
-            // if (Find.TickManager.TicksGame < lastInventoryStockTick)
-            // {
-            //     return null;
-            // }
+
+            var policy = ItemPolicyUtility.GetPawnPolicy(pawn);
+            if (!AnyThingsRequiredNow(pawn, policy))
+            {
+                return null;
+            }
+
             if (pawn.inventory.UnloadEverything)
             {
                 return null;
             }
-            foreach (var (def, count) in ItemPolicyUtility.GetPawnPolicy(pawn).data)
+
+            foreach (var (def, count) in policy.data)
             {
                 if (pawn.inventory.Count(def) < count)
                 {
                     Thing thing = FindThingFor(pawn, def);
-                    // Log.Message("thing null: " + (thing == null));
                     float weight = MassUtility.GearAndInventoryMass(pawn);
                     float capable = MassUtility.Capacity(pawn);
                     float mass = thing != null ? thing.GetStatValue(StatDefOf.Mass) : capable + 1;
@@ -139,14 +200,16 @@ namespace _ItemPolicy
                         long max_to_hold = mass > 0 ? (long)((capable - weight) / mass) : job.count;   //  using long to hold items that are too light that can have too many items to hold which may lead to data overflow; when mass is 0 or less, we assume the cap is job.count
 
                         job.count = (int)Mathf.Min(job.count, max_to_hold); // since job.count is int, we won't be able to overflow now
+                        nextInventoryStockTick = Find.TickManager.TicksGame + Rand.Range(InventoryStockCheckIntervalMin, InventoryStockCheckIntervalMax);
+                        PawnStateTracker.SetNextInventoryStockTick(pawn, nextInventoryStockTick);
                         return job;
                     }
                 }
             }
-            // if (!thingsToTake)
-            // {
-            //     lastInventoryStockTick = pawn.mindState.nextInventoryStockTick > 0 ? pawn.mindState.nextInventoryStockTick : Find.TickManager.TicksGame + Rand.Range(InventoryStockCheckIntervalMin, InventoryStockCheckIntervalMax);
-            // }
+
+            nextInventoryStockTick = Find.TickManager.TicksGame + Rand.Range(InventoryStockCheckIntervalMin, InventoryStockCheckIntervalMax);
+            PawnStateTracker.SetNextInventoryStockTick(pawn, nextInventoryStockTick);
+
             return null;
         }
 
@@ -166,6 +229,19 @@ namespace _ItemPolicy
                 return false;
             }
             return true;
+        }
+
+        public bool AnyThingsRequiredNow(Pawn pawn, ItemPolicy policy)
+        {
+
+            foreach (var (def, count) in policy.data)
+            {
+                if (pawn.inventory.Count(def) < count)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

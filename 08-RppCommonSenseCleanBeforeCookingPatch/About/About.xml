@@ -20,6 +20,12 @@
 			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=747645520</steamWorkshopUrl>
 			<downloadUrl>https://github.com/alaestor/Rimworld-MiscRobotsPlusPlus/releases/latest</downloadUrl>
 		</li>
+		<li>
+			<packageId>avilmask.commonsense</packageId>
+			<displayName>Common Sense</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=1561769193</steamWorkshopUrl>
+			<downloadUrl>https://github.com/catgirlfighter/RimWorld_CommonSense</downloadUrl>
+		</li>
 	</modDependencies>
 
 	<incompatibleWith>

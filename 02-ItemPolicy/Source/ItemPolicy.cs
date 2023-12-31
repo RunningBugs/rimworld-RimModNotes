@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
+using HarmonyLib;
 
 
 namespace _ItemPolicy
@@ -16,7 +17,8 @@ namespace _ItemPolicy
     {
         static ItemsLoadingScreen()
         {
-
+            Harmony harmony = new Harmony("com.RunningBugs.ItemPolicy");
+            harmony.PatchAll();
         }
     }
 

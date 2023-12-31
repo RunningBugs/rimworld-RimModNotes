@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.RimSavesMoreAutosaveSlotsPatch</packageId>
+	<name>RimSaves and MoreAutosaveSlots Compatible Patch</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.4</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>revolus.moreautosaveslots</packageId>
+			<displayName>More Autosave Slots</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2032167959</steamWorkshopUrl>
+		</li>
+		<li>
+			<packageId>arandomkiwi.rimsaves</packageId>
+			<displayName>RimSaves</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=1713367505</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<description>Template</description>
+</ModMetaData>

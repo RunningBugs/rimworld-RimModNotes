@@ -50,5 +50,6 @@
 		  <HintPath>..\..\..\RimWorld\RimWorldLinux_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
 		  <Private>false</Private>
 		</Reference>
+		<PackageReference Include="Lib.Harmony" Version="2.2.2" />
 	</ItemGroup>
 </Project>
