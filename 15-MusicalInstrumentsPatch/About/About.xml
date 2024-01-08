@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-	<packageId>RunningBugs.MusicPatches</packageId>
-	<name>Musical Instruments (Continued) Patches</name>
+	<packageId>RunningBugs.MusicPatch</packageId>
+	<name>Musical Instruments (Continued) Patch</name>
 	<author>RunningBugs</author>
 	<supportedVersions>
 		<li>1.4</li>
@@ -26,5 +26,8 @@
 		<!-- <li>username.modname</li> -->
 	</incompatibleWith>
 
-	<description>This mod adds some music to sounds. Trying to make instruments play real music.</description>
+	<description>
+Musical Instruments (Continued)中的乐器不能播放音乐，本模组修复了这个问题。但是当载入存档时之前播放一半的音乐不会继续播放，直到小人下一次开始演奏。
+
+The musical instruments in Musical Instruments (Continued) mod could not play music. This mod fixes that. The half-way played music will not continue when loading saves, until the pawns are starting another performance.</description>
 </ModMetaData>
