@@ -1,16 +1,94 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Patch>
-    <!-- <Operation Class="PatchOperationReplace">
-        <xpath>Defs/SoundDef[defName="Piano_Play"]/subSounds/li/grains/li[@Class="AudioGrain_Folder"]/clipPath</xpath>
+    <!-- Primal ones -->
+    <!-- FrameDrum 手鼓-->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="FrameDrum"]/comps</xpath>
         <value>
-            <clipPath>MusicPatch/Piano/</clipPath>
+            <li Class="MusicPatch.CompProp_PlayingMusic">
+                <soundPlayInstrument>MIC_FrameDrum_Play</soundPlayInstrument>
+            </li>
         </value>
-    </Operation> -->
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="FrameDrum"]</xpath>
+        <value>
+            <tickerType>Normal</tickerType>
+        </value>
+    </Operation>
+
+    <!-- Ocarina 陶笛-->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Ocarina"]/comps</xpath>
+        <value>
+            <li Class="MusicPatch.CompProp_PlayingMusic">
+                <soundPlayInstrument>MIC_Ocarina_Play</soundPlayInstrument>
+            </li>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Ocarina"]</xpath>
+        <value>
+            <tickerType>Normal</tickerType>
+        </value>
+    </Operation>
+
+    <!-- Marimba 马林巴琴-->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Marimba"]/comps</xpath>
+        <value>
+            <li Class="MusicPatch.CompProp_PlayingMusic">
+                <soundPlayInstrument>MIC_Marimba_Play</soundPlayInstrument>
+            </li>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Marimba"]</xpath>
+        <value>
+            <tickerType>Normal</tickerType>
+        </value>
+    </Operation>
+
+
+    <!-- String instruments-->
+    <!-- Balalaika 三角琴-->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Balalaika"]/comps</xpath>
+        <value>
+            <li Class="MusicPatch.CompProp_PlayingMusic">
+                <soundPlayInstrument>MIC_Balalaika_Play</soundPlayInstrument>
+            </li>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Balalaika"]</xpath>
+        <value>
+            <tickerType>Normal</tickerType>
+        </value>
+    </Operation>
+
+    <!-- Contrabass 低音提琴-->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Contrabass"]/comps</xpath>
+        <value>
+            <li Class="MusicPatch.CompProp_PlayingMusic">
+                <soundPlayInstrument>MIC_Contrabass_Play</soundPlayInstrument>
+            </li>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Contrabass"]</xpath>
+        <value>
+            <tickerType>Normal</tickerType>
+        </value>
+    </Operation>
+
+    <!-- Guitar 吉他-->
     <Operation Class="PatchOperationAdd">
         <xpath>Defs/ThingDef[defName="Guitar"]/comps</xpath>
         <value>
             <li Class="MusicPatch.CompProp_PlayingMusic">
-                <soundPlayInstrument>MyPiano_Play</soundPlayInstrument>
+                <soundPlayInstrument>MIC_Guitar_Play</soundPlayInstrument>
             </li>
         </value>
     </Operation>
@@ -20,4 +98,88 @@
             <tickerType>Normal</tickerType>
         </value>
     </Operation>
+
+    <!-- Cello 大提琴-->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Cello"]/comps</xpath>
+        <value>
+            <li Class="MusicPatch.CompProp_PlayingMusic">
+                <soundPlayInstrument>MIC_Cello_Play</soundPlayInstrument>
+            </li>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Cello"]</xpath>
+        <value>
+            <tickerType>Normal</tickerType>
+        </value>
+    </Operation>
+
+    <!-- Violin 小提琴-->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Violin"]/comps</xpath>
+        <value>
+            <li Class="MusicPatch.CompProp_PlayingMusic">
+                <soundPlayInstrument>MIC_Violin_Play</soundPlayInstrument>
+            </li>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Violin"]</xpath>
+        <value>
+            <tickerType>Normal</tickerType>
+        </value>
+    </Operation>
+
+    <!-- Banjo 班卓琴-->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Banjo"]/comps</xpath>
+        <value>
+            <li Class="MusicPatch.CompProp_PlayingMusic">
+                <soundPlayInstrument>MIC_Banjo_Play</soundPlayInstrument>
+            </li>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Banjo"]</xpath>
+        <value>
+            <tickerType>Normal</tickerType>
+        </value>
+    </Operation>
+
+    <!-- BassGuitar 贝斯-->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="BassGuitar"]/comps</xpath>
+        <value>
+            <li Class="MusicPatch.CompProp_PlayingMusic">
+                <soundPlayInstrument>MIC_BassGuitar_Play</soundPlayInstrument>
+            </li>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="BassGuitar"]</xpath>
+        <value>
+            <tickerType>Normal</tickerType>
+        </value>
+    </Operation>
+
+
+    <!-- Electronic Instruments-->
+    <!-- ElectronicOrgan 电子琴-->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="ElectronicOrgan"]/comps</xpath>
+        <value>
+            <li Class="MusicPatch.CompProp_PlayingMusic">
+                <soundPlayInstrument>MIC_ElectronicOrgan_Play</soundPlayInstrument>
+            </li>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="ElectronicOrgan"]</xpath>
+        <value>
+            <tickerType>Normal</tickerType>
+        </value>
+    </Operation>
+
+    
 </Patch>

@@ -19,4 +19,240 @@
 			</li>
 		</subSounds>
 	</SoundDef>
+
+
+	<!-- Primal ones -->
+    <!-- FrameDrum 手鼓-->
+	<SoundDef>
+		<defName>MIC_FrameDrum_Play</defName>
+		<context>MapOnly</context>
+		<sustain>True</sustain>
+		<sustainFadeoutTime>0.25</sustainFadeoutTime>
+		<priorityMode>PrioritizeNearest</priorityMode>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipPath>MusicPatch/FrameDrum/</clipPath>
+					</li>
+				</grains>
+				<volumeRange>75</volumeRange>
+				<distRange>5~25</distRange>
+				<muteWhenPaused>True</muteWhenPaused>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+    <!-- Ocarina 陶笛-->
+	<SoundDef>
+		<defName>MIC_Ocarina_Play</defName>
+		<context>MapOnly</context>
+		<sustain>True</sustain>
+		<sustainFadeoutTime>0.25</sustainFadeoutTime>
+		<priorityMode>PrioritizeNearest</priorityMode>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipPath>MusicPatch/Ocarina/</clipPath>
+					</li>
+				</grains>
+				<volumeRange>75</volumeRange>
+				<distRange>5~25</distRange>
+				<muteWhenPaused>True</muteWhenPaused>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+    <!-- Marimba 马林巴琴-->
+    <SoundDef>
+		<defName>MIC_Marimba_Play</defName>
+		<context>MapOnly</context>
+		<sustain>True</sustain>
+		<sustainFadeoutTime>0.25</sustainFadeoutTime>
+		<priorityMode>PrioritizeNearest</priorityMode>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipPath>MusicPatch/Marimba/</clipPath>
+					</li>
+				</grains>
+				<volumeRange>75</volumeRange>
+				<distRange>5~25</distRange>
+				<muteWhenPaused>True</muteWhenPaused>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+    <!-- String instruments-->
+    <!-- Balalaika 三角琴-->
+    <SoundDef>
+		<defName>MIC_Balalaika_Play</defName>
+		<context>MapOnly</context>
+		<sustain>True</sustain>
+		<sustainFadeoutTime>0.25</sustainFadeoutTime>
+		<priorityMode>PrioritizeNearest</priorityMode>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipPath>MusicPatch/Balalaika/</clipPath>
+					</li>
+				</grains>
+				<volumeRange>75</volumeRange>
+				<distRange>5~25</distRange>
+				<muteWhenPaused>True</muteWhenPaused>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+    <!-- Contrabass 低音提琴-->
+    <SoundDef>
+		<defName>MIC_Contrabass_Play</defName>
+		<context>MapOnly</context>
+		<sustain>True</sustain>
+		<sustainFadeoutTime>0.25</sustainFadeoutTime>
+		<priorityMode>PrioritizeNearest</priorityMode>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipPath>MusicPatch/Contrabass/</clipPath>
+					</li>
+				</grains>
+				<volumeRange>75</volumeRange>
+				<distRange>5~25</distRange>
+				<muteWhenPaused>True</muteWhenPaused>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+    <!-- Guitar 吉他-->
+    <SoundDef>
+		<defName>MIC_Guitar_Play</defName>
+		<context>MapOnly</context>
+		<sustain>True</sustain>
+		<sustainFadeoutTime>0.25</sustainFadeoutTime>
+		<priorityMode>PrioritizeNearest</priorityMode>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipPath>MusicPatch/Guitar/</clipPath>
+					</li>
+				</grains>
+				<volumeRange>75</volumeRange>
+				<distRange>5~25</distRange>
+				<muteWhenPaused>True</muteWhenPaused>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+    <!-- Cello 大提琴-->
+    <SoundDef>
+		<defName>MIC_Cello_Play</defName>
+		<context>MapOnly</context>
+		<sustain>True</sustain>
+		<sustainFadeoutTime>0.25</sustainFadeoutTime>
+		<priorityMode>PrioritizeNearest</priorityMode>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipPath>MusicPatch/Cello/</clipPath>
+					</li>
+				</grains>
+				<volumeRange>75</volumeRange>
+				<distRange>5~25</distRange>
+				<muteWhenPaused>True</muteWhenPaused>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+    <!-- Violin 小提琴-->
+    <SoundDef>
+		<defName>MIC_Violin_Play</defName>
+		<context>MapOnly</context>
+		<sustain>True</sustain>
+		<sustainFadeoutTime>0.25</sustainFadeoutTime>
+		<priorityMode>PrioritizeNearest</priorityMode>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipPath>MusicPatch/Violin/</clipPath>
+					</li>
+				</grains>
+				<volumeRange>75</volumeRange>
+				<distRange>5~25</distRange>
+				<muteWhenPaused>True</muteWhenPaused>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+    <!-- Banjo 班卓琴-->
+    <SoundDef>
+		<defName>MIC_Banjo_Play</defName>
+		<context>MapOnly</context>
+		<sustain>True</sustain>
+		<sustainFadeoutTime>0.25</sustainFadeoutTime>
+		<priorityMode>PrioritizeNearest</priorityMode>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipPath>MusicPatch/Banjo/</clipPath>
+					</li>
+				</grains>
+				<volumeRange>75</volumeRange>
+				<distRange>5~25</distRange>
+				<muteWhenPaused>True</muteWhenPaused>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+    <!-- BassGuitar 贝斯-->
+    <SoundDef>
+		<defName>MIC_BassGuitar_Play</defName>
+		<context>MapOnly</context>
+		<sustain>True</sustain>
+		<sustainFadeoutTime>0.25</sustainFadeoutTime>
+		<priorityMode>PrioritizeNearest</priorityMode>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipPath>MusicPatch/BassGuitar/</clipPath>
+					</li>
+				</grains>
+				<volumeRange>75</volumeRange>
+				<distRange>5~25</distRange>
+				<muteWhenPaused>True</muteWhenPaused>
+			</li>
+		</subSounds>
+	</SoundDef>
+
+
+    <!-- Electronic Instruments-->
+    <!-- ElectronicOrgan 电子琴-->
+    <SoundDef>
+		<defName>MIC_ElectronicOrgan_Play</defName>
+		<context>MapOnly</context>
+		<sustain>True</sustain>
+		<sustainFadeoutTime>0.25</sustainFadeoutTime>
+		<priorityMode>PrioritizeNearest</priorityMode>
+		<subSounds>
+			<li>
+				<grains>
+					<li Class="AudioGrain_Folder">
+						<clipPath>MusicPatch/ElectronicOrgan/</clipPath>
+					</li>
+				</grains>
+				<volumeRange>75</volumeRange>
+				<distRange>5~25</distRange>
+				<muteWhenPaused>True</muteWhenPaused>
+			</li>
+		</subSounds>
+	</SoundDef>
 </Defs>
