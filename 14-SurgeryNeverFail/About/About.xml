@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.SurgeryNeverFail</packageId>
+	<name>Surgery Never Fail</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.4</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<description>如果你还在使用S/L大法来确保手术的成功率，这个MOD很适合你。本MOD将确保手术永远成功。
+If you are still using the Save/Load to ensure the success rate of surgeries, this MOD is perfect for you. This mod will guarantee surgery never fail.
+
+进入游戏右下角有个手术的图标，默认启用，启用时手术永远成功，禁用时使用原版代码
+There's a toggle surgery icon at the bottom right after entering the game. It is enabled by default, meaning surgery never fail. You can disable it to use the vanilla behaviours.
+
+本模组使用的图标来自flaticon： https://www.flaticon.com/free-icons/surgery Surgery icons created by Iconjam - Flaticon
+The icon used in the mod is from flaticon: https://www.flaticon.com/free-icons/surgery Surgery icons created by Iconjam - Flaticon</description>
+</ModMetaData>

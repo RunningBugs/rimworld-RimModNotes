@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+    <!-- <Operation Class="PatchOperationReplace">
+        <xpath>Defs/SoundDef[defName="Piano_Play"]/subSounds/li/grains/li[@Class="AudioGrain_Folder"]/clipPath</xpath>
+        <value>
+            <clipPath>MusicPatch/Piano/</clipPath>
+        </value>
+    </Operation> -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Guitar"]/comps</xpath>
+        <value>
+            <li Class="MusicPatch.CompProp_PlayingMusic">
+                <soundPlayInstrument>MyPiano_Play</soundPlayInstrument>
+            </li>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Guitar"]</xpath>
+        <value>
+            <tickerType>Normal</tickerType>
+        </value>
+    </Operation>
+</Patch>

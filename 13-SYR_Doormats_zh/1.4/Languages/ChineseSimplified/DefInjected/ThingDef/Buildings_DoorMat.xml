@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <DoorMatLeather.label>皮质防尘垫</DoorMatLeather.label>
+  <!-- EN: A doormat to clean your feet. -->
+  <DoorMatLeather.description>一个可以清理鞋上的泥的防尘垫。</DoorMatLeather.description>
+  <!-- EN: large doormat -->
+  <DoorMatBigLeather.label>大号皮质防尘垫</DoorMatBigLeather.label>
+  <!-- EN: A doormat to clean your feet. -->
+  <DoorMatBigLeather.description>一个可以清理鞋上的泥的防尘垫。</DoorMatBigLeather.description>
+
+  <!-- EN: doormat (red) -->
+  <DoorMatRed.label>布防尘垫（红色）</DoorMatRed.label>
+  <!-- EN: A doormat to clean your feet. -->
+  <DoorMatRed.description>一个可以清理鞋上的泥的防尘垫。</DoorMatRed.description>
+
+  <DoorMatOrange.label>布防尘垫（橙色）</DoorMatOrange.label>
+  <!-- EN: A doormat to clean your feet. -->
+  <DoorMatOrange.description>一个可以清理鞋上的泥的防尘垫。</DoorMatOrange.description>
+
+  <DoorMatGreen.label>布防尘垫（绿色）</DoorMatGreen.label>
+  <!-- EN: A doormat to clean your feet. -->
+  <DoorMatGreen.description>一个可以清理鞋上的泥的防尘垫。</DoorMatGreen.description>
+
+  <DoorMatTeal.label>布防尘垫（蓝绿）</DoorMatTeal.label>
+  <!-- EN: A doormat to clean your feet. -->
+  <DoorMatTeal.description>一个可以清理鞋上的泥的防尘垫。</DoorMatTeal.description>
+
+  <DoorMatBlue.label>布防尘垫（蓝色）</DoorMatBlue.label>
+  <!-- EN: A doormat to clean your feet. -->
+  <DoorMatBlue.description>一个可以清理鞋上的泥的防尘垫。</DoorMatBlue.description>
+
+  <!-- Bigs -->
+
+  <DoorMatBigRed.label>大号布防尘垫（红色）</DoorMatBigRed.label>
+  <!-- EN: A doormat to clean your feet. -->
+  <DoorMatBigRed.description>一个可以清理鞋上的泥的防尘垫。</DoorMatBigRed.description>
+
+  <DoorMatBigOrange.label>大号布防尘垫（橙色）</DoorMatBigOrange.label>
+  <!-- EN: A doormat to clean your feet. -->
+  <DoorMatBigOrange.description>一个可以清理鞋上的泥的防尘垫。</DoorMatBigOrange.description>
+
+  <DoorMatBigGreen.label>大号布防尘垫（绿色）</DoorMatBigGreen.label>
+  <!-- EN: A doormat to clean your feet. -->
+  <DoorMatBigGreen.description>一个可以清理鞋上的泥的防尘垫。</DoorMatBigGreen.description>
+
+  <DoorMatBigTeal.label>大号布防尘垫（蓝绿）</DoorMatBigTeal.label>
+  <!-- EN: A doormat to clean your feet. -->
+  <DoorMatBigTeal.description>一个可以清理鞋上的泥的防尘垫。</DoorMatBigTeal.description>
+
+  <DoorMatBigBlue.label>大号布防尘垫（蓝色）</DoorMatBigBlue.label>
+  <!-- EN: A doormat to clean your feet. -->
+  <DoorMatBigBlue.description>一个可以清理鞋上的泥的防尘垫。</DoorMatBigBlue.description>
+
+
+  <DoorMatLinkedLeather.label>皮质拼接防尘垫</DoorMatLinkedLeather.label>
+  <DoorMatLinkedLeather.description>一个可以清理鞋上的泥的防尘垫。</DoorMatLinkedLeather.description>
+  <DoorMatLinkedRed.label>拼接布防尘垫（红色）</DoorMatLinkedRed.label>
+  <DoorMatLinkedRed.description>一个可以清理鞋上的泥的防尘垫。</DoorMatLinkedRed.description>
+  <DoorMatLinkedOrange.label>拼接布防尘垫（橙色）</DoorMatLinkedOrange.label>
+  <DoorMatLinkedOrange.description>一个可以清理鞋上的泥的防尘垫。</DoorMatLinkedOrange.description>
+  <DoorMatLinkedGreen.label>拼接布防尘垫（绿色）</DoorMatLinkedGreen.label>
+  <DoorMatLinkedGreen.description>一个可以清理鞋上的泥的防尘垫。</DoorMatLinkedGreen.description>
+  <DoorMatLinkedTeal.label>拼接布防尘垫（蓝绿）</DoorMatLinkedTeal.label>
+  <DoorMatLinkedTeal.description>一个可以清理鞋上的泥的防尘垫。</DoorMatLinkedTeal.description>
+  <DoorMatLinkedBlue.label>拼接布防尘垫（蓝色）</DoorMatLinkedBlue.label>
+  <DoorMatLinkedBlue.description>一个可以清理鞋上的泥的防尘垫。</DoorMatLinkedBlue.description>
+
+
+  <DoorMatMediumLeather.label>中号皮质防尘垫</DoorMatMediumLeather.label>
+  <DoorMatMediumLeather.description>一个可以清理鞋上的泥的防尘垫。</DoorMatMediumLeather.description>
+  <DoorMatMediumRed.label>中号布防尘垫（红色）</DoorMatMediumRed.label>
+  <DoorMatMediumRed.description>一个可以清理鞋上的泥的防尘垫。</DoorMatMediumRed.description>
+  <DoorMatMediumOrange.label>中号布防尘垫（橙色）</DoorMatMediumOrange.label>
+  <DoorMatMediumOrange.description>一个可以清理鞋上的泥的防尘垫。</DoorMatMediumOrange.description>
+  <DoorMatMediumGreen.label>中号布防尘垫（绿色）</DoorMatMediumGreen.label>
+  <DoorMatMediumGreen.description>一个可以清理鞋上的泥的防尘垫。</DoorMatMediumGreen.description>
+  <DoorMatMediumTeal.label>中号布防尘垫（蓝绿）</DoorMatMediumTeal.label>
+  <DoorMatMediumTeal.description>一个可以清理鞋上的泥的防尘垫。</DoorMatMediumTeal.description>
+  <DoorMatMediumBlue.label>中号布防尘垫（蓝色）</DoorMatMediumBlue.label>
+  <DoorMatMediumBlue.description>一个可以清理鞋上的泥的防尘垫。</DoorMatMediumBlue.description>
+
+
+</LanguageData>

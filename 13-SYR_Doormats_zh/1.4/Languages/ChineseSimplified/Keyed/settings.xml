@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <!-- EN: Doormats -->
+  <SyrDoorMatsSettingsCategory>防尘垫</SyrDoorMatsSettingsCategory>
+  <!-- EN: Slowdown strength (default: 40) -->
+  <SyrDoorMatsSlowdown>减速强度（默认值：40）</SyrDoorMatsSlowdown>
+  <!-- EN: Simulates pawn cleaning their feet by slowing them on doormats, does not affect pathfinding -->
+  <SyrDoorMatsSlowdownTooltip>触发小人在防尘垫上减速从而清理鞋上的泥，不影响寻路</SyrDoorMatsSlowdownTooltip>
+  <!-- EN: Reset to default -->
+  <SyrDoorMatsDefaultSettings>恢复默认设置</SyrDoorMatsDefaultSettings>
+  <!-- EN: Reset settings to default values -->
+  <SyrDoorMatsDefaultSettingsTooltip>把设置恢复为默认值</SyrDoorMatsDefaultSettingsTooltip>
+
+</LanguageData>

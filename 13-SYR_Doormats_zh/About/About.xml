@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.SYR_Doormats_zh</packageId>
+	<name>[SYR] Doormats 简体中文翻译</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.4</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>syrchalis.doormats</packageId>
+			<displayName>[SYR] Doormats</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=1508778962</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<description>[SYR] Doormats 内置了简中翻译但是不全，这是自用的汉化补充，基本上就是把原模组英语翻译文件拿过来翻译，原模组只有日语翻译是全的，别的都缺很多东西，暂时还不想补充英语缺失日语有的翻译项</description>
+</ModMetaData>
