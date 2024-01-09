@@ -22,12 +22,16 @@
 		</li>
 	</modDependencies>
 
+	<loadAfter>
+		<li>mlie.musicalinstruments</li>
+	</loadAfter>
+
 	<incompatibleWith>
 		<!-- <li>username.modname</li> -->
 	</incompatibleWith>
 
 	<description>
-Musical Instruments (Continued)中的乐器不能播放音乐，本模组修复了这个问题。但是当载入存档时之前播放一半的音乐不会继续播放，直到小人下一次开始演奏。
+		Musical Instruments (Continued)中的乐器不能播放音乐，本模组修复了这个问题。但是当载入存档时之前播放一半的音乐不会继续播放，直到小人下一次开始演奏。
 
-The musical instruments in Musical Instruments (Continued) mod could not play music. This mod fixes that. The half-way played music will not continue when loading saves, until the pawns are starting another performance.</description>
+		The musical instruments in Musical Instruments (Continued) mod could not play music. This mod fixes that. The half-way played music will not continue when loading saves, until the pawns are starting another performance.</description>
 </ModMetaData>
