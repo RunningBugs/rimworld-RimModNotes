@@ -6,11 +6,10 @@ using Verse;
 
 namespace Utils
 {
-    [StaticConstructorOnStartup]
     public class ToggleIconData
     {
         private Type windowType = typeof(Window);
-        private Texture2D tex = ContentFinder<Texture2D>.Get("WindowIcon", true);
+        private Texture2D tex = null;
         private string tooltip = "";
         private SoundDef mouseoverSound = SoundDefOf.Mouseover_ButtonToggle;
         private string tutorTag = null;
