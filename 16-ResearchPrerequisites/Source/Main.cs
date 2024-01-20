@@ -78,7 +78,7 @@ namespace ResearchPrerequisites
             Logs.Warning($"Research queue: {researchLabels}");
         }
 
-        private ResearchProjectDef GetNextResearch()
+        public ResearchProjectDef GetNextResearch()
         {
             if (researchQueue.Count == 0)
             {
@@ -249,8 +249,10 @@ namespace ResearchPrerequisites
                         // AttemptBeginResearch(selectedProject);
                         // CallMethod<object>(instance, "AttemptBeginResearch", new object[]{selectedProject});
                         ResearchQueue researchQueue = Current.Game.GetComponent<ResearchQueue>();
-                        Find.ResearchManager.currentProj = null;
                         researchQueue?.AddResearch(selectedProject);
+                        var nextResearch = researchQueue?.GetNextResearch();
+                        Find.ResearchManager.currentProj = nextResearch;
+                        selectedProjectInfo.SetValue(instance, nextResearch);
                     }
                 }
                 else

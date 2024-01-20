@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <ThingDef Name="DeathWeaponsMelee" ParentName="BaseMeleeWeapon" Abstract="True">
+        <thingCategories Inherit="False">
+            <li>DW_Melee</li>
+        </thingCategories>
+        <statBases Inherit="False">
+            <DeteriorationRate>0</DeteriorationRate>
+            <Beauty>100</Beauty>
+            <MarketValue>0</MarketValue>
+            <Flammability>0</Flammability>
+            <WorkToMake>1</WorkToMake>
+            <Mass>0.000001</Mass>
+        </statBases>
+    </ThingDef>
+
+    <ThingDef ParentName="DeathWeaponsMelee">
+        <defName>DeathWeapon_LongSword</defName>
+        <label>death longsword</label>
+        <description>The ancient weapon of kings, the death longsword can be used for slashing or stabbing.</description>
+        <possessionCount>1</possessionCount>
+        <graphicData>
+            <texPath>Things/Item/Equipment/WeaponMelee/LongSword</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <generateCommonality>0</generateCommonality>
+        <generateAllowChance>0</generateAllowChance>
+        <techLevel>Medieval</techLevel>
+        <weaponTags>
+            <li>MedievalMeleeAdvanced</li>
+            <li>LongSword</li>
+        </weaponTags>
+        <costStuffCount>1</costStuffCount>
+        <thingSetMakerTags>
+            <li>RewardStandardQualitySuper</li>
+        </thingSetMakerTags>
+        <statBases>
+            <WorkToMake>0</WorkToMake>
+            <Mass>0.001</Mass>
+        </statBases>
+        <relicChance>2</relicChance>
+        <equippedAngleOffset>-65</equippedAngleOffset>
+        <stuffCategories>
+            <li>Metallic</li>
+            <li>Woody</li>
+        </stuffCategories>
+        <tools>
+            <li>
+                <label>handle</label>
+                <capacities>
+                    <li>DeathWeapon_DeathCapacity</li>
+                </capacities>
+                <power>9</power>
+                <cooldownTime>0.6</cooldownTime>
+            </li>
+            <li>
+                <label>point</label>
+                <capacities>
+                    <li>DeathWeapon_DeathCapacity</li>
+                </capacities>
+                <power>23</power>
+                <cooldownTime>0.6</cooldownTime>
+            </li>
+            <li>
+                <label>edge</label>
+                <capacities>
+                    <li>DeathWeapon_DeathCapacity</li>
+                </capacities>
+                <power>23</power>
+                <cooldownTime>0.6</cooldownTime>
+            </li>
+        </tools>
+        <recipeMaker>
+            <recipeUsers>
+                <li>CraftingSpot</li>
+            </recipeUsers>
+        </recipeMaker>
+    </ThingDef>
+</Defs>

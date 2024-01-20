@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <ThingCategoryDef>
+        <defName>DW_Melee</defName>
+        <label>DeathWeapons_Melee</label>
+        <parent>Weapons</parent>
+    </ThingCategoryDef>
+
+    <ThingCategoryDef>
+        <defName>DW_Ranged</defName>
+        <label>DeathWeapons_Ranged</label>
+        <parent>Weapons</parent>
+    </ThingCategoryDef>
+</Defs>

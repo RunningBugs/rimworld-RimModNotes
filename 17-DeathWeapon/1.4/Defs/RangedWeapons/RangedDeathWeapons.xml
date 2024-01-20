@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <ThingDef Name="DeathWeaponsRanged" ParentName="BaseGunWithQuality" Abstract="True">
+        <thingCategories Inherit="False">
+            <li>DW_Ranged</li>
+        </thingCategories>
+        <statBases Inherit="False">
+            <DeteriorationRate>0</DeteriorationRate>
+            <Beauty>100</Beauty>
+            <MarketValue>0</MarketValue>
+            <Flammability>0</Flammability>
+            <WorkToMake>1</WorkToMake>
+            <Mass>0.000001</Mass>
+            <AccuracyTouch>2</AccuracyTouch>
+            <AccuracyShort>2</AccuracyShort>
+            <AccuracyMedium>2</AccuracyMedium>
+            <AccuracyLong>2</AccuracyLong>
+            <RangedWeapon_Cooldown>0.1</RangedWeapon_Cooldown>
+        </statBases>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseBullet">
+        <defName>Bullet_DeathBullet</defName>
+        <thingClass>DeathWeapon.DeathBullet</thingClass>
+        <label>General bullet for Death Weapons</label>
+        <graphicData>
+            <texPath>Things/Projectile/Bullet_Big</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>0</damageAmountBase>
+            <stoppingPower>40</stoppingPower>
+            <armorPenetrationBase>0</armorPenetrationBase>
+            <speed>200</speed>
+        </projectile>
+    </ThingDef>
+
+    <ThingDef Name="DeathGun" ParentName="DeathWeaponsRanged">
+        <defName>Gun_DeathGun</defName>
+        <label>bolt-action death rifle</label>
+        <description>Bring deaths to everyone</description>
+        <useHitPoints>false</useHitPoints>
+        <graphicData>
+            <texPath>Things/Item/Equipment/WeaponRanged/BoltActionRifle</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <generateCommonality>0</generateCommonality>
+        <generateAllowChance>0</generateAllowChance>
+        <relicChance>0</relicChance>
+        <soundInteract>Interact_Rifle</soundInteract>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Smith</soundWorking>
+            <recipeUsers>
+                <li>CraftingSpot</li>
+            </recipeUsers>
+            <unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
+        </recipeMaker>
+        <weaponClasses>
+            <li>LongShots</li>
+        </weaponClasses>
+        <weaponTags>
+            <li>Gun</li>
+        </weaponTags>
+        <costList>
+            <Steel>1</Steel>
+        </costList>
+        <comps>
+            <li>
+                <compClass>CompTargetEffect_PsychicShock</compClass>
+            </li>
+            <li Class="CompProperties_TargetEffect_FleckOnTarget">
+                <fleckDef>PsycastPsychicEffect</fleckDef>
+            </li>
+            <li Class="CompProperties_TargetEffect_FleckConnecting">
+                <fleckDef>PsycastPsychicLine</fleckDef>
+            </li>
+        </comps>
+        <verbs>
+            <li>
+                <verbClass>Verb_Shoot</verbClass>
+                <hasStandardCommand>true</hasStandardCommand>
+                <defaultProjectile>Bullet_DeathBullet</defaultProjectile>
+                <requireLineOfSight>true</requireLineOfSight>
+                <warmupTime>1</warmupTime>
+                <range>200</range>
+                <burstShotCount>10</burstShotCount>
+                <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+                <soundCast>Shot_BoltActionRifle</soundCast>
+                <soundCastTail>GunTail_Heavy</soundCastTail>
+                <muzzleFlashScale>9</muzzleFlashScale>
+                <targetParams>
+                    <canTargetLocations>false</canTargetLocations>
+                </targetParams>
+            </li>
+            <li>
+                <verbClass>Verb_CastTargetEffect</verbClass>
+                <label>psychic shock lance that even affects mech bosses</label>
+                <hasStandardCommand>true</hasStandardCommand>
+                <targetable>true</targetable>
+                <!-- <onlyManualCast>True</onlyManualCast> -->
+                <onlyManualCast>false</onlyManualCast>
+                <range>200</range>
+                <warmupTime>0.1</warmupTime>
+                <!-- <invalidTargetPawn>Psychic shock immune</invalidTargetPawn> -->
+                <targetParams>
+                    <canTargetBuildings>false</canTargetBuildings>
+                    <!-- <onlyTargetPsychicSensitive>true</onlyTargetPsychicSensitive> -->
+                    <!-- <neverTargetIncapacitated>true</neverTargetIncapacitated> -->
+                </targetParams>
+                <soundCast>PsychicShockLanceCast</soundCast>
+            </li>
+        </verbs>
+        <tools>
+            <li>
+                <label>stock</label>
+                <capacities>
+                    <li>DeathWeapon_DeathCapacity</li>
+                </capacities>
+                <power>25</power>
+                <cooldownTime>0.6</cooldownTime>
+            </li>
+            <li>
+                <label>barrel</label>
+                <capacities>
+                    <li>DeathWeapon_DeathCapacity</li>
+                </capacities>
+                <power>25</power>
+                <cooldownTime>0.6</cooldownTime>
+            </li>
+        </tools>
+    </ThingDef>
+</Defs>
