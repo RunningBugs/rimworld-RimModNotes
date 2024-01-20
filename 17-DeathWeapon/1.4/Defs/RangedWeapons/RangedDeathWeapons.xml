@@ -37,7 +37,7 @@
     </ThingDef>
 
     <ThingDef Name="DeathGun" ParentName="DeathWeaponsRanged">
-        <defName>Gun_DeathGun</defName>
+        <defName>Gun_DeathRifle</defName>
         <label>bolt-action death rifle</label>
         <description>Bring deaths to everyone</description>
         <useHitPoints>false</useHitPoints>

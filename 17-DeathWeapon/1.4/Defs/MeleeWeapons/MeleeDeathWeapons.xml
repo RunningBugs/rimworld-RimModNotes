@@ -12,6 +12,8 @@
             <WorkToMake>1</WorkToMake>
             <Mass>0.000001</Mass>
         </statBases>
+        <tradeTags>
+        </tradeTags>
     </ThingDef>
 
     <ThingDef ParentName="DeathWeaponsMelee">
