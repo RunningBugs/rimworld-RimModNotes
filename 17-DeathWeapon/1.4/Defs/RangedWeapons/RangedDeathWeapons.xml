@@ -4,6 +4,7 @@
         <thingCategories Inherit="False">
             <li>DW_Ranged</li>
         </thingCategories>
+        <tradeability>None</tradeability>
         <statBases Inherit="False">
             <DeteriorationRate>0</DeteriorationRate>
             <Beauty>100</Beauty>
