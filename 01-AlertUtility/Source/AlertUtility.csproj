@@ -40,25 +40,5 @@
 		<PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="10.0.1">
 			<Private>false</Private>
 		</PackageReference>
-		<!-- <Reference Include="UnityEngine">
-			<HintPath>..\..\..\RimWorld\RimWorldLinux_Data\Managed\UnityEngine.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
-		<Reference Include="UnityEngine.IMGUIModule">
-			<HintPath>..\..\..\RimWorld\RimWorldLinux_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
-		<Reference Include="UnityEngine.TextCoreModule">
-			<HintPath>..\..\..\RimWorld\RimWorldLinux_Data\Managed\UnityEngine.TextCoreModule.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
-		<Reference Include="UnityEngine.TextRenderingModule">
-			<HintPath>..\..\..\RimWorld\RimWorldLinux_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
-		<Reference Include="UnityEngine.CoreModule">
-			<HintPath>..\..\..\RimWorld\RimWorldLinux_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
-			<Private>false</Private>
-		</Reference> -->
 	</ItemGroup>
 </Project>

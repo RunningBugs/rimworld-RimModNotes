@@ -5,7 +5,7 @@
     <days>天</days>
     <years>年</years>
     <SetTimer>设定倒计时</SetTimer>
-    <TicksToAlert>倒计时帧数：</TicksToAlert>
+    <TicksToAlert>倒计时单位数：</TicksToAlert>
     <LetterMessage>提醒信息：</LetterMessage>
     <Set>设定</Set>
     <TimerTimeOut>时间到：{0}</TimerTimeOut>

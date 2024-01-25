@@ -71,6 +71,11 @@ namespace AlertUtility
             return events;
         }
 
+        public static void Remove(Event e)
+        {
+            events?.Remove(e);
+        }
+
         //[HarmonyPostfix]
         public static void WorldComponentTickPostfix()
         {
