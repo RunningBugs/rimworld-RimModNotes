@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 테라 은폐 -->
+  <Terra_knight_cloaking.label>泰拉隐蔽</Terra_knight_cloaking.label> <!-- Terra Cloak -->
+  <!-- 테라 아머에 장착된 기능입니다. -->
+  <Terra_knight_cloaking.description>这是内置于泰拉装甲中的功能。</Terra_knight_cloaking.description> <!-- This is a feature built into Terra Armor. -->
+
+  <!-- 피의 속박 -->
+  <Hediff_Restriction.label>血之束缚</Hediff_Restriction.label> <!-- blood bondage -->
+  <!-- 속박시켜 움직임을 느리게 만듭니다. -->
+  <Hediff_Restriction.description>束缚并减缓动作。</Hediff_Restriction.description> <!-- Constrains and slows movement. -->
+
+  <!-- 흡혈 창 -->
+  <Hediff_bloodsucking_spear.label>吸血矛</Hediff_bloodsucking_spear.label> <!-- bloodsucking spear -->
+  <!-- 흡혈창에 맞은 적은 육체를 약화시킵니다. -->
+  <Hediff_bloodsucking_spear.description>被吸血矛击中的敌人会使其身体衰弱。</Hediff_bloodsucking_spear.description> <!-- Enemies hit by the Blood Lance weaken their bodies. -->
+
+  <!-- 유령 환각 -->
+  <Hediff_Ghost.label>幽灵幻觉</Hediff_Ghost.label> <!-- ghost hallucination -->
+  <!-- 환각들을 보게 만들어 정신을 망가뜨립니다. -->
+  <Hediff_Ghost.description>通过让你看到幻觉来破坏心智。</Hediff_Ghost.description> <!-- It destroys the mind by making you see hallucinations. -->
+
+  <!-- 신경쓰임 -->
+  <Hediff_Ghost.stages.0.label>关心</Hediff_Ghost.stages.0.label> <!-- care -->
+  <!-- 알수 없음 -->
+  <Hediff_Ghost.stages.1.label>未知</Hediff_Ghost.stages.1.label> <!-- unknown -->
+  <!-- 공포심 -->
+  <Hediff_Ghost.stages.2.label>恐惧</Hediff_Ghost.stages.2.label> <!-- Fear -->
+  <!-- 적 판단 불가 -->
+  <Hediff_Ghost.stages.3.label>敌人判断不可</Hediff_Ghost.stages.3.label> <!-- Enemy judgment impossible -->
+
+  <Ghost_hallucination.label>战斗幽灵</Ghost_hallucination.label> <!-- Combat Ghost -->
+  <Ghost_hallucination.labelNoun>战斗幽灵</Ghost_hallucination.labelNoun> <!-- Combat Ghost -->
+  <Ghost_hallucination.description>战斗幽灵</Ghost_hallucination.description> <!-- Combat Ghost -->
+
+  <Ghost_hallucination.comps.1.labelTendedWell>绷带包扎</Ghost_hallucination.comps.1.labelTendedWell> <!-- bandaged -->
+  <Ghost_hallucination.comps.1.labelTendedWellInner>处理过的</Ghost_hallucination.comps.1.labelTendedWellInner> <!-- tended -->
+  <Ghost_hallucination.comps.1.labelSolidTendedWell>处理过的</Ghost_hallucination.comps.1.labelSolidTendedWell> <!-- tended -->
+  <Ghost_hallucination.comps.3.permanentLabel>缺少支持</Ghost_hallucination.comps.3.permanentLabel> <!-- miss support -->
+
+  <Ghost_hallucination.injuryProps.destroyedLabel>消灭</Ghost_hallucination.injuryProps.destroyedLabel> <!-- extinction -->
+  <Ghost_hallucination.injuryProps.destroyedOutLabel>消灭</Ghost_hallucination.injuryProps.destroyedOutLabel> <!-- extinction -->
+
+  <!-- 은폐 -->
+  <Hemera_Invisibility.label>隐匿</Hemera_Invisibility.label> <!-- concealment -->
+  <!-- 헤메라의 능력으로 자신을 숨깁니다. -->
+  <Hemera_Invisibility.description>赫梅拉的能力，可以隐藏自己。</Hemera_Invisibility.description> <!-- Hemera's ability to hide herself. -->
+
+  <!-- 차원 은폐 -->
+  <Hemera_subspace.label>维度斗篷</Hemera_subspace.label> <!-- dimension cloak -->
+  <!-- 차원속으로 사라져 모습이 사라지고 속도가 빨라집니다. -->
+  <Hemera_subspace.description>消失进入维度，消失并加速。</Hemera_subspace.description> <!-- Disappears into the dimension, disappears, and speeds up. -->
+
+  <!-- 헤메라 결계 -->
+  <Hemera_link_shield.label>赫梅拉屏障</Hemera_link_shield.label> <!-- Hemera Barrier -->
+  <!-- 헤메라 차단막이 온몸에 생성되어 모든 공격을 방어합니다 -->
+  <Hemera_link_shield.description>在全身形成赫梅拉的屏障来阻挡所有攻击。</Hemera_link_shield.description> <!-- A shield of Hemera is created all over the body to block all attacks. -->
+
+  <!-- 헤메라 가속 -->
+  <Hemera_Acceleration.label>赫梅拉加速</Hemera_Acceleration.label> <!-- Hemera Acceleration -->
+  <!-- 헤메라 육체가 순간적으로 강화되어 빠르게 사격합니다. -->
+  <Hemera_Acceleration.description>赫梅拉的身体瞬间得到加强，可以快速射击。</Hemera_Acceleration.description> <!-- Hemera's body is momentarily strengthened to fire rapidly. -->
+
+  <!-- 헤메라 사슬 -->
+  <Hemera_Burden.label>赫梅拉之链</Hemera_Burden.label> <!-- chain of hemera -->
+  <!-- 발을 묶어 움직임을 막습니다. -->
+  <Hemera_Burden.description>绑住你的脚以阻止移动。</Hemera_Burden.description> <!-- Bind your feet to prevent movement. -->
+
+  <flash_blast.label>眩光</flash_blast.label> <!-- glare -->
+  <flash_blast.description>产生一个闪光爆炸，致盲敌人。</flash_blast.description> <!-- Creates a flashburst that blinds enemies. -->
+
+  <Hediff_freezing.label>霜冻冻结</Hediff_freezing.label> <!-- frost freeze -->
+  <Hediff_freezing.description>使整个身体冻结并阻止移动。</Hediff_freezing.description> <!-- It freezes the whole body and blocks movement. -->
+  <Hediff_freezing.stages.0.label>0</Hediff_freezing.stages.0.label> <!-- 0 -->
+  <!-- 초기 -->
+  <Hediff_freezing.stages.1.label>早期</Hediff_freezing.stages.1.label> <!-- Early -->
+  <!-- 얼어붙기 시작함 -->
+  <Hediff_freezing.stages.2.label>开始冻结</Hediff_freezing.stages.2.label> <!-- starting to freeze -->
+  <!-- 얼어붙음 -->
+  <Hediff_freezing.stages.3.label>冻结</Hediff_freezing.stages.3.label> <!-- freezing -->
+
+  <Hediff_putrefaction.label>腐败</Hediff_putrefaction.label> <!-- Corruption -->
+  <Hediff_putrefaction.description>腐败接触目标的身体，使它们腐烂。</Hediff_putrefaction.description> <!-- Corrupts the body of the target it touches, causing them to rot. -->
+
+  <Hemera_stealth_drone.label>隐匿</Hemera_stealth_drone.label> <!-- concealment -->
+  <Hemera_stealth_drone.description>腐败接触目标的身体，使它们腐烂。</Hemera_stealth_drone.description> <!-- Corrupts the body of the target it touches, causing them to rot. -->
+
+  <drone_Kauyon.label>隐匿战术</drone_Kauyon.label> <!-- concealment tactics -->
+  <drone_Kauyon.description>为范围内的盟友提供战术。</drone_Kauyon.description> <!-- Delivers tactics to allies within range. -->
+
+  <drone_Montka.label>近距离火力战术</drone_Montka.label> <!-- close range fire tactics -->
+  <drone_Montka.description>为范围内的盟友提供战术。</drone_Montka.description> <!-- Delivers tactics to allies within range. -->
+
+  <Hediff_TerraPowerArmor.label>泰拉装甲</Hediff_TerraPowerArmor.label> <!-- Terra Armor -->
+  <Hediff_TerraPowerArmor.description>泰拉装甲的功能是增加身体对伤害的抗性。</Hediff_TerraPowerArmor.description> <!-- The function of Terra Armor's armor is to increase the body's resistance to damage. -->
+
+</LanguageData>

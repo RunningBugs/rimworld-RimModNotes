@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Hakuro_Abilities_mine.label>Hakuro demon</Hakuro_Abilities_mine.label>
+  <Hakuro_Abilities_witch.label>Hakuro snowfield witch</Hakuro_Abilities_witch.label>
+  <Hakuro_Abilities_destroyer.label>Hakuro heavy armor witch</Hakuro_Abilities_destroyer.label>
+
+  <Hakuro_sun_Abilities_destroyer.label>Hakuro sun witch</Hakuro_sun_Abilities_destroyer.label>
+  <Hakuro_Abilities_blood_knight.label>Hakuro blood knight</Hakuro_Abilities_blood_knight.label>
+  <Hakuro_Abilities_sun_knight.label>Hakuro sun knight</Hakuro_Abilities_sun_knight.label>
+
+  <Hakuro_Player.label>Hakuro Player</Hakuro_Player.label>
+  <Hakuro_mine_Player.label>Hakuro Player</Hakuro_mine_Player.label>
+
+  <Hakuro_freeman.label>Hakuro freeman</Hakuro_freeman.label>
+
+  <Hakuro_Warrior.label>Hakuro warrior</Hakuro_Warrior.label>
+  <Hakuro_hunter.label>Hakuro hunter</Hakuro_hunter.label>
+
+  <Hakuro_guard_rifleman.label>Hakuro guardman</Hakuro_guard_rifleman.label>
+  <Hakuro_engineer.label>Hakuro sapper</Hakuro_engineer.label>
+  <Hakuro_guard_soldier.label>Hakuro snowfield guardman</Hakuro_guard_soldier.label>
+  <Hakuro_assault_force.label>Hakuro snowfield assaulter</Hakuro_assault_force.label>
+ 
+ <Hakuro_space_powerarmorunit.label>Hakuro snowfield powerarmor soilder</Hakuro_space_powerarmorunit.label>
+  <Hakuro_space_knightage.label>Hakuro knight</Hakuro_space_knightage.label>
+  <Hakuro_space_Guard.label>Hakuro royal guardman</Hakuro_space_Guard.label>
+
+  <Hakuro_merchant.label>Hakuro merchant</Hakuro_merchant.label>
+  <Hakuro_officer.label>Hakuro officer</Hakuro_officer.label>
+</LanguageData>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Overwatch_Marker_drone.label>守望标记无人机</Overwatch_Marker_drone.label> <!-- Overwatch Marker Drone -->
+  <Overwatch_Ward_drone.label>守望守护无人机</Overwatch_Ward_drone.label> <!-- Overwatch Guardian Drone -->
+  <Overwatch_missile_drone.label>守望导弹无人机</Overwatch_missile_drone.label> <!-- Overwatch Missile Drone -->
+  <Overwatch_Guard_drone.label>守望护卫无人机</Overwatch_Guard_drone.label> <!-- Overwatch Guard Drone -->
+  <Overwatch_heavy_drone.label>守望装甲无人机</Overwatch_heavy_drone.label> <!-- Overwatch Armored Drone -->
+  <Overwatch_heavy_missile_drone.label>守望重型导弹无人机</Overwatch_heavy_missile_drone.label> <!-- Overwatch Heavy Missile Drone -->
+  <Overwatch_sniper_drone.label>守望狙击无人机</Overwatch_sniper_drone.label> <!-- Overwatch Sniper Drone -->
+  <Overwatch_stealth_drone.label>守望隐形无人机</Overwatch_stealth_drone.label> <!-- Overwatch Stealth Drone -->
+  <Overwatch_Commander_drone.label>守望指挥官无人机</Overwatch_Commander_drone.label> <!-- overwatch commander drone -->
+  <Overwatch_Harbinger.label>守望先驱</Overwatch_Harbinger.label> <!-- Overwatch Harbinger -->
+  <Overwatch_Harbinger_drone.label>守望先驱无人机</Overwatch_Harbinger_drone.label> <!-- Overwatch Harbinger drone -->
+  <Overwatch_AoE_Shield_Heavy_Drone.label>守望AoE护盾重型无人机</Overwatch_AoE_Shield_Heavy_Drone.label> <!-- Overwatch AoE Shield Heavy Drone -->
+  <Overwatch_elevation_drone.label>守望高地无人机</Overwatch_elevation_drone.label> <!-- Overwatch elevation drone -->
+
+  <Overwatch_defense_carrier.label>守望防御航母</Overwatch_defense_carrier.label> <!-- Overwatch defense carrier -->
+  <Overwatch_drone_carrier.label>守望无人机航母</Overwatch_drone_carrier.label> <!-- overwatch drone carrier -->
+  <Overwatch_defense_drone.label>守望守护无人机</Overwatch_defense_drone.label> <!-- Overwatch guardian drone -->
+
+</LanguageData>

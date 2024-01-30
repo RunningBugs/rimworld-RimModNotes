@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+<!-- 은폐 -->
+  <Terra_subspace.label>隐身</Terra_subspace.label>
+<!-- 내장된 정신석을 통해 자신을 숨겨 적들이 자신을 못보게 만듭니다. -->
+  <Terra_subspace.description>通过内置的心灵石将自己隐藏起来，使敌人无法看到。</Terra_subspace.description>
+<!-- 헤메라 에너지 파동 -->
+  <Hemera_energy_Ability.label>赫梅拉能量波</Hemera_energy_Ability.label>
+<!-- 작은 에너지를 발사해 작은 폭발 일으킵니다. -->
+  <Hemera_energy_Ability.description>发射一小团能量，造成小范围爆炸。</Hemera_energy_Ability.description>
+<!-- 헤메라 실드 링크 -->
+  <Hemera_link_shield.label>赫梅拉链接护盾</Hemera_link_shield.label>
+<!-- 모든 공격을 보호하는 투명한 장막이 생성되어 자신과 연결된 대상을 향해 날라오는 모든 공격을 보호합니다. -->
+  <Hemera_link_shield.description>使用后，您和链接的生物在10秒内免疫所有攻击。</Hemera_link_shield.description>
+<!-- 헤메라 에너지 폭발 -->
+  <Hemera_explosion.label>赫梅拉能量爆炸</Hemera_explosion.label>
+<!-- 헤메라 에너지를 헤모켄 혈액으로 증폭시켜 지정된 위치에 에너지 폭발을 일으켜 적들을 타격합니다. -->
+  <Hemera_explosion.description>将赫梅拉能量放大为赫莫肯之血，以指定位置的能量爆炸打击敌人。</Hemera_explosion.description>
+<!-- 헤메라 전자 파괴 -->
+  <Hemera_EMP_bondage.label>赫梅拉电子破坏</Hemera_EMP_bondage.label>
+<!-- 백랑 마인들이 사용하는 위험적인 에너지무기입니다. 헤메라의 에너지를 펄스 형태의 구체를 천천히 날라가며 그 위치에 닿는 순간 거대한 전자기 펄스 폭발을 일으켜 모든 기계에 관련된것들을 망가뜨립니다. -->
+  <Hemera_EMP_bondage.description>这是白浪恶魔使用的危险能量武器。赫梅拉的能量缓慢飞过脉冲状球体，一旦碰到位置，就会引发巨大的电磁脉冲爆炸，摧毁与机械有关的一切。</Hemera_EMP_bondage.description>
+<!-- 헤메라 클르킹 안개 -->
+  <Hemera_Invisibility.label>赫梅拉隐形迷雾</Hemera_Invisibility.label>
+<!-- 작은 안개들이 흩뿌려지며 범위내에 있는 사람들은 사라지게 만듭니다. -->
+  <Hemera_Invisibility.description>一团小雾弥漫开来，使范围内的人消失不见。</Hemera_Invisibility.description>
+<!-- 헤메라 나노 강화 코드 유전자 -->
+  <Hemera_nano_system_code_gene.label>赫梅拉纳米增强代码基因</Hemera_nano_system_code_gene.label>
+<!-- 헤메라에 들어있는 나노물질을 사용자를 지원하게 만드는 명령 코드 유전자입니다. -->
+  <Hemera_nano_system_code_gene.description>这是使赫梅拉中的纳米材料支持用户的命令代码基因。</Hemera_nano_system_code_gene.description>
+
+  <Hemera_conversion.label>赫梅拉转化</Hemera_conversion.label>
+  <Hemera_conversion.description>将一部分血液转化为赫梅拉。</Hemera_conversion.description>
+
+  <Hemera_Acceleration_Ability.label>赫梅拉身体加速</Hemera_Acceleration_Ability.label>
+  <Hemera_Acceleration_Ability.description>瞬间加速身体并快速射击几秒钟。</Hemera_Acceleration_Ability.description>
+
+
+  <stepontheice_Ability.label>踩冰</stepontheice_Ability.label>
+  <stepontheice_Ability.description>用冰踩击敌人。</stepontheice_Ability.description>
+  <stepontheice_Ability.verbProperties.label>跳跃</stepontheice_Ability.verbProperties.label>
+  
+
+<!-- 헤메라 피의 사슬 -->
+  <Hemera_Restriction_bondage.label>赫梅拉血之锁链</Hemera_Restriction_bondage.label>
+<!-- 바닥에서 피로 만들어진 사슬들이 튀어나와 적들을 묶습니다. -->
+  <Hemera_Restriction_bondage.description>血链从地面上升起并束缚敌人。</Hemera_Restriction_bondage.description>
+
+<!-- 헤메라 흡혈 투창 -->
+  <Hemera_bloodsucking_spear.label>赫梅拉吸血标枪</Hemera_bloodsucking_spear.label>
+<!-- 헤메라 에너지를 헤모켄 혈액으로 증폭시켜 내장된 혈액을 회복시키고 적한테 투창을 던집니다. -->
+  <Hemera_bloodsucking_spear.description>将赫梅拉能量放大为赫莫肯之血，恢复内部血液并向敌人投掷标枪。</Hemera_bloodsucking_spear.description>
+
+
+  <Hemera_blood_moon.label>血月</Hemera_blood_moon.label>
+  <Hemera_blood_moon.description>将赫梅拉能量和恶魔的力量压缩，驱逐范围内的敌人之血，然后补充自己的赫梅拉能量。</Hemera_blood_moon.description>
+  
+  <Hemera_blood_armor.label>赫梅拉血之盔甲</Hemera_blood_armor.label>
+  <Hemera_blood_armor.description>使用自身的赫梅拉能量将自己包裹起来，形成一种护甲。</Hemera_blood_armor.description>
+  
+  <Hemera_BloodCharge.label>赫梅拉血之冲锋</Hemera_BloodCharge.label>
+  <Hemera_BloodCharge.description>在充满赫梅拉能量和血能的混合物充能后，向目标冲锋并使敌人晕眩。</Hemera_BloodCharge.description>
+  
+  <Hemera_energy_drain.label>赫梅拉能量抽取</Hemera_energy_drain.label>
+  <Hemera_energy_drain.description>这是一种用赫梅拉血能强制提取目标血液并转化为赫梅拉能量的血能力。</Hemera_energy_drain.description>
+  
+  
+  <Hemera_Teleport.label>赫梅拉传送</Hemera_Teleport.label>
+  <Hemera_Teleport.description>通过类似于传送的能力，您可以躲避来袭的攻击或迅速离开战场，带着受伤的定居者。</Hemera_Teleport.description>
+
+  <Hemera_Coagulate.label>赫梅拉恢复</Hemera_Coagulate.label>
+  <Hemera_Coagulate.description>赫梅拉的体液流经目标的伤口，快速封堵伤口。施法时间长，但可以远程使用。</Hemera_Coagulate.description>
+
+  <Hemera_energy_shockwave.label>赫梅拉能量冲击波</Hemera_energy_shockwave.label>
+  <Hemera_energy_shockwave.description>使用赫梅拉能量施法后，在指定位置产生巨大的冲击波。</Hemera_energy_shockwave.description>
+
+</LanguageData>

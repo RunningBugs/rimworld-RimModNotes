@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Guardian Claw -->
+  <GuardianClaw.label>守护者之爪</GuardianClaw.label>
+  <!-- left elytra -->
+  <GuardianClaw.corePart.parts.1.customLabel>左鞘翅</GuardianClaw.corePart.parts.1.customLabel>
+  <!-- right elytra -->
+  <GuardianClaw.corePart.parts.2.customLabel>右鞘翅</GuardianClaw.corePart.parts.2.customLabel>
+  <!-- left eye -->
+  <GuardianClaw.corePart.parts.5.parts.0.parts.1.customLabel>左眼</GuardianClaw.corePart.parts.5.parts.0.parts.1.customLabel>
+  <!-- right eye -->
+  <GuardianClaw.corePart.parts.5.parts.0.parts.2.customLabel>右眼</GuardianClaw.corePart.parts.5.parts.0.parts.2.customLabel>
+  <!-- left antenna -->
+  <GuardianClaw.corePart.parts.5.parts.0.parts.3.customLabel>左触角</GuardianClaw.corePart.parts.5.parts.0.parts.3.customLabel>
+  <!-- right antenna -->
+  <GuardianClaw.corePart.parts.5.parts.0.parts.4.customLabel>右触角</GuardianClaw.corePart.parts.5.parts.0.parts.4.customLabel>
+  <!-- front left leg -->
+  <GuardianClaw.corePart.parts.6.customLabel>前左腿</GuardianClaw.corePart.parts.6.customLabel>
+  <!-- front right leg -->
+  <GuardianClaw.corePart.parts.7.customLabel>前右腿</GuardianClaw.corePart.parts.7.customLabel>
+  <!-- middle left leg -->
+  <GuardianClaw.corePart.parts.8.customLabel>中左腿</GuardianClaw.corePart.parts.8.customLabel>
+  <!-- middle right leg -->
+  <GuardianClaw.corePart.parts.9.customLabel>中右腿</GuardianClaw.corePart.parts.9.customLabel>
+  <!-- rear left leg -->
+  <GuardianClaw.corePart.parts.10.customLabel>后左腿</GuardianClaw.corePart.parts.10.customLabel>
+  <!-- rear right leg -->
+  <GuardianClaw.corePart.parts.11.customLabel>后右腿</GuardianClaw.corePart.parts.11.customLabel>
+
+  <!-- Deliverer -->
+  <Deliverer_body.label>传递者</Deliverer_body.label>
+  <!-- left lung -->
+  <Deliverer_body.corePart.parts.3.customLabel>左肺</Deliverer_body.corePart.parts.3.customLabel>
+  <!-- right lung -->
+  <Deliverer_body.corePart.parts.4.customLabel>右肺</Deliverer_body.corePart.parts.4.customLabel>
+  <!-- left kidney -->
+  <Deliverer_body.corePart.parts.5.customLabel>左肾</Deliverer_body.corePart.parts.5.customLabel>
+  <!-- left eye -->
+  <Deliverer_body.corePart.parts.7.parts.0.parts.1.customLabel>左眼</Deliverer_body.corePart.parts.7.parts.0.parts.1.customLabel>
+  <!-- right eye -->
+  <Deliverer_body.corePart.parts.7.parts.0.parts.2.customLabel>右眼</Deliverer_body.corePart.parts.7.parts.0.parts.2.customLabel>
+  <!-- right ear -->
+  <Deliverer_body.corePart.parts.7.parts.0.parts.3.customLabel>右耳</Deliverer_body.corePart.parts.7.parts.0.parts.3.customLabel>
+  <!-- front left leg -->
+  <Deliverer_body.corePart.parts.8.customLabel>前左腿</Deliverer_body.corePart.parts.8.customLabel>
+  <!-- front left hoof -->
+  <Deliverer_body.corePart.parts.8.parts.0.customLabel>前左蹄</Deliverer_body.corePart.parts.8.parts.0.customLabel>
+  <!-- front right leg -->
+  <Deliverer_body.corePart.parts.9.customLabel>前右腿</Deliverer_body.corePart.parts.9.customLabel>
+  <!-- front right hoof -->
+  <Deliverer_body.corePart.parts.9.parts.0.customLabel>前右蹄</Deliverer_body.corePart.parts.9.parts.0.customLabel>
+  <!-- rear left leg -->
+  <Deliverer_body.corePart.parts.10.customLabel>后左腿</Deliverer_body.corePart.parts.10.customLabel>
+  <!-- rear left hoof -->
+  <Deliverer_body.corePart.parts.10.parts.0.customLabel>后左蹄</Deliverer_body.corePart.parts.10.parts.0.customLabel>
+  <!-- rear right leg -->
+  <Deliverer_body.corePart.parts.11.customLabel>后右腿</Deliverer_body.corePart.parts.11.customLabel>
+  <!-- rear right hoof -->
+  <Deliverer_body.corePart.parts.11.parts.0.customLabel>后右蹄</Deliverer_body.corePart.parts.11.parts.0.customLabel>
+
+  <!-- 집행관 (Star Executor) -->
+  <star_executor.label>星域执行官</star_executor.label>
+  <!-- left sight sensor -->
+  <star_executor.corePart.parts.0.parts.0.parts.1.customLabel>左视觉传感器</star_executor.corePart.parts.0.parts.0.parts.1.customLabel>
+  <!-- right sight sensor -->
+  <star_executor.corePart.parts.0.parts.0.parts.2.customLabel>右视觉传感器</star_executor.corePart.parts.0.parts.0.parts.2.customLabel>
+  <!-- left hearing sensor -->
+  <star_executor.corePart.parts.0.parts.0.parts.3.customLabel>左听觉传感器</star_executor.corePart.parts.0.parts.0.parts.3.customLabel>
+  <!-- right hearing sensor -->
+  <star_executor.corePart.parts.0.parts.0.parts.4.customLabel>右听觉传感器</star_executor.corePart.parts.0.parts.0.parts.4.customLabel>
+  <!-- left hearing sensor -->
+  <star_executor.corePart.parts.0.parts.0.parts.5.customLabel>左听觉传感器</star_executor.corePart.parts.0.parts.0.parts.5.customLabel>
+  <!-- right hearing sensor -->
+  <star_executor.corePart.parts.0.parts.0.parts.6.customLabel>右听觉传感器</star_executor.corePart.parts.0.parts.0.parts.6.customLabel>
+  <!-- anterior left tentacle -->
+  <star_executor.corePart.parts.1.customLabel>前左触手</star_executor.corePart.parts.1.customLabel>
+  <!-- the tip of the anterior left tentacle -->
+  <star_executor.corePart.parts.1.parts.0.customLabel>前左触手的顶端</star_executor.corePart.parts.1.parts.0.customLabel>
+  <!-- anterior right tentacle -->
+  <star_executor.corePart.parts.2.customLabel>前右触手</star_executor.corePart.parts.2.customLabel>
+  <!-- anterior right tentacle tip -->
+  <star_executor.corePart.parts.2.parts.0.customLabel>前右触手的顶端</star_executor.corePart.parts.2.parts.0.customLabel>
+  <!-- rear left tentacle -->
+  <star_executor.corePart.parts.3.customLabel>后左触手</star_executor.corePart.parts.3.customLabel>
+  <!-- the tip of the posterior left tentacle -->
+  <star_executor.corePart.parts.3.parts.0.customLabel>后左触手的顶端</star_executor.corePart.parts.3.parts.0.customLabel>
+  <!-- back right tentacle -->
+  <star_executor.corePart.parts.4.customLabel>后右触手</star_executor.corePart.parts.4.customLabel>
+  <!-- posterior right tentacle end -->
+  <star_executor.corePart.parts.4.parts.0.customLabel>后右触手的末端</star_executor.corePart.parts.4.parts.0.customLabel>
+  <!-- bulb turret -->
+  <star_executor.corePart.parts.8.customLabel>球状炮塔</star_executor.corePart.parts.8.customLabel>
+
+  <!-- prayer -->
+  <Star_Prayer.label>祷告者</Star_Prayer.label>
+  <!-- right sight sensor -->
+  <Star_Prayer.corePart.parts.0.parts.0.parts.1.customLabel>右视觉传感器</Star_Prayer.corePart.parts.0.parts.0.parts.1.customLabel>
+  <!-- left hearing sensor -->
+  <Star_Prayer.corePart.parts.0.parts.0.parts.2.customLabel>左听觉传感器</Star_Prayer.corePart.parts.0.parts.0.parts.2.customLabel>
+  <!-- right hearing sensor -->
+  <Star_Prayer.corePart.parts.0.parts.0.parts.3.customLabel>右听觉传感器</Star_Prayer.corePart.parts.0.parts.0.parts.3.customLabel>
+  <!-- anterior left tentacle -->
+  <Star_Prayer.corePart.parts.1.customLabel>前左触手</Star_Prayer.corePart.parts.1.customLabel>
+  <!-- the tip of the anterior left tentacle -->
+  <Star_Prayer.corePart.parts.1.parts.0.customLabel>前左触手的顶端</Star_Prayer.corePart.parts.1.parts.0.customLabel>
+  <!-- anterior right tentacle -->
+  <Star_Prayer.corePart.parts.2.customLabel>前右触手</Star_Prayer.corePart.parts.2.customLabel>
+  <!-- anterior right tentacle tip -->
+  <Star_Prayer.corePart.parts.2.parts.0.customLabel>前右触手的顶端</Star_Prayer.corePart.parts.2.parts.0.customLabel>
+  <!-- rear left tentacle -->
+  <Star_Prayer.corePart.parts.3.customLabel>后左触手</Star_Prayer.corePart.parts.3.customLabel>
+  <!-- the tip of the posterior left tentacle -->
+  <Star_Prayer.corePart.parts.3.parts.0.customLabel>后左触手的顶端</Star_Prayer.corePart.parts.3.parts.0.customLabel>
+  <!-- back right tentacle -->
+  <Star_Prayer.corePart.parts.4.customLabel>后右触手</Star_Prayer.corePart.parts.4.customLabel>
+  <!-- posterior right tentacle end -->
+  <Star_Prayer.corePart.parts.4.parts.0.customLabel>后右触手的末端</Star_Prayer.corePart.parts.4.parts.0.customLabel>
+  <!-- prayer tail -->
+  <Star_Prayer.corePart.parts.5.customLabel>祷告者尾巴</Star_Prayer.corePart.parts.5.customLabel>
+
+  <!-- star executioner -->
+  <star_Carnifex.label>星域刽子手</star_Carnifex.label>
+  <!-- right sight sensor -->
+  <star_Carnifex.corePart.parts.0.parts.0.parts.1.customLabel>右视觉传感器</star_Carnifex.corePart.parts.0.parts.0.parts.1.customLabel>
+  <!-- right hearing sensor -->
+  <star_Carnifex.corePart.parts.0.parts.0.parts.2.customLabel>右听觉传感器</star_Carnifex.corePart.parts.0.parts.0.parts.2.customLabel>
+  <!-- left shoulder -->
+  <star_Carnifex.corePart.parts.1.customLabel>左肩</star_Carnifex.corePart.parts.1.customLabel>
+  <!-- left arm -->
+  <star_Carnifex.corePart.parts.1.parts.0.customLabel>左臂</star_Carnifex.corePart.parts.1.parts.0.customLabel>
+  <!-- left blade -->
+  <star_Carnifex.corePart.parts.1.parts.0.parts.0.customLabel>左刃</star_Carnifex.corePart.parts.1.parts.0.parts.0.customLabel>
+  <!-- left hand -->
+  <star_Carnifex.corePart.parts.1.parts.0.parts.1.customLabel>左手</star_Carnifex.corePart.parts.1.parts.0.parts.1.customLabel>
+  <!-- left pinky -->
+  <star_Carnifex.corePart.parts.1.parts.0.parts.1.parts.0.customLabel>左小指</star_Carnifex.corePart.parts.1.parts.0.parts.1.parts.0.customLabel>
+  <!-- left middle finger -->
+  <star_Carnifex.corePart.parts.1.parts.0.parts.1.parts.1.customLabel>左中指</star_Carnifex.corePart.parts.1.parts.0.parts.1.parts.1.customLabel>
+  <!-- left index finger -->
+  <star_Carnifex.corePart.parts.1.parts.0.parts.1.parts.2.customLabel>左食指</star_Carnifex.corePart.parts.1.parts.0.parts.1.parts.2.customLabel>
+  <!-- left thumb -->
+  <star_Carnifex.corePart.parts.1.parts.0.parts.1.parts.3.customLabel>左拇指</star_Carnifex.corePart.parts.1.parts.0.parts.1.parts.3.customLabel>
+  <!-- right shoulder -->
+  <star_Carnifex.corePart.parts.2.customLabel>右肩</star_Carnifex.corePart.parts.2.customLabel>
+  <!-- right arm -->
+  <star_Carnifex.corePart.parts.2.parts.0.customLabel>右臂</star_Carnifex.corePart.parts.2.parts.0.customLabel>
+  <!-- right blade -->
+  <star_Carnifex.corePart.parts.2.parts.0.parts.0.customLabel>右刃</star_Carnifex.corePart.parts.2.parts.0.parts.0.customLabel>
+
+  <star_Carnifex.corePart.parts.2.parts.0.parts.1.customLabel>右手</star_Carnifex.corePart.parts.2.parts.0.parts.1.customLabel> <!-- right hand -->
+  <star_Carnifex.corePart.parts.2.parts.0.parts.1.parts.0.customLabel>右小指</star_Carnifex.corePart.parts.2.parts.0.parts.1.parts.0.customLabel> <!-- right pinky -->
+  <star_Carnifex.corePart.parts.2.parts.0.parts.1.parts.1.customLabel>右中指</star_Carnifex.corePart.parts.2.parts.0.parts.1.parts.1.customLabel> <!-- right middle finger -->
+  <star_Carnifex.corePart.parts.2.parts.0.parts.1.parts.2.customLabel>右食指</star_Carnifex.corePart.parts.2.parts.0.parts.1.parts.2.customLabel> <!-- right index finger -->
+  <star_Carnifex.corePart.parts.2.parts.0.parts.1.parts.3.customLabel>右拇指</star_Carnifex.corePart.parts.2.parts.0.parts.1.parts.3.customLabel> <!-- right thumb -->
+  <star_Carnifex.corePart.parts.3.customLabel>左腿</star_Carnifex.corePart.parts.3.customLabel> <!-- left leg -->
+  <star_Carnifex.corePart.parts.3.parts.0.customLabel>左脚</star_Carnifex.corePart.parts.3.parts.0.customLabel> <!-- left foot -->
+  <star_Carnifex.corePart.parts.4.customLabel>右腿</star_Carnifex.corePart.parts.4.customLabel> <!-- right leg -->
+  <star_Carnifex.corePart.parts.4.parts.0.customLabel>右脚</star_Carnifex.corePart.parts.4.parts.0.customLabel> <!-- right foot -->
+  <star_Gespenst.label>星幽灵</star_Gespenst.label> <!-- star Gespenst -->
+  <star_Gespenst.corePart.parts.0.parts.1.customLabel>视觉传感器</star_Gespenst.corePart.parts.0.parts.1.customLabel> <!-- sight sensor -->
+  <star_Gespenst.corePart.parts.0.parts.2.customLabel>左听觉传感器</star_Gespenst.corePart.parts.0.parts.2.customLabel> <!-- left hearing sensor -->
+  <star_Gespenst.corePart.parts.0.parts.3.customLabel>右听觉传感器</star_Gespenst.corePart.parts.0.parts.3.customLabel> <!-- right hearing sensor -->
+  <star_Gespenst.corePart.parts.1.customLabel>前左腿</star_Gespenst.corePart.parts.1.customLabel> <!-- front left leg -->
+  <star_Gespenst.corePart.parts.1.parts.0.customLabel>前左脚</star_Gespenst.corePart.parts.1.parts.0.customLabel> <!-- front left foot -->
+  <star_Gespenst.corePart.parts.2.customLabel>前右腿</star_Gespenst.corePart.parts.2.customLabel> <!-- front right leg -->
+  <star_Gespenst.corePart.parts.2.parts.0.customLabel>前右脚</star_Gespenst.corePart.parts.2.parts.0.customLabel> <!-- front right foot -->
+  <star_Gespenst.corePart.parts.3.customLabel>后左腿</star_Gespenst.corePart.parts.3.customLabel> <!-- rear left leg -->
+  <star_Gespenst.corePart.parts.3.parts.0.customLabel>后左脚</star_Gespenst.corePart.parts.3.parts.0.customLabel> <!-- rear left foot -->
+  <star_Gespenst.corePart.parts.4.customLabel>后右腿</star_Gespenst.corePart.parts.4.customLabel> <!-- rear right leg -->
+  <star_Gespenst.corePart.parts.4.parts.0.customLabel>后右脚</star_Gespenst.corePart.parts.4.parts.0.customLabel> <!-- rear right foot -->
+  <star_Gespenst.corePart.parts.6.customLabel>灯泡炮塔</star_Gespenst.corePart.parts.6.customLabel> <!-- bulb turret -->
+
+</LanguageData>

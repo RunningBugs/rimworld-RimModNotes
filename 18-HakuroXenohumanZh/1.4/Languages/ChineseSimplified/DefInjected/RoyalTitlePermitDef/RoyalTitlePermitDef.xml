@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Tradevoid_fleet.label>The Shadow Fleet's Deal from Outer Space</Tradevoid_fleet.label>
+  <relic_caravan.label>Trade with Artifact Traders</relic_caravan.label>
+  <CallMilitary_Hakuro_watch.label>White Rang Field Troop Request</CallMilitary_Hakuro_watch.label>
+  <CallMilitary_Hakuro_watch.description>Requesting support for the White Rang field unit.</CallMilitary_Hakuro_watch.description>
+  <CallMilitary_Ward_drone.label>Baekrang Drone Lesson Request</CallMilitary_Ward_drone.label>
+  <CallMilitary_Ward_drone.description>Assault drone troops to wreak havoc on enemies.</CallMilitary_Ward_drone.description>
+  <CallMilitary_Large_Ward_drone.label>White Rang Drone Large-scale Assault Request</CallMilitary_Large_Ward_drone.label>
+  <CallMilitary_Large_Ward_drone.description>Drops large drones to attack enemies with quantity warfare.</CallMilitary_Large_Ward_drone.description>
+  <CallMilitary_Hakuro_Assault.label>White Rang Assault Squad Request</CallMilitary_Hakuro_Assault.label>
+  <CallMilitary_Hakuro_Assault.description>Requesting support for the White Rang Assault Unit.</CallMilitary_Hakuro_Assault.description>
+  <CallMilitary_Hakuro_knight.label>Baekrang Knight Request</CallMilitary_Hakuro_knight.label>
+  <CallMilitary_Hakuro_knight.description>Power Armor Knight units with built-in shields are requested for support.</CallMilitary_Hakuro_knight.description>
+  <CallMilitary_Hakuro_Melee_knight.label>White Lang Heavy Armor Knight Request</CallMilitary_Hakuro_Melee_knight.label>
+  <CallMilitary_Hakuro_Melee_knight.description>Drop soldiers in heavy armor with melee weapons.</CallMilitary_Hakuro_Melee_knight.description>
+  <CallMilitary_Hakuro_blood_knight.label>White Rang Blood Knight Request</CallMilitary_Hakuro_blood_knight.label>
+  <CallMilitary_Hakuro_blood_knight.description>We request support from the knights made up of White Rang Blood.</CallMilitary_Hakuro_blood_knight.description>
+  <Hakuro_CallTransportShuttle.label>Baekrang Shuttle Ship Call</Hakuro_CallTransportShuttle.label>
+  <Hakuro_CallTransportShuttle.description>Summons the Shuttle Ship used by the Snow World.</Hakuro_CallTransportShuttle.description>
+  <Drop_MechSerum.label>Void Resurrection Serum Support</Drop_MechSerum.label>
+  <Drop_MechSerum.description>It drops one resurrection serum supplied by the Shadow Fleet a few light years away to the settlement.\n\n-Caution-This serum is supposed to fall from the settlement in the snowy world and takes a limited time, so use it within a limited time. If not, it will perish.</Drop_MechSerum.description>
+  <Drop_SerumHealer.label>Void Treatment Serum Support</Drop_SerumHealer.label>
+  <Drop_SerumHealer.description>It drops one healing serum supplied by the Shadow Fleet a few light years away to the settlement.\n\n-Caution-This serum is supposed to fall from the settlement in the snowy world and takes a limited time, so use it within a limited time. If not, it will perish.</Drop_SerumHealer.description>
+</LanguageData>

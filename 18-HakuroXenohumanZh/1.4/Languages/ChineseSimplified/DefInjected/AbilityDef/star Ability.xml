@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <mind_control.label>心灵控制</mind_control.label> <!-- mind control -->
+  <mind_control.description>使用外层宇宙的力量来操纵敌人的思维。</mind_control.description> <!-- Uses a portion of the power of the Outer Cosmos to manipulate the minds of opponents. -->
+  <mental_shock.label>精神震荡</mental_shock.label> <!-- mental shock -->
+  <mental_shock.description>对敌人造成精神震荡，使其迷失方向。</mental_shock.description> <!-- Inflicts a mind shock on enemies, disorienting them. -->
+  <mental_hallucination.label>精神幻觉</mental_hallucination.label> <!-- mental hallucination -->
+  <mental_hallucination.description>制造幻觉使敌人互相误认为是敌人。</mental_hallucination.description> <!-- Creates hallucinations towards enemies, making them perceive each other as enemies. -->
+  <star_purge.label>星辰净化</star_purge.label> <!-- star purge -->
+  <star_purge.description>跳到敌人附近并切换到即时杀戮模式。</star_purge.description> <!-- Jump up and close to an enemy before switching to instant kill mode. -->
+  <star_purge.verbProperties.label>净化</star_purge.verbProperties.label> <!-- purge -->
+  <mental_shockwave.label>精神冲击波</mental_shockwave.label> <!-- mental shockwave -->
+  <mental_shockwave.description>放大内置能量后，引爆以迷惑附近敌人的思维。</mental_shockwave.description> <!-- After amplifying the built-in energy, explode it to confuse the minds of nearby enemies. -->
+</LanguageData>

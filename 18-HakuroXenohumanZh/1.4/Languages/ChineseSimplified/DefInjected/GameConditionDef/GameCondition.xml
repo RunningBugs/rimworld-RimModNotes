@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 서리폭풍 -->
+  <frost_storm.label>霜冻风暴</frost_storm.label> <!-- frost storm -->
+  <frost_storm.description>一场超自然产生的霜冻风暴正在席卷该地区。温度会慢慢下降，没有屋顶遮盖的生物会被从天而降的白色晶体慢慢冻结。</frost_storm.description> <!-- A supernaturally created frost storm is sweeping through the area. The temperature will drop slowly, and creatures not under the roof will be slowly frozen by white crystals falling from the sky. -->
+  <frost_storm.descriptionFuture>一场霜冻风暴正在穿过这个地方。[map_definite] [gameConditionDuration_duration]，屋顶下的植物和生物将会被冻结。</frost_storm.descriptionFuture> <!-- A frost storm is passing through this place. [map_definite] for [gameConditionDuration_duration], plants and creatures under the roof will be frozen. -->
+  <frost_storm.endMessage>霜冻风暴正在消散。</frost_storm.endMessage> <!-- Frost storms are disappearing. -->
+  <frost_storm.letterText>由于未知原因，一场超自然产生的霜冻风暴正在席卷该地区。\n\n温度会下降，没有屋顶遮盖的生物会在霜冻风暴落下的晶体中慢慢冻结他们的身体。\n\n霜冻风暴会持续一段时间。</frost_storm.letterText> <!-- For unknown reasons, a supernaturally created froststorm is sweeping through the area.\n\nThe temperature will drop and creatures not under the roof will slowly freeze their bodies in the falling crystals from the froststorm.\n\n The frost storm lasts for a while. -->
+
+</LanguageData>

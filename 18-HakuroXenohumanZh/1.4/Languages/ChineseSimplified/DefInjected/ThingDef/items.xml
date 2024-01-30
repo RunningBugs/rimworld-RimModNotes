@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Leliel_fibre_Cotton.label>Leliel cotton</Leliel_fibre_Cotton.label>
+  <Leliel_fibre_Cotton.description>This is an unusual cotton plant that grows in dark and unlit places.\n\nThe fibers produced from this plant are beautiful gray in color and are used for decoration because they show high aesthetics.</Leliel_fibre_Cotton.description>
+
+  <Plant_hay_mushroom.label>Plant hay mushrooms</Plant_hay_mushroom.label>
+  <Plant_hay_mushroom.description>This mushroom is only made for hay.\n\nIt grows easily in caves and does not require light as it grows in dark places.</Plant_hay_mushroom.description>
+
+  <Leliel_fibre.label>Leliel cloth</Leliel_fibre.label>
+  <Leliel_fibre.description>leliel cloth made from leliel cotton. It has high aesthetics, but also has resistance to cold, and is said to be associated with spirit stones.</Leliel_fibre.description>
+
+  <hay_mushroom.label>Hay mushroom</hay_mushroom.label>
+  <hay_mushroom.description>It is a hay mushroom that grows in the dark, and unlike other mushrooms, it is made for hay, not for eating.(like man who would eat this, this is hay mushroom. It right on the name)</hay_mushroom.description>
+
+  <void_SerumResurrector.label>void SerumResurrector</void_SerumResurrector.label>
+  <void_SerumResurrector.description>It is a resurrection serum supplied by the Shadow Fleet, which is said to have come from outer space. It has a similar function to the resurrection serum, but if you leave it without using it, the energy will gradually escape by security and it will just become a serum with nothing, so you need to get it supplied and use it quickly.</void_SerumResurrector.description>
+  <void_SerumResurrector.comps.0.useLabel>Use {0_label}</void_SerumResurrector.comps.0.useLabel>
+
+  <void_SerumHealer.label>void SerumHealer</void_SerumHealer.label>
+  <void_SerumHealer.description>It is a healing serum supplied by the Shadow Fleet, which is said to have come from outer space. It has a similar function to the treatment serum, but if you leave it without using it, the energy will gradually escape by security and it will just become a serum with nothing, so you need to get it supplied and use it quickly.</void_SerumHealer.description>
+  <void_SerumHealer.comps.0.useLabel>Use {0_label}</void_SerumHealer.comps.0.useLabel>
+
+</LanguageData>

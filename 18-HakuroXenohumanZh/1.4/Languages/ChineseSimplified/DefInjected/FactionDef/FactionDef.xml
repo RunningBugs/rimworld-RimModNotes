@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <PlayerHakuro.label>白狼定居点</PlayerHakuro.label> <!-- Hakuro settlement -->
+  <PlayerHakuro.description>白狼派系的定居点。</PlayerHakuro.description> <!-- The settlement of Hakuro faction. -->
+  <PlayerHakuro.pawnSingular>定居者</PlayerHakuro.pawnSingular> <!-- colonist -->
+  <PlayerHakuro.pawnsPlural>定居者们</PlayerHakuro.pawnsPlural> <!-- colonists -->
+
+  <Hakuro_Faction.pawnSingular>白狼</Hakuro_Faction.pawnSingular> <!-- Hakuro -->
+  <Hakuro_Faction.pawnsPlural>白狼们</Hakuro_Faction.pawnsPlural> <!-- Hakuros -->
+  <Hakuro_Faction.leaderTitle>莱莉艾尔</Hakuro_Faction.leaderTitle> <!-- Leliel -->
+  <Hakuro_Faction.label>雪地世界</Hakuro_Faction.label> <!-- Snow field world -->
+  <Hakuro_Faction.description>这里是白狼族定居和生活的地方之一。</Hakuro_Faction.description> <!-- It is known as one of the places where the Hakuro race settle and lives. -->
+</LanguageData>

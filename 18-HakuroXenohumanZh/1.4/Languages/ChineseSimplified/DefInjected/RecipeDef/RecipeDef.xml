@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Mech_ArmoTank_arailgun.label>Mech snowfield tank</Mech_ArmoTank_arailgun.label>
+  <Mech_ArmoTank_arailgun.description>Craft a mech snowfield tank.</Mech_ArmoTank_arailgun.description>
+
+  <HemogenPack_Produce.label>Produce blood pack</HemogenPack_Produce.label>
+  <HemogenPack_Produce.description>Squeeze blood berries to craft blood packs.</HemogenPack_Produce.description>
+
+  <Recipe_Ghost_Core.label>Soul stone</Recipe_Ghost_Core.label>
+  <Recipe_Ghost_Core.description>Gather corpses and materials to craft Soul Stones.</Recipe_Ghost_Core.description>
+
+  <InstallBlood_Essence_Visceral_Spine.label>blood quintessence spinal installation</InstallBlood_Essence_Visceral_Spine.label>
+  <InstallBlood_Essence_Visceral_Spine.description>Install the blood quintessence spine.</InstallBlood_Essence_Visceral_Spine.description>
+  <InstallBlood_Essence_Visceral_Spine.jobString>Install the blood quintessence spine.</InstallBlood_Essence_Visceral_Spine.jobString>
+
+  <Install_phoenix_heart.label>Install Phoenix Heart</Install_phoenix_heart.label>
+  <Install_phoenix_heart.description>Install the Phoenix Heart.</Install_phoenix_heart.description>
+  <Install_phoenix_heart.jobString>Install the Phoenix Heart.</Install_phoenix_heart.jobString>
+
+  <Installfrozen_lungs.label>Install Freezing Lung.</Installfrozen_lungs.label>
+  <Installfrozen_lungs.description>Install the Freezing Lung.</Installfrozen_lungs.description>
+  <Installfrozen_lungs.jobString>Install the Freezing Lung.</Installfrozen_lungs.jobString>
+
+  <Install_stellar_Kidney.label>Install a stellar kidney</Install_stellar_Kidney.label>
+  <Install_stellar_Kidney.description>Install a star kidney.</Install_stellar_Kidney.description>
+  <Install_stellar_Kidney.jobString>Install a star kidney.</Install_stellar_Kidney.jobString>
+
+
+  <Ice_Shard_Disintegration.label>ice shards</Ice_Shard_Disintegration.label>
+  <Ice_Shard_Disintegration.description>Find ice shards.</Ice_Shard_Disintegration.description>
+
+  <Ice_Shard_Combination.label>Soul stone</Ice_Shard_Combination.label>
+  <Ice_Shard_Combination.description>Combine ice shards to create ice stones.</Ice_Shard_Combination.description>
+
+  <Make_DeathrestCapacitySerum.label>Production of death rest acceptor serum</Make_DeathrestCapacitySerum.label>
+  <Make_DeathrestCapacitySerum.description>Craft Deathrest Receptor Serum using fragments of Ancient Biophage Records.</Make_DeathrestCapacitySerum.description>
+  <Make_DeathrestCapacitySerum.jobString>Manufacture of Death Rest Acceptance Serum.</Make_DeathrestCapacitySerum.jobString>
+
+</LanguageData>

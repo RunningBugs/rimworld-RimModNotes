@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Hemera_explosion_Transplanter.label>Hemera -Energy Explosion-</Hemera_explosion_Transplanter.label>
+  <Hemera_explosion_Transplanter.description>It is an unknown magic book created through a spirit stone. Settlers with the Hemera Mine gene can gain the ability of Hemera Energy Blast through this book.</Hemera_explosion_Transplanter.description>
+  <Hemera_explosion_Transplanter.comps.0.useLabel>activate {0_label}</Hemera_explosion_Transplanter.comps.0.useLabel>
+
+  <Hemera_link_shield_Transplanter.label>Hemera -Link Shield-</Hemera_link_shield_Transplanter.label>
+  <Hemera_link_shield_Transplanter.description>It is an unknown magic book created through a spirit stone. Settlers with the Hemera Mine gene can acquire the ability of the Hemera Link Shield through this book.</Hemera_link_shield_Transplanter.description>
+  <Hemera_link_shield_Transplanter.comps.0.useLabel>activate {0_label}</Hemera_link_shield_Transplanter.comps.0.useLabel>
+
+  <Hemera_Acceleration_Ability_Transplanter.label>Hemera -Body Acceleration-</Hemera_Acceleration_Ability_Transplanter.label>
+  <Hemera_Acceleration_Ability_Transplanter.description>It is an unknown magic book created through a spirit stone. Settlers with the Hemera Mine gene can gain the ability of Hemera Body Acceleration through this book.</Hemera_Acceleration_Ability_Transplanter.description>
+  <Hemera_Acceleration_Ability_Transplanter.comps.0.useLabel>activate {0_label}</Hemera_Acceleration_Ability_Transplanter.comps.0.useLabel>
+
+  <Hemera_Coagulate_Transplanter.label>Hemera -Recovery-</Hemera_Coagulate_Transplanter.label>
+  <Hemera_Coagulate_Transplanter.description>It is an unknown magic book created through a spirit stone. Settlers with the Hemera Mine gene can obtain Clucking Fog through this book.</Hemera_Coagulate_Transplanter.description>
+  <Hemera_Coagulate_Transplanter.comps.0.useLabel>activate {0_label}</Hemera_Coagulate_Transplanter.comps.0.useLabel>
+
+  <Hemera_energy_shockwave_Transplanter.label>Hemera -Energy Shockwave-</Hemera_energy_shockwave_Transplanter.label>
+  <Hemera_energy_shockwave_Transplanter.description>It is an unknown magic book created through a spirit stone. Settlers with the Hemera Mine gene can obtain Hemera energy shockwaves through this book.</Hemera_energy_shockwave_Transplanter.description>
+  <Hemera_energy_shockwave_Transplanter.comps.0.useLabel>activate {0_label}</Hemera_energy_shockwave_Transplanter.comps.0.useLabel>
+
+  <Hemera_Teleport_Transplanter.label>Hemera -Teleport-</Hemera_Teleport_Transplanter.label>
+  <Hemera_Teleport_Transplanter.description>It is an unknown magic book created through a spirit stone. Settlers with the Hemera Mine gene can obtain teleportation through this book.</Hemera_Teleport_Transplanter.description>
+  <Hemera_Teleport_Transplanter.comps.0.useLabel>activate {0_label}</Hemera_Teleport_Transplanter.comps.0.useLabel>
+
+
+
+  <Hemera_spear_Transplanter.label>Blood -Blood Spear-</Hemera_spear_Transplanter.label>
+  <Hemera_spear_Transplanter.description>It is a type of magic book known as the Black Book of Blood. Settlers with the Hemera Mine gene can acquire the ability of Blood Spear through this book.</Hemera_spear_Transplanter.description>
+  <Hemera_spear_Transplanter.comps.0.useLabel>activate {0_label}</Hemera_spear_Transplanter.comps.0.useLabel>
+  
+  <Hemera_blood_moon_Transplanter.label>Blood -Blood Moon-</Hemera_blood_moon_Transplanter.label>
+  <Hemera_blood_moon_Transplanter.description>It is a type of magic book known as the Black Book of Blood. Settlers with the Hemera Mine gene can acquire the ability of Blood Moon through this book.</Hemera_blood_moon_Transplanter.description>
+  <Hemera_blood_moon_Transplanter.comps.0.useLabel>activate {0_label}</Hemera_blood_moon_Transplanter.comps.0.useLabel>
+  
+  <Hemera_bondage_Transplanter.label>Blood -chain of blood-</Hemera_bondage_Transplanter.label>
+  <Hemera_bondage_Transplanter.description>It is a type of magic book known as the Black Book of Blood. Settlers with the Hemera Mine gene can gain the Blood Chain ability through this book.</Hemera_bondage_Transplanter.description>
+  <Hemera_bondage_Transplanter.comps.0.useLabel>activate {0_label}</Hemera_bondage_Transplanter.comps.0.useLabel>
+  
+  <Hemera_blood_armor_Transplanter.label>Blood -Blood Armor-</Hemera_blood_armor_Transplanter.label>
+  <Hemera_blood_armor_Transplanter.description>It is a type of magic book known as the Black Book of Blood. Settlers with the Hemera Mine gene can acquire the ability of Blood Armor through this book.</Hemera_blood_armor_Transplanter.description>
+  <Hemera_blood_armor_Transplanter.comps.0.useLabel>activate {0_label}</Hemera_blood_armor_Transplanter.comps.0.useLabel>
+  
+  <Hemera_BloodCharge_Transplanter.label>Blood -Blood Charge-</Hemera_BloodCharge_Transplanter.label>
+  <Hemera_BloodCharge_Transplanter.description>It is a type of magic book known as the Black Book of Blood. Settlers with the Hemera Mine gene can gain the Blood Armor ability through this book.</Hemera_BloodCharge_Transplanter.description>
+  <Hemera_BloodCharge_Transplanter.comps.0.useLabel>activate {0_label}</Hemera_BloodCharge_Transplanter.comps.0.useLabel>
+
+  <Hemera_energy_drain_Transplanter.label>Blood -Blood Drain-</Hemera_energy_drain_Transplanter.label>
+  <Hemera_energy_drain_Transplanter.description>It is a type of magic book known as the Black Book of Blood. Settlers with the Hemera Mine gene can acquire the ability of Hemera Drain through this book.</Hemera_energy_drain_Transplanter.description>
+  <Hemera_energy_drain_Transplanter.comps.0.useLabel>activate {0_label}</Hemera_energy_drain_Transplanter.comps.0.useLabel>
+
+
+
+</LanguageData>

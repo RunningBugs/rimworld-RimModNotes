@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Hemera.label>赫梅拉吐唾</Hemera.label> <!-- Hemera spit -->
+  <Hemera_Bomb.label>赫梅拉炸弹</Hemera_Bomb.label> <!-- Hemera Bomb -->
+  <Hemera_Scratch.label>赫梅拉抓痕</Hemera_Scratch.label> <!-- Hemera Scratch -->
+  <Hemera_Restriction.label>赫梅拉束缚</Hemera_Restriction.label> <!-- Hemera Restriction -->
+  <Hemera_bloodsucking_spear.label>赫梅拉吸血矛</Hemera_bloodsucking_spear.label> <!-- Hemera bloodsucking spear -->
+  <Hemera_Ghost.label>赫梅拉幽灵</Hemera_Ghost.label> <!-- Hemera Ghost -->
+  <Hemera_shock_wave.label>赫梅拉冲击波</Hemera_shock_wave.label> <!-- Hemera shock wave -->
+  <Ghost_Cut.label>幽灵切割</Ghost_Cut.label> <!-- Ghost Cut -->
+  <Ghost_Poke.label>幽灵戳刺</Ghost_Poke.label> <!-- Ghost Poke -->
+
+</LanguageData>

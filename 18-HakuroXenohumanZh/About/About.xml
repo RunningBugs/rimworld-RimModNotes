@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.Hakuro.Xenohuman.Zh</packageId>
+	<name>HakuroXenohuman_zh</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.4</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>hakuro.xenohuman.septentrionrace</packageId>
+			<displayName>Hakuro Xenohuman</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2911715839</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+
+	<loadAfter>
+		<li>hakuro.xenohuman.septentrionrace</li>
+	</loadAfter>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<description>Hakuro Xenohuman 简体中文翻译</description>
+</ModMetaData>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <ghostlycrying_sound.label>Ghost's cry</ghostlycrying_sound.label>
+  <ghostlycrying_sound.description>A spear-type weapon imbued with a heroic spirit. It looks like an ordinary spear, but the moment it is stabbed, something that dwells in the spear flows in and shows an unknown hallucination.</ghostlycrying_sound.description>
+  <ghostlycrying_sound.tools.0.label>blade</ghostlycrying_sound.tools.0.label>
+  <ghostlycrying_sound.tools.1.label>point</ghostlycrying_sound.tools.1.label>
+
+  <Ghost_Singing_Window.label>Ghost Singing Window</Ghost_Singing_Window.label>
+  <Ghost_Singing_Window.description>A polearm imbued with a heroic spirit. While stabbing quickly with a spear, it also inflicts a mental attack on the enemy for hallucinations.</Ghost_Singing_Window.description>
+  <Ghost_Singing_Window.tools.0.label>blade</Ghost_Singing_Window.tools.0.label>
+  <Ghost_Singing_Window.tools.1.label>point</Ghost_Singing_Window.tools.1.label>
+
+  <wolf_dagger_blade.label>wolf dagger blade</wolf_dagger_blade.label>
+  <wolf_dagger_blade.description>.</wolf_dagger_blade.description>
+  <wolf_dagger_blade.tools.0.label>blade</wolf_dagger_blade.tools.0.label>
+  <wolf_dagger_blade.tools.1.label>point</wolf_dagger_blade.tools.1.label>
+
+  <Wolf_knife.label>Wolf knife</Wolf_knife.label>
+  <Wolf_knife.description>It is a dagger weapon used by hakuro. It is short but light and is used as an secondary weapon.</Wolf_knife.description>
+  <Wolf_knife.tools.0.label>blade</Wolf_knife.tools.0.label>
+  <Wolf_knife.tools.1.label>point</Wolf_knife.tools.1.label>
+
+  <Wolf_Longsword.label>Wolf long sword</Wolf_Longsword.label>
+  <Wolf_Longsword.description>The wolf longsword is the main weapon used by demons. It is mainly used because it is lightweight and easy to use while lowering the mental blockage.</Wolf_Longsword.description>
+  <Wolf_Longsword.tools.0.label>blade</Wolf_Longsword.tools.0.label>
+  <Wolf_Longsword.tools.1.label>point</Wolf_Longsword.tools.1.label>
+
+  <Wolf_Claymore.label>Wolf claymore</Wolf_Claymore.label>
+  <Wolf_Claymore.description>Wolf Claymore is one of the two-handed swords used by demons called Blood Knights among the hakuros demon race. Wolf Claymore is slow, but it shows critical damage, and the built-in jewel lowers the demon's mental block.</Wolf_Claymore.description>
+  <Wolf_Claymore.tools.0.label>blade</Wolf_Claymore.tools.0.label>
+  <Wolf_Claymore.tools.1.label>point</Wolf_Claymore.tools.1.label>
+
+  <Wolf_flame_Claymore.label>Wolf flame claymore</Wolf_flame_Claymore.label>
+  <Wolf_flame_Claymore.description>The enhanced wolf claymore. Wolf fire claymore is a flaming sword, burning enemies it touches.</Wolf_flame_Claymore.description>
+  <Wolf_flame_Claymore.tools.0.label>blade</Wolf_flame_Claymore.tools.0.label>
+  <Wolf_flame_Claymore.tools.1.label>point</Wolf_flame_Claymore.tools.1.label>
+
+  <Blood_Axe.label>Twin axes of blood</Blood_Axe.label>
+  <Blood_Axe.description>A double axe that bleeds. A weapon that slaughters enemies with a sharp, bleeding axe that reduces hunger for blood.</Blood_Axe.description>
+  <Blood_Axe.tools.0.label>blade</Blood_Axe.tools.0.label>
+  <Blood_Axe.tools.1.label>blade</Blood_Axe.tools.1.label>
+
+  <Blood_Scythe.label>Scythe of blood</Blood_Scythe.label>
+  <Blood_Scythe.description>It's a scythe-shaped weapon that drips blood. A weapon that lusts for the blood of enemies. Slashes enemies with sharp scythes, increasing the essence of their blood, but slowly eating away at their inner spirit.</Blood_Scythe.description>
+  <Blood_Scythe.tools.0.label>blade</Blood_Scythe.tools.0.label>
+  <Blood_Scythe.tools.1.label>handle</Blood_Scythe.tools.1.label>
+
+  <flame_Morning_Star.label>flame morning star</flame_Morning_Star.label>
+  <flame_Morning_Star.description>It is a Morning Star weapon with sun-like flames inside.\n\nIt attacks with a blunt attack like a Morning Star, and spins sharp flame blades that set enemies on fire.</flame_Morning_Star.description>
+  <flame_Morning_Star.tools.0.label>Bang</flame_Morning_Star.tools.0.label>
+  <flame_Morning_Star.tools.1.label>damage</flame_Morning_Star.tools.1.label>
+  <flame_Morning_Star.tools.2.label>flame blade</flame_Morning_Star.tools.2.label>
+
+</LanguageData>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+
+  <Phoenix_Feather.label>Phoenix feather</Phoenix_Feather.label>
+  <Phoenix_Feather.description>It is a feather from animal called phoenix, known as a legendary animal from long ago.\n\nNo one knows where this feather came from. Rumor has it that the owner of this feather is either a genetically engineered animal or a legendary phoenix.</Phoenix_Feather.description>
+
+  <void_energy_matter.label>Void energy matter capsule</void_energy_matter.label>
+  <void_energy_matter.description>A purple energy block capsule that fell to the ground like a meteorite from the sky a long time ago.\n\nThis capsule is made of hard metal, it's like the purple energy block alive and moving.</void_energy_matter.description>
+
+
+
+  <ice_stone.label>ice stone</ice_stone.label>
+  <ice_stone.description>An ice stone made by combining ice shards.\n\nAn ice stone that seems to freeze just by touching it. It can be used as a mental weapon or material.</ice_stone.description>
+
+  <ice_shards.label>ice shards</ice_shards.label>
+  <ice_shards.description>A small ice shard found underwater.</ice_shards.description>
+
+
+
+  <Ancient_Blood_Matter_Device.label>Fragments of ancient sanguophages records</Ancient_Blood_Matter_Device.label>
+  <Ancient_Blood_Matter_Device.description>It is a record manipulation that seems to have been left by sanguophages a long time ago. Inside, there are sanguophages and transcendent manipulation records, facility blueprints and weapon data, but no one has been able to decipher them, and they are currently being found in relic dealers and relic areas.</Ancient_Blood_Matter_Device.description>
+
+  <Ghost_Core.label>Soul core</Ghost_Core.label>
+  <Ghost_Core.description>A soul stone containing a heroic spirit extracted from a corpse. It is mainly used to make ghost weapons..</Ghost_Core.description>
+
+  <spirit_ore.label>Spirit crystal</spirit_ore.label>
+  <spirit_ore.description>It is a crystal that is rarely found on the planet.\n\nIt looks like an ordinary crystal, but it passively emits waves that stabilize the inner mind, and is mainly used as a material for making mind-related weapons and equipment.</spirit_ore.description>
+
+  <Mineablespirit_ore.label>Spirit crystal mineral</Mineablespirit_ore.label>
+  <Mineablespirit_ore.description>It is a mineral containing a spirit crystal.</Mineablespirit_ore.description>
+
+  <MineableAether_debris.label>Ether Crystal Remnant</MineableAether_debris.label>
+  <MineableAether_debris.description>A meteorite remnant containing an etheric crystal from far away from outer space.</MineableAether_debris.description>
+
+
+
+  <blood_petals.label>Blood fruit flower</blood_petals.label>
+  <blood_petals.description>It is a kind of rare fruit flower that contains blood.\n\nThis fruit, discovered by the hakuro tribe, was a rare fruit that bleeds similar to humans, and is currently used as supplementary food for demons or as a material for making blood packs.</blood_petals.description>
+
+  <blood_flower.label>Blood flower</blood_flower.label>
+  <blood_flower.description>A rare flower that bears seeds similar to humans but with a different blood.</blood_flower.description>
+
+
+
+  <book.label>moon book</book.label>
+  <book.description>It is an ordinary book made of moonlight spring. It's a book with something recorded or written on it, but it's just an item with nothing to do when you click it.</book.description>
+
+  <Aether_debris.label>ether crystal</Aether_debris.label>
+  <Aether_debris.description>Ether Crystal is a crystal that emits purple light from the sky.\n\nIt is a crystal with unknown energy that exudes unknown power, but it is known as a crystal from outer space that cannot be seen in our galaxy. To be gathered, they fall long ago and lie underground as mountains and minerals, or occasionally fall from the sky as meteorites.</Aether_debris.description>
+
+  <Overwatch_Regular.label>Overwatch sub core</Overwatch_Regular.label>
+  <Overwatch_Regular.description>It is the 2nd brain of drones used in tactical drones among Overwatch drones.\n\nThe Overwatch sub-core is a kind of 2nd brain, which is necessary for tactical drones to think for themselves and move tactically.</Overwatch_Regular.description>
+
+
+</LanguageData>

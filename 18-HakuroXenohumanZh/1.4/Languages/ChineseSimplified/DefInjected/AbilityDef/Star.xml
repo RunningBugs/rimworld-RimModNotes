@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <mental_shock.label>心灵震撼<!--mental shock--></mental_shock.label>
+  <mental_shock.description>震撼敌人，导致他们呕吐。<!--Shocks enemies, causing them to vomit.--></mental_shock.description>
+
+  <mental_hallucination.label>心灵幻觉<!--mental hallucination--></mental_hallucination.label>
+  <mental_hallucination.description>使敌人产生幻觉，让他们将彼此视为敌人，导致他们互相残杀。<!--It hallucinates enemies, making them perceive each other as enemies, causing them to kill each other.--></mental_hallucination.description>
+
+  <star_purge.label>星辰净化<!--star purge--></star_purge.label>
+  <star_purge.description>跳跃并靠近敌人，然后切换到即时杀戮模式。<!--Jump up and close to an enemy before switching to instant kill mode.--></star_purge.description>
+
+</LanguageData>

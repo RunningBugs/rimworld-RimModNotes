@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Blood_Mind_table.label>crafting equipment</Blood_Mind_table.label>
+  <Blood_Mind_table.verb>produce</Blood_Mind_table.verb>
+  <Blood_Mind_table.gerund>produce</Blood_Mind_table.gerund>
+
+  <Blood_Mind_tableB.label>bloodpack manufacturing</Blood_Mind_tableB.label>
+  <Blood_Mind_tableB.verb>Produce</Blood_Mind_tableB.verb>
+  <Blood_Mind_tableB.gerund>Produce</Blood_Mind_tableB.gerund>
+</LanguageData>

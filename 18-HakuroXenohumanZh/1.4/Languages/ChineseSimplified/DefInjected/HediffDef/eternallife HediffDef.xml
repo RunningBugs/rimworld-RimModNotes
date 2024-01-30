@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <hediff_extension_device.label>寿命延长装置</hediff_extension_device.label> <!-- life extension device -->
+  <hediff_extension_device.description>寿命延长芯片逆转衰老细胞，增加身体的寿命。\n\n总共可以插入3个芯片。</hediff_extension_device.description> <!-- The lifespan extension chip reverses aging cells and increases the lifespan of the body.\n\nA total of 3 chips can be inserted. -->
+
+  <hediff_cancer_cell_parasite.label>癌细胞捕食寄生体</hediff_cancer_cell_parasite.label> <!-- cancer predatory parasite -->
+  <hediff_cancer_cell_parasite.description>描述。</hediff_cancer_cell_parasite.description> <!-- description. -->
+
+  <hediff_Spinal_Toxicity_Tablet_Parasite.label>脊髓毒性片剂寄生体</hediff_Spinal_Toxicity_Tablet_Parasite.label> <!-- Spinal Toxicity Tablet Parasite -->
+  <hediff_Spinal_Toxicity_Tablet_Parasite.description>这是一种附着在脊柱上的寄生体，它将触手插入骨骼之间以增加抗毒性，但由于它保持共生关系，每20天会使宿主陷入暴食以补充能量。</hediff_Spinal_Toxicity_Tablet_Parasite.description> <!-- It is a parasite that attaches to the spine and inserts its tentacles between the bones to increase resistance to poison, but because it maintains a symbiotic relationship, once every 20 days, it makes the host fall into gluttony to replenish energy. -->
+
+  <Blood_Essence_Visceral_Spine.label>血液精华脊椎</Blood_Essence_Visceral_Spine.label> <!-- blood essence vertebrae -->
+  <Blood_Essence_Visceral_Spine.labelNoun>血液精华脊椎</Blood_Essence_Visceral_Spine.labelNoun> <!-- blood essence vertebrae -->
+  <Blood_Essence_Visceral_Spine.description>安装了血液精华脊椎。</Blood_Essence_Visceral_Spine.description> <!-- Installed Blood Essence Vertebrae. -->
+
+  <Hediff_phoenix_heart.label>凤凰心脏</Hediff_phoenix_heart.label> <!-- phoenix heart -->
+  <Hediff_phoenix_heart.labelNoun>凤凰心脏</Hediff_phoenix_heart.labelNoun> <!-- phoenix heart -->  
+  <Hediff_phoenix_heart.description>安装了凤凰心脏。</Hediff_phoenix_heart.description> <!-- installed phoenix heart. -->
+
+  <frozen_lungs.label>冰冻肺</frozen_lungs.label> <!-- frozen lungs -->
+  <frozen_lungs.labelNoun>冰冻肺</frozen_lungs.labelNoun> <!-- frozen lungs -->  
+  <frozen_lungs.description>安装了冰冻肺。</frozen_lungs.description> <!-- installed frozen lungs. -->
+
+  <Hediff_stellar_Kidney.label>恒星高度</Hediff_stellar_Kidney.label> <!-- stellar height -->
+  <Hediff_stellar_Kidney.labelNoun>恒星高度</Hediff_stellar_Kidney.labelNoun> <!-- stellar height -->  
+  <Hediff_stellar_Kidney.description>安装了恒星高度。</Hediff_stellar_Kidney.description> <!-- installed stellar height. -->
+
+
+</LanguageData>

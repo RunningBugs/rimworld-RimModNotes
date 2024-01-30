@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <record_interpretation_system.label>Ancient Sanguiophage Record Interpreter Device</record_interpretation_system.label>
+  <record_interpretation_system.description>It is a device that interprets the various records contained in the data of the ancient Sanguiophage. Through research, you will be able to find new records and blueprints.</record_interpretation_system.description>
+
+  <Sanguopage_Tower.label>blood hardening tower</Sanguopage_Tower.label>
+  <Sanguopage_Tower.description>Connects to the Sanguiophage to harden the body so that it can defend itself.\n\nRequires a blood pack to work.</Sanguopage_Tower.description>
+  <Sanguopage_Tower.comps.2.fuelLabel>Hemogen</Sanguopage_Tower.comps.2.fuelLabel>
+
+  <Sanguiophage_blood_hardening.label>Sanguiophage Boyd Tower</Sanguiophage_blood_hardening.label>
+  <Sanguiophage_blood_hardening.description>A tower emitting unknown energy. Interfering with Sanguiophage's mind will help you use new abilities.</Sanguiophage_blood_hardening.description>
+  <Sanguiophage_blood_hardening.comps.1.fuelLabel>Hemogen</Sanguiophage_blood_hardening.comps.1.fuelLabel>
+
+  <star_stone_statue.label>star statue</star_stone_statue.label>
+  <star_stone_statue.description>An ancient statue made by star worshipers. It is a super-concentrated statue that can be connected to the Astral Guide to increase efficiency.\n\nThe Star Statue is an ancient statue that was created over 1000 years ago. So we restored it precisely and meticulously. However, as soon as it was restored, it began to radiate an unknown power. It's like it's connected to something, and upon analyzing the direction of that connection, it's only pointing in one place... out of outer space.</star_stone_statue.description>
+
+  <shadow_bait.label>star observer</shadow_bait.label>
+  <shadow_bait.description>It is a device created to lure the Geschfenst and some troops to come here by spreading a decoy energy pulse that makes them sense the forces of the stars.</shadow_bait.description>
+  <shadow_bait.comps.0.useLabel>Fires a decoy pulse that calls upon the Watchers of Geschfenst.</shadow_bait.comps.0.useLabel>
+
+  <Plant_Void_Sea.label>star guide</Plant_Void_Sea.label>
+  <Plant_Void_Sea.description>It is a mysterious and strange tree that seems to be submerged in the cold and calm sea. Invisible substances float near the Astral Guide like an invisible mist, conveying unknown energy to the settlers who enter it.\n\nA type of fruit called the Star Fruit grows on the Star Guide. When you consume a star fruit, your mind and body will connect to "something", similar to luciferium, but will have a different effect.\n\nIf you place an artificial structure nearby, the star guide will act as if it has invaded its territory and rejected it. 's mental abilities are reduced.\n\nThis strange tree, called the Guide to the Stars, has no origins. It is an unknown tree that is not recorded in the records of various recorded planets, even in the transcendent artifact records. The only thing that can be known is the records left by those who worshiped the stars, but no one knows who made it for what reason.</Plant_Void_Sea.description>
+
+  <Plant_winter_tree.label>winter tree</Plant_winter_tree.label>
+  <Plant_winter_tree.description>It is a winter tree with white flowers in bloom.</Plant_winter_tree.description>
+
+
+</LanguageData>

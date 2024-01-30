@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.FacialAnimationEyeFix</packageId>
+	<name>Facial Animation Eye Fix</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.4</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>nals.facialanimation</packageId>
+			<displayName>[NL] Facial Animation - WIP</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=1635901197</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<li>nals.facialanimation</li>
+	</loadAfter>
+
+	<description>本模组用来修复面部表情模组有时候会出现的“黑眼圈”BUG。原理大致是游戏开始的时候，模拟点击了（直接调用相关函数）模组选项，面部表情模组里的"Re-draw Render Textures"按钮。
+
+This mod is to fix the "black layering around eyes bug" for facial animation mod. The principle is to simulate the clicking on the "Re-draw Render Textures" button (by direct function call) in the facial animation mod settings when the game starts.
+	</description>
+</ModMetaData>

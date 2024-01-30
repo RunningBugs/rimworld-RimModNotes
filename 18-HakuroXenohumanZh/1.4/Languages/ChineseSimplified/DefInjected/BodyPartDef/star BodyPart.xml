@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <startentacle.label>腿</startentacle.label> <!-- leg -->
+  <startentacle_end.label>脚</startentacle_end.label> <!-- foot -->
+  <Prayer_Tentacles.label>触手</Prayer_Tentacles.label> <!-- Tentacles -->
+  <Guardian_Tail.label>尾巴</Guardian_Tail.label> <!-- tail -->
+  <Deliverer_antler.label>鹿角</Deliverer_antler.label> <!-- antler -->
+  <prayer_tail.label>尾巴</prayer_tail.label> <!-- tail -->
+</LanguageData>

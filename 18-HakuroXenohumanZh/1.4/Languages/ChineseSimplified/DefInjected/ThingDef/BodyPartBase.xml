@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Blood_Essence_Visceral_Spine.label>blood essence vertebrae</Blood_Essence_Visceral_Spine.label>
+  <Blood_Essence_Visceral_Spine.description>A mechanical spine that amplifies blood essence? Is it a bone...?</Blood_Essence_Visceral_Spine.description>
+
+  <eternallife_spinal_amplification_parasite.label>spinal amplification parasite</eternallife_spinal_amplification_parasite.label>
+  <eternallife_spinal_amplification_parasite.description>A parasite that amplified the body by attaching itself to the spine long ago. The moment it attaches, it is assimilated into one, sticks to the spine and sucks it, but amplifies it to make the host stronger.</eternallife_spinal_amplification_parasite.description>
+
+  <eternallife_cancer_cell_parasite.label>cancer predatory parasite</eternallife_cancer_cell_parasite.label>
+  <eternallife_cancer_cell_parasite.description>It is a parasite that was created a long time ago to prevent the growth of cancer cells, but like a parasite, it eats nutrients in the body and causes side effects to the body as the number increases.</eternallife_cancer_cell_parasite.description>
+
+  <eternallife_bio_extension_device.label>bio extension device</eternallife_bio_extension_device.label>
+  <eternallife_bio_extension_device.description>A long time ago, before becoming a saengguiophage, I did a lot of experiments for eternal life. Among them, this device was also one of the parts for eternal life. However, once they became biophages and gained immortality, these devices were simply discarded deep down the record.\n\n"This" was designed to extend the lifespan of the implanted person, increasing the implanted person's lifespan and reducing the incidence of cancer.</eternallife_bio_extension_device.description>
+
+  <phoenix_heart.label>phoenix heart</phoenix_heart.label>
+  <phoenix_heart.description>A bionic heart embedded with the feathers of a phoenix and used for energy. After generating energy from the phoenix's feather, it emits a healing factor that heals the user's injured part and prevents it from catching fire.</phoenix_heart.description>
+
+  <frozen_lungs.label>frozen lungs</frozen_lungs.label>
+  <frozen_lungs.description>The frozen lung looks like a frozen lung, but it has an unknown structure that looks like it's alive.\n\nSimilar to lungs, it's made of a different structure, so you're not used to breathing. However, it hibernates at the bleeding area to reduce the bleeding rate and has resistance to poison and heat.</frozen_lungs.description>
+
+  <stellar_Kidney.label>stellar height</stellar_Kidney.label>
+  <stellar_Kidney.description>A kidney made by combining star materials and Geschpenst cores. It is used as a replacement for kidneys, but it will help amplify your psychic powers by increasing your mental sensitivity.</stellar_Kidney.description>
+
+  <marker_aiming_system.label>Marker Aiming System Attachment</marker_aiming_system.label>
+  <marker_aiming_system.description>An aiming system that marks enemies, increasing the user's accuracy.</marker_aiming_system.description>
+  <marker_aiming_system.comps.0.useLabel>Install {0_label}</marker_aiming_system.comps.0.useLabel>
+
+  <PiercingSpine_explosion.label>stepping on ice</PiercingSpine_explosion.label>
+
+  <overwatch_Bandwidth_extender.label>overwatch bandwidth extender</overwatch_Bandwidth_extender.label>
+  <overwatch_Bandwidth_extender.description>A device that unlocks the Overwatch bandwidth limiter, an Overwatch device that expands the bandwidth.</overwatch_Bandwidth_extender.description>
+  <overwatch_Bandwidth_extender.comps.0.useLabel>Install {0_label}</overwatch_Bandwidth_extender.comps.0.useLabel>
+
+
+</LanguageData>

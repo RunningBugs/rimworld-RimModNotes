@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Hakuro_Royal_Gunthar.label>Gunthar</Hakuro_Royal_Gunthar.label>
+  <Hakuro_Royal_Gunthar.labelFemale>brunhilde</Hakuro_Royal_Gunthar.labelFemale>
+  <Hakuro_Royal_Gunthar.description>작위</Hakuro_Royal_Gunthar.description>
+  <Hakuro_Royal_Eisenhans.label>Eisenhans</Hakuro_Royal_Eisenhans.label>
+  <Hakuro_Royal_Eisenhans.description>작위</Hakuro_Royal_Eisenhans.description>
+  <Hakuro_Royal_Erlkonig.label>Erlkönig</Hakuro_Royal_Erlkonig.label>
+  <Hakuro_Royal_Erlkonig.description>작위</Hakuro_Royal_Erlkonig.description>
+  <Hakuro_Royal_Kaiser.label>Fenris Kaiser</Hakuro_Royal_Kaiser.label>
+  <Hakuro_Royal_Kaiser.description>Leader of the Unknown Snow World</Hakuro_Royal_Kaiser.description>
+  <Hakuro_Stranger.label>snowfield Stranger</Hakuro_Stranger.label>
+  <Hakuro_Stranger.description>Visitors who come to the snowfield for the first time think it is unfamiliar.</Hakuro_Stranger.description>
+  <Hakuro_Visitors.label>snowfield visitant</Hakuro_Visitors.label>
+  <Hakuro_Visitors.description>This title symbolizes visitors who have continued to interact with and helped with Seolwon.</Hakuro_Visitors.description>
+  <Hakuro_citizen.label>snowfield citizen</Hakuro_citizen.label>
+  <Hakuro_citizen.description>It is a title recognized as a citizen who can live in the world of snow.</Hakuro_citizen.description>
+  <Hakuro_Hunter.label>snowfield Hunter</Hakuro_Hunter.label>
+  <Hakuro_Hunter.labelFemale>snowfield Huntress</Hakuro_Hunter.labelFemale>
+  <Hakuro_Hunter.description>A title promoted to Snowfield Hunter. You have some support rights, so you can ask for help when you need it.</Hakuro_Hunter.description>
+  <Hakuro_Grimbart.label>snowfield Grimbart</Hakuro_Grimbart.label>
+  <Hakuro_Grimbart.description>Snowfield Grimbart Hunter's mandate gives you higher benefits.</Hakuro_Grimbart.description>
+  <Hakuro_Isegrim.label>snowfield Isegrim</Hakuro_Isegrim.label>
+  <Hakuro_Isegrim.description>Snowfield Nowgrim is a kind of sub-title, but with influence, unlocking most of its powers.</Hakuro_Isegrim.description>
+  <Hakuro_Sirius.label>snowfield Sirius</Hakuro_Sirius.label>
+  <Hakuro_Sirius.description>Snowfield Sirius is freed from various powers, and also has the right to trade with the Shadow Fleet that helped him pass on the spirit magic of the white wolf.</Hakuro_Sirius.description>
+  <Hakuro_Fenris.label>snowfield Fenris</Hakuro_Fenris.label>
+  <Hakuro_Fenris.description>It doesn't seem like much to accept those from outside the snowfields into Fenris. However, accepting people from the outside can be seen as having a high level of influence.</Hakuro_Fenris.description>
+</LanguageData>

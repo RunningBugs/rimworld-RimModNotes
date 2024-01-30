@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Apparel_knightPowerArmor.label>Nova power armor</Apparel_knightPowerArmor.label>
+  <Apparel_knightPowerArmor.description>Nova armor is armor with a medieval appearance.\n\nIt looks like medieval armor, but it has the same defense as power armor, and has a small ranged shield and a built-in combat support system.</Apparel_knightPowerArmor.description>
+
+  <Apparel_knight_Combat_Helmet.label>Nova power armor helmet</Apparel_knight_Combat_Helmet.label>
+  <Apparel_knight_Combat_Helmet.description>The Nova Armor helmet is a power helmet that looks like a helmet from the Middle Ages.\n\nThe helmet with a medieval look has power armor-like defense and has a built-in hit assist device.</Apparel_knight_Combat_Helmet.description>
+
+  <Apparel_Fenrir_AdvancedHelmet.label>Fenrir Armor Helmet</Apparel_Fenrir_AdvancedHelmet.label>
+  <Apparel_Fenrir_AdvancedHelmet.description>The Fenrir bulletproof helmet is a bulletproof helmet used by Fenrir soldiers and shows higher defensive power than the reinforced bulletproof helmet.</Apparel_Fenrir_AdvancedHelmet.description>
+
+  <Apparel_Fenrir_tactics_AdvancedHelmet.label>Fenrir tactics Armor Helmet</Apparel_Fenrir_tactics_AdvancedHelmet.label>
+  <Apparel_Fenrir_tactics_AdvancedHelmet.description>The Fenrir tactical bulletproof helmet is a helmet with a wolf crest used by the Fenrir unit that protects the front of the face.</Apparel_Fenrir_tactics_AdvancedHelmet.description>
+
+  <Apparel_Fenrir_Snow_Helmet.label>Fenrir Assault Helmet</Apparel_Fenrir_Snow_Helmet.label>
+  <Apparel_Fenrir_Snow_Helmet.description>A Fenrir Snow Assault Helmet with the bulletproof protection of a scout helmet, and a built-in fire accuracy device to observe enemies in a blizzard.</Apparel_Fenrir_Snow_Helmet.description>
+
+  <Apparel_winter_mask.label>Fenrir mask</Apparel_winter_mask.label>
+  <Apparel_winter_mask.description>The Fenrir Mask is a mask worn by Fenrir soldiers. It has low resistance to toxic terrain and poison attacks.</Apparel_winter_mask.description>
+
+  <Apparel_Fenrir_flakvest.label>Fenrir flakvest</Apparel_Fenrir_flakvest.label>
+  <Apparel_Fenrir_flakvest.description>The Fenrir body armor is a type of body armor made of moonlight cloth. It's like a normal body armor, but comes with gloves and boots to protect your hands and feet as well.</Apparel_Fenrir_flakvest.description>
+
+  <Apparel_fur_hat.label>bomber cap</Apparel_fur_hat.label>
+  <Apparel_fur_hat.description>It is a fur hat that was mainly used in cold regions a long time ago.</Apparel_fur_hat.description>
+
+  <Apparel_battle_mask.label>battle wolf mask</Apparel_battle_mask.label>
+  <Apparel_battle_mask.description>A battle mask in wolf form. Similar to the War Mask, but turns the wearer into a wolf-like stealthy hunter.</Apparel_battle_mask.description>
+
+  <Apparel_energy_mask.label>energy mask</Apparel_energy_mask.label>
+  <Apparel_energy_mask.description>A mask with a built-in spirit stone to purify incoming toxins.</Apparel_energy_mask.description>
+
+  <Apparel_Fenrir_Snow_flakvest.label>Fenrir Assault Snowfield Body Armor</Apparel_Fenrir_Snow_flakvest.label>
+  <Apparel_Fenrir_Snow_flakvest.description>The Fenrir body armor is a type of body armor made of moonlight cloth, similar to ordinary body armor, but with gloves and shoes to protect the hands and feet as well.</Apparel_Fenrir_Snow_flakvest.description>
+
+  <Apparel_Fenrir_FlakJacket.label>Fenrir Ballistic Cloak</Apparel_Fenrir_FlakJacket.label>
+  <Apparel_Fenrir_FlakJacket.description>A bulletproof cloak exclusively for Fenrir. It is similar to the Fenrir Bulletproof Jacket, but it is a bulletproof suit designed to block fire and chemical weapons rather than firearms.</Apparel_Fenrir_FlakJacket.description>
+
+  <Apparel_ether_Eltex_Hood.label>Mind Stabilizing Ether Hood</Apparel_ether_Eltex_Hood.label>
+  <Apparel_ether_Eltex_Hood.description>An etheric hood with an etheric crystal.\n\nHooded armor with a helmet, ether reduces mental threshold and stabilizes nerve fever.</Apparel_ether_Eltex_Hood.description>
+
+  <Apparel_ether_Eltex_PowerArmor.label>Mind Stabilizing Ether Armor</Apparel_ether_Eltex_PowerArmor.label>
+  <Apparel_ether_Eltex_PowerArmor.description>It is an etheric armor with an etheric crystal embedded in it.\n\nEtheric armor has low defensive power, but it defends with a shield created by amplifying etheric crystals, stabilizing nerve heat and reducing mental threshold.</Apparel_ether_Eltex_PowerArmor.description>
+
+
+</LanguageData>
