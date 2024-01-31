@@ -22,11 +22,16 @@ using Logs = Logger.Log;
 namespace FacialAnimationEyeFix
 {
     public class TextureReDraw : GameComponent {
+
+        bool runOnce = false;
         public TextureReDraw(Game game) {
         }
 
-        public override void FinalizeInit() {
-            FacialAnimation.MyGraphicPool.RepaintAllGraphic();
+        public override void GameComponentTick() {
+            if (!runOnce) {
+                FacialAnimation.MyGraphicPool.RepaintAllGraphic();
+                runOnce = true;
+            }
         }
     }
 
