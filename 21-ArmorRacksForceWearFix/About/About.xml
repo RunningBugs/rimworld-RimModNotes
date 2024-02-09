@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.ArmorRacksForceWearFix</packageId>
+	<name>Armor Racks Force Wear Fix</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.4</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li>
+		<li>
+			<packageId>khamenman.armorracks</packageId>
+			<displayName>Armor Racks</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/1875828205</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<li>khamenman.armorracks</li>
+	</loadAfter>
+
+	<description>Armor Racks Force Wear Fix</description>
+</ModMetaData>

@@ -25,5 +25,10 @@
 		<!-- <li>username.modname</li> -->
 	</incompatibleWith>
 
+	<loadAfter>
+		<li>mlie.roadsoftherim</li>
+		<li>zylle.morevanillabiomes</li>
+	</loadAfter>
+
 	<description>本模组在地图加载时会给地形打补丁，从而允许在冰原和海洋冰盖上建造边缘之路。 This mod will patch the ice sheet and sea ice biomes to allow building of roads from Roads of the Rim after the map is loading.</description>
 </ModMetaData>

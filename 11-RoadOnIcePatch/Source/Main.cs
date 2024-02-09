@@ -9,12 +9,23 @@ namespace RoadOnIce
 {
     public class MyMapComponent : MapComponent
     {
-        public MyMapComponent(Map map) : base(map){}
+        public MyMapComponent(Map map) : base(map) { }
+
+        public static bool IsModActive(string packageId)
+        {
+            return ModLister.GetActiveModWithIdentifier(packageId) != null;
+        }
+
+
         public override void FinalizeInit()
         {
             base.FinalizeInit();
-            BiomeDefOf.IceSheet.allowRoads = true;
-            BiomeDefOf.SeaIce.allowRoads = true;
+            // BiomeDefOf.IceSheet.allowRoads = true;
+            // BiomeDefOf.SeaIce.allowRoads = true;
+            foreach (var biome in DefDatabase<BiomeDef>.AllDefs)
+            {
+                biome.allowRoads = true;
+            }
             Log.Message("FinalizeInit");
         }
     }
