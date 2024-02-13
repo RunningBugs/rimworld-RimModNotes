@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.MoreChineseSeeds</packageId>
+	<name>更多中文随机种子 More Chinese Seeds</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.4</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<!-- <li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li> -->
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<!-- <li>username.modname</li> -->
+	</loadAfter>
+
+	<description>添加了更多地图生成时使用的中文种子，目前种子文本大部分由ChatGPT生成 Add more Chinese words to SeedGenerator, the seeds are mostly generated using ChatGPT</description>
+</ModMetaData>

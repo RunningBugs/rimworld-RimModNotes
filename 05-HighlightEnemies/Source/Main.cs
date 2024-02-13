@@ -28,6 +28,7 @@ namespace _HightlightEnemies
     {
         public bool showEnemies = false;
         public bool status = false;
+        private bool canRunDeHighlight = true;
         private Task lastTask = Task.CompletedTask;
 
         private DesignationDef desDef = DefDatabase<DesignationDef>.GetNamed("HE_Mark");
@@ -46,7 +47,7 @@ namespace _HightlightEnemies
             {
                 Highlight();
             }
-            else
+            else if (canRunDeHighlight)
             {
                 DeHighlight();
             }
@@ -109,6 +110,7 @@ namespace _HightlightEnemies
                     {
                         manager.AddDesignation(new Designation(thing, desDef));
                     }
+                    canRunDeHighlight = true;
                 }, TaskScheduler.FromCurrentSynchronizationContext());
             }
 
@@ -119,6 +121,7 @@ namespace _HightlightEnemies
         {
             var manager = Find.CurrentMap.designationManager;
             manager.RemoveAllDesignationsOfDef(desDef);
+            canRunDeHighlight = false;
         }
 
         [StaticConstructorOnStartup]
