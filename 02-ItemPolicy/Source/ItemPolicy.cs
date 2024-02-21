@@ -32,18 +32,20 @@ namespace _ItemPolicy
 
         public ItemPolicy MergePolicy(ItemPolicy p2)
         {
-            ItemPolicy res = new ItemPolicy();
+            // ItemPolicy res = new ItemPolicy();
+            // foreach (var (key, val) in this.data)
+            // {
+            //     res.data[key] = val;
+            // }
 
-            foreach (var (key, val) in this.data)
-            {
-                res.data[key] = val;
-            }
+            // foreach (var (key, val) in p2.data)
+            // {
+            //     res.data[key] = val;
+            // }
 
-            foreach (var (key, val) in p2.data)
-            {
-                res.data[key] = val;
-            }
-            return res;
+            this.data.Clear();
+            this.data = p2.data.ToDictionary(x => x.Key, x => x.Value);
+            return this;
         }
 
         public void ExposeData()

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <LetterDef>
+        <letterClass>MoreMapSeeds.StandardLetterCopyOnClick</letterClass>
+        <defName>NeutralEventCopyLetter</defName>
+        <color>(175, 176, 185)</color>
+        <flashColor>(160, 170, 180)</flashColor>
+        <flashInterval>90</flashInterval>
+        <arriveSound>LetterArrive</arriveSound>
+      </LetterDef>
+</Defs>

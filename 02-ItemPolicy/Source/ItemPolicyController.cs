@@ -12,29 +12,6 @@ using System;
 
 namespace _ItemPolicy
 {
-
-    // [HarmonyPatch(typeof(Toils_Haul), "ErrorCheckForCarry")]
-    // class Patch {
-    //     public static void Postfix(Pawn pawn, Thing haulThing, bool __result) {
-    //         Log.Warning("ErrorCheckForCarry: " + __result);
-    //         Log.Warning($"pawn: {pawn}, haulThing: {haulThing}");
-    //         int num = Math.Min(2, haulThing.stackCount);
-    //         Log.Warning($"num: {num}, checkEmbrace: {pawn.CurJob.checkEncumbrance}");
-    //     } 
-    // }
-
-//     [HarmonyPatch(typeof(Toils_Haul))]
-// #pragma warning disable IDE0300 // Simplify collection initialization
-//     [HarmonyPatch("TakeToInventory", new Type[] { typeof(TargetIndex), typeof(int) })]
-// #pragma warning restore IDE0300 // Simplify collection initialization
-//     class Patch
-//     {
-//         public static void Postfix(TargetIndex ind, int count)
-//         {
-//             Log.Warning($"TakeToInventory: {ind}, {count}");
-//         }
-//     }
-
     [HarmonyPatch(typeof(Pawn_InventoryTracker))]
     class Patches {
         [HarmonyPatch("GetDirectlyHeldThings")]
@@ -195,20 +172,20 @@ namespace _ItemPolicy
                     float mass = thing != null ? thing.GetStatValue(StatDefOf.Mass) : capable + 1;
                     if (thing != null && weight + mass <= capable)
                     {
-                        Job job = JobMaker.MakeJob(JobDefOf.TakeCountToInventory, thing);
+                        Job job = JobMaker.MakeJob(JobDefOf.TakeInventory, thing);
                         job.count = Mathf.Min(b: count - pawn.inventory.Count(thing.def), a: thing.stackCount);
                         long max_to_hold = mass > 0 ? (long)((capable - weight) / mass) : job.count;   //  using long to hold items that are too light that can have too many items to hold which may lead to data overflow; when mass is 0 or less, we assume the cap is job.count
 
                         job.count = (int)Mathf.Min(job.count, max_to_hold); // since job.count is int, we won't be able to overflow now
                         nextInventoryStockTick = Find.TickManager.TicksGame + Rand.Range(InventoryStockCheckIntervalMin, InventoryStockCheckIntervalMax);
-                        PawnStateTracker.SetNextInventoryStockTick(pawn, nextInventoryStockTick);
+                        // PawnStateTracker.SetNextInventoryStockTick(pawn, nextInventoryStockTick);
                         return job;
                     }
                 }
             }
 
             nextInventoryStockTick = Find.TickManager.TicksGame + Rand.Range(InventoryStockCheckIntervalMin, InventoryStockCheckIntervalMax);
-            PawnStateTracker.SetNextInventoryStockTick(pawn, nextInventoryStockTick);
+            // PawnStateTracker.SetNextInventoryStockTick(pawn, nextInventoryStockTick);
 
             return null;
         }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<RulePackDef>
+		<defName>MCS_SeedGenerator</defName>
+		<include>
+			<li>SeedGenerator</li>
+		</include>
+		<rulePack>
+			<rulesStrings>
+				<li>r_seed(p=10)->[newSeeds]</li>
+			</rulesStrings>
+			<rulesFiles>
+				<li>newSeeds->NamesExtended/SeedGenerator</li>
+			</rulesFiles>
+		</rulePack>
+	</RulePackDef>
+</Defs>

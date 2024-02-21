@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Patch>
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/RulePackDef[defName="SeedGenerator"]/rulePack/rulesFiles</xpath>
-        <value>
-            <li>businessname->NamesExtended/SeedGenerator</li>
-        </value>
-    </Operation>
-</Patch>
