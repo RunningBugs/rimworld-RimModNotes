@@ -1,4 +1,39 @@
-﻿Some code to check whether Building is in the policy
+﻿A bug when the pawns won't pick up the items in the policy but stuck there and created the job again and again
+
+The reason is the item is a drug that is managed by the vanilla code, on function JobGiver_DropUnusedInventory.ShouldKeepDrugInInventory
+Also have to mention, if the count of the drug is 0, the pawn will not pick it up in vanilla code (thought this is managed by PUAH, but it's actually by vanilla code)
+
+The pick up part of code could be found in FloatMenuMakerMap.cs  functin AddHumanlikeOrders
+line 1506               if (!item2.def.EverHaulable || !PawnUtility.CanPickUp(pawn, item2.def) || (pawn.Map.IsPlayerHome && !JobGiver_DropUnusedInventory.ShouldKeepDrugInInventory(pawn, item2)))
+
+
+Solution: Patch that function (public static bool)
+
+
+Also want to note some codes that I have tried to debug the issue here, might be useful in future
+
+public static class DrugPolicyExt {
+        public static int Contains(this DrugPolicy policy, ThingDef def) {
+            FieldInfo field = typeof(DrugPolicy).GetField("entriesInt", BindingFlags.NonPublic | BindingFlags.Instance);
+            List<DrugPolicyEntry> entries = (List<DrugPolicyEntry>)field.GetValue(policy);
+            return entries.FindIndex(entry => entry.drug == def);
+        }
+    }
+
+if (pawn.drugs != null && pawn.drugs.CurrentPolicy != null)
+                    {
+                        int idx = pawn.drugs.CurrentPolicy.Contains(def);
+                        if (idx != -1)
+                        {
+                            // pawn.drugs.CurrentPolicy[idx].takeToInventory = count;
+                        }
+                    }
+
+
+
+=======
+
+Some code to check whether Building is in the policy
 
 // // Log.Message("def: " + def.label + "(" + def.defName + ")" + ", count: " + count + ", inventory count: " + pawn.inventory.Count(def));
 // if (def.thingClass.IsSubclassOf(typeof(Building)))

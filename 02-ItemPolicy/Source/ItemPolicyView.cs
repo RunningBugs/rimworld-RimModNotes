@@ -48,10 +48,11 @@ namespace _ItemPolicy
 
         public override void DoCell(Rect rect, Pawn pawn, PawnTable table)
         {
-            if (ItemPolicyUtility.policies.ContainsKey(pawn))
-            {
-                base.DoCell(rect, pawn, table);
-            }
+            // if (ItemPolicyUtility.policies.ContainsKey(pawn))
+            // {
+            //     base.DoCell(rect, pawn, table);
+            // }
+            base.DoCell(rect, pawn, table);
         }
 
         protected override void CopyFrom(Pawn p)

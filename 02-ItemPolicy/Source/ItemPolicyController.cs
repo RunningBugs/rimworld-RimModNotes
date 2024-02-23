@@ -9,17 +9,18 @@ using UnityEngine;
 
 using HarmonyLib;
 using System;
+using System.Reflection;
 
 namespace _ItemPolicy
 {
-    [HarmonyPatch(typeof(Pawn_InventoryTracker))]
-    class Patches {
-        [HarmonyPatch("GetDirectlyHeldThings")]
-        [HarmonyPostfix]
-        public static void GetDirectlyHeldThings(Pawn_InventoryTracker __instance, ref ThingOwner __result) {
-            // Log.Warning($"GetDirectlyHeldThings: {__result.Count}");
-        }
-    }
+    // [HarmonyPatch(typeof(Pawn_InventoryTracker))]
+    // class Patches {
+    //     [HarmonyPatch("GetDirectlyHeldThings")]
+    //     [HarmonyPostfix]
+    //     public static void GetDirectlyHeldThings(Pawn_InventoryTracker __instance, ref ThingOwner __result) {
+    //         // Log.Warning($"GetDirectlyHeldThings: {__result.Count}");
+    //     }
+    // }
 
 
     public class ItemPolicyUtility : GameComponent
@@ -130,6 +131,18 @@ namespace _ItemPolicy
         public static void SetNextInventoryStockTick(Pawn pawn, int tick)
         {
             nextInventoryStockTick[pawn] = tick;
+        }
+    }
+
+    [HarmonyPatch(typeof(JobGiver_DropUnusedInventory), "ShouldKeepDrugInInventory")]
+    public static class ShouldKeepDrugInInventoryPatch
+    {
+        public static void Postfix(ref bool __result, Pawn pawn, Thing drug)
+        {
+            if (ItemPolicyUtility.GetItemPolicyEntry(pawn, drug.def) > 0)
+            {
+                __result = true;
+            }
         }
     }
 
