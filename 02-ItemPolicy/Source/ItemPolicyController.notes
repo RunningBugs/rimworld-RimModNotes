@@ -1,4 +1,27 @@
-﻿A bug when the pawns won't pick up the items in the policy but stuck there and created the job again and again
+﻿System.NullReferenceException: Object reference not set to an instance of an object
+  at _ItemPolicy.ItemPolicyUtility.FinalizeInit () [0x00028] in <b2b9b328f8024ec1a28488f9c8a015e1>:0 
+  at Verse.GameComponentUtility.FinalizeInit () [0x00017] in <d006c28bc811417ea565feda544f6d2b>:0 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+(wrapper dynamic-method) Verse.Log:Verse.Log.Error_Patch4 (string)
+Verse.GameComponentUtility:FinalizeInit ()
+(wrapper dynamic-method) Verse.Game:Verse.Game.FinalizeInit_Patch9 (Verse.Game)
+(wrapper dynamic-method) Verse.Game:Verse.Game.LoadGame_Patch7 (Verse.Game)
+(wrapper dynamic-method) Verse.SavedGameLoaderNow:Verse.SavedGameLoaderNow.LoadGameFromSaveFileNow_Patch2 (string)
+Verse.Root_Play/<>c:<Start>b__1_1 ()
+Verse.LongEventHandler:RunEventFromAnotherThread (System.Action)
+Verse.LongEventHandler/<>c:<UpdateCurrentAsynchronousEvent>b__27_0 ()
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+Need to be fixed
+Seems to be an issue with null policies
+
+------
+
+A bug when the pawns won't pick up the items in the policy but stuck there and created the job again and again
 
 The reason is the item is a drug that is managed by the vanilla code, on function JobGiver_DropUnusedInventory.ShouldKeepDrugInInventory
 Also have to mention, if the count of the drug is 0, the pawn will not pick it up in vanilla code (thought this is managed by PUAH, but it's actually by vanilla code)
