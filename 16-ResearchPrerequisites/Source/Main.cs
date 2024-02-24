@@ -31,7 +31,8 @@ namespace ResearchPrerequisites
 
         private bool AddResearchHandler(ResearchProjectDef research)
         {
-            if (research == null) {
+            if (research == null)
+            {
                 return true;
             }
 
@@ -44,26 +45,36 @@ namespace ResearchPrerequisites
             {
                 researchQueue.Add(research);
                 return true;
-            } else if (!research.IsFinished && research.TechprintRequirementMet && research.PlayerHasAnyAppropriateResearchBench) {
-                
+            }
+            else if (!research.IsFinished && research.TechprintRequirementMet && research.PlayerHasAnyAppropriateResearchBench)
+            {
+
                 List<ResearchProjectDef> prereqs = new List<ResearchProjectDef>();
                 prereqs.AddRange(research.prerequisites ?? new List<ResearchProjectDef>());
                 prereqs.AddRange(research.hiddenPrerequisites ?? new List<ResearchProjectDef>());
-                foreach (var prereq in prereqs) {
-                    if (prereq == null || prereq.IsFinished) {
+                foreach (var prereq in prereqs)
+                {
+                    if (prereq == null || prereq.IsFinished)
+                    {
                         continue;
                     }
                     AddResearchHandler(prereq);
                 }
                 researchQueue.Add(research);
             }
-            
+
             return true;
         }
 
-        public bool AddResearch(ResearchProjectDef research)
+        public bool StartNewResearchQueue(ResearchProjectDef research)
         {
             researchQueue.Clear();
+            bool res = AddResearchHandler(research);
+            return res;
+        }
+
+        public bool InsertToResearchQueue(ResearchProjectDef research)
+        {
             bool res = AddResearchHandler(research);
             return res;
         }
@@ -97,17 +108,20 @@ namespace ResearchPrerequisites
         {
             /// Find.ResearchManager.currentProj is null when research finished.
             /// When finding this, we will try to start the next research in the queue.
-            if (Find.ResearchManager.currentProj != null) {
+            if (Find.ResearchManager.currentProj != null)
+            {
                 return;
             }
 
-            if (researchQueue.Count == 0) {
+            if (researchQueue.Count == 0)
+            {
                 return;
             }
 
             Logs.Warning($"No current proj, start research queue: {string.Join(", ", researchQueue.Select(x => x.label).ToArray())}");
             var nextResearch = GetNextResearch();
-            if (nextResearch != null) {
+            if (nextResearch != null)
+            {
                 Logs.Warning("Attempting to start research: " + nextResearch.label);
                 Patches.AttemptBeginResearch(nextResearch);
             }
@@ -124,6 +138,21 @@ namespace ResearchPrerequisites
         }
     }
 
+    [HarmonyPatch(typeof(MainTabWindow_Research))]
+    public static class ResearchWindowOnClosePatch
+    {
+        public static MethodBase TargetMethod()
+        {
+            return AccessTools.Method(typeof(MainTabWindow_Research), "PostClose");
+        }
+
+        public static void Postfix()
+        {
+            Log.Warning("PostClose");
+            Patches.mode = Patches.ResearchButtonMode.Start;
+        }
+    }
+
 
     [HarmonyPatch]
     public static class Patches
@@ -131,7 +160,7 @@ namespace ResearchPrerequisites
         private static MainTabWindow_Research instance = null;
         private static Type type = typeof(MainTabWindow_Research);
         private static readonly Texture2D ResearchBarFillTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.2f, 0.8f, 0.85f));
-	    private static readonly Texture2D ResearchBarBGTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.1f, 0.1f, 0.1f));
+        private static readonly Texture2D ResearchBarBGTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.1f, 0.1f, 0.1f));
 
         public static MethodBase TargetMethod()
         {
@@ -150,11 +179,19 @@ namespace ResearchPrerequisites
             return (T)methodInfo.Invoke(instance, parameters);
         }
 
-        public static void AttemptBeginResearch(ResearchProjectDef research) {
-            CallMethod<object>(instance, "AttemptBeginResearch", new object[]{research});
+        public static void AttemptBeginResearch(ResearchProjectDef research)
+        {
+            CallMethod<object>(instance, "AttemptBeginResearch", new object[] { research });
         }
 
 
+        public enum ResearchButtonMode
+        {
+            Start,
+            AddToQueue
+        }
+
+        public static ResearchButtonMode mode = ResearchButtonMode.Start;
         private static void DrawLeftRect(Rect leftOutRect)
         {
             var (leftStartAreaHeightInfo, leftStartAreaHeight) = GetValue<float>(instance, "leftStartAreaHeight");
@@ -190,7 +227,7 @@ namespace ResearchPrerequisites
                 Rect rect4 = new Rect(0f, num2, viewRect.width, 500f);
 
 
-                num2 += CallMethod<float>(instance, "DrawTechprintInfo", new object[]{rect4, selectedProject});
+                num2 += CallMethod<float>(instance, "DrawTechprintInfo", new object[] { rect4, selectedProject });
 
                 if ((int)selectedProject.techLevel > (int)Faction.OfPlayer.def.techLevel)
                 {
@@ -205,21 +242,24 @@ namespace ResearchPrerequisites
                     num2 += rect5.height;
                 }
                 // num2 += DrawResearchPrereqs(rect: new Rect(0f, num2, viewRect.width, 500f), project: selectedProject);
-                num2 += CallMethod<float>(instance, "DrawResearchPrereqs", new object[]{selectedProject, new Rect(0f, num2, viewRect.width, 500f)});
+                num2 += CallMethod<float>(instance, "DrawResearchPrereqs", new object[] { selectedProject, new Rect(0f, num2, viewRect.width, 500f) });
 
                 // num2 += DrawResearchBenchRequirements(rect: new Rect(0f, num2, viewRect.width, 500f), project: selectedProject);
-                num2 += CallMethod<float>(instance, "DrawResearchBenchRequirements", new object[]{selectedProject, new Rect(0f, num2, viewRect.width, 500f)});
+                num2 += CallMethod<float>(instance, "DrawResearchBenchRequirements", new object[] { selectedProject, new Rect(0f, num2, viewRect.width, 500f) });
 
                 // num2 += DrawStudyRequirements(rect: new Rect(0f, num2, viewRect.width, 500f), project: selectedProject);
-                num2 += CallMethod<float>(instance, "DrawStudyRequirements", new object[]{selectedProject, new Rect(0f, num2, viewRect.width, 500f)});
+                num2 += CallMethod<float>(instance, "DrawStudyRequirements", new object[] { selectedProject, new Rect(0f, num2, viewRect.width, 500f) });
 
                 Rect rect9 = new Rect(0f, num2, viewRect.width, 500f);
                 // num2 += DrawUnlockableHyperlinks(rect9, selectedProject);
-                num2 += CallMethod<float>(instance, "DrawUnlockableHyperlinks", new object[]{rect9, selectedProject});
+                num2 += CallMethod<float>(instance, "DrawUnlockableHyperlinks", new object[] { rect9, selectedProject });
 
                 Rect rect10 = new Rect(0f, num2, viewRect.width, 500f);
                 // num2 += DrawContentSource(rect10, selectedProject);
-                num2 += CallMethod<float>(instance, "DrawContentSource", new object[]{rect10, selectedProject});
+                num2 += CallMethod<float>(instance, "DrawContentSource", new object[] { rect10, selectedProject });
+
+                Rect researchQueueInfoRect = new Rect(0f, num2, viewRect.width, 500f);
+                num2 += DrawResearchQueueInfo(researchQueueInfoRect);
 
                 num2 += 3f;
 
@@ -235,12 +275,34 @@ namespace ResearchPrerequisites
                     // leftStartAreaHeight = 68f;
                     leftStartAreaHeightInfo.SetValue(instance, 68f);
 
-                    if (Widgets.ButtonText(rect11, "Research".Translate()))
+                    if (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.LeftShift)
                     {
-                        // AttemptBeginResearch(selectedProject);
-                        CallMethod<object>(instance, "AttemptBeginResearch", new object[]{selectedProject});
+                        mode = ResearchButtonMode.AddToQueue;
                     }
-                } else if (!selectedProject.IsFinished && selectedProject != Find.ResearchManager.currentProj && !selectedProject.PrerequisitesCompleted && selectedProject.TechprintRequirementMet && selectedProject.PlayerHasAnyAppropriateResearchBench) {
+                    else if (Event.current.type == EventType.KeyUp && Event.current.keyCode == KeyCode.LeftShift)
+                    {
+                        mode = ResearchButtonMode.Start;
+                    }
+
+                    if (mode == ResearchButtonMode.Start)
+                    {
+                        if (Widgets.ButtonText(rect11, "Research".Translate()))
+                        {
+                            // AttemptBeginResearch(selectedProject);
+                            CallMethod<object>(instance, "AttemptBeginResearch", new object[] { selectedProject });
+                        }
+                    }
+                    else
+                    {
+                        if (Widgets.ButtonText(rect11, "ResearchAddToQueue".Translate()))
+                        {
+                            ResearchQueue researchQueue = Current.Game.GetComponent<ResearchQueue>();
+                            researchQueue?.InsertToResearchQueue(selectedProject);
+                        }
+                    }
+                }
+                else if (!selectedProject.IsFinished && selectedProject != Find.ResearchManager.currentProj && !selectedProject.PrerequisitesCompleted && selectedProject.TechprintRequirementMet && selectedProject.PlayerHasAnyAppropriateResearchBench)
+                {
                     // leftStartAreaHeight = 68f;
                     leftStartAreaHeightInfo.SetValue(instance, 68f);
 
@@ -249,7 +311,7 @@ namespace ResearchPrerequisites
                         // AttemptBeginResearch(selectedProject);
                         // CallMethod<object>(instance, "AttemptBeginResearch", new object[]{selectedProject});
                         ResearchQueue researchQueue = Current.Game.GetComponent<ResearchQueue>();
-                        researchQueue?.AddResearch(selectedProject);
+                        researchQueue?.StartNewResearchQueue(selectedProject);
                         var nextResearch = researchQueue?.GetNextResearch();
                         Find.ResearchManager.currentProj = nextResearch;
                         selectedProjectInfo.SetValue(instance, nextResearch);
@@ -337,6 +399,21 @@ namespace ResearchPrerequisites
                 }
             }
             Widgets.EndGroup();
+        }
+
+        private static Vector2 researchQueueScrollPosition = Vector2.zero;
+
+        private static float DrawResearchQueueInfo(Rect researchQueueInfoRect)
+        {
+            // float height = researchQueueInfoRect.height;
+            float height = Text.LineHeight * (ResearchQueue.researchQueue.Count + 1);
+
+            string researchString = "CurrentResearchQueue".Translate() + "\n" + string.Join("\n", ResearchQueue.researchQueue.Select(x => x.label).ToArray());
+
+            // Widgets.LabelScrollable(researchQueueInfoRect, researchString, ref researchQueueScrollPosition);
+            Widgets.LabelFit(researchQueueInfoRect, researchString);
+
+            return height;
         }
 
         public static bool Prefix(Rect leftOutRect, MainTabWindow_Research __instance)
