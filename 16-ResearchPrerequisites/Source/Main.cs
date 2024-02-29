@@ -148,7 +148,7 @@ namespace ResearchPrerequisites
 
         public static void Postfix()
         {
-            Log.Warning("PostClose");
+            // Log.Warning("PostClose");
             Patches.mode = Patches.ResearchButtonMode.Start;
         }
     }
