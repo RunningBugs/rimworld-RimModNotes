@@ -162,6 +162,7 @@ namespace ResearchPrerequisites
 
 
     [HarmonyPatch]
+    [StaticConstructorOnStartup]
     public static class Patches
     {
         private static MainTabWindow_Research instance = null;

@@ -40,6 +40,7 @@ namespace AlertUtility
 		}
 	}
 
+	[StaticConstructorOnStartup]
 	public class TimerSetWindow : Window
 	{
 		public override Vector2 InitialSize => new Vector2(800f, 450f);
