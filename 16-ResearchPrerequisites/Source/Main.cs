@@ -70,13 +70,20 @@ namespace ResearchPrerequisites
         {
             researchQueue.Clear();
             bool res = AddResearchHandler(research);
+            RemoveDuplicates();
             return res;
         }
 
         public bool InsertToResearchQueue(ResearchProjectDef research)
         {
             bool res = AddResearchHandler(research);
+            RemoveDuplicates();
             return res;
+        }
+
+        private void RemoveDuplicates()
+        {
+            researchQueue = researchQueue.Distinct().ToList();
         }
 
         public ResearchQueue(Game game)
@@ -316,7 +323,8 @@ namespace ResearchPrerequisites
                         // AttemptBeginResearch(selectedProject);
                         // CallMethod<object>(instance, "AttemptBeginResearch", new object[]{selectedProject});
                         ResearchQueue researchQueue = Current.Game.GetComponent<ResearchQueue>();
-                        researchQueue?.StartNewResearchQueue(selectedProject);
+                        // researchQueue?.StartNewResearchQueue(selectedProject);
+                        researchQueue?.InsertToResearchQueue(selectedProject);
                         var nextResearch = researchQueue?.GetNextResearch();
                         Find.ResearchManager.currentProj = nextResearch;
                         selectedProjectInfo.SetValue(instance, nextResearch);
@@ -420,17 +428,17 @@ namespace ResearchPrerequisites
             // float height = researchQueueInfoRect.height;
             float height = Text.LineHeight * (ResearchQueue.researchQueue.Count + 3);
 
-            Rect current, left;
-            (current, left) = GetRow(researchQueueInfoRect, Text.LineHeight * 2);
+            Rect current, remain;
+            (current, remain) = GetRow(researchQueueInfoRect, Text.LineHeight * 2);
 
-            if (Widgets.ButtonText(current, "Clear".Translate())) {
+            if (Widgets.ButtonText(current, "ClearResearchQueue".Translate())) {
                 ResearchQueue.researchQueue.Clear();
             }
 
             string researchString = "CurrentResearchQueue".Translate() + "\n" + string.Join("\n", ResearchQueue.researchQueue.Select(x => x.label).ToArray());
 
             // Widgets.LabelScrollable(researchQueueInfoRect, researchString, ref researchQueueScrollPosition);
-            Widgets.LabelFit(researchQueueInfoRect, researchString);
+            Widgets.LabelFit(remain, researchString);
 
             return height;
         }

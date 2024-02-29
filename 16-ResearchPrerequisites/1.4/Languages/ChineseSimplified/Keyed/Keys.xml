@@ -2,4 +2,5 @@
 <LanguageData>
     <ResearchAddToQueue>将研究项目添加到队列</ResearchAddToQueue>
     <CurrentResearchQueue>当前研究队列：</CurrentResearchQueue>
+    <ClearResearchQueue>清除当前研究队列</ClearResearchQueue>
 </LanguageData>
