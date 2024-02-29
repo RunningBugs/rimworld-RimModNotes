@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.MoreScenarioSearchbars</packageId>
+	<name>More Scenario Searchbars</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.4</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>nimrag.scenariosearchbar</packageId>
+			<displayName>Scenario Searchbars</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3052467818</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<!-- <li>username.modname</li> -->
+	</loadAfter>
+
+	<description>More Scenario Searchbars on Create Incident, credits to https://steamcommunity.com/sharedfiles/filedetails/?id=3052467818 for his work on creating the base function, which I use in this patch.
+
+I'm just reuse the code in Scenario Searchbars and create one more patch for CreateIncident.
+	</description>
+</ModMetaData>

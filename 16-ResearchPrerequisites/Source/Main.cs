@@ -289,7 +289,12 @@ namespace ResearchPrerequisites
                         if (Widgets.ButtonText(rect11, "Research".Translate()))
                         {
                             // AttemptBeginResearch(selectedProject);
-                            CallMethod<object>(instance, "AttemptBeginResearch", new object[] { selectedProject });
+                            // CallMethod<object>(instance, "AttemptBeginResearch", new object[] { selectedProject });
+                            ResearchQueue researchQueue = Current.Game.GetComponent<ResearchQueue>();
+                            researchQueue?.StartNewResearchQueue(selectedProject);
+                            var nextResearch = researchQueue?.GetNextResearch();
+                            Find.ResearchManager.currentProj = nextResearch;
+                            selectedProjectInfo.SetValue(instance, nextResearch);
                         }
                     }
                     else
@@ -403,10 +408,24 @@ namespace ResearchPrerequisites
 
         private static Vector2 researchQueueScrollPosition = Vector2.zero;
 
+        /**
+         * Split the rect into two parts
+         */
+        private static (Rect, Rect) GetRow(Rect rect, float height) {
+            return (new Rect(rect.x, rect.y, rect.width, height), new Rect(rect.x, rect.y + height, rect.width, rect.height - height));
+        }
+
         private static float DrawResearchQueueInfo(Rect researchQueueInfoRect)
         {
             // float height = researchQueueInfoRect.height;
-            float height = Text.LineHeight * (ResearchQueue.researchQueue.Count + 1);
+            float height = Text.LineHeight * (ResearchQueue.researchQueue.Count + 3);
+
+            Rect current, left;
+            (current, left) = GetRow(researchQueueInfoRect, Text.LineHeight * 2);
+
+            if (Widgets.ButtonText(current, "Clear".Translate())) {
+                ResearchQueue.researchQueue.Clear();
+            }
 
             string researchString = "CurrentResearchQueue".Translate() + "\n" + string.Join("\n", ResearchQueue.researchQueue.Select(x => x.label).ToArray());
 
