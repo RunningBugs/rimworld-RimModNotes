@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+    <MainButtonDef>
+        <defName>ItemPolicyMainButton</defName>
+        <label>ItemPolicy</label>
+        <description>Choose which items that pawns should carry when available</description>
+        <tabWindowClass>_ItemPolicy.MainTabWindow_Items</tabWindowClass>
+        <order>10</order>
+        <closesWorldView>true</closesWorldView>
+    </MainButtonDef>
+
+    <PawnTableDef>
+        <defName>ItemPolicyPawnTable</defName>
+        <workerClass>PawnTable_PlayerPawns</workerClass>
+        <columns>
+            <li>LabelShortWithIcon</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Ideo</li>
+            <li MayRequire="Ludeon.RimWorld.Biotech">Xenotype</li>
+            <li>Gap</li>
+            <li>CopyPasteItemPolicy</li>
+            <li>Gap</li>
+            <li>ItemPolicyPawnColumn</li>
+            <li>Gap</li>
+            <!-- <li>RemainingSpace</li> -->
+        </columns>
+    </PawnTableDef>
+
+    <PawnColumnDef>
+        <defName>CopyPasteItemPolicy</defName>
+        <!-- <label>item policy</label> -->
+        <workerClass>_ItemPolicy.PawnColumnWorker_CopyPasteItemPolicy</workerClass>
+        <sortable>false</sortable>
+    </PawnColumnDef>
+
+    <PawnColumnDef>
+        <defName>ItemPolicyPawnColumn</defName>
+        <label>item policy</label>
+        <workerClass>_ItemPolicy.PawnColumnWorker_ItemPolicy</workerClass>
+        <sortable>false</sortable>
+    </PawnColumnDef>
+
+    <!-- <ConceptDef ParentName="NotedOpportunisticBase">
+        <defName>ItemPolicies</defName>
+        <label>Drug policies</label>
+        <helpText>You can assign colonists to take specific items on a specific schedule. For example, you can make them take infection-blocking drugs regularly, or drink a beer a day to stay happy.\n\nOpen the ASSIGN tab and press the 'Manage drug policies' button. Create a new drug policy. Then, you can assign this policy to colonists.\n\nColonists can still take drugs not in their policy. You can tell them what to do, but they also follow their own desires!</helpText>
+        <highlightTags>
+            <li>MainTab-Assign-Closed</li>
+            <li>ManageItemPolicies</li>
+        </highlightTags>
+    </ConceptDef> -->
+</Defs>
