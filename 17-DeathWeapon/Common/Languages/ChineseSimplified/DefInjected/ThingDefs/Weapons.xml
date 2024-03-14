@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <DeathWeapon_LongSword.label>死神之剑</DeathWeapon_LongSword.label>
+    <DeathWeapon_LongSword.description>具有死神之力的长剑，具有高攻速，攻击致死的特点</DeathWeapon_LongSword.description>
+    <!-- EN: handle -->
+    <DeathWeapon_LongSword.tools.handle.label>剑柄</DeathWeapon_LongSword.tools.handle.label>
+    <!-- EN: point -->
+    <DeathWeapon_LongSword.tools.point.label>剑尖</DeathWeapon_LongSword.tools.point.label>
+    <!-- EN: edge -->
+    <DeathWeapon_LongSword.tools.edge.label>剑刃</DeathWeapon_LongSword.tools.edge.label>
+
+    <Gun_DeathRifle.label>死神步枪</Gun_DeathRifle.label>
+    <Gun_DeathRifle.description>具有死神之力的步枪，具有高射速，子弹命中即致死的特点。即使被迫使用此枪近战，也会一击致命。</Gun_DeathRifle.description>
+    <!-- EN: stock -->
+    <Gun_DeathRifle.tools.stock.label>枪托</Gun_DeathRifle.tools.stock.label>
+    <!-- EN: barrel -->
+    <Gun_DeathRifle.tools.barrel.label>枪管</Gun_DeathRifle.tools.barrel.label>
+    <Gun_DeathRifle.verbs.Verb_CastTargetEffect.label>无次数限制的心灵冲击枪，对机械族BOSS也有效</Gun_DeathRifle.verbs.Verb_CastTargetEffect.label>
+    <Bullet_DeathBullet.label>死神子弹</Bullet_DeathBullet.label>
+    <Bullet_DeathBullet.description>具有死神之力的子弹，命中即死</Bullet_DeathBullet.description>
+</LanguageData>

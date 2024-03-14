@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <DamageDef>
+        <defName>DeathWeapon_DeathDamage</defName>
+        <label>Death Damage</label>
+        <workerClass>DeathWeapon.DeathDamageWorker</workerClass>
+        <externalViolence>true</externalViolence>
+        <deathMessage>{0} has returned to the embrace of the Death.</deathMessage>
+        <impactSoundType>Blunt</impactSoundType>
+        <armorCategory>Blunt</armorCategory>
+    </DamageDef>
+</Defs>

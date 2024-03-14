@@ -7,7 +7,7 @@
 		<!-- Modify [RootNamespace], [AssemblyName], [OutputPath], [VersionPrefix] -->
 		<RootNamespace>DeathWeapon</RootNamespace>
 		<AssemblyName>DeathWeapon</AssemblyName>
-		<OutputPath>../1.4/Assemblies</OutputPath>
+		<OutputPath>../Assemblies</OutputPath>
 		<VersionPrefix>0.1.0.0</VersionPrefix>
 
 		<!-- do not generate pdb file -->
@@ -16,6 +16,7 @@
 		<DebugSymbols>false</DebugSymbols>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+		<LangVersion>11.0</LangVersion>
 	</PropertyGroup>
 	<ItemGroup>
 	  <PackageReference Include="Krafs.Rimworld.Ref" Version="1.4.3704" />

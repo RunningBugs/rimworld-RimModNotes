@@ -41,8 +41,8 @@ namespace DeathWeapon
             base.Impact(hitThing);
             if (hitThing is Pawn pawn)
             {
-                // DamageInfo dinfo = new DamageInfo(this.def.projectile.damageDef, this.def.projectile.GetDamageAmount(1f), this.ArmorPenetration, this.ExactRotation.eulerAngles.y, this.launcher, null, this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown, this.intendedTarget);
-                DeathUtility.Kill(pawn, null);
+                DamageInfo dinfo = new DamageInfo(this.def.projectile.damageDef, this.def.projectile.GetDamageAmount(1f), this.ArmorPenetration, this.ExactRotation.eulerAngles.y, this.launcher, null, this.equipmentDef, DamageInfo.SourceCategory.ThingOrUnknown, this.intendedTarget.Thing);
+				DeathUtility.Kill(pawn, dinfo);
             }
         }
     }
