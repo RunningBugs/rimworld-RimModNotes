@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <DesignationDef>
+		<defName>HE_Mark</defName>
+		<texturePath>HE/UI/Mark-trans-red</texturePath>
+		<targetType>Thing</targetType>
+	</DesignationDef>
+
+</Defs>

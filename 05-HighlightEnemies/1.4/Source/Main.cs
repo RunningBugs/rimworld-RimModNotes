@@ -26,8 +26,8 @@ namespace _HightlightEnemies
 {
     public class EnemyHighlighter : MapComponent
     {
-        public bool showEnemies = false;
-        public bool status = false;
+        public bool showEnemies = true;
+        public bool status = true;
         private bool canRunDeHighlight = true;
         private Task lastTask = Task.CompletedTask;
 

@@ -7,7 +7,7 @@
 		<!-- Modify [RootNamespace], [AssemblyName], [OutputPath], [VersionPrefix] -->
 		<RootNamespace>_HightlightEnemies</RootNamespace>
 		<AssemblyName>HighlightEnemies</AssemblyName>
-		<OutputPath>../1.4/Assemblies</OutputPath>
+		<OutputPath>../Assemblies</OutputPath>
 		<VersionPrefix>0.1.0.0</VersionPrefix>
 
 		<!-- do not generate pdb file -->
@@ -18,14 +18,8 @@
 		<CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
 	</PropertyGroup>
 	<ItemGroup>
-	  <PackageReference Include="Krafs.Rimworld.Ref" Version="1.4.3704">
-		<Private>false</Private>
-	  </PackageReference>
-	  <PackageReference Include="Lib.Harmony" Version="2.2.2">
-		<Private>false</Private>
-	  </PackageReference>
-	  <PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="10.0.1">
-		<Private>false</Private>
-	  </PackageReference>
+		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.5.4033-beta" />
+		<PackageReference Include="Lib.Harmony" Version="2.3.1.1" />
+		<PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="10.0.1" />
 	</ItemGroup>
 </Project>
