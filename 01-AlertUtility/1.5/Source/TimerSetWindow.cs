@@ -122,7 +122,7 @@ namespace AlertUtility
 				var labelRect = rowRect.LeftPartPixels(rowRect.width - Text.LineHeight - 4).ContractedBy(2f);
 				var buttonRect = rowRect.RightPartPixels(Text.LineHeight + 4).ContractedBy(2f);
 				Widgets.Label(labelRect, events_string);
-				if (Widgets.ButtonImage(buttonRect, TexButton.DeleteX))
+				if (Widgets.ButtonImage(buttonRect, TexButton.Delete))
 				{
 					eventsToRemove.Add(e);
 				}

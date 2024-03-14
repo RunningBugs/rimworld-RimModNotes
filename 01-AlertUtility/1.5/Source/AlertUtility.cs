@@ -76,7 +76,6 @@ namespace AlertUtility
             events?.Remove(e);
         }
 
-        //[HarmonyPostfix]
         public static void WorldComponentTickPostfix()
         {
             if (Find.World != null)
