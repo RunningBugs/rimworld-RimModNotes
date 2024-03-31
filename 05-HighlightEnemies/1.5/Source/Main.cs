@@ -18,71 +18,47 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Net;
+using HugsLib.Utils;
 
 // using System.Reflection;
 // using HarmonyLib;
 
 namespace _HightlightEnemies
 {
-    public class EnemyHighlighter : MapComponent
+    public class EnemyHighlighter : GameComponent
     {
         public bool showEnemies = true;
-        public bool status = true;
-        private bool canRunDeHighlight = true;
         private Task lastTask = Task.CompletedTask;
 
         private DesignationDef desDef = DefDatabase<DesignationDef>.GetNamed("HE_Mark");
 
-        public EnemyHighlighter(Map map) : base(map) { }
+        public EnemyHighlighter(Game game) { }
 
         public override void FinalizeInit()
         {
         }
 
-        public override void MapComponentTick()
+        public override void GameComponentTick()
         {
-            base.MapComponentTick();
-
-            if (status)
+            if (showEnemies)
             {
                 Highlight();
             }
-            else if (canRunDeHighlight)
+            else
             {
                 DeHighlight();
             }
         }
 
+
         public void Highlight()
         {
             var manager = Find.CurrentMap.designationManager;
-
-            // foreach (var thing in Find.CurrentMap.spawnedThings)
-            // {
-            //     if (GenHostility.HostileTo(thing, Faction.OfPlayer) && manager.DesignationOn(thing, desDef) == null)
-            //     {
-            //         manager.AddDesignation(new Designation(thing, desDef));
-            //     }
-            // }
-
-            /// thread task1: filter out the things that are not hostile nor expected to highlight (like walls, fences, etc.)
-            /// thread task2: add the designation to the map in the main thread
 
             if (lastTask.IsCompleted)
             {
                 lastTask = Task.Run(() =>
                 {
-                    // var things = Find.CurrentMap.spawnedThings;
-                    // var hostileThings = new List<Thing>();
-                    // foreach (var thing in things)
-                    // {
-
-                    //     if (GenHostility.HostileTo(thing, Faction.OfPlayer) && manager.DesignationOn(thing, desDef) == null)
-                    //     {
-                    //         hostileThings.Add(thing);
-                    //     }
-                    // }
-                    // return hostileThings;
                     var things = Find.CurrentMap.attackTargetsCache.TargetsHostileToColony.Select(t => t.Thing).ToList();
                     var hostileThings = new HashSet<Thing>();
                     foreach (var thing in things)
@@ -108,9 +84,11 @@ namespace _HightlightEnemies
                 {
                     foreach (var thing in hostileThings.Result)
                     {
-                        manager.AddDesignation(new Designation(thing, desDef));
+                        if (!thing.HasDesignation(desDef))
+                        {
+                            manager.AddDesignation(new Designation(thing, desDef));
+                        }
                     }
-                    canRunDeHighlight = true;
                 }, TaskScheduler.FromCurrentSynchronizationContext());
             }
 
@@ -121,7 +99,6 @@ namespace _HightlightEnemies
         {
             var manager = Find.CurrentMap.designationManager;
             manager.RemoveAllDesignationsOfDef(desDef);
-            canRunDeHighlight = false;
         }
 
         [StaticConstructorOnStartup]
@@ -143,22 +120,10 @@ namespace _HightlightEnemies
             {
                 if (worldView) return;
 
-                var eh = Find.CurrentMap.GetComponent<EnemyHighlighter>();
+                var eh = Current.Game.GetComponent<EnemyHighlighter>();
                 if (eh != null)
                 {
-                    bool before = eh.showEnemies;
                     row.ToggleableIcon(ref eh.showEnemies, ContentFinder<Texture2D>.Get("HE/UI/Alarm", true), "HighlightEnemies".Translate(), SoundDefOf.Mouseover_ButtonToggle, (string)null);
-
-                    if (!before && eh.showEnemies)
-                    {
-                        // eh.Highlight();
-                        eh.status = true;
-                    }
-                    else if (before && !eh.showEnemies)
-                    {
-                        // eh.DeHighlight();
-                        eh.status = false;
-                    }
                 }
             }
         }

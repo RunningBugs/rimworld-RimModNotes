@@ -4,5 +4,20 @@
     <BCS_WeatherMachine.label>天气控制上行信号装置</BCS_WeatherMachine.label>
     <!-- Through use of complex algorithms, this device attempts to hack into defunct terraforming satellites to change the weather in a localized area.-->
     <BCS_WeatherMachine.description>通过破解停用的气象改造卫星，实现对本地天气的控制。</BCS_WeatherMachine.description>
-
+    <!-- EN: Clear -->
+    <BCS_WeatherMachine.comps.CompUsable-0.useLabel>晴</BCS_WeatherMachine.comps.CompUsable-0.useLabel>
+    <!-- EN: Rain -->
+    <BCS_WeatherMachine.comps.CompUsable-1.useLabel>雨</BCS_WeatherMachine.comps.CompUsable-1.useLabel>
+    <!-- EN: Rainy Thunderstorm -->
+    <BCS_WeatherMachine.comps.CompUsable-2.useLabel>暴风雨</BCS_WeatherMachine.comps.CompUsable-2.useLabel>
+    <!-- EN: Dry Thunderstorm -->
+    <BCS_WeatherMachine.comps.CompUsable-3.useLabel>旱天雷</BCS_WeatherMachine.comps.CompUsable-3.useLabel>
+    <!-- EN: Foggy Rain -->
+    <BCS_WeatherMachine.comps.CompUsable-4.useLabel>雾雨</BCS_WeatherMachine.comps.CompUsable-4.useLabel>
+    <!-- EN: Foggy -->
+    <BCS_WeatherMachine.comps.CompUsable-5.useLabel>雾</BCS_WeatherMachine.comps.CompUsable-5.useLabel>
+    <!-- EN: Blizzard -->
+    <BCS_WeatherMachine.comps.CompUsable-6.useLabel>大雪</BCS_WeatherMachine.comps.CompUsable-6.useLabel>
+    <!-- EN: Snow -->
+    <BCS_WeatherMachine.comps.CompUsable-7.useLabel>小雪</BCS_WeatherMachine.comps.CompUsable-7.useLabel>
 </LanguageData>
