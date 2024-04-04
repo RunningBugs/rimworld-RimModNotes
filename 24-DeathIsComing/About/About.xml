@@ -25,5 +25,5 @@
 		<!-- <li>username.modname</li> -->
 	</loadAfter>
 
-	<description>每天殖民地会被死神点名一个人，如果是孕妇，会流产，否则小人会死亡 The God of Death will target one colonist in your colony everyday. If the targeted pawn is pregnant, then she will get an abortion, otherwise he/she will die. </description>
+	<description>每天殖民地会被死神点名一个人，不会点名孕妇，被点名的小人会死亡 The God of Death will target one colonist in your colony everyday. If the targeted pawn is pregnant, then she will survive, otherwise he/she will die.</description>
 </ModMetaData>

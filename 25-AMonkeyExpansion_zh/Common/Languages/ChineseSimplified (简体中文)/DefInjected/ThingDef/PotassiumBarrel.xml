@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: potassium barrel -->
+  <BART_Potassium.label>储钾桶</BART_Potassium.label>
+  <!-- EN: A container filled with banana slurry. The sheer amounts of potassium in these bananas gives it great potential in power generation and production of high grade banana-based items, but also gives it great potential in exploding in a fireball. -->
+  <BART_Potassium.description>盛满香蕉泥的容器。香蕉里富含的大量钾使得它有巨大的潜力产电和高质量的香蕉产品，但也给了它巨大的爆炸性。</BART_Potassium.description>
+  
+</LanguageData>

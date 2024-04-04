@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: cook fine banana meal -->
+  <ARCCCookBananaMealFine.label>烹饪精致香蕉大餐</ARCCCookBananaMealFine.label>
+  <!-- EN: Cook a fine banana meal composed of carefully prepared bananas and protein. -->
+  <ARCCCookBananaMealFine.description>精心烹饪一顿香蕉大餐，食谱含有香蕉和蛋白质</ARCCCookBananaMealFine.description>
+  <!-- EN: Cooking fine banana meal. -->
+  <ARCCCookBananaMealFine.jobString>正在烹饪精致香蕉大餐</ARCCCookBananaMealFine.jobString>
+  
+  <!-- EN: cook fine banana meal x4 -->
+  <ARCCCookBananaMealFineBulk.label>烹饪精致香蕉大餐 x4</ARCCCookBananaMealFineBulk.label>
+  <!-- EN: Cook a bulk recipe of fine banana meals composed of carefully prepared bananas and protein. -->
+  <ARCCCookBananaMealFineBulk.description>大锅烹饪批量的精致香蕉大餐，食谱含有香蕉和蛋白质</ARCCCookBananaMealFineBulk.description>
+  <!-- EN: Cooking fine banana meal x4. -->
+  <ARCCCookBananaMealFineBulk.jobString>正在烹饪四份精致香蕉大餐</ARCCCookBananaMealFineBulk.jobString>
+  
+  <!-- EN: cook lavish banana meal -->
+  <ARCCCookBananaMealLavish.label>烹饪奢华香蕉大餐</ARCCCookBananaMealLavish.label>
+  <!-- EN: Cook a lavish banana meal composed of masterfully prepared bananas and protein, with extra care taken to make sure the flavor is balanced. -->
+  <ARCCCookBananaMealLavish.description>由厨艺大师精心处理的香蕉和蛋白质，制作一份奢华的香蕉大餐，完美体现了各种味道的平衡</ARCCCookBananaMealLavish.description>
+  <!-- EN: Cooking lavish banana meal. -->
+  <ARCCCookBananaMealLavish.jobString>正在烹饪奢华香蕉大餐</ARCCCookBananaMealLavish.jobString>
+  
+  <!-- EN: cook lavish banana meal x4 -->
+  <ARCCCookBananaMealLavishBulk.label>烹饪奢华香蕉大餐 x4</ARCCCookBananaMealLavishBulk.label>
+  <!-- EN: Move around the kitchen with rapid efficiency and skill to cook a bulk recipe of lavish banana meals composed of masterfully prepared bananas and protein, with extra care taken to make sure the flavor is balanced. -->
+  <ARCCCookBananaMealLavishBulk.description>厨艺大师高效迅速地批量制作奢华的香蕉大餐，依旧使用精心处理的香蕉和蛋白质，味道平衡一点也不逊色于单独制作的大餐</ARCCCookBananaMealLavishBulk.description>
+  <!-- EN: Cooking lavish banana meal x4. -->
+  <ARCCCookBananaMealLavishBulk.jobString>正在烹饪奢华香蕉大餐 x4</ARCCCookBananaMealLavishBulk.jobString>
+  
+  <!-- EN: cook simple banana meal -->
+  <ARCCCookBananaMealSimple.label>制作简单香蕉食品</ARCCCookBananaMealSimple.label>
+  <!-- EN: Cook a banana meal. -->
+  <ARCCCookBananaMealSimple.description>烹饪一份简单的香蕉食品</ARCCCookBananaMealSimple.description>
+  <!-- EN: Cooking simple banana meal. -->
+  <ARCCCookBananaMealSimple.jobString>正在烹饪一份简单的香蕉食品</ARCCCookBananaMealSimple.jobString>
+  
+  <!-- EN: cook simple banana meal x4 -->
+  <ARCCCookBananaMealSimpleBulk.label>烹饪简单香蕉食品 x4</ARCCCookBananaMealSimpleBulk.label>
+  <!-- EN: Cook a bulk recipe of banana meals. -->
+  <ARCCCookBananaMealSimpleBulk.description>批量烹饪简单香蕉食品</ARCCCookBananaMealSimpleBulk.description>
+  <!-- EN: Cooking simple banana meal x4. -->
+  <ARCCCookBananaMealSimpleBulk.jobString>正在烹饪简单香蕉食品 x4</ARCCCookBananaMealSimpleBulk.jobString>
+  
+</LanguageData>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: adonana bricks -->
+  <ARCCAdonana.label>阿蕉砖</ARCCAdonana.label>
+  <!-- EN: Bananas mashed together and pressed into a brick shape. It is somewhat soft and fragile, but the process of compressing and the high moisture content of the bananas have made the bricks nonflammable. -->
+  <ARCCAdonana.description>将香蕉捣碎并压成砖状。 它有点软且易碎，但压制程序和香蕉的高水分含量使砖块不易燃。</ARCCAdonana.description>
+  
+  <!-- EN: banana peel leather -->
+  <ARCCBananaLeather.label>香蕉真皮</ARCCBananaLeather.label>
+  <!-- EN: A sort of leather made from tanning and drying banana peels into one large piece of material. It is surprisingly durable despite its questionable origins. -->
+  <ARCCBananaLeather.description>一种由香蕉皮鞣制和干燥制成的一大块材料制成的皮革。尽管香蕉似乎不结实，但它却出奇地耐用。</ARCCBananaLeather.description>
+  
+  <!-- EN: bananium -->
+  <ARCCBananium.label>香蕉合金</ARCCBananium.label>
+  <!-- EN: Advanced spacer tech structural material. Bananium has remarkable strength and durability due to being enhanced with pure potassium power. -->
+  <ARCCBananium.description>高级太空科技材料。香蕉合金有着极高的强度和硬度，因为使用了钾的工艺进行了加强。（强度类似玻璃钢）</ARCCBananium.description>
+  
+  <!-- EN: zombie chunks -->
+  <ARCCZombieChunks.label>僵尸块</ARCCZombieChunks.label>
+  <!-- EN: Pieces of miscellaneous meat from an undead. Perhaps they have a use. -->
+  <ARCCZombieChunks.description>来自不死者的各种肉块。也许有某种用法。</ARCCZombieChunks.description>
+  
+</LanguageData>

@@ -5,10 +5,11 @@
 		<label>Death is Coming</label>
 		<targetTags>
 		  <li>Map_PlayerHome</li>
+		  <li>Map_Misc</li>
 		</targetTags>
 		<workerClass>DIC.DIC_IncidentWorker_DeathComing</workerClass>
 		<category>Special</category>
 		<baseChance>0</baseChance>
-		<requireColonistsPresent>True</requireColonistsPresent>
+		<requireColonistsPresent>False</requireColonistsPresent>
 	  </IncidentDef>
 </Defs>

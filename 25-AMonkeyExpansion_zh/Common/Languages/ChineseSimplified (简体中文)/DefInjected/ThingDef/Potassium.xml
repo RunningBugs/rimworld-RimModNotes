@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: high velocity banana -->
+  <ARCCBullet_MiniTurret.label>高速香蕉弹</ARCCBullet_MiniTurret.label>
+  
+  <!-- EN: large potassium turret -->
+  <ARCCGun_BananaBigBoiTurret.label>大型钾炮</ARCCGun_BananaBigBoiTurret.label>
+  <!-- EN: A simple automatic gun made to be mounted on a turret. -->
+  <ARCCGun_BananaBigBoiTurret.description>一个简单的挂载于机枪塔的自动机炮</ARCCGun_BananaBigBoiTurret.description>
+  <!-- EN: large potassium turret -->
+  <ARCCGun_BananaBigBoiTurret.verbs.Verb_Shoot.label>大型钾炮</ARCCGun_BananaBigBoiTurret.verbs.Verb_Shoot.label>
+  
+  <!-- EN: small potassium turret -->
+  <ARCCGun_BananaMiniTurret.label>小型钾枪</ARCCGun_BananaMiniTurret.label>
+  <!-- EN: A simple automatic gun made to be mounted on a turret. -->
+  <ARCCGun_BananaMiniTurret.description>一个简单的挂载于机枪塔的自动机枪</ARCCGun_BananaMiniTurret.description>
+  <!-- EN: small potassium turret -->
+  <ARCCGun_BananaMiniTurret.verbs.Verb_Shoot.label>小型钾枪</ARCCGun_BananaMiniTurret.verbs.Verb_Shoot.label>
+  
+  <!-- EN: large potassium turret -->
+  <ARCCTurret_LargePotassiumTurret.label>大型自动钾炮塔</ARCCTurret_LargePotassiumTurret.label>
+  <!-- EN: A portable automatic turret. Draws ammunition directly from a potassium power grid system. Fires a large burst of high velocity bananas in the direction of any hostiles. Definitely beware of friendly fire. DO NOT LET THIS TURRET EXPLODE. The sheer amount of potassium coursing through this turret will create an explosion of devastating proportions if it were to be sufficiently damaged. -->
+  <ARCCTurret_LargePotassiumTurret.description>一个可移动的自动炮塔。可以直接从钾电网络中产生子弹。会向任意敌人射击大量的高速香蕉子弹。小心友军误伤。*一定不要让这个炮塔爆炸*。当此炮塔受到一定的伤害时，流经此塔的超量钾会造成毁灭性的爆炸。</ARCCTurret_LargePotassiumTurret.description>
+  <!-- EN: Cannot shoot: Needs more potassium -->
+  <ARCCTurret_LargePotassiumTurret.comps.CompRefuelable.outOfFuelMessage>无法射击：需要更多的钾</ARCCTurret_LargePotassiumTurret.comps.CompRefuelable.outOfFuelMessage>
+  
+  <!-- EN: potassium turret -->
+  <ARCCTurret_PotassiumTurret.label>钾炮</ARCCTurret_PotassiumTurret.label>
+  <!-- EN: A portable automatic turret. Draws ammunition directly from a potassium power grid system. Fires a burst of three high velocity bananas indiscriminately. May explode when damaged. -->
+  <ARCCTurret_PotassiumTurret.description>一个可移动的自动炮塔。直接从钾电系统中获取子弹。不分敌我的三连发高速香蕉子弹。损伤时可能会发生爆炸。</ARCCTurret_PotassiumTurret.description>
+  <!-- EN: Cannot shoot: Needs more potassium -->
+  <ARCCTurret_PotassiumTurret.comps.CompRefuelable.outOfFuelMessage>无法射击：需要更多的钾</ARCCTurret_PotassiumTurret.comps.CompRefuelable.outOfFuelMessage>
+  
+  <!-- EN: potassium pipe -->
+  <BART_PotassiumPipe.label>钾管道</BART_PotassiumPipe.label>
+  <!-- EN: Subterranean heavy steel pipes for transporting tasty banana slurry from shredders to generators or potassium tanks for storage. -->
+  <BART_PotassiumPipe.description>地下重型钢铁管道，用于传输美味的香蕉泥。蕉泥可以来自粉碎机，产生器或者储钾罐。</BART_PotassiumPipe.description>
+  
+  <!-- EN: potassium shredder -->
+  <BART_PotassiumShredder.label>钾粉碎机</BART_PotassiumShredder.label>
+  <!-- EN: A shredder machine usually meant for crushing scrap, now designed for crushing bananas into a potassium rich slurry. If connected to a potassium pipeline, it will transport the delicious liquid to facilities that use it, such as storage containers or power generators. -->
+  <BART_PotassiumShredder.description>一个用于粉碎物品的粉碎机，被设计用于粉碎香蕉产生富集钾的泥。如果连接到钾管道，会把这种美味液泥传输到使用它的设施，比如存储容器或者电力产生器。</BART_PotassiumShredder.description>
+  
+  <!-- EN: potassium tank -->
+  <BART_PotassiumTank.label>储钾罐</BART_PotassiumTank.label>
+  <!-- EN: An industrial tank designed to store delicious banana-based slurry inside. If needed, the tanks can dispense containers of banana slurry or transfer its contents to other containers. \n\nWARNING: This potassium slurry is highly reactive. If the storage container is breached, the slurry will react with the air around it and create a massive explosion relative to the amount of slurry inside the container. -->
+  <BART_PotassiumTank.description>一个工业储藏罐，用于储存美味的香蕉泥。需要的时候，可以从其中提取香蕉泥或者把其内容物转移到其他的容器中。\n\n警告：钾泥非常容易反应。如果存储容器受损，钾泥会接触到空气并产生一个巨型爆炸！爆炸由容器中钾泥的含量相关。</BART_PotassiumTank.description>
+  
+  <!-- EN: industrial potassium powered generator -->
+  <IndustrialPotassiumPoweredGenerator.label>工业钾电产生器</IndustrialPotassiumPoweredGenerator.label>
+  <!-- EN: Produces power from thermal energy. The generator introduces water into the pool of potassium-rich slurry, creating explosions that power the generator. This would normally never be safe to ever use in a practical sense due to the generation of highly explosive hydrogen, but superior banana engineering prevents the generator exploding in a giant fireball. This variant produces energy slightly more efficiently than its smaller counterpart. -->
+  <IndustrialPotassiumPoweredGenerator.description>将热能转化为电能。这个电力产生器将水与富钾泥混合，产生微型爆炸从而产电。常理而言，因为产生高爆性的氢气，这总有些危险，但是高级香蕉科技防止产生器爆炸成巨型火球。这个型号的产生器比小号的效能微高。</IndustrialPotassiumPoweredGenerator.description>
+  
+  <!-- EN: potassium powered generator -->
+  <PotassiumPoweredGenerator.label>钾电产生器</PotassiumPoweredGenerator.label>
+  <!-- EN: Produces power from thermal energy. The generator introduces water into the pool of potassium-rich slurry, creating explosions that power the generator. This would normally never be safe to ever use in a practical sense due to the generation of highly explosive hydrogen, but superior banana engineering prevents the generator exploding in a giant fireball. -->
+  <PotassiumPoweredGenerator.description>将热能转化为电能。这个电力产生器将水与富钾泥混合，产生微型爆炸从而产电。常理而言，因为产生高爆性的氢气，这总有些危险，但是高级香蕉科技防止产生器爆炸成巨型火球。</PotassiumPoweredGenerator.description>
+  
+  <!-- EN: filtered potassium powered lamp -->
+  <PotassiumStandingLamp.label>滤光钾灯</PotassiumStandingLamp.label>
+  <!-- EN: This lamp harnesses the power of banana sludge to output a huge area of light. Perfect for lighting up large areas of darkness. The light system has some extra tuning and refinement in order to emit light that will not hurt anyone's eyes. -->
+  <PotassiumStandingLamp.description>这种灯利用香蕉泥的力量来产生大面积的光。非常适合照亮大片黑暗区域。灯光系统进行了一些额外的调整和改进，以发出不会伤害任何人眼睛的光线。</PotassiumStandingLamp.description>
+  
+  <!-- EN: potassium powered lamp -->
+  <PotassiumStandingLampYellow.label>钾灯</PotassiumStandingLampYellow.label>
+  <!-- EN: This lamp harnesses the power of banana sludge to output a huge area of light. Perfect for lighting up large areas of darkness. This lamp is not for the faint of heart, as the sheer yellowness of the light produced by this lamp has been known to cause permanent blindness. This lamp has a slightly larger radius, but is it really worth the searing neon yellow coursing through your retinas whenever you just happen to glance at it? -->
+  <PotassiumStandingLampYellow.description>这种灯利用香蕉泥的力量来产生大面积的光。非常适合照亮大片黑暗区域。胆小鬼不配使用这种灯，这盏灯产生的黄色光会导致永久性失明。这种灯照亮范围很大，但是是否值得不小心瞥见它时，穿透视网模的黄光产生的伤害？</PotassiumStandingLampYellow.description>
+  
+</LanguageData>

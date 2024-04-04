@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: cure scaria with banacea -->
+  <CureScariaBanacea.label>使用香蕉神药治疗疤痕</CureScariaBanacea.label>
+  <!-- EN: Use banacea's special properties to cure scaria. -->
+  <CureScariaBanacea.description>使用香蕉神药的神效来治疗疤痕</CureScariaBanacea.description>
+  <!-- EN: Curing scaria with banacea. -->
+  <CureScariaBanacea.jobString>正在使用香蕉神药治疗疤痕</CureScariaBanacea.jobString>
+  <!-- EN: {0} has successfully cured {1}'s scaria using banacea. -->
+  <CureScariaBanacea.successfullyRemovedHediffMessage>{0}成功地使用香蕉神药治好了{1}的疤痕</CureScariaBanacea.successfullyRemovedHediffMessage>
+  
+</LanguageData>

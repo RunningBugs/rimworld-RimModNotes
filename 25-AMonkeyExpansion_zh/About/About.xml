@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.AMonkeyExpansionZh</packageId>
+	<name>A Monkey Expansion 简体中文翻译</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.4</li>
+		<li>1.5</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>zal.monketime</packageId>
+			<displayName>A Monkey Expansion (Continued)</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3166737970</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<!-- <li>username.modname</li> -->
+	</loadAfter>
+
+	<description>A Monkey Expansion (Continued) 还是挺有趣的，但是没有中文翻译，只能自己做一个翻译了。另外，强烈推荐骸鸾的 提取翻译 模组 （Extract translation）做翻译实在是太方便了。</description>
+</ModMetaData>

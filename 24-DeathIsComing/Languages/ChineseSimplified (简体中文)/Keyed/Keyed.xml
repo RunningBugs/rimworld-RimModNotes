@@ -3,6 +3,6 @@
   
     <DeathKill>死神愉快地带走了可怜的{0}</DeathKill>
     <DeathNoKill>死神没有找到任何人，在无能狂怒</DeathNoKill>
-    <DeathWatching>死神盯上了你的殖民地，每天将带走一个未怀孕的殖民者</DeathWatching>
-  
+    <DeathWatching>死神盯上了你的殖民地，每次将带走一个未怀孕的殖民者</DeathWatching>
+    <DeathComing>死神降临</DeathComing>
 </LanguageData>

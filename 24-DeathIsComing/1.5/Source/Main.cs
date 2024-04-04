@@ -15,7 +15,7 @@ using RimWorld;
 using RimWorld.Planet;
 
 // using System.Reflection;
-// using HarmonyLib;
+using HarmonyLib;
 
 namespace DIC
 {
@@ -50,6 +50,15 @@ namespace DIC
     }
 
 
+    [HarmonyPatch(typeof(DIC_IncidentWorker_DeathComing), "CanFireNow")]
+    public class ForceFirePatch {
+        public static bool Prefix(ref bool __result) {
+            __result = true;
+            return false;
+        }
+    }
+
+
     class DIC_IncidentWorker_DeathComing : IncidentWorker
     {
         protected override bool CanFireNowSub(IncidentParms parms)
@@ -59,14 +68,7 @@ namespace DIC
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
-            // var gc = Current.Game.GetComponent<DIC_GameComponent>();
-            // if (gc.DeathMercy)
-            // {
-            //     Messages.Message("DeathWatching".Translate(), MessageTypeDefOf.NeutralEvent);
-            //     gc.DeathMercy = false;
-            //     return true;
-            // }
-
+            // Messages.Message("DeathComing".Translate(), MessageTypeDefOf.NeutralEvent);
             var allPawnsToChoose = new List<Pawn>();
             Find.Maps.ForEach(map =>
             {

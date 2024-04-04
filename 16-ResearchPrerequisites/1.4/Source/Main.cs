@@ -108,6 +108,11 @@ namespace ResearchPrerequisites
 				researchQueue.RemoveAt(0);
 				research = GetNextResearch();
 			}
+
+			if (!research.TechprintRequirementMet) {
+				researchQueue.Clear();
+				return null;
+			}
 			return research;
 		}
 

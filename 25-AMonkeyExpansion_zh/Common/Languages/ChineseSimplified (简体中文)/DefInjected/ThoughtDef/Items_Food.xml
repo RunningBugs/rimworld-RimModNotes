@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: banana flavor -->
+  <ARCCBananaIngredient.stages.banana_flavor.label>美味的香蕉</ARCCBananaIngredient.stages.banana_flavor.label>
+  <!-- EN: The fruitiness of bananas shockingly goes rather well with this! -->
+  <ARCCBananaIngredient.stages.banana_flavor.description>香蕉如此地好吃！</ARCCBananaIngredient.stages.banana_flavor.description>
+  
+  <!-- EN: ate fine banana meal -->
+  <AteFineBananaMeal.stages.ate_fine_banana_meal.label>吃精致香蕉大餐</AteFineBananaMeal.stages.ate_fine_banana_meal.label>
+  <!-- EN: What a tasty dish. Who knew that bananas and protein could taste so good together! -->
+  <AteFineBananaMeal.stages.ate_fine_banana_meal.description>多么美味的大餐！没想到香蕉和蛋白质的组合竟如此的好吃！</AteFineBananaMeal.stages.ate_fine_banana_meal.description>
+  
+  <!-- EN: ate lavish banana meal -->
+  <AteLavishBananaMeal.stages.ate_lavish_banana_meal.label>吃奢华香蕉大餐</AteLavishBananaMeal.stages.ate_lavish_banana_meal.label>
+  <!-- EN: The spectrum of banana flavors are indescribable. It is as if I experienced tasting a banana for the first time a dozen times over. Truly a meal fit for the highest echelons of power for any cultured civilization. -->
+  <AteLavishBananaMeal.stages.ate_lavish_banana_meal.description>香蕉真的是太美味啦！就像很久之前我第一次吃到香蕉一样！对于任何文明人来说都是最高档次的享受！</AteLavishBananaMeal.stages.ate_lavish_banana_meal.description>
+  
+  <!-- EN: ate simple banana meal -->
+  <AteSimpleBananaMeal.stages.ate_simple_banana_meal.label>吃简单香蕉食品</AteSimpleBananaMeal.stages.ate_simple_banana_meal.label>
+  <!-- EN: I do like me a good banana. -->
+  <AteSimpleBananaMeal.stages.ate_simple_banana_meal.description>我确实挺喜欢吃香蕉的。</AteSimpleBananaMeal.stages.ate_simple_banana_meal.description>
+  
+</LanguageData>

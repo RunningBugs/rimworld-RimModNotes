@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: advanced banana power -->
+  <ARCC_AdvancedBananaPower.label>高级蕉电</ARCC_AdvancedBananaPower.label>
+  <!-- EN: Study and refine potassium processing machinery in order to discover more efficient ways of producing potassium based power, as well as some unique ways to harness the banana sludge for other purposes. -->
+  <ARCC_AdvancedBananaPower.description>研究改进钾的加工工艺，以发现更高效产生钾电的方法，以及一些将蕉泥再利用的方式。</ARCC_AdvancedBananaPower.description>
+  
+  <!-- EN: banana curing -->
+  <ARCC_BanaceaResearch.label>医疗蕉</ARCC_BanaceaResearch.label>
+  <!-- EN: Examine basic anti scaria techniques and see if they can be reproduced with a mix of bananas and zombie bits. -->
+  <ARCC_BanaceaResearch.description>研究基础的抗疤痕技术，尝试使用香蕉和僵尸因子来重现</ARCC_BanaceaResearch.description>
+  
+  <!-- EN: banana gastronomy -->
+  <ARCC_BananaCooking.label>“香”蕉</ARCC_BananaCooking.label>
+  <!-- EN: Examine basic cooking principles and see if they can be replicated with bananas. -->
+  <ARCC_BananaCooking.description>研究基础食谱，尝试使用香蕉来替代一些食材</ARCC_BananaCooking.description>
+  
+  <!-- EN: banana power -->
+  <ARCC_BananaPower.label>蕉电</ARCC_BananaPower.label>
+  <!-- EN: Harness the power of bananas and potassium to produce an explosive compound of banana slurry, which has uses ranging from powering your base to producing special banana items. -->
+  <ARCC_BananaPower.description>利用蕉和钾来产生大量的香蕉泥。蕉泥用途广泛，可以发电，也可以生产特殊的香蕉产品。</ARCC_BananaPower.description>
+  
+  <!-- EN: potassium security -->
+  <ARCC_BananaSecurity.label>钾防</ARCC_BananaSecurity.label>
+  <!-- EN: Harness the power of potassium to defend your base. Research turrets that will draw ammo directly from your potassium power grid to fire high velocity bananas at all who dare oppose you. -->
+  <ARCC_BananaSecurity.description>使用钾的力量防御基地。研究能够产生高速香蕉子弹的钾电炮塔来对抗胆敢反对你的敌人。</ARCC_BananaSecurity.description>
+  
+  <!-- EN: banana sowing -->
+  <ARCC_BananaSowing.label>香蕉种植</ARCC_BananaSowing.label>
+  <!-- EN: Learn how to grow banana trees, which produce delicious delicious bananas. -->
+  <ARCC_BananaSowing.description>研究如何种植香蕉树，可以收获美味的香蕉。</ARCC_BananaSowing.description>
+  
+  <!-- EN: basic banana weapons -->
+  <ARCC_BasicBananaWeapons.label>基础香蕉武器</ARCC_BasicBananaWeapons.label>
+  <!-- EN: Use basic weapon smithing concepts to create relatively basic banana based weaponry. -->
+  <ARCC_BasicBananaWeapons.description>使用基础武器锻造的技术，来制作相对基础的香蕉武器。</ARCC_BasicBananaWeapons.description>
+  
+  <!-- EN: intermediate banana weapons -->
+  <ARCC_IntermediateBananaWeapons.label>中级香蕉武器</ARCC_IntermediateBananaWeapons.label>
+  <!-- EN: Utilize the power of the potassium slurry you have researched to create highly explosive weaponry. -->
+  <ARCC_IntermediateBananaWeapons.description>使用已经研究好的钾泥来创造爆炸武器。</ARCC_IntermediateBananaWeapons.description>
+  
+</LanguageData>

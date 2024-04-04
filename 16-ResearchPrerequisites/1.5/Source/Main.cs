@@ -124,6 +124,10 @@ namespace ResearchPrerequisites
 				researchQueue.RemoveAt(0);
 				research = GetNextResearchCanStart();
 			}
+			if (!research.TechprintRequirementMet) {
+				researchQueue.Clear();
+				return null;
+			}
 			if (researchQueue.Count > 0 && !CanStartNow(research))
 			{
 				researchQueue.RemoveAt(0);

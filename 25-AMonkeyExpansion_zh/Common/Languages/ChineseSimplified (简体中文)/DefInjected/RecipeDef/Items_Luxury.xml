@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: make banana smoothie x4 -->
+  <ARCCMakeBananaSmoothie.label>制作香蕉奶昔 x4</ARCCMakeBananaSmoothie.label>
+  <!-- EN: Blend a bunch of bananas into a delicious slurry, chill it, and pour it in cups. And of course place the mini umbrellas and straws in. It just wouldn't be tropical if those two elements were absent. -->
+  <ARCCMakeBananaSmoothie.description>将一些香蕉打碎成美味的糊状，冷藏后倒入杯中。当然一定要加上附赠的小伞和吸管。没有小伞和吸管可完全不像热带风格。</ARCCMakeBananaSmoothie.description>
+  <!-- EN: Cooking lavish banana meal x4. -->
+  <ARCCMakeBananaSmoothie.jobString>正在制作香蕉奶昔 x4</ARCCMakeBananaSmoothie.jobString>
+  
+  <!-- EN: make banana smoothie x20 -->
+  <ARCCMakeBananaSmoothieBulk.label>制作香蕉奶昔 x20</ARCCMakeBananaSmoothieBulk.label>
+  <!-- EN: Blend an unreasonable amount of bananas into a slurry, chill the massive pitcher of smoothie, and serve all of it in cups. And obviously place the mini umbrellas and straws in. It just wouldn't be tropical if those two elements were absent. -->
+  <ARCCMakeBananaSmoothieBulk.description>将巨量的香蕉打碎成美味的糊状，冷藏后倒入杯中。当然一定要加上附赠的小伞和吸管。没有小伞和吸管可完全不像热带风格。</ARCCMakeBananaSmoothieBulk.description>
+  <!-- EN: Cooking lavish banana meal. -->
+  <ARCCMakeBananaSmoothieBulk.jobString>正在制作香蕉奶昔 x20</ARCCMakeBananaSmoothieBulk.jobString>
+  
+</LanguageData>

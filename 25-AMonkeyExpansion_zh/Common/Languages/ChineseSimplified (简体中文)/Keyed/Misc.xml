@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: Extract potassium -->
+  <BART_ExtractPotassium>提取钾质</BART_ExtractPotassium>
+  <!-- EN: Extract potassium from the tank. A pawn will come to extract it. -->
+  <BART_ExtractPotassiumDesc>从容器中提取钾质。会有人过来做这个的。</BART_ExtractPotassiumDesc>
+</LanguageData>

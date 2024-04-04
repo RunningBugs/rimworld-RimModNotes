@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: ironpalm fronds -->
+  <ARCCIronpalmFronds.label>铁棕榈叶</ARCCIronpalmFronds.label>
+  <!-- EN: Leaves that appear fragile. Their delicate appearance belies their utility and strength. Capable of being tightly woven and seen into a durable mesh, these fronds are fire resistant and can retain temperature remarkably well. -->
+  <ARCCIronpalmFronds.description>似乎非常易碎的叶子。独特的形状掩盖了其强度和用途。可以紧密的编织形成一种耐用的网状结构，这些叶子防火并能很好的保持温度。</ARCCIronpalmFronds.description>
+  
+  <!-- EN: banana tree -->
+  <ARCCPlant_TreeBanana.label>香蕉树</ARCCPlant_TreeBanana.label>
+  <!-- EN: A tropical tree that produces bananas, genetically engineered to well... make the bananas it produces very special, and survive in slightly less-warm climates. These banana trees do not wither away and die when their fruit is harvested. -->
+  <ARCCPlant_TreeBanana.description>一种热带树林，可以产香蕉，经过基因工程的改造，能产生特殊的香蕉，并在不那么温暖的环境中生长。香蕉树被收获后，不会枯萎和死亡。</ARCCPlant_TreeBanana.description>
+  
+  <!-- EN: ironpalm -->
+  <ARCCPlant_TreeIronPalm.label>铁棕榈</ARCCPlant_TreeIronPalm.label>
+  <!-- EN: A genetically modified banana tree. It has tragically lost the ability to produce delicious banana fruit, now producing hard and unappetizing seed pods. This tree is instead focused on developing highly durable palm fronds, hence why the tree is dubbed "ironpalm." These fronds are durable enough to be used in tailoring as an stronger alternative to cloth, making this material a popular choice on midworlds. -->
+  <ARCCPlant_TreeIronPalm.description>基因改造后的香蕉树。非常不幸地失去了产生美味香蕉的能力，现在只能产生坚硬并不好吃的种子荚。现在这种树专长于产生高耐用的叶子，因此也被称为“铁棕榈”。这些叶子可以被织成替代布的强质织物，在中世纪世界是一种常见的选择。</ARCCPlant_TreeIronPalm.description>
+  
+  <!-- EN: bananas -->
+  <ARCCRawBananas.label>香蕉</ARCCRawBananas.label>
+  <!-- EN: Delicious bananas. Nice to eat on their own. They are botanically classed as berries. -->
+  <ARCCRawBananas.description>非常美味的香蕉。直接吃也非常好吃。植物学上界定为莓果。</ARCCRawBananas.description>
+  
+</LanguageData>

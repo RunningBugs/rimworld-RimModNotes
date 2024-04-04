@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: banana peel -->
+  <ARCCBananaTrap.label>香蕉皮陷阱</ARCCBananaTrap.label>
+  <!-- EN: A banana peel strategically placed on the ground. While it does little damage on its own, it causes enemies to slip and slide due to the natural gel secreted from banana peels. This slows the enemy down greatly. -->
+  <ARCCBananaTrap.description>地上放的一个香蕉皮。尽管没什么伤害，它可以让敌人滑倒，会极大的减速敌人。</ARCCBananaTrap.description>
+  
+</LanguageData>

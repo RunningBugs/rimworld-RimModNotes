@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- Misc -->
+  <!-- EN: {0} convinced {1} that Ape together strong! ({2} chance). -->
+  <RecruitSuccess>{0}说服了{1}，都是猩弟！（成功率{2}）。</RecruitSuccess>
+  <!-- EN: {0} failed to convince {1} that Ape together strong! ({2} chance). -->
+  <RecruitFail>{0}未能招募{1}（成功率{2}）。</RecruitFail>
+
+  <!-- Generalized letter labels -->
+  <!-- EN: Ape together strong: {0} -->
+  <LetterLabelRelationsChange_Ally>猩弟：{0}</LetterLabelRelationsChange_Ally>
+  <!-- EN: Ape divided weaker: {0} -->
+  <LetterLabelRelationsChange_NeutralFromAlly>猩弟的疏远（盟友转中立）：{0}</LetterLabelRelationsChange_NeutralFromAlly>
+  
+  <!-- Prison break -->
+  <!-- EN: Prisoners have staged a apeout! They've somehow defeated the door locks and are making their way out. They may seek weapons, fight, or try to escape. These prisoners are involved:\n\n{0}\n\nPrisoners are more likely to attempt breakout when they are numerous and healthy. -->
+  <LetterPrisonBreak>囚犯们不知如何撬开了门锁，正在越狱！他们可能找寻武器、战斗或者直接逃跑。越狱囚犯:\n\n{0}\n\n当囚犯人数众多或身体健康时更容易试图越狱。</LetterPrisonBreak>
+
+  <!-- Drug binge -->
+  <!-- EN: bananas for {0} -->
+  <LetterLabelDrugBinge>{0}滥用者——香蕉</LetterLabelDrugBinge>
+  <!-- EN: {2_label} is going bananas for {1}. -->
+  <LetterDrugBinge>{2_label}无法控制自己的欲望，正在超剂量吃香蕉{1}。</LetterDrugBinge>
+
+  <!-- Catatonic mental break -->
+  <!-- EN: {0} has suffered a total mental apedown and entered a catatonic state. {PAWN_pronoun} will recover in several days. -->
+  <LetterCatatonicMentalBreak>{0}的精神已彻底崩溃并陷入紧张性木僵状态。{PAWN_pronoun}会在数天后恢复。</LetterCatatonicMentalBreak>
+
+  <!-- Refugee joins -->
+  <!-- EN: A {PAWN_title} named {PAWN_nameDef} has arrived, they were heard shouting APE TOGETHER STRONG!. -->
+  <LetterRefugeeJoins>一个名为{PAWN_nameDef}的{PAWN_title}已经到达并认我们当猩弟！</LetterRefugeeJoins>
+  
+  <!-- Rescuee joins -->
+  <!-- EN: {PAWN_nameDef} is thankful that you rescued {PAWN_objective}. {PAWN_pronoun} agrees that ape together strong, and is joining your colony. -->
+  <LetterRescueeJoins>{PAWN_nameDef}感谢你救出了{PAWN_objective}。{PAWN_pronoun}觉得你们是好猩弟，{PAWN_pronoun}将加入你的殖民地。</LetterRescueeJoins>
+  
+</LanguageData>

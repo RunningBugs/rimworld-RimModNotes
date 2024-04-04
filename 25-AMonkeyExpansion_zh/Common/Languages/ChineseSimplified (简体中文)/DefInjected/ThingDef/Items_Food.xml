@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: fine banana meal -->
+  <ARCCBananaMealFine.label>精制香蕉大餐</ARCCBananaMealFine.label>
+  <!-- EN: A complex dish assembled with care from a variety of ingredients, but mostly of bananas. It takes great skill to make a palatable dish when it is mostly made of bananas. -->
+  <ARCCBananaMealFine.description>一个由多种食材组成的复杂食物，核心食材是香蕉。使用香蕉为核心制作美味的大餐可是相当难的。</ARCCBananaMealFine.description>
+  
+  <!-- EN: lavish banana meal -->
+  <ARCCBananaMealLavish.label>奢华香蕉大餐</ARCCBananaMealLavish.label>
+  <!-- EN: A masterpiece of cooking. No normal cook could reasonably hope to balance the flavor profile of a dish that uses as many bananas as this meal does, but a truly skilled chef has managed to strike that delicate balance. This meal is physical proof that just because one returns to monke does not necessarily mean that they must give up their cultured nature. -->
+  <ARCCBananaMealLavish.description>超人厨艺的完美体现。正常的烹饪手段完全无法指望能够像这顿大餐一样平衡各种味道，只有厨艺大师才能做到。这顿大餐证明了，回归自然不意味着失去了对美味的追求。</ARCCBananaMealLavish.description>
+  
+  <!-- EN: simple banana meal -->
+  <ARCCBananaMealSimple.label>简单的香蕉食品</ARCCBananaMealSimple.label>
+  <!-- EN: A simple meal cooked completely from bananas. -->
+  <ARCCBananaMealSimple.description>一个完全由香蕉制作的简单食品。</ARCCBananaMealSimple.description>
+  
+</LanguageData>

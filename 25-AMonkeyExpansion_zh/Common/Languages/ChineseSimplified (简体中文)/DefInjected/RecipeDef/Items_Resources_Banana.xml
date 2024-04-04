@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: make adonana bricks -->
+  <Make_ARCCAdonana.label>制作阿蕉砖</Make_ARCCAdonana.label>
+  <!-- EN: Mash, compress, and dry bananas into a type of adobe brick. -->
+  <Make_ARCCAdonana.description>将香蕉捣碎、压缩并干燥成一种粘土砖。</Make_ARCCAdonana.description>
+  <!-- EN: Cutting stone blocks from chunk. -->
+  <Make_ARCCAdonana.jobString>正在制作阿蕉砖。</Make_ARCCAdonana.jobString>
+  
+  <!-- EN: make adonana bricks in bulk -->
+  <Make_ARCCAdonanaBulk.label>批量制作阿蕉砖</Make_ARCCAdonanaBulk.label>
+  <!-- EN: Mash, compress, and dry lots of bananas into a type of adobe brick. -->
+  <Make_ARCCAdonanaBulk.description>将大量的香蕉捣碎、压缩并干燥成一种粘土砖。</Make_ARCCAdonanaBulk.description>
+  <!-- EN: Cutting stone blocks from chunk. -->
+  <Make_ARCCAdonanaBulk.jobString>正在批量制作阿蕉砖。</Make_ARCCAdonanaBulk.jobString>
+  
+  <!-- EN: make banana peel leather -->
+  <Make_ARCCBananaLeather.label>制作香蕉真皮</Make_ARCCBananaLeather.label>
+  <!-- EN: Dry and tan banana peels into a leathery material. -->
+  <Make_ARCCBananaLeather.description>将香蕉皮干燥并鞣制成皮革状材料。</Make_ARCCBananaLeather.description>
+  <!-- EN: Making banana leather. -->
+  <Make_ARCCBananaLeather.jobString>正在制作香蕉真皮。</Make_ARCCBananaLeather.jobString>
+  
+</LanguageData>

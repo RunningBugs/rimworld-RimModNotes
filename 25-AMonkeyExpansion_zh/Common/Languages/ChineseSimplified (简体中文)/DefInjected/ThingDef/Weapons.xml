@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: banana bomb arrow -->
+  <ARCCBananaBombArrow.label>香蕉爆炸箭</ARCCBananaBombArrow.label>
+  
+  <!-- EN: banana boom bow -->
+  <ARCCBananaBoomBow.label>香蕉爆炸弓</ARCCBananaBoomBow.label>
+  <!-- EN: A seemingly-primitive bow composed of fragile-looking bananas tied together. Any normal, reasonable individual would say that this is a terrible weapon and a downgrade from a standard wooden bow. And they would be right. But with banana technology, even downgrades are upgrades. While this bow is slower to nock and draw than most other bows, it can fire potassium-enriched explosive arrows. These arrows also have a high chance to leave behind a banana peel, creating even more problems for your enemy besides having an explosion rend their body to shreds. -->
+  <ARCCBananaBoomBow.description>一个似乎有些原始的弓，由几根看起来很易碎的香蕉连接组成。任何正常的，理性的人都会说这是一个垃圾武器，完全比不上普通的木头弓。他们可能说的对。但是使用香蕉科技，即使更低级也是一种升级。尽管这种弓射速比大部分其他弓慢，它可以射出富钾爆炸箭。这些箭也有很高的概率会留下一个香蕉皮，让你的敌人不仅会被炸成碎片，也会给他们带来更多麻烦。</ARCCBananaBoomBow.description>
+  <!-- EN: limb -->
+  <ARCCBananaBoomBow.tools.limb.label>弓臂</ARCCBananaBoomBow.tools.limb.label>
+  <!-- EN: banana boom bow -->
+  <ARCCBananaBoomBow.verbs.Verb_Shoot.label>香蕉爆炸弓</ARCCBananaBoomBow.verbs.Verb_Shoot.label>
+  
+  <!-- EN: dense banana -->
+  <ARCCBullet_Banana.label>高密度香蕉</ARCCBullet_Banana.label>
+  
+  <!-- EN: dense banana bunch -->
+  <ARCCGun_Banana.label>香蕉串</ARCCGun_Banana.label>
+  <!-- EN: A bunch of bananas that are meant to be thrown at an enemy. It achieves lethality by forcing the wielder to adopt a particular throwing technique that exploits the weaknesses of enemies. Or it could be the chunks of heavy adonana bricks that were stuffed inside the bananas causing that much damage. -->
+  <ARCCGun_Banana.description>一把用于向敌人投掷的香蕉。投掷者使用的特殊投掷技术，可以利用敌人的弱点，从而产生致命伤害。也可能是香蕉里填充的很重的阿蕉砖产生的伤害。</ARCCGun_Banana.description>
+  <!-- EN: banana -->
+  <ARCCGun_Banana.tools.banana.label>香蕉</ARCCGun_Banana.tools.banana.label>
+  <!-- EN: banana stem -->
+  <ARCCGun_Banana.tools.banana_stem.label>香蕉茎</ARCCGun_Banana.tools.banana_stem.label>
+  <!-- EN: dense banana bunch -->
+  <ARCCGun_Banana.verbs.Verb_Shoot.label>香蕉串</ARCCGun_Banana.verbs.Verb_Shoot.label>
+  
+</LanguageData>

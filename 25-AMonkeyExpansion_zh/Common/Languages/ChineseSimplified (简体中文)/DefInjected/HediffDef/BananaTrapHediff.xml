@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: slipped! -->
+  <Slipped.label>摔倒！</Slipped.label>
+  <!-- EN: Slipped on a banana peel -->
+  <Slipped.description>踩中香蕉皮摔倒了</Slipped.description>
+  
+</LanguageData>
