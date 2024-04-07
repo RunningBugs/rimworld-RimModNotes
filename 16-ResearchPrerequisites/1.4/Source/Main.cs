@@ -109,10 +109,20 @@ namespace ResearchPrerequisites
 				research = GetNextResearch();
 			}
 
-			if (!research.TechprintRequirementMet) {
+			if (research == null)
+			{
+				return null;
+			}
+
+			// if (!research.TechprintRequirementMet || !research.PlayerMechanitorRequirementMet || !research.PrerequisitesCompleted) {
+			// 	researchQueue.Clear();
+			// 	return null;
+			// }
+			if (!research.CanStartNow) {
 				researchQueue.Clear();
 				return null;
 			}
+
 			return research;
 		}
 

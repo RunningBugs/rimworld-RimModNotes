@@ -124,14 +124,26 @@ namespace ResearchPrerequisites
 				researchQueue.RemoveAt(0);
 				research = GetNextResearchCanStart();
 			}
-			if (!research.TechprintRequirementMet) {
-				researchQueue.Clear();
+
+			if (research == null)
+			{
 				return null;
 			}
-			if (researchQueue.Count > 0 && !CanStartNow(research))
-			{
-				researchQueue.RemoveAt(0);
-				research = GetNextResearchCanStart();
+
+			// if (!research.TechprintRequirementMet || !research.PlayerMechanitorRequirementMet || !research.AnalyzedThingsRequirementsMet || !research.PrerequisitesCompleted || !research.StudiedThingsRequirementsMet) {
+			// 	researchQueue.Clear();
+			// 	return null;
+			// }
+			
+			// if (researchQueue.Count > 0 && !CanStartNow(research))
+			// {
+			// 	researchQueue.RemoveAt(0);
+			// 	research = GetNextResearchCanStart();
+			// }
+
+			if (!research.CanStartNow) {
+				researchQueue.Clear();
+				return null;
 			}
 			return research;
 		}
