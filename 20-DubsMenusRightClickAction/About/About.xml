@@ -30,8 +30,14 @@
 		<li>dubwise.dubsmintmenus</li>
 	</loadAfter>
 
-	<description>给工作台的Dubs Mint Menus右边方格增加右键打开信息页的功能。配合上BetterInfoCard可以做到同时查看多个产物信息的效果。
+	<description>
+2024-04-09
+新增右键植物图标打开植物信息页功能。
 
-Adds a right click action to the right side of the Dubs Mint Menus workbench to open the info card. If you have BetterInfoCard installed, you can open InfoCard for multiple products at the same time.
+Add a right click action to the plant icon in the plant dialog to open the info card.
+------
+给工作台的Dubs Mint Menus右边方格增加右键打开信息页的功能。配合上BetterInfoCard可以做到同时查看多个产物信息的效果。
+
+Add a right click action to the right side of the Dubs Mint Menus workbench to open the info card. If you have BetterInfoCard installed, you can open InfoCard for multiple products at the same time.
 	</description>
 </ModMetaData>
