@@ -4,6 +4,24 @@ bin/
 
 mono_crash.*
 
+*.zip
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.lz
+*.tar.lzma
+*.tar.Z
+*.tar.zst
+*.tar
+*.7z
+*.rar
+*.gz
+*.bz2
+*.xz
+*.lz
+*.lzma
+*.Z
+*.zst
 
 # /*/Assemblies
 # /*/Assemblies/*.pdb
