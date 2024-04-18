@@ -55,6 +55,7 @@ namespace LetterStackCleaner
                 {
                     Find.LetterStack.RemoveLetter(letter);
                 }
+                SoundDefOf.Click.PlayOneShotOnCamera();
             }
         }
     }
