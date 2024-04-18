@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<PermanentDarkness.rulePack.rulesStrings>
+		<li>initialPhaseLetterLabel->昏暗的天空</li>
+		<li>initialPhaseLetterText->天空越来越暗。不久之后，在没有灯或者火把的直接照明下，就很难看到任何东西了。\n\n建造照明充足的区域，以便生存。制作干扰信号弹包，探索黑暗。</li>
+		<li>mainPhaseLetterLabel->无尽黑暗</li>
+		<li>mainPhaseLetterText->无尽黑暗正在降临。那些非人之物就在光明之外的地方活动。\n\n无论你能存活多长的时间，黑暗都不会自行消散。</li>
+	</PermanentDarkness.rulePack.rulesStrings>
+</LanguageData>

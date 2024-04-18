@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.AllowToolGhoulFix</packageId>
+	<name>AllowToolGhoulFix</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.5</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>unlimitedhugs.allowtool</packageId>
+			<displayName>Allow Tool</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=761421485</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<!-- <li>username.modname</li> -->
+	</loadAfter>
+
+	<description>
+This is a patch to fix allow tool causing Ghoul melee disabled issue. The mod is patch the FinishOff worktype def and remove the relevantSkills field.
+
+If you have other mods that has similar issue, you can do the same by changing their mod files. Allow Tool might not be the only mod that causes the issue.
+	</description>
+</ModMetaData>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: permanent darkness -->
+  <PermanentDarkness_Stage1.label>无尽黑暗（初期）</PermanentDarkness_Stage1.label>
+  <!-- EN: A psychic phenomenon affecting your colonists. The sky is cracking and dissolving, immersing the world in an unnatural darkness. This darkness will deepen and become dangerous over time. -->
+  <PermanentDarkness_Stage1.description>天空正在崩裂、消融，整个世界沉浸在无尽的黑暗之中。随着时间的推移，这种黑暗将逐渐加深并变得危险。</PermanentDarkness_Stage1.description>
+  
+  <!-- EN: permanent darkness -->
+  <PermanentDarkness_Stage2.label>无尽黑暗</PermanentDarkness_Stage2.label>
+  <!-- EN: A psychic phenomenon affecting your colonists. The sky itself appears to have collapsed, immersing the world in an unnatural darkness. Stay in the light. -->
+  <PermanentDarkness_Stage2.description>连天空本身似乎都坍塌了，整个世界沉浸在无尽的黑暗之中。请待在光亮处。</PermanentDarkness_Stage2.description>
+  
+</LanguageData>

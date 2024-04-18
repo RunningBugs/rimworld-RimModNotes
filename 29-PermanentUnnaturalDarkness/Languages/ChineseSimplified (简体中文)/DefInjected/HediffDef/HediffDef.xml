@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: darkness exposure @ PD_DarknessExposure -->
+  <PD_DarknessExposure.label>黑暗暴露</PD_DarknessExposure.label>
+  <!-- EN: This person is immersed in the unnatural darkness. Creatures or influences in the darkness will harm them if they stay too long. -->
+  <PD_DarknessExposure.description>此人暴露在无尽黑暗中。若是呆在里面太久会使他们受到黑暗生物或力量的伤害。</PD_DarknessExposure.description>
+  <!-- EN: This person is immersed in the unnatural darkness. Creatures or influences in the darkness will harm them if they stay too long. -->
+  <!-- <PD_DarknessExposure.descriptionCached>TODO</PD_DarknessExposure.descriptionCached> -->
+  
+</LanguageData>

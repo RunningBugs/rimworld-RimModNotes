@@ -130,18 +130,8 @@ namespace ResearchPrerequisites
 				return null;
 			}
 
-			// if (!research.TechprintRequirementMet || !research.PlayerMechanitorRequirementMet || !research.AnalyzedThingsRequirementsMet || !research.PrerequisitesCompleted || !research.StudiedThingsRequirementsMet) {
-			// 	researchQueue.Clear();
-			// 	return null;
-			// }
-			
-			// if (researchQueue.Count > 0 && !CanStartNow(research))
-			// {
-			// 	researchQueue.RemoveAt(0);
-			// 	research = GetNextResearchCanStart();
-			// }
-
-			if (!research.CanStartNow) {
+			if (!research.CanStartNow)
+			{
 				researchQueue.Clear();
 				return null;
 			}
@@ -425,7 +415,11 @@ namespace ResearchPrerequisites
 			parameters = new object[] { rect7, selectedProject };
 			y += __instance.CallMethod<float>("DrawContentSource", ref parameters);
 
-			y += DrawResearchQueueInfo(new Rect(0f, y, viewRect.width, 500f));
+			_ = __instance.GetFieldOrProperty("curTabInt", out ResearchTabDef curTabInt);
+			if (!ModsConfig.AnomalyActive || curTabInt != ResearchTabDefOf.Anomaly)
+			{
+				y += DrawResearchQueueInfo(new Rect(0f, y, viewRect.width, 500f));
+			}
 
 			y += 3f;
 			// leftScrollViewHeight = y;
@@ -454,8 +448,17 @@ namespace ResearchPrerequisites
 		private static void DrawStartButton(MainTabWindow_Research __instance, Rect startButRect)
 		{
 			FieldInfo selectedProjectField = __instance.GetFieldOrProperty("selectedProject", out ResearchProjectDef selectedProject);
+			_ = __instance.GetFieldOrProperty("curTabInt", out ResearchTabDef curTabInt);
 			if (selectedProject.CanStartNow && !Find.ResearchManager.IsCurrentProject(selectedProject))
 			{
+				if (ModsConfig.AnomalyActive && curTabInt == ResearchTabDefOf.Anomaly)
+				{
+					if (Widgets.ButtonText(startButRect, "Research".Translate()))
+					{
+						ResearchQueueController.AttemptBeginResearch(selectedProject);
+					}
+					return;
+				}
 
 
 				if (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.LeftShift)
@@ -466,8 +469,6 @@ namespace ResearchPrerequisites
 				{
 					ResearchQueueController.mode = ResearchQueueController.ResearchButtonMode.Start;
 				}
-
-
 				if (ResearchQueueController.mode == ResearchQueueController.ResearchButtonMode.Start)
 				{
 					if (Widgets.ButtonText(startButRect, "Research".Translate()))
@@ -488,7 +489,6 @@ namespace ResearchPrerequisites
 
 				return;
 			}
-			_ = __instance.GetFieldOrProperty("curTabInt", out ResearchTabDef curTabInt);
 			if (!Find.ResearchManager.IsCurrentProject(selectedProject) && !selectedProject.IsFinished && !selectedProject.IsHidden && (!ModsConfig.AnomalyActive || curTabInt != ResearchTabDefOf.Anomaly))
 			{
 				//  Can add to queue
@@ -507,7 +507,10 @@ namespace ResearchPrerequisites
 			{
 				if (Widgets.ButtonText(startButRect, "StopResearch".Translate()))
 				{
-					ResearchQueue.researchQueue.Clear();
+					if (!ModsConfig.AnomalyActive || curTabInt != ResearchTabDefOf.Anomaly)
+					{
+						ResearchQueue.researchQueue.Clear();
+					}
 					Find.ResearchManager.StopProject(selectedProject);
 				}
 				return;

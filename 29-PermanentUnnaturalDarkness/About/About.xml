@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.PermanentDarkness</packageId>
+	<name>无尽黑暗 Permanent Darkness</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<!-- <li>1.4</li> -->
+		<li>1.5</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>Ludeon.RimWorld.Anomaly</packageId>
+			<displayName>RimWorld - Anomaly</displayName>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<li>Ludeon.RimWorld.Anomaly</li>
+	</loadAfter>
+
+	<description>
+Great thanks to 德国猎 for the great idea and testing!
+感谢B站UP主德国猎提供的想法和测试！
+
+Unnatural darkness covers your eyes, bites you in the dark, attracts anomaly creatures to attack your colony. But there's hope! We will fight! We can stay alive long enough! We will go beat the Noctolith and bring the light back to the world!
+异常黑暗会遮住你的双眼，伤害你的殖民者，吸引异常生物来攻击你的殖民地。但是我们还有希望！我们会战斗！我们可以撑得足够久！我们会去打败夜石，把光明带回世界！
+
+And that is no longer true... 
+这一切已经不再是真的了...
+
+Description:
+- Unnatural darkness covers the world, and it's permanent. Don't let your colonists go outside, or they will disappear in the permanent darkness.
+- There's no Noctolith to attck, there's no anomaly creatures attracted, and there's no way to lit up the world.
+
+描述：
+- 异常黑暗笼罩着世界，而且是永久的。不要让你的殖民者走到外面，否则他们会在永久黑暗中消失。
+- 没有黑柱能攻击，没有异常生物被吸引而来，也没有办法照亮世界。
+
+Add the permanent game condition by editing the scenario, called Permanent Darkness. It's only tested with permanent game condition.
+在剧本编辑器里添加永久游戏状态：永久黑暗。只在永久游戏状态下进行了测试。
+	</description>
+</ModMetaData>

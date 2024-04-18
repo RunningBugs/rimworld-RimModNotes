@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <WeatherDef Name="PermanentDarknessBase" Abstract="True">
+        <label>permanent darkness</label>
+        <isBad>true</isBad>
+        <canOccurAsRandomForcedEvent>false</canOccurAsRandomForcedEvent>
+        <favorability>VeryBad</favorability>
+        <perceivePriority>3</perceivePriority>
+        <!-- Same as clear night -->
+        <skyColorsDay>
+          <sky>(0.482, 0.603, 0.682)</sky>
+          <shadow>(0.85, 0.85, 0.85)</shadow>
+          <overlay>(0.6, 0.6, 0.6)</overlay>
+          <saturation>1.25</saturation>
+        </skyColorsDay>
+        <skyColorsDusk>
+          <sky>(0.482, 0.603, 0.682)</sky>
+          <shadow>(0.85, 0.85, 0.85)</shadow>
+          <overlay>(0.6, 0.6, 0.6)</overlay>
+          <saturation>1.25</saturation>
+        </skyColorsDusk>
+        <skyColorsNightEdge>
+          <sky>(0.482, 0.603, 0.682)</sky>
+          <shadow>(0.85, 0.85, 0.85)</shadow>
+          <overlay>(0.6, 0.6, 0.6)</overlay>
+          <saturation>1.25</saturation>
+        </skyColorsNightEdge>
+        <skyColorsNightMid>
+          <sky>(0.482, 0.603, 0.682)</sky>
+          <shadow>(0.85, 0.85, 0.85)</shadow>
+          <overlay>(0.6, 0.6, 0.6)</overlay>
+          <saturation>1.25</saturation>
+        </skyColorsNightMid>
+      </WeatherDef>
+
+    <WeatherDef ParentName="PermanentDarknessBase">
+        <defName>PermanentDarkness_Stage1</defName>
+        <description>A psychic phenomenon affecting your colonists. The sky is cracking and dissolving, immersing the world in an unnatural darkness. This darkness will deepen and become dangerous over time.</description>
+        <ambientSounds>
+            <li>Ambient_UnnaturalDarkness_Phase1</li>
+        </ambientSounds>
+    </WeatherDef>
+
+    <WeatherDef ParentName="PermanentDarknessBase">
+        <defName>PermanentDarkness_Stage2</defName>
+        <description>A psychic phenomenon affecting your colonists. The sky itself appears to have collapsed, immersing the world in an unnatural darkness. Stay in the light.</description>
+        <ambientSounds>
+            <li>Ambient_UnnaturalDarkness_Phase2</li>
+        </ambientSounds>
+    </WeatherDef>
+</Defs>

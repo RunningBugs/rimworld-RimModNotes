@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.SilencedToxifierGenerator</packageId>
+	<name>静音排污发电机 Silenced Toxifier Generator</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.4</li>
+		<li>1.5</li>
+	</supportedVersions>
+
+	<modDependencies>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<!-- <li>username.modname</li> -->
+	</loadAfter>
+
+	<description>
+本模组用于静音排污发电机。
+
+This mod is used to silence the Toxifier Generator.
+	</description>
+</ModMetaData>

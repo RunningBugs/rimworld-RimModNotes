@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <Operation Class="PatchOperationReplace" MayRequire="unlimitedhugs.allowtool">
+        <xpath>Defs/WorkTypeDef[defName="FinishingOff"]/relevantSkills</xpath>
+        <value>
+            <relevantSkills>
+            </relevantSkills>
+        </value>
+    </Operation>
+</Patch>

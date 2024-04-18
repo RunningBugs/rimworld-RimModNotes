@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <HediffDef>
+        <defName>PD_DarknessExposure</defName>
+        <label>darkness exposure</label>
+        <description>This person is immersed in the unnatural darkness. Creatures or influences in the darkness will harm them if they stay too long.</description>
+        <hediffClass>PermanentDarkness.PDHediff_DarknessExposure</hediffClass>
+        <everCurableByItem>false</everCurableByItem>
+        <stages>
+            <li>
+                <becomeVisible>true</becomeVisible>
+            </li>
+        </stages>
+    </HediffDef>
+</Defs>

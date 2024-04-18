@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <GameConditionDef>
+        <defName>PermanentDarkness</defName>
+        <conditionClass>PermanentDarkness.GameCondition_PermanentDarkness</conditionClass>
+        <label>permanent darkness</label>
+        <description>The world is blanketed by a layer of permanent darkness. From the inky blackness, one can hear the inhuman groaning of deadly creatures. Stay in the light.</description>
+        <weatherDef>PermanentDarkness_Stage1</weatherDef>
+        <preventNeutralVisitors>false</preventNeutralVisitors>
+        <preventIncidents>false</preventIncidents>
+        <canBePermanent>true</canBePermanent>
+        <displayOnUI>false</displayOnUI> <!--  Displayed by weather instead -->
+        <natural>false</natural>
+        <allowUnderground>true</allowUnderground>
+    </GameConditionDef>
+</Defs>
