@@ -74,7 +74,9 @@ public class PDHediff_DarknessExposure : Hediff
 			SoundDefOf.DarknessDamage.PlayOneShot(pawn);
 			BattleLogEntry_DamageTaken battleLogEntry_DamageTaken = new BattleLogEntry_DamageTaken(pawn, RulePackDefOf.DamageEvent_UnnaturalDarkness);
 			Find.BattleLog.Add(battleLogEntry_DamageTaken);
-			pawn.TakeDamage(new DamageInfo(RandomDamageDef, DamageRange.RandomInRange)).AssociateWithLog(battleLogEntry_DamageTaken);
+			var dinfo = new DamageInfo(RandomDamageDef, DamageRange.RandomInRange);
+			// dinfo.SetIgnoreArmor(true);
+			pawn.TakeDamage(dinfo).AssociateWithLog(battleLogEntry_DamageTaken);
 			nextDamageTick = Find.TickManager.TicksGame + DamageIntervalTicks_NonFresh.RandomInRange;
 			CheckNotifyPlayer();
 		}

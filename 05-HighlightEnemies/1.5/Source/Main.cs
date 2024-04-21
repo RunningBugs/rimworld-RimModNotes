@@ -27,26 +27,57 @@ namespace _HightlightEnemies
 {
     public class EnemyHighlighter : GameComponent
     {
-        public bool showEnemies = true;
+        public bool markEnemies = true;
+
+        private bool MarkInFog => HE_ModSettings.markEnemiesInFog;
+
+        private bool MarkInvisible => HE_ModSettings.markEnemiesInvisible;
+
         private Task lastTask = Task.CompletedTask;
 
         private DesignationDef desDef = DefDatabase<DesignationDef>.GetNamed("HE_Mark");
+
+        private HashSet<Thing> previousStatus = new HashSet<Thing>();
 
         public EnemyHighlighter(Game game) { }
 
         public override void FinalizeInit()
         {
+            markEnemies = HE_ModSettings.markEnemiesByDefault;
+        }
+
+        public void ResetStatus()
+        {
+            previousStatus.Clear();
         }
 
         public override void GameComponentTick()
         {
-            if (showEnemies)
+            if (markEnemies)
             {
                 Highlight();
             }
             else
             {
                 DeHighlight();
+            }
+        }
+
+        private void AddTo(Thing thing, HashSet<Thing> list)
+        {
+            if (thing != null && !list.Contains(thing))
+            {
+                if (!MarkInvisible && thing is Pawn p && p.IsPsychologicallyInvisible())
+                {
+                    return;
+                }
+
+                if (!MarkInFog && thing.Fogged())
+                {
+                    return;
+                }
+                Log.Message($"Add {thing.Label}");
+                list.Add(thing);
             }
         }
 
@@ -63,10 +94,10 @@ namespace _HightlightEnemies
                     var hostileThings = new HashSet<Thing>();
                     foreach (var thing in things)
                     {
-
-                        if (GenHostility.HostileTo(thing, Faction.OfPlayer) && manager.DesignationOn(thing, desDef) == null)
+                        if (GenHostility.HostileTo(thing, Faction.OfPlayer))
                         {
-                            hostileThings.Add(thing);
+                            // hostileThings.Add(thing);
+                            AddTo(thing, hostileThings);
                         }
                     }
 
@@ -74,25 +105,31 @@ namespace _HightlightEnemies
                     foreach (var thing in buildings)
                     {
 
-                        if (GenHostility.HostileTo(thing, Faction.OfPlayer) && manager.DesignationOn(thing, desDef) == null)
+                        if (GenHostility.HostileTo(thing, Faction.OfPlayer))
                         {
-                            hostileThings.Add(thing);
+                            // hostileThings.Add(thing);
+                            AddTo(thing, hostileThings);
                         }
                     }
                     return hostileThings;
                 }).ContinueWith((hostileThings) =>
                 {
-                    foreach (var thing in hostileThings.Result)
+                    var shouldMarked = hostileThings.Result;
+                    
+                    var thingsToRemove = previousStatus.Except(shouldMarked);
+                    var thingsToAdd = shouldMarked.Except(previousStatus);
+                    foreach (var thing in thingsToRemove)
                     {
-                        if (!thing.HasDesignation(desDef))
-                        {
-                            manager.AddDesignation(new Designation(thing, desDef));
-                        }
+                        manager.RemoveDesignation(manager.DesignationOn(thing, desDef));
                     }
+
+                    foreach (var thing in shouldMarked.Except(previousStatus))
+                    {
+                        manager.AddDesignation(new Designation(thing, desDef));
+                    }
+                    previousStatus = shouldMarked;
                 }, TaskScheduler.FromCurrentSynchronizationContext());
             }
-
-
         }
 
         public void DeHighlight()
@@ -123,7 +160,12 @@ namespace _HightlightEnemies
                 var eh = Current.Game.GetComponent<EnemyHighlighter>();
                 if (eh != null)
                 {
-                    row.ToggleableIcon(ref eh.showEnemies, ContentFinder<Texture2D>.Get("HE/UI/Alarm", true), "HighlightEnemies".Translate(), SoundDefOf.Mouseover_ButtonToggle, (string)null);
+                    var before = eh.markEnemies;
+                    row.ToggleableIcon(ref eh.markEnemies, ContentFinder<Texture2D>.Get("HE/UI/Alarm", true), "HighlightEnemies".Translate(), SoundDefOf.Mouseover_ButtonToggle, (string)null);
+                    if (before != eh.markEnemies)
+                    {
+                        eh.ResetStatus();
+                    }
                 }
             }
         }

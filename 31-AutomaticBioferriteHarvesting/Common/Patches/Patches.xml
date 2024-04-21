@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <Operation Class="PatchOperationSequence">
+        <operations>
+            <li Class="PatchOperationAdd" MayRequire="Ludeon.Rimworld.Anomaly">
+                <xpath>Defs/ThingDef[defName="BioferriteHarvester"]/comps</xpath>
+                <value>
+                    <li Class="AutomaticBioferriteHavesting.CompProperties_BioferriteHarvester">
+                        <threshold>60</threshold>
+                    </li>
+                </value>
+            </li>
+        </operations>
+    </Operation>
+</Patch>
