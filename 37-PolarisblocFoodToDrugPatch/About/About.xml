@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.PolarisblocFoodToDrugPatch</packageId>
+	<name>天轴食物加入成瘾品列表补丁 Polarisbloc Food Add To Drug Patch</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.5</li>
+	</supportedVersions>
+
+	<modDependencies>
+	</modDependencies>
+	<incompatibleWith>
+	</incompatibleWith>
+
+	<loadAfter>
+		<li>vanya.polarisbloc.securityforce.tmp</li>
+		<li>rsmaintain.vanya.polarisbloc.mechenemy</li>		
+	</loadAfter>
+
+	<description>将天轴食物加入成瘾品列表，这样就可以设置药物方案，让小人随身携带，而在食物方案中禁止食用。当遇到战斗时，药物方案可以允许小人直接食用库存中的食物。成瘾品类别为None，暂时不确定对于文化成瘾品禁止，或者仅医疗的影响。
+
+Add Polarisbloc food to drug list, so that you can set drug policy to carry it with pawns, and forbid them to eat it in food policy. When in combat, drug policy can allow pawns to eat the food in stock directly. Drug category is set to None, not sure if it will affect culture drug or only medical drug.
+	</description>
+</ModMetaData>

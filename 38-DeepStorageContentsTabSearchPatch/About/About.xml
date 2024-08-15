@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.DeepStorageContentsTabSearchPatch</packageId>
+	<name>深度存储内容页添加搜索 Deep Storage Contents Tab Search Patch</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.5</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>lwm.deepstorage</packageId>
+			<displayName>LWM's Deep Storage</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=1617282896</steamWorkshopUrl>
+			<downloadUrl>https://github.com/lilwhitemouse/RimWorld-LWM.DeepStorage</downloadUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<!-- <li>username.modname</li> -->
+	</loadAfter>
+
+	<description>
+本模组在深度存储的内容选项卡中添加了搜索框，方便玩家查找物品。
+
+This mod adds a search box to the contents tab of deep storage, making it easier for players to find items.
+	</description>
+</ModMetaData>

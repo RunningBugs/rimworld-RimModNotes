@@ -11,6 +11,7 @@
         <gameCondition>PermanentDarkness</gameCondition>
         <!-- <letterLabel>Permanent Darkness Coming</letterLabel> -->
         <!-- <letterDef>NegativeEvent</letterDef> -->
+        <durationDays>-1</durationDays>
         <baseChance>0</baseChance>
         <minRefireDays>0</minRefireDays>
     </IncidentDef>

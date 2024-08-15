@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.MoelotlSimpleSidearmsCompatiblePatch</packageId>
+	<name>萌螈和简单的副武器模组兼容性补丁 Moelotl and SimpleSidearms Compatible Patch</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.5</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases</downloadUrl>
+		</li>
+		<li>
+			<packageId>hentailoliteam.axolotl</packageId>
+			<displayName>萌螈 MoeLotl Race</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3292351432</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<!-- <li>username.modname</li> -->
+	</loadAfter>
+
+	<description>
+本模组修复了萌螈和简单的副武器模组之间的兼容性问题，如果萌螈修复了这个问题，这个模组将会隐藏
+
+This mod fixes compatibility issues between MoeLotl and SimpleSidearms. If MoeLotl fixes this issue, this mod will be hidden.
+	</description>
+</ModMetaData>

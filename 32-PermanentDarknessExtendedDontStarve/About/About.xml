@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.PDE.DontStarve</packageId>
+	<name>无尽黑暗扩展 —— 饥荒 Permanent Darkness Extended -- DontStarve</name>
+	<author>RunningBugs, 德国猎</author>
+	<supportedVersions>
+		<li>1.5</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>runningbugs.permanentdarkness</packageId>
+			<displayName>无尽黑暗 Permanent Darkness</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3225237583</steamWorkshopUrl>
+			<downloadUrl></downloadUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<li>runningbugs.permanentdarkness</li>
+	</loadAfter>
+
+	<description>Template</description>
+</ModMetaData>

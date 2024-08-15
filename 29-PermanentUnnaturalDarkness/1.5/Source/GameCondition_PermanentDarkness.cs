@@ -1,9 +1,7 @@
 using System.Collections.Generic;
-using System.Linq;
 using Verse;
 using RimWorld;
 using UnityEngine;
-using System;
 using Verse.Grammar;
 
 namespace PermanentDarkness;
@@ -23,7 +21,7 @@ public class PermanentDarknessController : GameComponent
 
 	public static void GenDelay()
 	{
-		Delay = Mathf.RoundToInt(InitialPhaseDurationDaysRange.RandomInRange * 60000f);
+		Delay = Mathf.RoundToInt(InitialPhaseDurationDaysRange.RandomInRange * 60000f) + 1;
 	}
 
 	public override void ExposeData()
@@ -59,6 +57,10 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 
 	private readonly int WarningTicks = 10000;
 
+	public GameCondition_PermanentDarkness()
+	{
+		Permanent = true;
+	}
 
 	public override void Init()
 	{
@@ -72,7 +74,7 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 		{
 			transitionTicks = 0;
 		}
-
+		Permanent = true;
 	}
 
 	public override float SkyTargetLerpFactor(Map map)
@@ -104,8 +106,19 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 		return GrammarResolver.Resolve(root, request);
 	}
 
+	private bool runOnce = false;
+
 	public override void GameConditionTick()
 	{
+		if (!runOnce) {
+			var gcm = Find.World.gameConditionManager;
+			if (!gcm.ConditionIsActive(def))
+			{
+				gcm.RegisterCondition(this);
+			}
+			runOnce = true;
+		}
+		
 		base.GameConditionTick();
 		List<Map> affectedMaps = base.AffectedMaps;
 		for (int i = 0; i < affectedMaps.Count; i++)

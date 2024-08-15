@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>FirefliesSeed</defName>
+		<label>Fireflies seed</label>
+		<description>The seed of a Firefly. It can be planted to create a new Firefly.</description>
+		<descriptionHyperlinks>
+			<ThingDef>Plant_Fireflies</ThingDef>
+		</descriptionHyperlinks>
+		<stackLimit>5</stackLimit>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Mass>0.3</Mass>
+			<Beauty>0</Beauty>
+			<MarketValue>70</MarketValue>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Item/GauranlenSeed</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			<drawSize>(0.6, 0.6)</drawSize>
+		</graphicData>
+		<thingCategories>
+			<li>ItemsMisc</li>
+		</thingCategories>
+		<comps>
+			<li Class="CompProperties_Plantable">
+				<plantDefToSpawn>Plant_Fireflies</plantDefToSpawn>
+				<!-- <compClass>PDEDontStarve.CompPlantableFireFly</compClass> -->
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef>
+		<defName>Plant_Fireflies</defName>
+		<label>Fire flies</label>
+		<description>Fireflies are passive light-producing Mobs that appear at night</description>
+		<!-- <drawerType>MapMeshAndRealTime</drawerType> -->
+		<drawerType>MapMeshOnly</drawerType>
+		<category>Plant</category>
+		<thingClass>PDEDontStarve.FireFly</thingClass>
+		<altitudeLayer>LowPlant</altitudeLayer>
+		<useHitPoints>False</useHitPoints>
+		<statBases>
+			<Flammability>0</Flammability>
+			<Beauty>6</Beauty>
+			<BeautyOutdoors>6</BeautyOutdoors>
+			<Mass>0.1</Mass>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<canScatterOver>false</canScatterOver>
+		<selectable>True</selectable>
+		<fillPercent>0</fillPercent>
+		<minifiedDef IsNull="True" />
+		<rotatable>false</rotatable>
+		<neverMultiSelect>False</neverMultiSelect>
+		<!-- <drawerType>MapMeshOnly</drawerType> -->
+		<pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>
+		<graphicData>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>CutoutPlant</shaderType>
+			<texPath>PDEDontStarve/Fireflies</texPath>
+			<shadowData>
+				<volume>(0.12, 0.08, 0.1)</volume>
+				<offset>(0,0,-0.25)</offset>
+			</shadowData>
+		</graphicData>
+		<drawGUIOverlay>True</drawGUIOverlay>
+		<passability>Standable</passability>
+		<pathCost>0</pathCost>
+		<blockWind>False</blockWind>
+		<plant>
+			<purpose>Misc</purpose>
+			<growDays>0.01</growDays>
+			<fertilityMin>0</fertilityMin>
+			<fertilitySensitivity>0</fertilitySensitivity>
+			<soundHarvesting>Harvest_Standard</soundHarvesting>
+			<soundHarvestFinish>Harvest_Standard_Finish</soundHarvestFinish>
+			<sowWork>100</sowWork>
+			<harvestMinGrowth>0</harvestMinGrowth>
+			<harvestWork>100</harvestWork>
+			<harvestTag>Standard</harvestTag>
+			<harvestAfterGrowth>0</harvestAfterGrowth>
+			<allowAutoCut>false</allowAutoCut>
+			<visualSizeRange>0.3~1.00</visualSizeRange>
+			<topWindExposure>0.1</topWindExposure>
+			<lifespanDaysPerGrowDays>0</lifespanDaysPerGrowDays>
+			<mustBeWildToSow>False</mustBeWildToSow>
+			<harvestedThingDef>FirefliesSeed</harvestedThingDef>
+			<harvestYield>1</harvestYield>
+			<harvestYieldAffectedByDifficulty>False</harvestYieldAffectedByDifficulty>
+			<harvestFailable>false</harvestFailable>
+			<blockAdjacentSow>true</blockAdjacentSow>
+			<treeLoversCareIfChopped>False</treeLoversCareIfChopped>
+			<burnedThingDef IsNull="True" />
+			<treeCategory>Super</treeCategory>
+			<dieIfNoSunlight>false</dieIfNoSunlight>
+			<neverBlightable>True</neverBlightable>
+			<growMinGlow>0</growMinGlow>
+			<!-- <sowTags Inherit="False" /> -->
+			<!-- <sowResearchPrerequisites Inherit="False" /> -->
+			<wildOrder>3</wildOrder>
+			<interferesWithRoof>False</interferesWithRoof>
+			<dieFromToxicFallout>False</dieFromToxicFallout>
+			<showGrowthInInspectPane>True</showGrowthInInspectPane>
+			<minSpacingBetweenSamePlant>5</minSpacingBetweenSamePlant>
+		</plant>
+		<thingCategories>
+			<li>Plants</li>
+		</thingCategories>
+		<ingestible IsNull="True"/>
+		<preventSkyfallersLandingOn>False</preventSkyfallersLandingOn>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3.75</glowRadius>
+				<glowColor>(110,116,125,0)</glowColor>
+			</li>
+			<li Class="PDEDontStarve.CompProperties_CompGlowerFireFly">
+				<dimRadius>2.0</dimRadius>
+				<dimRecoveryTicks>100</dimRecoveryTicks>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<GenStepDef>
+		<defName>PDE_FireFlies</defName>
+		<order>1200</order>
+		<genStep Class="PDEDontStarve.GenStep_FireFlies">
+			<treeDef>Plant_Fireflies</treeDef>
+			<validators>
+				<li Class="PDEDontStarve.ScattererValidator_AvoidSpecialThings" />
+			</validators>
+		</genStep>
+		<modExtensions>
+            <li Class="PDEDontStarve.GenStepFireFliesExtension">
+                <density>0.001</density>
+				<minEdgeDistance>25</minEdgeDistance>
+            </li>
+        </modExtensions>
+	</GenStepDef>
+</Defs>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<ThingCategoryDef>
+		<defName>DontStarve</defName>
+		<label>don't starve</label>
+		<parent>Root</parent>
+	</ThingCategoryDef>
+
+	<ThingDef ParentName="BaseMeleeWeapon_Blunt">
+		<defName>MeleeWeapon_Lantern</defName>
+		<label>lantern</label>
+		<description>The Lantern is a portable, refuellable light source that can be either equipped or placed on the ground to provide light.</description>
+		<thingClass>PDEDontStarve.LanternWeapon</thingClass>
+		<tickerType>Normal</tickerType>
+		<thingCategories Inherit="False">
+			<li>DontStarve</li>
+		</thingCategories>
+		<graphicData>
+			<texPath>PDEDontStarve/Items/Lantern</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(0.1,0.1)</drawSize>
+		</graphicData>
+		<uiIconScale>1.1</uiIconScale>
+		<techLevel>Neolithic</techLevel>
+		<weaponTags>
+			<li>NeolithicMeleeBasic</li>
+		</weaponTags>
+		<weaponClasses>
+			<li>Neolithic</li>
+		</weaponClasses>
+		<costStuffCount>40</costStuffCount>
+		<statBases>
+			<WorkToMake>120</WorkToMake>
+			<Mass>2</Mass>
+		</statBases>
+		<equippedAngleOffset>0</equippedAngleOffset>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costList>
+			<FirefliesSeed>1</FirefliesSeed>
+		</costList>
+		<recipeMaker>
+			<recipeUsers>
+				<li>CraftingSpot</li>
+			</recipeUsers>
+			<displayPriority>300</displayPriority>
+		</recipeMaker>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>0</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+		</tools>
+		<comps>
+			<li>
+				<compClass>PDEDontStarve.CompLanternFeulTracker</compClass>
+			</li>
+			<li Class="PDEDontStarve.CompProperties_CauseHediff_Primary">
+				<hediff>LightSourceOnHand</hediff>
+			</li>
+			<li Class="CompProperties_Refuelable">
+				<compClass>PDEDontStarve.CompPausibleRefuelable</compClass>
+				<fuelConsumptionRate>1</fuelConsumptionRate>
+				<fuelCapacity>1</fuelCapacity>
+				<fuelFilter>
+					<thingDefs>
+						<li>FirefliesSeed</li>
+					</thingDefs>
+				</fuelFilter>
+				<initialFuelPercent>1</initialFuelPercent>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+			</li>
+			<li Class="PDEDontStarve.CompProperties_HasLightBulb">
+				<lightDef>firefly_bulb</lightDef>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>8</glowRadius>
+				<glowColor>(80,141,223,0)</glowColor>
+			</li>
+			<li Class="CompProperties_FireOverlay">
+				<fireSize>0.3</fireSize>
+				<offset>(0,0,0)</offset>
+			</li>
+			<!-- <li Class="CompProperties">
+				<compClass>PDEDontStarve.CompAllowGlowWhenDrafted</compClass>
+			</li> -->
+		</comps>
+	</ThingDef>
+
+
+	<HediffDef>
+		<defName>LightSourceOnHand</defName>
+		<label>light source on hand</label>
+		<hediffClass>HediffWithComps</hediffClass>
+		<description>This person is equipting a lantern or something on hand that can emit lights to light up nearby area.</description>
+		<isBad>false</isBad>
+		<maxSeverity>1.0</maxSeverity>
+		<comps>
+			<!-- <li Class="HediffCompProperties">
+				<compClass>PDEDontStarve.HediffComp_RemoveIfPrimaryUnequiped</compClass>
+			</li> -->
+			<li Class="HediffCompProperties">
+				<compClass>PDEDontStarve.LightSourceHediffComp</compClass>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<becomeVisible>false</becomeVisible>
+			</li>
+		</stages>
+	</HediffDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>firefly_bulb</defName>
+		<label>firefly bulb</label>
+		<description>bulb using firefly to shine</description>
+		<graphicData>
+			<texPath>PDEDontStarve/CrateFrontTransparent</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<selectable>false</selectable>
+		<building>
+			<isInert>true</isInert>
+			<isEdifice>false</isEdifice>
+			<deconstructible>false</deconstructible>
+		</building>
+		<filthLeaving></filthLeaving>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>8</glowRadius>
+				<glowColor>(80,141,223,0)</glowColor>
+			</li>
+			<li Class="PDEDontStarve.CompProperties_LightBulb">
+				<lifeSpan>80000</lifeSpan>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>Building_Lantern</defName>
+		<label>lantern</label>
+		<thingClass>Building</thingClass>
+		<description>The Lantern is a portable, refuellable light source that can be either equipped or placed on the ground to provide light.</description>
+		<tickerType>Normal</tickerType>
+		<drawerType>RealtimeOnly</drawerType>
+		<graphicData>
+			<graphicClass>Graphic_Multi_BuildingWorking</graphicClass>
+			<texPath>PDEDontStarve/Buildings/Lantern</texPath>
+			<shaderType>BuildingWorking</shaderType>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<thingCategories Inherit="False">
+			<li>DontStarve</li>
+		</thingCategories>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.1</fillPercent>
+		<pathCost>1</pathCost>
+		<rotatable>false</rotatable>
+		<constructionSkillPrerequisite>0</constructionSkillPrerequisite>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<designationCategory IsNull="True" />
+		<!-- <designationCategory>Power</designationCategory> -->
+		<uiOrder>2200</uiOrder>
+		<canOverlapZones>true</canOverlapZones>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>120</WorkToBuild>
+			<Flammability>0.75</Flammability>
+			<Beauty>6</Beauty>
+			<Mass>1</Mass>
+		</statBases>
+		<minifiedDef>MeleeWeapon_Lantern</minifiedDef>
+		<size>(1,1)</size>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>40</costStuffCount>
+		<costList>
+			<FirefliesSeed>1</FirefliesSeed>
+		</costList>
+		<placeWorkers>
+			<li>PlaceWorker_GlowRadius</li>
+		</placeWorkers>
+		<comps>
+			<li>
+				<compClass>PDEDontStarve.CompLanternFeulTracker</compClass>
+			</li>
+			<li Class="CompProperties_Refuelable">
+				<compClass>PDEDontStarve.CompPausibleRefuelable</compClass>
+				<fuelConsumptionRate>1</fuelConsumptionRate>
+				<fuelCapacity>1</fuelCapacity>
+				<fuelFilter>
+					<thingDefs>
+						<li>FirefliesSeed</li>
+					</thingDefs>
+				</fuelFilter>
+				<initialFuelPercent>1</initialFuelPercent>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>8</glowRadius>
+				<glowColor>(80,141,223,0)</glowColor>
+			</li>
+			<li Class="CompProperties_FireOverlay">
+				<fireSize>0.3</fireSize>
+				<offset>(0,0,0)</offset>
+			</li>
+		</comps>
+	</ThingDef>
+</Defs>

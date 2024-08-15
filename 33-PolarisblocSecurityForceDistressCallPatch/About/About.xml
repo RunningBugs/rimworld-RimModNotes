@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.PolarisblocSecurityForceDistressCallPatch</packageId>
+	<name>Polarisbloc Security Force Distress Call Patch</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.5</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>vanya.polarisbloc.securityforce.tmp</packageId>
+			<displayName>Polarisbloc - Security Force tmp port</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3225387996</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<li>vanya.polarisbloc.securityforce.tmp</li>
+	</loadAfter>
+
+	<description>
+This mod is used to fix the imcompatibility between the Anomaly distress call and the Security Force Faction.
+本模组用于修复异常的求救信号任务和安保部队派系的不兼容性。
+	</description>
+</ModMetaData>

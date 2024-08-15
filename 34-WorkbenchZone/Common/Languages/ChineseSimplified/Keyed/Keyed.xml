@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+    <WorkbenchZone>工作台存储区</WorkbenchZone>
+    <WorkbenchZoneSettings>工作台存储区设置</WorkbenchZoneSettings>
+    <WzMaxRadius>允许最大存储区半径: {0} </WzMaxRadius>
+    <WorkbenchHasZoneNonStockpile>工作台工作点处于非存储区区域内</WorkbenchHasZoneNonStockpile>
+    <WzCreateWorkbenchZone>创建工作台存储区</WzCreateWorkbenchZone>
+    <WzCreateWorkbenchZoneDesc>点击创建工作台存储区，该存储区默认存储工作清单中一切原料，半径是设置里最大半径和所有工作清单材料搜寻半径中的最小值</WzCreateWorkbenchZoneDesc>
+</LanguageData>

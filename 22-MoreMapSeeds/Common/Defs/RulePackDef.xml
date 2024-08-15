@@ -7,7 +7,7 @@
 		</include>
 		<rulePack>
 			<rulesStrings>
-				<li>r_seed(p=10)->[newSeeds]</li>
+				<li>r_seed(p=500)->[newSeeds]</li>
 			</rulesStrings>
 			<rulesFiles>
 				<li>newSeeds->NamesExtended/SeedGenerator</li>

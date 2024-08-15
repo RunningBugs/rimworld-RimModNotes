@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <Operation Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="Polarisbloc_EmergencyFood"]</xpath>
+        <match Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="Polarisbloc_EmergencyFood"]</xpath>
+                    <value>
+                        <orderedTakeGroup>Drug</orderedTakeGroup>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="Polarisbloc_EmergencyFood"]/ingestible</xpath>
+                    <value>
+                        <drugCategory>Any</drugCategory>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="Polarisbloc_EmergencyFood"]/comps</xpath>
+                    <value>
+                        <li Class="CompProperties_Drug">
+                            <listOrder>1200</listOrder>
+                            <teetotalerCanConsume>true</teetotalerCanConsume>
+                        </li>
+                    </value>
+                </li>
+            </operations>
+        </match>
+    </Operation>
+
+    <Operation Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="Vanya_CombatRations"]</xpath>
+        <match Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="Vanya_CombatRations"]</xpath>
+                    <value>
+                        <orderedTakeGroup>Drug</orderedTakeGroup>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="Vanya_CombatRations"]/ingestible</xpath>
+                    <value>
+                        <drugCategory>Any</drugCategory>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="Vanya_CombatRations"]/comps</xpath>
+                    <value>
+                        <li Class="CompProperties_Drug">
+                            <listOrder>1200</listOrder>
+                            <teetotalerCanConsume>true</teetotalerCanConsume>
+                        </li>
+                    </value>
+                </li>
+            </operations>
+        </match>
+    </Operation>
+</Patch>
+  

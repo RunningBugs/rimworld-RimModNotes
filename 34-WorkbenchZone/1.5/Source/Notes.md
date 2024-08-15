@@ -1,0 +1,1 @@
+- Workbench does not allow creation of stockpiles at the Cell for workbenches

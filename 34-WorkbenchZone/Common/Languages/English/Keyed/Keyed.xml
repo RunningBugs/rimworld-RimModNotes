@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+    <WorkbenchZone>Workbench Zone</WorkbenchZone>
+    <WorkbenchZoneSettings>Workbench Zone Settings</WorkbenchZoneSettings>
+    <WzMaxRadius>Max radius allowed: {0} </WzMaxRadius>
+    <WorkbenchHasZoneNonStockpile>Workbench has none stockpile zone existing</WorkbenchHasZoneNonStockpile>
+    <WzCreateWorkbenchZone>Create Workbench Zone</WzCreateWorkbenchZone>
+    <WzCreateWorkbenchZoneDesc>Click to create a workbench zone, which will be storing all ingredients from all your bills, and has a radius of min(maxRadius, minRadiusOfBillIngredients)</WzCreateWorkbenchZoneDesc>
+</LanguageData>

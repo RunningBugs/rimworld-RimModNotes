@@ -25,9 +25,9 @@ using HugsLib.Utils;
 
 namespace _HightlightEnemies
 {
-    public class EnemyHighlighter : GameComponent
+    public class EnemyHighlighter : MapComponent
     {
-        public bool markEnemies = true;
+        public static bool markEnemies = true;
 
         private bool MarkInFog => HE_ModSettings.markEnemiesInFog;
 
@@ -37,21 +37,16 @@ namespace _HightlightEnemies
 
         private DesignationDef desDef = DefDatabase<DesignationDef>.GetNamed("HE_Mark");
 
-        private HashSet<Thing> previousStatus = new HashSet<Thing>();
-
-        public EnemyHighlighter(Game game) { }
+        public EnemyHighlighter(Map map): base(map) { 
+            this.map = map;
+        }
 
         public override void FinalizeInit()
         {
             markEnemies = HE_ModSettings.markEnemiesByDefault;
         }
 
-        public void ResetStatus()
-        {
-            previousStatus.Clear();
-        }
-
-        public override void GameComponentTick()
+        public override void MapComponentTick()
         {
             if (markEnemies)
             {
@@ -76,7 +71,6 @@ namespace _HightlightEnemies
                 {
                     return;
                 }
-                Log.Message($"Add {thing.Label}");
                 list.Add(thing);
             }
         }
@@ -84,30 +78,28 @@ namespace _HightlightEnemies
 
         public void Highlight()
         {
-            var manager = Find.CurrentMap.designationManager;
+            var manager = map.designationManager;
 
             if (lastTask.IsCompleted)
             {
                 lastTask = Task.Run(() =>
                 {
-                    var things = Find.CurrentMap.attackTargetsCache.TargetsHostileToColony.Select(t => t.Thing).ToList();
+                    var things = map.attackTargetsCache.TargetsHostileToColony.Select(t => t.Thing).ToList();
                     var hostileThings = new HashSet<Thing>();
                     foreach (var thing in things)
                     {
                         if (GenHostility.HostileTo(thing, Faction.OfPlayer))
                         {
-                            // hostileThings.Add(thing);
                             AddTo(thing, hostileThings);
                         }
                     }
 
-                    var buildings = Find.CurrentMap.listerBuildings.allBuildingsNonColonist.Where(t => t is Building && t.def.building.combatPower > 0).ToList();
+                    var buildings = map.listerBuildings.allBuildingsNonColonist.Where(t => t is Building && t.def.building.combatPower > 0).ToList();
                     foreach (var thing in buildings)
                     {
 
                         if (GenHostility.HostileTo(thing, Faction.OfPlayer))
                         {
-                            // hostileThings.Add(thing);
                             AddTo(thing, hostileThings);
                         }
                     }
@@ -115,26 +107,27 @@ namespace _HightlightEnemies
                 }).ContinueWith((hostileThings) =>
                 {
                     var shouldMarked = hostileThings.Result;
-                    
-                    var thingsToRemove = previousStatus.Except(shouldMarked);
-                    var thingsToAdd = shouldMarked.Except(previousStatus);
-                    foreach (var thing in thingsToRemove)
+                    var desToRemove = manager.AllDesignations.Where(d => d.def == desDef && !shouldMarked.Contains(d.target.Thing));
+
+                    foreach (var des in desToRemove)
                     {
-                        manager.RemoveDesignation(manager.DesignationOn(thing, desDef));
+                        manager.RemoveDesignation(des);
                     }
 
-                    foreach (var thing in shouldMarked.Except(previousStatus))
+                    foreach (var thing in shouldMarked)
                     {
-                        manager.AddDesignation(new Designation(thing, desDef));
+                        if (manager.DesignationOn(thing, desDef) == null)
+                        {
+                            manager.AddDesignation(new Designation(thing, desDef));
+                        }
                     }
-                    previousStatus = shouldMarked;
                 }, TaskScheduler.FromCurrentSynchronizationContext());
             }
         }
 
         public void DeHighlight()
         {
-            var manager = Find.CurrentMap.designationManager;
+            var manager = map.designationManager;
             manager.RemoveAllDesignationsOfDef(desDef);
         }
 
@@ -157,15 +150,15 @@ namespace _HightlightEnemies
             {
                 if (worldView) return;
 
-                var eh = Current.Game.GetComponent<EnemyHighlighter>();
+                var eh = Find.CurrentMap.GetComponent<EnemyHighlighter>();
                 if (eh != null)
                 {
-                    var before = eh.markEnemies;
-                    row.ToggleableIcon(ref eh.markEnemies, ContentFinder<Texture2D>.Get("HE/UI/Alarm", true), "HighlightEnemies".Translate(), SoundDefOf.Mouseover_ButtonToggle, (string)null);
-                    if (before != eh.markEnemies)
-                    {
-                        eh.ResetStatus();
-                    }
+                    // var before = EnemyHighlighter.markEnemies;
+                    row.ToggleableIcon(ref EnemyHighlighter.markEnemies, ContentFinder<Texture2D>.Get("HE/UI/Alarm", true), "HighlightEnemies".Translate(), SoundDefOf.Mouseover_ButtonToggle, (string)null);
+                    // if (before != EnemyHighlighter.markEnemies)
+                    // {
+                    //     eh.ResetStatus();
+                    // }
                 }
             }
         }
