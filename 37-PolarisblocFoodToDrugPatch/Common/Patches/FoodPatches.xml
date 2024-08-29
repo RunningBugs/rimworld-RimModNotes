@@ -13,7 +13,7 @@
                 <li Class="PatchOperationAdd">
                     <xpath>Defs/ThingDef[defName="Polarisbloc_EmergencyFood"]/ingestible</xpath>
                     <value>
-                        <drugCategory>Any</drugCategory>
+                        <drugCategory>Medical</drugCategory>
                     </value>
                 </li>
                 <li Class="PatchOperationAdd">
@@ -42,7 +42,7 @@
                 <li Class="PatchOperationAdd">
                     <xpath>Defs/ThingDef[defName="Vanya_CombatRations"]/ingestible</xpath>
                     <value>
-                        <drugCategory>Any</drugCategory>
+                        <drugCategory>Medical</drugCategory>
                     </value>
                 </li>
                 <li Class="PatchOperationAdd">

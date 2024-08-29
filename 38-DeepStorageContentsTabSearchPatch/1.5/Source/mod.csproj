@@ -25,6 +25,7 @@
 		<PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="10.*" />
 		<Reference Include="LWM.DeepStorage" Version="*">
 			<PathHint>LWM.DeepStorage.dll</PathHint>
+			<Private>false</Private>
 		</Reference>
 	</ItemGroup>
 </Project>

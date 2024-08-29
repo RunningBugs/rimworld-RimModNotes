@@ -240,7 +240,7 @@ namespace ResearchPrerequisites
 
 		private static void DoBeginResearch(ResearchProjectDef projectToStart)
 		{
-			SoundDefOf.ResearchStart.PlayOneShotOnCamera();
+			// SoundDefOf.ResearchStart.PlayOneShotOnCamera();
 			Find.ResearchManager.SetCurrentProject(projectToStart);
 			TutorSystem.Notify_Event("StartResearchProject");
 			if ((!ModsConfig.AnomalyActive || projectToStart.knowledgeCategory == null) && !ColonistsHaveResearchBench)
@@ -276,7 +276,7 @@ namespace ResearchPrerequisites
 			{
 				DoBeginResearch(projectToStart);
 			}));
-			SoundDefOf.Tick_Low.PlayOneShotOnCamera();
+			// SoundDefOf.Tick_Low.PlayOneShotOnCamera();
 		}
 
 	}
@@ -416,7 +416,7 @@ namespace ResearchPrerequisites
 			y += __instance.CallMethod<float>("DrawContentSource", ref parameters);
 
 			_ = __instance.GetFieldOrProperty("curTabInt", out ResearchTabDef curTabInt);
-			if (!ModsConfig.AnomalyActive || curTabInt != ResearchTabDefOf.Anomaly)
+			if (!ModsConfig.AnomalyActive || curTabInt != ResearchTabDefOf.Anomaly || selectedProject.knowledgeCategory == null)
 			{
 				y += DrawResearchQueueInfo(new Rect(0f, y, viewRect.width, 500f));
 			}
@@ -451,7 +451,7 @@ namespace ResearchPrerequisites
 			_ = __instance.GetFieldOrProperty("curTabInt", out ResearchTabDef curTabInt);
 			if (selectedProject.CanStartNow && !Find.ResearchManager.IsCurrentProject(selectedProject))
 			{
-				if (ModsConfig.AnomalyActive && curTabInt == ResearchTabDefOf.Anomaly)
+				if (ModsConfig.AnomalyActive && (curTabInt == ResearchTabDefOf.Anomaly || selectedProject.knowledgeCategory != null))
 				{
 					if (Widgets.ButtonText(startButRect, "Research".Translate()))
 					{
@@ -459,7 +459,6 @@ namespace ResearchPrerequisites
 					}
 					return;
 				}
-
 
 				if (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.LeftShift)
 				{
@@ -474,8 +473,12 @@ namespace ResearchPrerequisites
 					if (Widgets.ButtonText(startButRect, "Research".Translate()))
 					{
 						ResearchQueueController.AttemptBeginResearch(selectedProject);
-						ResearchQueue researchQueue = Current.Game.GetComponent<ResearchQueue>();
-						researchQueue?.StartNewResearchQueue(selectedProject);
+
+						if (selectedProject.knowledgeCategory == null)
+						{
+							ResearchQueue researchQueue = Current.Game.GetComponent<ResearchQueue>();
+							researchQueue?.StartNewResearchQueue(selectedProject);
+						}
 					}
 				}
 				else if (ResearchQueueController.mode == ResearchQueueController.ResearchButtonMode.AddToQueue)
@@ -489,7 +492,7 @@ namespace ResearchPrerequisites
 
 				return;
 			}
-			if (!Find.ResearchManager.IsCurrentProject(selectedProject) && !selectedProject.IsFinished && !selectedProject.IsHidden && (!ModsConfig.AnomalyActive || curTabInt != ResearchTabDefOf.Anomaly))
+			if (!Find.ResearchManager.IsCurrentProject(selectedProject) && !selectedProject.IsFinished && !selectedProject.IsHidden && selectedProject.knowledgeCategory == null && (!ModsConfig.AnomalyActive || curTabInt != ResearchTabDefOf.Anomaly))
 			{
 				//  Can add to queue
 				if (Widgets.ButtonText(startButRect, "ResearchAddToQueue".Translate()))
@@ -507,7 +510,7 @@ namespace ResearchPrerequisites
 			{
 				if (Widgets.ButtonText(startButRect, "StopResearch".Translate()))
 				{
-					if (!ModsConfig.AnomalyActive || curTabInt != ResearchTabDefOf.Anomaly)
+					if (!ModsConfig.AnomalyActive || curTabInt != ResearchTabDefOf.Anomaly || selectedProject.knowledgeCategory != null)
 					{
 						ResearchQueue.researchQueue.Clear();
 					}
