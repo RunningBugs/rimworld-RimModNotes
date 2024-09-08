@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PolarisblocExt.RequestTechCoreInformation>请求{0}相关位置（花费: {1}白银）</PolarisblocExt.RequestTechCoreInformation>
+    <PolarisblocExt.RequestTechCoreInformationResult>{0}发来了你要的信息并祝你好运。</PolarisblocExt.RequestTechCoreInformationResult>
+</LanguageData>

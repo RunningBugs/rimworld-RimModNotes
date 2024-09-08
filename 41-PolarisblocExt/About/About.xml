@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.PolarisblocExt</packageId>
+	<name>天轴自用扩展 Polarisbloc Extension</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.5</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>Vanya.Polarisbloc.CoreLab.tmp</packageId>
+			<displayName>Polarisbloc - Core LAB tmp port</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3225348593</steamWorkshopUrl>
+		</li>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<!-- <li>username.modname</li> -->
+	</loadAfter>
+
+	<description>
+本模组是自用的一些对于天轴模组的扩展内容，目前内容包含：
+- 在研究完成纳米修复装置后，会像人格核机会任务一样，生成一个任务，可以获取到科技核心，但是两次任务之间有一年的间隔时间
+
+This mod is a collection of extended functionalities for Polarisbloc, including:
+- After researching repairer nano haze, a quest will be generated (like the ai persona core quest), which can obtain a tech core, however, there is a one-year interval between two requests
+	</description>
+</ModMetaData>

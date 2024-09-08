@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <PolarisblocExt.RequestTechCoreGreeting>神秘派系明白你的目的</PolarisblocExt.RequestTechCoreGreeting>
+    <PolarisblocExt.LetterLabelTechCoreOffer>科技核心机会</PolarisblocExt.LetterLabelTechCoreOffer>
+    <PolarisblocExt.LetterTechCoreOffer>未知文明的神秘派系联系你，并表示可以提供情报：建造纳米修复装置所必须的科技核心的所在地。他们告诉你，这种物品极为稀有，其拥有者通常会守以重兵。\n\n如果你有兴趣，用通讯台联系他们。</PolarisblocExt.LetterTechCoreOffer>
+    <PolarisblocExt.TechCoreGiverLabel>神秘派系</PolarisblocExt.TechCoreGiverLabel>
+    <PolarisblocExt.TechCoreGiverInfo>未知文明</PolarisblocExt.TechCoreGiverInfo>
+    <PolarisblocExt.RequestTechCoreInformation>请求{0}相关位置（花费: {1}白银）</PolarisblocExt.RequestTechCoreInformation>
+    <PolarisblocExt.RequestTechCoreInformationResult>神秘派系发来了你要的信息并祝你好运。</PolarisblocExt.RequestTechCoreInformationResult>
+</LanguageData>
