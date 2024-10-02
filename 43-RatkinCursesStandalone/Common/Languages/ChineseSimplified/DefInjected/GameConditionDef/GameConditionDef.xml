@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <RA_CurseCondition_Wounded.label>受伤诅咒</RA_CurseCondition_Wounded.label>
+    <RA_CurseCondition_Wounded.modExtensions.Wounded.letterLabel>诅咒降临</RA_CurseCondition_Wounded.modExtensions.Wounded.letterLabel>
+    <RA_CurseCondition_Wounded.letterText>随着一阵灵能波动掠过天空，邪恶的诅咒降临了！这股力量本质上来源于某个暗黑超凡智能的程序，尽管覆盖范围相当广，其精度却很低。如果我们能避免做出容易引起它注意的事情，就应该不会有大问题。\n\n殖民者们听见一阵低沉的耳语说道：\n\n{CurseDesc}</RA_CurseCondition_Wounded.letterText>
+</LanguageData>

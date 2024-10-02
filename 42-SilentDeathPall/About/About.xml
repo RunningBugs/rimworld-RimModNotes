@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.SilentDeathPall</packageId>
+	<name>安静的死亡迷雾 Silent DeathPall</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.5</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>Ludeon.RimWorld.Anomaly</packageId>
+			<displayName>Anomaly</displayName>
+		</li>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<!-- <li>username.modname</li> -->
+	</loadAfter>
+
+	<description>
+安静的死亡迷雾
+
+死亡迷雾复活蹒跚怪是左上角的消息会发出声音，如果短期内有很多尸体复活，会有点吵，本模组解决了这个问题
+
+Silent DeathPall
+
+DeathPall resurrected Shamblers will make a sound in the upper left message, if there are many corpses resurrected in a short period of time, it will be a bit noisy, this mod solves this problem
+	</description>
+</ModMetaData>
