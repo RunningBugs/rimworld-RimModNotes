@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <WorldObjectDef>
+        <defName>InvisibleWorldObject</defName>
+        <worldObjectClass>WorldMapEditor.InvisibleWorldObject</worldObjectClass>
+        <comps>
+            <li Class="WorldMapEditor.WorldMapEditorCompProps" />
+        </comps>
+    </WorldObjectDef>
+
+    <WorldGenStepDef>
+        <defName>InvisibleWorldObject</defName>
+        <order>450</order>
+        <worldGenStep Class="WorldMapEditor.InvisibleObjectWorldGenStep" />
+    </WorldGenStepDef>
+</Defs>

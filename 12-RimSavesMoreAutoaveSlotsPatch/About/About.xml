@@ -10,11 +10,6 @@
 
 	<modDependencies>
 		<li>
-			<packageId>revolus.moreautosaveslots</packageId>
-			<displayName>More Autosave Slots</displayName>
-			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2032167959</steamWorkshopUrl>
-		</li>
-		<li>
 			<packageId>arandomkiwi.rimsaves</packageId>
 			<displayName>RimSaves</displayName>
 			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=1713367505</steamWorkshopUrl>
@@ -24,6 +19,12 @@
 	<incompatibleWith>
 		<!-- <li>username.modname</li> -->
 	</incompatibleWith>
+	
+	<loadAfter>
+		<li>revolus.moreautosaveslots</li>
+		<li>mlie.moreautosaveslots</li>
+		<li>arandomkiwi.rimsaves</li>
+	</loadAfter>
 
 	<description>Template</description>
 </ModMetaData>

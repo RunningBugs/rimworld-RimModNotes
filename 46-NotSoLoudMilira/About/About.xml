@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.NoSoLoudMilira</packageId>
+	<name>别太吵的米莉拉 Not So Loud Milira</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.4</li>
+		<li>1.5</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>ancot.milirarace</packageId>
+			<displayName>Milira Race</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3256974620</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<!-- <li>username.modname</li> -->
+	</loadAfter>
+
+	<description>
+米莉拉模组武器的声音太大了，这个模组把所有米莉拉声音调整成为一半。
+
+The sound of Milira's weapons is too loud, this mod adjusts all Milira sounds to half.
+
+</description>
+</ModMetaData>

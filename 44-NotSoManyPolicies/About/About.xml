@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.NotSoManyPolicies</packageId>
+	<name>开局方案删不完 Not So Many Policies</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.5</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<!-- <li>username.modname</li> -->
+	</loadAfter>
+
+	<description>
+环世界开始游戏后，会生成一大堆预置的方案：服装方案，食物方案，药物方案，阅读方案。其中，尤其以服装方案和食物方案为多，删起来非常麻烦。
+After the game starts, RimWorld will generate a lot of preset policies: outfit policies, food policies, drug policies, and reading policies. Among them, outfit policies and food policies are the most, and it is very troublesome to delete them.
+
+本模组会阻止游戏在开始时生成全部这些方案，服装方案只保留任意，食物方案只保留无限制和不提供，用药方案和阅读方案暂时不动。
+This mod will prevent the game from generating all these policies at the beginning, keeping only "any" outfit policy and only "unlimited" and "do not provide" food policy, and temporarily not touching drug policy and reading policy.
+</description>
+</ModMetaData>

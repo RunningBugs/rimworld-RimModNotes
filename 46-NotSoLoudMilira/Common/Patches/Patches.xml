@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Milira_Shot_PlasmaRifle: 55~75 → 28~38 -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/SoundDef[defName='Milira_Shot_PlasmaRifle']/subSounds/li/volumeRange</xpath>
+    <value>
+      <volumeRange>
+        <min>28</min>
+        <max>38</max>
+      </volumeRange>
+    </value>
+  </Operation>
+
+  <!-- Milira_Shot_HeavyPlasma: 60~75 → 30~38 -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/SoundDef[defName='Milira_Shot_HeavyPlasma']/subSounds/li/volumeRange</xpath>
+    <value>
+      <volumeRange>
+        <min>30</min>
+        <max>38</max>
+      </volumeRange>
+    </value>
+  </Operation>
+
+  <!-- Milira_Shot_MagneticRailRifle: 80~95 → 40~48 -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/SoundDef[defName='Milira_Shot_MagneticRailRifle']/subSounds/li/volumeRange</xpath>
+    <value>
+      <volumeRange>
+        <min>40</min>
+        <max>48</max>
+      </volumeRange>
+    </value>
+  </Operation>
+
+  <!-- Milira_Shot_Rocket: 99~100 → 50~50 -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/SoundDef[defName='Milira_Shot_Rocket']/subSounds/li/volumeRange</xpath>
+    <value>
+      <volumeRange>
+        <min>50</min>
+        <max>50</max>
+      </volumeRange>
+    </value>
+  </Operation>
+
+  <!-- Milira_Shot_HeavyMortar: 150~180 → 75~90 -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/SoundDef[defName='Milira_Shot_HeavyMortar']/subSounds/li/volumeRange</xpath>
+    <value>
+      <volumeRange>
+        <min>75</min>
+        <max>90</max>
+      </volumeRange>
+    </value>
+  </Operation>
+
+  <!-- Milira_Shot_StunImpulse: 50~80 → 25~40 -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/SoundDef[defName='Milira_Shot_StunImpulse']/subSounds/li/volumeRange</xpath>
+    <value>
+      <volumeRange>
+        <min>25</min>
+        <max>40</max>
+      </volumeRange>
+    </value>
+  </Operation>
+
+  <!-- Milira_Explosion_Plasma: 50~75 → 25~38 -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/SoundDef[defName='Milira_Explosion_Plasma']/subSounds/li/volumeRange</xpath>
+    <value>
+      <volumeRange>
+        <min>25</min>
+        <max>38</max>
+      </volumeRange>
+    </value>
+  </Operation>
+
+  <!-- Milira_Shot_HeavyRasterCannon: 99~100 → 50~50 -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/SoundDef[defName='Milira_Shot_HeavyRasterCannon']/subSounds/li/volumeRange</xpath>
+    <value>
+      <volumeRange>
+        <min>50</min>
+        <max>50</max>
+      </volumeRange>
+    </value>
+  </Operation>
+
+  <!-- Milira_BuildingActive: 80~100 → 40~50 -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/SoundDef[defName='Milira_BuildingActive']/subSounds/li/volumeRange</xpath>
+    <value>
+      <volumeRange>
+        <min>40</min>
+        <max>50</max>
+      </volumeRange>
+    </value>
+  </Operation>
+
+  <!-- Milira_HeavyPlasma_Aiming: 90~100 → 45~50 -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/SoundDef[defName='Milira_HeavyPlasma_Aiming']/subSounds/li/volumeRange</xpath>
+    <value>
+      <volumeRange>
+        <min>45</min>
+        <max>50</max>
+      </volumeRange>
+    </value>
+  </Operation>
+
+  <!-- Milira_Building_BeaconActivated: 120~150 → 60~75 -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/SoundDef[defName='Milira_Building_BeaconActivated']/subSounds/li/volumeRange</xpath>
+    <value>
+      <volumeRange>
+        <min>60</min>
+        <max>75</max>
+      </volumeRange>
+    </value>
+  </Operation>
+
+  <!-- Milira_Promotion: 50~75 → 25~38 -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/SoundDef[defName='Milira_Promotion']/subSounds/li/volumeRange</xpath>
+    <value>
+      <volumeRange>
+        <min>25</min>
+        <max>38</max>
+      </volumeRange>
+    </value>
+  </Operation>
+
+  <!-- Milira_ExcaliburWarmup: 700 → 350 -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/SoundDef[defName='Milira_ExcaliburWarmup']/subSounds/li/volumeRange</xpath>
+    <value>
+      <volumeRange>350</volumeRange>
+    </value>
+  </Operation>
+
+  <!-- Milira_ExcaliburShot: 700 → 350 -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/SoundDef[defName='Milira_ExcaliburShot']/subSounds/li/volumeRange</xpath>
+    <value>
+      <volumeRange>350</volumeRange>
+    </value>
+  </Operation>
+
+  <!-- Milira_HammerSkill_Landing: 120 → 60 -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/SoundDef[defName='Milira_HammerSkill_Landing']/subSounds/li/volumeRange</xpath>
+    <value>
+      <volumeRange>60</volumeRange>
+    </value>
+  </Operation>
+
+  <!-- Milira_SpearSkill_Fire: 120 → 60 -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/SoundDef[defName='Milira_SpearSkill_Fire']/subSounds/li/volumeRange</xpath>
+    <value>
+      <volumeRange>60</volumeRange>
+    </value>
+  </Operation>
+
+  <!-- Milira_BeepA: 120 → 60 -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/SoundDef[defName='Milira_BeepA']/subSounds/li/volumeRange</xpath>
+    <value>
+      <volumeRange>60</volumeRange>
+    </value>
+  </Operation>
+</Patch>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.modname</packageId>
+	<name>目标线 Target Line</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.5</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<!-- <li>username.modname</li> -->
+	</loadAfter>
+
+	<description>
+画一条线从所有小人指向其目标，非敌方单位是绿色，蓝色，青色；敌方单位是红色，橙色，紫色。方便敌人来袭的时候观察敌人的目标。
+
+Draw a line from all pawns to their target, non-enemy units are green, blue, cyan; enemy units are red, orange, purple. It is convenient to observe the target of the enemy when the enemy is attacking.
+
+可以在模组设置中设置是否显示。
+
+You can set whether to display in the mod settings.
+
+</description>
+</ModMetaData>

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
+    <ResearchPrerequisites>Research Prerequisites</ResearchPrerequisites>
     <ResearchAddToQueue>Add to Research Queue</ResearchAddToQueue>
     <CurrentResearchQueue>Current Research Queue: </CurrentResearchQueue>
+    <ClearResearchQueue>Clear Research Queue</ClearResearchQueue>
+    <ResearchPrerequisitesSettings>Research Prerequisites Settings</ResearchPrerequisitesSettings>
+    <FinishProjectWithLetter>Send a Letter to inform finishing project instead of a window</FinishProjectWithLetter>
+    <FinishProjectWithLetterDesc>Send a Letter to inform finishing project instead of a window. This option will be ignored if DubsMintMenus mod is active.</FinishProjectWithLetterDesc>
 </LanguageData>
