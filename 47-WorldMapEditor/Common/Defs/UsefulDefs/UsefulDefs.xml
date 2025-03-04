@@ -3,6 +3,7 @@
     <WorldObjectDef>
         <defName>InvisibleWorldObject</defName>
         <worldObjectClass>WorldMapEditor.InvisibleWorldObject</worldObjectClass>
+        <useDynamicDrawer>false</useDynamicDrawer>
         <comps>
             <li Class="WorldMapEditor.WorldMapEditorCompProps" />
         </comps>

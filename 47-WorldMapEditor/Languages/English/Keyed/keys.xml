@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <WorldMapEditorToggleButtonTooltip>Toggle World Map Editor\n\nWhen enabled, this mod creates a world object on each map tile, which can significantly impact performance.\nWhen disabled, these objects are removed, restoring normal performance.\n\nThe world objects are automatically removed before saving to keep the save file size small.\n\nTip: If you experience performance issues on the world map, try toggling the editor on and then off to remove the objects.\nWhen on, World Map Editor supports drag-selection, but the performance would be really really bad. Please zoom in your camera as close as possible to get best performance. You can select 80 tiles at the same time.</WorldMapEditorToggleButtonTooltip>
+    <DestroySettlement>Destroy Settlement</DestroySettlement>
+    <GenerateSettlement>Generate Settlement</GenerateSettlement>
+    <SetBiome>Set Biome</SetBiome>
+    <SetHilliness>Set Hilliness</SetHilliness>
+    <SelectedTiles>Selected Tiles</SelectedTiles>
+</LanguageData>

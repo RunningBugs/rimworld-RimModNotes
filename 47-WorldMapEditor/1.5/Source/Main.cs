@@ -1,13 +1,9 @@
 ﻿using Verse;
-
-
-using System.Reflection;
 using HarmonyLib;
 using RimWorld.Planet;
 using System.Collections.Generic;
 using RimWorld;
 using UnityEngine;
-using Microsoft.Internal.Collections;
 using System.Linq;
 using System;
 
@@ -38,8 +34,7 @@ public class MyTextures
 
 public class InvisibleObjectWorldGenStep : WorldGenStep
 {
-    public override int SeedPart => 1187068701;
-
+    public override int SeedPart => 123456789;
 
     /**
       * Generate all InvisibleObjects
@@ -77,6 +72,33 @@ public class WorldMapEditorGameComponent : GameComponent
     }
 }
 
+public static class WorldMapEditorUtils
+{
+    public static void CleanUpWorldObjects() {
+        var woToRemove = new List<WorldObject>();
+        foreach (WorldObject wo in Find.WorldObjects.AllWorldObjects.Where(o => o is InvisibleWorldObject))
+        {
+            woToRemove.Add(wo);
+        }
+        foreach (WorldObject wo in woToRemove)
+        {
+            Find.WorldObjects.Remove(wo);
+        }
+        ToggleIconPatcher.InEditMode = false;
+    }
+}
+
+// public class LoadingWindow : Window
+// {
+//     public override Vector2 InitialSize => new(300, 100);
+
+//     public override void DoWindowContents(Rect inRect)
+//     {
+//         Text.Font = GameFont.Medium;
+//         Widgets.Label(inRect, "WorldMapEditorLoading".Translate());
+//     }
+// }
+
 [HarmonyPatch(typeof(PlaySettings), "DoPlaySettingsGlobalControls", MethodType.Normal)]
 [StaticConstructorOnStartup]
 public class ToggleIconPatcher
@@ -89,7 +111,7 @@ public class ToggleIconPatcher
 
     public static void Postfix(WidgetRow row, bool worldView)
     {
-        if (worldView)
+        if (worldView && Current.ProgramState == ProgramState.Playing)
         {
             var before = InEditMode;
             row.ToggleableIcon(ref InEditMode, editModeIcon, "WorldMapEditorToggleButtonTooltip".Translate(), SoundDefOf.Mouseover_ButtonToggle, null);
@@ -98,27 +120,57 @@ public class ToggleIconPatcher
             if (before && !after)
             {
                 /// remove world objects from the world
-                var woToRemove = new List<WorldObject>();
-                foreach (WorldObject wo in Find.WorldObjects.AllWorldObjects.Where(o => o is InvisibleWorldObject))
-                {
-                    woToRemove.Add(wo);
-                }
-                foreach (WorldObject wo in woToRemove)
-                {
-                    Find.WorldObjects.Remove(wo);
-                }
+                WorldMapEditorUtils.CleanUpWorldObjects();
             }
             else if (!before && after)
             {
-                /// add world objects to the world
+                /// add world objects to the world in a seperate thread
+                var woToAdd = new List<WorldObject>();
                 foreach (InvisibleWorldObject inv in invisibleWorldObjects)
                 {
-                    Find.WorldObjects.Add(inv);
+                    // Find.WorldObjects.Add(inv);
+                    woToAdd.Add(inv);
                 }
+
+                // Find.WorldObjects.AllWorldObjects.Add(inv);
+                    // Find.WorldObjects.worldObjectsHashSet.Add(inv);
+                Find.WorldObjects.AllWorldObjects.AddRange(woToAdd);
+                Find.WorldObjects.worldObjectsHashSet.AddRange(woToAdd);
             }
         }
     }
 }
+
+// [HarmonyPatch(typeof(GenScene), nameof(GenScene.GoToMainMenu))]
+// public static class GenScene_GoToMainMenu_Patch
+// {
+//     public static void Prefix()
+//     {
+//         WorldMapEditorUtils.CleanUpWorldObjects();
+//     }
+// }
+
+// [HarmonyPatch(typeof(Root), nameof(Root.Shutdown))]
+// public static class Root_Shutdown_Patch
+// {
+//     public static void Prefix()
+//     {
+//         WorldMapEditorUtils.CleanUpWorldObjects();
+//     }
+// }
+
+[HarmonyPatch(typeof(WorldObjectsHolder), nameof(WorldObjectsHolder.ExposeData))]
+public static class WorldObjectsHolder_ExposeData_Patch
+{
+    public static void Prefix()
+    {
+        if (Scribe.mode == LoadSaveMode.Saving)
+        {
+            WorldMapEditorUtils.CleanUpWorldObjects();
+        }
+    }
+}
+
 
 public class WorldMapEditorCompProps : WorldObjectCompProperties
 {
@@ -145,6 +197,7 @@ public class WorldMapEditorComp : WorldObjectComp
             action = delegate
             {
                 /// Destroy the settlement on the selected tile
+                var sToRemove = new List<Settlement>();
                 foreach (WorldObject wo in Find.WorldSelector.SelectedObjects.Where(o => o is InvisibleWorldObject))
                 {
                     Settlement s = Find.WorldObjects.SettlementAt(wo.Tile);
@@ -153,9 +206,13 @@ public class WorldMapEditorComp : WorldObjectComp
                         if (s.Spawned)
                         {
                             /// This way, it won't trigger destroy event signal & quests signals
-                            Find.WorldObjects.Remove(s);
+                            sToRemove.Add(s);
                         }
                     }
+                }
+                foreach (Settlement s in sToRemove)
+                {
+                    Find.WorldObjects.Remove(s);
                 }
             }
         };
@@ -228,6 +285,8 @@ public class WorldMapEditorComp : WorldObjectComp
                         foreach (WorldObject wo in Find.WorldSelector.SelectedObjects.Where(o => o is InvisibleWorldObject))
                         {
                             Find.WorldGrid[wo.Tile].biome = biome;
+                            Find.World.renderer.Notify_StaticWorldObjectPosChanged();
+                            Find.World.renderer.RegenerateAllLayersNow();
                         }
                     });
                     menuOptions.Add(option);
@@ -242,7 +301,7 @@ public class WorldMapEditorComp : WorldObjectComp
 
         yield return new Command_Action
         {
-            defaultLabel = "SetHillness".Translate(),
+            defaultLabel = "SetHilliness".Translate(),
             icon = MyTextures.hillnessIcon,
             action = delegate
             {
@@ -260,6 +319,8 @@ public class WorldMapEditorComp : WorldObjectComp
                         foreach (WorldObject wo in Find.WorldSelector.SelectedObjects.Where(o => o is InvisibleWorldObject))
                         {
                             Find.WorldGrid[wo.Tile].hilliness = hillness;
+                            Find.World.renderer.Notify_StaticWorldObjectPosChanged();
+                            Find.World.renderer.RegenerateAllLayersNow();
                         }
                     });
                     menuOptions.Add(option);
@@ -276,6 +337,8 @@ public class WorldMapEditorComp : WorldObjectComp
 
 public class InvisibleWorldObject : WorldObject
 {
+    public override string Label => "SelectedTiles".Translate();
+
     public override bool SelectableNow => true;
 
     private static Material invMat = null;
@@ -292,7 +355,9 @@ public class InvisibleWorldObject : WorldObject
         }
     }
 
-
+    public override void ExposeData()
+    {
+    }
 }
 
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <WorldMapEditorToggleButtonTooltip>切换世界地图编辑器\n\n启用时，此模组会在每个地块上创建一个世界对象，这会显著影响性能。\n关闭时，这些对象会被移除，恢复正常性能。\n\n在保存之前，世界对象会自动移除，以保持存档文件较小。\n\n提示：如果您在世界地图上遇到性能问题，请尝试将编辑器打开然后关闭，以移除这些对象。\n在启用时，编辑器支持拖拽选择地块，但是性能会非常非常差，请把镜头缩放到最大，此时的性能最好，同一时间最多选择80个地块。</WorldMapEditorToggleButtonTooltip>
+    <DestroySettlement>摧毁定居点</DestroySettlement>
+    <GenerateSettlement>生成定居点</GenerateSettlement>
+    <SetBiome>设置生物群落</SetBiome>
+    <SetHilliness>设置丘陵度</SetHilliness>
+    <SelectedTiles>选中的地块</SelectedTiles>
+</LanguageData>
