@@ -45,5 +45,12 @@ Tip: If you experience performance issues on the world map, try toggling the edi
 启用时，世界地图编辑器支持拖拽选择，但性能会非常差。请尽可能放大视角以获得最佳性能。您最多可同时选择80个地块。
 When on, World Map Editor supports drag-selection, but the performance would be really really bad. Please zoom in your camera as close as possible to get best performance. You can select 80 tiles at the same time.
 
+本模组使用的图标来源：
+Icons are from the following source:
+https://www.flaticon.com/free-icons/rocky-mountains Rocky mountains icons created by Iconjam - Flaticon
+https://www.flaticon.com/free-icons/tools-and-utensils Tools and utensils icons created by juicy_fish - Flaticon
+https://www.flaticon.com/free-icons/biome Biome icons created by Eucalyp - Flaticon
+
+
 </description>
 </ModMetaData>

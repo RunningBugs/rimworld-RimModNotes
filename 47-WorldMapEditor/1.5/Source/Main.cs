@@ -41,14 +41,7 @@ public class InvisibleObjectWorldGenStep : WorldGenStep
       */
     public override void GenerateFresh(string seed)
     {
-        var worldGrid = Find.WorldGrid;
-        for (int i = 0; i < worldGrid.TilesCount; i++)
-        {
-            InvisibleWorldObject inv = (InvisibleWorldObject)WorldObjectMaker.MakeWorldObject(MyDefOfs.InvisibleWorldObject);
-            inv.Tile = i;
-            ToggleIconPatcher.invisibleWorldObjects.Add(inv);
-            // Find.WorldObjects.Add(inv);
-        }
+        WorldMapEditorUtils.GenerateInvisibleWorldObjects();
     }
 }
 
@@ -85,6 +78,17 @@ public static class WorldMapEditorUtils
             Find.WorldObjects.Remove(wo);
         }
         ToggleIconPatcher.InEditMode = false;
+    }
+
+    public static void GenerateInvisibleWorldObjects() {
+        var worldGrid = Find.WorldGrid;
+        for (int i = 0; i < worldGrid.TilesCount; i++)
+        {
+            InvisibleWorldObject inv = (InvisibleWorldObject)WorldObjectMaker.MakeWorldObject(MyDefOfs.InvisibleWorldObject);
+            inv.Tile = i;
+            ToggleIconPatcher.invisibleWorldObjects.Add(inv);
+            // Find.WorldObjects.Add(inv);
+        }
     }
 }
 
@@ -126,6 +130,7 @@ public class ToggleIconPatcher
             {
                 /// add world objects to the world in a seperate thread
                 var woToAdd = new List<WorldObject>();
+                WorldMapEditorUtils.GenerateInvisibleWorldObjects();
                 foreach (InvisibleWorldObject inv in invisibleWorldObjects)
                 {
                     // Find.WorldObjects.Add(inv);
