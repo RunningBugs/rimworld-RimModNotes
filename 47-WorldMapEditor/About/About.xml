@@ -30,8 +30,8 @@
 本模组让玩家在进入游戏后（非创建游戏时）可以在世界地图上编辑地块。可以设置地块的生物群落、丘陵度、定居点等。
 This mod allows players to edit map tiles on the world map after entering the game (not when creating a new game). You can set the biome, hilliness, and settlements of the map tiles.
 
-目前的实现方法在有性能问题，但是可以通过关闭编辑器来解决。模组的源代码附在MOD中，并且已上传至GitHub，希望有大神提出优化建议或者pull request。
-The current implementation has performance issues, but they can be resolved by closing the editor. The source code of the mod is included in the mod and has been uploaded to GitHub. Any suggestions for optimization or pull requests are welcome.
+目前的实现方法在有性能问题，但是可以通过关闭编辑器来解决。模组的源代码附在MOD中，并且已上传至GitHub（https://github.com/lisanhu/rimworld-RimModNotes/tree/main/47-WorldMapEditor），希望有大神提出优化建议或者pull request。
+The current implementation has performance issues, but they can be resolved by closing the editor. The source code of the mod is included in the mod and has been uploaded to GitHub(https://github.com/lisanhu/rimworld-RimModNotes/tree/main/47-WorldMapEditor). Any suggestions for optimization or pull requests are welcome.
 
 启用时，此模组会在每个地块上创建一个隐形的世界对象，这会显著影响性能。关闭时，这些对象会被移除，恢复正常性能。
 When enabled, this mod creates an invisible world object on each map tile, which can significantly impact performance. When disabled, these objects are removed, restoring normal performance.
