@@ -23,6 +23,10 @@ public class ModSettingsData : ModSettings
 {
     public bool showTargetLine = true;
 
+    public bool showTargetLineForNonHostile = true;
+
+    public bool showTargetLineForHostile = true;
+
     // public bool onlyShowWhenEnemyOnMap = true;
 
     // public bool ignorePsycInvisible = false;
@@ -31,8 +35,8 @@ public class ModSettingsData : ModSettings
     {
         base.ExposeData();
         Scribe_Values.Look(ref showTargetLine, "showTargetLine", true);
-        // Scribe_Values.Look(ref onlyShowWhenEnemyOnMap, "onlyShowWhenEnemyOnMap", true);
-        // Scribe_Values.Look(ref ignorePsycInvisible, "ignorePsycInvisible", false);
+        Scribe_Values.Look(ref showTargetLineForNonHostile, "showTargetLineForNonHostile", true);
+        Scribe_Values.Look(ref showTargetLineForHostile, "showTargetLineForEnemy", true);
     }
 }
 
@@ -45,7 +49,7 @@ public class ModSettingsUI : Mod
 
     public override string SettingsCategory()
     {
-        return "TargetLine";
+        return "TargetLine".Translate();
     }
 
     public override void DoSettingsWindowContents(Rect inRect)
@@ -53,7 +57,13 @@ public class ModSettingsUI : Mod
         ModSettingsData settings = GetSettings<ModSettingsData>();
         Listing_Standard listingStandard = new Listing_Standard();
         listingStandard.Begin(inRect);
-        listingStandard.CheckboxLabeled("Show target line", ref settings.showTargetLine, "Show target line");
+        listingStandard.CheckboxLabeled("EnableTargetLine".Translate(), ref settings.showTargetLine);
+
+        if (settings.showTargetLine)
+        {
+            listingStandard.CheckboxLabeled("EnableForNonHostile".Translate(), ref settings.showTargetLineForNonHostile, "EnableForNonHostileDesc".Translate());
+            listingStandard.CheckboxLabeled("EnableForHostile".Translate(), ref settings.showTargetLineForHostile, "EnableForHostileDesc".Translate());
+        }
         listingStandard.End();
     }
 }
@@ -108,6 +118,16 @@ public static class Pawn_StanceTracker_Patch
     private static void DrawTargetLine(Pawn_StanceTracker __instance)
     {
         var pawn = __instance.pawn;
+        var settings = LoadedModManager.GetMod<ModSettingsUI>().GetSettings<ModSettingsData>();
+        if (!settings.showTargetLineForNonHostile && !GenHostility.HostileTo(pawn, Faction.OfPlayer))
+        {
+            return;
+        }
+
+        if (!settings.showTargetLineForHostile && GenHostility.HostileTo(pawn, Faction.OfPlayer))
+        {
+            return;
+        }
 
         // bool hostilePawn = pawn.Faction.HostileTo(Faction.OfPlayer);
         bool hostilePawn = pawn.HostileTo(Faction.OfPlayer);

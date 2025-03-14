@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+    <TargetLine>目标线</TargetLine>
+    <EnableTargetLine>启用目标线</EnableTargetLine>
+    <EnableForNonHostile>为非敌对单位显示目标线</EnableForNonHostile>
+    <EnableForNonHostileDesc>包括玩家，中立，盟友，动物等等</EnableForNonHostileDesc>
+    <EnableForHostile>为敌对单位显示目标线</EnableForHostile>
+    <EnableForHostileDesc>敌对派系</EnableForHostileDesc>
+</LanguageData>

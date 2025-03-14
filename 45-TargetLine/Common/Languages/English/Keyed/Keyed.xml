@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+    <TargetLine>Target Line</TargetLine>
+    <EnableTargetLine>Enable Target Line</EnableTargetLine>
+    <EnableForNonHostile>Enable Target Line for non-hostile pawns</EnableForNonHostile>
+    <EnableForNonHostileDesc>Including player pawns, allies, animals, etc.</EnableForNonHostileDesc>
+    <EnableForHostile>Enable Target Line for hostile pawns</EnableForHostile>
+    <EnableForHostileDesc>Pawns from hostile factions, etc.</EnableForHostileDesc>
+</LanguageData>
