@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <FindRelic>找寻圣物</FindRelic>
+    <NoRelicsToGenerate>主文化{0}没有圣物可以生成</NoRelicsToGenerate>
+    <TooManyOngoingOrNotAcceptedSubquests>当前已有太多圣物任务等待完成</TooManyOngoingOrNotAcceptedSubquests>
+    <FindRelicChance>仪式成功后，发现圣物信息的概率 {0}</FindRelicChance>
+</LanguageData>

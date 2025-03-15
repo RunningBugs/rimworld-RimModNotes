@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <FindRelic.label>寻找圣物信息</FindRelic.label>
+    <!-- 翻译时请注意：这里的{0}是用特殊代码做的动态显示，原版环境不支持动态数值 -->
+    <!-- 为性能着想，此处的逻辑相对简陋，请务必让{0}是第一个百分号的位置 -->
+    <FindRelic.effectDesc>{0}的几率，从传言中找到圣物相关信息</FindRelic.effectDesc>
+    <FindRelic.letterInfoText>一道传言已被证实，你找到了一条圣物相关的信息</FindRelic.letterInfoText>
+</LanguageData>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <FindRelic>Find Relic</FindRelic>
+    <NoRelicsToGenerate>The primary ideo {0} has no relic to generate.</NoRelicsToGenerate>
+    <TooManyOngoingOrNotAcceptedSubquests>There are too many ongoing / not accepted sub quests to be completed.</TooManyOngoingOrNotAcceptedSubquests>
+    <FindRelicChance>The chance to find information about relic when ritual is successful is {0}</FindRelicChance>
+</LanguageData>

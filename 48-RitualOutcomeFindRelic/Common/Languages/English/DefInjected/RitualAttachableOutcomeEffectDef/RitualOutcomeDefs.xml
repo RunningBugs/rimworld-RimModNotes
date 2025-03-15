@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <FindRelic.label>find relic information</FindRelic.label>
+    <!-- Please pay attention when translating: The {0} here is handled with a specialized code, the original RimWorld code does not support dynamic values for this field -->
+    <!-- For the sake of performance, the logic is very simple, please make sure {0} is the 1st value with % symbol -->
+    <FindRelic.effectDesc>{0} chance of finding relic information from whispers</FindRelic.effectDesc>
+    <FindRelic.letterInfoText>A whisper has been confirmed and you find some information about a relic</FindRelic.letterInfoText>
+</LanguageData>

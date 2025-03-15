@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <RitualAttachableOutcomeEffectDef>
+        <defName>FindRelic</defName>
+        <label>FindRelic</label>
+        <effectDesc>{0} chance of finding relic information from whispers</effectDesc>
+        <letterInfoText>A whisper has been confirmed and you find some information about a relic</letterInfoText>
+        <workerClass>FindRelic.RitualAttachableOutcomeEffectWorker_FindRelic</workerClass>
+    </RitualAttachableOutcomeEffectDef>
+</Defs>
