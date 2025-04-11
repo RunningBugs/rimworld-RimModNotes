@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.UnlockHarbingerTreeInAllCases</packageId>
+	<name>在任何情况下解锁厄兆噬树图鉴 Unlock Harbinger Tree In All Cases</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.5</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<!-- <li>username.modname</li> -->\
+		<li>Ludeon.RimWorld.Anomaly</li>
+	</loadAfter>
+
+	<description>
+在原版极端生态下，因为厄兆噬树不能生成在冰盖这样的极端地形，导致低级图鉴不能够正确解锁。这个模组尝试修复这个问题，当厄兆噬树生成事件被触发时，无论如何图鉴都会解锁。
+
+In original game extreme biome, because Harbinger Tree can not be generated in extreme biomes like sea ice, so corresponding entity can not be discovered correctly. This mod try to fix this problem, when Harbinger Tree is generated, it will be directly discovered no matter whether the tree is acutally generated.
+
+	</description>
+</ModMetaData>
