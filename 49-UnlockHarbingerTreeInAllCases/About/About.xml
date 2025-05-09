@@ -21,7 +21,6 @@
 	</incompatibleWith>
 
 	<loadAfter>
-		<!-- <li>username.modname</li> -->\
 		<li>Ludeon.RimWorld.Anomaly</li>
 	</loadAfter>
 
