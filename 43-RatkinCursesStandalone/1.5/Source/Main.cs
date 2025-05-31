@@ -41,11 +41,15 @@ namespace RASL
 	{
 		public static void Prefix(Pawn __instance, DamageInfo dinfo)
 		{
+            if (!__instance.IsColonist && !__instance.IsSlaveOfColony)
+            {
+                return;
+            }
 
 			if (!RAUtility.IfCurseActive("Wounded"))
-			{
-				return;
-			}
+                {
+                    return;
+                }
 			if (__instance.RaceProps.Humanlike && dinfo.Amount > 0 && dinfo.Def.harmsHealth)
 			{
 				if (!__instance.Spawned)
