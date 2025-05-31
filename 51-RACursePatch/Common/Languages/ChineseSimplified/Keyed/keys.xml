@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <RACursePatch>鼠异诅咒补丁</RACursePatch>
+    <RACursePatch.enablePatch>启用补丁</RACursePatch.enablePatch>
+    <RACursePatch.enablePatchDesc>是否启用补丁，启用表示诅咒效果仅对殖民者生效</RACursePatch.enablePatchDesc>
+</LanguageData>

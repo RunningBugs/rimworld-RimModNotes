@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+<!-- curse -->
+<RACurseSA.CurseEnded>诅咒消散</RACurseSA.CurseEnded>
+<RACurseSA.CurseEndedDesc>来自虚空的恶毒诅咒消散了，殖民者们已重获行动的自由。</RACurseSA.CurseEndedDesc>
+<RACurseSA.EatingWithoutTableDesc>任何人须在桌子上吃饭。如敢违反，将受到严惩。</RACurseSA.EatingWithoutTableDesc>
+<RACurseSA.CursePoisoning>{0}由于违反诅咒禁忌而食物中毒了。</RACurseSA.CursePoisoning>
+<RACurseSA.ResearchDesc>任何人不得进行研究与扫描类工作。如敢违反，将受到严惩。</RACurseSA.ResearchDesc>
+<RACurseSA.KillAnimalsDesc>不得杀戮任何无辜动物。如敢违反，将受到严惩。</RACurseSA.KillAnimalsDesc>
+<RACurseSA.CurseChimeraSpawn>一只嵌合兽从蒙冤而死的动物尸体内钻了出来！</RACurseSA.CurseChimeraSpawn>
+<RACurseSA.WoundedDesc>任何人不得受到任何伤害。如敢违反，将受到严惩。</RACurseSA.WoundedDesc>
+<RACurseSA.CutTreeDesc>不得伐倒任何树木。如敢违反，将受到严惩。</RACurseSA.CutTreeDesc>
+</LanguageData>

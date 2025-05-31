@@ -1,0 +1,86 @@
+# RACurseStandalone Agent Configuration
+
+## Project Overview
+This is a RimWorld mod development project for "RACurseStandalone" (鼠异诅咒独立模组), a standalone curse mechanism mod extracted from the Ratkin mod series. The mod provides configurable curse mechanics that can be applied specifically to colonists.
+
+## Project Structure
+- **About/**: Mod metadata and preview assets
+- **Common/**: Cross-version game content (Defs, Languages, Patches)
+- **1.5/**: Version-specific source code and assemblies
+- **Languages/**: Localization files (Chinese/English)
+
+## Development Environment
+- **Target Framework**: .NET Framework 4.7.2
+- **Game Version**: RimWorld 1.5
+- **Dependencies**: Harmony (brrainz.harmony)
+- **IDE Support**: MonoDevelop, Visual Studio Code with C# Dev Kit
+- **Build System**: MSBuild/.NET CLI
+
+## Key Technologies
+- **C# Programming**: Game logic and Harmony patches
+- **XML Configuration**: Game definitions and patches
+- **Harmony Patching**: Runtime code modification for RimWorld
+- **RimWorld Modding API**: Game integration and mod framework
+
+## Code Standards
+- Performance-optimized C# code with readable structure
+- Proper XML formatting for RimWorld definitions
+- Consistent naming conventions following RimWorld modding standards
+- Comprehensive error handling and logging
+- Thread-safe operations where applicable
+
+## Testing Strategy
+- In-game testing with RimWorld development mode
+- Harmony patch verification
+- Performance profiling for game impact
+- Compatibility testing with common mod combinations
+- Localization testing for Chinese/English content
+
+## Build Process
+1. Compile C# source using dotnet/MSBuild
+2. Copy assemblies to appropriate game directories
+3. Validate XML definitions against RimWorld schemas
+4. Package mod for distribution
+5. Test in clean RimWorld installation
+
+## Documentation Requirements
+- XML code comments for all public APIs
+- README updates for feature changes
+- Changelog maintenance for releases
+- Localization key documentation
+- Performance impact notes
+
+## Common Tasks
+- Adding new curse effects and mechanics
+- Implementing mod settings and configuration
+- Creating Harmony patches for game systems
+- Updating localization files
+- Debugging game integration issues
+- Performance optimization for large colonies
+
+## File Conventions
+- C# files: PascalCase naming, clear class organization
+- XML files: Proper indentation, descriptive def names
+- Asset files: Consistent naming with mod prefix
+- Localization: Key naming with hierarchical structure
+
+## Debugging Guidelines
+- Use RimWorld's development mode extensively
+- Log important state changes and errors
+- Profile performance impact on game systems
+- Test with various colony sizes and scenarios
+- Validate mod compatibility with popular mods
+
+## Release Process
+- Version bump in About.xml and assembly info
+- Comprehensive testing across game scenarios
+- Documentation updates and changelog
+- Steam Workshop and GitHub release coordination
+- Community feedback integration
+
+## Security Considerations
+- No external network calls without user consent
+- Safe file I/O operations
+- Proper input validation for mod settings
+- Memory management for long-running games
+- Respectful integration with other mods

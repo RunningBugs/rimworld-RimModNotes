@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.RACurseSA</packageId>
+	<name>鼠异诅咒独立模组 RACurseStandalone</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.5</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<!-- <li>username.modname</li> -->
+	</loadAfter>
+
+	<description>
+鼠异的诅咒机制非常有趣，但是需要各种前置并且不能只对殖民者生效，本模组将其从原模组抽出，并增加了模组选项，只对殖民者生效。
+
+The RACurse is really interesting, but it requires the Ratkin mod as dependency and cannot be configured to affect only colonists. This standalone mod extracts that curse system and adds configurable options to limit its effects to colonists only.
+	</description>
+</ModMetaData>

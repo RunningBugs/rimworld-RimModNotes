@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.RACursePatch</packageId>
+	<name>鼠异诅咒补丁 RACursePatch</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.5</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li>
+		<li>
+			<packageId>fxz.ratkinanomaly.update</packageId>
+			<displayName>Ratkin Anomaly+</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3293914637</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<li>fxz.ratkinanomaly.update</li>
+	</loadAfter>
+
+	<description>
+鼠异的诅咒机制非常有趣，但是不能只对殖民者生效，本模组对鼠异诅咒补丁打了补丁，并增加了模组选项，只对殖民者生效。
+
+The RACurse is really interesting, but it cannot be configured to affect only colonists. This mod adds configurable options to limit its effects to colonists only.
+	</description>
+</ModMetaData>

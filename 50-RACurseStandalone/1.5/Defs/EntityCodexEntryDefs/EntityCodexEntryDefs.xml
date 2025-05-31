@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- 诅咒 -->
+<EntityCodexEntryDef>
+  <defName>RA_Curse_SA</defName>
+  <label>curse</label>
+  <description
+        >A mysterious force of unknown origin, monitoring the every move of all intelligent beings. When the abnormal behavior triggers some of its logic, the corresponding psionic wave comes in the form of "punishment."</description>
+  <uiIconPath>UI/CodexEntries/Curse</uiIconPath>
+  <category>Basic</category>
+  <linkedIncidents>
+    <li>RA_Curse_SA</li>
+  </linkedIncidents>
+  <!-- <discoveredResearchProjects>
+    <li>RA_EvilProphecy</li>
+  </discoveredResearchProjects> -->
+  <provocationIncidents>
+    <li>RA_Curse_SA</li>
+  </provocationIncidents>
+  <orderInCategory>10003</orderInCategory>
+	<!-- <modExtensions>
+	  <li Class="RatkinAnomaly.TaleMarker">
+		<TaleTitle>RA.Title.Curse</TaleTitle>
+		<TaleDescription>RA.Tale.Curse</TaleDescription>
+	  </li>
+	</modExtensions> -->
+</EntityCodexEntryDef>
+</Defs>

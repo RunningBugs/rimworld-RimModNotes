@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<GameConditionDef>
+  <defName>RACurseSA_CurseCondition</defName>
+  <conditionClass>RACurseSA.GameCondition_Curse</conditionClass>
+  <label>curse</label>
+  <description>The curse is hanging over this place. Don't do anything dangerous.</description>
+	<letterText
+        >As a wave of psychic energy swept across the sky, an evil curse fell! This power is essentially derived from a dark archotechnology program that, despite its wide coverage, has very little precision. If we can avoid doing things that attract its attention, we shouldn't have a big problem. \n\nThe colonists heard a low whisper: \n\n{CurseDesc}</letterText>
+  <letterDef>ThreatBig</letterDef>
+  <weatherDef>GrayPall</weatherDef>
+  <canBePermanent>false</canBePermanent>
+  <natural>false</natural>
+  <allowUnderground>true</allowUnderground>
+</GameConditionDef>
+</Defs>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+<!-- EN: curse -->
+<RACurseSA_CurseCondition.label>诅咒</RACurseSA_CurseCondition.label>
+<!-- EN: The curse is hanging over this place. Don't do anything dangerous. -->
+<RACurseSA_CurseCondition.description
+    >诅咒正笼罩在此地上空，不要做危险的事。</RACurseSA_CurseCondition.description>
+<!-- EN: As a wave of psychic energy swept across the sky, an evil curse fell! This power is essentially derived from a dark archotechnology program that, despite its wide coverage, has very little precision. If we can avoid doing things that attract its attention, we shouldn't have a big problem. \n\nThe colonists heard a low whisper: \n\n{CurseDesc} -->
+<RACurseSA_CurseCondition.letterText
+    >随着一阵灵能波动掠过天空，邪恶的诅咒降临了！这股力量本质上来源于某个暗黑超凡智能的程序，尽管覆盖范围相当广，其精度却很低。如果我们能避免做出容易引起它注意的事情，就应该不会有大问题。\n\n殖民者们听见一阵低沉的耳语说道：\n\n{CurseDesc}</RACurseSA_CurseCondition.letterText>
+</LanguageData>
