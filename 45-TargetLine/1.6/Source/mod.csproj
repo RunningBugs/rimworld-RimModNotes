@@ -5,8 +5,8 @@
 		<PlatformTarget>x64</PlatformTarget>
 
 		<!-- Modify [RootNamespace], [AssemblyName], [OutputPath], [VersionPrefix] -->
-		<RootNamespace>Template</RootNamespace>
-		<AssemblyName>Template</AssemblyName>
+		<RootNamespace>TargetLine</RootNamespace>
+		<AssemblyName>TargetLine</AssemblyName>
 		<OutputPath>../Assemblies</OutputPath>
 		<VersionPrefix>0.1.0.0</VersionPrefix>
 
@@ -18,10 +18,17 @@
 		<CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
 		<LangVersion>11.0</LangVersion>
 	</PropertyGroup>
+	<PropertyGroup>
+	    <PublicizeAll>true</PublicizeAll>
+	</PropertyGroup>
 	<ItemGroup>
 	  <!-- <PackageReference Include="Krafs.Rimworld.Ref" Version="1.4.3704" /> -->
-	  <PackageReference Include="Krafs.Rimworld.Ref" Version="1.5.4033-beta" />
-	  <PackageReference Include="Lib.Harmony" Version="2.3.1.1" />
-	  <PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="10.0.1" />
+		<PackageReference Include="Krafs.Publicizer" Version="2.*">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4488-beta" />
+		<PackageReference Include="Lib.Harmony" Version="2.3.*" />
+		<PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="10.*" />
 	</ItemGroup>
 </Project>
