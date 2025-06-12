@@ -111,6 +111,11 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 
 	public static bool AffectedByDarkness(Pawn pawn)
 	{
+		// Log.Warning($"Spawned: {pawn.Spawned}");
+		// Log.Warning($"RaceProps: {pawn.RaceProps.Humanlike}");
+		// Log.Warning($"Downed: {pawn.Downed}");
+		// Log.Warning($"IsColonistPlayerControlled: {pawn.IsColonistPlayerControlled}");
+		// Log.Warning($"IsColonySubhumanPlayerControlled: {pawn.IsColonySubhumanPlayerControlled}");
 		if (pawn.Spawned && pawn.RaceProps.Humanlike && !pawn.Downed)
 		{
 			if (!pawn.IsColonistPlayerControlled)
@@ -220,10 +225,6 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 
 	public static bool UnnaturalDarknessAt(IntVec3 cell, Map map)
 	{
-		if (!ModsConfig.AnomalyActive)
-		{
-			return false;
-		}
 		if (map == null)
 		{
 			return false;
