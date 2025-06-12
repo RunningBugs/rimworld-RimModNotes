@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Check if the Screaming Starfish mod is loaded -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <!-- IMPORTANT: Replace "Screaming Starfish" with the actual mod NAME from the About.xml file -->
+      <!-- PatchOperationFindMod uses the mod name, NOT the packageId -->
+      <li>ScreamingStarfish</li>
+    </mods>
+    
+    <!-- If mod is found, apply patches to storytellers that don't have the component -->
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/StorytellerDef[not(comps/li[@Class="ScreamingStarfish.StorytellerCompProperties_PostSounds"])]/comps</xpath>
+      <value>
+        <li Class="ScreamingStarfish.StorytellerCompProperties_PostSounds" />
+      </value>
+    </match>
+  </Operation>
+</Patch>

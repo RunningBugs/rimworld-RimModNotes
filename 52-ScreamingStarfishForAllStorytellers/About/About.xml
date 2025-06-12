@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.ScreamingStarfishForAllStorytellers</packageId>
+	<name>海星的尖叫响彻环世界 Screaming Starfish for All Storytellers</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.5</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>ZM.ScreamingStarfish</packageId>
+			<displayName>ScreamingStarfish</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3493059014</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<li>ZM.ScreamingStarfish</li>
+	</loadAfter>
+
+	<description>
+叙事者——海星地联 是我这几天最喜欢的模组，可惜的是海星的尖叫只能在那一个叙事者下使用。
+
+本模组能够为所有叙事者添加海星尖叫的效果。需要在原模组后加载。
+
+Screaming Starfish is my favorite storyteller mod in the past few days, but unfortunately, the screaming effect can only be used with that specific storyteller.
+
+This mod allows the screaming effect to be added to all storytellers. It needs to be loaded after the original mod.
+	</description>
+</ModMetaData>
