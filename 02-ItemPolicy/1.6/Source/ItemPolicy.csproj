@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>net472</TargetFramework>
+		<PlatformTarget>x64</PlatformTarget>
+
+		<!-- Modify [RootNamespace], [AssemblyName], [OutputPath], [VersionPrefix] -->
+		<RootNamespace>_ItemPolicy</RootNamespace>
+		<AssemblyName>ItemPolicy</AssemblyName>
+		<OutputPath>../Assemblies</OutputPath>
+		<VersionPrefix>0.1.1.0</VersionPrefix>
+
+		<!-- do not generate pdb file -->
+		<DebugType>none</DebugType>
+
+		<DebugSymbols>false</DebugSymbols>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<LangVersion>Latest</LangVersion>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<LangVersion>Latest</LangVersion>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4488-beta" />
+		<PackageReference Include="Lib.Harmony" Version="2.3.1.1" />
+		<PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="10.0.1" />
+	</ItemGroup>
+</Project>
