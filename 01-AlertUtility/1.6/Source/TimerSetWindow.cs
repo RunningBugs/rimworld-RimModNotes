@@ -133,44 +133,7 @@ namespace AlertUtility
 				AlertUtility.Remove(e);
 			}
 		}
-
-		// public string getEventsString()
-		// {
-		// 	List<AlertUtility.Event> events = AlertUtility.GetEvents();
-		// 	string events_string = "";
-		// 	foreach (var e in events)
-		// 	{
-		// 		int ticks = Find.TickManager.TicksGame;
-		// 		int alertTicks = e.presetGameTicksToAlert;
-		// 		float diff = (alertTicks > ticks ? alertTicks - ticks : 0);
-
-		// 		float ticksPerRealSec = TickRateMultiplier(Find.TickManager.CurTimeSpeed) * 60;
-
-		// 		if (diff <= 10 * ticksPerRealSec)
-		// 		{
-		// 			//  If left real time is less than 10s, then show seconds instead of game hours
-		// 			float secs = diff / ticksPerRealSec;
-		// 			var tpl = "RealSeconds".Translate();
-		// 			events_string += $"{e.message}    {secs:F2} {tpl}\n";
-		// 		}
-		// 		else if (diff <= GenDate.TicksPerDay)
-		// 		{
-		// 			float hours = diff / GenDate.TicksPerHour;
-		// 			var tpl = "GameHours".Translate();
-		// 			events_string += $"{e.message}    {hours:F2} {tpl}\n";
-		// 		}
-		// 		else
-		// 		{
-		// 			float days = diff / GenDate.TicksPerDay;
-		// 			var tpl = "GameDays".Translate();
-		// 			events_string += $"{e.message}    {days:F2} {tpl}\n";
-		// 		}
-
-		// 	}
-		// 	return events_string;
-		// }
-
-		// Seems like starting x, y and width height
+		
 		protected override void SetInitialSizeAndPosition()
 		{
 			base.windowRect = new Rect((UI.screenWidth - this.InitialSize.x) / 2, (UI.screenHeight - this.InitialSize.y) / 2, ((Window)this).InitialSize.x, ((Window)this).InitialSize.y);
@@ -246,6 +209,8 @@ namespace AlertUtility
 			}
 		}
 
+		float ticks = 0;
+
 		public override void DoWindowContents(Rect inRect)
 		{
 			var listView = new Listing_Standard(GameFont.Small);
@@ -266,8 +231,10 @@ namespace AlertUtility
 			//Log.Warning($"{unit}");
 			listView.Gap();
 
-			float ticks = 0, real_ticks = 0;
+			// float ticks = 0, real_ticks = 0;
+			float real_ticks = 0;
 			listView.TextFieldNumericLabeled<float>("TicksToAlert".Translate(), ref ticks, ref buffer);
+			Log.Message($"ticks: {ticks}");
 			listView.Gap();
 
 			listView.Label("TicksToAlertExplaination".Translate());
@@ -286,7 +253,9 @@ namespace AlertUtility
 				int ticksToAlert = Find.TickManager.TicksGame;
 				int multiplier = getMultiplier(unit);
 				real_ticks = ticks * multiplier;
+				Log.Message($"{ticksToAlert} {ticks} {multiplier}");
 				AlertUtility.Add(new AlertUtility.Event((int)(ticksToAlert + real_ticks), txtBuffer));
+				ticks = 0;
 				Find.WindowStack.TryRemove(typeof(TimerSetWindow));
 			}
 
