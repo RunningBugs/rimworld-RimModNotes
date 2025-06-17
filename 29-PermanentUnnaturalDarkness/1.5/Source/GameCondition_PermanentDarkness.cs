@@ -108,9 +108,24 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 
 	private bool runOnce = false;
 
+
+	public static bool AffectedByDarkness(Pawn pawn)
+	{
+		if (pawn.Spawned && pawn.RaceProps.Humanlike && !pawn.Downed)
+		{
+			if (!pawn.IsColonistPlayerControlled)
+			{
+				return pawn.IsColonyMutantPlayerControlled;
+			}
+			return true;
+		}
+		return false;
+	}
+
 	public override void GameConditionTick()
 	{
-		if (!runOnce) {
+		if (!runOnce)
+		{
 			var gcm = Find.World.gameConditionManager;
 			if (!gcm.ConditionIsActive(def))
 			{
@@ -118,7 +133,7 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 			}
 			runOnce = true;
 		}
-		
+
 		base.GameConditionTick();
 		List<Map> affectedMaps = base.AffectedMaps;
 		for (int i = 0; i < affectedMaps.Count; i++)
@@ -142,14 +157,15 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 
 			foreach (Pawn item in map.mapPawns.AllHumanlikeSpawned)
 			{
-				if (!item.Downed && (item.IsColonistPlayerControlled || item.IsColonyMutantPlayerControlled) && InUnnaturalDarkness(item) && item.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.DarknessExposure) == null)
+				if (AffectedByDarkness(item) && InUnnaturalDarkness(item) && item.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.DarknessExposure) == null)
 				{
 					item.health.AddHediff(HediffDefs.PD_DarknessExposure);
 				}
 			}
 		}
 
-		if (GenTicks.IsTickInterval(60)) {
+		if (GenTicks.IsTickInterval(60))
+		{
 			if (GenTicks.TicksGame >= InitPhaseStartTick && !initialLetter)
 			{
 				Find.LetterStack.ReceiveLetter(ResolveText("initialPhaseLetterLabel"), ResolveText("initialPhaseLetterText"), LetterDefOf.NegativeEvent);
@@ -177,6 +193,8 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 		}
 	}
 
+	private readonly Color defaultDarknessColor = new(0.049f, 0.064f, 0.094f, 1.000f);
+
 	public override void GameConditionDraw(Map map)
 	{
 		if (!(map.GameConditionManager.MapBrightness > 0.5f))
@@ -185,6 +203,19 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 			{
 				overlays[i].DrawOverlay(map);
 			}
+		}
+
+		if (ModSettingsUI.settings.darknessControl)
+		{
+			float level = ModSettingsUI.settings.darknessLevel / 2f;
+			Color nightBrightnessColor = new(level, level, level, 1f - level);
+			// MatBases.LightOverlay.color = nightBrightnessColor;
+			MatBases.Darkness.color = nightBrightnessColor;
+			// MatBases.ShadowMask.color = Color.black;
+		}
+		else
+		{
+			MatBases.Darkness.color = defaultDarknessColor;
 		}
 	}
 
@@ -204,10 +235,6 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 
 	public static bool UnnaturalDarknessAt(IntVec3 cell, Map map)
 	{
-		if (!ModsConfig.AnomalyActive)
-		{
-			return false;
-		}
 		if (map == null)
 		{
 			return false;

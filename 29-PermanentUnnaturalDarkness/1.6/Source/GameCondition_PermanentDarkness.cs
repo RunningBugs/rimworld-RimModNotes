@@ -107,15 +107,10 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 	}
 
 	private bool runOnce = false;
-	
+
 
 	public static bool AffectedByDarkness(Pawn pawn)
 	{
-		// Log.Warning($"Spawned: {pawn.Spawned}");
-		// Log.Warning($"RaceProps: {pawn.RaceProps.Humanlike}");
-		// Log.Warning($"Downed: {pawn.Downed}");
-		// Log.Warning($"IsColonistPlayerControlled: {pawn.IsColonistPlayerControlled}");
-		// Log.Warning($"IsColonySubhumanPlayerControlled: {pawn.IsColonySubhumanPlayerControlled}");
 		if (pawn.Spawned && pawn.RaceProps.Humanlike && !pawn.Downed)
 		{
 			if (!pawn.IsColonistPlayerControlled)
@@ -138,6 +133,8 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 			}
 			runOnce = true;
 		}
+
+		// visualBrightnessControl = ModSettingsUI.settings.darknessControl;
 
 		base.GameConditionTick();
 		List<Map> affectedMaps = base.AffectedMaps;
@@ -198,6 +195,8 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 		}
 	}
 
+	private readonly Color defaultDarknessColor = new(0.049f, 0.064f, 0.094f, 1.000f);
+
 	public override void GameConditionDraw(Map map)
 	{
 		if (!(map.GameConditionManager.MapBrightness > 0.5f))
@@ -206,6 +205,19 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 			{
 				overlays[i].DrawOverlay(map);
 			}
+		}
+
+		if (ModSettingsUI.settings.darknessControl)
+		{
+			float level = ModSettingsUI.settings.darknessLevel / 2f;
+			Color nightBrightnessColor = new(level, level, level, 1f - level);
+			// MatBases.LightOverlay.color = nightBrightnessColor;
+			MatBases.Darkness.color = nightBrightnessColor;
+			// MatBases.ShadowMask.color = Color.black;
+		}
+		else
+		{
+			MatBases.Darkness.color = defaultDarknessColor;
 		}
 	}
 
