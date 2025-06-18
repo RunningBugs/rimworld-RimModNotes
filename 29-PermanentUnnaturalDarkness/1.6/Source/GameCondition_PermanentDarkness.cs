@@ -84,7 +84,12 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 
 	public override SkyTarget? SkyTarget(Map map)
 	{
-		return new SkyTarget(0f, GameCondition_NoSunlight.EclipseSkyColors, 1f, 0f);
+		SkyColorSet colors = GameCondition_NoSunlight.EclipseSkyColors;
+		// if (ModSettingsUI.settings.darknessControl)
+		// {
+		// 	colors.shadow = new(1f, 0f, 0f, 0f);
+		// }
+		return new SkyTarget(0f, colors, 1f, 0f);
 	}
 
 	public override WeatherDef ForcedWeather()
@@ -189,6 +194,7 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 	public override void End()
 	{
 		base.End();
+		DebugViewSettings.drawShadows = true;
 		foreach (Map affectedMap in base.AffectedMaps)
 		{
 			affectedMap.weatherDecider.StartNextWeather();
@@ -196,6 +202,7 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 	}
 
 	private readonly Color defaultDarknessColor = new(0.049f, 0.064f, 0.094f, 1.000f);
+	public static bool shadowControlDirty = true;
 
 	public override void GameConditionDraw(Map map)
 	{
@@ -211,9 +218,13 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 		{
 			float level = ModSettingsUI.settings.darknessLevel / 2f;
 			Color nightBrightnessColor = new(level, level, level, 1f - level);
-			// MatBases.LightOverlay.color = nightBrightnessColor;
 			MatBases.Darkness.color = nightBrightnessColor;
-			// MatBases.ShadowMask.color = Color.black;
+
+			if (shadowControlDirty)
+			{
+				DebugViewSettings.drawShadows = ModSettingsUI.settings.shadowControl;
+				shadowControlDirty = false;
+			}
 		}
 		else
 		{

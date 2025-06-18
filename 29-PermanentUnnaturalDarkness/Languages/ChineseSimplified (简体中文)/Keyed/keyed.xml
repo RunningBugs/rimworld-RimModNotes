@@ -3,4 +3,6 @@
     <PD.applyDarknessControlSettings>启用无尽黑暗亮度控制</PD.applyDarknessControlSettings>
     <PD.settings.darknessLevel>无尽黑暗亮度等级（0-2）</PD.settings.darknessLevel>
     <PD.settingsCategory>无尽黑暗</PD.settingsCategory>
+    <PD.settings.shadowControl>绘制阴影</PD.settings.shadowControl>
+    <PD.settings.shadowControl.tooltip>设置是否在异常黑暗到来时绘制阴影，和开发者模式下的显示阴影共用同一设置</PD.settings.shadowControl.tooltip>
 </LanguageData>
