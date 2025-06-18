@@ -1,0 +1,1 @@
+The RimWorld 1.6 Source code is available at `../../RW/RW1-6`

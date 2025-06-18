@@ -187,6 +187,7 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 	public override void End()
 	{
 		base.End();
+		DebugViewSettings.drawShadows = true;
 		foreach (Map affectedMap in base.AffectedMaps)
 		{
 			affectedMap.weatherDecider.StartNextWeather();
@@ -194,6 +195,7 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 	}
 
 	private readonly Color defaultDarknessColor = new(0.049f, 0.064f, 0.094f, 1.000f);
+	public static bool shadowControlDirty = true;
 
 	public override void GameConditionDraw(Map map)
 	{
@@ -209,9 +211,13 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 		{
 			float level = ModSettingsUI.settings.darknessLevel / 2f;
 			Color nightBrightnessColor = new(level, level, level, 1f - level);
-			// MatBases.LightOverlay.color = nightBrightnessColor;
 			MatBases.Darkness.color = nightBrightnessColor;
-			// MatBases.ShadowMask.color = Color.black;
+
+			if (shadowControlDirty)
+			{
+				DebugViewSettings.drawShadows = ModSettingsUI.settings.shadowControl;
+				shadowControlDirty = false;
+			}
 		}
 		else
 		{

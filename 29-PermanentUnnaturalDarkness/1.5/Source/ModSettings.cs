@@ -33,6 +33,13 @@ public class ModSettingsUI : Mod
             float newSliderPos = listing.SliderLabeled("PD.settings.darknessLevel".Translate() + $"{settings.darknessLevel}", sliderPos, 0f, 2f);
             sliderPos = 0.1f * (int)(newSliderPos * 10);
             settings.darknessLevel = sliderPos;
+
+            bool before = settings.shadowControl;
+            listing.CheckboxLabeled("PD.settings.shadowControl".Translate(), ref settings.shadowControl, "PD.settings.shadowControl.tooltip".Translate());
+            if (before != settings.shadowControl)
+            {
+                GameCondition_PermanentDarkness.shadowControlDirty = true;
+            }
         }
         listing.End();
     }
@@ -47,11 +54,13 @@ public class SettingsData : ModSettings
 {
     public bool darknessControl = false;
     public float darknessLevel = 0.35f;
+    public bool shadowControl = false;
 
     public override void ExposeData()
     {
         Scribe_Values.Look(ref darknessControl, "PD.settings.darknessControl", false);
         Scribe_Values.Look(ref darknessLevel, "PD.settings.darknessLevel", 0.35f);
+        Scribe_Values.Look(ref shadowControl, "PD.settings.shadowControl", false);
     }
 
 }

@@ -59,13 +59,13 @@
 			</li>
 		</tools>
 		<comps>
-			<li>
+			<!-- <li>
 				<compClass>PDEDontStarve.CompLanternFeulTracker</compClass>
-			</li>
-			<li Class="PDEDontStarve.CompProperties_CauseHediff_Primary">
+			</li> -->
+			<!-- <li Class="PDEDontStarve.CompProperties_CauseHediff_Primary">
 				<hediff>LightSourceOnHand</hediff>
-			</li>
-			<li Class="CompProperties_Refuelable">
+			</li> -->
+			<!-- <li Class="CompProperties_Refuelable">
 				<compClass>PDEDontStarve.CompPausibleRefuelable</compClass>
 				<fuelConsumptionRate>1</fuelConsumptionRate>
 				<fuelCapacity>1</fuelCapacity>
@@ -76,18 +76,18 @@
 				</fuelFilter>
 				<initialFuelPercent>1</initialFuelPercent>
 				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
-			</li>
+			</li> -->
 			<li Class="PDEDontStarve.CompProperties_HasLightBulb">
-				<lightDef>firefly_bulb</lightDef>
+				<!-- <lightDef>firefly_bulb_fleck</lightDef> -->
 			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>8</glowRadius>
 				<glowColor>(80,141,223,0)</glowColor>
 			</li>
-			<li Class="CompProperties_FireOverlay">
+			<!-- <li Class="CompProperties_FireOverlay">
 				<fireSize>0.3</fireSize>
 				<offset>(0,0,0)</offset>
-			</li>
+			</li> -->
 			<!-- <li Class="CompProperties">
 				<compClass>PDEDontStarve.CompAllowGlowWhenDrafted</compClass>
 			</li> -->
