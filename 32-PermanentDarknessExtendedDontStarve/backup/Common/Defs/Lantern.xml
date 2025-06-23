@@ -78,22 +78,26 @@
 				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
 			</li> -->
 			<li Class="PDEDontStarve.CompProperties_HasLightBulb">
-				<!-- <lightDef>firefly_bulb_fleck</lightDef> -->
+				<lightDef>LanternGlowFleck</lightDef>
 			</li>
-			<li Class="CompProperties_Glower">
-				<glowRadius>8</glowRadius>
-				<glowColor>(80,141,223,0)</glowColor>
-			</li>
-			<!-- <li Class="CompProperties_FireOverlay">
-				<fireSize>0.3</fireSize>
-				<offset>(0,0,0)</offset>
-			</li> -->
-			<!-- <li Class="CompProperties">
-				<compClass>PDEDontStarve.CompAllowGlowWhenDrafted</compClass>
-			</li> -->
 		</comps>
 	</ThingDef>
 
+		<FleckDef ParentName="FleckBase">
+				<defName>LanternGlowFleck</defName>
+				<graphicData>
+				  <texPath>Things/Mote/FireGlow</texPath>
+				  <shaderType>MoteGlow</shaderType>
+				  <color>(80, 141, 223, 100)</color>
+				  <drawSize>12</drawSize>
+				</graphicData>
+				<altitudeLayer>MoteOverhead</altitudeLayer>
+				<!-- These timings are critical. The fleck should live for only a few ticks -->
+				<!-- to prevent stacking and excessive brightness. -->
+				<solidTime>0.01</solidTime>
+				<fadeInTime>0.01</fadeInTime>
+				<fadeOutTime>0.1</fadeOutTime>
+		</FleckDef>
 
 	<HediffDef>
 		<defName>LightSourceOnHand</defName>
@@ -103,9 +107,6 @@
 		<isBad>false</isBad>
 		<maxSeverity>1.0</maxSeverity>
 		<comps>
-			<!-- <li Class="HediffCompProperties">
-				<compClass>PDEDontStarve.HediffComp_RemoveIfPrimaryUnequiped</compClass>
-			</li> -->
 			<li Class="HediffCompProperties">
 				<compClass>PDEDontStarve.LightSourceHediffComp</compClass>
 			</li>
@@ -116,33 +117,6 @@
 			</li>
 		</stages>
 	</HediffDef>
-
-	<ThingDef ParentName="BuildingBase">
-		<defName>firefly_bulb</defName>
-		<label>firefly bulb</label>
-		<description>bulb using firefly to shine</description>
-		<graphicData>
-			<texPath>PDEDontStarve/CrateFrontTransparent</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<selectable>false</selectable>
-		<building>
-			<isInert>true</isInert>
-			<isEdifice>false</isEdifice>
-			<deconstructible>false</deconstructible>
-		</building>
-		<filthLeaving></filthLeaving>
-		<tickerType>Normal</tickerType>
-		<comps>
-			<li Class="CompProperties_Glower">
-				<glowRadius>8</glowRadius>
-				<glowColor>(80,141,223,0)</glowColor>
-			</li>
-			<li Class="PDEDontStarve.CompProperties_LightBulb">
-				<lifeSpan>80000</lifeSpan>
-			</li>
-		</comps>
-	</ThingDef>
 
 	<ThingDef ParentName="BuildingBase">
 		<defName>Building_Lantern</defName>

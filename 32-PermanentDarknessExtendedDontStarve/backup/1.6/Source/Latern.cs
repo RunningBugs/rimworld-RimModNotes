@@ -13,18 +13,6 @@ public class LanternWeapon : MinifiedThing
         return GraphicDatabase.Get<Graphic_Single>("PDEDontStarve/CrateFrontTransparent", ShaderDatabase.Cutout, GetMinifiedDrawSize(InnerThing.def.size.ToVector2(), 1.1f) * 1.16f, Color.white);
     }
 
-    // public override void Tick()
-    // {
-    //     base.Tick();
-    //     if (InnerThing is ThingWithComps thingWithComps)
-    //     {
-    //         foreach (var comp in thingWithComps.AllComps)
-    //         {
-    //             comp.CompTick();
-    //         }
-    //     }
-    // }
-
     public override void PostMake()
     {
         base.PostMake();
@@ -43,7 +31,7 @@ public class LanternWeapon : MinifiedThing
 
 public class CompProperties_HasLightBulb : CompProperties
 {
-    // public FleckDef lightDef;
+    public FleckDef lightDef;
     public CompProperties_HasLightBulb()
     {
         compClass = typeof(CompHasLightBulb);
@@ -53,22 +41,24 @@ public class CompProperties_HasLightBulb : CompProperties
 
 public class CompHasLightBulb : ThingComp
 {
-    CompProperties_HasLightBulb Props => (CompProperties_HasLightBulb)props;
-    private List<Thing> lights = new List<Thing>();
-    IntVec3 lastPos = IntVec3.Invalid;
+    private CompProperties_HasLightBulb Props => (CompProperties_HasLightBulb)props;
+
+    private CompGlower compGlower;
 
     private bool ShouldBeLitNow
     {
         get
         {
+            if (!(ParentHolder is Pawn_EquipmentTracker) && !(ParentHolder is Pawn_ApparelTracker))
+            {
+                return false;
+            }
             if (!FlickUtility.WantsToBeOn(parent))
             {
-                // Log.Warning("Not flicked");
                 return false;
             }
             if (parent is IThingGlower thingGlower && !thingGlower.ShouldBeLitNow())
             {
-                // Log.Warning("parent not wanting");
                 return false;
             }
             ThingWithComps thingWithComps;
@@ -78,7 +68,6 @@ public class CompHasLightBulb : ThingComp
                 {
                     if (allComp is IThingGlower thingGlower2 && !thingGlower2.ShouldBeLitNow())
                     {
-                        // Log.Warning("comp not wanting");
                         return false;
                     }
                 }
@@ -87,109 +76,26 @@ public class CompHasLightBulb : ThingComp
         }
     }
 
-    private void DestroyLights()
+    public override void CompTick()
     {
-        for (int i = 0; i < lights.Count; i++)
+        base.CompTick();
+
+        if (ShouldBeLitNow)
         {
-            if (lights[i] != null && !lights[i].Destroyed)
+            Pawn pawn = null;
+            if (ParentHolder is Pawn_EquipmentTracker equipmentTracker)
             {
-                lights[i].Destroy();
+                pawn = equipmentTracker.pawn;
             }
-        }
-        lights.Clear();
-    }
+            else if (ParentHolder is Pawn_ApparelTracker apparelTracker)
+            {
+                pawn = apparelTracker.pawn;
+            }
 
-    public override void CompTick()
-    {
-        // base.CompTick();
-
-        // var compGlower = parent.TryGetComp<CompGlower>();
-        // if (compGlower == null || !ShouldBeLitNow)
-        // {
-        //     DestroyLights();
-        //     return;
-        // }
-
-        // var pos = ThingOwnerUtility.GetRootPosition(ParentHolder);
-        // var map = ThingOwnerUtility.GetRootMap(ParentHolder);
-
-        // // if (pos == lastPos)
-        // if (pos.DistanceToSquared(lastPos) < 1)
-        // {
-        //     //  If the position is the same as the last tick, we don't need to update the light
-        //     return;
-        // }
-        // lastPos = pos;
-
-
-        // //  First, clear all previous lights safely
-        // DestroyLights();
-        // // Log.Message($"{ParentHolder.GetType()}");
-        // //  Then, create a new light
-        // //  possibliities: Map, Pawn_EquipmentTracker, Pawn_ApparelTracker, Pawn_InventoryTracker, Pawn_CarryTracker
-        // //  in global map, we will be having a null map with Pawn_EquipmentTracker, Pawn_ApparelTracker, 
-        // if (map != null)
-        // {
-        //     var light = ThingMaker.MakeThing(ThingDef.Named(Props.lightDef.defName));
-        //     lights.Add(GenSpawn.Spawn(light, pos, map));
-        // }
-
-        base.CompTick();
-
-        // This comp should only create a dynamic light when equipped by a pawn.
-        // The static light when on the ground is handled by the lantern's own CompGlower.
-        if (!(ParentHolder is Pawn_EquipmentTracker) && !(ParentHolder is Pawn_ApparelTracker))
-        {
-            return;
-        }
-
-        if (!ShouldBeLitNow)
-        {
-            return;
-        }
-
-        var map = ThingOwnerUtility.GetRootMap(ParentHolder);
-        if (map == null)
-        {
-            return;
-        }
-        
-        var pos = ThingOwnerUtility.GetRootPosition(ParentHolder).ToVector3Shifted();
-
-        // Use the vanilla method for creating a temporary fire glow.
-        // This is the most performant and correct way.
-        // The size parameter is a multiplier; 1.2f is a reasonable value for a lantern.
-        FleckMaker.ThrowFireGlow(pos, map, 1.2f);
-    }
-}
-
-
-public class CompProperties_LightBulb : CompProperties
-{
-    public int lifeSpan = 2;
-    public CompProperties_LightBulb()
-    {
-        compClass = typeof(CompLightBulb);
-    }
-}
-
-public class CompLightBulb : ThingComp
-{
-    CompProperties_LightBulb Props => (CompProperties_LightBulb)props;
-    private int birthTick;
-
-    public override void PostPostMake()
-    {
-        base.PostPostMake();
-        birthTick = GenTicks.TicksGame;
-    }
-
-    public override void CompTick()
-    {
-        base.CompTick();
-        if (GenTicks.TicksGame >= birthTick + Props.lifeSpan)
-        {
-            parent.Destroy();
+            if (pawn != null && pawn.Map != null)
+            {
+                FleckMaker.Static(pawn.DrawPos, pawn.Map, Props.lightDef);
+            }
         }
     }
 }
@@ -214,7 +120,6 @@ public class CompLanternFeulTracker : ThingComp
             Label = parent.LabelCap,
             Tooltip = "Amount of fuel in the lantern"
         };
-        // gizmo.SetAmountFunc(comp => { return comp.parent.TryGetComp<CompRefuelable>().Fuel; });
         gizmo.SetAmountFunc(comp =>
         {
             Thing thing;
@@ -235,7 +140,6 @@ public class CompLanternFeulTracker : ThingComp
             }
             return 0f;
         });
-        // gizmo.SetMaxAmountFunc(comp => { return comp.parent.TryGetComp<CompRefuelable>().Props.fuelCapacity; });
         gizmo.SetMaxAmountFunc(comp =>
         {
             Thing thing;
@@ -310,7 +214,6 @@ public class Gizmo_AmoutTracker : Gizmo
         Widgets.Label(rect3, Label ?? comp.parent.LabelCap);
         Rect rect4 = rect2;
         rect4.yMin = rect2.y + rect2.height / 2f;
-        // float fillPercent = currentAmount / Mathf.Max(1f, maxAmount);
         float fillPercent = currentAmount / maxAmount;
         Widgets.FillableBar(rect4, fillPercent, FullBarTex, EmptyBarTex, doBorder: false);
         Text.Font = GameFont.Small;
@@ -369,12 +272,6 @@ public class LightSourceHediffComp : HediffComp
         base.CompExposeData();
         Scribe_References.Look(ref wornPrimary, "PDE.wornPrimary");
     }
-
-    // public override void CompPostTick(ref float severityAdjustment)
-    // {
-    //     // base.CompPostTick(ref severityAdjustment);
-    //     // Pawn.equipment?.Primary?.Tick();
-    // }
 
     public override IEnumerable<Gizmo> CompGetGizmos()
     {
@@ -472,8 +369,6 @@ public class CompPausibleRefuelable : CompRefuelable, IThingGlower
         }
     }
 
-    
-
     public float ConsumptionRatePerTick => Props.fuelConsumptionRate / 60000f;
 
     public override void CompTick()
@@ -485,4 +380,3 @@ public class CompPausibleRefuelable : CompRefuelable, IThingGlower
         }
     }
 }
-

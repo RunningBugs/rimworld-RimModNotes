@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+    <name>TEMPORARY 1.6 Allow Tunnelers To Drill</name>
+    <author>Porio</author>               
+    <packageId>Porio.TunnulerFix.fork</packageId>     
+    <supportedVersions>                       
+		<li>1.6</li>
+    </supportedVersions>
+    <description>PATCH MADE BY Enduriel https://steamcommunity.com/id/Endur1el 
+
+1.5 UPDATE BY Kazamizam https://steamcommunity.com/id/Kazamizam
+
+THIS IS A TEMPORARY 1.6 VERSION OF Allow Tunnelers To Drill IT WILL BE REMOVED AS SOON AS THEY UPDATE THE MOD
+
+ORIGINAL MAKER FOUND HERE https://steamcommunity.com/sharedfiles/filedetails/?id=2882915775
+AND 1.5 https://steamcommunity.com/sharedfiles/filedetails/?id=3232132812
+
+This mod allow the Tunnelers mech from Biotech dlc to drill at deep drill.
+Is it OP... yes
+
+This can be added and remove without breaking save
+    </description>
+    <modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li>
+	</modDependencies>
+	<loadAfter>
+		<li>Ludeon.RimWorld</li>
+		<li>Ludeon.RimWorld.BioTech</li>
+		<li>brrainz.harmony</li>
+	</loadAfter>
+</ModMetaData>
