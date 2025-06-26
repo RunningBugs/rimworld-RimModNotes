@@ -29,23 +29,46 @@ public static class ReverseDesignatorDatabase_InitDesignators_Patch
 }
 
 
-public class Toils_UrgentHaul
+/*
+*   Patch when RemoveDesignation is called
+*   This is useful to mark the HaulUrgentlyCache as dirty
+*/
+[HarmonyPatch(typeof(DesignationManager), "RemoveDesignation")]
+public static class DesignationManager_RemoveDesignation_Patch
 {
-    public static Toil RemoveUrgentHaulDesignation(HaulUrgentlyCache cache)
+    public static void Postfix(DesignationManager __instance, Designation des)
     {
-        Toil toil = new()
+        if (des == null || des.def != HaulUrgentlyDefOf.HaulUrgentlyDesignation)
         {
-            initAction = () =>
-            {
-                cache.dirty = true;
-                Log.Warning($"Urgent Haul cache make dirty in toil");
-            },
-            defaultCompleteMode = ToilCompleteMode.Instant
-        };
-        // toil.FailOnDespawnedNullOrForbidden(TargetIndex.A);
-        return toil;
+            return;
+        }
+
+        HaulUrgentlyCache cache = __instance.map.GetComponent<HaulUrgentlyCache>();
+        if (cache != null)
+        {
+            cache.dirty = true;
+        }
     }
 }
+
+
+public class Toils_UrgentHaul
+    {
+        public static Toil RemoveUrgentHaulDesignation(HaulUrgentlyCache cache)
+        {
+            Toil toil = new()
+            {
+                initAction = () =>
+                {
+                    cache.dirty = true;
+                    Log.Warning($"Urgent Haul cache make dirty in toil");
+                },
+                defaultCompleteMode = ToilCompleteMode.Instant
+            };
+            // toil.FailOnDespawnedNullOrForbidden(TargetIndex.A);
+            return toil;
+        }
+    }
 
 
 /**
@@ -132,7 +155,7 @@ public class WorkGiver_HaulUrgently : WorkGiver_Scanner
         IReadOnlyList<Thing> things = GetHaulablesForPawn(pawn);
         for (int i = 0; i < things.Count; i++)
         {
-            if (HaulAIUtility.PawnCanAutomaticallyHaulFast(pawn, things[i], false))
+            if (things[i] != null && HaulAIUtility.PawnCanAutomaticallyHaulFast(pawn, things[i], false))
             {
                 yield return things[i];
             }
