@@ -20,6 +20,8 @@ public class PermanentDarknessController : GameComponent
 	private static bool initialLetter = false;
 	private static bool mainWarning = false;
 	private static bool mainLetter = false;
+	
+	private static Color? originalDarknessColor = null;
 
 	private static readonly FloatRange InitialPhaseDurationDaysRange = new FloatRange(0.5f, 0.75f);
 	private readonly int WarningTicks = 10000;
@@ -37,6 +39,11 @@ public class PermanentDarknessController : GameComponent
 			StartTick = GenTicks.TicksGame;
 			GenDelay();
 		}
+		
+		if (originalDarknessColor == null)
+		{
+			originalDarknessColor = MatBases.Darkness.color;
+		}
 	}
 
 	public static void Deactivate()
@@ -47,6 +54,12 @@ public class PermanentDarknessController : GameComponent
 		initialLetter = false;
 		mainWarning = false;
 		mainLetter = false;
+		
+		if (originalDarknessColor.HasValue)
+		{
+			MatBases.Darkness.color = originalDarknessColor.Value;
+			originalDarknessColor = null;
+		}
 	}
 
 	public override void GameComponentTick()
@@ -160,8 +173,6 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 
 	public int MainPhaseStartTick => PermanentDarknessController.StartTick + PermanentDarknessController.Delay;
 
-	private readonly int WarningTicks = 10000;
-
 	public GameCondition_PermanentDarkness()
 	{
 		Permanent = true;
@@ -226,6 +237,8 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 		Map map = gameConditionManager.ownerMap;
 		if (map == null) return;
 
+		bool isMainPhase = GenTicks.TicksGame >= MainPhaseStartTick;
+
 		for (int j = 0; j < overlays.Count; j++)
 		{
 			overlays[j].TickOverlay(map);
@@ -233,16 +246,16 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 
 		if (GenTicks.IsTickInterval(60))
 		{
-			if (GenTicks.TicksGame >= MainPhaseStartTick)
+			if (isMainPhase)
 			{
 				map.gameConditionManager.SetTargetBrightness(0f);
-			}
-
-			foreach (Pawn item in map.mapPawns.AllHumanlikeSpawned)
-			{
-				if (AffectedByDarkness(item) && InUnnaturalDarkness(item) && item.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.DarknessExposure) == null)
+				
+				foreach (Pawn item in map.mapPawns.AllHumanlikeSpawned)
 				{
-					item.health.AddHediff(HediffDefs.PD_DarknessExposure);
+					if (AffectedByDarkness(item) && InUnnaturalDarkness(item) && item.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.DarknessExposure) == null)
+					{
+						item.health.AddHediff(HediffDefs.PD_DarknessExposure);
+					}
 				}
 			}
 		}
@@ -268,6 +281,8 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 
 	public override void GameConditionDraw(Map map)
 	{
+		bool isMainPhase = GenTicks.TicksGame >= MainPhaseStartTick;
+		
 		if (!(map.GameConditionManager.MapBrightness > 0.5f))
 		{
 			for (int i = 0; i < overlays.Count; i++)
@@ -276,21 +291,24 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 			}
 		}
 
-		if (ModSettingsUI.settings.darknessControl)
+		if (isMainPhase)
 		{
-			float level = ModSettingsUI.settings.darknessLevel / 2f;
-			Color nightBrightnessColor = new(level, level, level, 1f - level);
-			MatBases.Darkness.color = nightBrightnessColor;
-
-			if (shadowControlDirty)
+			if (ModSettingsUI.settings.darknessControl)
 			{
-				DebugViewSettings.drawShadows = ModSettingsUI.settings.shadowControl;
-				shadowControlDirty = false;
+				float level = ModSettingsUI.settings.darknessLevel / 2f;
+				Color nightBrightnessColor = new(level, level, level, 1f - level);
+				MatBases.Darkness.color = nightBrightnessColor;
+
+				if (shadowControlDirty)
+				{
+					DebugViewSettings.drawShadows = ModSettingsUI.settings.shadowControl;
+					shadowControlDirty = false;
+				}
 			}
-		}
-		else
-		{
-			MatBases.Darkness.color = defaultDarknessColor;
+			else
+			{
+				MatBases.Darkness.color = defaultDarknessColor;
+			}
 		}
 	}
 
