@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <DesignationCategoryDef>
+		<defName>AAT_DesignationCategory</defName>
+		<label>AllowTool</label>
+		<order>850</order>
+		<specialDesignatorClasses>
+			<li>AAT.Designator_HaulUrgent</li>
+			<li>AAT.Designator_SelectSimilar</li>
+		</specialDesignatorClasses>
+	</DesignationCategoryDef>
+</Defs>

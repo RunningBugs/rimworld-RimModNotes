@@ -148,7 +148,10 @@ public class HaulUrgentlyCache : MapComponent
 
     private void BuildCache()
     {
-        if (dirty)
+        // Currently the dirty check is disabled
+        // Reason being the Job will not correctly change the dirty flag 
+        // TODO: Need to implement this in the Job system in the future
+        // if (dirty)
         {
             designatedThings = map.designationManager.AllDesignations.Where(d => d.def == HaulUrgentlyDefOf.HaulUrgentlyDesignation).Select(d => d.target.Thing).ToList();
 

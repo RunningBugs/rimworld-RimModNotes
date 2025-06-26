@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+    <DesignationDef>
+		<defName>SelectSimilarDesignation</defName>
+		<texturePath>selectSimilar</texturePath>
+		<targetType>Thing</targetType>
+	</DesignationDef>
+
+</Defs>
