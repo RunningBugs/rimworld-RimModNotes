@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
+	
+	<!-- Harvest Fully Grown -->
+	<DesignatorHarvestFullyGrown>Harvest fully grown</DesignatorHarvestFullyGrown>
+	<DesignatorHarvestFullyGrownDesc>Orders the harvesting of crops and trees that are fully grown and ready for maximum yield. Hold Shift to include only crops. Hold Ctrl/Cmd to include only trees. Right-click for more options.</DesignatorHarvestFullyGrownDesc>
+	<HarvestFullyGrownAll>Harvest all fully grown (entire map)</HarvestFullyGrownAll>
+	<HarvestFullyGrownHome>Harvest all fully grown (home area)</HarvestFullyGrownHome>
+	<HarvestFullyGrownSuccess>Designated {0} plants for harvest.</HarvestFullyGrownSuccess>
+	<HarvestFullyGrownFailure>No fully grown plants found to harvest.</HarvestFullyGrownFailure>
+	
 </LanguageData>

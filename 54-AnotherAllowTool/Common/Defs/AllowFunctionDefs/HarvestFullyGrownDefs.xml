@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+	<DesignationDef>
+		<defName>HarvestFullyGrownDesignation</defName>
+		<texturePath>harvestGrown</texturePath>
+		<targetType>Thing</targetType>
+	</DesignationDef>
+	
+</Defs>

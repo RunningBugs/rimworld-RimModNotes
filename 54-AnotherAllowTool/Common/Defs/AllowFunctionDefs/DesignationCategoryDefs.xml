@@ -7,6 +7,7 @@
 		<specialDesignatorClasses>
 			<li>AAT.Designator_HaulUrgent</li>
 			<li>AAT.Designator_SelectSimilar</li>
+			<li>AAT.Designator_HarvestFullyGrown</li>
 		</specialDesignatorClasses>
 	</DesignationCategoryDef>
 </Defs>
