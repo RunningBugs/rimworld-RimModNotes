@@ -227,7 +227,7 @@ public class HaulUrgentlyCache : MapComponent
 
     public IEnumerable<Thing> GetNoStorageThings()
     {
-        return designatedThings.Where(t => !StoreUtility.TryFindBestBetterStorageFor(t, null, t.Map, StoreUtility.CurrentStoragePriorityOf(t), Faction.OfPlayer, out IntVec3 v1, out IHaulDestination v2));
+        return designatedThings.Where(t => t != null && t.Spawned && t.Map != null && !StoreUtility.IsInValidBestStorage(t) && !StoreUtility.TryFindBestBetterStorageFor(t, null, t.Map, StoragePriority.Unstored, Faction.OfPlayer, out IntVec3 v1, out IHaulDestination v2));
     }
 
     public void UpdateInStorageDesignations()
