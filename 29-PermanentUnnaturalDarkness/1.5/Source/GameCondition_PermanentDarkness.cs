@@ -14,20 +14,131 @@ public class PermanentDarknessController : GameComponent
 	}
 
 	public static int StartTick = 0;
+	public static int Delay = 0;
+	public static bool IsActive = false;
+
+	private static bool initialLetter = false;
+	private static bool mainWarning = false;
+	private static bool mainLetter = false;
 
 	private static readonly FloatRange InitialPhaseDurationDaysRange = new FloatRange(0.5f, 0.75f);
-
-	public static int Delay = 0;
+	private readonly int WarningTicks = 10000;
 
 	public static void GenDelay()
 	{
 		Delay = Mathf.RoundToInt(InitialPhaseDurationDaysRange.RandomInRange * 60000f) + 1;
 	}
 
+	public static void Activate()
+	{
+		IsActive = true;
+		if (StartTick == 0)
+		{
+			StartTick = GenTicks.TicksGame;
+			GenDelay();
+		}
+	}
+
+	public static void Deactivate()
+	{
+		IsActive = false;
+		StartTick = 0;
+		Delay = 0;
+		initialLetter = false;
+		mainWarning = false;
+		mainLetter = false;
+	}
+
+	public override void GameComponentTick()
+	{
+		if (!IsActive) return;
+
+		if (GenTicks.IsTickInterval(250))
+		{
+			ForceWeatherOnAllMaps();
+		}
+
+		if (GenTicks.IsTickInterval(60))
+		{
+			HandleLetters();
+		}
+	}
+
+	private void HandleLetters()
+	{
+		int initPhaseStartTick = StartTick;
+		int mainPhaseStartTick = StartTick + Delay;
+
+		if (GenTicks.TicksGame >= initPhaseStartTick && !initialLetter)
+		{
+			Find.LetterStack.ReceiveLetter(ResolveText("initialPhaseLetterLabel"), ResolveText("initialPhaseLetterText"), LetterDefOf.NegativeEvent);
+			initialLetter = true;
+		}
+		else if (GenTicks.TicksGame >= mainPhaseStartTick - WarningTicks && !mainWarning)
+		{
+			Find.LetterStack.ReceiveLetter("DarknessWarningLetterLabel".Translate(), "DarknessWarningLetterText".Translate(), LetterDefOf.NeutralEvent);
+			mainWarning = true;
+		}
+		else if (GenTicks.TicksGame >= mainPhaseStartTick && !mainLetter)
+		{
+			Find.LetterStack.ReceiveLetter(ResolveText("mainPhaseLetterLabel"), ResolveText("mainPhaseLetterText"), LetterDefOf.ThreatBig);
+			mainLetter = true;
+		}
+	}
+
+	private string ResolveText(string root)
+	{
+		GrammarRequest request = new GrammarRequest();
+		request.Includes.Add(RulePackDefs.PermanentDarkness);
+		return GrammarResolver.Resolve(root, request);
+	}
+
+	private void ForceWeatherOnAllMaps()
+	{
+		WeatherDef targetWeather = GetCurrentWeather();
+		
+		foreach (Map map in Find.Maps)
+		{
+			if (!map.gameConditionManager.ConditionIsActive(GameConditionDefs.PermanentDarkness))
+			{
+				GameCondition_PermanentDarkness condition = (GameCondition_PermanentDarkness)GameConditionMaker.MakeCondition(GameConditionDefs.PermanentDarkness);
+				condition.Permanent = true;
+				map.gameConditionManager.RegisterCondition(condition);
+			}
+		}
+	}
+
+	private WeatherDef GetCurrentWeather()
+	{
+		int mainPhaseStartTick = StartTick + Delay;
+		if (GenTicks.TicksGame >= mainPhaseStartTick)
+		{
+			return WeatherDefs.PermanentDarkness_Stage2;
+		}
+		else
+		{
+			return WeatherDefs.PermanentDarkness_Stage1;
+		}
+	}
+
+	public static void EndGlobally()
+	{
+		foreach (Map map in Find.Maps)
+		{
+			GameCondition condition = map.gameConditionManager.GetActiveCondition(GameConditionDefs.PermanentDarkness);
+			condition?.End();
+		}
+		Deactivate();
+	}
+
 	public override void ExposeData()
 	{
 		Scribe_Values.Look(ref StartTick, "PD.StartTick", defaultValue: 0);
 		Scribe_Values.Look(ref Delay, "PD.Delay", defaultValue: 0);
+		Scribe_Values.Look(ref IsActive, "PD.IsActive", defaultValue: false);
+		Scribe_Values.Look(ref initialLetter, "PD.initialLetter", defaultValue: false);
+		Scribe_Values.Look(ref mainWarning, "PD.mainWarning", defaultValue: false);
+		Scribe_Values.Look(ref mainLetter, "PD.mainLetter", defaultValue: false);
 	}
 }
 
@@ -35,12 +146,6 @@ public class PermanentDarknessController : GameComponent
 public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 {
 	public bool anyColonistAttacked;
-
-	private static bool initialLetter = false;
-
-	private static bool mainWarning = false;
-
-	private static bool mainLetter = false;
 
 	private List<SkyOverlay> overlays = new List<SkyOverlay>
 	{
@@ -62,18 +167,11 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 		Permanent = true;
 	}
 
+
 	public override void Init()
 	{
 		base.Init();
-		if (PermanentDarknessController.Delay == 0)
-		{
-			PermanentDarknessController.GenDelay();
-			PermanentDarknessController.StartTick = GenTicks.TicksGame;
-		}
-		else
-		{
-			transitionTicks = 0;
-		}
+		PermanentDarknessController.Activate();
 		Permanent = true;
 	}
 
@@ -106,7 +204,6 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 		return GrammarResolver.Resolve(root, request);
 	}
 
-	private bool runOnce = false;
 
 
 	public static bool AffectedByDarkness(Pawn pawn)
@@ -124,32 +221,18 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 
 	public override void GameConditionTick()
 	{
-		if (!runOnce)
+		base.GameConditionTick();
+		
+		Map map = gameConditionManager.ownerMap;
+		if (map == null) return;
+
+		for (int j = 0; j < overlays.Count; j++)
 		{
-			var gcm = Find.World.gameConditionManager;
-			if (!gcm.ConditionIsActive(def))
-			{
-				gcm.RegisterCondition(this);
-			}
-			runOnce = true;
+			overlays[j].TickOverlay(map);
 		}
 
-		base.GameConditionTick();
-		List<Map> affectedMaps = base.AffectedMaps;
-		for (int i = 0; i < affectedMaps.Count; i++)
+		if (GenTicks.IsTickInterval(60))
 		{
-			Map map = affectedMaps[i];
-
-			for (int j = 0; j < overlays.Count; j++)
-			{
-				overlays[j].TickOverlay(affectedMaps[i]);
-			}
-
-			if (!GenTicks.IsTickInterval(60))
-			{
-				continue;
-			}
-
 			if (GenTicks.TicksGame >= MainPhaseStartTick)
 			{
 				map.gameConditionManager.SetTargetBrightness(0f);
@@ -163,25 +246,6 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 				}
 			}
 		}
-
-		if (GenTicks.IsTickInterval(60))
-		{
-			if (GenTicks.TicksGame >= InitPhaseStartTick && !initialLetter)
-			{
-				Find.LetterStack.ReceiveLetter(ResolveText("initialPhaseLetterLabel"), ResolveText("initialPhaseLetterText"), LetterDefOf.NegativeEvent);
-				initialLetter = true;
-			}
-			else if (GenTicks.TicksGame >= MainPhaseStartTick - WarningTicks && !mainWarning)
-			{
-				Find.LetterStack.ReceiveLetter("DarknessWarningLetterLabel".Translate(), "DarknessWarningLetterText".Translate(), LetterDefOf.NeutralEvent);
-				mainWarning = true;
-			}
-			else if (GenTicks.TicksGame >= MainPhaseStartTick && !mainLetter)
-			{
-				Find.LetterStack.ReceiveLetter(ResolveText("mainPhaseLetterLabel"), ResolveText("mainPhaseLetterText"), LetterDefOf.ThreatBig);
-				mainLetter = true;
-			}
-		}
 	}
 
 	public override void End()
@@ -191,6 +255,11 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 		foreach (Map affectedMap in base.AffectedMaps)
 		{
 			affectedMap.weatherDecider.StartNextWeather();
+		}
+		
+		if (PermanentDarknessController.IsActive)
+		{
+			PermanentDarknessController.EndGlobally();
 		}
 	}
 
@@ -278,8 +347,5 @@ public class GameCondition_PermanentDarkness : GameCondition_ForceWeather
 	{
 		base.ExposeData();
 		Scribe_Values.Look(ref anyColonistAttacked, "PD.anyColonistAttacked", defaultValue: false);
-		Scribe_Values.Look(ref initialLetter, "PD.initialLetter", defaultValue: false);
-		Scribe_Values.Look(ref mainWarning, "PD.mainWarning", defaultValue: false);
-		Scribe_Values.Look(ref mainLetter, "PD.mainLetter", defaultValue: false);
 	}
 }
