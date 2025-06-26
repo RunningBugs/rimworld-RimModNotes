@@ -1,10 +1,30 @@
 using System.Collections.Generic;
 using System.Linq;
+using HarmonyLib;
 using RimWorld;
 using UnityEngine;
 using Verse;
 
 namespace AAT;
+
+
+[HarmonyPatch(typeof(Thing), "GetGizmos")]
+public static class Thing_GetGizmos_Patch
+{
+    public static IEnumerable<Gizmo> Postfix(IEnumerable<Gizmo> __result, Thing __instance)
+    {
+        List<Gizmo> gizmos = new(__result);
+
+        if (__instance.Spawned && __instance.MapHeld != null && Find.Selector.NumSelected == 1)
+        {
+            gizmos.Add(new Designator_SelectSimilar());
+        }
+
+        return gizmos;
+    }
+}
+
+
 
 public class SelectSimilarDefOf
 {

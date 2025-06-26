@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using HarmonyLib;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -8,6 +10,68 @@ using Verse.AI;
 
 namespace AAT;
 
+
+/**
+*   Patches on ReverseDesignatorDatabase will skip the Dragger by default
+*   It's called through MapGizmoUtility.MapUIOnGUI, which is later than the DesignationManager
+*   Patches on Thing GetGizmos will call the dragger through the DesignationManager update
+*/
+[HarmonyPatch(typeof(ReverseDesignatorDatabase), "InitDesignators")]
+public static class ReverseDesignatorDatabase_InitDesignators_Patch
+{
+    public static void Postfix(ReverseDesignatorDatabase __instance)
+    {
+        FieldInfo field = typeof(ReverseDesignatorDatabase).GetField("desList", BindingFlags.Instance | BindingFlags.NonPublic);
+        List<Designator> desList = field?.GetValue(__instance) as List<Designator>;
+        desList?.Add(new Designator_HaulUrgent());
+        // desList?.Add(new Designator_SelectSimilar());
+    }
+}
+
+
+public class Toils_UrgentHaul
+{
+    public static Toil RemoveUrgentHaulDesignation(HaulUrgentlyCache cache)
+    {
+        Toil toil = new()
+        {
+            initAction = () =>
+            {
+                cache.dirty = true;
+                Log.Warning($"Urgent Haul cache make dirty in toil");
+            },
+            defaultCompleteMode = ToilCompleteMode.Instant
+        };
+        // toil.FailOnDespawnedNullOrForbidden(TargetIndex.A);
+        return toil;
+    }
+}
+
+
+/**
+*   Patches on JobDriver_HaulToCell will update the HaulUrgentlyCache
+*   This is useful to remove the designation when the job is done
+*/
+[HarmonyPatch(typeof(JobDriver_HaulToCell), "MakeNewToils")]
+public static class JobDriver_HaulToCell_MakeNewToils_Patch
+{
+    public static void Postfix(JobDriver_HaulToCell __instance, ref IEnumerable<Toil> __result)
+    {
+        var pawn = __instance.pawn;
+        if (pawn != null && pawn.Map != null)
+        {
+            HaulUrgentlyCache cache = pawn.Map.GetComponent<HaulUrgentlyCache>();
+            if (cache != null)
+            {
+                __result.AddItem(Toils_UrgentHaul.RemoveUrgentHaulDesignation(cache));
+            }
+            else
+            {
+                Log.Error($"HaulUrgentlyCache not found for map {pawn.Map} in JobDriver_HaulToCell_MakeNewToils_Patch");
+            }
+        }
+    }
+}
 
 [DefOf]
 public static class HaulUrgentlyDefOf
@@ -28,7 +92,7 @@ public static class PickUpAndHaulCompatHandler
     {
         try
         {
-            Type typeInAnyAssembly = GenTypes.GetTypeInAnyAssembly("PickUpAndHaul.WorkGiver_HaulToInventory", (string)null);
+            Type typeInAnyAssembly = GenTypes.GetTypeInAnyAssembly("PickUpAndHaul.WorkGiver_HaulToInventory");
             if (!(typeInAnyAssembly == null))
             {
                 if (!typeof(WorkGiver_HaulGeneral).IsAssignableFrom(typeInAnyAssembly))
@@ -151,7 +215,7 @@ public class HaulUrgentlyCache : MapComponent
         // Currently the dirty check is disabled
         // Reason being the Job will not correctly change the dirty flag 
         // TODO: Need to implement this in the Job system in the future
-        // if (dirty)
+        if (dirty)
         {
             designatedThings = map.designationManager.AllDesignations.Where(d => d.def == HaulUrgentlyDefOf.HaulUrgentlyDesignation).Select(d => d.target.Thing).ToList();
 
@@ -197,7 +261,6 @@ public class HaulUrgentlyCache : MapComponent
 
     public HaulUrgentlyCache(Map map) : base(map)
     {
-        // BuildCache();
     }
 
     public IReadOnlyList<Thing> GetDesignatedAndHaulableThingsForMap(Map map, int tick)
