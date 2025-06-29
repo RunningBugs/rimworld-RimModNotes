@@ -16,12 +16,14 @@ namespace MoreMapSeeds
 		{
 		}
 
-        public override void FinalizeInit()
-        {
-            base.FinalizeInit();
+		public override void FinalizeInit()
+		{
+			base.FinalizeInit();
 			// Log.Warning($"[MoreMapSeeds] FinalizeInit");
 			var seed = Find.World.info.seedString;
-            Find.LetterStack.ReceiveLetter("WorldSeedLtterTitle".Translate(seed), seed, MyLetterDefOf.NeutralEventCopyLetter);
+			Find.LetterStack.ReceiveLetter("WorldSeedLtterTitle".Translate(seed), seed, MyLetterDefOf.NeutralEventCopyLetter);
+			// Pause the game after loading
+			Find.TickManager.Pause();
         }
     }
 

@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>net472</TargetFramework>
+		<PlatformTarget>x64</PlatformTarget>
+
+		<!-- Modify [RootNamespace], [AssemblyName], [OutputPath], [VersionPrefix] -->
+		<RootNamespace>LimitedLetterSlots</RootNamespace>
+		<AssemblyName>LimitedLetterSlots</AssemblyName>
+		<OutputPath>../Assemblies</OutputPath>
+
+		<!-- do not generate pdb file -->
+		<DebugType>none</DebugType>
+		<!-- do not generate the assembly info files -->
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+
+		<DebugSymbols>false</DebugSymbols>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4503-beta" />
+		<PackageReference Include="Lib.Harmony" Version="2.3.*" />
+	</ItemGroup>
+</Project>

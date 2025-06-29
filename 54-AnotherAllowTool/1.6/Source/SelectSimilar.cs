@@ -11,13 +11,30 @@ namespace AAT;
 [HarmonyPatch(typeof(Thing), "GetGizmos")]
 public static class Thing_GetGizmos_Patch
 {
+    public static ThingDef defToSelect = null;
+    public static ThingDef stuffToSelect = null;
+
     public static IEnumerable<Gizmo> Postfix(IEnumerable<Gizmo> __result, Thing __instance)
     {
         List<Gizmo> gizmos = new(__result);
 
-        if (__instance.Spawned && __instance.MapHeld != null && Find.Selector.NumSelected == 1)
+        if (__instance.Spawned && __instance.MapHeld != null)
         {
-            gizmos.Add(new Designator_SelectSimilar());
+            if (Find.Selector.NumSelected == 1)
+            {
+                defToSelect = __instance.def;
+                stuffToSelect = __instance.Stuff;
+                gizmos.Add(new Designator_SelectSimilar());
+            }
+            else if (Find.Selector.NumSelected > 1)
+            {
+                if (Find.Selector.SelectedObjects.OfType<Thing>().All(t => t.def == __instance.def && t.Stuff == __instance.Stuff))
+                {
+                    defToSelect = __instance.def;
+                    stuffToSelect = __instance.Stuff;
+                    gizmos.Add(new Designator_SelectSimilar());
+                }
+            }
         }
 
         return gizmos;
@@ -56,20 +73,9 @@ public class Designator_SelectSimilar : Designator
     public override AcceptanceReport CanDesignateThing(Thing t)
     {
         var selector = Find.Selector;
-
         if (selector.SelectedObjects.Count == 0)
         {
             return false; // No things selected, cannot select similar
-        }
-
-        ThingDef def = null;
-        foreach (var thing in selector.SelectedObjects.OfType<Thing>())
-        {
-            if (def != null && thing.def != def)
-            {
-                return false; // Different types of things selected
-            }
-            def = thing.def;
         }
 
         var thingValid = t.def != null &&
@@ -78,7 +84,7 @@ public class Designator_SelectSimilar : Designator
                    t.Spawned &&
                    !t.Fogged();
 
-        return thingValid && t.def == def;
+        return thingValid && t.def == Thing_GetGizmos_Patch.defToSelect && t.Stuff == Thing_GetGizmos_Patch.stuffToSelect;
     }
 
     public override void DesignateSingleCell(IntVec3 c)
