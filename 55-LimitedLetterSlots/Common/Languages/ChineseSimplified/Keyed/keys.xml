@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <LLS.EnableMod>启用有限信件槽</LLS.EnableMod>
+    <LLS.EnableMod.Tooltip>启用或禁用有限信件槽功能</LLS.EnableMod.Tooltip>
+    <LLS.MaxVisibleSlots>最大可见信件槽</LLS.MaxVisibleSlots>
+    <LimitedLetterSlots>有限信件槽</LimitedLetterSlots>
+</LanguageData>

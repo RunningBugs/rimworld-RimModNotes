@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 	<packageId>RunningBugs.LimitedLetterLots</packageId>
-	<name>Limited Letter Lots 有限数量的信件槽</name>
+	<name>Limited Letter Lots 有限信件槽</name>
 	<author>RunningBugs</author>
 	<supportedVersions>
+		<li>1.5</li>
 		<li>1.6</li>
 	</supportedVersions>
 
@@ -33,6 +34,10 @@ It's just to prevent pushing the higher region information away from screen.
 Note: Because the bundle button is also taking a letter slot, so if you configure the number of letter slots to 2,
 when you receive 3 letters, you will start to see the bundle button which will contain the 2nd and the 3rd letters.
 
+The support for 1.5 is not tested. It should work, but I don't want to switch to 1.5 for testing right now.
+
+Idea came from Wengfrid (德国猎) 
+
 本模组修改了游戏中信件的显示方式。
 它将信件槽的数量限制为一个固定的数字，可以在模组设置中进行配置。
 额外的信件将被打包成一个单独的信件组按钮，
@@ -41,6 +46,10 @@ when you receive 3 letters, you will start to see the bundle button which will c
 
 注意：由于信件组按钮也占用一个信件槽，
 因此如果你将信件槽数量配置为2，当你收到3封信件时，
-你将开始看到信件组按钮，其中包含第2封和第3封信件。
+你将看到信件组按钮，其中包含第2封和第3封信件。
+
+1.5版本的支持没有经过测试。它应该没问题，我暂时还不想切换到1.5进行测试。
+
+灵感来自于 Wengfrid (德国猎)。
 	</description>
 </ModMetaData>
