@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
+    <LLS.EnableMod>Enable Limited Letter Slots</LLS.EnableMod>
+    <LLS.EnableMod.Tooltip>Enable or disable the limited letter slots feature</LLS.EnableMod.Tooltip>
+    <LLS.MaxVisibleSlots>Maximum Visible Letter Slots</LLS.MaxVisibleSlots>
+    <LimitedLetterSlots>Limited Letter Slots</LimitedLetterSlots>
 </LanguageData>

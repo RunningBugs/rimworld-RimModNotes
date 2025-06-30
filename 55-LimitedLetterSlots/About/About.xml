@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-	<packageId>RunningBugs.LimitedLetterLots</packageId>
-	<name>Limited Letter Lots 有限信件槽</name>
+	<packageId>RunningBugs.LimitedLetterSlots</packageId>
+	<name>Limited Letter Slots 有限信件槽</name>
 	<author>RunningBugs</author>
 	<supportedVersions>
 		<li>1.5</li>
