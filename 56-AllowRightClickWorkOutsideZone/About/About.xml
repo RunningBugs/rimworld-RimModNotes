@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.AllowRightClickWorkOutsideZone</packageId>
+	<name>Allow Right Click Work Outside Zone 允许右键可以在工作区外工作</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.6</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<!-- <li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li> -->
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<!-- <li>username.modname</li> -->
+	</loadAfter>
+
+	<description>
+When pawns were selected, right click on work givers won't allow us to work outside allowed zone.
+This usually means we will have to change the allowed zone, wait for pawns to finish their work, and then change the allowed zone back.
+It could be very dangerous and very annoying.
+
+This mod allows pawns to work outside allowed zone when right clicking on work givers without the need to change the allowed zone.
+It's aim is to improve the quality of life for players for occasional work outside allowed zone.
+
+
+当选中小人/机械体时，右键点击可指派工作的地点时，殖民者不能在允许区域外工作。
+这通常意味着我们需要更改活动区，等待小人完成工作，然后再将活动区改回去。
+这可能非常危险，也非常烦人。
+
+这个模组允许小人在右键点击工作指派点时在活动区外工作，而无需更改活动区。
+它的目的是改善玩家在偶尔需要在活动区外工作时的游戏体验。
+
+	</description>
+</ModMetaData>
