@@ -1,28 +1,44 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-  <!-- A hybrid raid with a siege group and a breaching group that attack at the same time. -->
-  <RaidStrategyDef>
-    <defName>MRS_SiegeAndBreach</defName>
-    <label>siege and breach</label>
+  <PawnsArrivalModeDef>
+    <defName>HybridArrival</defName>
+    <workerClass>MoreRaidStrategies.HybridRaids.PawnsArrivalModeWorker_Hybrid</workerClass>
+    <selectionWeightCurve>
+      <points>
+        <li>(300, 1.0)</li>
+        <li>(700, 1.0)</li>
+      </points>
+    </selectionWeightCurve>
+  </PawnsArrivalModeDef>
+
+  <RaidStrategyDef Name="HybridRaid" Abstract="True">
     <workerClass>MoreRaidStrategies.HybridRaids.RaidStrategyWorker_Hybrid</workerClass>
+    <arriveModes>
+      <li>HybridArrival</li>
+    </arriveModes>
     <selectionWeightPerPointsCurve>
       <points>
-        <li>(400, 0.1)</li>
-        <li>(1000, 0.5)</li>
-        <li>(2000, 1.0)</li>
+        <li>(400, 0)</li>
+        <li>(1500, 0.5)</li>
+        <li>(3000, 3.0)</li>
       </points>
     </selectionWeightPerPointsCurve>
-    <arriveModes>
-      <li>EdgeWalkIn</li>
-    </arriveModes>
+  </RaidStrategyDef>
+
+
+  <!-- A hybrid raid with a siege group and a breaching group that attack at the same time. -->
+  <RaidStrategyDef ParentName="HybridRaid">
+    <defName>MRS_SiegeAndBreach</defName>
+    <label>siege and breach</label>
+    <letterLabelEnemy>Siege and Breach</letterLabelEnemy>
     <!-- Custom data for the hybrid worker -->
     <modExtensions>
       <li Class="MoreRaidStrategies.HybridRaids.RaidStrategyDefExtension">
         <subStrategies>
           <li>
             <def>Siege</def>
-            <pointsFactor>0.3</pointsFactor>
+            <pointsFactor>0.5</pointsFactor>
           </li>
           <li>
             <def>ImmediateAttackBreaching</def>
@@ -34,34 +50,24 @@
   </RaidStrategyDef>
 
   <!-- A hybrid raid with a drop-pod group and a breaching group that attack at the same time. -->
-  <RaidStrategyDef>
-    <defName>MRS_DropPodAndBreach</defName>
+  <RaidStrategyDef ParentName="HybridRaid">
+    <defName>MRS_CenterDropPodAndBreach</defName>
     <label>drop pod and breach</label>
-    <workerClass>MoreRaidStrategies.HybridRaids.RaidStrategyWorker_Hybrid</workerClass>
-    <selectionWeightPerPointsCurve>
-      <points>
-        <li>(600, 0.1)</li>
-        <li>(1500, 0.5)</li>
-        <li>(3000, 1.0)</li>
-      </points>
-    </selectionWeightPerPointsCurve>
-    <arriveModes>
-      <li>CenterDrop</li>
-      <li>EdgeWalkIn</li>
-    </arriveModes>
+    <letterLabelEnemy>Drop Pod and Breach</letterLabelEnemy>
     <!-- Custom data for the hybrid worker -->
     <modExtensions>
       <li Class="MoreRaidStrategies.HybridRaids.RaidStrategyDefExtension">
         <subStrategies>
           <li>
             <def>ImmediateAttack</def>
-            <pointsFactor>0.5</pointsFactor>
-            <arrivalMode>CenterDrop</arrivalMode>
+            <pointsFactor>0.6</pointsFactor>
+            <arriveModes>
+              <li>CenterDrop</li>
+            </arriveModes>
           </li>
           <li>
             <def>ImmediateAttackBreaching</def>
-            <pointsFactor>0.5</pointsFactor>
-            <arrivalMode>EdgeWalkIn</arrivalMode>
+            <pointsFactor>0.6</pointsFactor>
           </li>
         </subStrategies>
       </li>

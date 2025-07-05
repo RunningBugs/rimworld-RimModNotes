@@ -13,6 +13,15 @@ namespace MoreRaidStrategies.HybridRaids
     {
         public RaidStrategyDef def;
         public float pointsFactor = 1f;
-        public PawnsArrivalModeDef arrivalMode;
+        public List<PawnsArrivalModeDef> arriveModes = new List<PawnsArrivalModeDef>();
+
+        public List<PawnsArrivalModeDef> GetPawnsArrivalModeDefs()
+        {
+            if (arriveModes == null || arriveModes.Count == 0)
+            {
+                return def.arriveModes ?? [];
+            }
+            return arriveModes;
+        }
     }
 }

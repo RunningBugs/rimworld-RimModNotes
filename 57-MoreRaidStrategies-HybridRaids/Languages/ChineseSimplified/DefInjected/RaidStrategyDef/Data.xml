@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <!-- Hybrid Raid: Siege and Breach -->
+  <MRS_SiegeAndBreach.letterLabelEnemy>混合袭击：围攻和破墙</MRS_SiegeAndBreach.letterLabelEnemy>
+
+  <!-- Hybrid Raid: Drop Pod and Breach -->
+  <MRS_CenterDropPodAndBreach.letterLabelEnemy>混合袭击：中心空投和破墙</MRS_CenterDropPodAndBreach.letterLabelEnemy>
+
+</LanguageData>

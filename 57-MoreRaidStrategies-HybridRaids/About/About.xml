@@ -30,8 +30,8 @@ This mod is trying to add a few raid types that are hybrid of the vanilla raid t
 Warning: This could be hard, since we might have more frequent EdgeDrop raids, breaching raids, seige raids with breaching raids, etc.
 This mod is the first in my planned "More Raid Strategies" series, we might try to add more different raid types in the form of other mods in the future.
 Current implemented hybrid raids:
-- Siege and Breach: A siege group (0.3 x points) and a breaching group (0.7 x points) attack at the same time
-- Drop Pod and Breach: A drop-pod group (0.5 x points) and a breaching group (0.5 x points) attack at the same time
+- Siege and Breach: A siege group (0.5 x points) and a breaching group (0.7 x points) attack at the same time
+- Drop Pod and Breach: A drop-pod group (0.6 x points) and a breaching group (0.6 x points) attack at the same time
 
 
 原版游戏的几种袭击类型，我们已经非常熟悉了，有时候，我们可能强的可怕，需要一些来自敌人的爱。
