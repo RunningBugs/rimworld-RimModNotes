@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- A hybrid raid with a siege group and a breaching group that attack at the same time. -->
+  <RaidStrategyDef>
+    <defName>MRS_SiegeAndBreach</defName>
+    <label>siege and breach</label>
+    <workerClass>MoreRaidStrategies.HybridRaids.RaidStrategyWorker_Hybrid</workerClass>
+    <selectionWeightPerPointsCurve>
+      <points>
+        <li>(400, 0.1)</li>
+        <li>(1000, 0.5)</li>
+        <li>(2000, 1.0)</li>
+      </points>
+    </selectionWeightPerPointsCurve>
+    <arriveModes>
+      <li>EdgeWalkIn</li>
+    </arriveModes>
+    <!-- Custom data for the hybrid worker -->
+    <modExtensions>
+      <li Class="MoreRaidStrategies.HybridRaids.RaidStrategyDefExtension">
+        <subStrategies>
+          <li>
+            <def>Siege</def>
+            <pointsFactor>0.3</pointsFactor>
+          </li>
+          <li>
+            <def>ImmediateAttackBreaching</def>
+            <pointsFactor>0.7</pointsFactor>
+          </li>
+        </subStrategies>
+      </li>
+    </modExtensions>
+  </RaidStrategyDef>
+
+  <!-- A hybrid raid with a drop-pod group and a breaching group that attack at the same time. -->
+  <RaidStrategyDef>
+    <defName>MRS_DropPodAndBreach</defName>
+    <label>drop pod and breach</label>
+    <workerClass>MoreRaidStrategies.HybridRaids.RaidStrategyWorker_Hybrid</workerClass>
+    <selectionWeightPerPointsCurve>
+      <points>
+        <li>(600, 0.1)</li>
+        <li>(1500, 0.5)</li>
+        <li>(3000, 1.0)</li>
+      </points>
+    </selectionWeightPerPointsCurve>
+    <arriveModes>
+      <li>CenterDrop</li>
+      <li>EdgeWalkIn</li>
+    </arriveModes>
+    <!-- Custom data for the hybrid worker -->
+    <modExtensions>
+      <li Class="MoreRaidStrategies.HybridRaids.RaidStrategyDefExtension">
+        <subStrategies>
+          <li>
+            <def>ImmediateAttack</def>
+            <pointsFactor>0.5</pointsFactor>
+            <arrivalMode>CenterDrop</arrivalMode>
+          </li>
+          <li>
+            <def>ImmediateAttackBreaching</def>
+            <pointsFactor>0.5</pointsFactor>
+            <arrivalMode>EdgeWalkIn</arrivalMode>
+          </li>
+        </subStrategies>
+      </li>
+    </modExtensions>
+  </RaidStrategyDef>
+
+</Defs>

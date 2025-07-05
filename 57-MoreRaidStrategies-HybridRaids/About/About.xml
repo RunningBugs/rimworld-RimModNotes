@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.MRS.Hybrid</packageId>
+	<name>More Raid Strategies: Hybrid Raids 更多的袭击类型：复合袭击</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.6</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<!-- <li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li> -->
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<!-- <li>username.modname</li> -->
+	</loadAfter>
+
+	<description>
+The vanilla game has several raid types that we have been very familiar with, and in certain cases, we might want to try something different.
+This mod is trying to add a few raid types that are hybrid of the vanilla raid types.
+Warning: This could be hard, since we might have more frequent EdgeDrop raids, breaching raids, seige raids with breaching raids, etc.
+This mod is the first in my planned "More Raid Strategies" series, we might try to add more different raid types in the form of other mods in the future.
+Current implemented hybrid raids:
+- Siege and Breach: A siege group (0.3 x points) and a breaching group (0.7 x points) attack at the same time
+- Drop Pod and Breach: A drop-pod group (0.5 x points) and a breaching group (0.5 x points) attack at the same time
+
+
+原版游戏的几种袭击类型，我们已经非常熟悉了，有时候，我们可能强的可怕，需要一些来自敌人的爱。
+这个模组试图添加一些基于原版袭击类型的复合袭击类型。
+警告：这可能会很难，因为我们可能会有更频繁的边缘掉落袭击、破门袭击，围攻配合破墙袭击等。
+这个模组是我计划中的“更多袭击类型”系列中的第一个，在未来我们可能会在其他模组尝试添加更多不同的袭击类型。
+当前实现的复合袭击类型：
+- 围攻配合破墙：一个围攻小队（0.3 x 点数）和一个破墙小队（0.7 x 点数）同时攻击
+- 掉落配合破墙：一个掉落小队（0.5 x 点数）和一个破墙小队（0.5 x 点数）同时攻击
+
+
+It's possible not to use defs but to directly mix all in-game raid strategies (including modded ones) using C# code only.
+The reason we don't go this approach is we might want more control over how the raids are mixed.
+The downside is we have to manually configure each raid type we want to mix, unlike the pure C# code approach which can just generate all possible mixed types.
+
+不使用XML Def，而是直接使用C#代码混合所有游戏内的袭击类型（包括模组添加的）是可行的。
+我们不采用这种方法是为了更好地控制如何混合不同的袭击类型。
+坏处是我们需要对每种想要复合的袭击类型进行手动配置。不像纯C#代码的方案可以直接生成所有可能的混合类型。
+
+	</description>
+</ModMetaData>
