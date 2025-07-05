@@ -93,11 +93,21 @@ namespace MoreRaidStrategies.HybridRaids
                     selectedArrivalModes.Add(groupArrivalMode);
                 }
 
+                /// First, compute the points for the sub-strategy.
                 var parmPoints = parms.points;
                 var subStrategyPoints = parmPoints * subStrategy.pointsFactor;
-                var curve = groupArrivalMode.pointsFactorCurve;
+
+                /// Then, apply the points factor for the strategy itself
+                var curve = subStrategy.def.pointsFactorCurve;
                 var factor = curve?.Evaluate(subStrategyPoints) ?? 1f;
+                subStrategyPoints *= factor;
+
+                /// Finally, apply the points factor for the group arrival mode
+                curve = groupArrivalMode.pointsFactorCurve;
+                factor = curve?.Evaluate(subStrategyPoints) ?? 1f;
                 var points = factor * subStrategyPoints;
+
+                
                 var pawnGroupMakerParms = new PawnGroupMakerParms
                 {
                     groupKind = PawnGroupKindDefOf.Combat,

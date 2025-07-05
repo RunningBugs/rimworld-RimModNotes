@@ -58,7 +58,7 @@
       <li Class="MoreRaidStrategies.HybridRaids.RaidStrategyDefExtension">
         <subStrategies>
           <li>
-            <def>ImmediateAttack</def>
+            <def>ImmediateAttackSmart</def>
             <pointsFactor>0.6</pointsFactor>
             <arriveModes>
               <li>CenterDrop</li>
@@ -72,5 +72,29 @@
       </li>
     </modExtensions>
   </RaidStrategyDef>
+
+  <!-- A hybrid raid with a drop-pod group and a breaching group that attack at the same time.
+  <RaidStrategyDef ParentName="HybridRaid">
+    <defName>MRS_CenterDropSmarkAndBreach</defName>
+    <label>drop pod and breach</label>
+    <letterLabelEnemy>Drop Pod and Breach</letterLabelEnemy>
+    <modExtensions>
+      <li Class="MoreRaidStrategies.HybridRaids.RaidStrategyDefExtension">
+        <subStrategies>
+          <li>
+            <def>ImmediateAttack</def>
+            <pointsFactor>0.6</pointsFactor>
+            <arriveModes>
+              <li>CenterDrop</li>
+            </arriveModes>
+          </li>
+          <li>
+            <def>ImmediateAttackBreaching</def>
+            <pointsFactor>0.6</pointsFactor>
+          </li>
+        </subStrategies>
+      </li>
+    </modExtensions>
+  </RaidStrategyDef> -->
 
 </Defs>
