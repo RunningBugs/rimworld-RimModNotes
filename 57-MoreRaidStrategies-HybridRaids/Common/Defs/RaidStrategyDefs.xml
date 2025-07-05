@@ -6,8 +6,7 @@
     <workerClass>MoreRaidStrategies.HybridRaids.PawnsArrivalModeWorker_Hybrid</workerClass>
     <selectionWeightCurve>
       <points>
-        <li>(300, 1.0)</li>
-        <li>(700, 1.0)</li>
+        <li>(0, 1.0)</li>
       </points>
     </selectionWeightCurve>
   </PawnsArrivalModeDef>
