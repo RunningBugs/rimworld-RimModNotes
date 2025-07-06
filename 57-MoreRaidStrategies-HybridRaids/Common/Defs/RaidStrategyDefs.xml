@@ -73,25 +73,24 @@
     </modExtensions>
   </RaidStrategyDef>
 
-  <!-- A hybrid raid with a drop-pod group and a breaching group that attack at the same time.
-  <RaidStrategyDef ParentName="HybridRaid">
-    <defName>MRS_CenterDropSmarkAndBreach</defName>
-    <label>drop pod and breach</label>
-    <letterLabelEnemy>Drop Pod and Breach</letterLabelEnemy>
+  <!-- <RaidStrategyDef ParentName="HybridRaid">
+    <defName>MRS_Test</defName>
+    <label>Shambler</label>
+    <letterLabelEnemy>Shambler</letterLabelEnemy>
     <modExtensions>
       <li Class="MoreRaidStrategies.HybridRaids.RaidStrategyDefExtension">
         <subStrategies>
           <li>
-            <def>ImmediateAttack</def>
-            <pointsFactor>0.6</pointsFactor>
-            <arriveModes>
+            <def>ShamblerAssault</def>
+            <pointsFactor>1</pointsFactor>
+             <arriveModes>
               <li>CenterDrop</li>
-            </arriveModes>
+            </arriveModes> 
           </li>
           <li>
             <def>ImmediateAttackBreaching</def>
             <pointsFactor>0.6</pointsFactor>
-          </li>
+          </li> 
         </subStrategies>
       </li>
     </modExtensions>
