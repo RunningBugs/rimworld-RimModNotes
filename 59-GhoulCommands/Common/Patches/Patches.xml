@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Human"]/comps</xpath>
+        <value>
+            <li Class="GhoulCommands.CompProperties_GhoulCommands" />
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationInsert">
+        <xpath>Defs/ThinkTreeDef[defName="Ghoul"]/thinkRoot/subNodes/li[insertTag="Ghoul_PreWander"]</xpath>
+        <order>Append</order>
+        <value>
+            <li Class="ThinkNode_ConditionalCanDoConstantThinkTreeJobNow">
+                <subNodes>
+                    <li Class="GhoulCommands.JobGiver_TakeJuggernautSerum" />
+                </subNodes>
+            </li>
+        </value>
+    </Operation>
+</Patch>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <GhoulCommands>食尸鬼自动血清命令按钮</GhoulCommands>
+    <GhoulCommands.EnableJuggernautSerumText>强力血清按钮</GhoulCommands.EnableJuggernautSerumText>
+    <GhoulCommands.EnableJuggernautSerumDesc>启用强力血清自动服用按钮</GhoulCommands.EnableJuggernautSerumDesc>
+
+    <GhoulCommands.ToggleJuggernautSerumText>切换强力血清是否自动服用</GhoulCommands.ToggleJuggernautSerumText>
+    <GhoulCommands.ToggleJuggernautSerumDesc>切换食尸鬼是否自动使用强力血清，红叉为原版状态，对勾会在食尸鬼空闲时自动检查健康状态，而决定是否自动使用强力血清</GhoulCommands.ToggleJuggernautSerumDesc>
+</LanguageData>

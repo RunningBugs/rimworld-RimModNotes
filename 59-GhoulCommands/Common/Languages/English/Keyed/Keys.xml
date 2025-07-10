@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <GhoulCommands>Ghoul Auto Serum Commands</GhoulCommands>
+    <GhoulCommands.EnableJuggernautSerumText>Juggernaut Serum Gizmo Button</GhoulCommands.EnableJuggernautSerumText>
+    <GhoulCommands.EnableJuggernautSerumDesc>Enable Juggernaut Serum Auto-Use Gizmo Button</GhoulCommands.EnableJuggernautSerumDesc>
+
+    <GhoulCommands.ToggleJuggernautSerumText>Toggle Juggernaut Serum Auto-Use</GhoulCommands.ToggleJuggernautSerumText>
+    <GhoulCommands.ToggleJuggernautSerumDesc>Toggle whether the ghoul automatically uses Juggernaut Serum. A red cross indicates the default behaviour as vanilla game, while a checkmark means the ghoul will automatically check its health status when idle and decide whether to use Juggernaut Serum.</GhoulCommands.ToggleJuggernautSerumDesc>
+</LanguageData>

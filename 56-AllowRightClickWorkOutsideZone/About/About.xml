@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 	<packageId>RunningBugs.AllowRightClickWorkOutsideZone</packageId>
-	<name>Allow Right Click Work Outside Zone 允许右键可以在工作区外工作</name>
+	<name>Priority Order Bypass Restrictions 强制命令无视限制</name>
 	<author>RunningBugs</author>
 	<supportedVersions>
 		<li>1.6</li>
@@ -40,5 +40,14 @@ It's aim is to improve the quality of life for players for occasional work outsi
 这个模组允许小人在右键点击工作指派点时在活动区外工作，而无需更改活动区。
 它的目的是改善玩家在偶尔需要在活动区外工作时的游戏体验。
 
+--------------------------------------------
+
+Update 2025-07-06 EST
+
+Besides bypass area restrictions, it can also bypass the disabled worktype restriction from the pawn work priority settings.
+Rename Bypass Area to Bypass Restrictions and rename the workshop title.
+
+除了区域限制，现在模组也可以无视玩家设置的禁用工作类型。
+将Bypass Area重命名为Bypass Restrictions并更新工坊的标题。
 	</description>
 </ModMetaData>

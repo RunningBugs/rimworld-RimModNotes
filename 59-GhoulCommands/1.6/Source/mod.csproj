@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>net472</TargetFramework>
+		<PlatformTarget>x64</PlatformTarget>
+
+		<!-- Modify [RootNamespace], [AssemblyName], [OutputPath], [VersionPrefix] -->
+		<RootNamespace>GhoulCommands</RootNamespace>
+		<AssemblyName>GhoulCommands</AssemblyName>
+		<OutputPath>../Assemblies</OutputPath>
+
+		<!-- do not generate pdb file -->
+		<DebugType>none</DebugType>
+		<!-- do not generate the assembly info files -->
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+
+		<DebugSymbols>false</DebugSymbols>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+		<LangVersion>latest</LangVersion>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+	</PropertyGroup>
+	<!-- <PropertyGroup>
+	    <PublicizeAll>true</PublicizeAll>
+	</PropertyGroup> -->
+	<ItemGroup>
+		<!-- <PackageReference Include="Krafs.Publicizer" Version="2.*">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference> -->
+		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4515-beta" />
+		<!-- <PackageReference Include="Lib.Harmony" Version="2.3.*" /> -->
+		<!-- <PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="10.*" /> -->
+	</ItemGroup>
+</Project>
