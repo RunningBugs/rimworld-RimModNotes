@@ -1,6 +1,7 @@
 using HarmonyLib;
 using UnityEngine;
 using Verse;
+using Verse.Sound;
 using RimWorld;
 using RimWorld.Planet;
 
@@ -14,8 +15,11 @@ namespace MoreResponsivePlanet
             var harmony = new Harmony("RunningBugs.MoreResponsivePlanet");
             harmony.PatchAll();
             
-            // Use simple GUI-based approach
-            // ImmediateGLRenderer.Initialize();
+            // Initialize thread-safe selection system
+            UnityMainThreadDispatcher.Initialize();
+            
+            // Initialize input poller for reliable input detection
+            InputPoller.Initialize();
             
             Log.Message("[More Responsive Planet] Mod loaded successfully!");
         }
@@ -27,7 +31,10 @@ namespace MoreResponsivePlanet
     {
         public static bool Prefix(WorldSelector __instance)
         {
-            // Handle input events
+            // Set up input poller callbacks if not already done
+            SetupInputCallbacks(__instance);
+            
+            // Handle GUI-based input as fallback
             HandleWorldInput(__instance);
             
             // Handle cancel key
@@ -41,6 +48,47 @@ namespace MoreResponsivePlanet
             ImmediateDragBox.RenderImmediate();
             
             return false; // Skip original method
+        }
+        
+        private static bool _inputCallbacksSetup = false;
+        private static void SetupInputCallbacks(WorldSelector selector)
+        {
+            if (_inputCallbacksSetup || InputPoller.Instance == null) return;
+            
+            InputPoller.Instance.OnMouseDown = () => {
+                // Start drag immediately when input poller detects mouse down
+                ImmediateDragBox.StartDrag(UI.MousePositionOnUIInverted);
+                selector.dragBox.active = false;
+            };
+            
+            InputPoller.Instance.OnMouseUp = () => {
+                // End drag immediately when input poller detects mouse up
+                if (ImmediateDragBox.IsActive)
+                {
+                    bool wasValidDrag = ImmediateDragBox.IsValidDrag();
+                    Rect dragRect = ImmediateDragBox.GetCurrentRect();
+                    int dragId = ImmediateDragBox.CurrentDragId;
+                    
+                    ImmediateDragBox.EndDrag();
+                    selector.dragBox.active = false;
+                    
+                    if (!wasValidDrag)
+                    {
+                        ProcessSingleClickImmediate(selector);
+                    }
+                    else
+                    {
+                        ThreadSafeSelectionProcessor.Instance.ProcessDragSelectionAsync(selector, dragRect, dragId);
+                    }
+                }
+            };
+            
+            InputPoller.Instance.OnDoubleClick = () => {
+                // Handle double-click immediately
+                SelectAllMatchingObjectUnderMouseOnScreen(selector);
+            };
+            
+            _inputCallbacksSetup = true;
         }
         
         private static void HandleWorldInput(WorldSelector selector)
@@ -67,22 +115,80 @@ namespace MoreResponsivePlanet
                     bool wasValidDrag = ImmediateDragBox.IsValidDrag();
                     Rect dragRect = ImmediateDragBox.GetCurrentRect();
                     
+                    // Get current drag ID BEFORE ending drag
+                    int dragId = ImmediateDragBox.CurrentDragId;
+                    
+                    // ALWAYS end drag immediately for responsiveness
                     ImmediateDragBox.EndDrag();
                     selector.dragBox.active = false;
                     
+                    // Use different processing for single clicks vs drags
                     if (!wasValidDrag)
                     {
-                        SelectionProcessor.Instance.ProcessSingleClick(selector);
+                        // Fast synchronous processing for single clicks
+                        ProcessSingleClickImmediate(selector);
                     }
                     else
                     {
-                        SelectionProcessor.Instance.ProcessDragSelection(selector, dragRect);
+                        // Async processing for drag selections (heavy)
+                        ThreadSafeSelectionProcessor.Instance.ProcessDragSelectionAsync(selector, dragRect, dragId);
                     }
                 }
                 Event.current.Use();
             }
         }
         
+        private static void ProcessSingleClickImmediate(WorldSelector selector)
+        {
+            // Fast synchronous single click processing - no background thread needed
+            try
+            {
+                // Get objects under mouse (fast operation)
+                var objectsUnderMouse = selector.SelectableObjectsUnderMouse();
+                var objectsList = System.Linq.Enumerable.ToList(objectsUnderMouse);
+                
+                bool shiftIsHeld = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+                
+                if (objectsList.Count > 0)
+                {
+                    // Clicked on a world object - immediate selection
+                    var selectedObject = objectsList[0]; // Get first object
+                    
+                    if (!shiftIsHeld)
+                    {
+                        selector.ClearSelection();
+                    }
+                    
+                    if (!selector.IsSelected(selectedObject))
+                    {
+                        selector.Select(selectedObject);
+                    }
+                }
+                else
+                {
+                    // Clicked on empty space - select tile immediately
+                    if (!shiftIsHeld)
+                    {
+                        PlanetTile previousTile = selector.SelectedTile;
+                        selector.ClearSelection();
+                        
+                        PlanetTile mouseTile = GenWorld.MouseTile();
+                        if (mouseTile.Valid && previousTile != mouseTile)
+                        {
+                            selector.SelectedTile = mouseTile;
+                            SoundDefOf.Tick_Tiny.PlayOneShotOnCamera();
+                        }
+                    }
+                }
+                
+
+            }
+            catch (System.Exception ex)
+            {
+                Log.Error($"Error in immediate single click: {ex}");
+            }
+        }
+
         private static void SelectAllMatchingObjectUnderMouseOnScreen(WorldSelector selector)
         {
             var objectsUnderMouse = selector.SelectableObjectsUnderMouse();
@@ -139,20 +245,43 @@ namespace MoreResponsivePlanet
         }
     }
 
-    // Patch to skip expensive operations during dragging
+
+
+    // Patch to optimize GUI during dragging while keeping world objects visible
     [HarmonyPatch(typeof(WorldInterface), "WorldInterfaceOnGUI")]
     public static class WorldInterface_WorldInterfaceOnGUI_Patch
     {
         public static bool Prefix(WorldInterface __instance)
         {
-            // If we're dragging, use a minimal GUI version
+            // If we're dragging, use an optimized GUI version
             if (ImmediateDragBox.IsActive)
             {
-                // Only render essential elements during drag
-                __instance.selector.dragBox.DragBoxOnGUI(); // This will call our fast version
+                // Render essential elements only during drag
+                RenderOptimizedWorldGUI(__instance);
                 return false; // Skip the expensive original method
             }
             return true; // Normal execution when not dragging
+        }
+        
+        private static void RenderOptimizedWorldGUI(WorldInterface worldInterface)
+        {
+            // During dragging, show cached screenshot + drag box for maximum responsiveness
+            
+            // 1. Render cached screenshot as background (shows world objects frozen in time)
+            ScreenshotCache.RenderCachedScreenshot();
+            
+            // 2. Render our fast drag box on top
+            worldInterface.selector.dragBox.DragBoxOnGUI(); // This calls our fast version
+            
+            // Skip ALL expensive live updates during drag:
+            // - Live world objects (ExpandableWorldObjectsUtility.ExpandableWorldObjectsOnGUI)
+            // - Live selection overlays (WorldSelectionDrawer.SelectionOverlaysOnGUI)
+            // - Route planner (worldInterface.routePlanner.WorldRoutePlannerOnGUI)
+            // - Global controls (worldInterface.globalControls.WorldGlobalControlsOnGUI)
+            // - Colonist bar (Find.ColonistBar.ColonistBarOnGUI)
+            // - Debug drawing (Find.WorldDebugDrawer.WorldDebugDrawerOnGUI)
+            // - World gizmos (WorldGizmoUtility.WorldUIOnGUI)
+            // - Landmarks (ExpandableLandmarksUtility.ExpandableLandmarksOnGUI)
         }
     }
 

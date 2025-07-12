@@ -7,16 +7,28 @@ namespace MoreResponsivePlanet
     {
         private static bool _isActive = false;
         private static Vector2 _startPos;
+        private static int _currentDragId = 0;
         
         public static void StartDrag(Vector2 startPosition)
         {
+            // Increment drag ID FIRST to invalidate any previous operations
+            _currentDragId++;
+            
             _isActive = true;
             _startPos = startPosition;
+            
+            // Capture screenshot for background during drag
+            ScreenshotCache.CaptureScreenshot();
+            
+
         }
         
         public static void EndDrag()
         {
             _isActive = false;
+            
+            // Clear the screenshot cache
+            ScreenshotCache.ClearCache();
         }
         
         public static void RenderImmediate()
@@ -42,6 +54,8 @@ namespace MoreResponsivePlanet
         }
         
         public static bool IsActive => _isActive;
+        
+        public static int CurrentDragId => _currentDragId;
         
         public static Rect GetCurrentRect()
         {
