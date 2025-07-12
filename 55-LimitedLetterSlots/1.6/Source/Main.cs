@@ -173,3 +173,24 @@ public static class LetterStack_LettersOnGUI_Patch
     }
 }
 
+
+public class LetterCleaner : GameComponent
+{
+    public LetterCleaner(Game game)
+    {
+        // Constructor logic if needed
+    }
+
+    public override void GameComponentUpdate()
+    {
+        // Detect if delete key is pressed
+        if (Input.GetKeyDown(KeyCode.Delete))
+        {
+            foreach (var letter in Find.LetterStack.LettersListForReading.ToList())
+            {
+                Find.LetterStack.RemoveLetter(letter);
+            }
+        }
+    }
+}
+
