@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
@@ -68,11 +70,8 @@ namespace MoreResponsivePlanet
                     }
                     Event.current.Use();
                 }
-                else if (Event.current.button == 1 && originalSelector.SelectedObjects.Count > 0) // Right mouse button
-                {
-                    HandleRightClick(originalSelector);
-                    Event.current.Use();
-                }
+                // Don't handle right-clicks here - let the original system handle them
+                // This prevents interference with drag performance
             }
             else if (Event.current.rawType == EventType.MouseUp)
             {
@@ -103,29 +102,7 @@ namespace MoreResponsivePlanet
             }
         }
 
-        private void HandleRightClick(WorldSelector originalSelector)
-        {
-            // Handle right-click orders for caravans
-            if (originalSelector.SelectedObjects.Count == 1 && originalSelector.SelectedObjects[0] is Caravan)
-            {
-                Caravan caravan = (Caravan)originalSelector.SelectedObjects[0];
-                if (caravan.IsPlayerControlled && !FloatMenuMakerWorld.TryMakeFloatMenu(caravan))
-                {
-                    AutoOrderToTile(caravan, GenWorld.MouseTile());
-                }
-            }
-            else
-            {
-                // Multiple selection - order all player caravans
-                for (int i = 0; i < originalSelector.SelectedObjects.Count; i++)
-                {
-                    if (originalSelector.SelectedObjects[i] is Caravan caravan && caravan.IsPlayerControlled)
-                    {
-                        AutoOrderToTile(caravan, GenWorld.MouseTile());
-                    }
-                }
-            }
-        }
+
 
         private void SelectAllMatchingObjectUnderMouseOnScreen(WorldSelector originalSelector)
         {
@@ -150,37 +127,6 @@ namespace MoreResponsivePlanet
             }
         }
 
-        private void AutoOrderToTile(Caravan caravan, PlanetTile tile)
-        {
-            // This mirrors the AutoOrderToTile method from WorldSelector
-            if (!tile.Valid) return;
 
-            if (caravan.autoJoinable && CaravanExitMapUtility.AnyoneTryingToJoinCaravan(caravan))
-            {
-                CaravanExitMapUtility.OpenSomeoneTryingToJoinCaravanDialog(caravan, delegate
-                {
-                    AutoOrderToTileNow(caravan, tile);
-                });
-            }
-            else
-            {
-                AutoOrderToTileNow(caravan, tile);
-            }
-        }
-
-        private void AutoOrderToTileNow(Caravan caravan, PlanetTile tile)
-        {
-            // This mirrors the AutoOrderToTileNow method from WorldSelector
-            if (tile.Valid && (tile != caravan.Tile || caravan.pather.Moving))
-            {
-                PlanetTile bestDestination = CaravanUtility.BestGotoDestNear(tile, caravan);
-                if (bestDestination.Valid)
-                {
-                    caravan.pather.StartPath(bestDestination, null, repathImmediately: true);
-                    caravan.gotoMote.OrderedToTile(bestDestination);
-                    SoundDefOf.ColonistOrdered.PlayOneShotOnCamera();
-                }
-            }
-        }
     }
 }

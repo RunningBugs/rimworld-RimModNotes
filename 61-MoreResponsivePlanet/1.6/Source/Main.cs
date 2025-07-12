@@ -108,6 +108,12 @@ namespace MoreResponsivePlanet
                 }
                 Event.current.Use();
             }
+            else if (Event.current.type == EventType.MouseDown && Event.current.button == 1 && selector.SelectedObjects.Count > 0)
+            {
+                // Handle right-click - add this without touching drag logic
+                HandleRightClick(selector);
+                Event.current.Use();
+            }
             else if (Event.current.rawType == EventType.MouseUp && Event.current.button == 0)
             {
                 if (ImmediateDragBox.IsActive)
@@ -135,6 +141,60 @@ namespace MoreResponsivePlanet
                     }
                 }
                 Event.current.Use();
+            }
+        }
+        
+        private static void HandleRightClick(WorldSelector selector)
+        {
+            // Handle right-click exactly like RimWorld does
+            if (selector.SelectedObjects.Count == 1 && selector.SelectedObjects[0] is Caravan)
+            {
+                Caravan caravan = (Caravan)selector.SelectedObjects[0];
+                if (caravan.IsPlayerControlled && !FloatMenuMakerWorld.TryMakeFloatMenu(caravan))
+                {
+                    AutoOrderToTile(caravan, GenWorld.MouseTile());
+                }
+            }
+            else
+            {
+                for (int i = 0; i < selector.SelectedObjects.Count; i++)
+                {
+                    if (selector.SelectedObjects[i] is Caravan caravan && caravan.IsPlayerControlled)
+                    {
+                        AutoOrderToTile(caravan, GenWorld.MouseTile());
+                    }
+                }
+            }
+        }
+        
+        private static void AutoOrderToTile(Caravan c, PlanetTile tile)
+        {
+            if (!tile.Valid) return;
+            
+            if (c.autoJoinable && CaravanExitMapUtility.AnyoneTryingToJoinCaravan(c))
+            {
+                CaravanExitMapUtility.OpenSomeoneTryingToJoinCaravanDialog(c, delegate
+                {
+                    AutoOrderToTileNow(c, tile);
+                });
+            }
+            else
+            {
+                AutoOrderToTileNow(c, tile);
+            }
+        }
+        
+        private static void AutoOrderToTileNow(Caravan c, PlanetTile tile)
+        {
+            if (tile.Valid && (tile != c.Tile || c.pather.Moving))
+            {
+                PlanetTile planetTile = CaravanUtility.BestGotoDestNear(tile, c);
+                if (planetTile.Valid)
+                {
+                    c.pather.StartPath(planetTile, null, repathImmediately: true);
+                    c.gotoMote.OrderedToTile(planetTile);
+                    SoundDefOf.ColonistOrdered.PlayOneShotOnCamera();
+                }
             }
         }
         
@@ -180,8 +240,6 @@ namespace MoreResponsivePlanet
                         }
                     }
                 }
-                
-
             }
             catch (System.Exception ex)
             {
@@ -229,8 +287,8 @@ namespace MoreResponsivePlanet
     {
         public static bool Prefix()
         {
-            // Let our FastWorldSelector handle all click logic instead
-            return false; // Skip original method entirely
+            // Skip original method entirely - our WorldSelectorOnGUI patch handles everything
+            return false;
         }
     }
 
