@@ -27,9 +27,17 @@
 	<description>
 In RimWorld, the Planet/World view is very laggy, especially when there are many settlements, factions, landmarks in 1.6.
 This mod tries to improve the performance of the World view.
+Core strategies:
+- Disable the default world selector dragger, create a standalone dragger
+- Use a single background thread to compute the selected world object after dragging is done
+- Record the input event more efficiently through Unity MonoBehaviour instead of replying the built-in Unity event system
 
 
 环世界的世界视角在1.6版本中非常卡顿，尤其是当有很多定居点、派系和地标时。
 这个mod尝试改善世界视角的性能。
+优化策略：
+- 禁用默认的世界选择器拖动器，创建一个独立的拖动器
+- 使用单独的后台线程在拖动完成后计算所选的世界对象
+- 通过Unity MonoBehaviour更高效地记录输入事件，而不是依赖内置的Unity事件系统
 	</description>
 </ModMetaData>
