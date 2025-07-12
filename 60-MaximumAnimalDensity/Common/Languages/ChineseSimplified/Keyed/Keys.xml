@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <MaximumAnimalDensity>最大动物密度</MaximumAnimalDensity>
+    <MaximumAnimalDensity.IsEnabled>启用最大动物密度设置</MaximumAnimalDensity.IsEnabled>
+    <MaximumAnimalDensity.MaxAllowedAnimalsDensity>当前最大动物密度为：{0}</MaximumAnimalDensity.MaxAllowedAnimalsDensity>
+</LanguageData>

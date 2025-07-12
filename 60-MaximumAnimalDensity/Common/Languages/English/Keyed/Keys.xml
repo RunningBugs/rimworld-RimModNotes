@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <MaximumAnimalDensity>Maximum Animal Density</MaximumAnimalDensity>
+    <MaximumAnimalDensity.IsEnabled>Enable Maximum Animal Density Settings</MaximumAnimalDensity.IsEnabled>
+    <MaximumAnimalDensity.MaxAllowedAnimalsDensity>Current Maximum Animal Density: {0}</MaximumAnimalDensity.MaxAllowedAnimalsDensity>
+</LanguageData>

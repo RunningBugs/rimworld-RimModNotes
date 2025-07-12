@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-	<packageId>username.modname</packageId>
-	<name>Mod Template</name>
-	<author>username</author>
+	<packageId>RunningBugs.MaximumAnimalDensity</packageId>
+	<name>Maximum Animal Density 最大动物密度</name>
+	<author>RunningBugs</author>
 	<supportedVersions>
 		<li>1.6</li>
 	</supportedVersions>
 
 	<modDependencies>
-		<!-- <li>
+		<li>
 			<packageId>brrainz.harmony</packageId>
 			<displayName>Harmony</displayName>
 			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
 			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
-		</li> -->
+		</li>
 	</modDependencies>
 
 	<incompatibleWith>
@@ -24,5 +24,13 @@
 		<!-- <li>username.modname</li> -->
 	</loadAfter>
 
-	<description>Template</description>
+	<description>
+If there are too many animals generated in the tiles, the game could be really laggy for old computers.
+This mod will limit the maximum number of animals generated in the tiles.
+Please go to mod settings to set the uniform upper limit.
+
+如果地图上生成的动物数量过多，游戏可能会在老旧电脑上变得非常卡顿。
+本模组将限制地图上生成的动物数量上限。
+请前往模组设置界面设置统一的上限。
+	</description>
 </ModMetaData>

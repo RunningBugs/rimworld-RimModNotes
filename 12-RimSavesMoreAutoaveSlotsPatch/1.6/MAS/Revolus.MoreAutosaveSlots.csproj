@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Revolus.MoreAutosaveSlots</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <TargetFramework>net48</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>12.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp" />
+    <Reference Include="UnityEngine.CoreModule" />
+    <Reference Include="UnityEngine.TextRenderingModule" />
+    <Reference Include="0Harmony" />
+    <Reference Include="VersionFromManifest" />
+    <Reference Include="UnityEngine.IMGUIModule" />
+    <Reference Include="System.Core">
+      <HintPath>../../../../../../../../.dotnet/shared/Microsoft.NETCore.App/8.0.12/System.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
