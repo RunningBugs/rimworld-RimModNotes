@@ -6,4 +6,9 @@
 
     <GhoulCommands.ToggleJuggernautSerumText>切换强力血清是否自动服用</GhoulCommands.ToggleJuggernautSerumText>
     <GhoulCommands.ToggleJuggernautSerumDesc>切换食尸鬼是否自动使用强力血清，红叉为原版状态，对勾会在食尸鬼空闲时自动检查健康状态，而决定是否自动使用强力血清</GhoulCommands.ToggleJuggernautSerumDesc>
+
+    <GhoulCommands.EnableMetalbloodSerumText>钢血血清按钮</GhoulCommands.EnableMetalbloodSerumText>
+    <GhoulCommands.EnableMetalbloodSerumDesc>启用钢血血清自动服用按钮</GhoulCommands.EnableMetalbloodSerumDesc>
+    <GhoulCommands.ToggleMetalbloodSerumText>切换钢血血清是否自动服用</GhoulCommands.ToggleMetalbloodSerumText>
+    <GhoulCommands.ToggleMetalbloodSerumDesc>切换食尸鬼是否自动使用钢血血清，红叉为原版状态，对勾会在食尸鬼空闲时自动检查健康状态，而决定是否自动使用钢血血清</GhoulCommands.ToggleMetalbloodSerumDesc>
 </LanguageData>

@@ -30,10 +30,12 @@ Ghoul Auto Serum Commands 食尸鬼自动服用血清命令按钮
 This mod adds a command button for the Ghouls. 
 Current implemented commands:
 - Toggle Ghoul automatically taking JuggernautSerum
+- Toggle Ghoul automatically taking MetalbloodSerum
 
 本模组为食尸鬼添加了一个命令按钮。
 当前实现的命令：
 - 切换食尸鬼自动使用强力血清
+- 切换食尸鬼自动使用钢血血清
 
 	</description>
 </ModMetaData>

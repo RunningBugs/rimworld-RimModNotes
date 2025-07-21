@@ -6,4 +6,11 @@
     <reportString>taking Juggernaut Serum.</reportString>
     <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
   </JobDef>
+  
+  <JobDef>
+    <defName>TakeMetalbloodSerum</defName>
+    <driverClass>GhoulCommands.JobDriver_TakeMetalbloodSerum</driverClass>
+    <reportString>taking Metalblood Serum.</reportString>
+    <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+  </JobDef>
 </Defs>
