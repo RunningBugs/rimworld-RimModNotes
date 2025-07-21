@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.PawnNotBlockingConstruction</packageId>
+	<name>Pawn Not Blocking Construction 小人不会阻碍建造</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.6</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<!-- <li>username.modname</li> -->
+	</loadAfter>
+
+	<description>
+In vanilla RimWorld, pawns can block the construction of buildings, which can be frustrating when trying to build structures in tight spaces. This mod allows pawns to move through construction sites without interrupting the building process.
+
+在原版环世界中，小人踩上正在建造的建筑会打断建造小人的工作。这个模组允许小人踩在正在建造的建筑上，而不会打断建造过程。
+	</description>
+</ModMetaData>
