@@ -1,4 +1,6 @@
 using HarmonyLib;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
@@ -18,9 +20,6 @@ namespace MoreResponsivePlanet
             // Initialize thread-safe selection system
             UnityMainThreadDispatcher.Initialize();
             
-            // Initialize input poller for reliable input detection
-            InputPoller.Initialize();
-            
             Log.Message("[More Responsive Planet] Mod loaded successfully!");
         }
     }
@@ -31,10 +30,7 @@ namespace MoreResponsivePlanet
     {
         public static bool Prefix(WorldSelector __instance)
         {
-            // Set up input poller callbacks if not already done
-            SetupInputCallbacks(__instance);
-            
-            // Handle GUI-based input as fallback
+            // Handle world input
             HandleWorldInput(__instance);
             
             // Handle cancel key
@@ -50,46 +46,6 @@ namespace MoreResponsivePlanet
             return false; // Skip original method
         }
         
-        private static bool _inputCallbacksSetup = false;
-        private static void SetupInputCallbacks(WorldSelector selector)
-        {
-            if (_inputCallbacksSetup || InputPoller.Instance == null) return;
-            
-            InputPoller.Instance.OnMouseDown = () => {
-                // Start drag immediately when input poller detects mouse down
-                ImmediateDragBox.StartDrag(UI.MousePositionOnUIInverted);
-                selector.dragBox.active = false;
-            };
-            
-            InputPoller.Instance.OnMouseUp = () => {
-                // End drag immediately when input poller detects mouse up
-                if (ImmediateDragBox.IsActive)
-                {
-                    bool wasValidDrag = ImmediateDragBox.IsValidDrag();
-                    Rect dragRect = ImmediateDragBox.GetCurrentRect();
-                    int dragId = ImmediateDragBox.CurrentDragId;
-                    
-                    ImmediateDragBox.EndDrag();
-                    selector.dragBox.active = false;
-                    
-                    if (!wasValidDrag)
-                    {
-                        ProcessSingleClickImmediate(selector);
-                    }
-                    else
-                    {
-                        ThreadSafeSelectionProcessor.Instance.ProcessDragSelectionAsync(selector, dragRect, dragId);
-                    }
-                }
-            };
-            
-            InputPoller.Instance.OnDoubleClick = () => {
-                // Handle double-click immediately
-                SelectAllMatchingObjectUnderMouseOnScreen(selector);
-            };
-            
-            _inputCallbacksSetup = true;
-        }
         
         private static void HandleWorldInput(WorldSelector selector)
         {
@@ -147,9 +103,8 @@ namespace MoreResponsivePlanet
         private static void HandleRightClick(WorldSelector selector)
         {
             // Handle right-click exactly like RimWorld does
-            if (selector.SelectedObjects.Count == 1 && selector.SelectedObjects[0] is Caravan)
+            if (selector.SelectedObjects.Count == 1 && selector.SelectedObjects[0] is Caravan caravan)
             {
-                Caravan caravan = (Caravan)selector.SelectedObjects[0];
                 if (caravan.IsPlayerControlled && !FloatMenuMakerWorld.TryMakeFloatMenu(caravan))
                 {
                     AutoOrderToTile(caravan, GenWorld.MouseTile());
@@ -159,9 +114,9 @@ namespace MoreResponsivePlanet
             {
                 for (int i = 0; i < selector.SelectedObjects.Count; i++)
                 {
-                    if (selector.SelectedObjects[i] is Caravan caravan && caravan.IsPlayerControlled)
+                    if (selector.SelectedObjects[i] is Caravan c && c.IsPlayerControlled)
                     {
-                        AutoOrderToTile(caravan, GenWorld.MouseTile());
+                        AutoOrderToTile(c, GenWorld.MouseTile());
                     }
                 }
             }
@@ -200,38 +155,49 @@ namespace MoreResponsivePlanet
         
         private static void ProcessSingleClickImmediate(WorldSelector selector)
         {
-            // Fast synchronous single click processing - no background thread needed
+            // Implement full RimWorld single click logic with object cycling
             try
             {
-                // Get objects under mouse (fast operation)
-                var objectsUnderMouse = selector.SelectableObjectsUnderMouse();
-                var objectsList = System.Linq.Enumerable.ToList(objectsUnderMouse);
+                // First check colonist bar (like RimWorld does)
+                if (Current.ProgramState == ProgramState.Playing)
+                {
+                    Thing thing = Find.ColonistBar.ColonistOrCorpseAt(UI.MousePositionOnUIInverted);
+                    Pawn pawn = thing as Pawn;
+                    if (thing != null && (pawn == null || !pawn.IsCaravanMember()))
+                    {
+                        if (thing.Spawned)
+                        {
+                            CameraJumper.TryJumpAndSelect(thing);
+                        }
+                        else
+                        {
+                            CameraJumper.TryJump(thing);
+                        }
+                        return;
+                    }
+                }
                 
                 bool shiftIsHeld = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
                 
-                if (objectsList.Count > 0)
+                // Get selectable objects under mouse with RimWorld's full logic
+                var objectsList = selector.SelectableObjectsUnderMouse(out bool clickedDirectlyOnCaravan, out bool usedColonistBar).ToList();
+                
+                bool canSelectTile = true;
+                if (usedColonistBar || (clickedDirectlyOnCaravan && objectsList.Count >= 2))
                 {
-                    // Clicked on a world object - immediate selection
-                    var selectedObject = objectsList[0]; // Get first object
-                    
-                    if (!shiftIsHeld)
-                    {
-                        selector.ClearSelection();
-                    }
-                    
-                    if (!selector.IsSelected(selectedObject))
-                    {
-                        selector.Select(selectedObject);
-                    }
+                    canSelectTile = false;
                 }
-                else
+                
+                if (objectsList.Count == 0)
                 {
-                    // Clicked on empty space - select tile immediately
-                    if (!shiftIsHeld)
+                    // No objects - select tile if allowed
+                    if (shiftIsHeld) return;
+                    
+                    PlanetTile previousTile = selector.SelectedTile;
+                    selector.ClearSelection();
+                    
+                    if (canSelectTile)
                     {
-                        PlanetTile previousTile = selector.SelectedTile;
-                        selector.ClearSelection();
-                        
                         PlanetTile mouseTile = GenWorld.MouseTile();
                         if (mouseTile.Valid && previousTile != mouseTile)
                         {
@@ -240,17 +206,100 @@ namespace MoreResponsivePlanet
                         }
                     }
                 }
+                else if (objectsList.FirstOrDefault(selector.SelectedObjects.Contains) != null)
+                {
+                    // At least one object is already selected - cycle through them
+                    if (shiftIsHeld)
+                    {
+                        // Shift held - deselect all selected objects under mouse
+                        foreach (var obj in objectsList)
+                        {
+                            if (selector.SelectedObjects.Contains(obj))
+                            {
+                                selector.Deselect(obj);
+                            }
+                        }
+                        return;
+                    }
+                    
+                    PlanetTile tile = canSelectTile ? GenWorld.MouseTile() : PlanetTile.Invalid;
+                    SelectFirstOrNextFrom(selector, objectsList, tile);
+                }
+                else
+                {
+                    // No objects are selected - select the first one
+                    if (!shiftIsHeld)
+                    {
+                        selector.ClearSelection();
+                    }
+                    selector.Select(objectsList[0]);
+                }
             }
             catch (System.Exception ex)
             {
                 Log.Error($"Error in immediate single click: {ex}");
             }
         }
+        
+        private static void SelectFirstOrNextFrom(WorldSelector selector, List<WorldObject> objects, PlanetTile tile)
+        {
+            // This mirrors RimWorld's SelectFirstOrNextFrom method exactly
+            int selectedIndex = objects.FindIndex(selector.SelectedObjects.Contains);
+            PlanetTile tileToSelect = PlanetTile.Invalid;
+            int objectIndexToSelect = -1;
+            
+            if (selectedIndex != -1)
+            {
+                // Found a selected object
+                if (selectedIndex == objects.Count - 1 || selector.SelectedObjects.Count >= 2)
+                {
+                    // If it's the last object OR multiple objects are selected
+                    if (selector.SelectedObjects.Count >= 2)
+                    {
+                        objectIndexToSelect = 0; // Go back to first object
+                    }
+                    else if (tile.Valid)
+                    {
+                        tileToSelect = tile; // Select the tile instead
+                    }
+                    else
+                    {
+                        objectIndexToSelect = 0; // Go back to first object
+                    }
+                }
+                else
+                {
+                    // Select the next object in the list
+                    objectIndexToSelect = selectedIndex + 1;
+                }
+            }
+            else if (objects.Count == 0)
+            {
+                // No objects available - select tile
+                tileToSelect = tile;
+            }
+            else
+            {
+                // No objects are currently selected - select first
+                objectIndexToSelect = 0;
+            }
+            
+            // Apply the selection
+            selector.ClearSelection();
+            if (objectIndexToSelect >= 0)
+            {
+                selector.Select(objects[objectIndexToSelect]);
+            }
+            if (tileToSelect.Valid)
+            {
+                selector.SelectedTile = tileToSelect;
+            }
+        }
 
         private static void SelectAllMatchingObjectUnderMouseOnScreen(WorldSelector selector)
         {
             var objectsUnderMouse = selector.SelectableObjectsUnderMouse();
-            var objectsList = System.Linq.Enumerable.ToList(objectsUnderMouse);
+            var objectsList = objectsUnderMouse.ToList();
             
             if (objectsList.Count == 0) return;
 

@@ -41,13 +41,12 @@ namespace MoreResponsivePlanet
         private static ThreadSafeSelectionProcessor _instance;
         public static ThreadSafeSelectionProcessor Instance => _instance ??= new ThreadSafeSelectionProcessor();
 
-        // Removed _resultPreparationLock - single background thread makes it unnecessary
         private volatile int _lastAppliedDragId = -1;
         
-        // Single background thread management
+        // Simple task management - only need lock for task handoff between threads
         private Thread _backgroundThread;
         private volatile bool _backgroundThreadRunning = false;
-        private readonly object _taskQueueLock = new object();
+        private readonly object _taskLock = new object();
         private volatile SelectionTask _currentTask = null;
 
         public void ProcessDragSelectionAsync(WorldSelector worldSelector, Rect dragRect, int dragId)
@@ -81,7 +80,7 @@ namespace MoreResponsivePlanet
 
         private void SubmitTask(SelectionTask newTask)
         {
-            lock (_taskQueueLock)
+            lock (_taskLock)
             {
                 // Cancel current task immediately
                 if (_currentTask != null)
@@ -127,7 +126,7 @@ namespace MoreResponsivePlanet
                 {
                     SelectionTask taskToProcess = null;
                     
-                    lock (_taskQueueLock)
+                    lock (_taskLock)
                     {
                         if (_currentTask != null && !_currentTask.IsCancelled)
                         {
