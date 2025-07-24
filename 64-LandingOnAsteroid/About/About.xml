@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-	<packageId>RunningBugs.TestMod</packageId>
-	<name>Test Mod</name>
+	<packageId>RunningBugs.LandingOnAsteroid</packageId>
+	<name>Landing On Asteroid 着陆小行星</name>
 	<author>RunningBugs</author>
 	<supportedVersions>
 		<li>1.6</li>
@@ -25,7 +25,14 @@
 	</loadAfter>
 
 	<description>
-This is a test mod to quickly test C# related things in the game.
-Thus we tried to make sure there's only one C# file.
+In RimWorld 1.6, we are still not able to start our colony on an asteroid.
+This mod makes it possible to select an asteroid as the starting tile.
+In the left top corner of the world view, after clicking on generating world, you can see the view orbital button.
+You can choose an asteroid as your starting normally.
+
+环世界1.6中，我们仍然无法在小行星上开始殖民地。
+此模组可以让玩家选择小行星作为起始地格。
+在生成世界后，世界视图的左上角，有一个查看轨道图标按钮。
+可以鼠标点击小行星作为起始地格。
 	</description>
 </ModMetaData>

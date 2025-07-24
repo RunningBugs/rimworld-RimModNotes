@@ -2,12 +2,13 @@
 using RimWorld;
 using RimWorld.Planet;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
 
-namespace TestMod;
+namespace LandingOnAsteroid;
 
 [StaticConstructorOnStartup]
 public class ApplyPatches
@@ -15,9 +16,9 @@ public class ApplyPatches
     static ApplyPatches()
     {
         // Apply the Harmony patches
-        var harmony = new Harmony("com.testmod.hidegenebankgenes");
+        var harmony = new Harmony("com.RunningBugs.LandingOnAsteroid");
         harmony.PatchAll();
-        Log.Message("Patches applied".Colorize(Color.green));
+        Log.Message("[LandingOnAsteroid] Patches applied".Colorize(Color.green));
     }
 }
 
@@ -48,7 +49,6 @@ public static class Page_SelectStartingSite_ExtraOnGUI_Patch
                 icon = orbitalLayer.Def.ViewGizmoTexture,
                 action = () =>
                 {
-                    Log.Message("Switching to orbital view!".Colorize(Color.green));
                     PlanetLayer.Selected = orbitalLayer;
                 }
             };
@@ -63,7 +63,6 @@ public static class Page_SelectStartingSite_ExtraOnGUI_Patch
                 icon = surfaceLayer.Def.ViewGizmoTexture,
                 action = () =>
                 {
-                    Log.Message("Switching to surface view!".Colorize(Color.green));
                     PlanetLayer.Selected = surfaceLayer;
                 }
             };
@@ -105,7 +104,6 @@ public static class Page_SelectStartingSite_DoWindowContents_Patch
         // Handle asteroid selection in orbital view
         if (Find.WorldSelector.FirstSelectedObject != null)
         {
-            Log.Message("First selected object found".Colorize(Color.green));
             var selectedObject = Find.WorldSelector.FirstSelectedObject;
 
             // Check if it's an asteroid or other orbital object
@@ -172,7 +170,7 @@ public class AsteroidStartingModSettings : ModSettings
 
     public override void ExposeData()
     {
-        Scribe_Values.Look(ref defaultMapGenerator, "defaultMapGenerator", "Asteroid");
+        Scribe_Values.Look(ref defaultMapGenerator, "LandingOnAsteroid.defaultMapGenerator", "Asteroid");
         base.ExposeData();
     }
 }
@@ -191,31 +189,31 @@ public class AsteroidStartingMod : Mod
         Listing_Standard listingStandard = new Listing_Standard();
         listingStandard.Begin(inRect);
 
-        listingStandard.Label("Default Asteroid Map Generation:");
+        listingStandard.Label("LandingOnAsteroid.DefaultAsteroidMapGenerationLabel".Translate());
 
         // Radio buttons for generation type
-        if (listingStandard.RadioButton("Standard Asteroid (Gold/Plasteel/Uranium)", settings.defaultMapGenerator == "Asteroid"))
+        if (listingStandard.RadioButton("LandingOnAsteroid.StandardAsteroid".Translate(), settings.defaultMapGenerator == "Asteroid"))
         {
             settings.defaultMapGenerator = "Asteroid";
         }
 
-        if (listingStandard.RadioButton("Basic Asteroid (Mixed Resources)", settings.defaultMapGenerator == "AsteroidBasic"))
+        if (listingStandard.RadioButton("LandingOnAsteroid.BasicAsteroid".Translate(), settings.defaultMapGenerator == "AsteroidBasic"))
         {
             settings.defaultMapGenerator = "AsteroidBasic";
         }
 
-        if (listingStandard.RadioButton("Item Stash Asteroid (Loot Containers)", settings.defaultMapGenerator == "OrbitalItemStash"))
+        if (listingStandard.RadioButton("LandingOnAsteroid.OrbitalItemStash".Translate(), settings.defaultMapGenerator == "OrbitalItemStash"))
         {
             settings.defaultMapGenerator = "OrbitalItemStash";
         }
 
-        if (listingStandard.RadioButton("Terrestrial (Normal Biome)", settings.defaultMapGenerator == "Base_Player"))
+        if (listingStandard.RadioButton("LandingOnAsteroid.BasePlayer".Translate(), settings.defaultMapGenerator == "Base_Player"))
         {
             settings.defaultMapGenerator = "Base_Player";
         }
 
         listingStandard.Gap();
-        listingStandard.Label("Note: This setting determines how asteroid starting locations generate their maps.");
+        listingStandard.Label("LandingOnAsteroid.Note".Translate());
 
         listingStandard.End();
         base.DoSettingsWindowContents(inRect);
@@ -223,56 +221,117 @@ public class AsteroidStartingMod : Mod
 
     public override string SettingsCategory()
     {
-        return "Asteroid Starting Locations";
+        return "LandingOnAsteroid".Translate();
     }
 }
 
 
- // Instead of patching GenStep_Asteroid, patch the Space GenStep which runs earlier
-  [HarmonyPatch(typeof(GenStep_Space), nameof(GenStep_Space.Generate))]
-  public static class GenStep_Space_Generate_Patch
-  {
-      static void Postfix(Map map, GenStepParams parms)
-      {
-          // Set player start spot after space generation for player colonies
-          if (map.Parent.Faction == Faction.OfPlayer)
-          {
-              IntVec3 playerStartSpot = FindPlayerStartSpot(map);
-              if (playerStartSpot.IsValid)
-              {
-                  MapGenerator.PlayerStartSpot = playerStartSpot;
-                  Log.Message($"Set player start spot to {playerStartSpot} after Space generation".Colorize(Color.green));
-              }
-          }
-      }
+// Fix the invalid cast issue in GenStep_Asteroid.SpawnOres
+[HarmonyPatch(typeof(GenStep_Asteroid), "SpawnOres")]
+public static class GenStep_Asteroid_SpawnOres_Patch
+{
+    static bool Prefix(GenStep_Asteroid __instance, Map map, GenStepParams parms)
+    {
+        // Get the mineableCounts field using reflection
+        var mineableCountsField = typeof(GenStep_Asteroid).GetField("mineableCounts");
+        if (mineableCountsField == null) return true;
 
-      private static IntVec3 FindPlayerStartSpot(Map map)
-      {
-          // First try to find a valid walkable spot
-          var validCells = map.AllCells.Where(c =>
-              c.Walkable(map) &&
-              c.InBounds(map) &&
-              c != IntVec3.Invalid &&
-              !c.Fogged(map) &&
-              map.terrainGrid.TerrainAt(c) != TerrainDefOf.Space).ToList();
+        var mineableCounts = mineableCountsField.GetValue(__instance) as System.Collections.Generic.List<GenStep_Asteroid.MineableCountConfig>;
+        if (mineableCounts == null || mineableCounts.Count == 0) return true;
 
-          if (validCells.Count > 0)
-          {
-              return validCells.RandomElement();
-          }
+        // Get the numChunks field
+        var numChunksField = typeof(GenStep_Asteroid).GetField("numChunks");
+        if (numChunksField == null) return true;
 
-          // If no walkable spots, try any non-space terrain
-          var nonSpaceCells = map.AllCells.Where(c =>
-              c.InBounds(map) &&
-              c != IntVec3.Invalid &&
-              map.terrainGrid.TerrainAt(c) != TerrainDefOf.Space).ToList();
+        var numChunks = (IntRange)numChunksField.GetValue(__instance);
 
-          if (nonSpaceCells.Count > 0)
-          {
-              return nonSpaceCells.RandomElement();
-          }
+        // Safe way to get precious resource without invalid cast
+        ThingDef thingDef = null;
+        if (map.ParentHolder is SpaceMapParent spaceParent)
+        {
+            thingDef = spaceParent.preciousResource;
+        }
+        
+        // Fall back to random mineable if no precious resource found
+        if (thingDef == null)
+        {
+            thingDef = mineableCounts.RandomElement().mineable;
+        }
 
-          // Last resort fallback
-          return map.Center;
-      }
-  }
+        int num = 0;
+        for (int i = 0; i < mineableCounts.Count; i++)
+        {
+            if (mineableCounts[i].mineable == thingDef)
+            {
+                num = mineableCounts[i].countRange.RandomInRange;
+                break;
+            }
+        }
+
+        if (num == 0)
+        {
+            Log.Error("No count found for resource " + thingDef);
+            return false; // Skip original method
+        }
+
+        int randomInRange = numChunks.RandomInRange;
+        int forcedLumpSize = num / randomInRange;
+        
+        GenStep_ScatterLumpsMineable genStep_ScatterLumpsMineable = new GenStep_ScatterLumpsMineable();
+        genStep_ScatterLumpsMineable.count = randomInRange;
+        genStep_ScatterLumpsMineable.forcedDefToScatter = thingDef;
+        genStep_ScatterLumpsMineable.forcedLumpSize = forcedLumpSize;
+        genStep_ScatterLumpsMineable.Generate(map, parms);
+
+        return false; // Skip original method
+    }
+}
+
+// Instead of patching GenStep_Asteroid, patch the Space GenStep which runs earlier
+[HarmonyPatch(typeof(GenStep_Space), nameof(GenStep_Space.Generate))]
+public static class GenStep_Space_Generate_Patch
+{
+    static void Postfix(Map map, GenStepParams parms)
+    {
+        // Set player start spot after space generation for player colonies
+        if (map.Parent.Faction == Faction.OfPlayer)
+        {
+            IntVec3 playerStartSpot = FindPlayerStartSpot(map);
+            if (playerStartSpot.IsValid)
+            {
+                MapGenerator.PlayerStartSpot = playerStartSpot;
+                Log.Message($"Set player start spot to {playerStartSpot} after Space generation".Colorize(Color.green));
+            }
+        }
+    }
+
+    private static IntVec3 FindPlayerStartSpot(Map map)
+    {
+        // First try to find a valid walkable spot
+        var validCells = map.AllCells.Where(c =>
+            c.Walkable(map) &&
+            c.InBounds(map) &&
+            c != IntVec3.Invalid &&
+            !c.Fogged(map) &&
+            map.terrainGrid.TerrainAt(c) != TerrainDefOf.Space).ToList();
+
+        if (validCells.Count > 0)
+        {
+            return validCells.RandomElement();
+        }
+
+        // If no walkable spots, try any non-space terrain
+        var nonSpaceCells = map.AllCells.Where(c =>
+            c.InBounds(map) &&
+            c != IntVec3.Invalid &&
+            map.terrainGrid.TerrainAt(c) != TerrainDefOf.Space).ToList();
+
+        if (nonSpaceCells.Count > 0)
+        {
+            return nonSpaceCells.RandomElement();
+        }
+
+        // Last resort fallback
+        return map.Center;
+    }
+}

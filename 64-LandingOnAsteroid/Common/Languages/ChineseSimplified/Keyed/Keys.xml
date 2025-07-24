@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<LandingOnAsteroid>着陆小行星</LandingOnAsteroid>
+	<LandingOnAsteroid.DefaultAsteroidMapGenerationLabel>默认小行星地图生成类型:</LandingOnAsteroid.DefaultAsteroidMapGenerationLabel>
+	<LandingOnAsteroid.StandardAsteroid>标准小行星 (黄金/玻璃钢/铀)</LandingOnAsteroid.StandardAsteroid>
+	<LandingOnAsteroid.BasicAsteroid>基础小行星 (混合资源)</LandingOnAsteroid.BasicAsteroid>
+	<LandingOnAsteroid.OrbitalItemStash>物品储藏小行星 (远古遗迹)</LandingOnAsteroid.OrbitalItemStash>
+	<LandingOnAsteroid.BasePlayer>地面 (传统殖民地生成)</LandingOnAsteroid.BasePlayer>
+	<LandingOnAsteroid.Note>注意: 此设置决定小行星开局如何生成地图。</LandingOnAsteroid.Note>
+</LanguageData>
