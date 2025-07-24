@@ -6,5 +6,5 @@
 	<LandingOnAsteroid.BasicAsteroid>基础小行星 (混合资源)</LandingOnAsteroid.BasicAsteroid>
 	<LandingOnAsteroid.OrbitalItemStash>物品储藏小行星 (远古遗迹)</LandingOnAsteroid.OrbitalItemStash>
 	<LandingOnAsteroid.BasePlayer>地面 (传统殖民地生成)</LandingOnAsteroid.BasePlayer>
-	<LandingOnAsteroid.Note>注意: 此设置决定小行星开局如何生成地图。</LandingOnAsteroid.Note>
+	<LandingOnAsteroid.Note>注意: 此设置决定小行星开局如何生成地图。目前标准和基础小行星实际上没有区别。</LandingOnAsteroid.Note>
 </LanguageData>

@@ -6,5 +6,5 @@
 	<LandingOnAsteroid.BasicAsteroid>Basic Asteroid (Mixed Resources)</LandingOnAsteroid.BasicAsteroid>
 	<LandingOnAsteroid.OrbitalItemStash>Item Stash Asteroid (Loot Containers)</LandingOnAsteroid.OrbitalItemStash>
 	<LandingOnAsteroid.BasePlayer>Terrestrial (Traditional Colony Generation)</LandingOnAsteroid.BasePlayer>
-	<LandingOnAsteroid.Note>Note: This setting determines how asteroid as starting colony location generate the map.</LandingOnAsteroid.Note>
+	<LandingOnAsteroid.Note>Note: This setting determines how asteroid as starting colony location generate the map. Currently standard and basic asteroid does not actually have a difference.</LandingOnAsteroid.Note>
 </LanguageData>
