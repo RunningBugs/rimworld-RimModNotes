@@ -130,7 +130,6 @@ public static class Page_SelectStartingSite_DoWindowContents_Patch
             if (mapGenDef != null)
             {
                 Find.GameInitData.mapGeneratorDef = mapGenDef;
-                Log.Message($"[LandingOnAsteroid] Set map generator to: {mapGeneratorDefName}".Colorize(Color.yellow));
             }
         }
 
@@ -138,10 +137,7 @@ public static class Page_SelectStartingSite_DoWindowContents_Patch
         if (asteroidObject is SpaceMapParent spaceParent && spaceParent.preciousResource != null)
         {
             AsteroidMineralConfig.SetPreciousResource(spaceParent.preciousResource);
-            Log.Message($"[LandingOnAsteroid] Backup: Set precious resource to {spaceParent.preciousResource.defName}".Colorize(Color.cyan));
         }
-
-        Log.Message($"[LandingOnAsteroid] Selected asteroid: {asteroidObject.def.defName} with generator: {mapGeneratorDefName}".Colorize(Color.green));
     }
 }
 
@@ -174,11 +170,16 @@ public static class TileFinder_IsValidTileForNewSettlement_Patch
 
 public class AsteroidStartingModSettings : ModSettings
 {
-    public string defaultMapGenerator = "Asteroid";
+    public string defaultMapGenerator = "AsteroidBasic";
 
     public override void ExposeData()
     {
-        Scribe_Values.Look(ref defaultMapGenerator, "LandingOnAsteroid.defaultMapGenerator", "Asteroid");
+        Scribe_Values.Look(ref defaultMapGenerator, "LandingOnAsteroid.defaultMapGenerator", "AsteroidBasic");
+        if (defaultMapGenerator != "AsteroidBasic" && defaultMapGenerator != "Base_Player")
+        {
+            Log.Warning($"[LandingOnAsteroid] Invalid defaultMapGenerator '{defaultMapGenerator}', resetting to 'AsteroidBasic'");
+            defaultMapGenerator = "AsteroidBasic";
+        }
         base.ExposeData();
     }
 }
@@ -199,20 +200,9 @@ public class AsteroidStartingMod : Mod
 
         listingStandard.Label("LandingOnAsteroid.DefaultAsteroidMapGenerationLabel".Translate());
 
-        // Radio buttons for generation type
-        if (listingStandard.RadioButton("LandingOnAsteroid.StandardAsteroid".Translate(), settings.defaultMapGenerator == "Asteroid"))
-        {
-            settings.defaultMapGenerator = "Asteroid";
-        }
-
         if (listingStandard.RadioButton("LandingOnAsteroid.BasicAsteroid".Translate(), settings.defaultMapGenerator == "AsteroidBasic"))
         {
             settings.defaultMapGenerator = "AsteroidBasic";
-        }
-
-        if (listingStandard.RadioButton("LandingOnAsteroid.OrbitalItemStash".Translate(), settings.defaultMapGenerator == "OrbitalItemStash"))
-        {
-            settings.defaultMapGenerator = "OrbitalItemStash";
         }
 
         if (listingStandard.RadioButton("LandingOnAsteroid.BasePlayer".Translate(), settings.defaultMapGenerator == "Base_Player"))
@@ -246,10 +236,10 @@ public static class Page_SelectStartingSite_DoNext_Patch
             if (Find.WorldSelector?.FirstSelectedObject != null)
             {
                 var selectedObject = Find.WorldSelector.FirstSelectedObject;
-                
+
                 // Check if it's an asteroid or other orbital object
-                if (selectedObject is WorldObject worldObj && 
-                    worldObj.def?.worldObjectClass != null && 
+                if (selectedObject is WorldObject worldObj &&
+                    worldObj.def?.worldObjectClass != null &&
                     worldObj.def.worldObjectClass.IsSubclassOf(typeof(SpaceMapParent)))
                 {
                     ConfigureMapGeneratorForAsteroid(worldObj);
@@ -261,7 +251,7 @@ public static class Page_SelectStartingSite_DoNext_Patch
             Log.Error($"[LandingOnAsteroid] Error in Page_SelectStartingSite_DoNext_Patch.Prefix: {ex}");
         }
     }
-    
+
     private static void ConfigureMapGeneratorForAsteroid(WorldObject asteroidObject)
     {
         try
@@ -271,8 +261,6 @@ public static class Page_SelectStartingSite_DoNext_Patch
             {
                 // Store the precious resource using our custom configuration class
                 AsteroidMineralConfig.SetPreciousResource(spaceParent.preciousResource);
-                
-                Log.Message($"[LandingOnAsteroid] Configured map generator for asteroid with precious resource: {spaceParent.preciousResource.defName}".Colorize(Color.green));
             }
             else
             {
@@ -292,24 +280,24 @@ public static class Page_SelectStartingSite_DoNext_Patch
 public static class AsteroidMineralConfig
 {
     private static ThingDef storedPreciousResource = null;
-    
+
     public static void SetPreciousResource(ThingDef resource)
     {
         storedPreciousResource = resource;
         Log.Message($"[LandingOnAsteroid] Stored precious resource: {resource?.defName ?? "null"}".Colorize(Color.yellow));
     }
-    
+
     public static ThingDef GetPreciousResource()
     {
         return storedPreciousResource;
     }
-    
+
     public static void ClearPreciousResource()
     {
         storedPreciousResource = null;
         Log.Message("[LandingOnAsteroid] Cleared stored precious resource".Colorize(Color.yellow));
     }
-    
+
     public static bool HasPreciousResource()
     {
         return storedPreciousResource != null;
@@ -352,166 +340,37 @@ public static class SafeMapParentCast
 [HarmonyPatch(typeof(GenStep_Asteroid), "SpawnOres")]
 public static class GenStep_Asteroid_SpawnOres_Patch
 {
-    static bool Prefix(GenStep_Asteroid __instance, Map map, GenStepParams parms)
+    static System.Exception Finalizer(System.Exception __exception, GenStep_Asteroid __instance, Map map, GenStepParams parms)
     {
-        Log.Message($"[LandingOnAsteroid] === GenStep_Asteroid.SpawnOres called ===".Colorize(Color.magenta));
-        Log.Message($"[LandingOnAsteroid] Map: {map?.ToString() ?? "null"}, Parent: {map?.Parent?.ToString() ?? "null"}");
-        
-        try
+        if (__exception is System.InvalidCastException ex)
         {
-            // Get the mineableCounts and numChunks fields
-            var mineableCountsField = typeof(GenStep_Asteroid).GetField("mineableCounts", BindingFlags.Public | BindingFlags.Instance);
-            var numChunksField = typeof(GenStep_Asteroid).GetField("numChunks", BindingFlags.Public | BindingFlags.Instance);
-            
-            if (mineableCountsField == null || numChunksField == null)
-            {
-                Log.Error("[LandingOnAsteroid] Could not find required fields, falling back to original");
-                return true;
-            }
+            Log.Warning($"[LandingOnAsteroid] InvalidCastException triggered in GenStep_Asteroid.SpawnOres: This means landing on asteroid. If not the case, please report this error: {ex}");
 
-            var mineableCounts = mineableCountsField.GetValue(__instance) as System.Collections.IList;
-            var numChunks = (IntRange)numChunksField.GetValue(__instance);
-
-            if (mineableCounts == null || mineableCounts.Count == 0)
-            {
-                Log.Error("[LandingOnAsteroid] No mineable counts available");
-                return true;
-            }
-
-            // Use safe cast to get precious resource (replaces the problematic original cast)
             ThingDef thingDef = SafeMapParentCast.GetPreciousResource(map);
-            
-            // If no precious resource, use original fallback logic
-            if (thingDef == null)
-            {
-                var randomConfig = mineableCounts[Rand.Range(0, mineableCounts.Count)];
-                var mineableField = randomConfig.GetType().GetField("mineable", BindingFlags.Public | BindingFlags.Instance);
-                if (mineableField != null)
-                {
-                    thingDef = mineableField.GetValue(randomConfig) as ThingDef;
-                    Log.Message($"[LandingOnAsteroid] Using random mineral from config: {thingDef?.defName ?? "null"}");
-                }
-            }
-
-            if (thingDef == null)
-            {
-                Log.Error("[LandingOnAsteroid] Could not determine mineral, falling back to original");
-                return true;
-            }
-
-            // Find the count for this mineral (original logic)
+            thingDef ??= __instance.mineableCounts.RandomElement().mineable;
             int num = 0;
-            for (int i = 0; i < mineableCounts.Count; i++)
+            for (int i = 0; i < __instance.mineableCounts.Count; i++)
             {
-                var config = mineableCounts[i];
-                var mineableField = config.GetType().GetField("mineable", BindingFlags.Public | BindingFlags.Instance);
-                var countRangeField = config.GetType().GetField("countRange", BindingFlags.Public | BindingFlags.Instance);
-                
-                if (mineableField != null && countRangeField != null)
+                if (__instance.mineableCounts[i].mineable == thingDef)
                 {
-                    var configMineable = mineableField.GetValue(config) as ThingDef;
-                    if (configMineable == thingDef)
-                    {
-                        var countRange = (IntRange)countRangeField.GetValue(config);
-                        num = countRange.RandomInRange;
-                        Log.Message($"[LandingOnAsteroid] Found count {num} for {thingDef.defName}");
-                        break;
-                    }
+                    num = __instance.mineableCounts[i].countRange.RandomInRange;
+                    break;
                 }
             }
-
-            // If no count found, use a default based on the first available mineral
             if (num == 0)
             {
-                var firstConfig = mineableCounts[0];
-                var countRangeField = firstConfig.GetType().GetField("countRange", BindingFlags.Public | BindingFlags.Instance);
-                if (countRangeField != null)
-                {
-                    var countRange = (IntRange)countRangeField.GetValue(firstConfig);
-                    num = countRange.RandomInRange;
-                    Log.Message($"[LandingOnAsteroid] Using default count {num} for {thingDef.defName}");
-                }
-                else
-                {
-                    num = 50; // Final fallback
-                    Log.Message($"[LandingOnAsteroid] Using hardcoded fallback count {num} for {thingDef.defName}");
-                }
+                Debug.LogError("No count found for resource " + thingDef);
+                return null; // Suppress exception
             }
-
-            // Generate the minerals (original logic)
-            int randomInRange = numChunks.RandomInRange;
+            int randomInRange = __instance.numChunks.RandomInRange;
             int forcedLumpSize = num / randomInRange;
-            
             GenStep_ScatterLumpsMineable genStep_ScatterLumpsMineable = new GenStep_ScatterLumpsMineable();
             genStep_ScatterLumpsMineable.count = randomInRange;
             genStep_ScatterLumpsMineable.forcedDefToScatter = thingDef;
             genStep_ScatterLumpsMineable.forcedLumpSize = forcedLumpSize;
             genStep_ScatterLumpsMineable.Generate(map, parms);
-
-            Log.Message($"[LandingOnAsteroid] Generated {randomInRange} lumps of {thingDef.defName} with {forcedLumpSize} each".Colorize(Color.green));
-            
-            // Clear the stored resource after use
-            AsteroidMineralConfig.ClearPreciousResource();
-
-            return false; // Skip original method (we've done the work)
+            return null; // Suppress the original exception
         }
-        catch (System.Exception ex)
-        {
-            Log.Error($"[LandingOnAsteroid] Error in mineral generation: {ex}");
-            AsteroidMineralConfig.ClearPreciousResource();
-            return true; // Fall back to original method
-        }
-    }
-}
-
-// Note: Inspect string patch removed to avoid compatibility issues
-// The core functionality (mineral generation consistency) works without it
-
-// Instead of patching GenStep_Asteroid, patch the Space GenStep which runs earlier
-[HarmonyPatch(typeof(GenStep_Space), nameof(GenStep_Space.Generate))]
-public static class GenStep_Space_Generate_Patch
-{
-    static void Postfix(Map map, GenStepParams parms)
-    {
-        // Set player start spot after space generation for player colonies
-        if (map.Parent.Faction == Faction.OfPlayer)
-        {
-            IntVec3 playerStartSpot = FindPlayerStartSpot(map);
-            if (playerStartSpot.IsValid)
-            {
-                MapGenerator.PlayerStartSpot = playerStartSpot;
-                Log.Message($"[LandingOnAsteroid] Set player start spot to {playerStartSpot} after Space generation".Colorize(Color.green));
-            }
-        }
-    }
-
-    private static IntVec3 FindPlayerStartSpot(Map map)
-    {
-        // First try to find a valid walkable spot
-        var validCells = map.AllCells.Where(c =>
-            c.Walkable(map) &&
-            c.InBounds(map) &&
-            c != IntVec3.Invalid &&
-            !c.Fogged(map) &&
-            map.terrainGrid.TerrainAt(c) != TerrainDefOf.Space).ToList();
-
-        if (validCells.Count > 0)
-        {
-            return validCells.RandomElement();
-        }
-
-        // If no walkable spots, try any non-space terrain
-        var nonSpaceCells = map.AllCells.Where(c =>
-            c.InBounds(map) &&
-            c != IntVec3.Invalid &&
-            map.terrainGrid.TerrainAt(c) != TerrainDefOf.Space).ToList();
-
-        if (nonSpaceCells.Count > 0)
-        {
-            return nonSpaceCells.RandomElement();
-        }
-
-        // Last resort fallback
-        return map.Center;
+        return __exception; // Let other exceptions pass through
     }
 }

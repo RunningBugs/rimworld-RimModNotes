@@ -2,9 +2,9 @@
 <LanguageData>
 	<LandingOnAsteroid>Landing On Asteroid</LandingOnAsteroid>
 	<LandingOnAsteroid.DefaultAsteroidMapGenerationLabel>Default Asteroid Map Generation Type:</LandingOnAsteroid.DefaultAsteroidMapGenerationLabel>
-	<LandingOnAsteroid.StandardAsteroid>Standard Asteroid (Gold/Plasteel/Uranium)</LandingOnAsteroid.StandardAsteroid>
-	<LandingOnAsteroid.BasicAsteroid>Basic Asteroid (Mixed Resources)</LandingOnAsteroid.BasicAsteroid>
-	<LandingOnAsteroid.OrbitalItemStash>Item Stash Asteroid (Loot Containers)</LandingOnAsteroid.OrbitalItemStash>
+	<!-- <LandingOnAsteroid.StandardAsteroid>Standard Asteroid (Gold/Plasteel/Uranium)</LandingOnAsteroid.StandardAsteroid> -->
+	<LandingOnAsteroid.BasicAsteroid>Basic Asteroid</LandingOnAsteroid.BasicAsteroid>
+	<!-- <LandingOnAsteroid.OrbitalItemStash>Item Stash Asteroid (Loot Containers)</LandingOnAsteroid.OrbitalItemStash> -->
 	<LandingOnAsteroid.BasePlayer>Terrestrial (Traditional Colony Generation)</LandingOnAsteroid.BasePlayer>
-	<LandingOnAsteroid.Note>Note: This setting determines how asteroid as starting colony location generate the map. Currently standard and basic asteroid does not actually have a difference.</LandingOnAsteroid.Note>
+	<LandingOnAsteroid.Note>Note: This setting determines how asteroid as starting colony location generate the map.</LandingOnAsteroid.Note>
 </LanguageData>
