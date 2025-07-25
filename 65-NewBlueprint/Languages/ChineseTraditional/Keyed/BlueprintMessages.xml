@@ -61,4 +61,5 @@
   <Blueprint2.Buildings>建築模式</Blueprint2.Buildings>
   <Blueprint2.Blueprint>藍圖</Blueprint2.Blueprint>
   <Blueprint2.PressQERotate>藍圖：{0}\n按Q/E旋轉\n旋轉角度：{1}</Blueprint2.PressQERotate>
+  <Blueprint2.Export>導出</Blueprint2.Export>
 </LanguageData>
