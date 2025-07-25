@@ -62,4 +62,5 @@
   <Blueprint2.Blueprint>Blueprint</Blueprint2.Blueprint>
   <Blueprint2.PressQERotate>{0}\nPress Q/E to rotate\nRotation: {1}</Blueprint2.PressQERotate>
   <Blueprint2.Export>Export</Blueprint2.Export>
+  <Blueprint2.Conflict>Name Conflict</Blueprint2.Conflict>
 </LanguageData>

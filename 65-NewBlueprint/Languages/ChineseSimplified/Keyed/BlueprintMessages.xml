@@ -62,4 +62,5 @@
   <Blueprint2.Blueprint>蓝图</Blueprint2.Blueprint>
   <Blueprint2.PressQERotate>蓝图：{0}\n按Q/E旋转\n当前旋转：{1}</Blueprint2.PressQERotate>
   <Blueprint2.Export>导出</Blueprint2.Export>
+  <Blueprint2.Conflict>名称冲突</Blueprint2.Conflict>
 </LanguageData>

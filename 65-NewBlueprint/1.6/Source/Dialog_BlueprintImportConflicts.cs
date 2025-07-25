@@ -17,22 +17,23 @@ public class Dialog_BlueprintImportConflicts : Window
     private float viewHeight = 0f;
     
     public override Vector2 InitialSize => new Vector2(600f, 500f);
-    
+
     public Dialog_BlueprintImportConflicts(List<PrefabDef> importingBlueprints, Dictionary<string, PrefabDef> existingBlueprints)
     {
         this.importingBlueprints = importingBlueprints;
         this.existingBlueprints = existingBlueprints;
-        
+
         selectedBlueprints = new Dictionary<string, bool>();
         foreach (var blueprint in importingBlueprints)
         {
             selectedBlueprints[blueprint.defName] = true; // Default to import all
         }
-        
+
         doCloseX = true;
-        doCloseButton = true;
         closeOnClickedOutside = false;
         absorbInputAroundWindow = true;
+        resizeable = true;
+        draggable = true;
     }
     
     public override void DoWindowContents(Rect inRect)
@@ -48,8 +49,9 @@ public class Dialog_BlueprintImportConflicts : Window
         listing.Label("Blueprint2.BlueprintImportConflictsDescription".Translate());
         listing.Gap();
         
-        // Scroll view for blueprint list
-        var outRect = listing.GetRect(inRect.height - 100f);
+        // Scroll view for blueprint list - leave space for buttons at bottom
+        var remainingHeight = inRect.height - listing.CurHeight - 50f; // 50f for buttons and spacing
+        var outRect = listing.GetRect(remainingHeight);
         var viewRect = new Rect(0f, 0f, outRect.width - 16f, viewHeight);
         
         Widgets.BeginScrollView(outRect, ref scrollPosition, viewRect);
@@ -108,9 +110,15 @@ public class Dialog_BlueprintImportConflicts : Window
         listing.Gap();
         
         // Buttons
-        var buttonRect = listing.GetRect(30f);
-        var importRect = new Rect(buttonRect.x, buttonRect.y, 150f, buttonRect.height);
-        var cancelRect = new Rect(buttonRect.xMax - 150f, buttonRect.y, 150f, buttonRect.height);
+        var buttonRect = listing.GetRect(35f);
+        var buttonWidth = 100f;
+        var buttonSpacing = 10f;
+        
+        // Import button on the left
+        var importRect = new Rect(buttonRect.x, buttonRect.y, buttonWidth, buttonRect.height);
+        
+        // Cancel button on the right
+        var cancelRect = new Rect(buttonRect.xMax - buttonWidth, buttonRect.y, buttonWidth, buttonRect.height);
         
         if (Widgets.ButtonText(importRect, "Blueprint2.ImportSelected".Translate()))
         {
