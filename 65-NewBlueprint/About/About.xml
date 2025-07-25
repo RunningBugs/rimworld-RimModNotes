@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+    <name>New Blueprint</name>
+    <author>RunningBugs</author>
+    <supportedVersions>
+        <li>1.6</li>
+    </supportedVersions>
+    <packageId>RunningBugs.blueprint2</packageId>
+    <description>
+[h1]New Blueprint - Rebuild for Spaceships![/h1]
+
+[h2]Overview[/h2]
+[p]New Blueprint is using the new Prefab system introduced in RimWorld 1.6 to create shareable blueprints that capture both terrain and buildings in their selected areas.[/p]
+
+[h2]Key Features[/h2]
+[list]
+[*] [b]Easy Blueprint Creation[/b]: Simply drag-select any area to capture both terrain and structures
+[*] [b]Flexible Placement[/b]: Place terrain and buildings separately with switchable modes
+[*] [b]Export/Import System[/b]: Share your designs via clipboard or save them for later use
+[*] [b]Name Conflict Resolution[/b]: When importing blueprints with the same name, you will be prompted to choose whether to overwrite
+[*] [b]God Mode Support[/b]: Enhanced functionality for testing and rapid development
+[*] [b]Multi-language Support[/b]: Full localization for English, Chinese Simplified, and Chinese Traditional
+[/list]
+
+[h2]How to Use[/h2]
+[olist]
+[1] Drag-select the area you want to capture
+[2] Save the blueprint with a custom name
+[3] Export the blueprint to clipboard for sharing
+[4] Import blueprints from clipboard (with conflict resolution)
+[5] Place the blueprint in Terrain mode first, then switch to Buildings mode
+[/olist]
+
+[h2]Perfect For[/h2]
+[list]
+[*] Creating complex base designs
+[*] Building space ships, vehicles, or structures
+[*] Sharing your architectural masterpieces with the community
+[*] Testing different layouts in god mode
+[/list]
+
+[h2]Requirements[/h2]
+[p]RimWorld >= 1.6 - Uses the vanilla Prefab system for maximum compatibility[/p]
+
+[h2]Localization[/h2]
+[p]English, Chinese Simplified, and Chinese Traditional translations included[/p]
+
+[h2]Note:[/h2]
+[p]Summary and Preview generated using AI.[/p]
+
+
+[h1]新蓝图 - 为复制飞船重写[/h1]
+
+[h2]概述[/h2]
+[p]新蓝图 利用游戏新增的Prefab系统，能够创建可分享的蓝图，捕获选定区域内的地形和建筑。[/p]
+
+[h2]主要功能[/h2]
+[list]
+[*] [b]轻松创建蓝图[/b]：只需拖动选择任意区域即可捕获地形和建筑
+[*] [b]灵活放置[/b]：可通过切换模式分别放置地形和建筑
+[*] [b]导出/导入系统[/b]：通过剪贴板分享您的设计，或保存以供日后使用
+[*] [b]命名冲突[/b]：当导入同名蓝图时会询问是否覆盖
+[*] [b]支持上帝模式[/b]：为测试和快速开发提供增强功能
+[*] [b]多语言支持[/b]：提供完整的英语、简体中文和繁体中文本地化
+[/list]
+
+[h2]如何使用[/h2]
+[olist]
+[1] 拖动选择您想要捕获的区域
+[2] 使用自定义名称保存蓝图
+[3] 将蓝图导出到剪贴板以供分享
+[4] 从剪贴板导入蓝图（带冲突解决功能）
+[5] 首先在“地形”模式下放置蓝图，然后切换到“建筑”模式（使用按键R）
+[/olist]
+
+[h2]适用场景[/h2]
+[list]
+[*] 创建复杂的基地设计
+[*] 建造宇宙飞船、载具或结构
+[*] 与社区分享您的建筑杰作
+[*] 快速重建被摧毁的区域
+[*] 在上帝模式下测试不同的布局
+[/list]
+
+[h2]要求[/h2]
+[p]RimWorld >= 1.6 - 使用原版新增的Prefab系统以获得最佳兼容性[/p]
+
+[h2]本地化[/h2]
+[p]已包含英语、简体中文和繁体中文翻译[/p]
+
+[h2]注意：[/h2]
+[p]摘要和预览图标由 AI 生成。[/p]
+</description>
+    <modDependencies>
+    </modDependencies>
+    <loadAfter>
+        <li>Core</li>
+    </loadAfter>
+</ModMetaData>

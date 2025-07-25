@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Blueprint Export Messages -->
+  <Blueprint2.BlueprintExportedToClipboard>藍圖'{0}'已導出到剪貼簿</Blueprint2.BlueprintExportedToClipboard>
+  <Blueprint2.FailedToExportBlueprint>導出藍圖失敗</Blueprint2.FailedToExportBlueprint>
+  <Blueprint2.NoBlueprintsToExport>沒有藍圖可導出</Blueprint2.NoBlueprintsToExport>
+  <Blueprint2.BlueprintsExportedToClipboard>已導出{0}個藍圖到剪貼簿</Blueprint2.BlueprintsExportedToClipboard>
+  <Blueprint2.FailedToExportBlueprints>導出藍圖失敗</Blueprint2.FailedToExportBlueprints>
+
+  <!-- Blueprint Import Messages -->
+  <Blueprint2.BlueprintsImportedFromClipboard>已從剪貼簿導入{0}個藍圖</Blueprint2.BlueprintsImportedFromClipboard>
+  <Blueprint2.ClipboardIsEmpty>剪貼簿為空</Blueprint2.ClipboardIsEmpty>
+  <Blueprint2.NoValidBlueprintsFound>剪貼簿中未找到有效的藍圖</Blueprint2.NoValidBlueprintsFound>
+  <Blueprint2.EmptyBlueprintImported>導入了空藍圖</Blueprint2.EmptyBlueprintImported>
+  <Blueprint2.BlueprintImportedSuccessfully>藍圖'{0}'導入成功</Blueprint2.BlueprintImportedSuccessfully>
+  <Blueprint2.BlueprintsImportedWithConflicts>已導入{0}個藍圖（{1}個存在衝突）</Blueprint2.BlueprintsImportedWithConflicts>
+  <Blueprint2.BlueprintsImportedCount>已導入{0}個藍圖</Blueprint2.BlueprintsImportedCount>
+
+  <!-- Blueprint Import Conflicts Dialog -->
+  <Blueprint2.BlueprintImportConflictsTitle>藍圖導入衝突</Blueprint2.BlueprintImportConflictsTitle>
+  <Blueprint2.BlueprintImportConflictsDescription>以下藍圖與現有藍圖存在命名衝突。請選擇要導入的藍圖（將覆蓋現有藍圖）：</Blueprint2.BlueprintImportConflictsDescription>
+  <Blueprint2.ImportSelected>導入所選項</Blueprint2.ImportSelected>
+  <Blueprint2.Cancel>取消</Blueprint2.Cancel>
+
+  <!-- Blueprint Creation Messages -->
+  <Blueprint2.BlueprintCreated>已創建{0}：{1}</Blueprint2.BlueprintCreated>
+  <Blueprint2.NoBuildableTerrainOrBuildings>在所選區域中未找到可建造的地形或建築物</Blueprint2.NoBuildableTerrainOrBuildings>
+  <Blueprint2.BlueprintCreatedWithName>藍圖'{0}'已創建</Blueprint2.BlueprintCreatedWithName>
+  <Blueprint2.TemporaryBlueprintCreated>臨時藍圖已創建</Blueprint2.TemporaryBlueprintCreated>
+
+  <!-- Dialog Messages -->
+  <Blueprint2.EnterBlueprintName>輸入藍圖名稱：</Blueprint2.EnterBlueprintName>
+  <Blueprint2.Create>創建</Blueprint2.Create>
+
+  <!-- Float Menu Options -->
+  <Blueprint2.NoBlueprintsSaved>未保存任何藍圖</Blueprint2.NoBlueprintsSaved>
+  <Blueprint2.PlaceTerrainOnly>僅放置地形</Blueprint2.PlaceTerrainOnly>
+  <Blueprint2.PlaceBuildingsOnly>僅放置建築物</Blueprint2.PlaceBuildingsOnly>
+  <Blueprint2.PlaceTerrain>放置地形</Blueprint2.PlaceTerrain>
+  <Blueprint2.PlaceBuildings>放置建築物</Blueprint2.PlaceBuildings>
+
+  <!-- Designator Labels and Descriptions -->
+  <Blueprint2.SavedBlueprints>已保存的藍圖</Blueprint2.SavedBlueprints>
+  <Blueprint2.ViewAndSelectBlueprints>查看並選擇所有已保存的藍圖</Blueprint2.ViewAndSelectBlueprints>
+  <Blueprint2.CreateBlueprint>創建藍圖</Blueprint2.CreateBlueprint>
+  <Blueprint2.CreateBlueprintDescription>從所選區域創建藍圖（包含地形和建築物）</Blueprint2.CreateBlueprintDescription>
+  <Blueprint2.ImportBlueprint>導入藍圖</Blueprint2.ImportBlueprint>
+  <Blueprint2.ImportBlueprintDescription>從剪貼簿導入藍圖</Blueprint2.ImportBlueprintDescription>
+  <Blueprint2.ExportBlueprints>導出藍圖</Blueprint2.ExportBlueprints>
+  <Blueprint2.ExportBlueprintsDescription>將藍圖以XML格式導出到剪貼簿</Blueprint2.ExportBlueprintsDescription>
+  <Blueprint2.NoBlueprintsToExportMenu>沒有藍圖可導出</Blueprint2.NoBlueprintsToExportMenu>
+  <Blueprint2.ExportAllBlueprints>導出所有藍圖</Blueprint2.ExportAllBlueprints>
+  <Blueprint2.CreateTemporaryBlueprint>創建臨時藍圖</Blueprint2.CreateTemporaryBlueprint>
+  <Blueprint2.CreateTemporaryBlueprintDescription>創建一個不會保存的臨時藍圖（僅供立即使用）</Blueprint2.CreateTemporaryBlueprintDescription>
+  <Blueprint2.PlaceBlueprintWithSwitchMode>放置{0}（{1}）\n[R：切換模式]</Blueprint2.PlaceBlueprintWithSwitchMode>
+  <Blueprint2.PlaceBlueprintDescription>放置藍圖：{0} - 模式：{1}\n按R鍵在建築物/地形之間切換</Blueprint2.PlaceBlueprintDescription>
+
+  <Blueprint2.TemporaryBlueprintLabel>臨時藍圖</Blueprint2.TemporaryBlueprintLabel>
+  <Blueprint2.Terrain>地形模式</Blueprint2.Terrain>
+  <Blueprint2.Buildings>建築模式</Blueprint2.Buildings>
+  <Blueprint2.Blueprint>藍圖</Blueprint2.Blueprint>
+  <Blueprint2.PressQERotate>藍圖：{0}\n按Q/E旋轉\n旋轉角度：{1}</Blueprint2.PressQERotate>
+</LanguageData>

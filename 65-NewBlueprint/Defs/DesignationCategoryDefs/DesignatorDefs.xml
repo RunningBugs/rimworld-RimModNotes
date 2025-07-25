@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <DesignationCategoryDef>
+    <defName>Blueprints2</defName>
+    <label>Blueprint2</label>
+    <description>Blueprint2CategoryDesc</description>
+    <order>50</order>
+    <specialDesignatorClasses>
+		<li>Blueprint2.UnifiedBlueprintCreateDesignator</li>
+		<li>Blueprint2.TemporaryBlueprintCreateDesignator</li>
+		<li>Blueprint2.SavedBlueprintListDesignator</li>
+		<li>Blueprint2.BlueprintImportDesignator</li>
+		<li>Blueprint2.BlueprintExportDesignator</li>
+		  </specialDesignatorClasses>
+  </DesignationCategoryDef>
+
+</Defs>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Blueprint Export Messages -->
+  <Blueprint2.BlueprintExportedToClipboard>Blueprint '{0}' exported to clipboard</Blueprint2.BlueprintExportedToClipboard>
+  <Blueprint2.FailedToExportBlueprint>Failed to export blueprint</Blueprint2.FailedToExportBlueprint>
+  <Blueprint2.NoBlueprintsToExport>No blueprints to export</Blueprint2.NoBlueprintsToExport>
+  <Blueprint2.BlueprintsExportedToClipboard>Exported {0} blueprints to clipboard</Blueprint2.BlueprintsExportedToClipboard>
+  <Blueprint2.FailedToExportBlueprints>Failed to export blueprints</Blueprint2.FailedToExportBlueprints>
+
+  <!-- Blueprint Import Messages -->
+  <Blueprint2.BlueprintsImportedFromClipboard>Imported {0} blueprints from clipboard</Blueprint2.BlueprintsImportedFromClipboard>
+  <Blueprint2.ClipboardIsEmpty>Clipboard is empty</Blueprint2.ClipboardIsEmpty>
+  <Blueprint2.NoValidBlueprintsFound>No valid blueprints found in clipboard</Blueprint2.NoValidBlueprintsFound>
+  <Blueprint2.EmptyBlueprintImported>Empty blueprint imported</Blueprint2.EmptyBlueprintImported>
+  <Blueprint2.BlueprintImportedSuccessfully>Blueprint '{0}' imported successfully</Blueprint2.BlueprintImportedSuccessfully>
+  <Blueprint2.BlueprintsImportedWithConflicts>Imported {0} blueprints ({1} with conflicts)</Blueprint2.BlueprintsImportedWithConflicts>
+  <Blueprint2.BlueprintsImportedCount>Imported {0} blueprints</Blueprint2.BlueprintsImportedCount>
+
+  <!-- Blueprint Import Conflicts Dialog -->
+  <Blueprint2.BlueprintImportConflictsTitle>Blueprint Import Conflicts</Blueprint2.BlueprintImportConflictsTitle>
+  <Blueprint2.BlueprintImportConflictsDescription>The following blueprints have naming conflicts with existing blueprints. Select which ones to import (overwriting existing ones):</Blueprint2.BlueprintImportConflictsDescription>
+  <Blueprint2.ImportSelected>Import Selected</Blueprint2.ImportSelected>
+  <Blueprint2.Cancel>Cancel</Blueprint2.Cancel>
+
+  <!-- Blueprint Creation Messages -->
+  <Blueprint2.BlueprintCreated>{0} created: {1}</Blueprint2.BlueprintCreated>
+  <Blueprint2.NoBuildableTerrainOrBuildings>No buildable terrain or buildings found in selected area</Blueprint2.NoBuildableTerrainOrBuildings>
+  <Blueprint2.BlueprintCreatedWithName>Blueprint '{0}' created</Blueprint2.BlueprintCreatedWithName>
+  <Blueprint2.TemporaryBlueprintCreated>Temporary blueprint created</Blueprint2.TemporaryBlueprintCreated>
+
+  <!-- Dialog Messages -->
+  <Blueprint2.EnterBlueprintName>Enter blueprint name:</Blueprint2.EnterBlueprintName>
+  <Blueprint2.Create>Create</Blueprint2.Create>
+
+  <!-- Float Menu Options -->
+  <Blueprint2.NoBlueprintsSaved>No blueprints saved</Blueprint2.NoBlueprintsSaved>
+  <Blueprint2.PlaceTerrainOnly>Place Terrain Only</Blueprint2.PlaceTerrainOnly>
+  <Blueprint2.PlaceBuildingsOnly>Place Buildings Only</Blueprint2.PlaceBuildingsOnly>
+  <Blueprint2.PlaceTerrain>Place Terrain</Blueprint2.PlaceTerrain>
+  <Blueprint2.PlaceBuildings>Place Buildings</Blueprint2.PlaceBuildings>
+
+  <!-- Designator Labels and Descriptions -->
+  <Blueprint2.SavedBlueprints>Saved Blueprints</Blueprint2.SavedBlueprints>
+  <Blueprint2.ViewAndSelectBlueprints>View and select from all saved blueprints</Blueprint2.ViewAndSelectBlueprints>
+  <Blueprint2.CreateBlueprint>Create Blueprint</Blueprint2.CreateBlueprint>
+  <Blueprint2.CreateBlueprintDescription>Create a blueprint from the selected area (captures both terrain and buildings)</Blueprint2.CreateBlueprintDescription>
+  <Blueprint2.ImportBlueprint>Import Blueprint</Blueprint2.ImportBlueprint>
+  <Blueprint2.ImportBlueprintDescription>Import a blueprint from clipboard</Blueprint2.ImportBlueprintDescription>
+  <Blueprint2.ExportBlueprints>Export Blueprints</Blueprint2.ExportBlueprints>
+  <Blueprint2.ExportBlueprintsDescription>Export blueprints to clipboard in XML format</Blueprint2.ExportBlueprintsDescription>
+  <Blueprint2.NoBlueprintsToExportMenu>No blueprints to export</Blueprint2.NoBlueprintsToExportMenu>
+  <Blueprint2.ExportAllBlueprints>Export All Blueprints</Blueprint2.ExportAllBlueprints>
+  <Blueprint2.CreateTemporaryBlueprint>Create Temporary Blueprint</Blueprint2.CreateTemporaryBlueprint>
+  <Blueprint2.CreateTemporaryBlueprintDescription>Create a temporary blueprint that won't be saved (for immediate use)</Blueprint2.CreateTemporaryBlueprintDescription>
+  <Blueprint2.PlaceBlueprintWithSwitchMode>Place {0} ({1}) \n[R: Switch Mode]</Blueprint2.PlaceBlueprintWithSwitchMode>
+  <Blueprint2.PlaceBlueprintDescription>Place blueprint: {0} - Mode: {1}\nPress R to switch between buildings/terrain</Blueprint2.PlaceBlueprintDescription>
+
+  <Blueprint2.TemporaryBlueprintLabel>Temporary Blueprint</Blueprint2.TemporaryBlueprintLabel>
+  <Blueprint2.Terrain>Terrain Mode</Blueprint2.Terrain>
+  <Blueprint2.Buildings>Buildings Mode</Blueprint2.Buildings>
+  <Blueprint2.Blueprint>Blueprint</Blueprint2.Blueprint>
+  <Blueprint2.PressQERotate>{0}\nPress Q/E to rotate\nRotation: {1}</Blueprint2.PressQERotate>
+</LanguageData>
