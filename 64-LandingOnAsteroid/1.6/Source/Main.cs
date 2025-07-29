@@ -8,6 +8,7 @@ using System.Text;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
+using System;
 
 namespace LandingOnAsteroid;
 
@@ -159,7 +160,7 @@ public static class TileFinder_IsValidTileForNewSettlement_Patch
 
             if (worldObjects.Any())
             {
-                Log.Message($"[LandingOnAsteroid] Allowing asteroid settlement on tile {tile}".Colorize(Color.green));
+                // Log.Message($"[LandingOnAsteroid] Allowing asteroid settlement on tile {tile}".Colorize(Color.green));
                 __result = true;
                 reason?.Clear(); // Clear any error message
             }
@@ -284,7 +285,7 @@ public static class AsteroidMineralConfig
     public static void SetPreciousResource(ThingDef resource)
     {
         storedPreciousResource = resource;
-        Log.Message($"[LandingOnAsteroid] Stored precious resource: {resource?.defName ?? "null"}".Colorize(Color.yellow));
+        // Log.Message($"[LandingOnAsteroid] Stored precious resource: {resource?.defName ?? "null"}".Colorize(Color.yellow));
     }
 
     public static ThingDef GetPreciousResource()
@@ -374,3 +375,70 @@ public static class GenStep_Asteroid_SpawnOres_Patch
         return __exception; // Let other exceptions pass through
     }
 }
+
+public class LandingOnAsteroidGameComponent : GameComponent
+{
+    public LandingOnAsteroidGameComponent(Game _)
+    { }
+
+    public override void FinalizeInit()
+    {
+        Find.Maps.Where(m => m.ParentHolder is Settlement).Select(map => map.ParentHolder as Settlement).Do(settlement =>
+        {
+            PlanetTile tile = settlement.Tile;
+            var mapParent = Find.WorldObjects.MapParentAt(tile);
+            if (mapParent != settlement && mapParent.Map == null && settlement.Map != null)
+            {
+                // settlement.Map.info.parent = mapParent; // Set the parent to the correct MapParent
+                Find.WorldObjects.Remove(mapParent); // Remove the settlement from world objects
+            }
+        });
+    }
+}
+
+
+// [HarmonyPatch(typeof(Gravship), "TickInterval")]
+// public static class Gravship_TickInterval_Patch
+// {
+//     static void Prefix(int delta, Gravship __instance)
+//     {
+//         Map map = Find.WorldObjects.MapParentAt(__instance.destinationTile)?.Map;
+//         if (map == null)
+//         {
+//             Log.Error($"[LandingOnAsteroid] Gravship destination map is null for tile {__instance.destinationTile}");
+//             return;
+//         }
+//     }
+// }
+
+// [HarmonyPatch(typeof(WorldObjectsHolder), "Add")]
+// public static class WorldObjectsHolder_Add_Patch
+// {
+//     public static void Postfix(WorldObject o,
+//     List<WorldObject> ___worldObjects,
+//     List<MapParent> ___mapParents)
+//     {
+//         if (o is Settlement s)
+//         {
+//             Log.Message($"[LandingOnAsteroid] Adding Settlement {s.Label} at tile {s.Tile}, settlement is MapParent {s is MapParent}".Colorize(Color.green));
+
+//             if (___worldObjects.Contains(s))
+//             {
+//                 Log.Message($"[LandingOnAsteroid] Settlement {s.Label} is added to the world objects list".Colorize(Color.yellow));
+
+//                 if (___mapParents.Contains(s))
+//                 {
+//                     Log.Message($"[LandingOnAsteroid] Settlement {s.Label} is also in the map parents list".Colorize(Color.yellow));
+//                 }
+
+//                 foreach (var mapParent in ___mapParents)
+//                 {
+//                     if (mapParent.Tile == s.Tile)
+//                     {
+//                         Log.Message($"[LandingOnAsteroid] MapParent {mapParent.Label} is found at the settlement tile {s.Tile}, type {mapParent.GetType()}".Colorize(Color.yellow));
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
