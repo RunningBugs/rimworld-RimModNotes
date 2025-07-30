@@ -61,6 +61,19 @@
   <Blueprint2.Buildings>Buildings Mode</Blueprint2.Buildings>
   <Blueprint2.Blueprint>Blueprint</Blueprint2.Blueprint>
   <Blueprint2.PressQERotate>{0}\nPress Q/E to rotate\nRotation: {1}</Blueprint2.PressQERotate>
+  <Blueprint2.PressQERotateXZMirror>{0}\nPress Q/E to rotate, X/Z to mirror\nRotation: {1}, Mirror: {2}</Blueprint2.PressQERotateXZMirror>
+  <Blueprint2.MirrorNone>None</Blueprint2.MirrorNone>
+  <Blueprint2.MirrorX>X-axis</Blueprint2.MirrorX>
+  <Blueprint2.MirrorZ>Z-axis</Blueprint2.MirrorZ>
+  <Blueprint2.MirrorBoth>Both</Blueprint2.MirrorBoth>
   <Blueprint2.Export>Export</Blueprint2.Export>
   <Blueprint2.Conflict>Name Conflict</Blueprint2.Conflict>
+
+  <!-- Blueprint Remove Messages -->
+  <Blueprint2.RemoveBlueprint>Remove Blueprint</Blueprint2.RemoveBlueprint>
+  <Blueprint2.RemoveBlueprintDescription>Remove a saved blueprint</Blueprint2.RemoveBlueprintDescription>
+  <Blueprint2.NoBlueprintsToRemove>No blueprints to remove</Blueprint2.NoBlueprintsToRemove>
+  <Blueprint2.ConfirmRemoveBlueprint>Are you sure you want to remove blueprint '{0}'?</Blueprint2.ConfirmRemoveBlueprint>
+  <Blueprint2.BlueprintRemoved>Blueprint '{0}' removed</Blueprint2.BlueprintRemoved>
+  <Blueprint2.FailedToRemoveBlueprint>Failed to remove blueprint</Blueprint2.FailedToRemoveBlueprint>
 </LanguageData>

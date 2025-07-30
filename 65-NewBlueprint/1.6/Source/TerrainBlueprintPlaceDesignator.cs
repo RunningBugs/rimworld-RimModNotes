@@ -32,7 +32,8 @@ public class TerrainBlueprintPlaceDesignator : BlueprintPlaceDesignatorBase
         foreach (var (terrainData, cell) in blueprint.GetTerrain())
         {
             var adjustedPosition = PrefabUtility.GetAdjustedLocalPosition(cell, currentRotation);
-            var finalWorldPos = adjustedPosition + c;
+            var mirroredPosition = GetMirroredPosition(adjustedPosition);
+            var finalWorldPos = mirroredPosition + c;
             
             if (finalWorldPos.InBounds(map))
             {
@@ -130,12 +131,14 @@ public class TerrainBlueprintPlaceDesignator : BlueprintPlaceDesignatorBase
         // Draw terrain preview
         foreach (var (_, cell) in blueprint.GetTerrain())
         {
-            var rotatedCell = cell.RotatedBy(currentRotation) + center;
-            if (rotatedCell.InBounds(map))
+            var adjustedPosition = PrefabUtility.GetAdjustedLocalPosition(cell, currentRotation);
+            var mirroredPosition = GetMirroredPosition(adjustedPosition);
+            var finalWorldPos = mirroredPosition + center;
+            if (finalWorldPos.InBounds(map))
             {
                 var terrainColor = canPlace ? Color.cyan : Color.red;
                 terrainColor.a = 0.5f;
-                GenDraw.DrawFieldEdges([rotatedCell], terrainColor);
+                GenDraw.DrawFieldEdges([finalWorldPos], terrainColor);
             }
         }
     }

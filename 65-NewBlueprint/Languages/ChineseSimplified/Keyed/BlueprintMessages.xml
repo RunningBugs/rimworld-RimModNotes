@@ -61,6 +61,19 @@
   <Blueprint2.Buildings>建筑模式</Blueprint2.Buildings>
   <Blueprint2.Blueprint>蓝图</Blueprint2.Blueprint>
   <Blueprint2.PressQERotate>蓝图：{0}\n按Q/E旋转\n当前旋转：{1}</Blueprint2.PressQERotate>
+  <Blueprint2.PressQERotateXZMirror>{0}\n按Q/E旋转，X/Z镜像\n旋转：{1}，镜像：{2}</Blueprint2.PressQERotateXZMirror>
+  <Blueprint2.MirrorNone>无</Blueprint2.MirrorNone>
+  <Blueprint2.MirrorX>X轴</Blueprint2.MirrorX>
+  <Blueprint2.MirrorZ>Z轴</Blueprint2.MirrorZ>
+  <Blueprint2.MirrorBoth>双轴</Blueprint2.MirrorBoth>
   <Blueprint2.Export>导出</Blueprint2.Export>
   <Blueprint2.Conflict>名称冲突</Blueprint2.Conflict>
+
+  <!-- Blueprint Remove Messages -->
+  <Blueprint2.RemoveBlueprint>删除蓝图</Blueprint2.RemoveBlueprint>
+  <Blueprint2.RemoveBlueprintDescription>删除已保存的蓝图</Blueprint2.RemoveBlueprintDescription>
+  <Blueprint2.NoBlueprintsToRemove>没有蓝图可删除</Blueprint2.NoBlueprintsToRemove>
+  <Blueprint2.ConfirmRemoveBlueprint>确定要删除蓝图'{0}'吗？</Blueprint2.ConfirmRemoveBlueprint>
+  <Blueprint2.BlueprintRemoved>蓝图'{0}'已删除</Blueprint2.BlueprintRemoved>
+  <Blueprint2.FailedToRemoveBlueprint>删除蓝图失败</Blueprint2.FailedToRemoveBlueprint>
 </LanguageData>

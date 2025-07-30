@@ -10,6 +10,7 @@
 		<li>Blueprint2.UnifiedBlueprintCreateDesignator</li>
 		<li>Blueprint2.TemporaryBlueprintCreateDesignator</li>
 		<li>Blueprint2.SavedBlueprintListDesignator</li>
+		<li>Blueprint2.BlueprintRemoveDesignator</li>
 		<li>Blueprint2.BlueprintImportDesignator</li>
 		<li>Blueprint2.BlueprintExportDesignator</li>
 		  </specialDesignatorClasses>
