@@ -78,7 +78,8 @@ public class SwitchableBlueprintPlaceDesignator : BlueprintPlaceDesignatorBase
                 }
 
                 var adjustedPosition = PrefabUtility.GetAdjustedLocalPosition(cell, currentRotation);
-                var finalWorldPos = adjustedPosition + c;
+                var mirroredPosition = GetMirroredPosition(adjustedPosition);
+                var finalWorldPos = mirroredPosition + c;
 
                 if (finalWorldPos.InBounds(map))
                 {
@@ -163,7 +164,8 @@ public class SwitchableBlueprintPlaceDesignator : BlueprintPlaceDesignatorBase
                 }
 
                 var adjustedPosition = PrefabUtility.GetAdjustedLocalPosition(cell, currentRotation);
-                var finalWorldPos = adjustedPosition + c;
+                var mirroredPosition = GetMirroredPosition(adjustedPosition);
+                var finalWorldPos = mirroredPosition + c;
 
                 if (finalWorldPos.InBounds(map))
                 {
@@ -256,7 +258,8 @@ public class SwitchableBlueprintPlaceDesignator : BlueprintPlaceDesignatorBase
                     continue;
 
                 var adjustedPosition = PrefabUtility.GetAdjustedLocalPosition(cell, currentRotation);
-                var finalWorldPos = adjustedPosition + center;
+                var mirroredPosition = GetMirroredPosition(adjustedPosition);
+                var finalWorldPos = mirroredPosition + center;
 
                 if (finalWorldPos.InBounds(map))
                 {
@@ -283,7 +286,8 @@ public class SwitchableBlueprintPlaceDesignator : BlueprintPlaceDesignatorBase
                     continue;
 
                 var adjustedPosition = PrefabUtility.GetAdjustedLocalPosition(cell, currentRotation);
-                var finalWorldPos = adjustedPosition + center;
+                var mirroredPosition = GetMirroredPosition(adjustedPosition);
+                var finalWorldPos = mirroredPosition + center;
 
                 if (finalWorldPos.InBounds(map))
                 {

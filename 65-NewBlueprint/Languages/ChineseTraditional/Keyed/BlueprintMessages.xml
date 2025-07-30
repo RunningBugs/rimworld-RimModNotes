@@ -61,6 +61,19 @@
   <Blueprint2.Buildings>建築模式</Blueprint2.Buildings>
   <Blueprint2.Blueprint>藍圖</Blueprint2.Blueprint>
   <Blueprint2.PressQERotate>藍圖：{0}\n按Q/E旋轉\n旋轉角度：{1}</Blueprint2.PressQERotate>
+  <Blueprint2.PressQERotateXZMirror>{0}\n按Q/E旋轉，X/Z鏡像\n旋轉：{1}，鏡像：{2}</Blueprint2.PressQERotateXZMirror>
+  <Blueprint2.MirrorNone>無</Blueprint2.MirrorNone>
+  <Blueprint2.MirrorX>X軸</Blueprint2.MirrorX>
+  <Blueprint2.MirrorZ>Z軸</Blueprint2.MirrorZ>
+  <Blueprint2.MirrorBoth>雙軸</Blueprint2.MirrorBoth>
   <Blueprint2.Export>導出</Blueprint2.Export>
   <Blueprint2.Conflict>名稱衝突</Blueprint2.Conflict>
+
+  <!-- Blueprint Remove Messages -->
+  <Blueprint2.RemoveBlueprint>刪除藍圖</Blueprint2.RemoveBlueprint>
+  <Blueprint2.RemoveBlueprintDescription>刪除已保存的藍圖</Blueprint2.RemoveBlueprintDescription>
+  <Blueprint2.NoBlueprintsToRemove>沒有藍圖可刪除</Blueprint2.NoBlueprintsToRemove>
+  <Blueprint2.ConfirmRemoveBlueprint>確定要刪除藍圖'{0}'嗎？</Blueprint2.ConfirmRemoveBlueprint>
+  <Blueprint2.BlueprintRemoved>藍圖'{0}'已刪除</Blueprint2.BlueprintRemoved>
+  <Blueprint2.FailedToRemoveBlueprint>刪除藍圖失敗</Blueprint2.FailedToRemoveBlueprint>
 </LanguageData>
