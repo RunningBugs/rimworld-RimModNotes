@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-	<packageId>username.modname</packageId>
-	<name>Mod Template</name>
-	<author>username</author>
+	<packageId>RunningBugs.CaravanShuttleMassInfoInspectString</packageId>
+	<name>Mass Info for World View Caravan with Shuttle 世界地图穿梭机重量信息显示</name>
+	<author>RunningBugs</author>
 	<supportedVersions>
 		<li>1.6</li>
 	</supportedVersions>
@@ -24,5 +24,13 @@
 		<!-- <li>username.modname</li> -->
 	</loadAfter>
 
-	<description>Template</description>
+	<description>
+[h1]Mass Info for World View Caravan with Shuttle 世界地图穿梭机重量信息显示[/h1]
+
+In World View, we can only see the shuttle's weight usage and capacity information when the shuttle cannot take off due to weight issues.
+This mod adds a line in the caravan's inspect panel to display the current weight usage and capacity information of the shuttle in the caravan.
+
+在世界视图中，我们只能在穿梭机因为重量问题无法起飞时，才能知道穿梭机当前重量使用情况和容量信息。
+本模组在远行队的面板信息中添加了一行，显示当前远行队穿梭机的重量使用情况和容量信息。
+	</description>
 </ModMetaData>

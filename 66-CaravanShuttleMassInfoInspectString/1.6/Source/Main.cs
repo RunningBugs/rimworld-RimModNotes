@@ -1,45 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-
-using UnityEngine;
-using Verse;
-using Verse.AI;
-using Verse.AI.Group;
-using Verse.Sound;
-using Verse.Noise;
-using Verse.Grammar;
+﻿using RimWorld.Planet;
 using RimWorld;
-using RimWorld.Planet;
-
+using Verse;
 // using System.Reflection;
 // using HarmonyLib;
 
-namespace Template;
-// [DefOf]
-// public class TemplateDefOf
-// {
-//     public static LetterDef success_letter;
-// }
+namespace ShuttleMassInfo;
 
-// public class MyMapComponent : MapComponent
-// {
-//     public MyMapComponent(Map map) : base(map){}
-//     public override void FinalizeInit()
-//     {
-//         Messages.Message("Success", null, MessageTypeDefOf.PositiveEvent);
-//         Find.LetterStack.ReceiveLetter("Success", TemplateDefOf.success_letter.description, TemplateDefOf.success_letter, null);
-//     }
-// }
-
-[StaticConstructorOnStartup]
-public static class Start
+public class WorldObjectCompProperties_CaravanShuttleMassInfo : WorldObjectCompProperties
 {
-    static Start()
+    public WorldObjectCompProperties_CaravanShuttleMassInfo()
     {
-        Log.Message("Mod template loaded successfully!");
+        compClass = typeof(CaravanShuttleMassInfoComp);
     }
 }
 
+public class CaravanShuttleMassInfoComp : WorldObjectComp
+{
+    public override string CompInspectStringExtra()
+    {
+        if (parent is Caravan caravan && caravan.Shuttle is Building_PassengerShuttle shuttle && shuttle != null)
+        {
+            var massUsage = CaravanShuttleUtility.GetCaravanShuttleMass(caravan);
+            return $"{"Mass".Translate()}: {massUsage:F1} / {shuttle.TransporterComp.MassCapacity:F1} kg";
+        }
+        return null;
+    }
+}
