@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+  
+  <!-- Add meditation toggle component to all pawns -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[@Name="BasePawn"]/comps</xpath>
+    <value>
+      <li>DontMeditateYet.CompProperties_MeditationToggle</li>
+    </value>
+  </Operation>
+
+</Patch>
