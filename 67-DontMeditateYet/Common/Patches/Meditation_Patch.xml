@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+  
+  <!-- Replace the vanilla meditation job giver with our conditional one -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThinkTreeDef[defName="Humanlike"]/thinkRoot[@Class="Verse.AI.ThinkNode_Priority"]/subNodes/li[@Class="RimWorld.JobGiver_Meditate"]</xpath>
+    <value>
+      <li Class="DontMeditateYet.JobGiver_MeditateConditional" />
+    </value>
+  </Operation>
+
+</Patch>

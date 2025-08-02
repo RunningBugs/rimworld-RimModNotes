@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  <!-- Patch to replace the vanilla meditation job giver with our conditional one -->
+  <ThinkTreeDef>
+    <defName>Humanlike</defName>
+    <thinkRoot Class="Verse.AI.ThinkNode_Priority">
+      <subNodes>
+        <!-- Need to copy the entire think tree from the base game and replace the meditation node -->
+        <!-- This is a simplified example - in practice you'd need the full think tree -->
+        <li Class="DontMeditateYet.JobGiver_MeditateConditional" />
+      </subNodes>
+    </thinkRoot>
+  </ThinkTreeDef>
+
+</Defs>

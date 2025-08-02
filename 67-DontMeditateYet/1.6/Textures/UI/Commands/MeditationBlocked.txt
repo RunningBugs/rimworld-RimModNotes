@@ -1,0 +1,3 @@
+This should be a 64x64 PNG texture showing a meditation icon with a red X or similar negative indicator.
+The icon should indicate that meditation is blocked/disabled for this pawn.
+You can use any image editing software to create a proper PNG texture file.

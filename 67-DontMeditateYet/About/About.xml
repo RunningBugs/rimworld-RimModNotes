@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.DontMeditateYet</packageId>
+	<name>Don't Meditate Yet 先别冥想</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.6</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<!-- <li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li> -->
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<!-- <li>username.modname</li> -->
+	</loadAfter>
+
+	<description>
+
+[h1]Don't Meditate Yet 先别冥想[/h1]
+
+In vanilla RimWorld, pawns will stop working but meditate when they are below the threshold, undrafted. However, this makes it very inconvenient when you just finished a fight outside your colony and wish to quickly pack up and leave, your pawns will just stop working and meditate.
+
+This mod will show a toggle gizmo button when the pawn has a psylink. By default, it's turned off, which aligns with the vanilla behavior, when it's turned on, pawns will not meditate. The status is remembered for each map, which means you can turn it off in your base map, and when you go to another map, you can turn it on. After getting back to the base map, it will automatically turn off.
+
+The default status when you start a new map could be configured in the mod settings.
+
+
+在原版游戏里，小人会在精神力低于阈值时停止工作，去冥想恢复精神力。但是这会导致在战斗结束后，玩家希望快速收拾离开时，小人会停止工作去冥想，非常的不方便。
+
+本mod会显示一个小人精神力低于阈值时的图标按钮，当按钮被激活时，小人不会去冥想，而是继续工作。默认情况下，按钮是关闭的，与原版游戏行为一致，当按钮被激活时，小人不会去冥想恢复精神力。这个状态会被记录在每个地图上，因此你可以将按钮在你的基地地图关闭，当你去到其他地图时，按钮可以被打开。当你回到基地地图时，按钮会自动调整为关闭状态。
+
+默认情况下按钮的开关状态可以在模组选项中设置。
+	</description>
+</ModMetaData>
