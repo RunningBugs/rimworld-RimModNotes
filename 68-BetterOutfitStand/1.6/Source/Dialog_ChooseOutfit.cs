@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 using Verse;
 using Verse.AI;
@@ -41,7 +39,7 @@ public class Dialog_ChooseApparel : Window
         /// 2. The scrollable list of apparels
         /// 3. The Confirm/Cancel buttons
 
-        var titleText = pawnMode ? $"Pawn View for {selPawn.Name}" : $"Outfit Stand View";
+        var titleText = pawnMode ? "PawnViewTitle".Translate() : "OutfitStandViewTitle".Translate();
         var titleHeight = Text.CalcHeight(titleText, inRect.width - 30f);
         var titleRect = inRect.SplitHoriPartPixels(titleHeight + GenUI.ElementStackDefaultElementMargin, out Rect bottom);
         titleRect = titleRect.SplitVertPartPixels(titleRect.width - 30f, out Rect toggleRect);
@@ -59,7 +57,7 @@ public class Dialog_ChooseApparel : Window
         if (Mouse.IsOver(toggleRect))
         {
             GUI.DrawTexture(toggleRect, TexUI.HighlightTex);
-            TooltipHandler.TipRegion(toggleRect, pawnMode ? "Switch to Outfit Stand View" : "Switch to Pawn View");
+            TooltipHandler.TipRegion(toggleRect, pawnMode ? "SwitchToOutfitStandView.Tooltip".Translate() : "SwitchToPawnView.Tooltip".Translate());
         }
         // Add buttons or other UI elements to select outfits
         List<Thing> data = pawnMode ? [.. selPawn.apparel.WornApparel.Cast<Thing>()] : [.. outfitStand.HeldItems];
@@ -79,7 +77,7 @@ public class Dialog_ChooseApparel : Window
 
 
         string selectedApparels = string.Join(", ", selectedThings.Select(a => a.LabelCap));
-        if (Widgets.ButtonText(new Rect(bottomRect.x, bottomRect.y, 100, 30f), "Confirm"))
+        if (Widgets.ButtonText(new Rect(bottomRect.x, bottomRect.y, 100, 30f), "Confirm".Translate()))
         {
             if (pawnMode)
             {
@@ -95,7 +93,7 @@ public class Dialog_ChooseApparel : Window
             Close();
         }
 
-        if (Widgets.ButtonText(new Rect(bottomRect.xMax - 100f, bottomRect.y, 100f, 30f), "Cancel"))
+        if (Widgets.ButtonText(new Rect(bottomRect.xMax - 100f, bottomRect.y, 100f, 30f), "Cancel".Translate()))
         {
             Close();
         }
