@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<JobDef>
+		<defName>UseOutfitStand_Better</defName>
+		<driverClass>BetterOutfitStand.JobDriver_UseOutfitStandBetter</driverClass>
+		<reportString>swapping outfit with TargetA.</reportString>
+	</JobDef>
+</Defs>

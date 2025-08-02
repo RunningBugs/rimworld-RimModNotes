@@ -1,3 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Patch>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Building_OutfitStand"]/thingClass</xpath>
+    <value>
+      <thingClass>BetterOutfitStand.Building_BetterOutfitStand</thingClass>
+    </value>
+  </Operation>
+
+  <!-- <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Building_KidOutfitStand"]/thingClass</xpath>
+    <value>
+      <thingClass>BetterOutfitStand.Building_BetterKidOutfitStand</thingClass>
+    </value>
+  </Operation> -->
 </Patch>
