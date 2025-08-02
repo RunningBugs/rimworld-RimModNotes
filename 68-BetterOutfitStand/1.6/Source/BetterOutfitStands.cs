@@ -1,10 +1,5 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
 using Verse;
-using Verse.AI;
 using RimWorld;
 
 namespace BetterOutfitStand;
@@ -23,7 +18,7 @@ public class Building_BetterOutfitStand : Building_OutfitStand
         // Add our custom options here, which will open a window
         if (selPawn.apparel.AnyApparel || HeldItems.Count > 0)
         {
-            yield return new FloatMenuOption("Better Outfit Stand", () =>
+            yield return new FloatMenuOption("BetterOutfitStand", () =>
             {
                 WornApparelToTransferToStand.Clear();
                 StandApparelToTransferToPawn.Clear();
@@ -38,9 +33,9 @@ public class Building_BetterOutfitStand : Building_OutfitStand
     }
 }
 
-// /// <summary>
-// /// Extended version of the vanilla Building_KidOutfitStand
-// /// </summary>
-// public class Building_BetterKidOutfitStand : Building_KidOutfitStand
-// {
-// }
+public class Building_BetterKidOutfitStand : Building_BetterOutfitStand
+{
+    protected override BodyTypeDef BodyTypeDefForRendering { get; } = BodyTypeDefOf.Child;
+
+	protected override float WeaponDrawDistanceFactor => 0.55f;
+}

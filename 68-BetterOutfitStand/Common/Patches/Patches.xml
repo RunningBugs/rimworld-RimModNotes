@@ -7,10 +7,10 @@
     </value>
   </Operation>
 
-  <!-- <Operation Class="PatchOperationReplace">
+  <Operation Class="PatchOperationReplace">
     <xpath>Defs/ThingDef[defName="Building_KidOutfitStand"]/thingClass</xpath>
     <value>
       <thingClass>BetterOutfitStand.Building_BetterKidOutfitStand</thingClass>
     </value>
-  </Operation> -->
+  </Operation>
 </Patch>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 	<packageId>RunningBugs.BetterOutfitStand</packageId>
-	<name>Better Outfit Stand 更好用的服装架</name>
+	<name>Better Outfit Stand (Vanilla Improvement) 更好用的服装架 (原版改进)</name>
 	<author>RunningBugs</author>
 	<supportedVersions>
 		<li>1.6</li>
@@ -25,21 +25,27 @@
 	</loadAfter>
 
 	<description>
-This mod does not add any extra furniture to the game. It just tries to make the vanilla outfit standa little bit easier to use.
-Vanilla outfit stands will only "swap" your clothes, which means it's very complex if you want to put all your clothes to the stand.
-I think it's easier to prepare two suites of clothes for your colonists compared to put your clothes to an empty outfit stand.
+This mod does not add any extra furniture to the game. It just tries to make the vanilla outfit stands a little bit easier to use.
+Vanilla outfit stands will only "swap" your clothes, which means it's very complex if you want to put all your clothes to an empty stand.
+I think it's easier to prepare two suites of clothes for your colonists than to put your clothes to an empty outfit stand.
 
-This mod will pop up a window when you right-click it and choose "swap clothes on demand". This window has two modes: pawn mode and stand mode.
-In pawn mode, you will choose which clothes you want to drop on the stand, if the stand is having clothes that conflict with the clothes you choose, you will wear those.
-In stand mode, you will choose which clothes you want to take from the stand, if the pawn is having clothes that conflict with the clothes you choose, you will drop those to the stand.
+This mod will pop up a window when you right-click it and choose "Better Outfit Stand". This window has two modes: pawn view mode and stand view mode.
+In the top right corner of the window, you will see a toggle button to switch between these two modes.
+In pawn view mode, you will choose which clothes you want to drop on the stand, if the stand is having clothes that conflict with the clothes you choose, you will wear those.
+In stand view mode, you will choose which clothes you want to take from the stand, if the pawn is having clothes that conflict with the clothes you choose, you will drop those to the stand.
+
+Note: Currently it does not support selection of the weapons in the window.
 
 
 本模组并不添加任何额外的家具。它只是尝试让原版的服装架更容易使用。
 原版的服装架只能“交换”衣服，这意味着如果你想把所有的衣服放到架子上会非常复杂。
 我认为为殖民者准备两套衣服比把衣服放到空的服装架上更容易。
 
-本模组在你右键点击服装架并选择“按需交换衣服”时会弹出一个窗口。这个窗口有两种模式：殖民者模式和架子模式。
-在殖民者模式中，你可以选择要放到架子上的衣服，如果架子上有与你选择的衣服冲突的衣服，你将穿上那些衣服。
-在架子模式中，你可以选择要从架子上取下的衣服，如果殖民者身上有与你选择的衣服冲突的衣服，你将把那些衣服放到架子上。
+本模组在你右键点击服装架并选择“更方便的服装架”时会弹出一个窗口。这个窗口有两种视图：殖民者视图和架子视图。
+在窗口的右上角，你会看到一个切换按钮来切换这两种视图。
+在殖民者视图中，你可以选择要放到架子上的衣服，如果架子上有与你选择的衣服冲突的衣服，你将穿上那些衣服。
+在架子视图中，你可以选择要从架子上取下的衣服，如果殖民者身上有与你选择的衣服冲突的衣服，你将把身上冲突的衣服放到架子上。
+
+注意：目前不支持在窗口中选择武器。
 	</description>
 </ModMetaData>
