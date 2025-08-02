@@ -18,7 +18,7 @@ public class Building_BetterOutfitStand : Building_OutfitStand
         // Add our custom options here, which will open a window
         if (selPawn.apparel.AnyApparel || HeldItems.Count > 0)
         {
-            yield return new FloatMenuOption("BetterOutfitStand", () =>
+            yield return new FloatMenuOption("BetterOutfitStand".Translate(), () =>
             {
                 WornApparelToTransferToStand.Clear();
                 StandApparelToTransferToPawn.Clear();
