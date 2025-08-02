@@ -5,8 +5,8 @@
 		<PlatformTarget>x64</PlatformTarget>
 
 		<!-- Modify [RootNamespace], [AssemblyName], [OutputPath], [VersionPrefix] -->
-		<RootNamespace>Template</RootNamespace>
-		<AssemblyName>Template</AssemblyName>
+		<RootNamespace>BetterOutfitStand</RootNamespace>
+		<AssemblyName>BetterOutfitStand</AssemblyName>
 		<OutputPath>../Assemblies</OutputPath>
 		<VersionPrefix>0.1.0.0</VersionPrefix>
 
@@ -25,12 +25,13 @@
 	    <PublicizeAll>true</PublicizeAll>
 	</PropertyGroup> -->
 	<ItemGroup>
-		<!-- <PackageReference Include="Krafs.Publicizer" Version="2.*">
+		<PackageReference Include="Krafs.Publicizer" Version="2.*">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-		</PackageReference> -->
+		</PackageReference>
 		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.*" />
-		<PackageReference Include="Lib.Harmony" Version="2.3.*" />
+		<Publicize Include="Assembly-CSharp:RimWorld.Building_OutfitStand.SetAllowHauling" />
+		<!-- <PackageReference Include="Lib.Harmony" Version="2.3.*" /> -->
 		<!-- <PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="10.*" /> -->
 	</ItemGroup>
 </Project>
