@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.RitualOutcomeSelection</packageId>
+	<name>Ritual Outcome Selection 选择仪式结果</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.6</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<!-- <li>username.modname</li> -->
+	</loadAfter>
+
+	<description>
+[h1] Ritual Outcome Selection 选择仪式结果 [/h1]
+
+[h2] Description [/h2]
+This mod allows you to select the outcome of a ritual in RimWorld.
+By ritual, it means:
+- Attend Funeral
+- Blind Ritual
+- Dance Party
+- Child Birth
+- Execution
+- Speech
+- Trial
+- Sky Lantern
+- Gravship Launch
+- etc.
+
+The motivation of this mod is to save some time for myself doing Save and Load to get the desired outcome of a ritual.
+
+There's a mod option to enable/disable the ritual outcome selection for impossible results (0% chance).
+
+[h2] 描述 [/h2]
+这个mod允许你在RimWorld中选择仪式的结果。
+仪式包括：
+- 参加葬礼
+- 盲目仪式
+- 舞会
+- 生育
+- 处决
+- 演讲
+- 审判
+- 天灯节
+- 逆重飞船发射
+- 等等。
+
+这个mod的目的是为了节省自己S/L的时间，以获得想要的仪式结果。
+
+有模组选项可以启用/禁用不可能结果（0%几率）的仪式结果选择。
+	</description>
+</ModMetaData>
