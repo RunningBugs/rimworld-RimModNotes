@@ -29,38 +29,19 @@
 
 [h2] Description [/h2]
 This mod allows you to select the outcome of a ritual in RimWorld.
-By ritual, it means:
-- Attend Funeral
-- Blind Ritual
-- Dance Party
-- Child Birth
-- Execution
-- Speech
-- Trial
-- Sky Lantern
-- Gravship Launch
-- etc.
 
 The motivation of this mod is to save some time for myself doing Save and Load to get the desired outcome of a ritual.
 
-There's a mod option to enable/disable the ritual outcome selection for impossible results (0% chance).
+[h2] Usage [/h2]
+Just start a ritual as usual, a new dialog will pop up before the ritual starts, allowing you to select your expected outcome of the ritual.
 
 [h2] 描述 [/h2]
 这个mod允许你在RimWorld中选择仪式的结果。
-仪式包括：
-- 参加葬礼
-- 盲目仪式
-- 舞会
-- 生育
-- 处决
-- 演讲
-- 审判
-- 天灯节
-- 逆重飞船发射
-- 等等。
 
 这个mod的目的是为了节省自己S/L的时间，以获得想要的仪式结果。
 
-有模组选项可以启用/禁用不可能结果（0%几率）的仪式结果选择。
+[h2] 使用 [/h2]
+按常规方式开始一个仪式，仪式开始前会弹出一个对话框，让你选择你想要的仪式结果。
+
 	</description>
 </ModMetaData>
