@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<RitualOutcomeSelection.AvailableRitualOutcomes>可选择的仪式结果：</RitualOutcomeSelection.AvailableRitualOutcomes>
+	<RitualOutcomeSelection.Select>选择</RitualOutcomeSelection.Select>
+	<RitualOutcomeSelection.NoOutcomeSelected>未选择任何结果，不改变仪式结果。</RitualOutcomeSelection.NoOutcomeSelected>
+</LanguageData>
