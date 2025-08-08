@@ -112,7 +112,7 @@ public class Dialog_BlueprintImportConflicts : Window
         // Buttons
         var buttonRect = listing.GetRect(35f);
         var buttonWidth = 100f;
-        var buttonSpacing = 10f;
+        // var buttonSpacing = 10f;
         
         // Import button on the left
         var importRect = new Rect(buttonRect.x, buttonRect.y, buttonWidth, buttonRect.height);

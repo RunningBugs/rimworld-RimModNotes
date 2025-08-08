@@ -135,23 +135,23 @@ public class BlueprintImportDesignator : Designator
         
         if (hasThings && hasTerrain)
         {
-            options.Add(new FloatMenuOption("Place Terrain Only", () => {
-                Find.DesignatorManager.Select(new UnifiedBlueprintPlaceDesignator(prefab, PlaceMode.TerrainOnly));
+            options.Add(new FloatMenuOption("Place Floors Only", () => {
+                Find.DesignatorManager.Select(new UnifiedBlueprintPlaceDesignator(prefab, PlaceMode.FloorOnly));
             }));
             options.Add(new FloatMenuOption("Place Buildings Only", () => {
-                Find.DesignatorManager.Select(new UnifiedBlueprintPlaceDesignator(prefab, PlaceMode.BuildingsOnly));
+                Find.DesignatorManager.Select(new UnifiedBlueprintPlaceDesignator(prefab, PlaceMode.Buildings));
             }));
         }
         else if (hasTerrain)
         {
-            options.Add(new FloatMenuOption("Place Terrain", () => {
-                Find.DesignatorManager.Select(new UnifiedBlueprintPlaceDesignator(prefab, PlaceMode.TerrainOnly));
+            options.Add(new FloatMenuOption("Place Floors", () => {
+                Find.DesignatorManager.Select(new UnifiedBlueprintPlaceDesignator(prefab, PlaceMode.FloorOnly));
             }));
         }
         else if (hasThings)
         {
             options.Add(new FloatMenuOption("Place Buildings", () => {
-                Find.DesignatorManager.Select(new UnifiedBlueprintPlaceDesignator(prefab, PlaceMode.BuildingsOnly));
+                Find.DesignatorManager.Select(new UnifiedBlueprintPlaceDesignator(prefab, PlaceMode.Buildings));
             }));
         }
         

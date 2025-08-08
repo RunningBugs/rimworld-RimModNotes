@@ -26,38 +26,41 @@ public abstract class BlueprintPlaceDesignatorBase : Designator
     public override void SelectedUpdate()
     {
         GenUI.RenderMouseoverBracket();
-        
-        // Handle rotation input
-        if (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Q)
+
+        // Handle rotation using RimWorld keybindings (with legacy fallback)
+        if (KeyBindingDefOf.Designator_RotateLeft.KeyDownEvent ||
+            (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Q))
         {
             currentRotation = currentRotation.Rotated(RotationDirection.Counterclockwise);
             Event.current.Use();
             SoundDefOf.Tick_High.PlayOneShotOnCamera();
         }
-        else if (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.E)
+        else if (KeyBindingDefOf.Designator_RotateRight.KeyDownEvent ||
+                 (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.E))
         {
             currentRotation = currentRotation.Rotated(RotationDirection.Clockwise);
             Event.current.Use();
             SoundDefOf.Tick_High.PlayOneShotOnCamera();
         }
-        // Handle mirroring input
-        else if (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.X)
+        // Handle mirroring using custom keybindings (with legacy fallback)
+        else if (BlueprintKeyBindingDefOf.Blueprint_MirrorX.KeyDownEvent ||
+                 (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.X))
         {
             mirrorX = !mirrorX;
             Event.current.Use();
             SoundDefOf.Tick_Low.PlayOneShotOnCamera();
         }
-        else if (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Z)
+        else if (BlueprintKeyBindingDefOf.Blueprint_MirrorZ.KeyDownEvent ||
+                 (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Z))
         {
             mirrorZ = !mirrorZ;
             Event.current.Use();
             SoundDefOf.Tick_Low.PlayOneShotOnCamera();
         }
-        
-        
+
         if (Find.Selector.dragBox.IsValidAndActive)
             return;
-        
+
         var mousePos = UI.MouseMapPosition();
         if (mousePos.InBounds(Find.CurrentMap))
         {
@@ -81,7 +84,22 @@ public abstract class BlueprintPlaceDesignatorBase : Designator
             else
                 mirrorStatus = "Blueprint2.MirrorNone".Translate();
 
-            var text = "Blueprint2.PressQERotateXZMirror".Translate(blueprint.label, currentRotation.ToString(), mirrorStatus);
+            // Keep existing localized message for backward compatibility
+            var baseText = "Blueprint2.PressQERotateXZMirror".Translate(blueprint.label, currentRotation.ToString(), mirrorStatus);
+
+            // Append dynamic keybinding labels so users see their actual bindings
+            var rotateLeft = KeyBindingDefOf.Designator_RotateLeft?.MainKeyLabel ?? "Q";
+            var rotateRight = KeyBindingDefOf.Designator_RotateRight?.MainKeyLabel ?? "E";
+            var mirrorXLabel = BlueprintKeyBindingDefOf.Blueprint_MirrorX?.MainKeyLabel ?? "X";
+            var mirrorZLabel = BlueprintKeyBindingDefOf.Blueprint_MirrorZ?.MainKeyLabel ?? "Z";
+            var switchModeLabel = BlueprintKeyBindingDefOf.Blueprint_SwitchMode?.MainKeyLabel ?? "R";
+
+            var text = baseText
+                       + "\n"
+                       + $"Rotate: {rotateLeft}/{rotateRight}  "
+                       + $"Mirror: {mirrorXLabel}/{mirrorZLabel}  "
+                       + $"Mode: {switchModeLabel}";
+
             GenUI.DrawMouseAttachment(ContentFinder<Texture2D>.Get("Blueprint2/blueprint"), text);
         }
     }
@@ -117,8 +135,4 @@ public abstract class BlueprintPlaceDesignatorBase : Designator
         Finalize(true);
     }
 
-    public override void ProcessInput(Event ev)
-    {
-        base.ProcessInput(ev);
-    }
 }

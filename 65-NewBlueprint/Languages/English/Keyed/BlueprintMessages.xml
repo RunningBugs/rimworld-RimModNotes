@@ -54,11 +54,13 @@
   <Blueprint2.CreateTemporaryBlueprint>Create Temporary Blueprint</Blueprint2.CreateTemporaryBlueprint>
   <Blueprint2.CreateTemporaryBlueprintDescription>Create a temporary blueprint that won't be saved (for immediate use)</Blueprint2.CreateTemporaryBlueprintDescription>
   <Blueprint2.PlaceBlueprintWithSwitchMode>Place {0} ({1}) \n[R: Switch Mode]</Blueprint2.PlaceBlueprintWithSwitchMode>
-  <Blueprint2.PlaceBlueprintDescription>Place blueprint: {0} - Mode: {1}\nPress R to switch between buildings/terrain</Blueprint2.PlaceBlueprintDescription>
+  <Blueprint2.PlaceBlueprintDescription>Place blueprint: {0} - Mode: {1}\nPress R to switch between buildings/floors/bridges</Blueprint2.PlaceBlueprintDescription>
 
   <Blueprint2.TemporaryBlueprintLabel>Temporary Blueprint</Blueprint2.TemporaryBlueprintLabel>
   <Blueprint2.Terrain>Terrain Mode</Blueprint2.Terrain>
   <Blueprint2.Buildings>Buildings Mode</Blueprint2.Buildings>
+  <Blueprint2.Floors>Floors</Blueprint2.Floors>
+  <Blueprint2.Bridges>Bridges</Blueprint2.Bridges>
   <Blueprint2.Blueprint>Blueprint</Blueprint2.Blueprint>
   <Blueprint2.PressQERotate>{0}\nPress Q/E to rotate\nRotation: {1}</Blueprint2.PressQERotate>
   <Blueprint2.PressQERotateXZMirror>{0}\nPress Q/E to rotate, X/Z to mirror\nRotation: {1}, Mirror: {2}</Blueprint2.PressQERotateXZMirror>
