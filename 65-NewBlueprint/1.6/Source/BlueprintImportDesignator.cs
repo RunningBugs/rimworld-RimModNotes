@@ -24,23 +24,23 @@ public class BlueprintImportDesignator : Designator
     public override void ProcessInput(Event ev)
     {
         base.ProcessInput(ev);
-        
-        // Try to import a single blueprint first
-        var importedPrefab = BlueprintClipboard.ImportFromClipboard();
-        if (importedPrefab != null)
-        {
-            HandleImportedBlueprint(importedPrefab);
-            return;
-        }
-        
-        // Try to import multiple blueprints
+
+        // Prefer multi-import first so a multi-doc doesn't get truncated to the first item
         var importedPrefabs = BlueprintClipboard.ImportAllBlueprintsFromClipboard();
         if (importedPrefabs != null && importedPrefabs.Count > 0)
         {
             HandleImportedBlueprints(importedPrefabs);
             return;
         }
-        
+
+        // Fallback to single
+        var importedPrefab = BlueprintClipboard.ImportFromClipboard();
+        if (importedPrefab != null)
+        {
+            HandleImportedBlueprint(importedPrefab);
+            return;
+        }
+
         // If both failed, show a single consolidated message
         var clipboardContent = GUIUtility.systemCopyBuffer;
         if (string.IsNullOrEmpty(clipboardContent))
@@ -135,22 +135,22 @@ public class BlueprintImportDesignator : Designator
         
         if (hasThings && hasTerrain)
         {
-            options.Add(new FloatMenuOption("Place Floors Only", () => {
+            options.Add(new FloatMenuOption("Blueprint2.PlaceTerrainOnly".Translate(), () => {
                 Find.DesignatorManager.Select(new UnifiedBlueprintPlaceDesignator(prefab, PlaceMode.FloorOnly));
             }));
-            options.Add(new FloatMenuOption("Place Buildings Only", () => {
+            options.Add(new FloatMenuOption("Blueprint2.PlaceBuildingsOnly".Translate(), () => {
                 Find.DesignatorManager.Select(new UnifiedBlueprintPlaceDesignator(prefab, PlaceMode.Buildings));
             }));
         }
         else if (hasTerrain)
         {
-            options.Add(new FloatMenuOption("Place Floors", () => {
+            options.Add(new FloatMenuOption("Blueprint2.PlaceTerrain".Translate(), () => {
                 Find.DesignatorManager.Select(new UnifiedBlueprintPlaceDesignator(prefab, PlaceMode.FloorOnly));
             }));
         }
         else if (hasThings)
         {
-            options.Add(new FloatMenuOption("Place Buildings", () => {
+            options.Add(new FloatMenuOption("Blueprint2.PlaceBuildings".Translate(), () => {
                 Find.DesignatorManager.Select(new UnifiedBlueprintPlaceDesignator(prefab, PlaceMode.Buildings));
             }));
         }
