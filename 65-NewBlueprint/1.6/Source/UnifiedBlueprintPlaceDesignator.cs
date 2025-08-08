@@ -12,15 +12,14 @@ public class UnifiedBlueprintPlaceDesignator : BlueprintPlaceDesignatorBase
 {
     private PlaceMode placeMode;
 
+    // Allocation reduction: reuse buffers for ghost drawing
+    private static readonly List<IntVec3> tmpCells = new List<IntVec3>(32);
+    private static readonly List<IntVec3> tmpOne = new List<IntVec3>(1);
+
     public UnifiedBlueprintPlaceDesignator(PrefabDef prefab, PlaceMode mode) : base(prefab)
     {
         placeMode = mode;
-        var modeText = mode switch
-        {
-            PlaceMode.TerrainOnly => "Blueprint2.Terrain".Translate(),
-            PlaceMode.BuildingsOnly => "Blueprint2.Buildings".Translate(),
-            _ => "Blueprint2.Unknown".Translate()
-        };
+        var modeText = mode.GetLabel();
         defaultLabel = "Blueprint2.PlaceBlueprintWithSwitchMode".Translate(prefab.label, modeText);
         defaultDesc = "Blueprint2.PlaceBlueprintDescription".Translate(prefab.label, modeText);
     }
@@ -36,8 +35,8 @@ public class UnifiedBlueprintPlaceDesignator : BlueprintPlaceDesignatorBase
         var placedCount = 0;
         var skippedCount = 0;
 
-        // Place terrain if mode allows
-        if (placeMode == PlaceMode.TerrainOnly)
+        // Place floors if mode allows
+        if (placeMode == PlaceMode.FloorOnly)
         {
             foreach (var (terrainData, cell) in blueprint.GetTerrain())
             {
@@ -125,7 +124,7 @@ public class UnifiedBlueprintPlaceDesignator : BlueprintPlaceDesignatorBase
         }
 
         // Place buildings if mode allows
-        if (placeMode == PlaceMode.BuildingsOnly)
+        if (placeMode == PlaceMode.Buildings)
         {
             foreach (var (thingData, cell) in blueprint.GetThings())
             {
@@ -203,13 +202,7 @@ public class UnifiedBlueprintPlaceDesignator : BlueprintPlaceDesignatorBase
         }
 
         var action = DebugSettings.godMode ? "spawned" : "blueprint placed";
-        var modeText = placeMode switch
-        {
-            PlaceMode.TerrainOnly => "Terrain",
-            PlaceMode.BuildingsOnly => "Building",
-            _ => "Unknown"
-        };
-        var message = $"{modeText} {action}: {placedCount} items";
+        var message = $"{placeMode.GetLabel()} {action}: {placedCount} items";
         if (skippedCount > 0)
         {
             message += $" ({skippedCount} skipped)";
@@ -223,9 +216,14 @@ public class UnifiedBlueprintPlaceDesignator : BlueprintPlaceDesignatorBase
             return;
 
         var map = Find.CurrentMap;
-        
-        // Draw terrain if mode allows
-        if (placeMode == PlaceMode.TerrainOnly)
+
+        // Precompute colors and altitude to avoid per-iteration allocations
+        var blueprintAlt = AltitudeLayer.Blueprint.AltitudeFor();
+        var canPlaceTerr = true; // computed per-cell below but we need storage
+        var canPlaceBld = true;
+
+        // Draw floors if mode allows
+        if (placeMode == PlaceMode.FloorOnly)
         {
             foreach (var (terrainData, cell) in blueprint.GetTerrain())
             {
@@ -236,20 +234,20 @@ public class UnifiedBlueprintPlaceDesignator : BlueprintPlaceDesignatorBase
                 var mirroredPosition = GetMirroredPosition(adjustedPosition);
                 var finalWorldPos = mirroredPosition + center;
 
-                if (finalWorldPos.InBounds(map))
-                {
-                    var canPlace = GenConstruct.CanPlaceBlueprintAt(terrainData.def, finalWorldPos, currentRotation, map).Accepted;
-                    var ghostColor = canPlace ? Color.white : Color.red;
-                    ghostColor.a = 0.3f;
+                if (!finalWorldPos.InBounds(map))
+                    continue;
 
-                    var occupiedCells = new List<IntVec3> { finalWorldPos };
-                    GenDraw.DrawFieldEdges(occupiedCells, ghostColor);
-                }
+                canPlaceTerr = GenConstruct.CanPlaceBlueprintAt(terrainData.def, finalWorldPos, currentRotation, map).Accepted;
+                var ghostColor = canPlaceTerr ? new Color(1f, 1f, 1f, 0.3f) : new Color(1f, 0f, 0f, 0.3f);
+
+                tmpOne.Clear();
+                tmpOne.Add(finalWorldPos);
+                GenDraw.DrawFieldEdges(tmpOne, ghostColor);
             }
         }
-        
+
         // Draw buildings if mode allows
-        if (placeMode == PlaceMode.BuildingsOnly)
+        if (placeMode == PlaceMode.Buildings)
         {
             foreach (var (thingData, cell) in blueprint.GetThings())
             {
@@ -260,36 +258,38 @@ public class UnifiedBlueprintPlaceDesignator : BlueprintPlaceDesignatorBase
                 var mirroredPosition = GetMirroredPosition(adjustedPosition);
                 var finalWorldPos = mirroredPosition + center;
 
-                if (finalWorldPos.InBounds(map))
+                if (!finalWorldPos.InBounds(map))
+                    continue;
+
+                var thingRotInt = (int)thingData.relativeRotation;
+                var finalRotInt = (thingRotInt + currentRotation.AsInt) & 3;
+                var finalRot = new Rot4(finalRotInt);
+
+                canPlaceBld = GenConstruct.CanPlaceBlueprintAt(thingData.def, finalWorldPos, finalRot, map).Accepted;
+                var ghostColor = canPlaceBld ? new Color(1f, 1f, 1f, 0.3f) : new Color(1f, 0f, 0f, 0.3f);
+
+                // Reuse buffer for occupied cells
+                tmpCells.Clear();
+                foreach (var iv in GenAdj.CellsOccupiedBy(finalWorldPos, finalRot, thingData.def.Size))
+                    tmpCells.Add(iv);
+
+                // Try to draw the actual graphic if available
+                if (thingData.def.graphic?.MatSingle != null)
                 {
-                    var thingRotInt = (int)thingData.relativeRotation;
-                    var finalRotInt = (thingRotInt + currentRotation.AsInt) % 4;
-                    var finalRot = new Rot4(finalRotInt);
-
-                    var canPlace = GenConstruct.CanPlaceBlueprintAt(thingData.def, finalWorldPos, finalRot, map).Accepted;
-                    var ghostColor = canPlace ? Color.white : Color.red;
-                    ghostColor.a = 0.3f;
-
-                    var occupiedCells = GenAdj.CellsOccupiedBy(finalWorldPos, finalRot, thingData.def.Size).ToList();
-
-                    // Try to draw the actual graphic if available
-                    if (thingData.def.graphic?.MatSingle != null)
+                    try
                     {
-                        try
-                        {
-                            var matrix4x = default(Matrix4x4);
-                            matrix4x.SetTRS(GenThing.TrueCenter(finalWorldPos, finalRot, thingData.def.Size, thingData.def.Altitude), finalRot.AsQuat, Vector3.one);
-                            Graphics.DrawMesh(MeshPool.plane10, matrix4x, thingData.def.graphic.MatSingle, 0);
-                        }
-                        catch
-                        {
-                            GenDraw.DrawFieldEdges(occupiedCells, ghostColor);
-                        }
+                        var matrix4x = default(Matrix4x4);
+                        matrix4x.SetTRS(GenThing.TrueCenter(finalWorldPos, finalRot, thingData.def.Size, thingData.def.Altitude), finalRot.AsQuat, Vector3.one);
+                        Graphics.DrawMesh(MeshPool.plane10, matrix4x, thingData.def.graphic.MatSingle, 0);
                     }
-                    else
+                    catch
                     {
-                        GenDraw.DrawFieldEdges(occupiedCells, ghostColor);
+                        GenDraw.DrawFieldEdges(tmpCells, ghostColor);
                     }
+                }
+                else
+                {
+                    GenDraw.DrawFieldEdges(tmpCells, ghostColor);
                 }
             }
         }

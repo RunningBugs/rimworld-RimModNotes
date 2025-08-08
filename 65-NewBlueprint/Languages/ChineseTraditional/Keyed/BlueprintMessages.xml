@@ -54,11 +54,13 @@
   <Blueprint2.CreateTemporaryBlueprint>創建臨時藍圖</Blueprint2.CreateTemporaryBlueprint>
   <Blueprint2.CreateTemporaryBlueprintDescription>創建一個不會保存的臨時藍圖（僅供立即使用）</Blueprint2.CreateTemporaryBlueprintDescription>
   <Blueprint2.PlaceBlueprintWithSwitchMode>放置{0}（{1}）\n[R：切換模式]</Blueprint2.PlaceBlueprintWithSwitchMode>
-  <Blueprint2.PlaceBlueprintDescription>放置藍圖：{0} - 模式：{1}\n按R鍵在建築物/地形之間切換</Blueprint2.PlaceBlueprintDescription>
+  <Blueprint2.PlaceBlueprintDescription>放置藍圖：{0} - 模式：{1}\n按R鍵在建築物/地板/橋梁之間切換</Blueprint2.PlaceBlueprintDescription>
 
   <Blueprint2.TemporaryBlueprintLabel>臨時藍圖</Blueprint2.TemporaryBlueprintLabel>
   <Blueprint2.Terrain>地形模式</Blueprint2.Terrain>
   <Blueprint2.Buildings>建築模式</Blueprint2.Buildings>
+  <Blueprint2.Floors>地板</Blueprint2.Floors>
+  <Blueprint2.Bridges>橋梁</Blueprint2.Bridges>
   <Blueprint2.Blueprint>藍圖</Blueprint2.Blueprint>
   <Blueprint2.PressQERotate>藍圖：{0}\n按Q/E旋轉\n旋轉角度：{1}</Blueprint2.PressQERotate>
   <Blueprint2.PressQERotateXZMirror>{0}\n按Q/E旋轉，X/Z鏡像\n旋轉：{1}，鏡像：{2}</Blueprint2.PressQERotateXZMirror>

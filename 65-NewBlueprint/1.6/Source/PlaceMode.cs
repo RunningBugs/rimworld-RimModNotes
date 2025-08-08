@@ -5,8 +5,9 @@ namespace Blueprint2;
 
 public enum PlaceMode
 {
-    TerrainOnly,
-    BuildingsOnly
+    FloorOnly,
+    Bridges,
+    Buildings
 }
 
 public static class PlaceModeExtensions
@@ -15,8 +16,9 @@ public static class PlaceModeExtensions
     {
         return mode switch
         {
-            PlaceMode.TerrainOnly => "Blueprint2.Terrain".Translate(),
-            PlaceMode.BuildingsOnly => "Blueprint2.Buildings".Translate(),
+            PlaceMode.FloorOnly => "Blueprint2.Floors".Translate(),
+            PlaceMode.Bridges => "Blueprint2.Bridges".Translate(),
+            PlaceMode.Buildings => "Blueprint2.Buildings".Translate(),
             _ => throw new ArgumentOutOfRangeException(nameof(mode), mode, null)
         };
     }

@@ -33,12 +33,68 @@ public class UnifiedBlueprintCreateDesignator : BlueprintCreateDesignatorBase
         // Filter out non-buildable terrain
         if (blueprint?.terrain != null)
         {
-            var filteredTerrain = blueprint.terrain.Where(t => 
+            var filteredTerrain = blueprint.terrain.Where(t =>
                 t.def != null && t.def.BuildableByPlayer).ToList();
             
             blueprint.terrain.Clear();
             blueprint.terrain.AddRange(filteredTerrain);
             hasValidTerrain = filteredTerrain.Count > 0;
+
+            // Ensure substructure (foundation-like) terrains captured by the prefab system are preserved alongside floors.
+            // For any captured floor (layerable && !isFoundation), if the map had a foundation at capture time,
+            // add that foundation as a terrain entry in the prefab at the same local cell.
+            try
+            {
+                var map = Find.CurrentMap;
+                if (map != null)
+                {
+                    // Build a cache of existing foundation groups in the prefab by def
+                    var foundationGroups = new Dictionary<TerrainDef, PrefabTerrainData>();
+                    foreach (var group in blueprint.terrain)
+                    {
+                        if (group.def is TerrainDef gDef && gDef.isFoundation)
+                        {
+                            if (!foundationGroups.ContainsKey(gDef))
+                                foundationGroups[gDef] = group;
+                            if (group.rects == null)
+                                group.rects = new List<CellRect>();
+                        }
+                    }
+
+                    // Collect foundation additions for floor cells
+                    foreach (var (terrainData, localCell) in blueprint.GetTerrain())
+                    {
+                        if (terrainData.def is not TerrainDef floorDef ||
+                            !floorDef.BuildableByPlayer ||
+                            !floorDef.layerable ||
+                            floorDef.isFoundation)
+                        {
+                            continue; // not a floor entry
+                        }
+
+                        var world = new IntVec3(rect.minX + localCell.x, 0, rect.minZ + localCell.z);
+                        var found = map.terrainGrid?.FoundationAt(world);
+                        if (found == null) continue;
+
+                        // Get or create group for this foundation def
+                        if (!foundationGroups.TryGetValue(found, out var group))
+                        {
+                            group = new PrefabTerrainData
+                            {
+                                def = found,
+                                chance = 1f,
+                                rects = new List<CellRect>()
+                            };
+                            blueprint.terrain.Add(group);
+                            foundationGroups[found] = group;
+                        }
+
+                        group.rects.Add(new CellRect(localCell.x, localCell.z, 1, 1));
+                        hasValidTerrain = true;
+                    }
+                }
+            }
+            catch { /* best-effort, keep prefab intact on any error */ }
         }
         
         // Filter out non-buildable buildings  

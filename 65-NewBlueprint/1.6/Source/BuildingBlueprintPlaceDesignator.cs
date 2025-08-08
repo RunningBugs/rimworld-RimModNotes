@@ -12,8 +12,8 @@ public class BuildingBlueprintPlaceDesignator : BlueprintPlaceDesignatorBase
 {
     public BuildingBlueprintPlaceDesignator(PrefabDef prefab) : base(prefab)
     {
-        defaultLabel = "Blueprint2.PlaceBlueprintWithSwitchMode".Translate(prefab.label, PlaceMode.BuildingsOnly.GetLabel());
-        defaultDesc = "Blueprint2.PlaceBlueprintDescription".Translate(prefab.label, PlaceMode.BuildingsOnly.GetLabel());
+        defaultLabel = "Blueprint2.PlaceBlueprintWithSwitchMode".Translate(prefab.label, PlaceMode.Buildings.GetLabel());
+        defaultDesc = "Blueprint2.PlaceBlueprintDescription".Translate(prefab.label, PlaceMode.Buildings.GetLabel());
     }
 
     protected override AcceptanceReport CanPlaceAt(IntVec3 loc)
