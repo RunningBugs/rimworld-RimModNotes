@@ -54,11 +54,10 @@ public static class Dialog_BeginRitual_Close_Patch
 {
     public static void Postfix(Window __instance)
     {
-        if (__instance is Dialog_BeginRitual instance && 
-            instance.ritual?.outcomeEffect?.def?.outcomeChances != null && 
-            !instance.ritual.outcomeEffect.def.outcomeChances.NullOrEmpty())
+        if (__instance is Dialog_BeginRitual instance)
         {
-            var dialog = new Dialog_RitualOutcomeSelection(instance.ritual.outcomeEffect);
+            var outcomeDef = instance.ritual?.outcomeEffect?.def ?? instance.outcome;
+            var dialog = new Dialog_RitualOutcomeSelection(outcomeDef);
             Find.WindowStack.Add(dialog);
         }
     }
@@ -68,12 +67,12 @@ public class Dialog_RitualOutcomeSelection : Window
 {
     public override Vector2 InitialSize => new(400f, 300f);
 
-    private RitualOutcomeEffectWorker instance;
+    private RitualOutcomeEffectDef outcomeDef;
     private int positivityIndex = 0;
 
-    public Dialog_RitualOutcomeSelection(RitualOutcomeEffectWorker instance)
+    public Dialog_RitualOutcomeSelection(RitualOutcomeEffectDef outcomeDef)
     {
-        this.instance = instance;
+        this.outcomeDef = outcomeDef;
         draggable = true;
         forcePause = true;
     }
@@ -85,7 +84,7 @@ public class Dialog_RitualOutcomeSelection : Window
         Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 30f), "RitualOutcomeSelection.AvailableRitualOutcomes".Translate());
         Text.Font = GameFont.Small;
         float y = inRect.y + 40f;
-        foreach (var outcome in instance.def.outcomeChances)
+        foreach (var outcome in outcomeDef.outcomeChances)
         {
             if (Widgets.RadioButtonLabeled(new Rect(inRect.x, y, inRect.width, 30f), outcome.Label, positivityIndex == outcome.positivityIndex))
             {
@@ -96,7 +95,7 @@ public class Dialog_RitualOutcomeSelection : Window
         if (Widgets.ButtonText(new Rect(inRect.x, y, inRect.width, 30f), "RitualOutcomeSelection.Select".Translate()))
         {
             // Select the selected outcome
-            var selectedOutcome = instance.def.outcomeChances.Where(o => o.positivityIndex == positivityIndex);
+            var selectedOutcome = outcomeDef.outcomeChances.Where(o => o.positivityIndex == positivityIndex);
             if (selectedOutcome.Any())
             {
                 RitualOutcomePossibility selected = selectedOutcome.First();
