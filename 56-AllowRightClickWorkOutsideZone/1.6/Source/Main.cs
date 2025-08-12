@@ -40,7 +40,7 @@ public class FloatMenuOptionProvider_BypassRestrictions : FloatMenuOptionProvide
         var options = base.GetOptions(context).ToList();
         foreach (var option in options)
         {
-            option.Label += " [{\"BypassRestrictions\".Translate()}]";
+            option.Label += $" [{"BypassRestrictions".Translate()}]";
         }
 
         // Restore the original area and worktype settings
@@ -70,7 +70,7 @@ public class FloatMenuOptionProvider_BypassRestrictions : FloatMenuOptionProvide
         var options = base.GetOptionsFor(clickedThing, context).ToList();
         foreach (var option in options)
         {
-            option.Label += " [{\"BypassRestrictions\".Translate()}]";
+            option.Label += $" [{"BypassRestrictions".Translate()}]";
         }
 
         // Restore the original worktype settings and area restriction
