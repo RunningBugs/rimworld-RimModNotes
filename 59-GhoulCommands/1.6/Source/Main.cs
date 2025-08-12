@@ -49,7 +49,7 @@ public class CompProperties_GhoulCommands : CompProperties
     }
 }
 
-public class CompGhoulCommands : ThingComp, IExposable
+public class CompGhoulCommands : ThingComp
 {
     public bool ghoulTakingJuggernautSerum = false;
     public bool ghoulTakingMetalbloodSerum = false;
@@ -94,7 +94,7 @@ public class CompGhoulCommands : ThingComp, IExposable
         }
     }
 
-    public void ExposeData()
+    public override void PostExposeData()
     {
         Scribe_Values.Look(ref ghoulTakingJuggernautSerum, "ghoulTakingJuggernautSerum", false);
         Scribe_Values.Look(ref ghoulTakingMetalbloodSerum, "ghoulTakingMetalbloodSerum", false);

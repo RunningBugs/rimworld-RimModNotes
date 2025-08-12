@@ -1,8 +1,6 @@
-/.vscode/obj
-
 # /*/Assemblies
 # /*/Assemblies/*.pdb
-# /.vscode
+.vscode
 # /Source
 
 
