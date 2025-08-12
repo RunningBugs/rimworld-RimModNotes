@@ -77,5 +77,8 @@
   <Blueprint2.NoBlueprintsToRemove>No blueprints to remove</Blueprint2.NoBlueprintsToRemove>
   <Blueprint2.ConfirmRemoveBlueprint>Are you sure you want to remove blueprint '{0}'?</Blueprint2.ConfirmRemoveBlueprint>
   <Blueprint2.BlueprintRemoved>Blueprint '{0}' removed</Blueprint2.BlueprintRemoved>
-  <Blueprint2.FailedToRemoveBlueprint>Failed to remove blueprint</Blueprint2.FailedToRemoveBlueprint>
+  <Blueprint2.FailedToRemoveBlueprint>Failed to remove blueprint</Blueprint2.FailedToRemoveBlueprint>  <Blueprint2.Rotation>Rotation</Blueprint2.Rotation>
+  <Blueprint2.MirrorLabel>Mirror</Blueprint2.MirrorLabel>
+  <Blueprint2.Mode>Mode</Blueprint2.Mode>
+  <Blueprint2.Current>Current</Blueprint2.Current>
 </LanguageData>

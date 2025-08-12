@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
+  <!-- Keybinding category for New Blueprint mod -->
+  <KeyBindingCategoryDef>
+    <defName>Blueprint2KeyCategory</defName>
+    <label>New Blueprint</label>
+    <description>Keybindings for the New Blueprint tools</description>
+  </KeyBindingCategoryDef>
+
   <!-- Blueprint2 custom keybindings -->
   <KeyBindingDef>
     <defName>Blueprint_MirrorX</defName>
     <label>Mirror X</label>
-    <category>Architect</category>
+    <category>Blueprint2KeyCategory</category>
     <defaultKeyCodeA>X</defaultKeyCodeA>
   </KeyBindingDef>
 
   <KeyBindingDef>
     <defName>Blueprint_MirrorZ</defName>
     <label>Mirror Z</label>
-    <category>Architect</category>
+    <category>Blueprint2KeyCategory</category>
     <defaultKeyCodeA>Z</defaultKeyCodeA>
   </KeyBindingDef>
 
   <KeyBindingDef>
     <defName>Blueprint_SwitchMode</defName>
     <label>Switch placement mode</label>
-    <category>Architect</category>
+    <category>Blueprint2KeyCategory</category>
     <defaultKeyCodeA>R</defaultKeyCodeA>
   </KeyBindingDef>
 </Defs>

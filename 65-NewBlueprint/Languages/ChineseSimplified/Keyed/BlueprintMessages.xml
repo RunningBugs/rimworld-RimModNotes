@@ -77,5 +77,8 @@
   <Blueprint2.NoBlueprintsToRemove>没有蓝图可删除</Blueprint2.NoBlueprintsToRemove>
   <Blueprint2.ConfirmRemoveBlueprint>确定要删除蓝图'{0}'吗？</Blueprint2.ConfirmRemoveBlueprint>
   <Blueprint2.BlueprintRemoved>蓝图'{0}'已删除</Blueprint2.BlueprintRemoved>
-  <Blueprint2.FailedToRemoveBlueprint>删除蓝图失败</Blueprint2.FailedToRemoveBlueprint>
+  <Blueprint2.FailedToRemoveBlueprint>删除蓝图失败</Blueprint2.FailedToRemoveBlueprint>  <Blueprint2.Rotation>旋转</Blueprint2.Rotation>
+  <Blueprint2.MirrorLabel>镜像</Blueprint2.MirrorLabel>
+  <Blueprint2.Mode>模式</Blueprint2.Mode>
+  <Blueprint2.Current>当前</Blueprint2.Current>
 </LanguageData>

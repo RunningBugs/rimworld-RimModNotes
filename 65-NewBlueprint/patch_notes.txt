@@ -1,0 +1,3 @@
+- Make key handling rely purely on RimWorld keybindings; remove raw Event.current fallbacks for rotate/mirror/mode.
+- Add Blueprint2KeyCategory translations in all languages.
+- Tooltip now shows dynamic keys: Rotation/Mirror and Mode in switchable designator; removed static lines that implied fixed Q/E/X/Z.
