@@ -5,4 +5,5 @@
 	<OutfitStandViewTitle>架子视图</OutfitStandViewTitle>
 	<SwitchToOutfitStandView.Tooltip>切换到服装架视图</SwitchToOutfitStandView.Tooltip>
 	<SwitchToPawnView.Tooltip>切换到殖民者视图</SwitchToPawnView.Tooltip>
+	<BOS.SelectAllByDefault>默认选择全部服装</BOS.SelectAllByDefault>
 </LanguageData>

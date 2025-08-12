@@ -65,6 +65,13 @@ public class Dialog_ChooseApparel : Window
         var innerRect = new Rect(0, 0, scrollableRect.width - GenUI.ScrollBarWidth, count * 30f);
         Widgets.BeginScrollView(scrollableRect, ref scrollPosition, innerRect);
 
+        if (BOSMod.Settings.SelectAllByDefault)
+        {
+            // Select all by default if the setting is enabled
+            selectedThings.Clear();
+            selectedThings.AddRange(data);
+        }
+
         Listing_Standard listing = new();
         listing.Begin(innerRect);
         foreach (var apparel in data)
