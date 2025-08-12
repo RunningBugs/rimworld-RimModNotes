@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
 	<BetterOutfitStand>Better Outfit Stand</BetterOutfitStand>
+	<PawnViewTitle>Colonist view</PawnViewTitle>
+	<OutfitStandViewTitle>Outfit Stand view</OutfitStandViewTitle>
+	<SwitchToOutfitStandView.Tooltip>Switch to outfit stand view</SwitchToOutfitStandView.Tooltip>
+	<SwitchToPawnView.Tooltip>Switch to colonist view</SwitchToPawnView.Tooltip>
+	<BOS.SelectAllByDefault>Select all outfits by default</BOS.SelectAllByDefault>
 </LanguageData>
