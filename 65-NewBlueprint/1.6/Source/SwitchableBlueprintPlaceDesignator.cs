@@ -23,9 +23,8 @@ public class SwitchableBlueprintPlaceDesignator : BlueprintPlaceDesignatorBase
 
     public override void SelectedUpdate()
     {
-        // Handle mode switching via RimWorld keybinding (with legacy fallback)
-        if (BlueprintKeyBindingDefOf.Blueprint_SwitchMode.KeyDownEvent ||
-            (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.R))
+        // Handle mode switching via binding only (no legacy raw keys)
+        if (BlueprintKeyBindingDefOf.Blueprint_SwitchMode.KeyDownEvent)
         {
             currentMode = currentMode switch
             {
@@ -35,11 +34,9 @@ public class SwitchableBlueprintPlaceDesignator : BlueprintPlaceDesignatorBase
                 _ => PlaceMode.Buildings
             };
             UpdateLabels();
-            Event.current.Use();
             SoundDefOf.Tick_High.PlayOneShotOnCamera();
         }
 
-        // Call base implementation for other functionality (rotation/mirroring handled there)
         base.SelectedUpdate();
     }
     
@@ -50,6 +47,33 @@ public class SwitchableBlueprintPlaceDesignator : BlueprintPlaceDesignatorBase
         defaultDesc = "Blueprint2.PlaceBlueprintDescription".Translate(blueprint.label, modeText, "Blueprint2.SwitchMode".Translate());
     }
 
+    public override void DrawMouseAttachments()
+    {
+        var mirrorStatus = "";
+        if (mirrorX && mirrorZ)
+            mirrorStatus = "Blueprint2.MirrorBoth".Translate();
+        else if (mirrorX)
+            mirrorStatus = "Blueprint2.MirrorX".Translate();
+        else if (mirrorZ)
+            mirrorStatus = "Blueprint2.MirrorZ".Translate();
+        else
+            mirrorStatus = "Blueprint2.MirrorNone".Translate();
+
+        var rotateLeft = KeyBindingDefOf.Designator_RotateLeft?.MainKeyLabel ?? "?";
+        var rotateRight = KeyBindingDefOf.Designator_RotateRight?.MainKeyLabel ?? "?";
+        var mirrorXLabel = BlueprintKeyBindingDefOf.Blueprint_MirrorX?.MainKeyLabel ?? "?";
+        var mirrorZLabel = BlueprintKeyBindingDefOf.Blueprint_MirrorZ?.MainKeyLabel ?? "?";
+        var switchModeLabel = BlueprintKeyBindingDefOf.Blueprint_SwitchMode?.MainKeyLabel ?? "?";
+
+        var header = blueprint.label ?? "Blueprint2.Blueprint".Translate();
+        var text = header
+                   + "\n" + "Blueprint2.Rotation".Translate() + $": {rotateLeft}/{rotateRight}"
+                   + "\n" + "Blueprint2.MirrorLabel".Translate() + $": {mirrorXLabel}/{mirrorZLabel}"
+                   + "\n" + "Blueprint2.MirrorLabel".Translate() + $": {mirrorStatus}"
+                   + "\n" + "Blueprint2.Mode".Translate() + $": {switchModeLabel} (" + "Blueprint2.Current".Translate() + $": {currentMode.GetLabel()})";
+
+        GenUI.DrawMouseAttachment(ContentFinder<Texture2D>.Get("Blueprint2/blueprint"), text);
+    }
 
     protected override AcceptanceReport CanPlaceAt(IntVec3 loc)
     {
