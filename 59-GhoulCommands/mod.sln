@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mod", "mod.csproj", "{48BA9D8A-8A81-4742-A3A5-1E780E923752}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mod", "1.6/Source/mod.csproj", "{48BA9D8A-8A81-4742-A3A5-1E780E923752}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
