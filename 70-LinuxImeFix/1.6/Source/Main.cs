@@ -164,12 +164,6 @@ public static class LinuxImeUtility
     private static string compBaseText = "";
     private static int compBaseCursor, compBaseSelect;
 
-    // Current text field position for candidate window
-    private static bool hasActiveTextField;
-    private static Rect lastTextFieldRect;
-    private static float lastCursorScreenX;
-    private static float lastCursorScreenY;
-
     public static TextFieldState PrepareTextField(Rect rect, string text)
     {
         var state = new TextFieldState
@@ -196,10 +190,6 @@ public static class LinuxImeUtility
             Input.imeCompositionMode = IMECompositionMode.On;
             Input.compositionCursorPos = new Vector2(rect.xMin + 8f, rect.yMax + 2f);
 
-            // Store text field rect for candidate window positioning
-            lastTextFieldRect = rect;
-            hasActiveTextField = true;
-
             if (lastLoggedControl != editor.controlID)
             {
                 lastLoggedControl = editor.controlID;
@@ -207,15 +197,6 @@ public static class LinuxImeUtility
             }
 
             ProcessKeyEvent(state);
-
-            // Calculate cursor pixel position NOW, while we're inside TextField
-            // rendering and the font/style is correct. DrawCandidateWindow runs
-            // later in UIRootOnGUI postfix where Text.Font may have changed.
-            CalculateCursorScreenPos(editor, rect);
-        }
-        else
-        {
-            hasActiveTextField = false;
         }
         return state;
     }
@@ -330,39 +311,27 @@ public static class LinuxImeUtility
             compBaseSelect = caret;
             Log.Message($"[LinuxImeFix] commit '{state.Commit}' -> '{next}'".Colorize(Color.cyan));
         }
+
+        // Draw candidate window HERE — we're still in the TextField's GUI
+        // coordinate space, so position will be correct regardless of
+        // UIScale, ScrollView, Window, or BeginGroup nesting.
+        DrawCandidateWindow(rect);
     }
 
     private static void CalculateCursorScreenPos(TextEditor editor, Rect rect)
     {
-        // Calculate the X offset of the cursor within the text field.
-        // We must do this here (inside TextField rendering) because Text.Font
-        // and the GUI style are correct at this point.
-        string textBeforeCursor = editor.text ?? "";
-        int ci = Mathf.Clamp(editor.cursorIndex, 0, textBeforeCursor.Length);
-        textBeforeCursor = textBeforeCursor.Substring(0, ci);
-
-        // Use the current font (which is the TextField's font)
-        Vector2 textSize = Text.CalcSize(textBeforeCursor);
-
-        // Convert from GUI-local coordinates to screen coordinates.
-        // The TextField may be inside a ScrollView, Window, or BeginGroup,
-        // so rect.xMin is NOT the screen X. GUIToScreenPoint handles this.
-        Vector2 localPos = new Vector2(rect.xMin + textSize.x, rect.yMax);
-        Vector2 screenPos = GUIUtility.GUIToScreenPoint(localPos);
-        lastCursorScreenX = screenPos.x;
-        lastCursorScreenY = screenPos.y;
+        // Deprecated — DrawCandidateWindow now uses TextField rect directly.
     }
 
-    public static void DrawCandidateWindow()
+    public static void DrawCandidateWindow(Rect textFieldRect)
     {
-        if (!IsLinux || !NativeBridge.IsReady || !hasActiveTextField) return;
+        if (!IsLinux || !NativeBridge.IsReady) return;
 
         bool lookupVisible = NativeBridge.IsLookupVisible();
         bool preeditVisible = NativeBridge.IsPreeditVisible();
 
         if (!lookupVisible && !preeditVisible) return;
 
-        // Build content
         string preedit = NativeBridge.GetPreedit() ?? "";
         int candCount = NativeBridge.GetCandidateCount();
         int lookupCursor = NativeBridge.GetLookupCursor();
@@ -370,9 +339,9 @@ public static class LinuxImeUtility
         if (string.IsNullOrEmpty(preedit) && candCount == 0) return;
 
         // Calculate window size
-        float lineHeight = 22f;
-        float padding = 6f;
-        float width = 300f;
+        float lineHeight = 20f;
+        float padding = 5f;
+        float width = 280f;
         float height = padding * 2;
 
         if (!string.IsNullOrEmpty(preedit))
@@ -385,41 +354,49 @@ public static class LinuxImeUtility
             if (!string.IsNullOrEmpty(cand))
             {
                 candidates.Add(cand);
-                // Adjust width to fit longest candidate
-                float candW = Text.CalcSize($"{i + 1}. {cand}").x + padding * 4;
-                if (candW > width) width = candW;
+                float w = Text.CalcSize($"{i + 1}. {cand}").x + padding * 4;
+                if (w > width) width = w;
             }
         }
 
         if (candidates.Count > 0)
             height += candidates.Count * lineHeight;
 
-        // Use cursor position calculated during PrepareTextField (correct font)
-        float baseX = lastCursorScreenX;
-        float baseY = lastCursorScreenY + 2f;
+        // Calculate cursor X position within the text field
+        float cursorXOffset = 0;
+        if (TryGetActiveTextEditor(out var editor))
+        {
+            string textBeforeCursor = editor.text ?? "";
+            int ci = Mathf.Clamp(editor.cursorIndex, 0, textBeforeCursor.Length);
+            textBeforeCursor = textBeforeCursor.Substring(0, ci);
+            cursorXOffset = Text.CalcSize(textBeforeCursor).x;
+        }
 
-        // Screen boundary detection
-        float screenW = UI.screenWidth;
-        float screenH = UI.screenHeight;
+        // Position: below text field, aligned with cursor X
+        float baseX = textFieldRect.xMin + cursorXOffset;
+        float baseY = textFieldRect.yMax + 2f;
 
-        // Horizontal: if window would go off right edge, shift left
-        if (baseX + width > screenW - 4f)
-            baseX = screenW - width - 4f;
-        // Don't go off left edge
+        // Screen boundary detection (using UI.screenWidth/Height which
+        // accounts for UIScale)
+        float sw = UI.screenWidth;
+        float sh = UI.screenHeight;
+
+        // Horizontal: if right edge goes off screen, shift left
+        if (baseX + width > sw - 4f)
+            baseX = sw - width - 4f;
         if (baseX < 4f)
             baseX = 4f;
 
-        // Vertical: if window would go off bottom edge, show above text field
-        if (baseY + height > screenH - 4f)
-            baseY = lastTextFieldRect.yMin - height - 2f;
-        // Don't go off top edge
+        // Vertical: if bottom goes off screen, show above text field
+        if (baseY + height > sh - 4f)
+            baseY = textFieldRect.yMin - height - 2f;
         if (baseY < 4f)
             baseY = 4f;
 
         Rect windowRect = new Rect(baseX, baseY, width, height);
 
         // Draw background
-        GUI.color = new Color(0.15f, 0.15f, 0.15f, 0.95f);
+        GUI.color = new Color(0.12f, 0.12f, 0.12f, 0.95f);
         GUI.DrawTexture(windowRect, BaseContent.WhiteTex);
         GUI.color = Color.white;
 
@@ -437,9 +414,7 @@ public static class LinuxImeUtility
             string preeditDisplay = preedit;
             int preeditCursor = NativeBridge.GetPreeditCursor();
             if (preeditCursor >= 0 && preeditCursor < preedit.Length)
-            {
                 preeditDisplay = preedit.Substring(0, preeditCursor) + "|" + preedit.Substring(preeditCursor);
-            }
             GUI.Label(new Rect(windowRect.xMin + padding, y, width - padding * 2, lineHeight), preeditDisplay);
             y += lineHeight;
             GUI.color = Color.white;
@@ -476,7 +451,6 @@ public static class LinuxImeUtility
         {
             NativeBridge.FocusOut();
             Input.imeCompositionMode = IMECompositionMode.Auto;
-            hasActiveTextField = false;
         }
     }
 
@@ -535,19 +509,11 @@ public static class DevGUI_TextField_Patch
 [HarmonyPatch(typeof(UIRoot_Play), nameof(UIRoot_Play.UIRootOnGUI))]
 public static class UIRoot_Play_Patch
 {
-    public static void Postfix()
-    {
-        LinuxImeUtility.FrameEndRefresh();
-        LinuxImeUtility.DrawCandidateWindow();
-    }
+    public static void Postfix() => LinuxImeUtility.FrameEndRefresh();
 }
 
 [HarmonyPatch(typeof(UIRoot_Entry), nameof(UIRoot_Entry.UIRootOnGUI))]
 public static class UIRoot_Entry_Patch
 {
-    public static void Postfix()
-    {
-        LinuxImeUtility.FrameEndRefresh();
-        LinuxImeUtility.DrawCandidateWindow();
-    }
+    public static void Postfix() => LinuxImeUtility.FrameEndRefresh();
 }
