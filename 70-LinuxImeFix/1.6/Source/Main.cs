@@ -228,15 +228,45 @@ public static class LinuxImeUtility
         if (Event.current == null || Event.current.type != EventType.KeyDown) return;
 
         var kc = Event.current.keyCode;
-        if (IsEditingKey(kc)) return;
+
+        // Don't intercept modifier-only presses
         if (Event.current.character == '\0' && IsModifierKey(kc)) return;
 
-        int keyval = Event.current.character != '\0' ? (int)Event.current.character : (int)kc;
+        // Convert to IBus keyval — use character if available, else use keyCode.
+        // For special keys like BackSpace, the character is '\b' (0x08) or the
+        // keyCode maps to X11 keysyms (e.g. BackSpace = 0xFF08).
+        int keyval;
+        if (Event.current.character != '\0')
+            keyval = (int)Event.current.character;
+        else if (kc == KeyCode.Backspace)
+            keyval = 0xFF08;  // XK_BackSpace
+        else if (kc == KeyCode.Delete)
+            keyval = 0xFFFF;  // XK_Delete
+        else if (kc == KeyCode.LeftArrow)
+            keyval = 0xFF51;  // XK_Left
+        else if (kc == KeyCode.RightArrow)
+            keyval = 0xFF53;  // XK_Right
+        else if (kc == KeyCode.Home)
+            keyval = 0xFF50;  // XK_Home
+        else if (kc == KeyCode.End)
+            keyval = 0xFF57;  // XK_End
+        else if (kc == KeyCode.Escape)
+            keyval = 0xFF1B;  // XK_Escape
+        else if (kc == KeyCode.Return || kc == KeyCode.KeypadEnter)
+            keyval = 0xFF0D;  // XK_Return
+        else if (kc == KeyCode.Tab)
+            keyval = 0xFF09;  // XK_Tab
+        else
+            keyval = (int)kc;
+
         int ibusState = 0;
         if (Event.current.shift) ibusState |= 0x1;
         if (Event.current.control) ibusState |= 0x4;
         if (Event.current.alt) ibusState |= 0x8;
 
+        // Always send to IBus — even editing keys like BackSpace.
+        // During preedit, BackSpace should modify the preedit text in IBus,
+        // not delete from Unity's text field (which has no preedit).
         bool consumed = NativeBridge.ProcessKey(keyval, 0, ibusState);
         string commit = NativeBridge.PollCommit();
 
@@ -313,8 +343,14 @@ public static class LinuxImeUtility
 
         // Use the current font (which is the TextField's font)
         Vector2 textSize = Text.CalcSize(textBeforeCursor);
-        lastCursorScreenX = rect.xMin + textSize.x;
-        lastCursorScreenY = rect.yMax;
+
+        // Convert from GUI-local coordinates to screen coordinates.
+        // The TextField may be inside a ScrollView, Window, or BeginGroup,
+        // so rect.xMin is NOT the screen X. GUIToScreenPoint handles this.
+        Vector2 localPos = new Vector2(rect.xMin + textSize.x, rect.yMax);
+        Vector2 screenPos = GUIUtility.GUIToScreenPoint(localPos);
+        lastCursorScreenX = screenPos.x;
+        lastCursorScreenY = screenPos.y;
     }
 
     public static void DrawCandidateWindow()
@@ -443,14 +479,6 @@ public static class LinuxImeUtility
             hasActiveTextField = false;
         }
     }
-
-    private static bool IsEditingKey(KeyCode kc) => kc switch
-    {
-        KeyCode.Backspace or KeyCode.Delete or KeyCode.LeftArrow or KeyCode.RightArrow
-        or KeyCode.UpArrow or KeyCode.DownArrow or KeyCode.Home or KeyCode.End
-        or KeyCode.PageUp or KeyCode.PageDown or KeyCode.Escape or KeyCode.Tab => true,
-        _ => false
-    };
 
     private static bool IsModifierKey(KeyCode kc) => kc switch
     {
