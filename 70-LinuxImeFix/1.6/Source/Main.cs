@@ -167,7 +167,8 @@ public static class LinuxImeUtility
     // Current text field position for candidate window
     private static bool hasActiveTextField;
     private static Rect lastTextFieldRect;
-    private static int lastCursorIndex;
+    private static float lastCursorScreenX;
+    private static float lastCursorScreenY;
 
     public static TextFieldState PrepareTextField(Rect rect, string text)
     {
@@ -197,7 +198,6 @@ public static class LinuxImeUtility
 
             // Store text field rect for candidate window positioning
             lastTextFieldRect = rect;
-            lastCursorIndex = editor.cursorIndex;
             hasActiveTextField = true;
 
             if (lastLoggedControl != editor.controlID)
@@ -208,8 +208,10 @@ public static class LinuxImeUtility
 
             ProcessKeyEvent(state);
 
-            // Update cursor position after key processing
-            lastCursorIndex = editor.cursorIndex;
+            // Calculate cursor pixel position NOW, while we're inside TextField
+            // rendering and the font/style is correct. DrawCandidateWindow runs
+            // later in UIRootOnGUI postfix where Text.Font may have changed.
+            CalculateCursorScreenPos(editor, rect);
         }
         else
         {
@@ -300,6 +302,21 @@ public static class LinuxImeUtility
         }
     }
 
+    private static void CalculateCursorScreenPos(TextEditor editor, Rect rect)
+    {
+        // Calculate the X offset of the cursor within the text field.
+        // We must do this here (inside TextField rendering) because Text.Font
+        // and the GUI style are correct at this point.
+        string textBeforeCursor = editor.text ?? "";
+        int ci = Mathf.Clamp(editor.cursorIndex, 0, textBeforeCursor.Length);
+        textBeforeCursor = textBeforeCursor.Substring(0, ci);
+
+        // Use the current font (which is the TextField's font)
+        Vector2 textSize = Text.CalcSize(textBeforeCursor);
+        lastCursorScreenX = rect.xMin + textSize.x;
+        lastCursorScreenY = rect.yMax;
+    }
+
     public static void DrawCandidateWindow()
     {
         if (!IsLinux || !NativeBridge.IsReady || !hasActiveTextField) return;
@@ -341,20 +358,9 @@ public static class LinuxImeUtility
         if (candidates.Count > 0)
             height += candidates.Count * lineHeight;
 
-        // Estimate cursor X position within the text field
-        // Use the text before cursor to calculate width
-        float cursorXOffset = 0;
-        if (TryGetActiveTextEditor(out var editor))
-        {
-            string textBeforeCursor = editor.text ?? "";
-            if (editor.cursorIndex < textBeforeCursor.Length)
-                textBeforeCursor = textBeforeCursor.Substring(0, editor.cursorIndex);
-            cursorXOffset = Text.CalcSize(textBeforeCursor).x;
-        }
-
-        // Base position: below the text field, at cursor X
-        float baseX = lastTextFieldRect.xMin + cursorXOffset;
-        float baseY = lastTextFieldRect.yMax + 2f;
+        // Use cursor position calculated during PrepareTextField (correct font)
+        float baseX = lastCursorScreenX;
+        float baseY = lastCursorScreenY + 2f;
 
         // Screen boundary detection
         float screenW = UI.screenWidth;
