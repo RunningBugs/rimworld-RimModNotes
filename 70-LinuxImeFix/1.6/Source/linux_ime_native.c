@@ -13,23 +13,35 @@
 #include <unistd.h>
 
 /* ═══════════════════════════════════════════════════
- * LinuxImeFix Native Helper v7 — IBus D-Bus (C)
+ * LinuxImeFix Native Helper v8 — IBus D-Bus (C)
  *
- * Single-threaded design: ProcessKeyEvent is synchronous.
- * After IBus consumes a key, we drain the connection for
- * CommitText signals on the same thread. No signal thread,
- * no locking, no deadlock.
+ * Adds preedit text + lookup table (candidate) support.
+ * C# mod polls these to draw an in-game candidate window.
  * ═══════════════════════════════════════════════════ */
 
 static DBusConnection *conn = NULL;
 static char *ic_path = NULL;
 
+/* Commit queue */
 static char pending_commit[4096];
 static int pending_commit_len = 0;
 
+/* Preedit state */
+static char preedit_text[1024];
+static int preedit_text_len = 0;
+static int preedit_cursor = 0;
+static int preedit_visible = 0;
+
+/* Lookup table state */
+#define MAX_CANDIDATES 64
+#define MAX_CANDIDATE_LEN 256
+static char candidates[MAX_CANDIDATES][MAX_CANDIDATE_LEN];
+static int candidate_count = 0;
+static int lookup_cursor_pos = 0;
+static int lookup_visible = 0;
+static int lookup_orientation = 1; /* 1=vertical, 0=horizontal */
+
 static int logged_ready = 0;
-static int logged_commit = 0;
-static int logged_key = 0;
 
 /* ── Find IBus address ── */
 
@@ -98,10 +110,8 @@ static DBusMessage *dbus_call(DBusConnection *c,
                                int first_arg_type, ...) {
     DBusMessage *msg = dbus_message_new_method_call(dest, path, iface, method);
     if (!msg) return NULL;
-
     DBusMessageIter args;
     dbus_message_iter_init_append(msg, &args);
-
     va_list ap;
     va_start(ap, first_arg_type);
     int type = first_arg_type;
@@ -119,7 +129,6 @@ static DBusMessage *dbus_call(DBusConnection *c,
         type = va_arg(ap, int);
     }
     va_end(ap);
-
     DBusError err;
     dbus_error_init(&err);
     DBusMessage *reply = dbus_connection_send_with_reply_and_block(c, msg, 2000, &err);
@@ -131,61 +140,191 @@ static DBusMessage *dbus_call(DBusConnection *c,
     return reply;
 }
 
-/* ── Drain CommitText signals from the connection ──
- *
- * Call this after ProcessKeyEvent returns true.
- * IBus sends CommitText as a signal on the same connection.
- * We read it synchronously with a short timeout.
+/* ── Extract string from IBusText variant ──
+ * variant -> struct(s a{sv} s ...) -> field[2] is the text
  */
-static void drain_commits(int timeout_ms) {
-    if (!conn) return;
+static const char *extract_ibus_text(DBusMessageIter *variant_iter) {
+    if (dbus_message_iter_get_arg_type(variant_iter) != DBUS_TYPE_VARIANT)
+        return NULL;
+    DBusMessageIter struct_iter;
+    dbus_message_iter_recurse(variant_iter, &struct_iter);
+    if (dbus_message_iter_get_arg_type(&struct_iter) != DBUS_TYPE_STRUCT)
+        return NULL;
+    dbus_message_iter_recurse(&struct_iter, &struct_iter);
+    /* Skip [0]=name(string), [1]=attrs(dict) */
+    dbus_message_iter_next(&struct_iter); /* skip name */
+    dbus_message_iter_next(&struct_iter); /* skip attrs, now at [2]=text */
+    if (dbus_message_iter_get_arg_type(&struct_iter) == DBUS_TYPE_STRING) {
+        const char *text = NULL;
+        dbus_message_iter_get_basic(&struct_iter, &text);
+        return text;
+    }
+    return NULL;
+}
 
-    /* Give IBus time to send the signal */
-    if (!dbus_connection_read_write(conn, timeout_ms))
-        return;
+/* ── Parse UpdateLookupTable signal ──
+ * signature "vb": variant(struct IBusLookupTable), bool visible
+ */
+static void parse_lookup_table(DBusMessage *msg) {
+    DBusMessageIter args;
+    if (!dbus_message_iter_init(msg, &args)) return;
+
+    /* arg0 = variant containing struct */
+    if (dbus_message_iter_get_arg_type(&args) != DBUS_TYPE_VARIANT) return;
+    DBusMessageIter var_iter;
+    dbus_message_iter_recurse(&args, &var_iter);
+    if (dbus_message_iter_get_arg_type(&var_iter) != DBUS_TYPE_STRUCT) return;
+
+    DBusMessageIter struct_iter;
+    dbus_message_iter_recurse(&var_iter, &struct_iter);
+
+    /* Skip fields [0]=name, [1]=attrs */
+    dbus_message_iter_next(&struct_iter);
+    dbus_message_iter_next(&struct_iter);
+
+    /* [2]=page_size(u), [3]=cursor_pos(u), [4]=cursor_visible(b), [5]=round(b), [6]=orientation(i) */
+    dbus_uint32_t page_size = 0, cursor_pos = 0;
+    dbus_bool_t cursor_visible = FALSE, round = FALSE;
+    dbus_int32_t orientation = 1;
+
+    if (dbus_message_iter_get_arg_type(&struct_iter) == DBUS_TYPE_UINT32) {
+        dbus_message_iter_get_basic(&struct_iter, &page_size);
+        dbus_message_iter_next(&struct_iter);
+    }
+    if (dbus_message_iter_get_arg_type(&struct_iter) == DBUS_TYPE_UINT32) {
+        dbus_message_iter_get_basic(&struct_iter, &cursor_pos);
+        dbus_message_iter_next(&struct_iter);
+    }
+    if (dbus_message_iter_get_arg_type(&struct_iter) == DBUS_TYPE_BOOLEAN) {
+        dbus_message_iter_get_basic(&struct_iter, &cursor_visible);
+        dbus_message_iter_next(&struct_iter);
+    }
+    if (dbus_message_iter_get_arg_type(&struct_iter) == DBUS_TYPE_BOOLEAN) {
+        dbus_message_iter_get_basic(&struct_iter, &round);
+        dbus_message_iter_next(&struct_iter);
+    }
+    if (dbus_message_iter_get_arg_type(&struct_iter) == DBUS_TYPE_INT32) {
+        dbus_message_iter_get_basic(&struct_iter, &orientation);
+        dbus_message_iter_next(&struct_iter);
+    }
+
+    /* [7] = av candidates */
+    if (dbus_message_iter_get_arg_type(&struct_iter) == DBUS_TYPE_ARRAY) {
+        DBusMessageIter cand_array;
+        dbus_message_iter_recurse(&struct_iter, &cand_array);
+
+        candidate_count = 0;
+        while (dbus_message_iter_get_arg_type(&cand_array) == DBUS_TYPE_VARIANT &&
+               candidate_count < MAX_CANDIDATES) {
+            const char *text = extract_ibus_text(&cand_array);
+            if (text && *text) {
+                strncpy(candidates[candidate_count], text, MAX_CANDIDATE_LEN - 1);
+                candidates[candidate_count][MAX_CANDIDATE_LEN - 1] = '\0';
+                candidate_count++;
+            }
+            dbus_message_iter_next(&cand_array);
+        }
+    }
+
+    lookup_cursor_pos = cursor_pos;
+    lookup_orientation = orientation;
+
+    /* arg1 = bool visible */
+    dbus_message_iter_next(&args);
+    if (dbus_message_iter_get_arg_type(&args) == DBUS_TYPE_BOOLEAN) {
+        dbus_message_iter_get_basic(&args, &lookup_visible);
+    }
+
+    fprintf(stderr, "[LinuxImeFix] lookup table: %d candidates, cursor=%d, visible=%d\n",
+            candidate_count, lookup_cursor_pos, lookup_visible);
+}
+
+/* ── Parse UpdatePreeditText signal ──
+ * signature "vub": variant(IBusText), uint32 cursor_pos, bool visible
+ */
+static void parse_preedit_text(DBusMessage *msg) {
+    DBusMessageIter args;
+    if (!dbus_message_iter_init(msg, &args)) return;
+
+    if (dbus_message_iter_get_arg_type(&args) != DBUS_TYPE_VARIANT) return;
+    const char *text = extract_ibus_text(&args);
+    if (text) {
+        preedit_text_len = strlen(text);
+        if (preedit_text_len >= (int)sizeof(preedit_text))
+            preedit_text_len = (int)sizeof(preedit_text) - 1;
+        memcpy(preedit_text, text, preedit_text_len);
+        preedit_text[preedit_text_len] = '\0';
+    } else {
+        preedit_text[0] = '\0';
+        preedit_text_len = 0;
+    }
+
+    /* arg1 = cursor_pos */
+    dbus_message_iter_next(&args);
+    if (dbus_message_iter_get_arg_type(&args) == DBUS_TYPE_UINT32) {
+        dbus_message_iter_get_basic(&args, &preedit_cursor);
+    }
+
+    /* arg2 = visible */
+    dbus_message_iter_next(&args);
+    if (dbus_message_iter_get_arg_type(&args) == DBUS_TYPE_BOOLEAN) {
+        dbus_message_iter_get_basic(&args, &preedit_visible);
+    }
+
+    fprintf(stderr, "[LinuxImeFix] preedit: '%s' cursor=%d visible=%d\n",
+            preedit_text, preedit_cursor, preedit_visible);
+}
+
+/* ── Drain all signals ── */
+
+static void drain_signals(int timeout_ms) {
+    if (!conn) return;
+    if (!dbus_connection_read_write(conn, timeout_ms)) return;
 
     DBusMessage *msg;
     while ((msg = dbus_connection_pop_message(conn)) != NULL) {
+        const char *member = dbus_message_get_member(msg);
+
         if (dbus_message_is_signal(msg, "org.freedesktop.IBus.InputContext", "CommitText")) {
-            /* CommitText arg: variant containing struct (sa{sv}sv)
-               The last 's' in the struct is the text. */
-            DBusMessageIter iter;
-            if (dbus_message_iter_init(msg, &iter) &&
-                dbus_message_iter_get_arg_type(&iter) == DBUS_TYPE_VARIANT) {
-                DBusMessageIter var_iter;
-                dbus_message_iter_recurse(&iter, &var_iter);
-
-                if (dbus_message_iter_get_arg_type(&var_iter) == DBUS_TYPE_STRUCT) {
-                    DBusMessageIter struct_iter;
-                    dbus_message_iter_recurse(&var_iter, &struct_iter);
-
-                    /* Skip type name (string) */
-                    while (dbus_message_iter_get_arg_type(&struct_iter) == DBUS_TYPE_STRING)
-                        dbus_message_iter_next(&struct_iter);
-                    /* Skip properties (array) */
-                    if (dbus_message_iter_get_arg_type(&struct_iter) == DBUS_TYPE_ARRAY)
-                        dbus_message_iter_next(&struct_iter);
-
-                    /* Now should be the text string */
-                    if (dbus_message_iter_get_arg_type(&struct_iter) == DBUS_TYPE_STRING) {
-                        const char *text = NULL;
-                        dbus_message_iter_get_basic(&struct_iter, &text);
-                        if (text && *text) {
-                            int len = strlen(text);
-                            int space = (int)sizeof(pending_commit) - 1 - pending_commit_len;
-                            if (len > space) len = space;
-                            if (len > 0) {
-                                memcpy(pending_commit + pending_commit_len, text, len);
-                                pending_commit_len += len;
-                                pending_commit[pending_commit_len] = '\0';
-                            }
-                            fprintf(stderr, "[LinuxImeFix] commit: %s\n", text);
-                            logged_commit = 1;
-                        }
+            DBusMessageIter args;
+            if (dbus_message_iter_init(msg, &args) &&
+                dbus_message_iter_get_arg_type(&args) == DBUS_TYPE_VARIANT) {
+                const char *text = extract_ibus_text(&args);
+                if (text && *text) {
+                    int len = strlen(text);
+                    int space = (int)sizeof(pending_commit) - 1 - pending_commit_len;
+                    if (len > space) len = space;
+                    if (len > 0) {
+                        memcpy(pending_commit + pending_commit_len, text, len);
+                        pending_commit_len += len;
+                        pending_commit[pending_commit_len] = '\0';
                     }
+                    fprintf(stderr, "[LinuxImeFix] commit: %s\n", text);
                 }
             }
         }
+        else if (dbus_message_is_signal(msg, "org.freedesktop.IBus.InputContext", "UpdatePreeditText")) {
+            parse_preedit_text(msg);
+        }
+        else if (dbus_message_is_signal(msg, "org.freedesktop.IBus.InputContext", "UpdateLookupTable")) {
+            parse_lookup_table(msg);
+        }
+        else if (dbus_message_is_signal(msg, "org.freedesktop.IBus.InputContext", "ShowPreeditText")) {
+            preedit_visible = 1;
+        }
+        else if (dbus_message_is_signal(msg, "org.freedesktop.IBus.InputContext", "HidePreeditText")) {
+            preedit_visible = 0;
+            preedit_text[0] = '\0';
+            preedit_text_len = 0;
+        }
+        else if (dbus_message_is_signal(msg, "org.freedesktop.IBus.InputContext", "ShowLookupTable")) {
+            lookup_visible = 1;
+        }
+        else if (dbus_message_is_signal(msg, "org.freedesktop.IBus.InputContext", "HideLookupTable")) {
+            lookup_visible = 0;
+            candidate_count = 0;
+        }
+
         dbus_message_unref(msg);
     }
 }
@@ -199,10 +338,7 @@ static int init_ibus(void) {
     dbus_error_init(&err);
 
     char *addr = find_ibus_address();
-    if (!addr) {
-        fprintf(stderr, "[LinuxImeFix] Cannot find IBus address\n");
-        return 0;
-    }
+    if (!addr) { fprintf(stderr, "[LinuxImeFix] Cannot find IBus address\n"); return 0; }
     fprintf(stderr, "[LinuxImeFix] IBus address: %s\n", addr);
 
     conn = dbus_connection_open_private(addr, &err);
@@ -223,8 +359,7 @@ static int init_ibus(void) {
     DBusMessage *reply = dbus_call(conn,
         "org.freedesktop.IBus", "/org/freedesktop/IBus",
         "org.freedesktop.IBus", "CreateInputContext",
-        DBUS_TYPE_STRING, "rimworld-ime-fix",
-        DBUS_TYPE_INVALID);
+        DBUS_TYPE_STRING, "rimworld-ime-fix", DBUS_TYPE_INVALID);
     if (!reply) return 0;
 
     DBusMessageIter args;
@@ -247,15 +382,22 @@ static int init_ibus(void) {
     dbus_call(conn, "org.freedesktop.IBus", ic_path,
         "org.freedesktop.IBus.InputContext", "FocusIn", DBUS_TYPE_INVALID);
 
-    /* Add signal match */
-    char match[512];
-    snprintf(match, sizeof(match),
-        "type='signal',interface='org.freedesktop.IBus.InputContext',member='CommitText',path='%s'",
-        ic_path);
-    dbus_bus_add_match(conn, match, &err);
-    if (dbus_error_is_set(&err)) {
-        fprintf(stderr, "[LinuxImeFix] Match add: %s\n", err.message);
-        dbus_error_free(&err);
+    /* Add signal matches for ALL signals we care about */
+    const char *signals[] = {
+        "CommitText", "UpdatePreeditText", "ShowPreeditText", "HidePreeditText",
+        "UpdateLookupTable", "ShowLookupTable", "HideLookupTable",
+        NULL
+    };
+    for (int i = 0; signals[i]; i++) {
+        char match[512];
+        snprintf(match, sizeof(match),
+            "type='signal',interface='org.freedesktop.IBus.InputContext',member='%s',path='%s'",
+            signals[i], ic_path);
+        dbus_bus_add_match(conn, match, &err);
+        if (dbus_error_is_set(&err)) {
+            fprintf(stderr, "[LinuxImeFix] Match add %s: %s\n", signals[i], err.message);
+            dbus_error_free(&err);
+        }
     }
 
     fprintf(stderr, "[LinuxImeFix] IBus helper ready\n");
@@ -288,25 +430,16 @@ int rimworld_ime_process_key(int keyval, int keycode, int state) {
         dbus_message_iter_get_basic(&args, &consumed);
     dbus_message_unref(reply);
 
-    if (!logged_key) {
-        fprintf(stderr, "[LinuxImeFix] process_key(val=%d code=%d state=%d) => %d\n",
-                keyval, keycode, state, consumed);
-        logged_key = 1;
-    }
-
-    /* If consumed, drain for CommitText signal (short timeout) */
     if (consumed) {
-        drain_commits(10); /* 10ms max */
+        drain_signals(10);
     }
-
     return consumed ? 1 : 0;
 }
 
 __attribute__((visibility("default")))
 int rimworld_ime_poll_utf8(char *buf, int len) {
     if (!buf || len <= 0) return 0;
-    /* Also try a non-blocking drain */
-    if (conn) drain_commits(0);
+    if (conn) drain_signals(0);
     if (pending_commit_len <= 0) return 0;
     int n = pending_commit_len;
     if (n > len - 1) n = len - 1;
@@ -317,6 +450,56 @@ int rimworld_ime_poll_utf8(char *buf, int len) {
     pending_commit_len = remain;
     pending_commit[pending_commit_len] = '\0';
     return n;
+}
+
+__attribute__((visibility("default")))
+int rimworld_ime_get_preedit(char *buf, int len) {
+    if (!buf || len <= 0) return 0;
+    if (conn) drain_signals(0);
+    if (preedit_text_len <= 0 || !preedit_visible) return 0;
+    int n = preedit_text_len;
+    if (n > len - 1) n = len - 1;
+    memcpy(buf, preedit_text, n);
+    buf[n] = '\0';
+    return n;
+}
+
+__attribute__((visibility("default")))
+int rimworld_ime_get_preedit_cursor(void) {
+    return preedit_cursor;
+}
+
+__attribute__((visibility("default")))
+int rimworld_ime_is_preedit_visible(void) {
+    if (conn) drain_signals(0);
+    return preedit_visible ? 1 : 0;
+}
+
+__attribute__((visibility("default")))
+int rimworld_ime_get_candidate_count(void) {
+    if (conn) drain_signals(0);
+    return candidate_count;
+}
+
+__attribute__((visibility("default")))
+int rimworld_ime_get_candidate(int index, char *buf, int len) {
+    if (!buf || len <= 0 || index < 0 || index >= candidate_count) return 0;
+    int slen = strlen(candidates[index]);
+    if (slen > len - 1) slen = len - 1;
+    memcpy(buf, candidates[index], slen);
+    buf[slen] = '\0';
+    return slen;
+}
+
+__attribute__((visibility("default")))
+int rimworld_ime_get_lookup_cursor(void) {
+    return lookup_cursor_pos;
+}
+
+__attribute__((visibility("default")))
+int rimworld_ime_is_lookup_visible(void) {
+    if (conn) drain_signals(0);
+    return lookup_visible ? 1 : 0;
 }
 
 __attribute__((visibility("default")))
@@ -360,6 +543,11 @@ void rimworld_ime_reset(void) {
     if (!conn || !ic_path) return;
     dbus_call(conn, "org.freedesktop.IBus", ic_path,
         "org.freedesktop.IBus.InputContext", "Reset", DBUS_TYPE_INVALID);
+    preedit_text[0] = '\0';
+    preedit_text_len = 0;
+    preedit_visible = 0;
+    candidate_count = 0;
+    lookup_visible = 0;
 }
 
 __attribute__((visibility("default")))
@@ -370,5 +558,5 @@ static void init(void) {
     setlocale(LC_ALL, "");
     if (!getenv("XMODIFIERS") || !*getenv("XMODIFIERS"))
         setenv("XMODIFIERS", "@im=ibus", 1);
-    fprintf(stderr, "[LinuxImeFix] native helper loaded (C/dbus v7)\n");
+    fprintf(stderr, "[LinuxImeFix] native helper loaded (C/dbus v8)\n");
 }
