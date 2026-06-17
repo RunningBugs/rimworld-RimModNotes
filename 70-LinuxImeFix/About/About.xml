@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.LinuxImeFix</packageId>
+	<name>Linux IME Fix Linux 输入法修复</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.6</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li>
+	</modDependencies>
+
+	<description>
+[h1] Linux IME Fix Linux 输入法修复 [/h1]
+
+Enables Unity IME composition for RimWorld's legacy IMGUI text fields on Linux.
+
+This is intended for Linux desktop players using IBus/Rime/Fcitx-style input methods where pasting Chinese works but direct IME input does not.
+
+[h2] What it does [/h2]
+- Detects active IMGUI TextField/TextArea controls.
+- Forces Unity's IME composition mode on while a text field is focused.
+- Updates Unity's composition cursor position so the input method has a target location.
+- Suppresses RimWorld's global Accept action while an IME composition string is active.
+
+[h2] 中文说明 [/h2]
+用于修复 Linux 下 RimWorld 旧 IMGUI 文本框无法直接使用系统输入法的问题。适用于“粘贴中文可以，但直接输入法输入不行”的情况。
+	</description>
+</ModMetaData>
