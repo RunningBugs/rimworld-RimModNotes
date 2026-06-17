@@ -21,6 +21,7 @@ public static class Start
         if (LinuxImeUtility.IsLinux)
         {
             NativeBridge.Load();
+            CandidateWindowRenderer.EnsureExists();
             Log.Message("[LinuxImeFix] Linux IME patches active.".Colorize(Color.green));
         }
         else
@@ -35,7 +36,6 @@ public sealed class TextFieldState
     public int Select;
     public bool KeyConsumed;
     public string Commit;
-    public Rect TextFieldRect;
 }
 
 public static class NativeBridge
@@ -75,7 +75,6 @@ public static class NativeBridge
     private static SetCursorDelegate pSetCursor;
     private static ResetDelegate pReset;
     private static IsReadyDelegate pIsReady;
-
     private static byte[] buffer = new byte[4096];
 
     [DllImport("libdl.so.2")] private static extern IntPtr dlopen(string f, int flags);
@@ -164,6 +163,13 @@ public static class LinuxImeUtility
     private static string compBaseText = "";
     private static int compBaseCursor, compBaseSelect;
 
+    // Stored candidate window anchor positions (in UI-screen coordinates via UI.GUIToScreenPoint).
+    // Calculated during FinishTextField when GUI group stack is correct.
+    // Used by DrawCandidateWindow in UIRootOnGUI postfix (drawn on top of everything).
+    private static Vector2 storedAnchorBelow; // position below text field (cursor X, rect.yMax)
+    private static Vector2 storedAnchorAbove; // position above text field (cursor X, rect.yMin)
+    private static bool hasStoredAnchor;
+
     public static TextFieldState PrepareTextField(Rect rect, string text)
     {
         var state = new TextFieldState
@@ -171,7 +177,6 @@ public static class LinuxImeUtility
             Text = text ?? "",
             Cursor = (text ?? "").Length,
             Select = (text ?? "").Length,
-            TextFieldRect = rect
         };
         if (!IsLinux) return state;
 
@@ -209,34 +214,28 @@ public static class LinuxImeUtility
         if (Event.current == null || Event.current.type != EventType.KeyDown) return;
 
         var kc = Event.current.keyCode;
-
-        // Don't intercept modifier-only presses
         if (Event.current.character == '\0' && IsModifierKey(kc)) return;
 
-        // Convert to IBus keyval — use character if available, else use keyCode.
-        // For special keys like BackSpace, the character is '\b' (0x08) or the
-        // keyCode maps to X11 keysyms (e.g. BackSpace = 0xFF08).
+        // Convert to IBus keyval.
+        // IMPORTANT: check keyCode FIRST for special keys, because Unity sets
+        // Event.current.character to '\b' (0x08) for BackSpace, not '\0'.
+        // Sending 0x08 to IBus does nothing; we need X11 keysym 0xFF08.
         int keyval;
-        if (Event.current.character != '\0')
+        if (kc == KeyCode.Backspace) keyval = 0xFF08;
+        else if (kc == KeyCode.Delete) keyval = 0xFFFF;
+        else if (kc == KeyCode.LeftArrow) keyval = 0xFF51;
+        else if (kc == KeyCode.RightArrow) keyval = 0xFF53;
+        else if (kc == KeyCode.UpArrow) keyval = 0xFF52;
+        else if (kc == KeyCode.DownArrow) keyval = 0xFF54;
+        else if (kc == KeyCode.Home) keyval = 0xFF50;
+        else if (kc == KeyCode.End) keyval = 0xFF57;
+        else if (kc == KeyCode.Escape) keyval = 0xFF1B;
+        else if (kc == KeyCode.Return || kc == KeyCode.KeypadEnter) keyval = 0xFF0D;
+        else if (kc == KeyCode.Tab) keyval = 0xFF09;
+        else if (kc == KeyCode.PageUp) keyval = 0xFF55;
+        else if (kc == KeyCode.PageDown) keyval = 0xFF56;
+        else if (Event.current.character != '\0')
             keyval = (int)Event.current.character;
-        else if (kc == KeyCode.Backspace)
-            keyval = 0xFF08;  // XK_BackSpace
-        else if (kc == KeyCode.Delete)
-            keyval = 0xFFFF;  // XK_Delete
-        else if (kc == KeyCode.LeftArrow)
-            keyval = 0xFF51;  // XK_Left
-        else if (kc == KeyCode.RightArrow)
-            keyval = 0xFF53;  // XK_Right
-        else if (kc == KeyCode.Home)
-            keyval = 0xFF50;  // XK_Home
-        else if (kc == KeyCode.End)
-            keyval = 0xFF57;  // XK_End
-        else if (kc == KeyCode.Escape)
-            keyval = 0xFF1B;  // XK_Escape
-        else if (kc == KeyCode.Return || kc == KeyCode.KeypadEnter)
-            keyval = 0xFF0D;  // XK_Return
-        else if (kc == KeyCode.Tab)
-            keyval = 0xFF09;  // XK_Tab
         else
             keyval = (int)kc;
 
@@ -245,9 +244,6 @@ public static class LinuxImeUtility
         if (Event.current.control) ibusState |= 0x4;
         if (Event.current.alt) ibusState |= 0x8;
 
-        // Always send to IBus — even editing keys like BackSpace.
-        // During preedit, BackSpace should modify the preedit text in IBus,
-        // not delete from Unity's text field (which has no preedit).
         bool consumed = NativeBridge.ProcessKey(keyval, 0, ibusState);
         string commit = NativeBridge.PollCommit();
 
@@ -255,7 +251,6 @@ public static class LinuxImeUtility
         {
             Event.current.Use();
             state.KeyConsumed = true;
-
             if (!composing || compControl != GUIUtility.keyboardControl)
             {
                 composing = true;
@@ -264,7 +259,6 @@ public static class LinuxImeUtility
                 compBaseCursor = state.Cursor;
                 compBaseSelect = state.Select;
             }
-
             if (!string.IsNullOrEmpty(commit))
             {
                 state.Commit = commit;
@@ -293,12 +287,10 @@ public static class LinuxImeUtility
             string baseText = state.KeyConsumed ? compBaseText : (result ?? "");
             int cursor = state.KeyConsumed ? compBaseCursor : state.Cursor;
             int select = state.KeyConsumed ? compBaseSelect : state.Select;
-
             int a = Mathf.Clamp(Mathf.Min(cursor, select), 0, baseText.Length);
             int b = Mathf.Clamp(Mathf.Max(cursor, select), 0, baseText.Length);
             string next = baseText.Remove(a, b - a).Insert(a, state.Commit);
             int caret = a + state.Commit.Length;
-
             result = next;
             if (TryGetActiveTextEditor(out var editor))
             {
@@ -312,40 +304,61 @@ public static class LinuxImeUtility
             Log.Message($"[LinuxImeFix] commit '{state.Commit}' -> '{next}'".Colorize(Color.cyan));
         }
 
-        // Draw candidate window HERE — we're still in the TextField's GUI
-        // coordinate space, so position will be correct regardless of
-        // UIScale, ScrollView, Window, or BeginGroup nesting.
-        DrawCandidateWindow(rect);
+        // Only store anchor if THIS text field has keyboard focus.
+        // Otherwise we'd overwrite the anchor of the focused field with
+        // coordinates from an unfocused field (e.g. background text fields).
+        if (TryGetActiveTextEditor(out var ed) && RectLooksLike(ed.position, rect))
+        {
+            StoreCandidateAnchor(rect);
+        }
     }
 
-    private static void CalculateCursorScreenPos(TextEditor editor, Rect rect)
+    private static void StoreCandidateAnchor(Rect rect)
     {
-        // Deprecated — DrawCandidateWindow now uses TextField rect directly.
+        if (!NativeBridge.IsReady) { hasStoredAnchor = false; return; }
+
+        // Calculate cursor X offset using the TextField's current font
+        float cursorXOffset = 0;
+        if (TryGetActiveTextEditor(out var editor))
+        {
+            string textBeforeCursor = editor.text ?? "";
+            int ci = Mathf.Clamp(editor.cursorIndex, 0, textBeforeCursor.Length);
+            textBeforeCursor = textBeforeCursor.Substring(0, ci);
+            cursorXOffset = Text.CalcSize(textBeforeCursor).x;
+        }
+
+        // Convert local GUI coordinates to UI-screen coordinates.
+        // UI.GUIToScreenPoint handles UIScale and GUI group nesting.
+        Vector2 below = UI.GUIToScreenPoint(new Vector2(rect.xMin + cursorXOffset, rect.yMax + 2f));
+        Vector2 above = UI.GUIToScreenPoint(new Vector2(rect.xMin + cursorXOffset, rect.yMin - 2f));
+        storedAnchorBelow = below;
+        storedAnchorAbove = above;
+        hasStoredAnchor = true;
     }
 
-    public static void DrawCandidateWindow(Rect textFieldRect)
+    /// <summary>
+    /// Called from UIRootOnGUI postfix — draws on top of all other UI.
+    /// Uses anchor positions stored during FinishTextField.
+    /// </summary>
+    public static void DrawCandidateWindow()
     {
-        if (!IsLinux || !NativeBridge.IsReady) return;
+        if (!IsLinux || !NativeBridge.IsReady || !hasStoredAnchor) return;
 
         bool lookupVisible = NativeBridge.IsLookupVisible();
         bool preeditVisible = NativeBridge.IsPreeditVisible();
-
         if (!lookupVisible && !preeditVisible) return;
 
         string preedit = NativeBridge.GetPreedit() ?? "";
         int candCount = NativeBridge.GetCandidateCount();
         int lookupCursor = NativeBridge.GetLookupCursor();
-
         if (string.IsNullOrEmpty(preedit) && candCount == 0) return;
 
-        // Calculate window size
+        // Calculate window dimensions
         float lineHeight = 20f;
         float padding = 5f;
         float width = 280f;
         float height = padding * 2;
-
-        if (!string.IsNullOrEmpty(preedit))
-            height += lineHeight;
+        if (!string.IsNullOrEmpty(preedit)) height += lineHeight;
 
         List<string> candidates = new();
         for (int i = 0; i < candCount; i++)
@@ -358,40 +371,43 @@ public static class LinuxImeUtility
                 if (w > width) width = w;
             }
         }
+        if (candidates.Count > 0) height += candidates.Count * lineHeight;
 
-        if (candidates.Count > 0)
-            height += candidates.Count * lineHeight;
+        // Position: default below text field at cursor X
+        float baseX = storedAnchorBelow.x;
+        float baseY = storedAnchorBelow.y;
 
-        // Calculate cursor X position within the text field
-        float cursorXOffset = 0;
-        if (TryGetActiveTextEditor(out var editor))
-        {
-            string textBeforeCursor = editor.text ?? "";
-            int ci = Mathf.Clamp(editor.cursorIndex, 0, textBeforeCursor.Length);
-            textBeforeCursor = textBeforeCursor.Substring(0, ci);
-            cursorXOffset = Text.CalcSize(textBeforeCursor).x;
-        }
-
-        // Position: below text field, aligned with cursor X
-        float baseX = textFieldRect.xMin + cursorXOffset;
-        float baseY = textFieldRect.yMax + 2f;
-
-        // Screen boundary detection (using UI.screenWidth/Height which
-        // accounts for UIScale)
+        // Boundary detection using UI.screenWidth/Height
         float sw = UI.screenWidth;
         float sh = UI.screenHeight;
 
-        // Horizontal: if right edge goes off screen, shift left
+        // Horizontal: keep window within screen
         if (baseX + width > sw - 4f)
             baseX = sw - width - 4f;
         if (baseX < 4f)
             baseX = 4f;
 
-        // Vertical: if bottom goes off screen, show above text field
+        // Vertical: if below doesn't fit, try above
         if (baseY + height > sh - 4f)
-            baseY = textFieldRect.yMin - height - 2f;
-        if (baseY < 4f)
-            baseY = 4f;
+        {
+            // Try above
+            float aboveY = storedAnchorAbove.y - height;
+            if (aboveY >= 4f)
+            {
+                baseY = aboveY;
+            }
+            else
+            {
+                // Neither fits perfectly — pick whichever has more room
+                float belowOverflow = (baseY + height) - (sh - 4f);
+                float aboveOverflow = 4f - aboveY;
+                if (aboveOverflow < belowOverflow)
+                    baseY = aboveY;
+                else
+                    baseY = Mathf.Clamp(baseY, 4f, sh - height - 4f);
+            }
+        }
+        if (baseY < 4f) baseY = 4f;
 
         Rect windowRect = new Rect(baseX, baseY, width, height);
 
@@ -399,14 +415,11 @@ public static class LinuxImeUtility
         GUI.color = new Color(0.12f, 0.12f, 0.12f, 0.95f);
         GUI.DrawTexture(windowRect, BaseContent.WhiteTex);
         GUI.color = Color.white;
-
-        // Draw border
         Widgets.DrawBox(windowRect, 1);
 
-        // Draw content
         float y = windowRect.yMin + padding;
 
-        // Preedit text
+        // Preedit
         if (!string.IsNullOrEmpty(preedit))
         {
             GUI.color = Color.yellow;
@@ -426,21 +439,18 @@ public static class LinuxImeUtility
         {
             bool selected = i == lookupCursor;
             Rect candRect = new Rect(windowRect.xMin + padding, y, width - padding * 2, lineHeight);
-
             if (selected)
             {
                 GUI.color = new Color(0.3f, 0.5f, 0.8f, 0.8f);
                 GUI.DrawTexture(candRect, BaseContent.WhiteTex);
                 GUI.color = Color.white;
             }
-
             string label = $"{i + 1}. {candidates[i]}";
             GUI.color = selected ? Color.white : new Color(0.85f, 0.85f, 0.85f);
             GUI.Label(candRect, label);
             GUI.color = Color.white;
             y += lineHeight;
         }
-
         Text.Font = GameFont.Small;
     }
 
@@ -451,6 +461,7 @@ public static class LinuxImeUtility
         {
             NativeBridge.FocusOut();
             Input.imeCompositionMode = IMECompositionMode.Auto;
+            hasStoredAnchor = false;
         }
     }
 
@@ -516,4 +527,36 @@ public static class UIRoot_Play_Patch
 public static class UIRoot_Entry_Patch
 {
     public static void Postfix() => LinuxImeUtility.FrameEndRefresh();
+}
+
+/// <summary>
+/// MonoBehaviour that draws the candidate window in its own OnGUI call.
+/// GUI.depth controls draw order: lower depth = drawn later = on top.
+/// This ensures the candidate window is always above other UI.
+/// </summary>
+public class CandidateWindowRenderer : MonoBehaviour
+{
+    private static CandidateWindowRenderer instance;
+
+    public static void EnsureExists()
+    {
+        if (instance != null) return;
+        var go = new GameObject("LinuxImeFix_CandidateWindowRenderer");
+        instance = go.AddComponent<CandidateWindowRenderer>();
+        DontDestroyOnLoad(go);
+    }
+
+    void OnGUI()
+    {
+        GUI.depth = -1000;
+        // Apply the same UIScale matrix that RimWorld uses (UI.ApplyUIScale).
+        // Without this, coordinates stored during UIRootOnGUI (in UI space)
+        // won't match the drawing space in this separate OnGUI call.
+        if (Prefs.UIScale != 1f)
+        {
+            GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity,
+                new Vector3(Prefs.UIScale, Prefs.UIScale, 1f));
+        }
+        LinuxImeUtility.DrawCandidateWindow();
+    }
 }
