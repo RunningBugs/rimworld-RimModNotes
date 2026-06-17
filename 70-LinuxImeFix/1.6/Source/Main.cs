@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -17,16 +18,13 @@ public static class Start
     {
         Harmony harmony = new("com.RunningBugs.LinuxImeFix");
         harmony.PatchAll();
-
         if (LinuxImeUtility.IsLinux)
         {
             NativeBridge.Load();
             Log.Message("[LinuxImeFix] Linux IME patches active.".Colorize(Color.green));
         }
         else
-        {
             Log.Message("[LinuxImeFix] Not LinuxPlayer, idle.".Colorize(Color.gray));
-        }
     }
 }
 
@@ -37,18 +35,25 @@ public sealed class TextFieldState
     public int Select;
     public bool KeyConsumed;
     public string Commit;
+    public Rect TextFieldRect;
 }
 
 public static class NativeBridge
 {
     private const int RTLD_NOW = 2;
-    private static bool loadAttempted;
-    private static bool available;
+    private static bool loadAttempted, available;
     private static IntPtr handle;
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)] private delegate int InitDelegate();
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)] private delegate int ProcessKeyDelegate(int keyval, int keycode, int state);
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)] private delegate int PollUtf8Delegate(byte[] buf, int len);
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)] private delegate int GetPreeditDelegate(byte[] buf, int len);
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)] private delegate int GetPreeditCursorDelegate();
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)] private delegate int IsPreeditVisibleDelegate();
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)] private delegate int GetCandidateCountDelegate();
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)] private delegate int GetCandidateDelegate(int index, byte[] buf, int len);
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)] private delegate int GetLookupCursorDelegate();
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)] private delegate int IsLookupVisibleDelegate();
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)] private delegate void FocusInDelegate();
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)] private delegate void FocusOutDelegate();
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)] private delegate void SetCursorDelegate(int x, int y);
@@ -58,11 +63,19 @@ public static class NativeBridge
     private static InitDelegate pInit;
     private static ProcessKeyDelegate pProcessKey;
     private static PollUtf8Delegate pPollUtf8;
+    private static GetPreeditDelegate pGetPreedit;
+    private static GetPreeditCursorDelegate pGetPreeditCursor;
+    private static IsPreeditVisibleDelegate pIsPreeditVisible;
+    private static GetCandidateCountDelegate pGetCandidateCount;
+    private static GetCandidateDelegate pGetCandidate;
+    private static GetLookupCursorDelegate pGetLookupCursor;
+    private static IsLookupVisibleDelegate pIsLookupVisible;
     private static FocusInDelegate pFocusIn;
     private static FocusOutDelegate pFocusOut;
     private static SetCursorDelegate pSetCursor;
     private static ResetDelegate pReset;
     private static IsReadyDelegate pIsReady;
+
     private static byte[] buffer = new byte[4096];
 
     [DllImport("libdl.so.2")] private static extern IntPtr dlopen(string f, int flags);
@@ -83,6 +96,13 @@ public static class NativeBridge
             pInit = Get<InitDelegate>("rimworld_ime_init");
             pProcessKey = Get<ProcessKeyDelegate>("rimworld_ime_process_key");
             pPollUtf8 = Get<PollUtf8Delegate>("rimworld_ime_poll_utf8");
+            pGetPreedit = Get<GetPreeditDelegate>("rimworld_ime_get_preedit");
+            pGetPreeditCursor = Get<GetPreeditCursorDelegate>("rimworld_ime_get_preedit_cursor");
+            pIsPreeditVisible = Get<IsPreeditVisibleDelegate>("rimworld_ime_is_preedit_visible");
+            pGetCandidateCount = Get<GetCandidateCountDelegate>("rimworld_ime_get_candidate_count");
+            pGetCandidate = Get<GetCandidateDelegate>("rimworld_ime_get_candidate");
+            pGetLookupCursor = Get<GetLookupCursorDelegate>("rimworld_ime_get_lookup_cursor");
+            pIsLookupVisible = Get<IsLookupVisibleDelegate>("rimworld_ime_is_lookup_visible");
             pFocusIn = Get<FocusInDelegate>("rimworld_ime_focus_in");
             pFocusOut = Get<FocusOutDelegate>("rimworld_ime_focus_out");
             pSetCursor = Get<SetCursorDelegate>("rimworld_ime_set_cursor");
@@ -97,14 +117,30 @@ public static class NativeBridge
     }
 
     public static bool IsReady => available && pIsReady != null && pIsReady() != 0;
-    public static bool ProcessKey(int keyval, int keycode, int state) => available && pProcessKey != null && pProcessKey(keyval, keycode, state) != 0;
+    public static bool ProcessKey(int k, int c, int s) => available && pProcessKey != null && pProcessKey(k, c, s) != 0;
     public static string PollCommit()
     {
         if (!available || pPollUtf8 == null) return null;
         int n = pPollUtf8(buffer, buffer.Length);
-        if (n <= 0) return null;
-        return System.Text.Encoding.UTF8.GetString(buffer, 0, n);
+        return n <= 0 ? null : System.Text.Encoding.UTF8.GetString(buffer, 0, n);
     }
+    public static string GetPreedit()
+    {
+        if (!available || pGetPreedit == null) return null;
+        int n = pGetPreedit(buffer, buffer.Length);
+        return n <= 0 ? null : System.Text.Encoding.UTF8.GetString(buffer, 0, n);
+    }
+    public static int GetPreeditCursor() => available && pGetPreeditCursor != null ? pGetPreeditCursor() : 0;
+    public static bool IsPreeditVisible() => available && pIsPreeditVisible != null && pIsPreeditVisible() != 0;
+    public static int GetCandidateCount() => available && pGetCandidateCount != null ? pGetCandidateCount() : 0;
+    public static string GetCandidate(int idx)
+    {
+        if (!available || pGetCandidate == null) return null;
+        int n = pGetCandidate(idx, buffer, buffer.Length);
+        return n <= 0 ? null : System.Text.Encoding.UTF8.GetString(buffer, 0, n);
+    }
+    public static int GetLookupCursor() => available && pGetLookupCursor != null ? pGetLookupCursor() : 0;
+    public static bool IsLookupVisible() => available && pIsLookupVisible != null && pIsLookupVisible() != 0;
     public static void FocusIn() { if (available && pFocusIn != null) pFocusIn(); }
     public static void FocusOut() { if (available && pFocusOut != null) pFocusOut(); }
     public static void SetCursor(int x, int y) { if (available && pSetCursor != null) pSetCursor(x, y); }
@@ -123,17 +159,24 @@ public static class LinuxImeUtility
 {
     public static bool IsLinux => Application.platform == RuntimePlatform.LinuxPlayer;
     private static int lastLoggedControl;
-
-    // Composition tracking: save text field state when IME starts consuming keys.
-    // Restore + insert when commit arrives.
     private static bool composing;
     private static int compControl;
     private static string compBaseText = "";
     private static int compBaseCursor, compBaseSelect;
 
+    // Current text field position for candidate window
+    private static Vector2 candidateWindowPos;
+    private static bool hasActiveTextField;
+
     public static TextFieldState PrepareTextField(Rect rect, string text)
     {
-        var state = new TextFieldState { Text = text ?? "", Cursor = (text ?? "").Length, Select = (text ?? "").Length };
+        var state = new TextFieldState
+        {
+            Text = text ?? "",
+            Cursor = (text ?? "").Length,
+            Select = (text ?? "").Length,
+            TextFieldRect = rect
+        };
         if (!IsLinux) return state;
 
         if (TryGetActiveTextEditor(out var editor) && RectLooksLike(editor.position, rect))
@@ -151,16 +194,21 @@ public static class LinuxImeUtility
             Input.imeCompositionMode = IMECompositionMode.On;
             Input.compositionCursorPos = new Vector2(rect.xMin + 8f, rect.yMax + 2f);
 
+            // Store position for candidate window
+            candidateWindowPos = new Vector2(rect.xMin, rect.yMax);
+            hasActiveTextField = true;
+
             if (lastLoggedControl != editor.controlID)
             {
                 lastLoggedControl = editor.controlID;
                 Log.Message($"[LinuxImeFix] TextField control={editor.controlID}".Colorize(Color.cyan));
             }
 
-            // Process key event in Prefix BEFORE GUI.TextField runs.
-            // GUI.TextField internally does textEditor.text = text, overwriting any changes.
-            // So we must Use() the event here, and apply commit in Postfix.
             ProcessKeyEvent(state);
+        }
+        else
+        {
+            hasActiveTextField = false;
         }
         return state;
     }
@@ -169,7 +217,6 @@ public static class LinuxImeUtility
     {
         state.KeyConsumed = false;
         state.Commit = null;
-
         if (!NativeBridge.IsReady) return;
         if (Event.current == null || Event.current.type != EventType.KeyDown) return;
 
@@ -188,11 +235,9 @@ public static class LinuxImeUtility
 
         if (consumed)
         {
-            // Eat the event so GUI.TextField doesn't process this key
             Event.current.Use();
             state.KeyConsumed = true;
 
-            // Track composition
             if (!composing || compControl != GUIUtility.keyboardControl)
             {
                 composing = true;
@@ -218,7 +263,6 @@ public static class LinuxImeUtility
     {
         if (!IsLinux) return;
 
-        // Check for late commits (arrived after ProcessKey but before Postfix)
         if (state.Commit == null && NativeBridge.IsReady)
         {
             string late = NativeBridge.PollCommit();
@@ -228,20 +272,9 @@ public static class LinuxImeUtility
 
         if (!string.IsNullOrEmpty(state.Commit))
         {
-            // GUI.TextField returned the original text (event was Use'd).
-            // Now we insert the commit into the result.
-            // RimWorld will use __result to update its own variable (e.g. curName).
-            string baseText = result ?? "";
-            int cursor = state.Cursor;
-            int select = state.Select;
-
-            // If we were composing, use the pre-composition state as base
-            if (state.KeyConsumed)
-            {
-                baseText = compBaseText;
-                cursor = compBaseCursor;
-                select = compBaseSelect;
-            }
+            string baseText = state.KeyConsumed ? compBaseText : (result ?? "");
+            int cursor = state.KeyConsumed ? compBaseCursor : state.Cursor;
+            int select = state.KeyConsumed ? compBaseSelect : state.Select;
 
             int a = Mathf.Clamp(Mathf.Min(cursor, select), 0, baseText.Length);
             int b = Mathf.Clamp(Mathf.Max(cursor, select), 0, baseText.Length);
@@ -249,22 +282,107 @@ public static class LinuxImeUtility
             int caret = a + state.Commit.Length;
 
             result = next;
-
-            // Also update the TextEditor so it reflects the new text
             if (TryGetActiveTextEditor(out var editor))
             {
                 editor.text = next;
                 editor.cursorIndex = caret;
                 editor.selectIndex = caret;
             }
-
-            // Update composition base for next commit
             compBaseText = next;
             compBaseCursor = caret;
             compBaseSelect = caret;
-
             Log.Message($"[LinuxImeFix] commit '{state.Commit}' -> '{next}'".Colorize(Color.cyan));
         }
+    }
+
+    public static void DrawCandidateWindow()
+    {
+        if (!IsLinux || !NativeBridge.IsReady || !hasActiveTextField) return;
+
+        bool lookupVisible = NativeBridge.IsLookupVisible();
+        bool preeditVisible = NativeBridge.IsPreeditVisible();
+
+        if (!lookupVisible && !preeditVisible) return;
+
+        // Build content
+        string preedit = NativeBridge.GetPreedit() ?? "";
+        int candCount = NativeBridge.GetCandidateCount();
+        int lookupCursor = NativeBridge.GetLookupCursor();
+
+        if (string.IsNullOrEmpty(preedit) && candCount == 0) return;
+
+        // Calculate window size
+        float lineHeight = 22f;
+        float padding = 6f;
+        float width = 300f;
+        float height = padding * 2;
+
+        if (!string.IsNullOrEmpty(preedit))
+            height += lineHeight;
+
+        List<string> candidates = new();
+        for (int i = 0; i < candCount; i++)
+        {
+            string cand = NativeBridge.GetCandidate(i);
+            if (!string.IsNullOrEmpty(cand))
+                candidates.Add(cand);
+        }
+
+        if (candidates.Count > 0)
+            height += candidates.Count * lineHeight;
+
+        Rect windowRect = new Rect(candidateWindowPos.x, candidateWindowPos.y + 4f, width, height);
+
+        // Draw background
+        GUI.color = new Color(0.15f, 0.15f, 0.15f, 0.95f);
+        GUI.DrawTexture(windowRect, BaseContent.WhiteTex);
+        GUI.color = Color.white;
+
+        // Draw border
+        Widgets.DrawBox(windowRect, 1);
+
+        // Draw content
+        float y = windowRect.yMin + padding;
+
+        // Preedit text
+        if (!string.IsNullOrEmpty(preedit))
+        {
+            GUI.color = Color.yellow;
+            Text.Font = GameFont.Tiny;
+            // Draw preedit with cursor position indicator
+            string preeditDisplay = preedit;
+            if (NativeBridge.GetPreeditCursor() < preedit.Length)
+            {
+                int cursorPos = NativeBridge.GetPreeditCursor();
+                preeditDisplay = preedit.Substring(0, cursorPos) + "|" + preedit.Substring(cursorPos);
+            }
+            GUI.Label(new Rect(windowRect.xMin + padding, y, width - padding * 2, lineHeight), preeditDisplay);
+            y += lineHeight;
+            GUI.color = Color.white;
+        }
+
+        // Candidates
+        Text.Font = GameFont.Tiny;
+        for (int i = 0; i < candidates.Count; i++)
+        {
+            bool selected = i == lookupCursor;
+            Rect candRect = new Rect(windowRect.xMin + padding, y, width - padding * 2, lineHeight);
+
+            if (selected)
+            {
+                GUI.color = new Color(0.3f, 0.5f, 0.8f, 0.8f);
+                GUI.DrawTexture(candRect, BaseContent.WhiteTex);
+                GUI.color = Color.white;
+            }
+
+            string label = $"{i + 1}. {candidates[i]}";
+            GUI.color = selected ? Color.white : new Color(0.85f, 0.85f, 0.85f);
+            GUI.Label(candRect, label);
+            GUI.color = Color.white;
+            y += lineHeight;
+        }
+
+        Text.Font = GameFont.Small;
     }
 
     public static void FrameEndRefresh()
@@ -274,6 +392,7 @@ public static class LinuxImeUtility
         {
             NativeBridge.FocusOut();
             Input.imeCompositionMode = IMECompositionMode.Auto;
+            hasActiveTextField = false;
         }
     }
 
@@ -338,7 +457,21 @@ public static class DevGUI_TextField_Patch
 }
 
 [HarmonyPatch(typeof(UIRoot_Play), nameof(UIRoot_Play.UIRootOnGUI))]
-public static class UIRoot_Play_Patch { public static void Postfix() => LinuxImeUtility.FrameEndRefresh(); }
+public static class UIRoot_Play_Patch
+{
+    public static void Postfix()
+    {
+        LinuxImeUtility.FrameEndRefresh();
+        LinuxImeUtility.DrawCandidateWindow();
+    }
+}
 
 [HarmonyPatch(typeof(UIRoot_Entry), nameof(UIRoot_Entry.UIRootOnGUI))]
-public static class UIRoot_Entry_Patch { public static void Postfix() => LinuxImeUtility.FrameEndRefresh(); }
+public static class UIRoot_Entry_Patch
+{
+    public static void Postfix()
+    {
+        LinuxImeUtility.FrameEndRefresh();
+        LinuxImeUtility.DrawCandidateWindow();
+    }
+}
