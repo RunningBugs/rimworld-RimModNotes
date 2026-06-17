@@ -165,8 +165,9 @@ public static class LinuxImeUtility
     private static int compBaseCursor, compBaseSelect;
 
     // Current text field position for candidate window
-    private static Vector2 candidateWindowPos;
     private static bool hasActiveTextField;
+    private static Rect lastTextFieldRect;
+    private static int lastCursorIndex;
 
     public static TextFieldState PrepareTextField(Rect rect, string text)
     {
@@ -194,8 +195,9 @@ public static class LinuxImeUtility
             Input.imeCompositionMode = IMECompositionMode.On;
             Input.compositionCursorPos = new Vector2(rect.xMin + 8f, rect.yMax + 2f);
 
-            // Store position for candidate window
-            candidateWindowPos = new Vector2(rect.xMin, rect.yMax);
+            // Store text field rect for candidate window positioning
+            lastTextFieldRect = rect;
+            lastCursorIndex = editor.cursorIndex;
             hasActiveTextField = true;
 
             if (lastLoggedControl != editor.controlID)
@@ -205,6 +207,9 @@ public static class LinuxImeUtility
             }
 
             ProcessKeyEvent(state);
+
+            // Update cursor position after key processing
+            lastCursorIndex = editor.cursorIndex;
         }
         else
         {
@@ -325,13 +330,51 @@ public static class LinuxImeUtility
         {
             string cand = NativeBridge.GetCandidate(i);
             if (!string.IsNullOrEmpty(cand))
+            {
                 candidates.Add(cand);
+                // Adjust width to fit longest candidate
+                float candW = Text.CalcSize($"{i + 1}. {cand}").x + padding * 4;
+                if (candW > width) width = candW;
+            }
         }
 
         if (candidates.Count > 0)
             height += candidates.Count * lineHeight;
 
-        Rect windowRect = new Rect(candidateWindowPos.x, candidateWindowPos.y + 4f, width, height);
+        // Estimate cursor X position within the text field
+        // Use the text before cursor to calculate width
+        float cursorXOffset = 0;
+        if (TryGetActiveTextEditor(out var editor))
+        {
+            string textBeforeCursor = editor.text ?? "";
+            if (editor.cursorIndex < textBeforeCursor.Length)
+                textBeforeCursor = textBeforeCursor.Substring(0, editor.cursorIndex);
+            cursorXOffset = Text.CalcSize(textBeforeCursor).x;
+        }
+
+        // Base position: below the text field, at cursor X
+        float baseX = lastTextFieldRect.xMin + cursorXOffset;
+        float baseY = lastTextFieldRect.yMax + 2f;
+
+        // Screen boundary detection
+        float screenW = UI.screenWidth;
+        float screenH = UI.screenHeight;
+
+        // Horizontal: if window would go off right edge, shift left
+        if (baseX + width > screenW - 4f)
+            baseX = screenW - width - 4f;
+        // Don't go off left edge
+        if (baseX < 4f)
+            baseX = 4f;
+
+        // Vertical: if window would go off bottom edge, show above text field
+        if (baseY + height > screenH - 4f)
+            baseY = lastTextFieldRect.yMin - height - 2f;
+        // Don't go off top edge
+        if (baseY < 4f)
+            baseY = 4f;
+
+        Rect windowRect = new Rect(baseX, baseY, width, height);
 
         // Draw background
         GUI.color = new Color(0.15f, 0.15f, 0.15f, 0.95f);
@@ -349,12 +392,11 @@ public static class LinuxImeUtility
         {
             GUI.color = Color.yellow;
             Text.Font = GameFont.Tiny;
-            // Draw preedit with cursor position indicator
             string preeditDisplay = preedit;
-            if (NativeBridge.GetPreeditCursor() < preedit.Length)
+            int preeditCursor = NativeBridge.GetPreeditCursor();
+            if (preeditCursor >= 0 && preeditCursor < preedit.Length)
             {
-                int cursorPos = NativeBridge.GetPreeditCursor();
-                preeditDisplay = preedit.Substring(0, cursorPos) + "|" + preedit.Substring(cursorPos);
+                preeditDisplay = preedit.Substring(0, preeditCursor) + "|" + preedit.Substring(preeditCursor);
             }
             GUI.Label(new Rect(windowRect.xMin + padding, y, width - padding * 2, lineHeight), preeditDisplay);
             y += lineHeight;
