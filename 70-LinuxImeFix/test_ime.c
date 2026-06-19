@@ -85,15 +85,15 @@ int main(void) {
     n = p_poll(buf, sizeof(buf));
     printf("poll_utf8 => n=%d text='%.*s'\n", n, n > 0 ? n : 0, buf);
 
-    /* Test 4: type English 'a' — should NOT be consumed */
-    printf("\n--- Test: type 'a' (should not be consumed) ---\n");
+    /* Test 4: type another key — engine-specific, may continue composition */
+    printf("\n--- Test: type 'a' ---\n");
     consumed = p_process('a', 0, 0);
     printf("process_key('a') => consumed=%d\n", consumed);
     n = p_poll(buf, sizeof(buf));
     printf("poll_utf8 => n=%d\n", n);
 
-    /* Test 5: backspace — should not be consumed */
-    printf("\n--- Test: backspace (should not be consumed) ---\n");
+    /* Test 5: backspace — engine-specific; during composition IBus should handle it */
+    printf("\n--- Test: backspace ---\n");
     consumed = p_process(0xFF08, 0, 0); /* XK_BackSpace */
     printf("process_key(BackSpace) => consumed=%d\n", consumed);
 
