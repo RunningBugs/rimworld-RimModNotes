@@ -613,12 +613,15 @@ public class CandidateWindowRenderer : MonoBehaviour
 
     void OnGUI()
     {
-        int oldDepth = GUI.depth;
         Matrix4x4 oldMatrix = GUI.matrix;
         Color oldColor = GUI.color;
         try
         {
-            GUI.depth = -1000;
+            // Lower depth draws later/on top in Unity IMGUI. Do not restore this
+            // after drawing: RimWorld/Unity appear to use the final GUI.depth when
+            // ordering controls across OnGUI callers, and restoring it caused the
+            // candidate window to fall behind later UI.
+            GUI.depth = -10000;
             // Apply the same UIScale matrix that RimWorld uses (UI.ApplyUIScale).
             // Without this, coordinates stored during UIRootOnGUI (in UI space)
             // won't match the drawing space in this separate OnGUI call.
@@ -631,7 +634,6 @@ public class CandidateWindowRenderer : MonoBehaviour
         }
         finally
         {
-            GUI.depth = oldDepth;
             GUI.matrix = oldMatrix;
             GUI.color = oldColor;
         }
