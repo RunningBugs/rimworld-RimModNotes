@@ -19,17 +19,39 @@
 	<description>
 [h1] Linux IME Fix Linux 输入法修复 [/h1]
 
-Enables Unity IME composition for RimWorld's legacy IMGUI text fields on Linux.
-
-This is intended for Linux desktop players using IBus/Rime/Fcitx-style input methods where pasting Chinese works but direct IME input does not.
-
-[h2] What it does [/h2]
-- Detects active IMGUI TextField/TextArea controls.
-- Forces Unity's IME composition mode on while a text field is focused.
-- Updates Unity's composition cursor position so the input method has a target location.
-- Suppresses RimWorld's global Accept action while an IME composition string is active.
-
 [h2] 中文说明 [/h2]
-用于修复 Linux 下 RimWorld 旧 IMGUI 文本框无法直接使用系统输入法的问题。适用于“粘贴中文可以，但直接输入法输入不行”的情况。
+本 MOD 用于修复 Linux 下 RimWorld 文本框无法直接使用 IBus 输入法的问题。
+
+[h2] 功能 [/h2]
+- 支持 Linux 版 RimWorld 1.6。
+- 支持基于 IBus 的输入法，包括通过 IBus 使用的 Rime。
+- 支持 RimWorld 的 IMGUI TextField/TextArea 文本框。
+- 在游戏内显示预编辑/候选词窗口，支持光标跟随、UI 缩放、屏幕边缘处理和顶层绘制。
+- 支持 Backspace 等组词编辑键。
+
+[h2] 运行环境 [/h2]
+- Linux 版 RimWorld 1.6
+- Harmony
+- 桌面会话中正在运行的 IBus
+- 对应语言的 IBus 输入引擎，例如 IBus Rime
+
+[h2] English [/h2]
+Fixes direct IBus input in RimWorld text fields on Linux.
+
+[h2] Features [/h2]
+- Supports RimWorld 1.6 on Linux.
+- Works with IBus-based input methods, including Rime through IBus.
+- Supports RimWorld IMGUI TextField/TextArea input.
+- Shows an in-game preedit/candidate window with cursor following, UI scaling support, screen-edge handling, and top-layer rendering.
+- Supports composition editing keys such as Backspace.
+
+[h2] Requirements [/h2]
+- Linux version of RimWorld 1.6
+- Harmony
+- IBus running in the desktop session
+- An IBus input engine for your language, such as Rime via IBus
+
+[h2] How it works [/h2]
+The mod sends text-field key events to IBus through D-Bus, receives preedit/candidate/commit updates, and inserts committed text back into the active RimWorld text field.
 	</description>
 </ModMetaData>

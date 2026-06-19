@@ -107,10 +107,14 @@ public static class NativeBridge
             pSetCursor = Get<SetCursorDelegate>("rimworld_ime_set_cursor");
             pReset = Get<ResetDelegate>("rimworld_ime_reset");
             pIsReady = Get<IsReadyDelegate>("rimworld_ime_is_ready");
-            available = pInit != null && pProcessKey != null && pPollUtf8 != null;
-            if (!available) { Log.Warning("[LinuxImeFix] Missing exports"); return; }
+            available = pInit != null && pProcessKey != null && pPollUtf8 != null &&
+                pGetPreedit != null && pGetPreeditCursor != null && pIsPreeditVisible != null &&
+                pGetCandidateCount != null && pGetCandidate != null && pGetLookupCursor != null &&
+                pIsLookupVisible != null && pFocusIn != null && pFocusOut != null &&
+                pSetCursor != null && pReset != null && pIsReady != null;
+            if (!available) { Log.Warning("[LinuxImeFix] Missing required native exports"); return; }
             int ok = pInit();
-            Log.Message(ok != 0 ? "[LinuxImeFix] IBus connected.".Colorize(Color.green) : "[LinuxImeFix] IBus connection failed.");
+            Log.Message(ok != 0 && IsReady ? "[LinuxImeFix] IBus connected.".Colorize(Color.green) : "[LinuxImeFix] IBus connection failed.");
         }
         catch (Exception ex) { Log.Warning($"[LinuxImeFix] Load error: {ex}"); }
     }
@@ -158,6 +162,10 @@ public static class LinuxImeUtility
 {
     public static bool IsLinux => Application.platform == RuntimePlatform.LinuxPlayer;
     private static int lastLoggedControl;
+    private static int focusedControl;
+    private static int lastCursorX = int.MinValue;
+    private static int lastCursorY = int.MinValue;
+    private static bool sawFocusedTextFieldThisFrame;
     private static bool composing;
     private static int compControl;
     private static string compBaseText = "";
@@ -182,18 +190,38 @@ public static class LinuxImeUtility
 
         if (TryGetActiveTextEditor(out var editor) && RectLooksLike(editor.position, rect))
         {
+            sawFocusedTextFieldThisFrame = true;
             state.Text = editor.text ?? state.Text;
             state.Cursor = Mathf.Clamp(editor.cursorIndex, 0, state.Text.Length);
             state.Select = Mathf.Clamp(editor.selectIndex, 0, state.Text.Length);
 
             if (NativeBridge.IsReady)
             {
-                NativeBridge.FocusIn();
-                var sp = GUIUtility.GUIToScreenPoint(new Vector2(rect.xMin + 8f, rect.yMax + 2f));
-                NativeBridge.SetCursor((int)sp.x, (int)sp.y);
+                if (focusedControl != editor.controlID)
+                {
+                    if (focusedControl != 0)
+                    {
+                        NativeBridge.Reset();
+                        NativeBridge.FocusOut();
+                        composing = false;
+                    }
+                    NativeBridge.FocusIn();
+                    focusedControl = editor.controlID;
+                    lastCursorX = int.MinValue;
+                    lastCursorY = int.MinValue;
+                }
+                var cursorPoint = CursorScreenPoint(rect, editor);
+                int cursorX = (int)cursorPoint.x;
+                int cursorY = (int)cursorPoint.y;
+                if (cursorX != lastCursorX || cursorY != lastCursorY)
+                {
+                    NativeBridge.SetCursor(cursorX, cursorY);
+                    lastCursorX = cursorX;
+                    lastCursorY = cursorY;
+                }
             }
             Input.imeCompositionMode = IMECompositionMode.On;
-            Input.compositionCursorPos = new Vector2(rect.xMin + 8f, rect.yMax + 2f);
+            Input.compositionCursorPos = new Vector2(rect.xMin + CaretXOffset(editor), rect.yMax + 2f);
 
             if (lastLoggedControl != editor.controlID)
             {
@@ -247,6 +275,12 @@ public static class LinuxImeUtility
         bool consumed = NativeBridge.ProcessKey(keyval, 0, ibusState);
         string commit = NativeBridge.PollCommit();
 
+        if (!string.IsNullOrEmpty(commit))
+        {
+            state.Commit = commit;
+            composing = false;
+        }
+
         if (consumed)
         {
             Event.current.Use();
@@ -261,7 +295,6 @@ public static class LinuxImeUtility
             }
             if (!string.IsNullOrEmpty(commit))
             {
-                state.Commit = commit;
                 composing = false;
             }
         }
@@ -317,23 +350,28 @@ public static class LinuxImeUtility
     {
         if (!NativeBridge.IsReady) { hasStoredAnchor = false; return; }
 
-        // Calculate cursor X offset using the TextField's current font
-        float cursorXOffset = 0;
-        if (TryGetActiveTextEditor(out var editor))
-        {
-            string textBeforeCursor = editor.text ?? "";
-            int ci = Mathf.Clamp(editor.cursorIndex, 0, textBeforeCursor.Length);
-            textBeforeCursor = textBeforeCursor.Substring(0, ci);
-            cursorXOffset = Text.CalcSize(textBeforeCursor).x;
-        }
+        if (!TryGetActiveTextEditor(out var editor)) { hasStoredAnchor = false; return; }
 
         // Convert local GUI coordinates to UI-screen coordinates.
         // UI.GUIToScreenPoint handles UIScale and GUI group nesting.
+        float cursorXOffset = CaretXOffset(editor);
         Vector2 below = UI.GUIToScreenPoint(new Vector2(rect.xMin + cursorXOffset, rect.yMax + 2f));
         Vector2 above = UI.GUIToScreenPoint(new Vector2(rect.xMin + cursorXOffset, rect.yMin - 2f));
         storedAnchorBelow = below;
         storedAnchorAbove = above;
         hasStoredAnchor = true;
+    }
+
+    private static Vector2 CursorScreenPoint(Rect rect, TextEditor editor)
+        => UI.GUIToScreenPoint(new Vector2(rect.xMin + CaretXOffset(editor), rect.yMax + 2f));
+
+    private static float CaretXOffset(TextEditor editor)
+    {
+        if (editor == null) return 8f;
+        string textBeforeCursor = editor.text ?? "";
+        int ci = Mathf.Clamp(editor.cursorIndex, 0, textBeforeCursor.Length);
+        textBeforeCursor = textBeforeCursor.Substring(0, ci);
+        return Text.CalcSize(textBeforeCursor).x;
     }
 
     /// <summary>
@@ -344,6 +382,21 @@ public static class LinuxImeUtility
     {
         if (!IsLinux || !NativeBridge.IsReady || !hasStoredAnchor) return;
 
+        GameFont oldFont = Text.Font;
+        Color oldColor = GUI.color;
+        try
+        {
+            DrawCandidateWindowCore();
+        }
+        finally
+        {
+            Text.Font = oldFont;
+            GUI.color = oldColor;
+        }
+    }
+
+    private static void DrawCandidateWindowCore()
+    {
         bool lookupVisible = NativeBridge.IsLookupVisible();
         bool preeditVisible = NativeBridge.IsPreeditVisible();
         if (!lookupVisible && !preeditVisible) return;
@@ -451,18 +504,30 @@ public static class LinuxImeUtility
             GUI.color = Color.white;
             y += lineHeight;
         }
-        Text.Font = GameFont.Small;
     }
 
     public static void FrameEndRefresh()
     {
-        if (!IsLinux || !NativeBridge.IsReady) return;
-        if (!TryGetActiveTextEditor(out _))
+        if (!IsLinux || !NativeBridge.IsReady)
         {
-            NativeBridge.FocusOut();
+            sawFocusedTextFieldThisFrame = false;
+            return;
+        }
+        if (!sawFocusedTextFieldThisFrame)
+        {
+            if (focusedControl != 0)
+            {
+                NativeBridge.Reset();
+                NativeBridge.FocusOut();
+                focusedControl = 0;
+                lastCursorX = int.MinValue;
+                lastCursorY = int.MinValue;
+                composing = false;
+            }
             Input.imeCompositionMode = IMECompositionMode.Auto;
             hasStoredAnchor = false;
         }
+        sawFocusedTextFieldThisFrame = false;
     }
 
     private static bool IsModifierKey(KeyCode kc) => kc switch
@@ -548,15 +613,27 @@ public class CandidateWindowRenderer : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.depth = -1000;
-        // Apply the same UIScale matrix that RimWorld uses (UI.ApplyUIScale).
-        // Without this, coordinates stored during UIRootOnGUI (in UI space)
-        // won't match the drawing space in this separate OnGUI call.
-        if (Prefs.UIScale != 1f)
+        int oldDepth = GUI.depth;
+        Matrix4x4 oldMatrix = GUI.matrix;
+        Color oldColor = GUI.color;
+        try
         {
-            GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity,
-                new Vector3(Prefs.UIScale, Prefs.UIScale, 1f));
+            GUI.depth = -1000;
+            // Apply the same UIScale matrix that RimWorld uses (UI.ApplyUIScale).
+            // Without this, coordinates stored during UIRootOnGUI (in UI space)
+            // won't match the drawing space in this separate OnGUI call.
+            if (Prefs.UIScale != 1f)
+            {
+                GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity,
+                    new Vector3(Prefs.UIScale, Prefs.UIScale, 1f));
+            }
+            LinuxImeUtility.DrawCandidateWindow();
         }
-        LinuxImeUtility.DrawCandidateWindow();
+        finally
+        {
+            GUI.depth = oldDepth;
+            GUI.matrix = oldMatrix;
+            GUI.color = oldColor;
+        }
     }
 }
