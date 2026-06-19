@@ -31,11 +31,15 @@ namespace MusicPatch
             {
                 if (Props.soundPlayInstrument != null && soundPlaying == null)
                 {
-                    soundPlaying = Props.soundPlayInstrument.TrySpawnSustainer(SoundInfo.InMap(new TargetInfo(currentPlayer.Position, currentPlayer.Map), MaintenanceType.PerTick));
+                    soundPlaying = Props.soundPlayInstrument.TrySpawnSustainer(SoundInfo.InMap(parent, MaintenanceType.PerTick));
                 }
             }
             else
             {
+                if (soundPlaying != null && !soundPlaying.Ended)
+                {
+                    soundPlaying.End();
+                }
                 soundPlaying = null;
             }
             soundPlaying?.Maintain();
