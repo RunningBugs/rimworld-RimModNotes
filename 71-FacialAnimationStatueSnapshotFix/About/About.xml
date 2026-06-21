@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.FacialAnimationStatueSnapshotFix</packageId>
+	<name>Facial Animation Statue Snapshot Fix</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.6</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li>
+		<li>
+			<packageId>Nals.FacialAnimation</packageId>
+			<displayName>[NL] Facial Animation - WIP</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/1635901197</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+
+	<loadAfter>
+		<li>Nals.FacialAnimation</li>
+		<li>Nals.FacialAnimationExperimentals</li>
+	</loadAfter>
+
+	<description>
+Patches Facial Animation's statue snapshot hook to tolerate duplicate facial controller comps.
+
+This fixes trader stock / faction leader statue generation crashes like:
+System.ArgumentException: An item with the same key has already been added. Key: FacialAnimation.HeadControllerComp
+
+The patch changes Facial Animation's snapshot dictionary write from a strict Add to a safe add that keeps the first value and ignores duplicate keys. It does not remove or mutate pawn comps.
+
+修复 Facial Animation 在雕像快照/贸易库存生成时，因为重复面部控制器组件向 Dictionary.Add 写入相同 key 而抛错的问题。本补丁不删除 pawn 的组件，只让快照保存逻辑容忍重复 key，并保留第一个值。
+	</description>
+</ModMetaData>
