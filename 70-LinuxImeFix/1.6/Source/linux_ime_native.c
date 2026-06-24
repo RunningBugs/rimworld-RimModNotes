@@ -4,7 +4,7 @@
 #include <dirent.h>
 #include <errno.h>
 #include <locale.h>
-#include <pthread.h>
+#include <signal.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,10 +14,11 @@
 #include <unistd.h>
 
 /* ═══════════════════════════════════════════════════
- * LinuxImeFix Native Helper v8 — IBus D-Bus (C)
+ * LinuxImeFix Native Helper v9 — IBus D-Bus (C)
  *
  * Adds preedit text + lookup table (candidate) support.
  * C# mod polls these to draw an in-game candidate window.
+ * v9 fixes Wayland IBus bus-file selection after Xorg→Wayland migration.
  * ═══════════════════════════════════════════════════ */
 
 static DBusConnection *conn = NULL;
@@ -46,7 +47,38 @@ static int logged_ready = 0;
 
 /* ── Find IBus address ── */
 
+static int pid_is_alive(long pid) {
+    if (pid <= 0) return 0;
+    return kill((pid_t)pid, 0) == 0 || errno == EPERM;
+}
+
+static char *read_ibus_address_file(const char *path, long *pid_out) {
+    FILE *f = fopen(path, "r");
+    if (!f) return NULL;
+
+    char *addr = NULL;
+    long pid = -1;
+    char line[1024];
+    while (fgets(line, sizeof(line), f)) {
+        if (strncmp(line, "IBUS_ADDRESS=", 13) == 0) {
+            char *val = line + 13;
+            char *nl = strchr(val, '\n');
+            if (nl) *nl = '\0';
+            free(addr);
+            addr = strdup(val);
+        } else if (strncmp(line, "IBUS_DAEMON_PID=", 16) == 0) {
+            pid = strtol(line + 16, NULL, 10);
+        }
+    }
+    fclose(f);
+    if (pid_out) *pid_out = pid;
+    return addr;
+}
+
 static char *find_ibus_address(void) {
+    const char *env_addr = getenv("IBUS_ADDRESS");
+    if (env_addr && *env_addr) return strdup(env_addr);
+
     char bus_dir[512];
     const char *home = getenv("HOME");
     if (!home) home = "/tmp";
@@ -60,52 +92,48 @@ static char *find_ibus_address(void) {
     if (display && strchr(display, ':'))
         disp_num = atoi(strchr(display, ':') + 1);
 
-    char best_match_path[768] = "";
-    char best_fallback_path[768] = "";
-    time_t best_match_mtime = 0;
-    time_t best_fallback_mtime = 0;
-    struct dirent *ent;
+    const char *wayland_display = getenv("WAYLAND_DISPLAY");
+    char wayland_suffix[96] = "";
+    if (wayland_display && *wayland_display)
+        snprintf(wayland_suffix, sizeof(wayland_suffix), "-unix-%s", wayland_display);
 
-    char suffix[32];
-    snprintf(suffix, sizeof(suffix), "-unix-%d", disp_num);
+    char display_suffix[32];
+    snprintf(display_suffix, sizeof(display_suffix), "-unix-%d", disp_num);
+
+    char best_path[768] = "";
+    time_t best_mtime = 0;
+    int best_score = -1;
+    struct dirent *ent;
 
     while ((ent = readdir(d))) {
         if (ent->d_name[0] == '.') continue;
         char path[768];
         snprintf(path, sizeof(path), "%s/%s", bus_dir, ent->d_name);
         struct stat st;
-        if (stat(path, &st) != 0) continue;
+        if (stat(path, &st) != 0 || !S_ISREG(st.st_mode)) continue;
 
-        int matches = strstr(ent->d_name, suffix) != NULL;
-        if (matches && st.st_mtime >= best_match_mtime) {
-            strcpy(best_match_path, path);
-            best_match_mtime = st.st_mtime;
-        }
-        if (st.st_mtime >= best_fallback_mtime) {
-            strcpy(best_fallback_path, path);
-            best_fallback_mtime = st.st_mtime;
+        long pid = -1;
+        char *addr = read_ibus_address_file(path, &pid);
+        int usable = addr && *addr && (pid <= 0 || pid_is_alive(pid));
+        free(addr);
+        if (!usable) continue;
+
+        int score = 0;
+        if (wayland_suffix[0] && strstr(ent->d_name, wayland_suffix)) score = 300;
+        else if (strstr(ent->d_name, display_suffix)) score = 200;
+        else score = 100;
+
+        if (score > best_score || (score == best_score && st.st_mtime >= best_mtime)) {
+            strcpy(best_path, path);
+            best_mtime = st.st_mtime;
+            best_score = score;
         }
     }
     closedir(d);
 
-    const char *best_path = best_match_path[0] ? best_match_path : best_fallback_path;
     if (!best_path[0]) return NULL;
-
-    FILE *f = fopen(best_path, "r");
-    if (!f) return NULL;
-    char *addr = NULL;
-    char line[1024];
-    while (fgets(line, sizeof(line), f)) {
-        if (strncmp(line, "IBUS_ADDRESS=", 13) == 0) {
-            char *val = line + 13;
-            char *nl = strchr(val, '\n');
-            if (nl) *nl = '\0';
-            addr = strdup(val);
-            break;
-        }
-    }
-    fclose(f);
-    return addr;
+    long ignored_pid = -1;
+    return read_ibus_address_file(best_path, &ignored_pid);
 }
 
 /* ── UTF-8 helpers ── */
@@ -624,5 +652,5 @@ static void init(void) {
     setlocale(LC_ALL, "");
     if (!getenv("XMODIFIERS") || !*getenv("XMODIFIERS"))
         setenv("XMODIFIERS", "@im=ibus", 1);
-    fprintf(stderr, "[LinuxImeFix] native helper loaded (C/dbus v8)\n");
+    fprintf(stderr, "[LinuxImeFix] native helper loaded (C/dbus v9)\n");
 }

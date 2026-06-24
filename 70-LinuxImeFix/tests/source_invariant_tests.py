@@ -18,6 +18,7 @@ check("C# uses frame-seen focus edge flag", "sawFocusedTextFieldThisFrame" in ma
 check("C# resets old focus on control switch", "focusedControl != 0" in main and "NativeBridge.Reset();" in main and "NativeBridge.FocusOut();" in main)
 check("C# cursor uses caret offset, not fixed xMin+8", "CursorScreenPoint" in main and "CaretXOffset(editor)" in main)
 check("C# preserves late commit even when ProcessKey is false", re.search(r"if \(!string\.IsNullOrEmpty\(commit\)\).*?state\.Commit = commit", main, re.S) is not None)
+check("C# keeps IBus focus across non-TextField OnGUI passes while keyboardControl still owns TextEditor", "GUIUtility.keyboardControl == focusedControl" in main and "clears IBus/Rime preedit immediately" in main)
 check("C# renderer restores matrix/color but keeps top depth", "GUI.depth = -10000" in main and "GUI.depth = oldDepth" not in main and "GUI.matrix = oldMatrix" in main and "Text.Font = oldFont" in main)
 
 check("native no-reply helper is used for focus/cursor", "dbus_send_no_reply(conn, \"org.freedesktop.IBus\", ic_path" in native)
