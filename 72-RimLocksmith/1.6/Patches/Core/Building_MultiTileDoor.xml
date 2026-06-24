@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationConditional"><xpath>/Defs/ThingDef[thingClass="Building_MultiTileDoor"]/comps</xpath><match Class="PatchOperationAdd"><xpath>/Defs/ThingDef[thingClass="Building_MultiTileDoor"]/comps</xpath><value><li Class="RunningBugs.RimLocksmith.CompProperties_RimLocksmithDoor" /></value></match><nomatch Class="PatchOperationAdd"><xpath>/Defs/ThingDef[thingClass="Building_MultiTileDoor"]</xpath><value><comps><li Class="RunningBugs.RimLocksmith.CompProperties_RimLocksmithDoor" /></comps></value></nomatch></Operation>
+  <Operation Class="PatchOperationConditional"><xpath>/Defs/ThingDef[thingClass="Building_MultiTileDoor"]/inspectorTabs</xpath><match Class="PatchOperationAdd"><xpath>/Defs/ThingDef[thingClass="Building_MultiTileDoor"]/inspectorTabs</xpath><value><li>RunningBugs.RimLocksmith.ITab_RimLocksmith</li></value></match><nomatch Class="PatchOperationAdd"><xpath>/Defs/ThingDef[thingClass="Building_MultiTileDoor"]</xpath><value><inspectorTabs><li>RunningBugs.RimLocksmith.ITab_RimLocksmith</li></inspectorTabs></value></nomatch></Operation>
+</Patch>
