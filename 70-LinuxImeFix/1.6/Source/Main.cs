@@ -515,6 +515,19 @@ public static class LinuxImeUtility
         }
         if (!sawFocusedTextFieldThisFrame)
         {
+            // Unity/RimWorld invokes OnGUI multiple times per frame/event. Some passes
+            // can reach UIRootOnGUI without re-rendering the focused TextField, even
+            // though GUIUtility.keyboardControl still points at its TextEditor. Do not
+            // Reset/FocusOut in that case: it clears IBus/Rime preedit immediately,
+            // causing the candidate window to flash for one pass and leaving Space
+            // with nothing to commit.
+            if (focusedControl != 0 && GUIUtility.keyboardControl == focusedControl && TryGetActiveTextEditor(out _))
+            {
+                Input.imeCompositionMode = IMECompositionMode.On;
+                sawFocusedTextFieldThisFrame = false;
+                return;
+            }
+
             if (focusedControl != 0)
             {
                 NativeBridge.Reset();
