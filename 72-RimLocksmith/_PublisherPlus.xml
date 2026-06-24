@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <Excluded>
+    <exclude>1.6/Source/obj</exclude>
+    <exclude>tests</exclude>
+  </Excluded>
+</Configuration>

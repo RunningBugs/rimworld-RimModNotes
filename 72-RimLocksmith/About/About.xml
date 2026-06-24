@@ -36,5 +36,9 @@ Notable fixes and differences:
 - 可以将默认规则应用到所有未设置过的殖民地门，或覆盖应用到所有殖民地门。
 - 选择多扇殖民地门时，可以通过检查面板的标签页一起修改配置；非殖民地门会被忽略。
 - 保留原版栅栏动物逻辑：即使默认允许殖民地动物，受栅栏限制的畜栏动物也不能自己打开普通殖民地门。这样避免了 Locks2 式问题：Mod 接管 PawnCanOpen 后绕过原版 roamerCanOpen / fence-blocking 检查，导致畜栏动物能打开普通门并跑出畜栏。动物门帘和 roamerCanOpen 门仍按原版语义处理。
+
+Implemented using Hermes Agent w/ OpenAI-codex/GPT-5.5
+使用Hermes Agent和OpenAI-codex/GPT-5.5实现代码
+
     </description>
 </ModMetaData>
