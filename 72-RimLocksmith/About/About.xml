@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+    <packageId>RunningBugs.RimLocksmith</packageId>
+    <name>RimLocksmith 边缘锁匠</name>
+    <author>RunningBugs</author>
+    <supportedVersions>
+        <li>1.6</li>
+    </supportedVersions>
+    <modDependencies>
+        <li>
+            <packageId>brrainz.harmony</packageId>
+            <displayName>Harmony</displayName>
+            <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+            <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+        </li>
+    </modDependencies>
+    <description>
+RimLocksmith is a colony-door access control mod inspired by Locks2. It focuses on the common door access categories, explicit mod-door compatibility, built-in Chinese translation, default presets, multi-door batch editing, and white-box-tested core policy code.
+
+Current scope: RimLocksmith does not implement Locks2's advanced filters such as apparel, work type, race, bedroom owner, game condition, or detailed animal age/sex rules.
+
+Notable fixes and differences:
+- Default settings are configurable in the mod options.
+- New colony doors can automatically use the default rules.
+- Defaults can be applied to all unconfigured colony doors or forcibly applied to all colony doors.
+- Multiple selected colony doors can be edited together from the inspect tab; non-colony doors are ignored.
+- Fence-blocked pen animals keep vanilla behavior: even if colony animals are allowed by default, they cannot open normal colony doors by themselves. This avoids the Locks2-style problem where pen animals can escape because the mod overrides PawnCanOpen and bypasses vanilla roamerCanOpen / fence-blocking checks. Animal flaps and roamerCanOpen doors still follow vanilla semantics.
+
+边缘锁匠是一个殖民地门禁配置 Mod。它参考 Locks2 的常用门禁分类，但使用独立架构，内置完整中文翻译，支持默认配置、多门批量修改、显式 Mod 门兼容，并通过白盒测试覆盖核心权限逻辑。
+
+当前范围：本 Mod 不实现 Locks2 的高级过滤功能，例如按服装、工作类型、种族、卧室主人、游戏条件、动物年龄/性别等细分规则过滤。
+
+主要差异和修复：
+- 模组选项中可以设置默认门禁规则。
+- 新建殖民地门可以自动使用默认规则。
+- 可以将默认规则应用到所有未设置过的殖民地门，或覆盖应用到所有殖民地门。
+- 选择多扇殖民地门时，可以通过检查面板的标签页一起修改配置；非殖民地门会被忽略。
+- 保留原版栅栏动物逻辑：即使默认允许殖民地动物，受栅栏限制的畜栏动物也不能自己打开普通殖民地门。这样避免了 Locks2 式问题：Mod 接管 PawnCanOpen 后绕过原版 roamerCanOpen / fence-blocking 检查，导致畜栏动物能打开普通门并跑出畜栏。动物门帘和 roamerCanOpen 门仍按原版语义处理。
+    </description>
+</ModMetaData>

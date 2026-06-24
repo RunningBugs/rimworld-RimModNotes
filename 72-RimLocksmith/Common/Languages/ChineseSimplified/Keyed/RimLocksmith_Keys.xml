@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RimLocksmith.SettingsCategory>RimLocksmith 边缘锁匠</RimLocksmith.SettingsCategory>
+  <RimLocksmith.TabLabel>门锁</RimLocksmith.TabLabel>
+  <RimLocksmith.ApplyDefaultToNewColonyDoors>新殖民地门使用默认配置</RimLocksmith.ApplyDefaultToNewColonyDoors>
+  <RimLocksmith.ApplyDefaultToNewColonyDoorsDesc>首次初始化的殖民地门会使用当前默认配置。</RimLocksmith.ApplyDefaultToNewColonyDoorsDesc>
+  <RimLocksmith.DefaultPreset>默认配置</RimLocksmith.DefaultPreset>
+  <RimLocksmith.ApplyDefaultToUnconfiguredColonyDoors>应用默认到所有未设置过的殖民地门</RimLocksmith.ApplyDefaultToUnconfiguredColonyDoors>
+  <RimLocksmith.ApplyDefaultToAllColonyDoors>应用默认到所有殖民地门</RimLocksmith.ApplyDefaultToAllColonyDoors>
+  <RimLocksmith.ResetDefaultPreset>重置默认配置</RimLocksmith.ResetDefaultPreset>
+  <RimLocksmith.AppliedDefaultCount>已将边缘锁匠默认配置应用到 {0} 扇殖民地门。</RimLocksmith.AppliedDefaultCount>
+  <RimLocksmith.SelectionSummary>正在配置 {0} 扇殖民地门。将忽略 {1} 扇非殖民地或不支持的门。</RimLocksmith.SelectionSummary>
+  <RimLocksmith.NoConfigurableDoors>没有选中可配置的殖民地门。</RimLocksmith.NoConfigurableDoors>
+  <RimLocksmith.Mixed>混合</RimLocksmith.Mixed>
+  <RimLocksmith.ResetSelectedToDefault>将选中的殖民地门重置为默认配置</RimLocksmith.ResetSelectedToDefault>
+  <RimLocksmith.AllowOpenTooltip>控制该类别是否可以主动打开这扇关闭的殖民地门。已经打开的门仍按游戏原版规则通行。</RimLocksmith.AllowOpenTooltip>
+  <RimLocksmith.AllowColonists>殖民者</RimLocksmith.AllowColonists>
+  <RimLocksmith.AllowSlaves>奴隶</RimLocksmith.AllowSlaves>
+  <RimLocksmith.AllowPrisoners>囚犯</RimLocksmith.AllowPrisoners>
+  <RimLocksmith.AllowColonyAnimals>殖民地动物</RimLocksmith.AllowColonyAnimals>
+  <RimLocksmith.AllowColonyMechanoids>殖民地机械体</RimLocksmith.AllowColonyMechanoids>
+  <RimLocksmith.AllowGuests>访客</RimLocksmith.AllowGuests>
+  <RimLocksmith.AllowAllies>盟友</RimLocksmith.AllowAllies>
+  <RimLocksmith.AllowTraders>商队</RimLocksmith.AllowTraders>
+  <RimLocksmith.AllowHostiles>敌人</RimLocksmith.AllowHostiles>
+  <RimLocksmith.AllowWildAnimals>野生动物</RimLocksmith.AllowWildAnimals>
+  <RimLocksmith.AllowOthers>其他对象</RimLocksmith.AllowOthers>
+</LanguageData>

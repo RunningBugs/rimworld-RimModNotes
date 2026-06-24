@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RimLocksmith.SettingsCategory>RimLocksmith</RimLocksmith.SettingsCategory>
+  <RimLocksmith.TabLabel>Locks</RimLocksmith.TabLabel>
+  <RimLocksmith.ApplyDefaultToNewColonyDoors>Use default preset for new colony doors</RimLocksmith.ApplyDefaultToNewColonyDoors>
+  <RimLocksmith.ApplyDefaultToNewColonyDoorsDesc>Newly initialized colony doors receive the current default preset.</RimLocksmith.ApplyDefaultToNewColonyDoorsDesc>
+  <RimLocksmith.DefaultPreset>Default preset</RimLocksmith.DefaultPreset>
+  <RimLocksmith.ApplyDefaultToUnconfiguredColonyDoors>Apply default to unconfigured colony doors</RimLocksmith.ApplyDefaultToUnconfiguredColonyDoors>
+  <RimLocksmith.ApplyDefaultToAllColonyDoors>Apply default to all colony doors</RimLocksmith.ApplyDefaultToAllColonyDoors>
+  <RimLocksmith.ResetDefaultPreset>Reset default preset</RimLocksmith.ResetDefaultPreset>
+  <RimLocksmith.AppliedDefaultCount>Applied RimLocksmith default to {0} colony doors.</RimLocksmith.AppliedDefaultCount>
+  <RimLocksmith.SelectionSummary>Configuring {0} colony doors. Ignoring {1} non-colony or unsupported doors.</RimLocksmith.SelectionSummary>
+  <RimLocksmith.NoConfigurableDoors>No configurable colony doors selected.</RimLocksmith.NoConfigurableDoors>
+  <RimLocksmith.Mixed>mixed</RimLocksmith.Mixed>
+  <RimLocksmith.ResetSelectedToDefault>Reset selected colony doors to default</RimLocksmith.ResetSelectedToDefault>
+  <RimLocksmith.AllowOpenTooltip>Controls whether this group may actively open this closed colony door. Already-open doors use vanilla passage behavior.</RimLocksmith.AllowOpenTooltip>
+  <RimLocksmith.AllowColonists>Colonists</RimLocksmith.AllowColonists>
+  <RimLocksmith.AllowSlaves>Slaves</RimLocksmith.AllowSlaves>
+  <RimLocksmith.AllowPrisoners>Prisoners</RimLocksmith.AllowPrisoners>
+  <RimLocksmith.AllowColonyAnimals>Colony animals</RimLocksmith.AllowColonyAnimals>
+  <RimLocksmith.AllowColonyMechanoids>Colony mechanoids</RimLocksmith.AllowColonyMechanoids>
+  <RimLocksmith.AllowGuests>Guests / visitors</RimLocksmith.AllowGuests>
+  <RimLocksmith.AllowAllies>Allies</RimLocksmith.AllowAllies>
+  <RimLocksmith.AllowTraders>Traders</RimLocksmith.AllowTraders>
+  <RimLocksmith.AllowHostiles>Hostiles</RimLocksmith.AllowHostiles>
+  <RimLocksmith.AllowWildAnimals>Wild animals</RimLocksmith.AllowWildAnimals>
+  <RimLocksmith.AllowOthers>Other pawns</RimLocksmith.AllowOthers>
+</LanguageData>
