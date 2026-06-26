@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>net472</TargetFramework>
+		<PlatformTarget>x64</PlatformTarget>
+		<RootNamespace>CommonModCompatibilityPatches</RootNamespace>
+		<AssemblyName>CommonModCompatibilityPatches</AssemblyName>
+		<OutputPath>../Assemblies</OutputPath>
+		<VersionPrefix>0.1.0.0</VersionPrefix>
+		<DebugType>none</DebugType>
+		<DebugSymbols>false</DebugSymbols>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+		<LangVersion>11.0</LangVersion>
+	</PropertyGroup>
+	<PropertyGroup>
+		<PublicizeAll>true</PublicizeAll>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4494-beta" />
+		<PackageReference Include="Lib.Harmony" Version="2.3.*" />
+	</ItemGroup>
+</Project>
