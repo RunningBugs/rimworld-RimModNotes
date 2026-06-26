@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
 	
+	<!-- Allow / Forbid -->
+	<DesignatorAllow>Allow</DesignatorAllow>
+	<DesignatorAllowDesc>Allow forbidden things in the selected area.</DesignatorAllowDesc>
+	<DesignatorForbid>Forbid</DesignatorForbid>
+	<DesignatorForbidDesc>Forbid things in the selected area.</DesignatorForbidDesc>
+	<DesignatorAllowAll>Allow all</DesignatorAllowAll>
+	<DesignatorAllowAllDesc>Allow every forbidden thing on the current map.</DesignatorAllowAllDesc>
+	<AAT_AllowAllComplete>Allowed {0} forbidden things.</AAT_AllowAllComplete>
+
 	<!-- Harvest Fully Grown -->
 	<DesignatorHarvestFullyGrown>Harvest fully grown</DesignatorHarvestFullyGrown>
 	<DesignatorHarvestFullyGrownDesc>Orders the harvesting of crops and trees that are fully grown and ready for maximum yield. Hold Shift to include only crops. Hold Ctrl/Cmd to include only trees. Right-click for more options.</DesignatorHarvestFullyGrownDesc>

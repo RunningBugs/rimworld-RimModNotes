@@ -51,48 +51,71 @@ public static class DesignationManager_RemoveDesignation_Patch
     }
 }
 
-
-public class Toils_UrgentHaul
+[HarmonyPatch(typeof(DesignationManager), nameof(DesignationManager.AddDesignation))]
+public static class DesignationManager_AddDesignation_Patch
+{
+    public static void Postfix(DesignationManager __instance, Designation newDes)
     {
-        public static Toil RemoveUrgentHaulDesignation(HaulUrgentlyCache cache)
+        if (newDes == null || newDes.def != HaulUrgentlyDefOf.HaulUrgentlyDesignation)
         {
-            Toil toil = new()
-            {
-                initAction = () =>
-                {
-                    cache.dirty = true;
-                    Log.Warning($"Urgent Haul cache make dirty in toil");
-                },
-                defaultCompleteMode = ToilCompleteMode.Instant
-            };
-            // toil.FailOnDespawnedNullOrForbidden(TargetIndex.A);
-            return toil;
+            return;
+        }
+
+        __instance.map.GetComponent<HaulUrgentlyCache>()?.ClearCache();
+    }
+}
+
+
+internal static class HaulUrgentlyDesignationUtility
+{
+    public static void RemoveUrgentDesignationOn(Thing thing)
+    {
+        if (thing == null)
+        {
+            return;
+        }
+
+        Map map = thing.MapHeld ?? thing.Map;
+        if (map?.designationManager == null)
+        {
+            return;
+        }
+
+        if (map.designationManager.DesignationOn(thing, HaulUrgentlyDefOf.HaulUrgentlyDesignation) != null)
+        {
+            map.designationManager.TryRemoveDesignationOn(thing, HaulUrgentlyDefOf.HaulUrgentlyDesignation);
+            map.GetComponent<HaulUrgentlyCache>()?.ClearCache();
         }
     }
+}
 
-
-/**
-*   Patches on JobDriver_HaulToCell will update the HaulUrgentlyCache
-*   This is useful to remove the designation when the job is done
-*/
-[HarmonyPatch(typeof(JobDriver_HaulToCell), "MakeNewToils")]
-public static class JobDriver_HaulToCell_MakeNewToils_Patch
+[HarmonyPatch(typeof(Toils_Haul), nameof(Toils_Haul.PlaceHauledThingInCell), new Type[] { typeof(TargetIndex), typeof(Toil), typeof(bool), typeof(bool) })]
+public static class ToilsHaul_PlaceHauledThingInCell_Patch
 {
-    public static void Postfix(JobDriver_HaulToCell __instance, ref IEnumerable<Toil> __result)
+    public static void Postfix(Toil __result)
     {
-        var pawn = __instance.pawn;
-        if (pawn != null && pawn.Map != null)
+        Action originalInitAction = __result.initAction;
+        __result.initAction = () =>
         {
-            HaulUrgentlyCache cache = pawn.Map.GetComponent<HaulUrgentlyCache>();
-            if (cache != null)
-            {
-                __result.AddItem(Toils_UrgentHaul.RemoveUrgentHaulDesignation(cache));
-            }
-            else
-            {
-                Log.Error($"HaulUrgentlyCache not found for map {pawn.Map} in JobDriver_HaulToCell_MakeNewToils_Patch");
-            }
-        }
+            Thing carriedThing = __result.actor?.carryTracker?.CarriedThing;
+            HaulUrgentlyDesignationUtility.RemoveUrgentDesignationOn(carriedThing);
+            originalInitAction?.Invoke();
+        };
+    }
+}
+
+[HarmonyPatch(typeof(Toils_Haul), nameof(Toils_Haul.DepositHauledThingInContainer), new Type[] { typeof(TargetIndex), typeof(TargetIndex), typeof(Action) })]
+public static class ToilsHaul_DepositHauledThingInContainer_Patch
+{
+    public static void Postfix(Toil __result)
+    {
+        Action originalInitAction = __result.initAction;
+        __result.initAction = () =>
+        {
+            Thing carriedThing = __result.actor?.carryTracker?.CarriedThing;
+            HaulUrgentlyDesignationUtility.RemoveUrgentDesignationOn(carriedThing);
+            originalInitAction?.Invoke();
+        };
     }
 }
 
@@ -140,24 +163,21 @@ public static class PickUpAndHaulCompatHandler
 
 
 
-public class WorkGiver_HaulUrgently : WorkGiver_Scanner
+public class WorkGiver_HaulUrgently : WorkGiver_HaulGeneral
 {
     public delegate Job TryGetJobOnThing(Pawn pawn, Thing t, bool forced);
 
-    public static TryGetJobOnThing JobOnThingDelegate = (pawn, t, forced) => HaulAIUtility.HaulToStorageJob(pawn, t, false);
-    public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
-    {
-        return JobOnThingDelegate(pawn, t, forced);
-    }
+    public static TryGetJobOnThing JobOnThingDelegate = DefaultJobOnThing;
 
     public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
     {
         IReadOnlyList<Thing> things = GetHaulablesForPawn(pawn);
         for (int i = 0; i < things.Count; i++)
         {
-            if (things[i] != null && HaulAIUtility.PawnCanAutomaticallyHaulFast(pawn, things[i], false))
+            Thing thing = things[i];
+            if (IsValidUrgentHaulThingForPawn(pawn, thing))
             {
-                yield return things[i];
+                yield return thing;
             }
         }
     }
@@ -167,17 +187,42 @@ public class WorkGiver_HaulUrgently : WorkGiver_Scanner
         return GetHaulablesForPawn(pawn).Count == 0;
     }
 
+    public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
+    {
+        if (!IsValidUrgentHaulThingForPawn(pawn, t))
+        {
+            return null;
+        }
+        return JobOnThingDelegate(pawn, t, forced);
+    }
+
+    private static Job DefaultJobOnThing(Pawn pawn, Thing t, bool forced)
+    {
+        if (!HaulAIUtility.PawnCanAutomaticallyHaulFast(pawn, t, forced))
+        {
+            return null;
+        }
+        return HaulAIUtility.HaulToStorageJob(pawn, t, forced);
+    }
+
     private static IReadOnlyList<Thing> GetHaulablesForPawn(Pawn pawn)
     {
-        Map map = pawn.Map;
-        IReadOnlyList<Thing> res = null;
-        if (map != null)
+        Map map = pawn?.Map;
+        if (map == null)
         {
-            res = map.GetComponent<HaulUrgentlyCache>()?.GetDesignatedAndHaulableThingsForMap(map, GenTicks.TicksGame) ?? new List<Thing>();
-            return res;
+            return Array.Empty<Thing>();
         }
-        res = new List<Thing>();
-        return res;
+        return map.GetComponent<HaulUrgentlyCache>()?.GetDesignatedAndHaulableThingsForMap(GenTicks.TicksGame) ?? Array.Empty<Thing>();
+    }
+
+    private static bool IsValidUrgentHaulThingForPawn(Pawn pawn, Thing thing)
+    {
+        return pawn?.Map != null
+            && thing != null
+            && !thing.Destroyed
+            && thing.Spawned
+            && thing.Map == pawn.Map
+            && thing.def != null;
     }
 }
 
@@ -186,7 +231,7 @@ public class Alert_NoUrgentHaulStorage : Alert
 {
     private const int MaxListedCulpritsInExplanation = 5;
     public override AlertPriority Priority => AlertPriority.High;
-    public override Color BGColor => new(1f, 0.9215686f, 0.01568628f, 0.35f);
+    protected override Color BGColor => new(1f, 0.9215686f, 0.01568628f, 0.35f);
 
 
     public Alert_NoUrgentHaulStorage()
@@ -198,7 +243,7 @@ public class Alert_NoUrgentHaulStorage : Alert
 
     public override TaggedString GetExplanation()
     {
-        var things = Find.CurrentMap.GetComponent<HaulUrgentlyCache>()?.GetNoStorageThings().Take(MaxListedCulpritsInExplanation + 1).ToList();
+        var things = Find.CurrentMap?.GetComponent<HaulUrgentlyCache>()?.GetNoStorageThings().Take(MaxListedCulpritsInExplanation + 1).ToList() ?? new List<Thing>();
         var list = things.Select(t => t?.LabelShort).Take(MaxListedCulpritsInExplanation).ToList();
         if (things.Count > MaxListedCulpritsInExplanation)
         {
@@ -222,83 +267,178 @@ public class Alert_NoUrgentHaulStorage : Alert
 
 public class HaulUrgentlyCache : MapComponent
 {
-    private int lastUpdateTick = -1;
-    private const int expireTickInterval = 1;
-    private List<Thing> designatedThings = new();
-    private List<Thing> designatedHaulableThings = new();
+    private const int CacheExpireTickInterval = 60;
+    private const int CleanupTickInterval = 60;
+    private const int NoStorageCacheExpireTickInterval = 60;
+
+    private int lastUpdateTick = -999999;
+    private int lastNoStorageUpdateTick = -999999;
+
+    private readonly List<Thing> designatedThings = new();
+    private readonly List<Thing> designatedHaulableThings = new();
+    private readonly List<Thing> noStorageThings = new();
+    private readonly HashSet<Thing> designatedSet = new();
+    private readonly Queue<Designation> cleanupQueue = new();
+
     public bool dirty = true;
 
-    private bool IsInValid(int tick)
+    public HaulUrgentlyCache(Map map) : base(map)
     {
-        return lastUpdateTick < 0 || tick >= lastUpdateTick + expireTickInterval;
     }
 
-    private void BuildCache()
+    public IReadOnlyList<Thing> GetDesignatedAndHaulableThingsForMap(int tick)
     {
-        // Currently the dirty check is disabled
-        // Reason being the Job will not correctly change the dirty flag 
-        // TODO: Need to implement this in the Job system in the future
-        if (dirty)
-        {
-            designatedThings = map.designationManager.AllDesignations.Where(d => d.def == HaulUrgentlyDefOf.HaulUrgentlyDesignation).Select(d => d.target.Thing).ToList();
-
-            designatedHaulableThings = designatedThings.Where(t => t.def.EverHaulable || t.def.alwaysHaulable).ToList();
-            lastUpdateTick = GenTicks.TicksGame;
-            dirty = false;
-        }
+        RecacheIfNeeded(tick);
+        return designatedHaulableThings;
     }
 
     public IEnumerable<Thing> GetNoStorageThings()
     {
-        return designatedThings.Where(t => t != null && t.Spawned && t.Map != null && !StoreUtility.IsInValidBestStorage(t) && !StoreUtility.TryFindBestBetterStorageFor(t, null, t.Map, StoragePriority.Unstored, Faction.OfPlayer, out IntVec3 v1, out IHaulDestination v2));
-    }
-
-    public void UpdateInStorageDesignations()
-    {
-        designatedThings.ForEach(t =>
+        int tick = GenTicks.TicksGame;
+        RecacheIfNeeded(tick);
+        if (dirty || tick >= lastNoStorageUpdateTick + NoStorageCacheExpireTickInterval)
         {
-            if (StoreUtility.IsInValidBestStorage(t))
-            {
-                map.designationManager.TryRemoveDesignationOn(t, HaulUrgentlyDefOf.HaulUrgentlyDesignation);
-            }
-        });
+            RebuildNoStorageCache();
+            lastNoStorageUpdateTick = tick;
+        }
+        return noStorageThings;
     }
 
     public override void MapComponentTick()
     {
-        if (!IsInValid(GenTicks.TicksGame))
+        int tick = GenTicks.TicksGame;
+        if (dirty || tick >= lastUpdateTick + CacheExpireTickInterval)
         {
-            return;
+            BuildCache(tick);
         }
-        UpdateInStorageDesignations();
-        BuildCache();
+
+        if (tick % CleanupTickInterval == map.uniqueID % CleanupTickInterval)
+        {
+            CleanupInvalidDesignations();
+        }
     }
 
     public void ClearCache()
     {
         designatedThings.Clear();
         designatedHaulableThings.Clear();
-        lastUpdateTick = -1;
+        noStorageThings.Clear();
+        designatedSet.Clear();
+        lastUpdateTick = -999999;
+        lastNoStorageUpdateTick = -999999;
         dirty = true;
     }
 
-    public HaulUrgentlyCache(Map map) : base(map)
+    private void RecacheIfNeeded(int tick)
     {
+        if (dirty || tick >= lastUpdateTick + CacheExpireTickInterval)
+        {
+            BuildCache(tick);
+        }
     }
 
-    public IReadOnlyList<Thing> GetDesignatedAndHaulableThingsForMap(Map map, int tick)
+    private void BuildCache(int tick)
     {
-        if (IsInValid(tick))
+        designatedThings.Clear();
+        designatedHaulableThings.Clear();
+        designatedSet.Clear();
+
+        List<Designation> urgentDesignations = map.designationManager.designationsByDef[HaulUrgentlyDefOf.HaulUrgentlyDesignation];
+        for (int i = 0; i < urgentDesignations.Count; i++)
         {
-            BuildCache();
+            Designation designation = urgentDesignations[i];
+            Thing thing = designation.target.Thing;
+            if (IsValidDesignatedThing(thing))
+            {
+                designatedThings.Add(thing);
+                designatedSet.Add(thing);
+            }
+            else
+            {
+                cleanupQueue.Enqueue(designation);
+            }
         }
-        return designatedHaulableThings;
+
+        ICollection<Thing> haulables = map.listerHaulables.ThingsPotentiallyNeedingHauling();
+        foreach (Thing thing in haulables)
+        {
+            if (designatedSet.Contains(thing) && IsValidDesignatedThing(thing))
+            {
+                designatedHaulableThings.Add(thing);
+            }
+        }
+
+        RemoveQueuedDesignations();
+        lastUpdateTick = tick;
+        dirty = false;
+    }
+
+    private void CleanupInvalidDesignations()
+    {
+        RecacheIfNeeded(GenTicks.TicksGame);
+        List<Designation> urgentDesignations = map.designationManager.designationsByDef[HaulUrgentlyDefOf.HaulUrgentlyDesignation];
+        for (int i = 0; i < urgentDesignations.Count; i++)
+        {
+            Designation designation = urgentDesignations[i];
+            Thing thing = designation.target.Thing;
+            if (!IsValidDesignatedThing(thing) || !designatedHaulableThings.Contains(thing))
+            {
+                cleanupQueue.Enqueue(designation);
+            }
+        }
+
+        if (cleanupQueue.Count > 0)
+        {
+            RemoveQueuedDesignations();
+            ClearCache();
+        }
+    }
+
+    private void RemoveQueuedDesignations()
+    {
+        while (cleanupQueue.Count > 0)
+        {
+            Designation designation = cleanupQueue.Dequeue();
+            if (designation?.designationManager != null)
+            {
+                designation.designationManager.RemoveDesignation(designation);
+            }
+        }
+    }
+
+    private void RebuildNoStorageCache()
+    {
+        noStorageThings.Clear();
+        for (int i = 0; i < designatedHaulableThings.Count; i++)
+        {
+            Thing thing = designatedHaulableThings[i];
+            if (!IsValidDesignatedThing(thing) || map.reservationManager.IsReserved(thing))
+            {
+                continue;
+            }
+
+            if (!StoreUtility.TryFindBestBetterStorageFor(thing, null, map, StoreUtility.CurrentStoragePriorityOf(thing, false), Faction.OfPlayer, out IntVec3 _, out IHaulDestination _))
+            {
+                noStorageThings.Add(thing);
+            }
+        }
+    }
+
+    private bool IsValidDesignatedThing(Thing thing)
+    {
+        return thing != null
+            && !thing.Destroyed
+            && thing.Spawned
+            && thing.Map == map
+            && thing.def != null;
     }
 }
 
 public class Designator_HaulUrgent : Designator
 {
-    public override DesignationDef Designation => HaulUrgentlyDefOf.HaulUrgentlyDesignation;
+    private static readonly List<Thing> tmpDesignateThings = new();
+
+    protected override DesignationDef Designation => HaulUrgentlyDefOf.HaulUrgentlyDesignation;
     public override DrawStyleCategoryDef DrawStyleCategory => DrawStyleCategoryDefOf.FilledRectangle;
 
     public Designator_HaulUrgent()
@@ -319,16 +459,18 @@ public class Designator_HaulUrgent : Designator
 
     public override void DesignateSingleCell(IntVec3 c)
     {
-        var things = Map.thingGrid.ThingsListAtFast(c);
-        DesignateMultiThing(things);
-    }
-
-    private void DesignateMultiThing(IEnumerable<Thing> things)
-    {
-        foreach (Thing thing in things)
+        tmpDesignateThings.Clear();
+        List<Thing> things = Map.thingGrid.ThingsListAtFast(c);
+        for (int i = 0; i < things.Count; i++)
         {
-            DesignateThing(thing);
+            tmpDesignateThings.Add(things[i]);
         }
+
+        for (int i = 0; i < tmpDesignateThings.Count; i++)
+        {
+            DesignateThing(tmpDesignateThings[i]);
+        }
+        tmpDesignateThings.Clear();
     }
 
     private bool ThingIsRelevant(Thing thing)
@@ -347,13 +489,29 @@ public class Designator_HaulUrgent : Designator
 
     public override void DesignateThing(Thing t)
     {
-        if (CanDesignateThing(t).Accepted)
+        if (!CanDesignateThing(t).Accepted)
         {
-            t.MapHeld.designationManager.AddDesignation(new Designation(t, Designation));
-            t.SetForbidden(false, false);
-            t.MapHeld.GetComponent<HaulUrgentlyCache>().dirty = true;
+            return;
         }
-        // t.MapHeld.GetComponent<HaulUrgentlyCache>()?.ClearCache();
+
+        Map map = t.MapHeld ?? t.Map;
+        if (map == null)
+        {
+            return;
+        }
+
+        if (t.def.designateHaulable && map.designationManager.DesignationOn(t, DesignationDefOf.Haul) == null)
+        {
+            map.designationManager.AddDesignation(new Designation(t, DesignationDefOf.Haul));
+        }
+
+        if (map.designationManager.DesignationOn(t, Designation) == null)
+        {
+            map.designationManager.AddDesignation(new Designation(t, Designation));
+        }
+
+        t.SetForbidden(false, false);
+        map.GetComponent<HaulUrgentlyCache>()?.ClearCache();
     }
 
     public override void SelectedUpdate()

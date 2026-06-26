@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using HarmonyLib;
 using RimWorld;
 using UnityEngine;
@@ -13,6 +12,24 @@ public static class Thing_GetGizmos_Patch
 {
     public static ThingDef defToSelect = null;
     public static ThingDef stuffToSelect = null;
+
+    private static bool AllSelectedSameDefAndStuff(ThingDef def, ThingDef stuff)
+    {
+        var selectedObjects = Find.Selector.SelectedObjects;
+        if (selectedObjects.Count == 0)
+        {
+            return false;
+        }
+
+        for (int i = 0; i < selectedObjects.Count; i++)
+        {
+            if (selectedObjects[i] is not Thing thing || thing.def != def || thing.Stuff != stuff)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 
     public static IEnumerable<Gizmo> Postfix(IEnumerable<Gizmo> __result, Thing __instance)
     {
@@ -28,7 +45,7 @@ public static class Thing_GetGizmos_Patch
             }
             else if (Find.Selector.NumSelected > 1)
             {
-                if (Find.Selector.SelectedObjects.OfType<Thing>().All(t => t.def == __instance.def && t.Stuff == __instance.Stuff))
+                if (AllSelectedSameDefAndStuff(__instance.def, __instance.Stuff))
                 {
                     defToSelect = __instance.def;
                     stuffToSelect = __instance.Stuff;
@@ -50,7 +67,9 @@ public class SelectSimilarDefOf
 
 public class Designator_SelectSimilar : Designator
 {
-    public override DesignationDef Designation => SelectSimilarDefOf.SelectSimilarDesignation;
+    private static readonly List<Thing> tmpDesignateThings = new();
+
+    protected override DesignationDef Designation => SelectSimilarDefOf.SelectSimilarDesignation;
     public override DrawStyleCategoryDef DrawStyleCategory => DrawStyleCategoryDefOf.FilledRectangle;
 
     public Designator_SelectSimilar()
@@ -89,16 +108,18 @@ public class Designator_SelectSimilar : Designator
 
     public override void DesignateSingleCell(IntVec3 c)
     {
-        var things = Map.thingGrid.ThingsListAtFast(c);
-        DesignateMultiThing(things);
-    }
-
-    private void DesignateMultiThing(IEnumerable<Thing> things)
-    {
-        foreach (var thing in things)
+        tmpDesignateThings.Clear();
+        List<Thing> things = Map.thingGrid.ThingsListAtFast(c);
+        for (int i = 0; i < things.Count; i++)
         {
-            DesignateThing(thing);
+            tmpDesignateThings.Add(things[i]);
         }
+
+        for (int i = 0; i < tmpDesignateThings.Count; i++)
+        {
+            DesignateThing(tmpDesignateThings[i]);
+        }
+        tmpDesignateThings.Clear();
     }
 
     public override void DesignateThing(Thing thing)
