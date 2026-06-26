@@ -5,6 +5,9 @@
 		<label>AllowTool</label>
 		<order>850</order>
 		<specialDesignatorClasses>
+			<li>AAT.Designator_Allow</li>
+			<li>AAT.Designator_Forbid</li>
+			<li>AAT.Designator_AllowAll</li>
 			<li>AAT.Designator_HaulUrgent</li>
 			<li>AAT.Designator_SelectSimilar</li>
 			<li>AAT.Designator_HarvestFullyGrown</li>

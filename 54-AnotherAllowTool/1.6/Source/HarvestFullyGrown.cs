@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using HarmonyLib;
 using RimWorld;
@@ -30,8 +29,9 @@ public static class HarvestFullyGrownDefOf
 public class Designator_HarvestFullyGrown : Designator
 {
     private static readonly IntVec3 DragStartCell = IntVec3.Invalid;
+    private static readonly List<Thing> tmpDesignateThings = new();
     
-    public override DesignationDef Designation => DesignationDefOf.HarvestPlant;
+    protected override DesignationDef Designation => DesignationDefOf.HarvestPlant;
     public override DrawStyleCategoryDef DrawStyleCategory => DrawStyleCategoryDefOf.FilledRectangle;
 
     public Designator_HarvestFullyGrown()
@@ -65,15 +65,22 @@ public class Designator_HarvestFullyGrown : Designator
 
     public override void DesignateSingleCell(IntVec3 c)
     {
+        tmpDesignateThings.Clear();
         List<Thing> thingList = c.GetThingList(Map);
         for (int i = 0; i < thingList.Count; i++)
         {
-            Thing thing = thingList[i];
+            tmpDesignateThings.Add(thingList[i]);
+        }
+
+        for (int i = 0; i < tmpDesignateThings.Count; i++)
+        {
+            Thing thing = tmpDesignateThings[i];
             if (CanDesignateThing(thing).Accepted)
             {
                 DesignateThing(thing);
             }
         }
+        tmpDesignateThings.Clear();
     }
 
     public override AcceptanceReport CanDesignateThing(Thing t)
