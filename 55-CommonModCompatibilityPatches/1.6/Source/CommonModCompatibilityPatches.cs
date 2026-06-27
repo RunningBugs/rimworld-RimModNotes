@@ -21,6 +21,9 @@ public static class CommonCompatibilityBootstrap
         applied += AllowToolHaulUrgentlyCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += ReservationEventCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += ReplaceStuffBridgeCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += ReplaceStuffOverMineableCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += BuildFromInventoryReservationCountCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += TinyTweaksAutoRebuildCompatibility.TryApply(Harmony) ? 1 : 0;
 
         Log.Message($"[CommonModCompatibilityPatches] Applied {applied} compatibility patch group(s).".Colorize(Color.green));
     }
@@ -266,3 +269,178 @@ internal static class ReplaceStuffBridgeCompatibility
         return null;
     }
 }
+
+internal static class ReplaceStuffOverMineableCompatibility
+{
+    public const string ReplaceStuffPackageId = "Memegoddess.ReplaceStuff";
+
+    public static bool TryApply(Harmony harmony)
+    {
+        if (!ModDetection.IsActive(ReplaceStuffPackageId))
+        {
+            return false;
+        }
+
+        Type overMineableType = AccessTools.TypeByName("Replace_Stuff.OverMineable.InterceptBlueprintOverMinable");
+        MethodInfo target = AccessTools.Method(overMineableType, "Prefix", new[] { typeof(BuildableDef), typeof(IntVec3), typeof(Map), typeof(Rot4), typeof(Faction) });
+        MethodInfo prefix = AccessTools.Method(typeof(ReplaceStuffOverMineableCompatibility), nameof(Prefix));
+        MethodInfo finalizer = AccessTools.Method(typeof(ReplaceStuffOverMineableCompatibility), nameof(Finalizer));
+        if (target == null || prefix == null || finalizer == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(target, prefix: new HarmonyMethod(prefix), finalizer: new HarmonyMethod(finalizer));
+        return true;
+    }
+
+    public static bool Prefix(BuildableDef sourceDef, IntVec3 center, Map map, Rot4 rotation, Faction faction)
+    {
+        if (sourceDef == null || map == null || map.thingGrid == null || map.designationManager == null || !center.IsValid)
+        {
+            return false;
+        }
+
+        if (faction != Faction.OfPlayer)
+        {
+            return true;
+        }
+
+        try
+        {
+            CellRect occupied = GenAdj.OccupiedRect(center, rotation, sourceDef.Size).ClipInsideMap(map);
+            if (occupied.Area <= 0)
+            {
+                return false;
+            }
+        }
+        catch
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    public static Exception Finalizer(Exception __exception)
+    {
+        if (__exception == null)
+        {
+            return null;
+        }
+
+        Log.Warning("[CommonModCompatibilityPatches] Suppressed Replace Stuff over-mineable blueprint helper exception: " + __exception.GetType().Name + ": " + __exception.Message);
+        return null;
+    }
+}
+
+internal static class BuildFromInventoryReservationCountCompatibility
+{
+    public const string BuildFromInventoryPackageId = "Memegoddess.BuildFromInventory";
+
+    public static bool TryApply(Harmony harmony)
+    {
+        if (!ModDetection.IsActive(BuildFromInventoryPackageId))
+        {
+            return false;
+        }
+
+        MethodInfo target = AccessTools.Method(typeof(ReservationManager), nameof(ReservationManager.Reserve), new[]
+        {
+            typeof(Pawn),
+            typeof(Job),
+            typeof(LocalTargetInfo),
+            typeof(int),
+            typeof(int),
+            typeof(ReservationLayerDef),
+            typeof(bool),
+            typeof(bool),
+            typeof(bool)
+        });
+        MethodInfo prefix = AccessTools.Method(typeof(BuildFromInventoryReservationCountCompatibility), nameof(Prefix));
+        if (target == null || prefix == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(target, prefix: new HarmonyMethod(prefix));
+        return true;
+    }
+
+    public static void Prefix(Job job, LocalTargetInfo target, int maxPawns, ref int stackCount)
+    {
+        if (stackCount <= 0 || maxPawns <= 1 || job?.def != JobDefOf.HaulToContainer || !target.HasThing)
+        {
+            return;
+        }
+
+        Thing thing = target.Thing;
+        if (thing == null || thing.Destroyed)
+        {
+            return;
+        }
+
+        int availableStack = thing.stackCount;
+        if (availableStack > 0 && stackCount > availableStack)
+        {
+            stackCount = availableStack;
+        }
+    }
+}
+
+internal static class TinyTweaksAutoRebuildCompatibility
+{
+    public const string TinyTweaksPackageId = "XeoNovaDan.TinyTweaks";
+    private const string AutoRebuildSignal = "TT_ParentLaunched";
+    private static FieldInfo previousMapField;
+
+    public static bool TryApply(Harmony harmony)
+    {
+        if (!ModDetection.IsActive(TinyTweaksPackageId))
+        {
+            return false;
+        }
+
+        Type compType = AccessTools.TypeByName("TinyTweaks.CompLaunchableAutoRebuild");
+        MethodInfo target = AccessTools.Method(compType, "ReceiveCompSignal", new[] { typeof(string) });
+        MethodInfo prefix = AccessTools.Method(typeof(TinyTweaksAutoRebuildCompatibility), nameof(Prefix));
+        if (target == null || prefix == null)
+        {
+            return false;
+        }
+
+        previousMapField = AccessTools.Field(compType, "previousMap");
+        if (previousMapField == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(target, prefix: new HarmonyMethod(prefix));
+        return true;
+    }
+
+    public static bool Prefix(ThingComp __instance, string signal)
+    {
+        if (signal != AutoRebuildSignal)
+        {
+            return true;
+        }
+
+        Map previousMap = previousMapField?.GetValue(__instance) as Map;
+        if (previousMap == null)
+        {
+            Log.Warning("[CommonModCompatibilityPatches] Skipped TinyTweaks auto-rebuild blueprint placement because previousMap was null.");
+            return false;
+        }
+
+        Thing parent = __instance?.parent;
+        if (parent == null || parent.def == null || !parent.Position.IsValid)
+        {
+            Log.Warning("[CommonModCompatibilityPatches] Skipped TinyTweaks auto-rebuild blueprint placement because launchable parent context was invalid.");
+            return false;
+        }
+
+        return true;
+    }
+}
+

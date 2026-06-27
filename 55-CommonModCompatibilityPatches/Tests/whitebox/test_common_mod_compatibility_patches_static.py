@@ -70,11 +70,35 @@ class PatchSourceTests(unittest.TestCase):
         for token in ["thing == null", "thing.Destroyed", "!thing.Spawned", "thing.Map == null", "thing.def == null"]:
             self.assertIn(token, self.src)
 
+    def test_build_from_inventory_reservation_stack_count_clamp(self) -> None:
+        self.assertIn("BuildFromInventoryReservationCountCompatibility", self.src)
+        self.assertIn("nameof(ReservationManager.Reserve)", self.src)
+        self.assertIn("ref int stackCount", self.src)
+        self.assertIn("job?.def != JobDefOf.HaulToContainer", self.src)
+        self.assertIn("stackCount = availableStack", self.src)
+
     def test_replace_stuff_patch_targets_bridge_helper(self) -> None:
         self.assertIn('AccessTools.TypeByName("Replace_Stuff.PlaceBridges.PlaceBridges")', self.src)
         self.assertIn('"GetNeededBridge"', self.src)
         self.assertIn("public static Exception Finalizer", self.src)
         self.assertIn("Suppressed Replace Stuff bridge helper exception", self.src)
+
+    def test_replace_stuff_patch_targets_over_mineable_helper(self) -> None:
+        self.assertIn('AccessTools.TypeByName("Replace_Stuff.OverMineable.InterceptBlueprintOverMinable")', self.src)
+        self.assertIn('"Prefix", new[] { typeof(BuildableDef), typeof(IntVec3), typeof(Map), typeof(Rot4), typeof(Faction) }', self.src)
+        self.assertIn("ReplaceStuffOverMineableCompatibility", self.src)
+        self.assertIn("Suppressed Replace Stuff over-mineable blueprint helper exception", self.src)
+        for token in ["sourceDef == null", "map == null", "map.thingGrid == null", "map.designationManager == null", "!center.IsValid"]:
+            self.assertIn(token, self.src)
+
+    def test_tiny_tweaks_auto_rebuild_skips_null_previous_map(self) -> None:
+        self.assertIn("TinyTweaksAutoRebuildCompatibility", self.src)
+        self.assertIn('AccessTools.TypeByName("TinyTweaks.CompLaunchableAutoRebuild")', self.src)
+        self.assertIn('"ReceiveCompSignal", new[] { typeof(string) }', self.src)
+        self.assertIn('AccessTools.Field(compType, "previousMap")', self.src)
+        self.assertIn('signal != AutoRebuildSignal', self.src)
+        self.assertIn("previousMap == null", self.src)
+        self.assertIn("return false", self.src)
 
 
 if __name__ == "__main__":
