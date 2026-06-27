@@ -36,7 +36,11 @@ A small collection of runtime compatibility patches for commonly used RimWorld m
 Current patches:
 - Allow Tool: guard stale cached Haul Urgently things before RimWorld hauling APIs.
 - Build From Inventory / Replace Stuff: guard vanilla pathfinder reservation notifications for inventory-held or unspawned reservation targets.
+- Build From Inventory: clamp impossible HaulToContainer reservation stack counts after inventory drops.
 - Replace Stuff / TinyTweaks: guard Replace Stuff automatic bridge placement helper against null/invalid blueprint contexts.
+- Replace Stuff / TinyTweaks: guard Replace Stuff over-mineable blueprint helper against null/invalid blueprint contexts.
+- TinyTweaks: skip auto-rebuild blueprint placement when a launched building has no previous map context.
 
-Target mods are listed under loadAfter, not as dependencies, so this mod can stay enabled even when some target mods are not installed.</description>
+Target mods are listed under loadAfter, not as dependencies, so this mod can stay enabled even when some target mods are not installed.
+</description>
 </ModMetaData>
