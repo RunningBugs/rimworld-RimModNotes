@@ -22,6 +22,7 @@
 		<li>Memegoddess.BuildFromInventory</li>
 		<li>Memegoddess.ReplaceStuff</li>
 		<li>XeoNovaDan.TinyTweaks</li>
+		<li>Mlie.RimStory</li>
 	</loadAfter>
 
 	<incompatibleWith>
@@ -40,6 +41,7 @@ Current patches:
 - Replace Stuff / TinyTweaks: guard Replace Stuff automatic bridge placement helper against null/invalid blueprint contexts.
 - Replace Stuff / TinyTweaks: guard Replace Stuff over-mineable blueprint helper against null/invalid blueprint contexts.
 - TinyTweaks: skip auto-rebuild blueprint placement when a launched building has no previous map context.
+- RimStory: guard broken saved individual-death anniversary events (ADead) with missing/invalid pawns and suppress exceptions from that event path.
 
 Target mods are listed under loadAfter, not as dependencies, so this mod can stay enabled even when some target mods are not installed.
 </description>

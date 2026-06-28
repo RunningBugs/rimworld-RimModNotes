@@ -28,6 +28,7 @@ class MetadataTests(unittest.TestCase):
             "Memegoddess.BuildFromInventory",
             "Memegoddess.ReplaceStuff",
             "XeoNovaDan.TinyTweaks",
+            "Mlie.RimStory",
         ]:
             self.assertNotIn(package_id, deps)
             self.assertIn(package_id, load_after)
@@ -47,7 +48,7 @@ class PatchSourceTests(unittest.TestCase):
 
     def test_all_patch_groups_have_package_dynamic_detection(self) -> None:
         self.assertIn("ModsConfig.ActiveModsInLoadOrder", self.src)
-        for package_id in ["UnlimitedHugs.AllowTool", "Memegoddess.BuildFromInventory", "Memegoddess.ReplaceStuff"]:
+        for package_id in ["UnlimitedHugs.AllowTool", "Memegoddess.BuildFromInventory", "Memegoddess.ReplaceStuff", "Mlie.RimStory"]:
             self.assertIn(package_id, self.src)
         self.assertIn("if (!ModDetection.IsActive(PackageId))", self.src)
         self.assertIn("if (!ModDetection.AnyActive(BuildFromInventoryPackageId, ReplaceStuffPackageId))", self.src)
@@ -99,6 +100,18 @@ class PatchSourceTests(unittest.TestCase):
         self.assertIn('signal != AutoRebuildSignal', self.src)
         self.assertIn("previousMap == null", self.src)
         self.assertIn("return false", self.src)
+
+    def test_rimstory_adead_guard_targets_try_start_event(self) -> None:
+        self.assertIn("RimStoryADeadCompatibility", self.src)
+        self.assertIn('AccessTools.TypeByName("RimStory.ADead")', self.src)
+        self.assertIn('"TryStartEvent", new[] { typeof(Map) }', self.src)
+        self.assertIn('AccessTools.Field(aDeadType, "deadPawn")', self.src)
+        self.assertIn('AccessTools.Field(aDeadType, "date")', self.src)
+        self.assertIn('AccessTools.TypeByName("RimStory.Resources")', self.src)
+        self.assertIn('AccessTools.Field(resourcesType, "eventsToDelete")', self.src)
+        self.assertIn("QueueEventForDeletion(__instance)", self.src)
+        self.assertIn("public static Exception Finalizer", self.src)
+        self.assertIn("Suppressed RimStory ADead anniversary event", self.src)
 
 
 if __name__ == "__main__":
