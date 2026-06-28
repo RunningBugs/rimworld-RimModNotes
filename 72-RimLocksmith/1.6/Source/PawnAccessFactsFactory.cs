@@ -1,3 +1,4 @@
+using System.Reflection;
 using RimWorld;
 using RunningBugs.RimLocksmith.Core;
 using Verse;
@@ -14,7 +15,7 @@ public static class PawnAccessFactsFactory
         }
 
         bool canOpenDoors = pawn.CanOpenDoors;
-        bool isFenceBlockedRoamer = pawn.RaceProps?.FenceBlocked ?? false;
+        bool isFenceBlockedRoamer = IsFenceBlockedRoamer(pawn);
         bool isRopedByPawn = pawn.roping?.IsRopedByPawn ?? false;
         bool roperCanOpen = isRopedByPawn && pawn.roping.RopedByPawn != null && pawn.roping.RopedByPawn.CanOpenDoors;
 
@@ -38,5 +39,45 @@ public static class PawnAccessFactsFactory
         {
             return new PawnAccessFacts(category, canOpenDoors, isFenceBlockedRoamer, isRopedByPawn, roperCanOpen);
         }
+    }
+
+    public static bool IsFenceBlockedRoamer(Pawn pawn)
+    {
+        if (pawn?.RaceProps?.FenceBlocked != true)
+        {
+            return false;
+        }
+
+        return !HasObjectSpecificRoamSuppression(pawn);
+    }
+
+    private static bool HasObjectSpecificRoamSuppression(Pawn pawn)
+    {
+        if (!ModsConfig.OdysseyActive || pawn?.health?.hediffSet?.hediffs == null)
+        {
+            return false;
+        }
+
+        foreach (Hediff hediff in pawn.health.hediffSet.hediffs)
+        {
+            if (hediff == null)
+            {
+                continue;
+            }
+
+            if (hediff.def?.defName == "SentienceCatalyst")
+            {
+                return true;
+            }
+
+            object curStage = hediff.CurStage;
+            FieldInfo removeRoamMtbField = curStage?.GetType().GetField("removeRoamMtb", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            if (removeRoamMtbField != null && removeRoamMtbField.GetValue(curStage) is bool removeRoamMtb && removeRoamMtb)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
