@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -24,6 +25,7 @@ public static class CommonCompatibilityBootstrap
         applied += ReplaceStuffOverMineableCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += BuildFromInventoryReservationCountCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += TinyTweaksAutoRebuildCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += RimStoryADeadCompatibility.TryApply(Harmony) ? 1 : 0;
 
         Log.Message($"[CommonModCompatibilityPatches] Applied {applied} compatibility patch group(s).".Colorize(Color.green));
     }
@@ -441,6 +443,113 @@ internal static class TinyTweaksAutoRebuildCompatibility
         }
 
         return true;
+    }
+}
+
+internal static class RimStoryADeadCompatibility
+{
+    public const string RimStoryPackageId = "Mlie.RimStory";
+    private static FieldInfo deadPawnField;
+    private static FieldInfo dateField;
+    private static FieldInfo eventsToDeleteField;
+    private static readonly HashSet<int> reportedInvalidEvents = new();
+
+    public static bool TryApply(Harmony harmony)
+    {
+        if (!ModDetection.IsActive(RimStoryPackageId))
+        {
+            return false;
+        }
+
+        Type aDeadType = AccessTools.TypeByName("RimStory.ADead");
+        MethodInfo target = AccessTools.Method(aDeadType, "TryStartEvent", new[] { typeof(Map) });
+        MethodInfo prefix = AccessTools.Method(typeof(RimStoryADeadCompatibility), nameof(Prefix));
+        MethodInfo finalizer = AccessTools.Method(typeof(RimStoryADeadCompatibility), nameof(Finalizer));
+        if (aDeadType == null || target == null || prefix == null || finalizer == null)
+        {
+            return false;
+        }
+
+        deadPawnField = AccessTools.Field(aDeadType, "deadPawn");
+        dateField = AccessTools.Field(aDeadType, "date");
+        Type resourcesType = AccessTools.TypeByName("RimStory.Resources");
+        eventsToDeleteField = AccessTools.Field(resourcesType, "eventsToDelete");
+        if (deadPawnField == null || dateField == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(target, prefix: new HarmonyMethod(prefix), finalizer: new HarmonyMethod(finalizer));
+        return true;
+    }
+
+    public static bool Prefix(object __instance, Map map, ref bool __result)
+    {
+        if (!HasValidContext(__instance, map))
+        {
+            __result = false;
+            QueueEventForDeletion(__instance);
+            ReportInvalidEventOnce(__instance, "invalid saved ADead context");
+            return false;
+        }
+
+        return true;
+    }
+
+    public static Exception Finalizer(object __instance, Exception __exception, ref bool __result)
+    {
+        if (__exception == null)
+        {
+            return null;
+        }
+
+        __result = false;
+        QueueEventForDeletion(__instance);
+        ReportInvalidEventOnce(__instance, "exception in RimStory.ADead.TryStartEvent: " + __exception.GetType().Name + ": " + __exception.Message);
+        return null;
+    }
+
+    private static bool HasValidContext(object instance, Map map)
+    {
+        if (instance == null || map == null || deadPawnField == null || dateField == null)
+        {
+            return false;
+        }
+
+        Pawn deadPawn = deadPawnField.GetValue(instance) as Pawn;
+        object date = dateField.GetValue(instance);
+        if (deadPawn == null || date == null || deadPawn.Destroyed || deadPawn.relations == null)
+        {
+            return false;
+        }
+
+        return deadPawn.Dead;
+    }
+
+    private static void QueueEventForDeletion(object instance)
+    {
+        if (instance == null || eventsToDeleteField == null)
+        {
+            return;
+        }
+
+        if (eventsToDeleteField.GetValue(null) is not IList eventsToDelete || eventsToDelete.Contains(instance))
+        {
+            return;
+        }
+
+        eventsToDelete.Add(instance);
+    }
+
+    private static void ReportInvalidEventOnce(object instance, string reason)
+    {
+        int key = instance == null ? 0 : instance.GetHashCode();
+        if (!reportedInvalidEvents.Add(key))
+        {
+            return;
+        }
+
+        Log.Warning("[CommonModCompatibilityPatches] Suppressed RimStory ADead anniversary event because of " + reason + "; queued event for deletion.");
     }
 }
 
