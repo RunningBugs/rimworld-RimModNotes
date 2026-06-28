@@ -3,7 +3,10 @@
     <WorkbenchZone>Workbench Zone</WorkbenchZone>
     <WorkbenchZoneSettings>Workbench Zone Settings</WorkbenchZoneSettings>
     <WzMaxRadius>Max radius allowed: {0} </WzMaxRadius>
-    <WorkbenchHasZoneNonStockpile>Workbench has none stockpile zone existing</WorkbenchHasZoneNonStockpile>
+    <WorkbenchHasZoneNonStockpile>Workbench has a non-stockpile zone at its interaction cell</WorkbenchHasZoneNonStockpile>
+    <WzNoBills>This workbench has no bills, so no workbench zone can be created</WzNoBills>
     <WzCreateWorkbenchZone>Create Workbench Zone</WzCreateWorkbenchZone>
-    <WzCreateWorkbenchZoneDesc>Click to create a workbench zone, which will be storing all ingredients from all your bills, and has a radius of min(maxRadius, minRadiusOfBillIngredients)</WzCreateWorkbenchZoneDesc>
+    <WzCreateWorkbenchZoneDesc>Left-click to create the default rectangular workbench zone; right-click to choose rectangle or circle. The storage filter is built from all bill ingredients, and the range is the smaller of the mod max radius and the bill ingredient search radii.</WzCreateWorkbenchZoneDesc>
+    <WzCreateRectangleZone>Create rectangular workbench zone</WzCreateRectangleZone>
+    <WzCreateCircleZone>Create circular workbench zone</WzCreateCircleZone>
 </LanguageData>
