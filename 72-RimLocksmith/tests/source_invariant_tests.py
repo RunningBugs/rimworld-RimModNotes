@@ -29,6 +29,11 @@ if '.FreePassage' in try_allows:
     errors.append('TryAllowsOpen must not read Building_Door.FreePassage; it recurses through WillCloseSoon -> PawnCanOpen')
 if 'Scribe_Deep.Look(ref DefaultConfig' in source or 'Scribe_Deep.Look(ref config' in source:
     errors.append('LockConfigData is a pure Core DTO; use LockConfigScribe/Scribe_Values, not Scribe_Deep.Look')
+harmony_patches = (root/'1.6/Source/HarmonyPatches.cs').read_text()
+path_cost_prefix = harmony_patches.split('public static class Patch_PathUtility_GetDoorCost', 1)[1].split('[HarmonyPatch]', 1)[0]
+for needle in ['traverseParms.mode == TraverseMode.ByPawn', '!traverseParms.canBashDoors', 'door.IsForbiddenToPass(pawn)', 'return true;']:
+    if needle not in path_cost_prefix:
+        errors.append(f'PathUtility.GetDoorCost patch must preserve vanilla forbidden-door pathing before RimLocksmith allow overrides: {needle}')
 pawn_facts_factory = (root/'1.6/Source/PawnAccessFactsFactory.cs').read_text()
 for needle in ['IsFenceBlockedRoamer(Pawn pawn)', 'HasObjectSpecificRoamSuppression(pawn)', 'SentienceCatalyst', 'removeRoamMtb']:
     if needle not in pawn_facts_factory:

@@ -35,6 +35,10 @@ public static class Patch_PathUtility_GetDoorCost
         {
             return true;
         }
+        if (traverseParms.mode == TraverseMode.ByPawn && !traverseParms.canBashDoors && pawn != null && door.IsForbiddenToPass(pawn))
+        {
+            return true;
+        }
         if (!RimLocksmithUtility.TryAllowsOpen(door, pawn, out bool allowed))
         {
             return true;
