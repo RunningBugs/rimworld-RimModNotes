@@ -162,19 +162,61 @@ public class JobDriver_UseOutfitStandBetter : JobDriver
         }
         foreach (Apparel item3 in wornApparelToTransferToStand)
         {
+            EnsureStandAllows(item3);
             OutfitStand.AddApparel(item3);
         }
+        ThingWithComps removedHeldWeapon = null;
         ThingWithComps heldWeapon = OutfitStand.HeldWeapon;
         if (heldWeapon != null && PawnCanWieldWeapon(heldWeapon, pawn) && OutfitStand.RemoveHeldWeapon(heldWeapon))
         {
+            removedHeldWeapon = heldWeapon;
             pawn.equipment.MakeRoomFor(heldWeapon, out var dropped);
             pawn.equipment.AddEquipment(heldWeapon);
             if (dropped != null)
             {
                 dropped.DeSpawn();
+                EnsureStandAllows(dropped);
                 OutfitStand.TryAddHeldWeapon(dropped);
             }
         }
+        foreach (Apparel item2 in standApparelToTransferToPawn)
+        {
+            DisableStandAllowsIfNoLongerHeld(item2);
+        }
+        foreach (Apparel toDrop in standApparelToDrop)
+        {
+            DisableStandAllowsIfNoLongerHeld(toDrop);
+        }
+        DisableStandAllowsIfNoLongerHeld(removedHeldWeapon);
+    }
+
+    private void EnsureStandAllows(Thing thing)
+    {
+        if (thing == null)
+        {
+            return;
+        }
+
+        OutfitStand.EnsureHeldItemsAllowed();
+        OutfitStand.GetStoreSettings().filter.SetAllow(thing.def, true);
+    }
+
+    private void DisableStandAllowsIfNoLongerHeld(Thing thing)
+    {
+        if (thing == null)
+        {
+            return;
+        }
+
+        foreach (Thing heldItem in OutfitStand.HeldItems)
+        {
+            if (heldItem.def == thing.def)
+            {
+                return;
+            }
+        }
+
+        OutfitStand.GetStoreSettings().filter.SetAllow(thing.def, false);
     }
 
     private static bool PawnCanWieldWeapon(Thing weapon, Pawn pawn)

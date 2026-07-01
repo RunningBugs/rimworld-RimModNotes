@@ -13,6 +13,23 @@ public class Building_BetterOutfitStand : Building_OutfitStand
 
     public HashSet<Apparel> StandApparelToTransferToPawn = new();
 
+    public override void ExposeData()
+    {
+        base.ExposeData();
+        if (Scribe.mode == LoadSaveMode.PostLoadInit)
+        {
+            EnsureHeldItemsAllowed();
+        }
+    }
+
+    public void EnsureHeldItemsAllowed()
+    {
+        foreach (Thing item in HeldItems)
+        {
+            GetStoreSettings().filter.SetAllow(item.def, true);
+        }
+    }
+
     public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Pawn selPawn)
     {
         // Add our custom options here, which will open a window
