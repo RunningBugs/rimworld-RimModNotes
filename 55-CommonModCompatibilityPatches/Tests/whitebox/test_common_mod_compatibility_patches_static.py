@@ -29,6 +29,8 @@ class MetadataTests(unittest.TestCase):
             "Memegoddess.ReplaceStuff",
             "XeoNovaDan.TinyTweaks",
             "Mlie.RimStory",
+            "OskarPotocki.VanillaFactionsExpanded.Core",
+            "Nals.DynamicPortraits",
         ]:
             self.assertNotIn(package_id, deps)
             self.assertIn(package_id, load_after)
@@ -48,7 +50,7 @@ class PatchSourceTests(unittest.TestCase):
 
     def test_all_patch_groups_have_package_dynamic_detection(self) -> None:
         self.assertIn("ModsConfig.ActiveModsInLoadOrder", self.src)
-        for package_id in ["UnlimitedHugs.AllowTool", "Memegoddess.BuildFromInventory", "Memegoddess.ReplaceStuff", "Mlie.RimStory"]:
+        for package_id in ["UnlimitedHugs.AllowTool", "Memegoddess.BuildFromInventory", "Memegoddess.ReplaceStuff", "Mlie.RimStory", "OskarPotocki.VanillaFactionsExpanded.Core", "Nals.DynamicPortraits"]:
             self.assertIn(package_id, self.src)
         self.assertIn("if (!ModDetection.IsActive(PackageId))", self.src)
         self.assertIn("if (!ModDetection.AnyActive(BuildFromInventoryPackageId, ReplaceStuffPackageId))", self.src)
@@ -59,6 +61,28 @@ class PatchSourceTests(unittest.TestCase):
         self.assertNotIn("was not found. Patch skipped", self.src)
         self.assertNotIn("Failed to patch Allow Tool", self.src)
         self.assertNotIn("Failed to patch Replace Stuff", self.src)
+
+    def test_zero_weight_song_selection_guard_targets_vanilla_choose_next_song(self) -> None:
+        self.assertIn("ZeroWeightSongSelectionCompatibility", self.src)
+        self.assertIn('AccessTools.Method(typeof(MusicManagerPlay), "ChooseNextSong")', self.src)
+        self.assertIn('AccessTools.Field(typeof(MusicManagerPlay), "recentSongs")', self.src)
+        self.assertIn('AccessTools.Method(typeof(MusicManagerPlay), "AppropriateNow")', self.src)
+        self.assertIn("TotalCommonality(candidates) > 0f", self.src)
+        self.assertIn("recentSongs.Clear()", self.src)
+        self.assertIn("zero-weight songs after recent-song filtering", self.src)
+        self.assertIn("vanilla can choose a normal positive-weight song", self.src)
+        self.assertIn("did not select zero-weight special-use music", self.src)
+        self.assertNotIn("playableCandidates.RandomElement()", self.src)
+
+    def test_nals_dynamic_portraits_work_items_guard_targets_draw_work_items(self) -> None:
+        self.assertIn("NalsDynamicPortraitsWorkItemsCompatibility", self.src)
+        self.assertIn('"Nals.DynamicPortraits"', self.src)
+        self.assertIn('AccessTools.TypeByName("DynamicPortrait.RenderColonist")', self.src)
+        self.assertIn('AccessTools.Method(renderColonistType, "DrawWorkItems")', self.src)
+        self.assertIn("IsSafeWorkItemTarget(pawn.CurJob.targetA.Thing)", self.src)
+        self.assertIn("def.thingClass", self.src)
+        self.assertIn("def.graphicData == null", self.src)
+        self.assertIn("Suppressed [NL] Dynamic Portraits DrawWorkItems exception", self.src)
 
     def test_allow_tool_patch_targets_original_workgiver(self) -> None:
         self.assertIn('AccessTools.TypeByName("AllowTool.WorkGiver_HaulUrgently")', self.src)
@@ -112,6 +136,16 @@ class PatchSourceTests(unittest.TestCase):
         self.assertIn("QueueEventForDeletion(__instance)", self.src)
         self.assertIn("public static Exception Finalizer", self.src)
         self.assertIn("Suppressed RimStory ADead anniversary event", self.src)
+
+    def test_goodwill_situation_manager_guard_targets_vef_stack(self) -> None:
+        self.assertIn("GoodwillSituationManagerThreadSafetyCompatibility", self.src)
+        self.assertIn('"OskarPotocki.VanillaFactionsExpanded.Core"', self.src)
+        self.assertIn('AccessTools.Method(typeof(GoodwillSituationManager), nameof(GoodwillSituationManager.GetSituations)', self.src)
+        self.assertIn('AccessTools.Method(typeof(GoodwillSituationManager), nameof(GoodwillSituationManager.RecalculateAll)', self.src)
+        self.assertIn('AccessTools.Field(typeof(GoodwillSituationManager), "cachedData")', self.src)
+        self.assertIn('lock (__instance)', self.src)
+        self.assertIn('Reset corrupted GoodwillSituationManager cache', self.src)
+        self.assertIn('cache[faction] = BuildSituations(faction)', self.src)
 
 
 if __name__ == "__main__":
