@@ -26,8 +26,217 @@ public static class CommonCompatibilityBootstrap
         applied += BuildFromInventoryReservationCountCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += TinyTweaksAutoRebuildCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += RimStoryADeadCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += GoodwillSituationManagerThreadSafetyCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += ZeroWeightSongSelectionCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += NalsDynamicPortraitsWorkItemsCompatibility.TryApply(Harmony) ? 1 : 0;
 
         Log.Message($"[CommonModCompatibilityPatches] Applied {applied} compatibility patch group(s).".Colorize(Color.green));
+    }
+}
+
+internal static class NalsDynamicPortraitsWorkItemsCompatibility
+{
+    public const string PackageId = "Nals.DynamicPortraits";
+    private const int UnsafeWorkItemWarningId = 82038119;
+    private const int SuppressedWorkItemExceptionWarningId = 82038120;
+
+    public static bool TryApply(Harmony harmony)
+    {
+        if (!ModDetection.IsActive(PackageId))
+        {
+            return false;
+        }
+
+        Type renderColonistType = AccessTools.TypeByName("DynamicPortrait.RenderColonist");
+        MethodInfo target = AccessTools.Method(renderColonistType, "DrawWorkItems");
+        MethodInfo prefix = AccessTools.Method(typeof(NalsDynamicPortraitsWorkItemsCompatibility), nameof(Prefix));
+        MethodInfo finalizer = AccessTools.Method(typeof(NalsDynamicPortraitsWorkItemsCompatibility), nameof(Finalizer));
+
+        if (target == null || prefix == null || finalizer == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(target, prefix: new HarmonyMethod(prefix), finalizer: new HarmonyMethod(finalizer));
+        return true;
+    }
+
+    public static bool Prefix(Pawn pawn)
+    {
+        if (pawn?.CurJob == null || pawn.CurJobDef == null)
+        {
+            return false;
+        }
+
+        if (!IsSafeWorkItemTarget(pawn.CurJob.targetA.Thing)
+            || !IsSafeWorkItemTarget(pawn.CurJob.targetB.Thing)
+            || !IsSafeWorkItemTarget(pawn.CurJob.targetC.Thing))
+        {
+            Log.WarningOnce("[CommonModCompatibilityPatches] Skipped [NL] Dynamic Portraits work-item overlay because a current job target has an incomplete ThingDef/graphic definition that would crash DrawWorkItems.", UnsafeWorkItemWarningId);
+            return false;
+        }
+
+        return true;
+    }
+
+    public static Exception Finalizer(Exception __exception)
+    {
+        if (__exception == null)
+        {
+            return null;
+        }
+
+        if (__exception is NullReferenceException || __exception is ArgumentException)
+        {
+            Log.WarningOnce("[CommonModCompatibilityPatches] Suppressed [NL] Dynamic Portraits DrawWorkItems exception: " + __exception.GetType().Name + ": " + __exception.Message, SuppressedWorkItemExceptionWarningId);
+            return null;
+        }
+
+        return __exception;
+    }
+
+    private static bool IsSafeWorkItemTarget(Thing thing)
+    {
+        if (thing == null)
+        {
+            return true;
+        }
+
+        ThingDef def = thing.def;
+        if (def == null)
+        {
+            return false;
+        }
+
+        Texture2D uiIcon;
+        try
+        {
+            uiIcon = def.uiIcon;
+        }
+        catch
+        {
+            return false;
+        }
+
+        if ((UnityEngine.Object)(object)uiIcon == (UnityEngine.Object)(object)BaseContent.BadTex)
+        {
+            return true;
+        }
+
+        Type thingClass = def.thingClass;
+        if (thingClass == null)
+        {
+            return false;
+        }
+
+        if (thingClass.IsSubclassOf(typeof(Building)) && def.graphicData == null)
+        {
+            return false;
+        }
+
+        return true;
+    }
+}
+
+internal static class ZeroWeightSongSelectionCompatibility
+{
+    private const int ZeroWeightSongWarningId = 82038117;
+    private const int EmergencySongWarningId = 82038118;
+    private static FieldInfo recentSongsField;
+    private static MethodInfo appropriateNowMethod;
+
+    public static bool TryApply(Harmony harmony)
+    {
+        MethodInfo target = AccessTools.Method(typeof(MusicManagerPlay), "ChooseNextSong");
+        MethodInfo prefix = AccessTools.Method(typeof(ZeroWeightSongSelectionCompatibility), nameof(Prefix));
+        recentSongsField = AccessTools.Field(typeof(MusicManagerPlay), "recentSongs");
+        appropriateNowMethod = AccessTools.Method(typeof(MusicManagerPlay), "AppropriateNow");
+
+        if (target == null || prefix == null || recentSongsField == null || appropriateNowMethod == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(target, prefix: new HarmonyMethod(prefix));
+        return true;
+    }
+
+    public static bool Prefix(MusicManagerPlay __instance, ref SongDef __result)
+    {
+        Queue<SongDef> recentSongs = recentSongsField.GetValue(__instance) as Queue<SongDef>;
+        if (recentSongs == null)
+        {
+            return true;
+        }
+
+        TrimRecentSongs(recentSongs);
+
+        List<SongDef> candidates = GetAppropriateSongs(__instance);
+        if (candidates.Empty())
+        {
+            recentSongs.Clear();
+            return true;
+        }
+
+        if (TotalCommonality(candidates) > 0f)
+        {
+            return true;
+        }
+
+        recentSongs.Clear();
+        List<SongDef> candidatesAfterRecentReset = GetAppropriateSongs(__instance);
+        if (TotalCommonality(candidatesAfterRecentReset) > 0f)
+        {
+            Log.WarningOnce("[CommonModCompatibilityPatches] MusicManagerPlay.ChooseNextSong found only zero-weight songs after recent-song filtering; cleared recent songs so vanilla can choose a normal positive-weight song instead of playing zero-weight special-use music.", ZeroWeightSongWarningId);
+            return true;
+        }
+
+        SongDef emergencySong = DefDatabase<SongDef>.AllDefs
+            .Where(song => song != null && song.playOnMap && song.commonality > 0f && song.clip != null)
+            .RandomElementWithFallback();
+        if (emergencySong == null)
+        {
+            return true;
+        }
+
+        __result = emergencySong;
+        Log.WarningOnce("[CommonModCompatibilityPatches] MusicManagerPlay.ChooseNextSong found no positive-weight appropriate songs even after clearing recent songs; selected a positive-weight map song as an emergency fallback and did not select zero-weight special-use music. Selected song: " + __result.defName, EmergencySongWarningId);
+        return false;
+    }
+
+    private static void TrimRecentSongs(Queue<SongDef> recentSongs)
+    {
+        while (recentSongs.Count > 7)
+        {
+            recentSongs.Dequeue();
+        }
+    }
+
+    private static List<SongDef> GetAppropriateSongs(MusicManagerPlay manager)
+    {
+        return DefDatabase<SongDef>.AllDefs.Where(song => AppropriateNow(manager, song)).ToList();
+    }
+
+    private static float TotalCommonality(List<SongDef> songs)
+    {
+        float totalCommonality = 0f;
+        for (int i = 0; i < songs.Count; i++)
+        {
+            totalCommonality += songs[i].commonality;
+        }
+        return totalCommonality;
+    }
+
+    private static bool AppropriateNow(MusicManagerPlay manager, SongDef song)
+    {
+        try
+        {
+            return song != null && (bool)appropriateNowMethod.Invoke(manager, new object[] { song });
+        }
+        catch
+        {
+            return false;
+        }
     }
 }
 
@@ -443,6 +652,143 @@ internal static class TinyTweaksAutoRebuildCompatibility
         }
 
         return true;
+    }
+}
+
+internal static class GoodwillSituationManagerThreadSafetyCompatibility
+{
+    public const string VanillaExpandedFrameworkPackageId = "OskarPotocki.VanillaFactionsExpanded.Core";
+    private static FieldInfo cachedDataField;
+
+    public static bool TryApply(Harmony harmony)
+    {
+        if (!ModDetection.IsActive(VanillaExpandedFrameworkPackageId))
+        {
+            return false;
+        }
+
+        MethodInfo getSituationsTarget = AccessTools.Method(typeof(GoodwillSituationManager), nameof(GoodwillSituationManager.GetSituations), new[] { typeof(Faction) });
+        MethodInfo recalculateAllTarget = AccessTools.Method(typeof(GoodwillSituationManager), nameof(GoodwillSituationManager.RecalculateAll), new[] { typeof(bool) });
+        MethodInfo getSituationsPrefix = AccessTools.Method(typeof(GoodwillSituationManagerThreadSafetyCompatibility), nameof(GetSituationsPrefix));
+        MethodInfo recalculateAllPrefix = AccessTools.Method(typeof(GoodwillSituationManagerThreadSafetyCompatibility), nameof(RecalculateAllPrefix));
+        cachedDataField = AccessTools.Field(typeof(GoodwillSituationManager), "cachedData");
+
+        if (getSituationsTarget == null || recalculateAllTarget == null || getSituationsPrefix == null || recalculateAllPrefix == null || cachedDataField == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(getSituationsTarget, prefix: new HarmonyMethod(getSituationsPrefix));
+        harmony.Patch(recalculateAllTarget, prefix: new HarmonyMethod(recalculateAllPrefix));
+        return true;
+    }
+
+    public static bool GetSituationsPrefix(GoodwillSituationManager __instance, Faction other, ref List<GoodwillSituationManager.CachedSituation> __result)
+    {
+        if (other == null || other.IsPlayer)
+        {
+            Log.Error("Called GetSituations() for faction " + other);
+            __result = null;
+            return false;
+        }
+
+        lock (__instance)
+        {
+            Dictionary<Faction, List<GoodwillSituationManager.CachedSituation>> cache = GetOrResetCache(__instance);
+            try
+            {
+                if (cache.TryGetValue(other, out List<GoodwillSituationManager.CachedSituation> cachedSituations))
+                {
+                    __result = cachedSituations;
+                    return false;
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                cache = ResetCache(__instance);
+                Log.Warning("[CommonModCompatibilityPatches] Reset corrupted GoodwillSituationManager cache after concurrent access was detected.");
+            }
+
+            List<GoodwillSituationManager.CachedSituation> situations = BuildSituations(other);
+            cache[other] = situations;
+            NotifyHostilityChanged(other, canSendHostilityChangedLetter: true);
+            __result = situations;
+            return false;
+        }
+    }
+
+    public static bool RecalculateAllPrefix(GoodwillSituationManager __instance, bool canSendHostilityChangedLetter)
+    {
+        lock (__instance)
+        {
+            Dictionary<Faction, List<GoodwillSituationManager.CachedSituation>> cache = ResetCache(__instance);
+            List<Faction> allFactions = Find.FactionManager?.AllFactionsListForReading;
+            if (allFactions == null)
+            {
+                return false;
+            }
+
+            for (int i = 0; i < allFactions.Count; i++)
+            {
+                Faction faction = allFactions[i];
+                if (faction != null && faction != Faction.OfPlayer && faction.HasGoodwill)
+                {
+                    cache[faction] = BuildSituations(faction);
+                    NotifyHostilityChanged(faction, canSendHostilityChangedLetter);
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private static Dictionary<Faction, List<GoodwillSituationManager.CachedSituation>> GetOrResetCache(GoodwillSituationManager manager)
+    {
+        Dictionary<Faction, List<GoodwillSituationManager.CachedSituation>> cache = cachedDataField.GetValue(manager) as Dictionary<Faction, List<GoodwillSituationManager.CachedSituation>>;
+        return cache ?? ResetCache(manager);
+    }
+
+    private static Dictionary<Faction, List<GoodwillSituationManager.CachedSituation>> ResetCache(GoodwillSituationManager manager)
+    {
+        Dictionary<Faction, List<GoodwillSituationManager.CachedSituation>> cache = new Dictionary<Faction, List<GoodwillSituationManager.CachedSituation>>();
+        cachedDataField.SetValue(manager, cache);
+        return cache;
+    }
+
+    private static List<GoodwillSituationManager.CachedSituation> BuildSituations(Faction other)
+    {
+        List<GoodwillSituationManager.CachedSituation> situations = new List<GoodwillSituationManager.CachedSituation>();
+        if (other == null || !other.HasGoodwill)
+        {
+            return situations;
+        }
+
+        List<GoodwillSituationDef> defs = DefDatabase<GoodwillSituationDef>.AllDefsListForReading;
+        for (int i = 0; i < defs.Count; i++)
+        {
+            GoodwillSituationDef def = defs[i];
+            int maxGoodwill = def.Worker.GetMaxGoodwill(other);
+            int naturalGoodwillOffset = def.Worker.GetNaturalGoodwillOffset(other);
+            if (maxGoodwill < 100 || naturalGoodwillOffset != 0)
+            {
+                situations.Add(new GoodwillSituationManager.CachedSituation
+                {
+                    def = def,
+                    maxGoodwill = maxGoodwill,
+                    naturalGoodwillOffset = naturalGoodwillOffset
+                });
+            }
+        }
+
+        return situations;
+    }
+
+    private static void NotifyHostilityChanged(Faction other, bool canSendHostilityChangedLetter)
+    {
+        if (Current.ProgramState != ProgramState.Entry && other?.HasGoodwill == true && Faction.OfPlayer != null)
+        {
+            Faction.OfPlayer.Notify_GoodwillSituationsChanged(other, canSendHostilityChangedLetter, null, null);
+        }
     }
 }
 

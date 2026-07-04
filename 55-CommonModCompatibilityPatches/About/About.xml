@@ -23,6 +23,8 @@
 		<li>Memegoddess.ReplaceStuff</li>
 		<li>XeoNovaDan.TinyTweaks</li>
 		<li>Mlie.RimStory</li>
+		<li>OskarPotocki.VanillaFactionsExpanded.Core</li>
+		<li>Nals.DynamicPortraits</li>
 	</loadAfter>
 
 	<incompatibleWith>
@@ -35,6 +37,7 @@
 A small collection of runtime compatibility patches for commonly used RimWorld mods. Every target-mod patch is dynamically detected at startup: if the corresponding mod/type/method is absent, the patch is skipped silently.
 
 Current patches:
+- RimWorld music: when recent-song filtering leaves only zero-commonality special-use songs, clear the recent-song filter so vanilla can choose a normal positive-weight song instead of returning null and spamming red errors.
 - Allow Tool: guard stale cached Haul Urgently things before RimWorld hauling APIs.
 - Build From Inventory / Replace Stuff: guard vanilla pathfinder reservation notifications for inventory-held or unspawned reservation targets.
 - Build From Inventory: clamp impossible HaulToContainer reservation stack counts after inventory drops.
@@ -42,6 +45,8 @@ Current patches:
 - Replace Stuff / TinyTweaks: guard Replace Stuff over-mineable blueprint helper against null/invalid blueprint contexts.
 - TinyTweaks: skip auto-rebuild blueprint placement when a launched building has no previous map context.
 - RimStory: guard broken saved individual-death anniversary events (ADead) with missing/invalid pawns and suppress exceptions from that event path.
+- Vanilla Expanded Framework: serialize RimWorld goodwill-situation cache access and rebuild the cache if concurrent access has already corrupted it.
+- [NL] Dynamic Portraits: skip unsafe work-item overlays for job targets with incomplete ThingDef/graphic data and suppress residual DrawWorkItems UI exceptions.
 
 Target mods are listed under loadAfter, not as dependencies, so this mod can stay enabled even when some target mods are not installed.
 </description>
