@@ -25,6 +25,7 @@
 		<li>Mlie.RimStory</li>
 		<li>OskarPotocki.VanillaFactionsExpanded.Core</li>
 		<li>Nals.DynamicPortraits</li>
+		<li>Solaris.RatkinRaceMod</li>
 	</loadAfter>
 
 	<incompatibleWith>
@@ -47,6 +48,8 @@ Current patches:
 - RimStory: guard broken saved individual-death anniversary events (ADead) with missing/invalid pawns and suppress exceptions from that event path.
 - Vanilla Expanded Framework: serialize RimWorld goodwill-situation cache access and rebuild the cache if concurrent access has already corrupted it.
 - [NL] Dynamic Portraits: skip unsafe work-item overlays for job targets with incomplete ThingDef/graphic data and suppress residual DrawWorkItems UI exceptions.
+- NewRatkinPlus: replace wandering-caravan cleanup with a null-safe equivalent so stale saved settler-pool references do not call Dictionary.Remove(null) during the Ratkin wandering trader incident.
+- Anomaly Invoke Horax ritual: snapshot invoker inventory offerings before transferring them to the carry tracker, avoiding collection-modified errors when the ritual starts.
 
 Target mods are listed under loadAfter, not as dependencies, so this mod can stay enabled even when some target mods are not installed.
 </description>

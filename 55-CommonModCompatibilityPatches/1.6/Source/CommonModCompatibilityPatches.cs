@@ -8,6 +8,7 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 using Verse.AI;
+using Verse.AI.Group;
 
 namespace CommonModCompatibilityPatches;
 
@@ -29,8 +30,181 @@ public static class CommonCompatibilityBootstrap
         applied += GoodwillSituationManagerThreadSafetyCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += ZeroWeightSongSelectionCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += NalsDynamicPortraitsWorkItemsCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += NewRatkinWanderingCaravanCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += InvokeHoraxOfferingCompatibility.TryApply(Harmony) ? 1 : 0;
 
         Log.Message($"[CommonModCompatibilityPatches] Applied {applied} compatibility patch group(s).".Colorize(Color.green));
+    }
+}
+
+internal static class InvokeHoraxOfferingCompatibility
+{
+    private const int OfferingTransferWarningId = 82038122;
+
+    public static bool TryApply(Harmony harmony)
+    {
+        if (!ModDetection.IsActive("Ludeon.RimWorld.Anomaly"))
+        {
+            return false;
+        }
+
+        MethodInfo target = AccessTools.Method(typeof(PsychicRitualToil_InvokeHorax), nameof(PsychicRitualToil_InvokeHorax.HoldRequiredOfferings), new[] { typeof(PsychicRitual), typeof(PsychicRitualGraph) });
+        MethodInfo prefix = AccessTools.Method(typeof(InvokeHoraxOfferingCompatibility), nameof(Prefix));
+        if (target == null || prefix == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(target, prefix: new HarmonyMethod(prefix));
+        return true;
+    }
+
+    public static bool Prefix(PsychicRitualToil_InvokeHorax __instance, PsychicRitual psychicRitual)
+    {
+        IngredientCount requiredOffering = __instance?.requiredOffering;
+        PsychicRitualRoleDef invokerRole = __instance?.invokerRole;
+        if (requiredOffering == null || psychicRitual?.assignments == null || invokerRole == null)
+        {
+            return false;
+        }
+
+        int transferCount = Mathf.CeilToInt(requiredOffering.GetBaseCount());
+        foreach (Pawn pawn in psychicRitual.assignments.AssignedPawns(invokerRole).ToList())
+        {
+            if (pawn?.inventory?.innerContainer == null || pawn.carryTracker?.innerContainer == null)
+            {
+                continue;
+            }
+
+            List<Thing> offerings = pawn.inventory.GetDirectlyHeldThings()
+                .Where(thing => thing != null && !thing.Destroyed && requiredOffering.filter.Allows(thing))
+                .ToList();
+            foreach (Thing offering in offerings)
+            {
+                if (offering.ParentHolder != pawn.inventory.innerContainer)
+                {
+                    continue;
+                }
+
+                pawn.inventory.innerContainer.TryTransferToContainer(offering, pawn.carryTracker.innerContainer, transferCount);
+            }
+        }
+
+        Log.WarningOnce("[CommonModCompatibilityPatches] Used null/collection-safe Invoke Horax required-offering transfer to avoid modifying a pawn inventory while enumerating it.", OfferingTransferWarningId);
+        return false;
+    }
+}
+
+internal static class NewRatkinWanderingCaravanCompatibility
+{
+    public const string PackageId = "Solaris.RatkinRaceMod";
+    private const int CleanupWarningId = 82038121;
+    private static FieldInfo rosterLeaderField;
+    private static FieldInfo rosterGuardsField;
+    private static FieldInfo settlerPoolField;
+    private static FieldInfo settlerRequirementsField;
+    private static FieldInfo settlerAppearanceCountField;
+
+    public static bool TryApply(Harmony harmony)
+    {
+        if (!ModDetection.IsActive(PackageId))
+        {
+            return false;
+        }
+
+        Type componentType = AccessTools.TypeByName("NewRatkin.GameComponent_WanderingCaravan");
+        MethodInfo target = AccessTools.Method(componentType, "CleanupDeadPawns");
+        MethodInfo prefix = AccessTools.Method(typeof(NewRatkinWanderingCaravanCompatibility), nameof(Prefix));
+        if (componentType == null || target == null || prefix == null)
+        {
+            return false;
+        }
+
+        rosterLeaderField = AccessTools.Field(componentType, "rosterLeader");
+        rosterGuardsField = AccessTools.Field(componentType, "rosterGuards");
+        settlerPoolField = AccessTools.Field(componentType, "settlerPool");
+        settlerRequirementsField = AccessTools.Field(componentType, "settlerRequirements");
+        settlerAppearanceCountField = AccessTools.Field(componentType, "settlerAppearanceCount");
+        if (rosterLeaderField == null || rosterGuardsField == null || settlerPoolField == null || settlerRequirementsField == null || settlerAppearanceCountField == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(target, prefix: new HarmonyMethod(prefix));
+        return true;
+    }
+
+    public static bool Prefix(object __instance)
+    {
+        RemoveDeadOrNullPawns(GetPawnList(rosterLeaderField, __instance));
+        RemoveDeadOrNullPawns(GetPawnList(rosterGuardsField, __instance));
+        CleanupSettlerPool(__instance);
+        return false;
+    }
+
+    private static List<Pawn> GetPawnList(FieldInfo field, object instance)
+    {
+        return field?.GetValue(instance) as List<Pawn>;
+    }
+
+    private static void RemoveDeadOrNullPawns(List<Pawn> pawns)
+    {
+        pawns?.RemoveAll(IsDeadOrNull);
+    }
+
+    private static void CleanupSettlerPool(object instance)
+    {
+        List<Pawn> settlerPool = GetPawnList(settlerPoolField, instance);
+        if (settlerPool == null)
+        {
+            return;
+        }
+
+        object settlerRequirements = settlerRequirementsField.GetValue(instance);
+        object settlerAppearanceCount = settlerAppearanceCountField.GetValue(instance);
+        bool removedNullPawn = false;
+
+        for (int i = settlerPool.Count - 1; i >= 0; i--)
+        {
+            Pawn pawn = settlerPool[i];
+            if (!IsDeadOrNull(pawn))
+            {
+                continue;
+            }
+
+            settlerPool.RemoveAt(i);
+            if (pawn == null)
+            {
+                removedNullPawn = true;
+                continue;
+            }
+
+            RemoveDictionaryKey(settlerRequirements, pawn);
+            RemoveDictionaryKey(settlerAppearanceCount, pawn);
+        }
+
+        if (removedNullPawn)
+        {
+            Log.WarningOnce("[CommonModCompatibilityPatches] Removed null pawn reference(s) from NewRatkinPlus wandering caravan settler pool before the original cleanup could call Dictionary.Remove(null).", CleanupWarningId);
+        }
+    }
+
+    private static bool IsDeadOrNull(Pawn pawn)
+    {
+        return pawn == null || pawn.DestroyedOrNull() || pawn.Dead;
+    }
+
+    private static void RemoveDictionaryKey(object dictionary, Pawn pawn)
+    {
+        if (dictionary == null || pawn == null)
+        {
+            return;
+        }
+
+        if (dictionary is IDictionary nonGenericDictionary)
+        {
+            nonGenericDictionary.Remove(pawn);
+        }
     }
 }
 

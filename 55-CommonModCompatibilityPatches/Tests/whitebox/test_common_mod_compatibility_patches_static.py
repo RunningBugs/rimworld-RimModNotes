@@ -31,6 +31,7 @@ class MetadataTests(unittest.TestCase):
             "Mlie.RimStory",
             "OskarPotocki.VanillaFactionsExpanded.Core",
             "Nals.DynamicPortraits",
+            "Solaris.RatkinRaceMod",
         ]:
             self.assertNotIn(package_id, deps)
             self.assertIn(package_id, load_after)
@@ -50,7 +51,7 @@ class PatchSourceTests(unittest.TestCase):
 
     def test_all_patch_groups_have_package_dynamic_detection(self) -> None:
         self.assertIn("ModsConfig.ActiveModsInLoadOrder", self.src)
-        for package_id in ["UnlimitedHugs.AllowTool", "Memegoddess.BuildFromInventory", "Memegoddess.ReplaceStuff", "Mlie.RimStory", "OskarPotocki.VanillaFactionsExpanded.Core", "Nals.DynamicPortraits"]:
+        for package_id in ["UnlimitedHugs.AllowTool", "Memegoddess.BuildFromInventory", "Memegoddess.ReplaceStuff", "Mlie.RimStory", "OskarPotocki.VanillaFactionsExpanded.Core", "Nals.DynamicPortraits", "Solaris.RatkinRaceMod", "Ludeon.RimWorld.Anomaly"]:
             self.assertIn(package_id, self.src)
         self.assertIn("if (!ModDetection.IsActive(PackageId))", self.src)
         self.assertIn("if (!ModDetection.AnyActive(BuildFromInventoryPackageId, ReplaceStuffPackageId))", self.src)
@@ -83,6 +84,33 @@ class PatchSourceTests(unittest.TestCase):
         self.assertIn("def.thingClass", self.src)
         self.assertIn("def.graphicData == null", self.src)
         self.assertIn("Suppressed [NL] Dynamic Portraits DrawWorkItems exception", self.src)
+
+
+    def test_invoke_horax_offering_transfer_snapshots_inventory(self) -> None:
+        self.assertIn("InvokeHoraxOfferingCompatibility", self.src)
+        self.assertIn('"Ludeon.RimWorld.Anomaly"', self.src)
+        self.assertIn('typeof(PsychicRitualToil_InvokeHorax)', self.src)
+        self.assertIn('nameof(PsychicRitualToil_InvokeHorax.HoldRequiredOfferings)', self.src)
+        self.assertIn('typeof(PsychicRitual)', self.src)
+        self.assertIn('typeof(PsychicRitualGraph)', self.src)
+        self.assertIn('psychicRitual.assignments.AssignedPawns(invokerRole).ToList()', self.src)
+        self.assertIn('pawn.inventory.GetDirectlyHeldThings()', self.src)
+        self.assertIn('.ToList();', self.src)
+        self.assertIn('TryTransferToContainer(offering, pawn.carryTracker.innerContainer, transferCount)', self.src)
+        self.assertIn('avoid modifying a pawn inventory while enumerating it', self.src)
+
+    def test_new_ratkin_wandering_caravan_cleanup_is_null_safe(self) -> None:
+        self.assertIn("NewRatkinWanderingCaravanCompatibility", self.src)
+        self.assertIn('"Solaris.RatkinRaceMod"', self.src)
+        self.assertIn('AccessTools.TypeByName("NewRatkin.GameComponent_WanderingCaravan")', self.src)
+        self.assertIn('AccessTools.Method(componentType, "CleanupDeadPawns")', self.src)
+        for field_name in ["rosterLeader", "rosterGuards", "settlerPool", "settlerRequirements", "settlerAppearanceCount"]:
+            self.assertIn(f'AccessTools.Field(componentType, "{field_name}")', self.src)
+        self.assertIn("settlerPool.RemoveAt(i)", self.src)
+        self.assertIn("if (pawn == null)", self.src)
+        self.assertIn("RemoveDictionaryKey(settlerRequirements, pawn)", self.src)
+        self.assertIn("RemoveDictionaryKey(settlerAppearanceCount, pawn)", self.src)
+        self.assertIn("Dictionary.Remove(null)", self.src)
 
     def test_allow_tool_patch_targets_original_workgiver(self) -> None:
         self.assertIn('AccessTools.TypeByName("AllowTool.WorkGiver_HaulUrgently")', self.src)
