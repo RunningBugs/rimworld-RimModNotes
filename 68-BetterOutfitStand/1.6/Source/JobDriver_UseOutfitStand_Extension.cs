@@ -38,18 +38,20 @@ public class JobDriver_UseOutfitStandBetter : JobDriver
     public override void Notify_Starting()
     {
         base.Notify_Starting();
-        standApparelToTransferToPawn = OutfitStand.StandApparelToTransferToPawn;
-        wornApparelToTransferToStand = OutfitStand.WornApparelToTransferToStand;
+        standApparelToTransferToPawn = [.. OutfitStand.StandApparelToTransferToPawn];
+        wornApparelToTransferToStand = [.. OutfitStand.WornApparelToTransferToStand];
+        OutfitStand.StandApparelToTransferToPawn.Clear();
+        OutfitStand.WornApparelToTransferToStand.Clear();
         standApparelToDrop = [];
         List<Apparel> wornApparel = pawn.apparel.WornApparel;
         IReadOnlyList<Thing> heldItems = OutfitStand.HeldItems;
         duration = 0;
 
-        if (standApparelToTransferToPawn.NullOrEmpty())
+        if (!wornApparelToTransferToStand.NullOrEmpty())
         {
             PawnDropMode(wornApparel, heldItems);
         }
-        else
+        if (!standApparelToTransferToPawn.NullOrEmpty())
         {
             PawnTakeMode(wornApparel, heldItems);
         }
@@ -100,10 +102,11 @@ public class JobDriver_UseOutfitStandBetter : JobDriver
 
     private void PawnTakeMode(List<Apparel> wornApparel, IReadOnlyList<Thing> heldItems)
     {
-        foreach (Thing item in standApparelToTransferToPawn)
+        foreach (Apparel apparel in new List<Apparel>(standApparelToTransferToPawn))
         {
-            if (!(item is Apparel apparel) || !apparel.PawnCanWear(pawn) || !ApparelUtility.HasPartsToWear(pawn, apparel.def) || (CompBiocodable.IsBiocoded(apparel) && !CompBiocodable.IsBiocodedFor(apparel, pawn)))
+            if (!apparel.PawnCanWear(pawn) || !ApparelUtility.HasPartsToWear(pawn, apparel.def) || (CompBiocodable.IsBiocoded(apparel) && !CompBiocodable.IsBiocodedFor(apparel, pawn)))
             {
+                standApparelToTransferToPawn.Remove(apparel);
                 continue;
             }
             bool flag = true;
@@ -122,8 +125,11 @@ public class JobDriver_UseOutfitStandBetter : JobDriver
             }
             if (flag)
             {
-                standApparelToTransferToPawn.Add(apparel);
                 duration += (int)(apparel.GetStatValue(StatDefOf.EquipDelay) * 60f);
+            }
+            else
+            {
+                standApparelToTransferToPawn.Remove(apparel);
             }
         }
     }

@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
 	<BetterOutfitStand>Better Outfit Stand</BetterOutfitStand>
-	<PawnViewTitle>Colonist view</PawnViewTitle>
-	<OutfitStandViewTitle>Outfit Stand view</OutfitStandViewTitle>
+	<PawnViewTitle>Put on stand</PawnViewTitle>
+	<OutfitStandViewTitle>Wear from stand</OutfitStandViewTitle>
+	<PawnViewDesc>Select apparel worn by the colonist to put on this outfit stand.</PawnViewDesc>
+	<OutfitStandViewDesc>Select apparel to wear from this outfit stand; conflicting worn apparel will be moved to the stand.</OutfitStandViewDesc>
 	<SwitchToOutfitStandView.Tooltip>Switch to outfit stand view</SwitchToOutfitStandView.Tooltip>
 	<SwitchToPawnView.Tooltip>Switch to colonist view</SwitchToPawnView.Tooltip>
 	<BOS.SelectAllByDefault>Select all outfits by default</BOS.SelectAllByDefault>
+	<BOS.HaulToTargetOutfitStand>Put on target outfit stand</BOS.HaulToTargetOutfitStand>
+	<BOS.HaulToTargetOutfitStand.Desc>Select an outfit stand, haul {THING} to it, and automatically allow this thing def on that stand.</BOS.HaulToTargetOutfitStand.Desc>
+	<BOS.NoOutfitStand>No colony outfit stand on this map.</BOS.NoOutfitStand>
+	<BOS.MustTargetOutfitStand>Select a colony outfit stand.</BOS.MustTargetOutfitStand>
+	<BOS.NoPawnCanHaulToOutfitStand>No colonist can haul {THING} to {TARGET}.</BOS.NoPawnCanHaulToOutfitStand>
+	<BOS.CannotHaulToOutfitStand>Cannot haul {THING} to {TARGET}.</BOS.CannotHaulToOutfitStand>
+	<BOS.CannotHaulToOutfitStand.Destroyed>The target thing no longer exists.</BOS.CannotHaulToOutfitStand.Destroyed>
+	<BOS.HaulToOutfitStandOrdered>Ordered {PAWN} to put {THING} on {TARGET}.</BOS.HaulToOutfitStandOrdered>
 </LanguageData>

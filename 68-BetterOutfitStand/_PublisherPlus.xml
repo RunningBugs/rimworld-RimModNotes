@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuration>
   <Excluded>
+    <exclude>.pytest_cache</exclude>
     <exclude>.roo</exclude>
     <exclude>1.6/Source/obj</exclude>
+    <exclude>Tests</exclude>
   </Excluded>
 </Configuration>

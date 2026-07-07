@@ -8,12 +8,12 @@
 	</supportedVersions>
 
 	<modDependencies>
-		<!-- <li>
+		<li>
 			<packageId>brrainz.harmony</packageId>
 			<displayName>Harmony</displayName>
 			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
 			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
-		</li> -->
+		</li>
 	</modDependencies>
 
 	<incompatibleWith>
@@ -29,23 +29,19 @@ This mod does not add any extra furniture to the game. It just tries to make the
 Vanilla outfit stands will only "swap" your clothes, which means it's very complex if you want to put all your clothes to an empty stand.
 I think it's easier to prepare two suites of clothes for your colonists than to put your clothes to an empty outfit stand.
 
-This mod will pop up a window when you right-click it and choose "Better Outfit Stand". This window has two modes: pawn view mode and stand view mode.
-In the top right corner of the window, you will see a toggle button to switch between these two modes.
-In pawn view mode, you will choose which clothes you want to drop on the stand, if the stand is having clothes that conflict with the clothes you choose, you will wear those.
-In stand view mode, you will choose which clothes you want to take from the stand, if the pawn is having clothes that conflict with the clothes you choose, you will drop those to the stand.
+This mod will pop up a window when you right-click it and choose "Better Outfit Stand". This window shows two columns on one page: "Put on stand" and "Wear from stand".
+In "Put on stand", choose clothes worn by the colonist to move onto the stand. In "Wear from stand", choose clothes from the stand to wear; conflicting worn clothes are moved to the stand.
 
-Note: Currently it does not support selection of the weapons in the window.
+This mod also adds a "Put on target outfit stand" command to spawned apparel and weapons. When a colony outfit stand exists, click the command and then click the target stand to order a colonist to haul the item there. The target stand automatically allows that item def, and stand filters are kept in sync with held item defs.
 
 
 本模组并不添加任何额外的家具。它只是尝试让原版的服装架更容易使用。
 原版的服装架只能“交换”衣服，这意味着如果你想把所有的衣服放到架子上会非常复杂。
 我认为为殖民者准备两套衣服比把衣服放到空的服装架上更容易。
 
-本模组在你右键点击服装架并选择“更方便的服装架”时会弹出一个窗口。这个窗口有两种视图：殖民者视图和架子视图。
-在窗口的右上角，你会看到一个切换按钮来切换这两种视图。
-在殖民者视图中，你可以选择要放到架子上的衣服，如果架子上有与你选择的衣服冲突的衣服，你将穿上那些衣服。
-在架子视图中，你可以选择要从架子上取下的衣服，如果殖民者身上有与你选择的衣服冲突的衣服，你将把身上冲突的衣服放到架子上。
+本模组在你右键点击服装架并选择“更方便的服装架”时会弹出一个窗口。这个窗口在同一页左右两栏显示：“放到衣架上”和“从衣架上穿”。
+在“放到衣架上”里，选择殖民者身上要放到架子上的衣服。在“从衣架上穿”里，选择要从架子上穿上的衣服；冲突的已穿服装会自动换到架上。
 
-注意：目前不支持在窗口中选择武器。
+本模组也会给已生成的服装和武器增加“放到目标服装架”命令。当殖民地有服装架时，点击命令再点击目标服装架，即可安排殖民者把该物品搬过去。目标服装架会自动允许该物品的 Def，并保持储存过滤器与架上内容同步。
 	</description>
 </ModMetaData>
