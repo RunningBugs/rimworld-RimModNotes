@@ -1,0 +1,5 @@
+# Keep generated build intermediates out of git.
+.vs/
+.vscode/
+obj/
+*.pdb
