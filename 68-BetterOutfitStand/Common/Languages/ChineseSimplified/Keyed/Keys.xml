@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
 	<BetterOutfitStand>更方便的服装架</BetterOutfitStand>
-	<PawnViewTitle>殖民者视图</PawnViewTitle>
-	<OutfitStandViewTitle>架子视图</OutfitStandViewTitle>
+	<PawnViewTitle>放到衣架上</PawnViewTitle>
+	<OutfitStandViewTitle>从衣架上穿</OutfitStandViewTitle>
+	<PawnViewDesc>选择殖民者身上要放到这个服装架上的服装。</PawnViewDesc>
+	<OutfitStandViewDesc>选择要让殖民者从这个服装架穿上的服装；冲突服装会自动换到架上。</OutfitStandViewDesc>
 	<SwitchToOutfitStandView.Tooltip>切换到服装架视图</SwitchToOutfitStandView.Tooltip>
 	<SwitchToPawnView.Tooltip>切换到殖民者视图</SwitchToPawnView.Tooltip>
 	<BOS.SelectAllByDefault>默认选择全部服装</BOS.SelectAllByDefault>
+	<BOS.HaulToTargetOutfitStand>放到目标服装架</BOS.HaulToTargetOutfitStand>
+	<BOS.HaulToTargetOutfitStand.Desc>选择一个服装架，将 {THING} 搬到该服装架，并自动允许该物品的类型。</BOS.HaulToTargetOutfitStand.Desc>
+	<BOS.NoOutfitStand>当前地图没有殖民地服装架。</BOS.NoOutfitStand>
+	<BOS.MustTargetOutfitStand>请选择一个殖民地服装架。</BOS.MustTargetOutfitStand>
+	<BOS.NoPawnCanHaulToOutfitStand>没有殖民者能把 {THING} 搬到 {TARGET}。</BOS.NoPawnCanHaulToOutfitStand>
+	<BOS.CannotHaulToOutfitStand>无法把 {THING} 搬到 {TARGET}。</BOS.CannotHaulToOutfitStand>
+	<BOS.CannotHaulToOutfitStand.Destroyed>目标物品已经不存在。</BOS.CannotHaulToOutfitStand.Destroyed>
+	<BOS.HaulToOutfitStandOrdered>已安排 {PAWN} 把 {THING} 放到 {TARGET}。</BOS.HaulToOutfitStandOrdered>
 </LanguageData>

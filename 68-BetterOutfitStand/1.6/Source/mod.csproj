@@ -30,8 +30,8 @@
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.*" />
+		<PackageReference Include="Lib.Harmony" Version="2.4.*" />
 		<Publicize Include="Assembly-CSharp:RimWorld.Building_OutfitStand.SetAllowHauling" />
-		<!-- <PackageReference Include="Lib.Harmony" Version="2.3.*" /> -->
 		<!-- <PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="10.*" /> -->
 	</ItemGroup>
 </Project>
