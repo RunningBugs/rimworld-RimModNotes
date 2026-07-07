@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+  <MainButtonDef>
+    <defName>UsefulStatsMainButton</defName>
+    <label>Useful Stats</label>
+    <description>Compare craftable item value/work and material/work efficiency.</description>
+    <tabWindowClass>UsefulStats.MainTabWindow_UsefulStats</tabWindowClass>
+    <order>51</order>
+    <closesWorldView>true</closesWorldView>
+  </MainButtonDef>
+</Defs>
