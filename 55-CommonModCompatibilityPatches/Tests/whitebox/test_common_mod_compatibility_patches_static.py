@@ -91,12 +91,18 @@ class PatchSourceTests(unittest.TestCase):
         self.assertIn('"Ludeon.RimWorld.Anomaly"', self.src)
         self.assertIn('typeof(PsychicRitualToil_InvokeHorax)', self.src)
         self.assertIn('nameof(PsychicRitualToil_InvokeHorax.HoldRequiredOfferings)', self.src)
+        self.assertIn('nameof(PsychicRitualToil_InvokeHorax.ConsumeRequiredOffering)', self.src)
         self.assertIn('typeof(PsychicRitual)', self.src)
         self.assertIn('typeof(PsychicRitualGraph)', self.src)
         self.assertIn('psychicRitual.assignments.AssignedPawns(invokerRole).ToList()', self.src)
         self.assertIn('pawn.inventory.GetDirectlyHeldThings()', self.src)
         self.assertIn('.ToList();', self.src)
+        self.assertIn('pawn.inventory.innerContainer.Contains(offering)', self.src)
         self.assertIn('TryTransferToContainer(offering, pawn.carryTracker.innerContainer, transferCount)', self.src)
+        self.assertIn('ConsumeFromCarryTrackers(invokers, requiredOffering, ref remaining)', self.src)
+        self.assertIn('ConsumeFromInventories(invokers, requiredOffering, ref remaining)', self.src)
+        self.assertIn('not all held in carry trackers at ritual end', self.src)
+        self.assertIn('unaccounted for; suppressed vanilla ConsumeRequiredOffering exception', self.src)
         self.assertIn('avoid modifying a pawn inventory while enumerating it', self.src)
 
     def test_new_ratkin_wandering_caravan_cleanup_is_null_safe(self) -> None:

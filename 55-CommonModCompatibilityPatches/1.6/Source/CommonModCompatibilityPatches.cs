@@ -40,6 +40,8 @@ public static class CommonCompatibilityBootstrap
 internal static class InvokeHoraxOfferingCompatibility
 {
     private const int OfferingTransferWarningId = 82038122;
+    private const int OfferingConsumeWarningId = 82038123;
+    private const int OfferingMissingWarningId = 82038124;
 
     public static bool TryApply(Harmony harmony)
     {
@@ -48,50 +50,179 @@ internal static class InvokeHoraxOfferingCompatibility
             return false;
         }
 
-        MethodInfo target = AccessTools.Method(typeof(PsychicRitualToil_InvokeHorax), nameof(PsychicRitualToil_InvokeHorax.HoldRequiredOfferings), new[] { typeof(PsychicRitual), typeof(PsychicRitualGraph) });
-        MethodInfo prefix = AccessTools.Method(typeof(InvokeHoraxOfferingCompatibility), nameof(Prefix));
-        if (target == null || prefix == null)
+        MethodInfo holdTarget = AccessTools.Method(typeof(PsychicRitualToil_InvokeHorax), nameof(PsychicRitualToil_InvokeHorax.HoldRequiredOfferings), new[] { typeof(PsychicRitual), typeof(PsychicRitualGraph) });
+        MethodInfo consumeTarget = AccessTools.Method(typeof(PsychicRitualToil_InvokeHorax), nameof(PsychicRitualToil_InvokeHorax.ConsumeRequiredOffering), new[] { typeof(PsychicRitual) });
+        MethodInfo holdPrefix = AccessTools.Method(typeof(InvokeHoraxOfferingCompatibility), nameof(HoldRequiredOfferingsPrefix));
+        MethodInfo consumePrefix = AccessTools.Method(typeof(InvokeHoraxOfferingCompatibility), nameof(ConsumeRequiredOfferingPrefix));
+        if (holdTarget == null || consumeTarget == null || holdPrefix == null || consumePrefix == null)
         {
             return false;
         }
 
-        harmony.Patch(target, prefix: new HarmonyMethod(prefix));
+        harmony.Patch(holdTarget, prefix: new HarmonyMethod(holdPrefix));
+        harmony.Patch(consumeTarget, prefix: new HarmonyMethod(consumePrefix));
         return true;
     }
 
-    public static bool Prefix(PsychicRitualToil_InvokeHorax __instance, PsychicRitual psychicRitual)
+    public static bool HoldRequiredOfferingsPrefix(PsychicRitualToil_InvokeHorax __instance, PsychicRitual psychicRitual)
     {
-        IngredientCount requiredOffering = __instance?.requiredOffering;
-        PsychicRitualRoleDef invokerRole = __instance?.invokerRole;
-        if (requiredOffering == null || psychicRitual?.assignments == null || invokerRole == null)
+        if (!TryGetContext(__instance, psychicRitual, out IngredientCount requiredOffering, out PsychicRitualRoleDef invokerRole, out List<Pawn> invokers))
         {
             return false;
         }
 
-        int transferCount = Mathf.CeilToInt(requiredOffering.GetBaseCount());
-        foreach (Pawn pawn in psychicRitual.assignments.AssignedPawns(invokerRole).ToList())
+        int remaining = Mathf.CeilToInt(requiredOffering.GetBaseCount()) - CountHeldOfferings(invokers, requiredOffering);
+        if (remaining <= 0)
         {
+            return false;
+        }
+
+        foreach (Pawn pawn in invokers)
+        {
+            if (remaining <= 0)
+            {
+                break;
+            }
             if (pawn?.inventory?.innerContainer == null || pawn.carryTracker?.innerContainer == null)
             {
                 continue;
             }
 
             List<Thing> offerings = pawn.inventory.GetDirectlyHeldThings()
-                .Where(thing => thing != null && !thing.Destroyed && requiredOffering.filter.Allows(thing))
+                .Where(thing => IsValidOffering(thing, requiredOffering))
                 .ToList();
             foreach (Thing offering in offerings)
             {
-                if (offering.ParentHolder != pawn.inventory.innerContainer)
+                if (remaining <= 0)
+                {
+                    break;
+                }
+                if (!pawn.inventory.innerContainer.Contains(offering))
                 {
                     continue;
                 }
 
-                pawn.inventory.innerContainer.TryTransferToContainer(offering, pawn.carryTracker.innerContainer, transferCount);
+                int transferCount = Mathf.Min(remaining, offering.stackCount);
+                int transferred = pawn.inventory.innerContainer.TryTransferToContainer(offering, pawn.carryTracker.innerContainer, transferCount);
+                remaining -= transferred;
             }
         }
 
-        Log.WarningOnce("[CommonModCompatibilityPatches] Used null/collection-safe Invoke Horax required-offering transfer to avoid modifying a pawn inventory while enumerating it.", OfferingTransferWarningId);
+        Log.WarningOnce("[CommonModCompatibilityPatches] Used collection-safe Invoke Horax required-offering transfer to avoid modifying a pawn inventory while enumerating it.", OfferingTransferWarningId);
         return false;
+    }
+
+    public static bool ConsumeRequiredOfferingPrefix(PsychicRitualToil_InvokeHorax __instance, PsychicRitual psychicRitual)
+    {
+        if (!TryGetContext(__instance, psychicRitual, out IngredientCount requiredOffering, out PsychicRitualRoleDef invokerRole, out List<Pawn> invokers))
+        {
+            return false;
+        }
+
+        int remaining = Mathf.CeilToInt(requiredOffering.GetBaseCount());
+        ConsumeFromCarryTrackers(invokers, requiredOffering, ref remaining);
+        if (remaining > 0)
+        {
+            ConsumeFromInventories(invokers, requiredOffering, ref remaining);
+            Log.WarningOnce("[CommonModCompatibilityPatches] Consumed Invoke Horax required offerings from invoker inventories as a fallback because they were not all held in carry trackers at ritual end.", OfferingConsumeWarningId);
+        }
+
+        if (remaining > 0)
+        {
+            Log.WarningOnce($"[CommonModCompatibilityPatches] Invoke Horax ritual ended with {remaining} required offering(s) still unaccounted for; suppressed vanilla ConsumeRequiredOffering exception after consuming every matching carried/inventory offering found.", OfferingMissingWarningId);
+        }
+
+        return false;
+    }
+
+    private static bool TryGetContext(PsychicRitualToil_InvokeHorax toil, PsychicRitual psychicRitual, out IngredientCount requiredOffering, out PsychicRitualRoleDef invokerRole, out List<Pawn> invokers)
+    {
+        requiredOffering = toil?.requiredOffering;
+        invokerRole = toil?.invokerRole;
+        invokers = null;
+        if (requiredOffering == null || psychicRitual?.assignments == null || invokerRole == null)
+        {
+            return false;
+        }
+
+        invokers = psychicRitual.assignments.AssignedPawns(invokerRole).ToList();
+        return true;
+    }
+
+    private static int CountHeldOfferings(List<Pawn> invokers, IngredientCount requiredOffering)
+    {
+        int count = 0;
+        for (int i = 0; i < invokers.Count; i++)
+        {
+            Thing carriedThing = invokers[i]?.carryTracker?.CarriedThing;
+            if (IsValidOffering(carriedThing, requiredOffering))
+            {
+                count += carriedThing.stackCount;
+            }
+        }
+        return count;
+    }
+
+    private static void ConsumeFromCarryTrackers(List<Pawn> invokers, IngredientCount requiredOffering, ref int remaining)
+    {
+        for (int i = 0; i < invokers.Count && remaining > 0; i++)
+        {
+            Thing carriedThing = invokers[i]?.carryTracker?.CarriedThing;
+            ConsumeThing(carriedThing, requiredOffering, ref remaining);
+        }
+    }
+
+    private static void ConsumeFromInventories(List<Pawn> invokers, IngredientCount requiredOffering, ref int remaining)
+    {
+        for (int i = 0; i < invokers.Count && remaining > 0; i++)
+        {
+            Pawn pawn = invokers[i];
+            if (pawn?.inventory?.innerContainer == null)
+            {
+                continue;
+            }
+
+            List<Thing> offerings = pawn.inventory.GetDirectlyHeldThings()
+                .Where(thing => IsValidOffering(thing, requiredOffering))
+                .ToList();
+            foreach (Thing offering in offerings)
+            {
+                if (remaining <= 0)
+                {
+                    break;
+                }
+                if (!pawn.inventory.innerContainer.Contains(offering))
+                {
+                    continue;
+                }
+
+                ConsumeThing(offering, requiredOffering, ref remaining);
+            }
+        }
+    }
+
+    private static bool IsValidOffering(Thing thing, IngredientCount requiredOffering)
+    {
+        return thing != null && !thing.Destroyed && thing.stackCount > 0 && requiredOffering?.filter?.Allows(thing) == true;
+    }
+
+    private static void ConsumeThing(Thing thing, IngredientCount requiredOffering, ref int remaining)
+    {
+        if (remaining <= 0 || !IsValidOffering(thing, requiredOffering))
+        {
+            return;
+        }
+
+        int consumeCount = Mathf.Min(remaining, thing.stackCount);
+        if (consumeCount < thing.stackCount)
+        {
+            thing.stackCount -= consumeCount;
+        }
+        else
+        {
+            thing.Destroy();
+        }
+        remaining -= consumeCount;
     }
 }
 
