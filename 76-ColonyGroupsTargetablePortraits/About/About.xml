@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.ColonyGroupsTargetablePortraits</packageId>
+	<name>Colony Groups Targetable Portraits</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.6</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li>
+		<li>
+			<packageId>DerekBickley.LTOColonyGroupsFinal</packageId>
+			<displayName>[LTO] Colony Groups</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2345493945</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+
+	<loadAfter>
+		<li>brrainz.harmony</li>
+		<li>DerekBickley.LTOColonyGroupsFinal</li>
+	</loadAfter>
+
+	<description>
+让 [LTO] Colony Groups 的顶部头像栏和悬停组弹窗头像支持能力选目标：激活需要选目标的技能（如异常医术）后，直接点击头像即可对该小人施法，行为与 vanilla ColonistBar 一致（校验、高亮、音效、shift 连选）。
+
+Makes [LTO] Colony Groups' top-bar portraits and hover group-popup portraits work as ability targets: while targeting an ability (e.g. Unnatural Healing), click a portrait to target that pawn, with full vanilla behavior (validation, highlight, sound, shift multi-select).
+	</description>
+</ModMetaData>
