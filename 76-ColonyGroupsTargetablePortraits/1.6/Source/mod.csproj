@@ -15,6 +15,9 @@
 		<!-- TacticalGroups.dll targets .NET 4.8; without this, ResolveAssemblyReference
 		     drops the reference (MSB3274) and no TacticalGroups type can be used. -->
 		<ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+		<!-- Suppress CS0436 noise: Publicizer injects IgnoresAccessChecksToAttribute which
+		     conflicts with the same attribute defined in 0Harmony. -->
+		<NoWarn>$(NoWarn);CS0436</NoWarn>
 	</PropertyGroup>
 	<PropertyGroup>
 		<PublicizeAll>true</PublicizeAll>
