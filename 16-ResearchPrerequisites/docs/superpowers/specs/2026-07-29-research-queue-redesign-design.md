@@ -87,16 +87,19 @@
 3. **`ResearchManager.FinishProject` postfix**
    - 触发对应队列的自动补位。
    - 删除 `GameComponentTick` 轮询。
-4. `ResearchQueueController.AttemptBeginResearch` 保留(meme 确认弹窗),
-   改为直接复用/调用原版 `MainTabWindow_Research.AttemptBeginResearch`
-   (通过反射调用私有方法即可,不再复制其方法体)。
+4. `ResearchQueueController.AttemptBeginResearch` 保留现有自包含实现(meme 确认
+   弹窗等,全部基于公开 API):原版对应方法是研究窗口的私有实例方法,而
+   `FinishProject` 触发自动补位时窗口可能并未打开,无法复用。
 
 ### 兼容性目标
 
 - 不再 `return false` 拦截任何原版方法;所有 patch 均为 postfix(或仅微调参数的
   prefix),其他 Mod 可共存。
-- 不再反射读取 `leftScrollViewHeight` / `leftScrollPosition` / `lockedReasons` 等
-  私有字段;仅反射调用原版私有 `AttemptBeginResearch` 一处。
+- 不再整段复制原版绘制代码,也不再反射读写 `leftScrollViewHeight` /
+  `leftScrollPosition` / `lockedReasons`;仅通过缓存的
+  `AccessTools.FieldRef` 读取 `selectedProject` 一个私有字段。
+- 注意:`ResearchManager.FinishProject` 已被本 Mod 的 `RPModSettings.cs`
+  (完成时发 Letter 功能)patch 过,新增的自动补位 postfix 与其共存,互不影响。
 
 ## 不做的事(YAGNI)
 
