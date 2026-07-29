@@ -49,6 +49,10 @@ public static class BuildingOutfitStand_NotifyItemRemoved_Patch
 {
     public static void Postfix(RimWorld.Building_OutfitStand __instance, Thing thing)
     {
+        if (!OutfitStandHaulGizmoUtility.EnableAutomaticFilterDisable)
+        {
+            return;
+        }
         OutfitStandHaulGizmoUtility.DisableDefIfNoLongerHeld(__instance, thing?.def);
     }
 }

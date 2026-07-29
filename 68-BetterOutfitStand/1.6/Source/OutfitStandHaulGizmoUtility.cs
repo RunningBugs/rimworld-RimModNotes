@@ -10,6 +10,10 @@ namespace BetterOutfitStand;
 
 public static class OutfitStandHaulGizmoUtility
 {
+    // Temporarily disabled: removing an item must not automatically change the stand's filter.
+    // Keep the implementation below so this behavior can be reconsidered later.
+    public static readonly bool EnableAutomaticFilterDisable = false;
+
     private static readonly Texture2D HaulToOutfitStandIcon = ContentFinder<Texture2D>.Get("UI/Commands/Haul", false) ?? TexCommand.ForbidOff;
 
     public static bool ShouldOfferFor(Thing thing)
@@ -188,7 +192,7 @@ public static class OutfitStandHaulGizmoUtility
 
     public static void DisableDefIfNoLongerHeld(Building_OutfitStand stand, ThingDef thingDef)
     {
-        if (stand == null || thingDef == null)
+        if (!EnableAutomaticFilterDisable || stand == null || thingDef == null)
         {
             return;
         }

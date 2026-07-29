@@ -12,13 +12,14 @@ namespace UsefulStats
     {
         private const string AllKindsKey = "__all";
         private const float RowHeight = 30f;
-        private const float NameWidth = 360f;
-        private const float WorkWidth = 80f;
-        private const float MaterialWidth = 330f;
-        private const float MaterialWorkWidth = 115f;
-        private const float ValueWidth = 110f;
-        private const float ValueWorkWidth = 115f;
-        private const float ValueMaterialWidth = 115f;
+        private const float NameWidth = 260f;
+        private const float CategoryWidth = 180f;
+        private const float WorkWidth = 70f;
+        private const float MaterialWidth = 250f;
+        private const float MaterialWorkWidth = 100f;
+        private const float ValueWidth = 95f;
+        private const float ValueWorkWidth = 105f;
+        private const float ValueMaterialWidth = 100f;
 
         private sealed class DisplayRow
         {
@@ -78,7 +79,7 @@ namespace UsefulStats
                 rows = CraftableRowBuilder.BuildRows(Find.CurrentMap);
                 dataDirty = false;
                 viewDirty = true;
-                if (selectedKindKey != AllKindsKey && !rows.Any(r => r.KindKey == selectedKindKey)) selectedKindKey = AllKindsKey;
+                if (selectedKindKey != AllKindsKey && !rows.Any(r => r.KindKeys.Contains(selectedKindKey))) selectedKindKey = AllKindsKey;
             }
 
             if (viewDirty)
@@ -88,9 +89,9 @@ namespace UsefulStats
             }
 
             Text.Font = GameFont.Small;
-            Rect filterRect = new Rect(inRect.x, inRect.y + 6f, inRect.width, 66f);
+            Rect filterRect = new Rect(inRect.x, inRect.y + 6f, inRect.width, 98f);
             DrawFilters(filterRect);
-            float tableY = filterRect.y + 72f;
+            float tableY = filterRect.y + 104f;
             Rect tableRect = new Rect(inRect.x, tableY, inRect.width, inRect.yMax - tableY);
             DrawTable(tableRect);
             if (kindMenuOpen) DrawKindMenuOverlay(inRect);
@@ -98,10 +99,10 @@ namespace UsefulStats
 
         private void SelectKind(string key)
         {
-            if (selectedKindKey == key) return;
-            selectedKindKey = key;
+            selectedKindKey = key.NullOrEmpty() ? AllKindsKey : key;
             scrollPosition = Vector2.zero;
             kindMenuOpen = false;
+            kindSearch = string.Empty;
             viewDirty = true;
         }
 
@@ -117,11 +118,17 @@ namespace UsefulStats
             {
                 new KindOption { Key = AllKindsKey, Label = "All", Count = rows.Count }
             };
-            options.AddRange(rows.GroupBy(r => r.KindKey).Select(g => new KindOption
+            var categoryRows = rows.SelectMany(row => row.KindKeys.Select((key, index) => new
+            {
+                Key = key,
+                Label = index < row.KindLabels.Count ? row.KindLabels[index] : key,
+                Row = row
+            }));
+            options.AddRange(categoryRows.GroupBy(k => k.Key).Select(g => new KindOption
             {
                 Key = g.Key,
-                Label = g.First().KindLabel,
-                Count = g.Count()
+                Label = g.First().Label,
+                Count = g.Select(x => x.Row.RowKey).Distinct().Count()
             }).OrderBy(k => k.Label));
             return options;
         }
@@ -168,57 +175,68 @@ namespace UsefulStats
 
         private void DrawFilters(Rect rect)
         {
-            float x = rect.x;
             bool oldNow = showAvailableNow;
             bool oldFuture = showFuture;
             bool oldAllOnly = showAllOnly;
             string oldSearch = search;
             string oldMaterialSearch = materialSearch;
+            string oldKind = selectedKindKey;
 
-            kindButtonRect = new Rect(x, rect.y, 220f, 30f);
+            float row1Y = rect.y;
+            float row2Y = rect.y + 34f;
+            float x = rect.x;
+
+            kindButtonRect = new Rect(x, row1Y, 220f, 30f);
             if (Widgets.ButtonText(kindButtonRect, "Kind: " + SelectedKindLabel()))
             {
                 kindMenuOpen = !kindMenuOpen;
                 kindMenuScroll = Vector2.zero;
             }
-            x += 230f;
-            Widgets.CheckboxLabeled(new Rect(x, rect.y, 125f, 30f), "Current", ref showAvailableNow);
+            x += 226f;
+            if (Widgets.ButtonText(new Rect(x, row1Y, 54f, 30f), "All"))
+            {
+                SelectKind(AllKindsKey);
+            }
+            x += 64f;
+            Widgets.CheckboxLabeled(new Rect(x, row1Y, 125f, 30f), "Current", ref showAvailableNow);
             x += 130f;
-            Widgets.CheckboxLabeled(new Rect(x, rect.y, 115f, 30f), "Future", ref showFuture);
+            Widgets.CheckboxLabeled(new Rect(x, row1Y, 115f, 30f), "Future", ref showFuture);
             x += 130f;
-            Widgets.CheckboxLabeled(new Rect(x, rect.y, 115f, 30f), "All-only", ref showAllOnly);
+            Widgets.CheckboxLabeled(new Rect(x, row1Y, 115f, 30f), "All-only", ref showAllOnly);
             x += 120f;
-            Widgets.Label(new Rect(x, rect.y + 4f, 55f, 30f), "Search");
+            Widgets.Label(new Rect(x, row1Y + 4f, 55f, 30f), "Search");
             x += 55f;
-            search = Widgets.TextField(new Rect(x, rect.y, 260f, 30f), search ?? string.Empty);
-            x += 270f;
-            Widgets.Label(new Rect(x, rect.y + 4f, 65f, 30f), "Material");
+            search = Widgets.TextField(new Rect(x, row1Y, Mathf.Min(300f, rect.xMax - x), 30f), search ?? string.Empty);
+
+            x = rect.x;
+            Widgets.Label(new Rect(x, row2Y + 4f, 65f, 30f), "Material");
             x += 65f;
-            materialSearch = Widgets.TextField(new Rect(x, rect.y, 160f, 30f), materialSearch ?? string.Empty);
-            x += 170f;
-            if (Widgets.ButtonText(new Rect(x, rect.y, 88f, 30f), "Expand all"))
+            materialSearch = Widgets.TextField(new Rect(x, row2Y, 220f, 30f), materialSearch ?? string.Empty);
+            x += 232f;
+            if (Widgets.ButtonText(new Rect(x, row2Y, 92f, 30f), "Expand all"))
             {
                 foreach (CraftableStatRow row in visibleParentRows.Where(r => r.HasExpandableMaterials)) expandedRows.Add(row.RowKey);
                 viewDirty = true;
             }
-            x += 94f;
-            if (Widgets.ButtonText(new Rect(x, rect.y, 92f, 30f), "Collapse all"))
+            x += 100f;
+            if (Widgets.ButtonText(new Rect(x, row2Y, 100f, 30f), "Collapse all"))
             {
                 expandedRows.Clear();
                 viewDirty = true;
             }
-            x += 98f;
-            if (Widgets.ButtonText(new Rect(x, rect.y, 80f, 30f), "Refresh"))
+            x += 108f;
+            if (Widgets.ButtonText(new Rect(x, row2Y, 80f, 30f), "Refresh"))
             {
                 dataDirty = true;
             }
+            x += 92f;
 
-            Rect summaryRect = new Rect(rect.x, rect.y + 34f, rect.width, 26f);
+            Rect summaryRect = new Rect(x, row2Y + 4f, rect.xMax - x, 26f);
             GUI.color = new Color(0.72f, 0.78f, 0.95f);
-            Widgets.Label(summaryRect, visibleParentRows.Count + " / " + rows.Count + " items, " + displayRows.Count + " visible rows    Kinds are generated from loaded defs; click material rows to expand variants.");
+            Widgets.Label(summaryRect, visibleParentRows.Count + " / " + rows.Count + " items, " + displayRows.Count + " rows");
             GUI.color = Color.white;
 
-            if (oldNow != showAvailableNow || oldFuture != showFuture || oldAllOnly != showAllOnly || oldSearch != search || oldMaterialSearch != materialSearch)
+            if (oldKind != selectedKindKey || oldNow != showAvailableNow || oldFuture != showFuture || oldAllOnly != showAllOnly || oldSearch != search || oldMaterialSearch != materialSearch)
             {
                 scrollPosition = Vector2.zero;
                 viewDirty = true;
@@ -228,12 +246,12 @@ namespace UsefulStats
         private void RebuildVisibleRows()
         {
             IEnumerable<CraftableStatRow> query = rows;
-            if (selectedKindKey != AllKindsKey) query = query.Where(r => r.KindKey == selectedKindKey);
+            if (selectedKindKey != AllKindsKey) query = query.Where(r => r.KindKeys.Contains(selectedKindKey));
             query = query.Where(r => (r.AvailableNow && showAvailableNow) || (!r.AvailableNow && r.FutureAvailable && showFuture) || (!r.AvailableNow && !r.FutureAvailable && showAllOnly));
             if (!search.NullOrEmpty())
             {
                 string s = search.Trim().ToLowerInvariant();
-                query = query.Where(r => Contains(r.Label, s) || Contains(r.DefName, s) || Contains(r.Source, s) || Contains(r.KindLabel, s) || Contains(r.MaterialSummary, s) || Contains(r.UnlockInfo, s));
+                query = query.Where(r => Contains(r.Label, s) || Contains(r.DefName, s) || Contains(r.Source, s) || Contains(r.CategoryLabel, s) || Contains(r.CategoryTooltip, s) || Contains(r.MaterialSummary, s) || Contains(r.UnlockInfo, s));
             }
             if (!materialSearch.NullOrEmpty())
             {
@@ -260,7 +278,7 @@ namespace UsefulStats
             switch (sortKey)
             {
                 case "label": return sortDescending ? query.OrderByDescending(r => r.Label).ThenBy(r => r.Source) : query.OrderBy(r => r.Label).ThenBy(r => r.Source);
-                case "kind": return sortDescending ? query.OrderByDescending(r => r.KindLabel).ThenBy(r => r.Label) : query.OrderBy(r => r.KindLabel).ThenBy(r => r.Label);
+                case "kind": return sortDescending ? query.OrderByDescending(r => r.CategoryLabel).ThenBy(r => r.Label) : query.OrderBy(r => r.CategoryLabel).ThenBy(r => r.Label);
                 case "source": return sortDescending ? query.OrderByDescending(r => r.Source).ThenBy(r => r.Label) : query.OrderBy(r => r.Source).ThenBy(r => r.Label);
                 case "work": return sortDescending ? query.OrderByDescending(r => r.WorkAmount).ThenBy(r => r.Label) : query.OrderBy(r => r.WorkAmount).ThenBy(r => r.Label);
                 case "value": return sortDescending ? query.OrderByDescending(r => r.MarketValue).ThenBy(r => r.Label) : query.OrderBy(r => r.MarketValue).ThenBy(r => r.Label);
@@ -278,6 +296,7 @@ namespace UsefulStats
             Rect header = new Rect(rect.x + 4f, rect.y + 2f, rect.width - 20f, RowHeight);
             float x = header.x;
             DrawHeader(ref x, header.y, NameWidth, "Item", "label");
+            DrawHeader(ref x, header.y, CategoryWidth, "Category", "kind");
             DrawHeader(ref x, header.y, WorkWidth, "Work", "work");
             DrawHeader(ref x, header.y, MaterialWidth, "Material", "label");
             DrawHeader(ref x, header.y, ValueWidth, "Value", "value");
@@ -350,7 +369,8 @@ namespace UsefulStats
                     viewDirty = true;
                 }
             }
-            DrawCell(ref x, y, NameWidth, (row.HasExpandableMaterials ? "    " : string.Empty) + row.Label, row.KindLabel + "\n" + row.DefName);
+            DrawCell(ref x, y, NameWidth, (row.HasExpandableMaterials ? "    " : string.Empty) + row.Label, row.DefName);
+            DrawCell(ref x, y, CategoryWidth, row.CategoryLabel, row.CategoryTooltip);
             DrawCell(ref x, y, WorkWidth, row.WorkAmount.ToStringWorkAmount());
             DrawCell(ref x, y, MaterialWidth, row.HasSingleIngredient ? row.MaterialSummary : "—", row.HasExpandableMaterials ? "Click + to expand material variants." : row.ExtraInfo);
             DrawCell(ref x, y, ValueWidth, row.MarketValue.ToStringMoney());
@@ -364,6 +384,7 @@ namespace UsefulStats
             float x = 4f;
             string defaultMark = variant.IsDefault ? " (default)" : string.Empty;
             DrawCell(ref x, y, NameWidth, "    ↳ " + variant.Label + defaultMark, parent.Label);
+            DrawCell(ref x, y, CategoryWidth, parent.CategoryLabel, parent.CategoryTooltip);
             DrawCell(ref x, y, WorkWidth, variant.WorkAmount.ToStringWorkAmount());
             DrawCell(ref x, y, MaterialWidth, variant.Count.ToString("0.##") + " x " + variant.Label);
             DrawCell(ref x, y, ValueWidth, variant.MarketValue.ToStringMoney());

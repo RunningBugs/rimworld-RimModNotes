@@ -182,5 +182,25 @@ class PatchSourceTests(unittest.TestCase):
         self.assertIn('cache[faction] = BuildSituations(faction)', self.src)
 
 
+    def test_sleeping_slot_fallback_replaces_vanilla_error(self) -> None:
+        self.assertIn("SleepingSlotFallbackCompatibility", self.src)
+        self.assertIn('nameof(RestUtility.GetBedSleepingSlotPosFor)', self.src)
+        self.assertIn("bed.IsOwner(pawn, out int? assignedSleepingSlot)", self.src)
+        self.assertIn("bed.GetCurOccupant(k) == pawn", self.src)
+        self.assertIn("bed.GetSleepingSlotPos(0)", self.src)
+        self.assertIn("instead of logging the vanilla 'Could not find good sleeping slot position' error", self.src)
+
+
+    def test_pawn_duplicator_gene_copy_is_crash_safe(self) -> None:
+        self.assertIn("PawnDuplicatorGeneCopyCompatibility", self.src)
+        self.assertIn('"Ludeon.RimWorld.Anomaly"', self.src)
+        self.assertIn('typeof(GameComponent_PawnDuplicator)', self.src)
+        self.assertIn('"CopyGenes", new[] { typeof(Pawn), typeof(Pawn) }', self.src)
+        self.assertIn("ResolveOverrides(pawn, newPawn, sourceXenogenes, newPawn.genes.Xenogenes)", self.src)
+        self.assertIn("ResolveOverrides(pawn, newPawn, sourceEndogenes, newPawn.genes.Endogenes)", self.src)
+        self.assertIn("Sequence contains no matching element", self.src)
+        self.assertIn("left the override link empty instead of throwing", self.src)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

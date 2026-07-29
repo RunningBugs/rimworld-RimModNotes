@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<SmoothDragSelect_ModName>Smooth Drag Select</SmoothDragSelect_ModName>
+	<SmoothDragSelect_ThrottleEnabled>Enable mouse event throttling</SmoothDragSelect_ThrottleEnabled>
+	<SmoothDragSelect_ThrottleEnabledTip>Rate-limits full UI passes caused by MouseDrag/MouseMove events: up to 60Hz at healthy frame rates, tightening to 10Hz when frames degrade. Disable to compare with vanilla behavior.</SmoothDragSelect_ThrottleEnabledTip>
+	<SmoothDragSelect_ProfilingEnabled>Log frame profiling</SmoothDragSelect_ProfilingEnabled>
+	<SmoothDragSelect_ProfilingEnabledTip>Writes slow-frame breakdowns (update/ticks/mapUpdate/drawMapMesh/drawDynamicThings/guiPhase) and per-drag statistics to the game log. For diagnosis only.</SmoothDragSelect_ProfilingEnabledTip>
+</LanguageData>

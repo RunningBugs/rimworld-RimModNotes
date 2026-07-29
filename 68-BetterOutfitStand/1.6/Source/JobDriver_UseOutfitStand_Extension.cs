@@ -185,15 +185,18 @@ public class JobDriver_UseOutfitStandBetter : JobDriver
                 OutfitStand.TryAddHeldWeapon(dropped);
             }
         }
-        foreach (Apparel item2 in standApparelToTransferToPawn)
+        if (OutfitStandHaulGizmoUtility.EnableAutomaticFilterDisable)
         {
-            DisableStandAllowsIfNoLongerHeld(item2);
+            foreach (Apparel item2 in standApparelToTransferToPawn)
+            {
+                DisableStandAllowsIfNoLongerHeld(item2);
+            }
+            foreach (Apparel toDrop in standApparelToDrop)
+            {
+                DisableStandAllowsIfNoLongerHeld(toDrop);
+            }
+            DisableStandAllowsIfNoLongerHeld(removedHeldWeapon);
         }
-        foreach (Apparel toDrop in standApparelToDrop)
-        {
-            DisableStandAllowsIfNoLongerHeld(toDrop);
-        }
-        DisableStandAllowsIfNoLongerHeld(removedHeldWeapon);
     }
 
     private void EnsureStandAllows(Thing thing)
@@ -209,7 +212,7 @@ public class JobDriver_UseOutfitStandBetter : JobDriver
 
     private void DisableStandAllowsIfNoLongerHeld(Thing thing)
     {
-        if (thing == null)
+        if (!OutfitStandHaulGizmoUtility.EnableAutomaticFilterDisable || thing == null)
         {
             return;
         }

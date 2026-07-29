@@ -27,11 +27,14 @@ public static class CommonCompatibilityBootstrap
         applied += BuildFromInventoryReservationCountCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += TinyTweaksAutoRebuildCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += RimStoryADeadCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += RimStoryMassFuneralCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += GoodwillSituationManagerThreadSafetyCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += ZeroWeightSongSelectionCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += NalsDynamicPortraitsWorkItemsCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += NewRatkinWanderingCaravanCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += InvokeHoraxOfferingCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += SleepingSlotFallbackCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += PawnDuplicatorGeneCopyCompatibility.TryApply(Harmony) ? 1 : 0;
 
         Log.Message($"[CommonModCompatibilityPatches] Applied {applied} compatibility patch group(s).".Colorize(Color.green));
     }
@@ -541,6 +544,171 @@ internal static class ZeroWeightSongSelectionCompatibility
         catch
         {
             return false;
+        }
+    }
+}
+
+internal static class SleepingSlotFallbackCompatibility
+{
+    private const int OccupiedSlotFallbackWarningId = 82038126;
+    private const int MissingSlotFallbackWarningId = 82038127;
+
+    public static bool TryApply(Harmony harmony)
+    {
+        MethodInfo target = AccessTools.Method(typeof(RestUtility), nameof(RestUtility.GetBedSleepingSlotPosFor));
+        MethodInfo prefix = AccessTools.Method(typeof(SleepingSlotFallbackCompatibility), nameof(Prefix));
+        if (target == null || prefix == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(target, prefix: new HarmonyMethod(prefix));
+        return true;
+    }
+
+    public static bool Prefix(Pawn pawn, Building_Bed bed, ref IntVec3 __result)
+    {
+        if (pawn == null || bed == null)
+        {
+            return true;
+        }
+
+        if (bed.IsOwner(pawn, out int? assignedSleepingSlot))
+        {
+            __result = bed.GetSleepingSlotPos(assignedSleepingSlot.Value);
+            return false;
+        }
+
+        for (int i = 0; i < bed.SleepingSlotsCount; i++)
+        {
+            if ((i >= bed.OwnersForReading.Count || bed.OwnersForReading[i] == null) && bed.GetCurOccupant(i) == pawn)
+            {
+                __result = bed.GetSleepingSlotPos(i);
+                return false;
+            }
+        }
+
+        for (int j = 0; j < bed.SleepingSlotsCount; j++)
+        {
+            if ((j >= bed.OwnersForReading.Count || bed.OwnersForReading[j] == null) && bed.GetCurOccupant(j) == null)
+            {
+                __result = bed.GetSleepingSlotPos(j);
+                return false;
+            }
+        }
+
+        // Vanilla emits the red error "Could not find good sleeping slot
+        // position" here (typically when a bed is reassigned or fully occupied
+        // while a pawn is still lying in it). Fall back gracefully instead: a
+        // pawn physically occupying a slot still gets their actual slot, so
+        // checks like JobInBedUtility.InBedOrRestSpotNow keep working.
+        for (int k = 0; k < bed.SleepingSlotsCount; k++)
+        {
+            if (bed.GetCurOccupant(k) == pawn)
+            {
+                __result = bed.GetSleepingSlotPos(k);
+                Log.WarningOnce($"[CommonModCompatibilityPatches] {pawn} had no unassigned sleeping slot in {bed}; used their occupied slot as fallback instead of logging the vanilla 'Could not find good sleeping slot position' error.", OccupiedSlotFallbackWarningId);
+                return false;
+            }
+        }
+
+        __result = bed.GetSleepingSlotPos(0);
+        Log.WarningOnce($"[CommonModCompatibilityPatches] {pawn} had no unassigned sleeping slot in {bed}; used slot 0 as fallback instead of logging the vanilla 'Could not find good sleeping slot position' error.", MissingSlotFallbackWarningId);
+        return false;
+    }
+}
+
+internal static class PawnDuplicatorGeneCopyCompatibility
+{
+    private const int MissingOverrideGeneWarningId = 82038128;
+
+    public static bool TryApply(Harmony harmony)
+    {
+        if (!ModDetection.IsActive("Ludeon.RimWorld.Anomaly"))
+        {
+            return false;
+        }
+
+        MethodInfo target = AccessTools.Method(typeof(GameComponent_PawnDuplicator), "CopyGenes", new[] { typeof(Pawn), typeof(Pawn) });
+        MethodInfo prefix = AccessTools.Method(typeof(PawnDuplicatorGeneCopyCompatibility), nameof(Prefix));
+        if (target == null || prefix == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(target, prefix: new HarmonyMethod(prefix));
+        return true;
+    }
+
+    // Reimplements the private vanilla CopyGenes with safe override linking.
+    // Vanilla resolves xenogene override links before endogenes are copied, so
+    // a xenogene overridden by an endogene (possible with modded xenotypes)
+    // crashes Enumerable.First with "Sequence contains no matching element"
+    // during the Unnatural Corpse incident. Here both lists are fully
+    // populated before any link is resolved, and an overriding gene that
+    // failed to be copied leaves the link null instead of throwing.
+    public static bool Prefix(Pawn pawn, Pawn newPawn)
+    {
+        if (pawn?.genes == null || newPawn?.genes == null)
+        {
+            return true;
+        }
+
+        List<Gene> sourceXenogenes = null;
+        if (ModsConfig.BiotechActive)
+        {
+            newPawn.genes.Xenogenes.Clear();
+            sourceXenogenes = pawn.genes.Xenogenes;
+            foreach (Gene item in sourceXenogenes)
+            {
+                newPawn.genes.AddGene(item.def, xenogene: true);
+            }
+        }
+
+        newPawn.genes.Endogenes.Clear();
+        List<Gene> sourceEndogenes = pawn.genes.Endogenes;
+        foreach (Gene item2 in sourceEndogenes)
+        {
+            newPawn.genes.AddGene(item2.def, xenogene: false);
+        }
+
+        if (ModsConfig.BiotechActive)
+        {
+            ResolveOverrides(pawn, newPawn, sourceXenogenes, newPawn.genes.Xenogenes);
+        }
+        ResolveOverrides(pawn, newPawn, sourceEndogenes, newPawn.genes.Endogenes);
+        return false;
+    }
+
+    private static void ResolveOverrides(Pawn pawn, Pawn newPawn, List<Gene> sourceGenes, List<Gene> copiedGenes)
+    {
+        int count = Math.Min(sourceGenes.Count, copiedGenes.Count);
+        for (int i = 0; i < count; i++)
+        {
+            Gene sourceGene = sourceGenes[i];
+            Gene copiedGene = copiedGenes[i];
+            if (!sourceGene.Overridden)
+            {
+                copiedGene.overriddenByGene = null;
+                continue;
+            }
+
+            Gene overridingGene = null;
+            List<Gene> allCopiedGenes = newPawn.genes.GenesListForReading;
+            for (int j = 0; j < allCopiedGenes.Count; j++)
+            {
+                if (allCopiedGenes[j].def == sourceGene.overriddenByGene.def)
+                {
+                    overridingGene = allCopiedGenes[j];
+                    break;
+                }
+            }
+
+            copiedGene.overriddenByGene = overridingGene;
+            if (overridingGene == null)
+            {
+                Log.WarningOnce($"[CommonModCompatibilityPatches] Pawn duplicator could not find overriding gene '{sourceGene.overriddenByGene?.def?.defName}' for '{sourceGene.def?.defName}' on a duplicate of {pawn}; left the override link empty instead of throwing 'Sequence contains no matching element' during the Unnatural Corpse incident.", MissingOverrideGeneWarningId);
+            }
         }
     }
 }
@@ -1201,6 +1369,161 @@ internal static class RimStoryADeadCompatibility
         }
 
         Log.Warning("[CommonModCompatibilityPatches] Suppressed RimStory ADead anniversary event because of " + reason + "; queued event for deletion.");
+    }
+}
+
+internal static class RimStoryMassFuneralCompatibility
+{
+    public const string RimStoryPackageId = "Mlie.RimStory";
+    private const int InvalidMassFuneralWarningId = 82038125;
+    private static FieldInfo lastGraveField;
+    private static FieldInfo buriedPawnsField;
+
+    public static bool TryApply(Harmony harmony)
+    {
+        if (!ModDetection.IsActive(RimStoryPackageId))
+        {
+            return false;
+        }
+
+        Type massFuneralType = AccessTools.TypeByName("RimStory.MassFuneral");
+        Type resourcesType = AccessTools.TypeByName("RimStory.Resources");
+        if (massFuneralType == null || resourcesType == null)
+        {
+            return false;
+        }
+
+        MethodInfo target = AccessTools.Method(massFuneralType, "TryStartMassFuneral", new[] { typeof(Map) });
+        MethodInfo prefix = AccessTools.Method(typeof(RimStoryMassFuneralCompatibility), nameof(Prefix));
+        lastGraveField = AccessTools.Field(resourcesType, "lastGrave");
+        buriedPawnsField = AccessTools.Field(resourcesType, "deadPawnsForMassFuneralBuried");
+        if (target == null || prefix == null || lastGraveField == null || buriedPawnsField == null || !lastGraveField.IsStatic || !buriedPawnsField.IsStatic)
+        {
+            return false;
+        }
+
+        EnsureBuriedPawnsList();
+        harmony.Patch(target, prefix: new HarmonyMethod(prefix));
+
+        Type savesType = AccessTools.TypeByName("RimStory.Saves");
+        MethodInfo exposeDataTarget = AccessTools.Method(savesType, "ExposeData", Type.EmptyTypes);
+        MethodInfo exposeDataPostfix = AccessTools.Method(typeof(RimStoryMassFuneralCompatibility), nameof(ExposeDataPostfix));
+        if (exposeDataTarget != null && exposeDataPostfix != null)
+        {
+            harmony.Patch(exposeDataTarget, postfix: new HarmonyMethod(exposeDataPostfix));
+        }
+
+        return true;
+    }
+
+    public static bool Prefix(Map map, ref bool __result)
+    {
+        MassFuneralContext context = GetContext(map);
+        if (context == MassFuneralContext.Valid)
+        {
+            return true;
+        }
+
+        __result = false;
+        if (context == MassFuneralContext.ForeignMap)
+        {
+            return false;
+        }
+
+        ClearBuriedPawns();
+        Log.WarningOnce("[CommonModCompatibilityPatches] Skipped RimStory mass funeral because its saved last grave or buried-pawn list was invalid; discarded the stale mass-funeral queue to prevent repeated errors.", InvalidMassFuneralWarningId);
+        return false;
+    }
+
+    public static void ExposeDataPostfix()
+    {
+        EnsureBuriedPawnsList();
+    }
+
+    private enum MassFuneralContext
+    {
+        Invalid,
+        ForeignMap,
+        Valid
+    }
+
+    private static void EnsureBuriedPawnsList()
+    {
+        if (buriedPawnsField == null)
+        {
+            return;
+        }
+
+        try
+        {
+            if (buriedPawnsField.GetValue(null) == null)
+            {
+                buriedPawnsField.SetValue(null, Activator.CreateInstance(buriedPawnsField.FieldType));
+            }
+        }
+        catch
+        {
+            // Keep the optional compatibility patch quiet if a future RimStory version changes this field type.
+        }
+    }
+
+    private static MassFuneralContext GetContext(Map map)
+    {
+        if (map == null || lastGraveField == null || buriedPawnsField == null)
+        {
+            return MassFuneralContext.Invalid;
+        }
+
+        Building_Grave lastGrave;
+        IList buriedPawns;
+        try
+        {
+            lastGrave = lastGraveField.GetValue(null) as Building_Grave;
+            buriedPawns = buriedPawnsField.GetValue(null) as IList;
+        }
+        catch
+        {
+            return MassFuneralContext.Invalid;
+        }
+
+        if (lastGrave == null || lastGrave.Destroyed || !lastGrave.Spawned || !lastGrave.Position.IsValid || buriedPawns == null)
+        {
+            return MassFuneralContext.Invalid;
+        }
+
+        Map graveMap = lastGrave.Map;
+        if (graveMap == null)
+        {
+            return MassFuneralContext.Invalid;
+        }
+
+        if (graveMap != map)
+        {
+            return MassFuneralContext.ForeignMap;
+        }
+
+        return HasValidBuriedPawn(buriedPawns) ? MassFuneralContext.Valid : MassFuneralContext.Invalid;
+    }
+
+    private static bool HasValidBuriedPawn(IList buriedPawns)
+    {
+        for (int i = 0; i < buriedPawns.Count; i++)
+        {
+            if (buriedPawns[i] is Pawn pawn && !pawn.DestroyedOrNull())
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private static void ClearBuriedPawns()
+    {
+        if (buriedPawnsField?.GetValue(null) is IList buriedPawns)
+        {
+            buriedPawns.Clear();
+        }
     }
 }
 

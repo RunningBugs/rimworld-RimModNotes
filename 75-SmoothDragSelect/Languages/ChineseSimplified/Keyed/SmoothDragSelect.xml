@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<SmoothDragSelect_ModName>流畅拖拽选择</SmoothDragSelect_ModName>
+	<SmoothDragSelect_ThrottleEnabled>启用鼠标事件限流</SmoothDragSelect_ThrottleEnabled>
+	<SmoothDragSelect_ThrottleEnabledTip>对 MouseDrag/MouseMove 事件引发的完整界面遍历进行限流：帧率正常时上限 60Hz，帧率下降时自动收紧至 10Hz。关闭可对比原版行为。</SmoothDragSelect_ThrottleEnabledTip>
+	<SmoothDragSelect_ProfilingEnabled>记录帧性能日志</SmoothDragSelect_ProfilingEnabled>
+	<SmoothDragSelect_ProfilingEnabledTip>将慢帧分解（update/ticks/mapUpdate/drawMapMesh/drawDynamicThings/guiPhase）和每次拖拽的统计写入游戏日志，仅用于诊断。</SmoothDragSelect_ProfilingEnabledTip>
+</LanguageData>
