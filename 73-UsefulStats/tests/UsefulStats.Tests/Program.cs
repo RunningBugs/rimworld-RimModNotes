@@ -9,10 +9,11 @@ static void AssertEqual(float expected, float actual, string name, float toleran
     }
 }
 
-AssertEqual(0.5f, CraftableEfficiencyMetrics.Ratio(30f, 60f), "value/work");
-AssertEqual(2f, CraftableEfficiencyMetrics.Ratio(80f, 40f), "material/work");
-AssertEqual(0f, CraftableEfficiencyMetrics.Ratio(80f, 0f), "zero work safe");
-AssertEqual(0f, CraftableEfficiencyMetrics.Ratio(float.NaN, 20f), "nan safe");
+AssertEqual(0.5f, CraftableEfficiencyMetrics.Ratio(30f, 60f), "generic ratio");
+AssertEqual(30f, CraftableEfficiencyMetrics.PerDisplayedWork(30f, 60f), "value/displayed work");
+AssertEqual(120f, CraftableEfficiencyMetrics.PerDisplayedWork(80f, 40f), "material/displayed work");
+AssertEqual(0f, CraftableEfficiencyMetrics.PerDisplayedWork(80f, 0f), "zero work safe");
+AssertEqual(0f, CraftableEfficiencyMetrics.PerDisplayedWork(float.NaN, 20f), "nan safe");
 
 var row = new CraftableStatRow
 {
@@ -21,12 +22,12 @@ var row = new CraftableStatRow
     IngredientLabel = "cloth",
     IngredientCount = 80f,
     MaterialSummary = "80 x cloth",
-    IngredientPerWorkMin = 0.26666668f,
-    IngredientPerWorkMax = 0.26666668f,
+    IngredientPerWorkMin = 16f,
+    IngredientPerWorkMax = 16f,
     MaterialVariantCount = 1
 };
-AssertEqual(0.5f, row.ValuePerWork, "row value/work");
-AssertEqual(0.26666668f, row.IngredientPerWork, "row ingredient/work");
+AssertEqual(30f, row.ValuePerWork, "row value/displayed work");
+AssertEqual(16f, row.IngredientPerWork, "row ingredient/displayed work");
 if (!row.HasSingleIngredient) throw new Exception("row should report a single ingredient");
 
 var grouped = new CraftableStatRow

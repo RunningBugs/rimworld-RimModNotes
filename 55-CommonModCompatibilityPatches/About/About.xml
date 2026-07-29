@@ -46,10 +46,13 @@ Current patches:
 - Replace Stuff / TinyTweaks: guard Replace Stuff over-mineable blueprint helper against null/invalid blueprint contexts.
 - TinyTweaks: skip auto-rebuild blueprint placement when a launched building has no previous map context.
 - RimStory: guard broken saved individual-death anniversary events (ADead) with missing/invalid pawns and suppress exceptions from that event path.
+- RimStory: guard broken saved mass-funeral state when its last grave is missing, destroyed, unspawned, or belongs to another map; discard the stale funeral queue instead of repeating a NullReferenceException.
 - Vanilla Expanded Framework: serialize RimWorld goodwill-situation cache access and rebuild the cache if concurrent access has already corrupted it.
 - [NL] Dynamic Portraits: skip unsafe work-item overlays for job targets with incomplete ThingDef/graphic data and suppress residual DrawWorkItems UI exceptions.
 - NewRatkinPlus: replace wandering-caravan cleanup with a null-safe equivalent so stale saved settler-pool references do not call Dictionary.Remove(null) during the Ratkin wandering trader incident.
 - Anomaly Invoke Horax ritual: snapshot invoker inventory offerings before transferring them to the carry tracker and safely consume carried/inventory offerings at ritual end, avoiding collection-modified and unaccounted-offering errors.
+- Vanilla bed sleeping slots: replace the red "Could not find good sleeping slot position" error (bed reassigned or fully occupied while a pawn lies in it) with a graceful fallback that returns the pawn's actually occupied slot, logging a one-time warning instead.
+- Anomaly pawn duplicator (Unnatural Corpse incident): copy both gene lists before resolving override links and tolerate overriding genes missing on the duplicate (modded xenotypes), instead of crashing with "Sequence contains no matching element".
 
 Target mods are listed under loadAfter, not as dependencies, so this mod can stay enabled even when some target mods are not installed.
 </description>

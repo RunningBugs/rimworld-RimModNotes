@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.MouseEventThrottle</packageId>
+	<name>流畅拖拽选择 Smooth Drag Select</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.6</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		</li>
+	</modDependencies>
+
+	<description>修复鼠标拖拽（如按住左键框选）时游戏卡顿的问题，支持高回报率鼠标。
+
+原因：鼠标拖动时每秒产生大量 MouseDrag/MouseMove 事件，Unity 的 IMGUI 对每个事件都完整执行一遍界面树（殖民者栏、主按钮、窗口栈、各 MOD 窗口）。帧率越低，每帧积压的事件越多，形成恶性循环。挂在 OnGUI 上的 FPS 计数会因此显示虚高数值（如 900+），并非真实渲染帧率。
+
+本 MOD 对这类事件做自适应限流：帧率正常时上限 60Hz，几乎无感；帧率下降时自动收紧至 10Hz 止损。画面更新仍由每帧的 Repaint 承担，功能无任何变化。
+
+---
+
+Fixes stuttering while dragging (e.g. left-button drag-select), especially with high polling-rate mice.
+
+Cause: a moving mouse generates many MouseDrag/MouseMove events per second, and Unity's IMGUI runs the entire UI tree (colonist bar, main buttons, window stack, mod windows) for every one of them. The lower the frame rate, the more events pile up per frame - a vicious cycle. OnGUI-based FPS counters report inflated numbers (e.g. 900+) which are not real rendered frames.
+
+The mod adaptively rate-limits these events: up to 60Hz when the frame rate is healthy (imperceptible), tightening to 10Hz when frames degrade. Visuals still refresh on the per-frame Repaint pass, so behavior is unchanged.</description>
+</ModMetaData>

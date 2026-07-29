@@ -50,13 +50,25 @@ def test_targeted_outfit_stand_gizmo_uses_existing_jobs_only():
 def test_harmony_patch_appends_gizmo_to_spawned_apparel_and_weapons():
     patch_text = read("1.6/Source/HarmonyPatches.cs")
     util_text = read("1.6/Source/OutfitStandHaulGizmoUtility.cs")
+    job_text = read("1.6/Source/JobDriver_UseOutfitStand_Extension.cs")
     assert "ThingWithComps.GetGizmos" in patch_text
     assert "AppendOutfitStandGizmo" in patch_text
     assert "Notify_ItemAdded" in patch_text
     assert "Notify_ItemRemoved" in patch_text
     assert "DisableDefIfNoLongerHeld" in util_text
+    assert "if (!OutfitStandHaulGizmoUtility.EnableAutomaticFilterDisable)" in patch_text
+    assert "if (OutfitStandHaulGizmoUtility.EnableAutomaticFilterDisable)" in job_text
     assert "thing is Apparel" in util_text
     assert "thing.def.IsWeapon" in util_text
+
+
+def test_automatic_filter_disable_is_paused_but_implementation_is_retained():
+    util_text = read("1.6/Source/OutfitStandHaulGizmoUtility.cs")
+    job_text = read("1.6/Source/JobDriver_UseOutfitStand_Extension.cs")
+    assert "public static readonly bool EnableAutomaticFilterDisable = false;" in util_text
+    assert "DisableDefIfNoLongerHeld" in util_text
+    assert "if (!EnableAutomaticFilterDisable || stand == null || thingDef == null)" in util_text
+    assert "if (!OutfitStandHaulGizmoUtility.EnableAutomaticFilterDisable || thing == null)" in job_text
 
 
 def test_localization_contains_new_player_facing_strings():

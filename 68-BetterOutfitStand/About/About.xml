@@ -32,7 +32,7 @@ I think it's easier to prepare two suites of clothes for your colonists than to 
 This mod will pop up a window when you right-click it and choose "Better Outfit Stand". This window shows two columns on one page: "Put on stand" and "Wear from stand".
 In "Put on stand", choose clothes worn by the colonist to move onto the stand. In "Wear from stand", choose clothes from the stand to wear; conflicting worn clothes are moved to the stand.
 
-This mod also adds a "Put on target outfit stand" command to spawned apparel and weapons. When a colony outfit stand exists, click the command and then click the target stand to order a colonist to haul the item there. The target stand automatically allows that item def, and stand filters are kept in sync with held item defs.
+This mod also adds a "Put on target outfit stand" command to spawned apparel and weapons. When a colony outfit stand exists, click the command and then click the target stand to order a colonist to haul the item there. The target stand automatically allows that item. Automatic filter disallowing when an item is removed is temporarily paused, so taking an item off the stand will not change that def's filter setting.
 
 
 本模组并不添加任何额外的家具。它只是尝试让原版的服装架更容易使用。
@@ -42,6 +42,6 @@ This mod also adds a "Put on target outfit stand" command to spawned apparel and
 本模组在你右键点击服装架并选择“更方便的服装架”时会弹出一个窗口。这个窗口在同一页左右两栏显示：“放到衣架上”和“从衣架上穿”。
 在“放到衣架上”里，选择殖民者身上要放到架子上的衣服。在“从衣架上穿”里，选择要从架子上穿上的衣服；冲突的已穿服装会自动换到架上。
 
-本模组也会给已生成的服装和武器增加“放到目标服装架”命令。当殖民地有服装架时，点击命令再点击目标服装架，即可安排殖民者把该物品搬过去。目标服装架会自动允许该物品的 Def，并保持储存过滤器与架上内容同步。
+本模组也会给已生成的服装和武器增加“放到目标服装架”命令。当殖民地有服装架时，点击命令再点击目标服装架，即可安排殖民者把该物品搬过去。目标服装架会自动允许该物品。取下物品时自动禁用对应物品类别的过滤器功能目前已暂停，因此取下衣物不会改变该类别的过滤器设置。
 	</description>
 </ModMetaData>

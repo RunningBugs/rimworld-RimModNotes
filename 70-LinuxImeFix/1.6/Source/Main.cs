@@ -38,6 +38,12 @@ public sealed class TextFieldState
     public string Commit;
 }
 
+public sealed class ImePatchedFieldState
+{
+    public Rect Rect;
+    public TextFieldState TextState;
+}
+
 public static class NativeBridge
 {
     private const int RTLD_NOW = 2;
@@ -87,9 +93,8 @@ public static class NativeBridge
         loadAttempted = true;
         try
         {
-            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? "";
-            string path = Path.Combine(dir, "libLinuxImeFixNative.so");
-            if (!File.Exists(path)) { Log.Warning($"[LinuxImeFix] {path} not found"); return; }
+            string path = FindNativeLibrary();
+            if (path == null) { Log.Warning("[LinuxImeFix] libLinuxImeFixNative.so not found"); return; }
             handle = dlopen(path, RTLD_NOW);
             if (handle == IntPtr.Zero) { Log.Warning($"[LinuxImeFix] dlopen failed: {PtrString(dlerror())}"); return; }
             pInit = Get<InitDelegate>("rimworld_ime_init");
@@ -117,6 +122,41 @@ public static class NativeBridge
             Log.Message(ok != 0 && IsReady ? "[LinuxImeFix] IBus connected.".Colorize(Color.green) : "[LinuxImeFix] IBus connection failed.");
         }
         catch (Exception ex) { Log.Warning($"[LinuxImeFix] Load error: {ex}"); }
+    }
+
+    /// <summary>
+    /// Resolves libLinuxImeFixNative.so on disk. Assembly.Location is empty when the
+    /// assembly was loaded from raw bytes (e.g. PurePatcher reloads all mod assemblies
+    /// from memory), so fall back to locating the owning ModContentPack and searching
+    /// its folder tree.
+    /// </summary>
+    private static string FindNativeLibrary()
+    {
+        const string fileName = "libLinuxImeFixNative.so";
+        Assembly asm = Assembly.GetExecutingAssembly();
+        try
+        {
+            string loc = asm.Location;
+            if (!string.IsNullOrEmpty(loc))
+            {
+                string p = Path.Combine(Path.GetDirectoryName(loc) ?? "", fileName);
+                if (File.Exists(p)) return p;
+            }
+        }
+        catch { /* Location may be empty/invalid for in-memory assemblies */ }
+
+        foreach (ModContentPack mod in LoadedModManager.RunningMods)
+        {
+            try
+            {
+                if (mod.assemblies?.loadedAssemblies == null || !mod.assemblies.loadedAssemblies.Contains(asm))
+                    continue;
+                string[] hits = Directory.GetFiles(mod.RootDir, fileName, SearchOption.AllDirectories);
+                if (hits.Length > 0) return hits[0];
+            }
+            catch { }
+        }
+        return null;
     }
 
     public static bool IsReady => available && pIsReady != null && pIsReady() != 0;
@@ -167,6 +207,13 @@ public static class LinuxImeUtility
     private static int lastCursorY = int.MinValue;
     private static bool sawFocusedTextFieldThisFrame;
     private static bool composing;
+    private static bool shiftDown;
+    private static bool controlDown;
+    private static bool altDown;
+    private const int IBusShiftMask = 0x1;
+    private const int IBusControlMask = 0x4;
+    private const int IBusAltMask = 0x8;
+    private const int IBusReleaseMask = 0x40000000;
     private static int compControl;
     private static string compBaseText = "";
     private static int compBaseCursor, compBaseSelect;
@@ -204,6 +251,7 @@ public static class LinuxImeUtility
                         NativeBridge.Reset();
                         NativeBridge.FocusOut();
                         composing = false;
+                        ResetModifierState();
                     }
                     NativeBridge.FocusIn();
                     focusedControl = editor.controlID;
@@ -239,41 +287,28 @@ public static class LinuxImeUtility
         state.KeyConsumed = false;
         state.Commit = null;
         if (!NativeBridge.IsReady) return;
-        if (Event.current == null || Event.current.type != EventType.KeyDown) return;
+        if (Event.current == null) return;
+        bool isKeyDown = Event.current.type == EventType.KeyDown;
+        bool isKeyUp = Event.current.type == EventType.KeyUp;
+        if (!isKeyDown && !isKeyUp) return;
 
         var kc = Event.current.keyCode;
-        if (Event.current.character == '\0' && IsModifierKey(kc)) return;
+        bool isModifier = IsModifierKey(kc);
+        if (isKeyUp && !isModifier) return;
+        SyncModifierStateFromEventBeforeKey(kc, isKeyDown, isKeyUp);
 
         // Convert to IBus keyval.
         // IMPORTANT: check keyCode FIRST for special keys, because Unity sets
         // Event.current.character to '\b' (0x08) for BackSpace, not '\0'.
         // Sending 0x08 to IBus does nothing; we need X11 keysym 0xFF08.
-        int keyval;
-        if (kc == KeyCode.Backspace) keyval = 0xFF08;
-        else if (kc == KeyCode.Delete) keyval = 0xFFFF;
-        else if (kc == KeyCode.LeftArrow) keyval = 0xFF51;
-        else if (kc == KeyCode.RightArrow) keyval = 0xFF53;
-        else if (kc == KeyCode.UpArrow) keyval = 0xFF52;
-        else if (kc == KeyCode.DownArrow) keyval = 0xFF54;
-        else if (kc == KeyCode.Home) keyval = 0xFF50;
-        else if (kc == KeyCode.End) keyval = 0xFF57;
-        else if (kc == KeyCode.Escape) keyval = 0xFF1B;
-        else if (kc == KeyCode.Return || kc == KeyCode.KeypadEnter) keyval = 0xFF0D;
-        else if (kc == KeyCode.Tab) keyval = 0xFF09;
-        else if (kc == KeyCode.PageUp) keyval = 0xFF55;
-        else if (kc == KeyCode.PageDown) keyval = 0xFF56;
-        else if (Event.current.character != '\0')
-            keyval = (int)Event.current.character;
-        else
-            keyval = (int)kc;
+        if (!TryGetIBusKeyval(kc, Event.current.character, out int keyval)) return;
 
-        int ibusState = 0;
-        if (Event.current.shift) ibusState |= 0x1;
-        if (Event.current.control) ibusState |= 0x4;
-        if (Event.current.alt) ibusState |= 0x8;
+        int ibusState = CurrentModifierState();
+        if (isKeyUp) ibusState |= IBusReleaseMask;
 
         bool consumed = NativeBridge.ProcessKey(keyval, 0, ibusState);
         string commit = NativeBridge.PollCommit();
+        UpdateModifierStateAfterKey(kc, isKeyDown, isKeyUp);
 
         if (!string.IsNullOrEmpty(commit))
         {
@@ -302,6 +337,87 @@ public static class LinuxImeUtility
         {
             if (composing) composing = false;
         }
+    }
+
+    private static bool TryGetIBusKeyval(KeyCode kc, char ch, out int keyval)
+    {
+        if (kc == KeyCode.Backspace) keyval = 0xFF08;
+        else if (kc == KeyCode.Delete) keyval = 0xFFFF;
+        else if (kc == KeyCode.LeftArrow) keyval = 0xFF51;
+        else if (kc == KeyCode.RightArrow) keyval = 0xFF53;
+        else if (kc == KeyCode.UpArrow) keyval = 0xFF52;
+        else if (kc == KeyCode.DownArrow) keyval = 0xFF54;
+        else if (kc == KeyCode.Home) keyval = 0xFF50;
+        else if (kc == KeyCode.End) keyval = 0xFF57;
+        else if (kc == KeyCode.Escape) keyval = 0xFF1B;
+        else if (kc == KeyCode.Return || kc == KeyCode.KeypadEnter) keyval = 0xFF0D;
+        else if (kc == KeyCode.Tab) keyval = 0xFF09;
+        else if (kc == KeyCode.PageUp) keyval = 0xFF55;
+        else if (kc == KeyCode.PageDown) keyval = 0xFF56;
+        else if (kc == KeyCode.LeftShift) keyval = 0xFFE1;
+        else if (kc == KeyCode.RightShift) keyval = 0xFFE2;
+        else if (kc == KeyCode.LeftControl) keyval = 0xFFE3;
+        else if (kc == KeyCode.RightControl) keyval = 0xFFE4;
+        else if (kc == KeyCode.LeftAlt) keyval = 0xFFE9;
+        else if (kc == KeyCode.RightAlt) keyval = 0xFFEA;
+        else if (kc == KeyCode.LeftCommand) keyval = 0xFFEB;
+        else if (kc == KeyCode.RightCommand) keyval = 0xFFEC;
+        else if (ch != '\0') keyval = ch;
+        else
+        {
+            keyval = (int)kc;
+            return keyval != 0;
+        }
+        return true;
+    }
+
+    private static int CurrentModifierState()
+    {
+        int state = 0;
+        if (shiftDown) state |= IBusShiftMask;
+        if (controlDown) state |= IBusControlMask;
+        if (altDown) state |= IBusAltMask;
+        return state;
+    }
+
+    private static void SyncModifierStateFromEventBeforeKey(KeyCode kc, bool isKeyDown, bool isKeyUp)
+    {
+        if (!isKeyUp)
+        {
+            shiftDown = Event.current.shift;
+            controlDown = Event.current.control;
+            altDown = Event.current.alt;
+        }
+        if (isKeyDown)
+        {
+            SetModifierState(kc, true);
+        }
+    }
+
+    private static void UpdateModifierStateAfterKey(KeyCode kc, bool isKeyDown, bool isKeyUp)
+    {
+        if (isKeyUp)
+        {
+            SetModifierState(kc, false);
+        }
+        else if (isKeyDown)
+        {
+            SetModifierState(kc, true);
+        }
+    }
+
+    private static void SetModifierState(KeyCode kc, bool down)
+    {
+        if (kc == KeyCode.LeftShift || kc == KeyCode.RightShift) shiftDown = down;
+        else if (kc == KeyCode.LeftControl || kc == KeyCode.RightControl) controlDown = down;
+        else if (kc == KeyCode.LeftAlt || kc == KeyCode.RightAlt) altDown = down;
+    }
+
+    private static void ResetModifierState()
+    {
+        shiftDown = false;
+        controlDown = false;
+        altDown = false;
     }
 
     public static void FinishTextField(Rect rect, TextFieldState state, ref string result)
@@ -536,6 +652,7 @@ public static class LinuxImeUtility
                 lastCursorX = int.MinValue;
                 lastCursorY = int.MinValue;
                 composing = false;
+                ResetModifierState();
             }
             Input.imeCompositionMode = IMECompositionMode.Auto;
             hasStoredAnchor = false;
@@ -593,6 +710,54 @@ public static class DevGUI_TextField_Patch
         => __state = LinuxImeUtility.PrepareTextField(rect, text);
     public static void Postfix(Rect rect, TextFieldState __state, ref string __result)
         => LinuxImeUtility.FinishTextField(rect, __state, ref __result);
+}
+
+[HarmonyPatch]
+public static class DubsMintMenus_InputField_Patch
+{
+    public static bool Prepare() => AccessTools.TypeByName("DubsMintMenus.DubGUI") != null;
+
+    public static MethodBase TargetMethod()
+    {
+        Type type = AccessTools.TypeByName("DubsMintMenus.DubGUI");
+        return AccessTools.Method(type, "InputField", new[]
+        {
+            typeof(string), typeof(Rect), typeof(string).MakeByRefType(), typeof(Texture2D),
+            typeof(int), typeof(bool), typeof(bool), typeof(bool)
+        });
+    }
+
+    public static void Prefix(Rect rect, ref string buff, Texture2D icon, bool ShowName, out ImePatchedFieldState __state)
+    {
+        Rect textRect = DubsTextRect(rect, icon, ShowName);
+        __state = new ImePatchedFieldState
+        {
+            Rect = textRect,
+            TextState = LinuxImeUtility.PrepareTextField(textRect, buff)
+        };
+    }
+
+    public static void Postfix(ref string buff, ImePatchedFieldState __state)
+    {
+        if (__state?.TextState == null) return;
+        LinuxImeUtility.FinishTextField(__state.Rect, __state.TextState, ref buff);
+    }
+
+    private static Rect DubsTextRect(Rect rect, Texture2D icon, bool showName)
+    {
+        Rect textRect = rect;
+        if (icon != null)
+        {
+            float iconWidth = rect.height;
+            textRect.width -= iconWidth;
+            textRect.x += iconWidth;
+        }
+        if (showName)
+        {
+            textRect = GenUI.RightPart(rect, 0.8f);
+        }
+        return textRect;
+    }
 }
 
 [HarmonyPatch(typeof(UIRoot_Play), nameof(UIRoot_Play.UIRootOnGUI))]

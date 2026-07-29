@@ -20,13 +20,14 @@ namespace UsefulStats
             public float Value;
             public bool IsDefault;
             public string Note = string.Empty;
-            public float IngredientPerWork => CraftableEfficiencyMetrics.Ratio(Count, Work);
+            public float IngredientPerWork => CraftableEfficiencyMetrics.PerDisplayedWork(Count, Work);
         }
 
         private sealed class KindInfo
         {
             public string Key;
             public string Label;
+            public string DefPath;
         }
 
         public static List<CraftableStatRow> BuildRows(Map map)
@@ -46,6 +47,12 @@ namespace UsefulStats
                 {
                     continue;
                 }
+                if (product.recipeMaker != null)
+                {
+                    // RecipeMaker products are represented by their ThingDef row below. Generated RecipeDefs can have
+                    // incomplete/variant metadata, and using both sources made category/filter membership hard to reason about.
+                    continue;
+                }
 
                 bool anyPotentialUser = HasPotentialRecipeUser(recipe);
                 bool anyUserNow = HasAvailableRecipeUser(recipe, map);
@@ -53,6 +60,29 @@ namespace UsefulStats
                 string unlock = BuildRecipeUnlockInfo(recipe, anyUserNow);
                 CraftableStatRow row = RowForRecipe(recipe, product, now, !now && anyPotentialUser, unlock);
                 string key = "recipe|" + recipe.defName + "|" + product.defName;
+                if (seen.Add(key))
+                {
+                    rows.Add(row);
+                }
+            }
+
+            foreach (ThingDef def in DefDatabase<ThingDef>.AllDefsListForReading)
+            {
+                if (def == null || def.recipeMaker == null || def.category != ThingCategory.Item)
+                {
+                    continue;
+                }
+
+                float work = RecipeMakerWorkAmount(def);
+                if (work <= 0f)
+                {
+                    continue;
+                }
+
+                bool now = RecipeMakerResearchFinished(def);
+                bool future = !now && RecipeMakerHasUnlockPath(def);
+                CraftableStatRow row = RowForRecipeMakerThing(def, now, future, RecipeMakerUnlockInfo(def));
+                string key = "recipeMaker|" + def.defName;
                 if (seen.Add(key)) rows.Add(row);
             }
 
@@ -85,20 +115,18 @@ namespace UsefulStats
             float work = recipe.WorkAmountForStuff(defaultStuff);
             float value = product.GetStatValueAbstract(StatDefOf.MarketValue, defaultStuff);
             var candidates = SingleIngredientCandidates(recipe).ToList();
-            KindInfo kind = KindFor(product);
             CraftableStatRow row = new CraftableStatRow
             {
                 Label = ProductLabel(product, defaultStuff),
                 DefName = product.defName,
                 Source = recipe.label.NullOrEmpty() ? recipe.defName : recipe.LabelCap.ToString(),
-                KindKey = kind.Key,
-                KindLabel = kind.Label,
                 AvailableNow = now,
                 FutureAvailable = future,
                 WorkAmount = work,
                 MarketValue = value,
                 UnlockInfo = unlock
             };
+            ApplyKinds(row, product);
             ApplyMaterialSummary(row, candidates, product.MadeFromStuff ? "stuff" : "ingredient");
             return row;
         }
@@ -107,20 +135,38 @@ namespace UsefulStats
         {
             ThingDef defaultStuff = def.MadeFromStuff ? GenStuff.DefaultStuffFor(def) : null;
             var candidates = SingleBuildIngredient(def).ToList();
-            KindInfo kind = KindFor(def);
             CraftableStatRow row = new CraftableStatRow
             {
                 Label = ProductLabel(def, defaultStuff),
                 DefName = def.defName,
                 Source = "Build",
-                KindKey = kind.Key,
-                KindLabel = kind.Label,
                 AvailableNow = now,
                 FutureAvailable = future,
                 WorkAmount = def.GetStatValueAbstract(StatDefOf.WorkToBuild, defaultStuff),
                 MarketValue = def.GetStatValueAbstract(StatDefOf.MarketValue, defaultStuff),
                 UnlockInfo = unlock
             };
+            ApplyKinds(row, def);
+            ApplyMaterialSummary(row, candidates, def.MadeFromStuff ? "stuff" : "ingredient");
+            return row;
+        }
+
+        private static CraftableStatRow RowForRecipeMakerThing(ThingDef def, bool now, bool future, string unlock)
+        {
+            ThingDef defaultStuff = def.MadeFromStuff ? GenStuff.DefaultStuffFor(def) : null;
+            var candidates = ThingDefIngredientCandidates(def).ToList();
+            CraftableStatRow row = new CraftableStatRow
+            {
+                Label = ProductLabel(def, defaultStuff),
+                DefName = def.defName,
+                Source = def.recipeMaker?.label.NullOrEmpty() == false ? def.recipeMaker.label.CapitalizeFirst() : "RecipeMaker",
+                AvailableNow = now,
+                FutureAvailable = future,
+                WorkAmount = RecipeMakerWorkAmount(def, defaultStuff),
+                MarketValue = def.GetStatValueAbstract(StatDefOf.MarketValue, defaultStuff),
+                UnlockInfo = unlock
+            };
+            ApplyKinds(row, def);
             ApplyMaterialSummary(row, candidates, def.MadeFromStuff ? "stuff" : "ingredient");
             return row;
         }
@@ -244,6 +290,40 @@ namespace UsefulStats
             }
         }
 
+        private static IEnumerable<MaterialCandidate> ThingDefIngredientCandidates(ThingDef def)
+        {
+            bool hasStuff = def.MadeFromStuff && def.CostStuffCount > 0;
+            bool hasFixedCosts = !def.CostList.NullOrEmpty();
+            ThingDef defaultStuff = def.MadeFromStuff ? GenStuff.DefaultStuffFor(def) : null;
+            if (hasStuff && !def.stuffCategories.NullOrEmpty())
+            {
+                foreach (ThingDef stuff in DefDatabase<ThingDef>.AllDefsListForReading.Where(td => td.IsStuff && td.stuffProps != null && td.stuffProps.categories.Any(c => def.stuffCategories.Contains(c))).OrderBy(td => td.label).Take(MaxMaterialVariantsForSummary))
+                {
+                    yield return new MaterialCandidate
+                    {
+                        ThingDef = stuff,
+                        Count = def.CostStuffCount,
+                        Work = RecipeMakerWorkAmount(def, stuff),
+                        Value = def.GetStatValueAbstract(StatDefOf.MarketValue, stuff),
+                        IsDefault = stuff == defaultStuff,
+                        Note = hasFixedCosts ? "variable stuff plus fixed costs" : "variable stuff"
+                    };
+                }
+            }
+            else if (!hasStuff && def.CostList != null && def.CostList.Count == 1)
+            {
+                ThingDefCountClass cost = def.CostList[0];
+                yield return new MaterialCandidate
+                {
+                    ThingDef = cost.thingDef,
+                    Count = cost.count,
+                    Work = RecipeMakerWorkAmount(def),
+                    Value = def.GetStatValueAbstract(StatDefOf.MarketValue),
+                    IsDefault = true
+                };
+            }
+        }
+
         private static bool SafeAvailableNow(RecipeDef recipe)
         {
             try { return recipe.AvailableNow; }
@@ -292,42 +372,115 @@ namespace UsefulStats
             return def.researchPrerequisites.Where(r => !r.IsFinished).Select(r => r.LabelCap.ToString()).ToCommaList();
         }
 
-        private static KindInfo KindFor(ThingDef def)
+        private static float RecipeMakerWorkAmount(ThingDef def, ThingDef stuff = null)
         {
-            ThingCategoryDef storageRoot = null;
-            if (!def.thingCategories.NullOrEmpty())
+            if (def?.recipeMaker != null && def.recipeMaker.workAmount > 0)
             {
-                storageRoot = def.thingCategories
-                    .Select(StorageRootCategory)
-                    .Where(cat => cat != null)
-                    .OrderBy(cat => cat.label)
-                    .FirstOrDefault();
+                return def.recipeMaker.workAmount;
             }
-
-            if (storageRoot == null && def.category == ThingCategory.Building)
-            {
-                storageRoot = ThingCategoryDefOf.Buildings;
-            }
-
-            if (storageRoot != null)
-            {
-                string label = storageRoot.LabelCap.ToString();
-                return new KindInfo { Key = storageRoot.defName, Label = label.NullOrEmpty() ? storageRoot.defName : label };
-            }
-
-            string fallback = def.category.ToString();
-            return new KindInfo { Key = fallback, Label = fallback };
+            return def.GetStatValueAbstract(StatDefOf.WorkToMake, stuff);
         }
 
-        private static ThingCategoryDef StorageRootCategory(ThingCategoryDef category)
+        private static bool RecipeMakerResearchFinished(ThingDef def)
         {
-            if (category == null) return null;
-            ThingCategoryDef current = category;
-            while (current.parent != null && current.parent != ThingCategoryDefOf.Root)
+            if (def?.recipeMaker == null) return false;
+            if (def.recipeMaker.researchPrerequisite != null && !def.recipeMaker.researchPrerequisite.IsFinished) return false;
+            if (def.recipeMaker.researchPrerequisites != null && def.recipeMaker.researchPrerequisites.Any(r => !r.IsFinished)) return false;
+            return true;
+        }
+
+        private static bool RecipeMakerHasUnlockPath(ThingDef def)
+        {
+            if (def?.recipeMaker == null) return false;
+            if (def.recipeMaker.recipeUsers != null && def.recipeMaker.recipeUsers.Any(user => user.category != ThingCategory.Pawn)) return true;
+            if (def.recipeMaker.researchPrerequisite != null || !def.recipeMaker.researchPrerequisites.NullOrEmpty()) return true;
+            if (!def.recipeMaker.memePrerequisitesAny.NullOrEmpty()) return true;
+            if (!def.recipeMaker.factionPrerequisiteTags.NullOrEmpty()) return true;
+            if (def.recipeMaker.fromIdeoBuildingPreceptOnly) return true;
+            return false;
+        }
+
+        private static string RecipeMakerUnlockInfo(ThingDef def)
+        {
+            var parts = new List<string>();
+            if (def?.recipeMaker == null) return string.Empty;
+            if (def.recipeMaker.recipeUsers.NullOrEmpty()) parts.Add("generated recipe");
+            if (def.recipeMaker.researchPrerequisite != null && !def.recipeMaker.researchPrerequisite.IsFinished) parts.Add(def.recipeMaker.researchPrerequisite.LabelCap.ToString());
+            if (def.recipeMaker.researchPrerequisites != null) parts.AddRange(def.recipeMaker.researchPrerequisites.Where(r => !r.IsFinished).Select(r => r.LabelCap.ToString()));
+            if (def.recipeMaker.memePrerequisitesAny != null && def.recipeMaker.memePrerequisitesAny.Count > 0) parts.Add("ideo meme");
+            if (def.recipeMaker.factionPrerequisiteTags != null && def.recipeMaker.factionPrerequisiteTags.Count > 0) parts.Add("faction tag");
+            if (def.recipeMaker.fromIdeoBuildingPreceptOnly) parts.Add("ideo precept");
+            return parts.Distinct().ToCommaList();
+        }
+
+        private static void ApplyKinds(CraftableStatRow row, ThingDef def)
+        {
+            List<KindInfo> kinds = KindsFor(def).ToList();
+            if (kinds.Count == 0)
             {
+                string fallback = def.category.ToString();
+                kinds.Add(new KindInfo { Key = fallback, Label = fallback, DefPath = fallback });
+            }
+            row.KindKeys = kinds.Select(k => k.Key).ToList();
+            row.KindLabels = kinds.Select(k => k.Label).ToList();
+            row.KindDefPaths = kinds.Select(k => k.DefPath).ToList();
+            row.KindKey = row.KindKeys.FirstOrDefault() ?? string.Empty;
+            row.KindLabel = row.KindLabels.FirstOrDefault() ?? string.Empty;
+        }
+
+        private static IEnumerable<KindInfo> KindsFor(ThingDef def)
+        {
+            var seen = new HashSet<string>();
+            if (!def.thingCategories.NullOrEmpty())
+            {
+                foreach (ThingCategoryDef category in def.thingCategories)
+                {
+                    List<ThingCategoryDef> chain = CategoryChain(category).ToList();
+                    for (int i = 0; i < chain.Count; i++)
+                    {
+                        ThingCategoryDef chainCategory = chain[i];
+                        if (chainCategory == null || !seen.Add(chainCategory.defName)) continue;
+                        string label = CategoryPathLabel(chain.Take(i + 1));
+                        string defPath = CategoryDefPath(chain.Take(i + 1));
+                        yield return new KindInfo { Key = chainCategory.defName, Label = label.NullOrEmpty() ? chainCategory.defName : label, DefPath = defPath };
+                    }
+                }
+            }
+
+            if (def.category == ThingCategory.Building && seen.Add(ThingCategoryDefOf.Buildings.defName))
+            {
+                string label = ThingCategoryDefOf.Buildings.LabelCap.ToString();
+                yield return new KindInfo { Key = ThingCategoryDefOf.Buildings.defName, Label = label.NullOrEmpty() ? ThingCategoryDefOf.Buildings.defName : label, DefPath = ThingCategoryDefOf.Buildings.defName };
+            }
+        }
+
+        private static IEnumerable<ThingCategoryDef> CategoryChain(ThingCategoryDef category)
+        {
+            var reversed = new List<ThingCategoryDef>();
+            ThingCategoryDef current = category;
+            while (current != null && current != ThingCategoryDefOf.Root)
+            {
+                reversed.Add(current);
                 current = current.parent;
             }
-            return current.parent == ThingCategoryDefOf.Root ? current : category;
+            for (int i = reversed.Count - 1; i >= 0; i--)
+            {
+                yield return reversed[i];
+            }
+        }
+
+        private static string CategoryPathLabel(IEnumerable<ThingCategoryDef> chain)
+        {
+            return string.Join(" > ", chain.Select(cat =>
+            {
+                string label = cat.LabelCap.ToString();
+                return label.NullOrEmpty() ? cat.defName : label;
+            }).ToArray());
+        }
+
+        private static string CategoryDefPath(IEnumerable<ThingCategoryDef> chain)
+        {
+            return string.Join(" > ", chain.Select(cat => cat.defName).ToArray());
         }
 
         private static string ProductLabel(ThingDef def, ThingDef stuff)
