@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
     <ResearchPrerequisites>前置研究</ResearchPrerequisites>
-    <ResearchAddToQueue>将研究项目添加到队列</ResearchAddToQueue>
-    <CurrentResearchQueue>当前研究队列：</CurrentResearchQueue>
-    <ClearResearchQueue>清除当前研究队列</ClearResearchQueue>
     <ResearchPrerequisitesSettings>前置研究模组设置</ResearchPrerequisitesSettings>
     <FinishProjectWithLetter>研究项目结束时以信件通知而非窗口</FinishProjectWithLetter>
-    <FinishProjectWithLetterDesc>研究项目结束时以信件通知而非窗口，当DubsMintMenus激活时，这项设置将忽略</FinishProjectWithLetterDesc>
+    <FinishProjectWithLetterDesc>研究项目结束时以信件通知而非窗口,当DubsMintMenus激活时,这项设置将忽略</FinishProjectWithLetterDesc>
+    <ResearchAddToQueue>加入研究队列</ResearchAddToQueue>
+    <ResearchJumpQueueFront>插队到队首</ResearchJumpQueueFront>
+    <ResearchQueueButtonTip>点击加入队尾;按住 Ctrl 点击插队到队首</ResearchQueueButtonTip>
+    <CurrentResearchQueue>当前研究队列:</CurrentResearchQueue>
+    <ClearResearchQueue>清空研究队列</ClearResearchQueue>
 </LanguageData>
