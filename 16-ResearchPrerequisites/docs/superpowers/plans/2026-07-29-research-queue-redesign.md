@@ -632,6 +632,7 @@ git commit -m "feat: add zh/en translations for queue UI via Common/Languages"
 ```csharp
 using HarmonyLib;
 using RimWorld;
+using Verse;
 
 namespace ResearchPrerequisites
 {
