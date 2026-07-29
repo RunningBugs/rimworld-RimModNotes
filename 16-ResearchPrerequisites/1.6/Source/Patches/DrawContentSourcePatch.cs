@@ -28,9 +28,14 @@ namespace ResearchPrerequisites
             }
 
             float y = rect.y + __result;
-            if (list.Count > 0 && Widgets.ButtonText(new Rect(rect.x, y, rect.width, Text.LineHeight), "ClearResearchQueue".Translate()))
+            if ((list.Count > 0 || current != null) && Widgets.ButtonText(new Rect(rect.x, y, rect.width, Text.LineHeight), "ClearResearchQueue".Translate()))
             {
+                // 清空队列并停止当前研究(StopProject 会经 StopProjectPatch 再次清队,为无害 no-op)
                 queue.ClearQueue(project.knowledgeCategory);
+                if (current != null)
+                {
+                    Find.ResearchManager.StopProject(current);
+                }
                 __result = y - rect.y + Text.LineHeight;
                 return;
             }
