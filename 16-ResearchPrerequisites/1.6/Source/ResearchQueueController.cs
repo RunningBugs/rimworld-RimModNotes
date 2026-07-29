@@ -124,5 +124,31 @@ namespace ResearchPrerequisites
             AttemptBeginResearch(next);
             queue.QueueFor(category).Remove(next);
         }
+
+        /// <summary>
+        /// 插队到队首并立即开始研究。被挤下的当前研究放回队列第 1 位
+        /// (进度由原版按项目保存,不会丢),插队项目完成后会自动继续。
+        /// </summary>
+        public static void JumpToFrontAndStart(ResearchProjectDef project)
+        {
+            ResearchQueue queue = ResearchQueue.Instance;
+            if (queue == null || project == null)
+            {
+                return;
+            }
+            KnowledgeCategoryDef category = project.knowledgeCategory;
+            queue.JumpToFront(project);
+            ResearchProjectDef current = Find.ResearchManager.GetProject(category);
+            if (current == project)
+            {
+                return;
+            }
+            if (current != null)
+            {
+                queue.QueueFor(category).Insert(1, current);
+            }
+            AttemptBeginResearch(project);
+            queue.QueueFor(category).Remove(project);
+        }
     }
 }

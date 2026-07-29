@@ -49,13 +49,13 @@ namespace ResearchPrerequisites
                 }
                 if (jump)
                 {
-                    queue.JumpToFront(project);
+                    ResearchQueueController.JumpToFrontAndStart(project);
                 }
                 else
                 {
                     queue.Enqueue(project);
+                    ResearchQueueController.TryStartNext(project.knowledgeCategory);
                 }
-                ResearchQueueController.TryStartNext(project.knowledgeCategory);
             }
         }
     }
