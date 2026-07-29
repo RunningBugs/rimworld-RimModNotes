@@ -21,13 +21,14 @@ namespace ResearchPrerequisites
                 return;
             }
             List<ResearchProjectDef> list = queue.QueueFor(project);
-            if (list.Count == 0)
+            ResearchProjectDef current = Find.ResearchManager.GetProject(project.knowledgeCategory);
+            if (list.Count == 0 && current == null)
             {
                 return;
             }
 
             float y = rect.y + __result;
-            if (Widgets.ButtonText(new Rect(rect.x, y, rect.width, Text.LineHeight), "ClearResearchQueue".Translate()))
+            if (list.Count > 0 && Widgets.ButtonText(new Rect(rect.x, y, rect.width, Text.LineHeight), "ClearResearchQueue".Translate()))
             {
                 queue.ClearQueue(project.knowledgeCategory);
                 __result = y - rect.y + Text.LineHeight;
@@ -36,6 +37,13 @@ namespace ResearchPrerequisites
             y += Text.LineHeight;
             Widgets.Label(new Rect(rect.x, y, rect.width, Text.LineHeight), "CurrentResearchQueue".Translate());
             y += Text.LineHeight;
+            if (current != null)
+            {
+                // 当前正在研究的项目显示为队首,加粗 + 箭头标记
+                Widgets.Label(new Rect(rect.x + 10f, y, rect.width - 10f, Text.LineHeight),
+                    "<b>→ " + current.LabelCap + " (" + "InProgress".Translate() + ")</b>");
+                y += Text.LineHeight;
+            }
             foreach (ResearchProjectDef p in list)
             {
                 Widgets.Label(new Rect(rect.x + 10f, y, rect.width - 10f, Text.LineHeight), p.LabelCap);
