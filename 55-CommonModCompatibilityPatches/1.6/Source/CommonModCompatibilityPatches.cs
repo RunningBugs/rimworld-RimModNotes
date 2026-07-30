@@ -35,6 +35,7 @@ public static class CommonCompatibilityBootstrap
         applied += InvokeHoraxOfferingCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += SleepingSlotFallbackCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += PawnDuplicatorGeneCopyCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += PawnHealthBarBleedLabelCompatibility.TryApply(Harmony) ? 1 : 0;
 
         Log.Message($"[CommonModCompatibilityPatches] Applied {applied} compatibility patch group(s).".Colorize(Color.green));
     }
@@ -710,6 +711,54 @@ internal static class PawnDuplicatorGeneCopyCompatibility
                 Log.WarningOnce($"[CommonModCompatibilityPatches] Pawn duplicator could not find overriding gene '{sourceGene.overriddenByGene?.def?.defName}' for '{sourceGene.def?.defName}' on a duplicate of {pawn}; left the override link empty instead of throwing 'Sequence contains no matching element' during the Unnatural Corpse incident.", MissingOverrideGeneWarningId);
             }
         }
+    }
+}
+
+internal static class PawnHealthBarBleedLabelCompatibility
+{
+    public const string PackageId = "Paluto22.PawnHealthBar";
+    private const int BleedRateBoundaryWarningId = 82038129;
+
+    public static bool TryApply(Harmony harmony)
+    {
+        if (!ModDetection.IsActive(PackageId))
+        {
+            return false;
+        }
+
+        Type extrasType = AccessTools.TypeByName("Paluto22_PawnHelathBar.DrawGUIOverlayExtras");
+        MethodInfo target = AccessTools.Method(extrasType, "DrawBleedLabel");
+        MethodInfo prefix = AccessTools.Method(typeof(PawnHealthBarBleedLabelCompatibility), nameof(Prefix));
+        if (target == null || prefix == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(target, prefix: new HarmonyMethod(prefix));
+        return true;
+    }
+
+    // The original guard lets BleedRateTotal >= 0.01f through, but its internal
+    // GetPawnLabel only builds the label text when BleedRateTotal > 0.01f. A pawn
+    // bleeding at exactly 0.01f therefore passes a null string to
+    // GenUI.GetWidthCached, which throws ArgumentNullException every frame.
+    // Tighten the boundary: skip the original method unless a label can
+    // actually be produced (nothing drawable is lost otherwise).
+    public static bool Prefix(Pawn pawn)
+    {
+        if (pawn?.health?.hediffSet == null)
+        {
+            return false;
+        }
+
+        float bleedRateTotal = pawn.health.hediffSet.BleedRateTotal;
+        if (bleedRateTotal >= 0.01f && !(bleedRateTotal > 0.01f))
+        {
+            Log.WarningOnce("[CommonModCompatibilityPatches] Skipped Pawn HealthBar bleed label for a pawn bleeding at exactly 0.01 rate; the original method would pass a null label to GenUI.GetWidthCached and throw ArgumentNullException every frame.", BleedRateBoundaryWarningId);
+            return false;
+        }
+
+        return bleedRateTotal > 0.01f;
     }
 }
 
