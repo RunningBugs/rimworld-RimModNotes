@@ -26,6 +26,7 @@
 		<li>OskarPotocki.VanillaFactionsExpanded.Core</li>
 		<li>Nals.DynamicPortraits</li>
 		<li>Solaris.RatkinRaceMod</li>
+		<li>Paluto22.PawnHealthBar</li>
 	</loadAfter>
 
 	<incompatibleWith>
@@ -53,6 +54,7 @@ Current patches:
 - Anomaly Invoke Horax ritual: snapshot invoker inventory offerings before transferring them to the carry tracker and safely consume carried/inventory offerings at ritual end, avoiding collection-modified and unaccounted-offering errors.
 - Vanilla bed sleeping slots: replace the red "Could not find good sleeping slot position" error (bed reassigned or fully occupied while a pawn lies in it) with a graceful fallback that returns the pawn's actually occupied slot, logging a one-time warning instead.
 - Anomaly pawn duplicator (Unnatural Corpse incident): copy both gene lists before resolving override links and tolerate overriding genes missing on the duplicate (modded xenotypes), instead of crashing with "Sequence contains no matching element".
+- Pawn Health Bar: tighten the bleed-label boundary check so a pawn bleeding at exactly 0.01 rate no longer passes a null label to GenUI.GetWidthCached, avoiding an ArgumentNullException every frame; a one-time warning is logged instead.
 
 Target mods are listed under loadAfter, not as dependencies, so this mod can stay enabled even when some target mods are not installed.
 </description>
