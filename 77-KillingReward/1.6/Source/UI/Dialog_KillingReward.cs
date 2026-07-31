@@ -156,6 +156,7 @@ namespace KillingReward
                 return;
             }
             Close();
+            Messages.Message("KR_PickCell".Translate(), MessageTypeDefOf.NeutralEvent);
             TargetingParameters parameters = new TargetingParameters
             {
                 canTargetLocations = true,
@@ -171,7 +172,7 @@ namespace KillingReward
                     ItemReward.Deliver(thingDef, target.Cell, map);
                     Messages.Message("KR_Claimed".Translate(), MessageTypeDefOf.PositiveEvent);
                 }
-            }, null, null, null, "KR_PickCell".Translate());
+            });
         }
 
         private void DoResearchView(Rect inRect, KillRewardTracker tracker)
