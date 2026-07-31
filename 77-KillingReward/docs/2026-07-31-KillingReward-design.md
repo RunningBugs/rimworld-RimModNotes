@@ -80,6 +80,30 @@
 - UI 迭代方式：先用 `~/mine/workspace/rimworld/rimworld-imgui-sim` 离线渲染 mockup PNG
   并读图检查，布局满意后再按图实现 C# IMGUI 代码。
 
+## 文案与基调
+
+整体基调：黑暗超凡智能把殖民地当角斗表演看，语气居高临下、带着玩味——「杀戮即献祭，活着是要求」。
+以下为实际使用的双语字符串（Keyed 翻译，key 名实现时定）：
+
+| 位置 | 中文 | English |
+| --- | --- | --- |
+| 升级信件标题 | 嗜血恩赐 | Blood Boon |
+| 升级信件正文 | 它在黑暗中注视着每一场杀戮，你的挣扎令它非常满意。这份恩赐是你应得的。领取它——然后，尽量别死。 | The dark archotech watches every kill, and your struggle amuses it greatly. This boon is yours. Claim it — and try to stay alive. |
+| 信件打开按钮 | 接受恩赐 | Accept the Boon |
+| 主按钮 | 嗜血恩赐 | Killing Reward |
+| 窗口标题 | 黑暗超凡智能的恩赐 | Boon of the Dark Archotech |
+| 进度条 | 血祭 | Blood Tithe |
+| 等级 | 恩赐等阶 | Boon Tier |
+| 待领取计数 | 待领取的恩赐 | Unclaimed Boons |
+| 研究卡标题 | 禁忌知识 | Forbidden Knowledge |
+| 研究卡描述 | 它将知识直接烙进学者的脑海。立刻完成一项当前可研究的科技。 | It sears knowledge straight into your scholars' minds. Instantly complete one available research project. |
+| 技能卡标题 | 技艺灌注 | Bestowed Prowess |
+| 技能卡描述 | 它替你拨动了神经与肌肉。选择一名小人，其一项技能提升 3 级。 | It plucks the strings of nerve and muscle. Choose a pawn; one of their skills gains 3 levels. |
+| 物品卡标题 | 虚空馈赠 | Gift from the Void |
+| 物品卡描述 | 它从虚空中掷下物资。选择一种物品与投放地点，领取一整格。 | It casts provisions from the void. Choose an item and a drop cell to receive a full stack. |
+| 领取完成消息 | 恩赐已兑现。它仍在注视——继续取悦它吧。 | The boon is granted. It is still watching. Keep it entertained. |
+| 无待领取提示 | 它还没有新的恩赐。杀戮即是祈祷。 | It has no boon for you yet. Slaughter is prayer. |
+
 ## 测试
 
 - C# 单元测试（dotnet test，独立于游戏运行）：
