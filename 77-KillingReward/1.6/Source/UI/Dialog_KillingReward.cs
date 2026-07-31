@@ -8,11 +8,12 @@ namespace KillingReward
 {
     public class Dialog_KillingReward : Window
     {
-        private enum View { Main, Research, SkillPawn, SkillSkill }
+        private enum View { Main, Research, SkillPawn, SkillSkill, ItemCategory, ItemThing }
 
         private View view = View.Main;
         private Vector2 scrollPosition;
         private Pawn selectedPawn;
+        private ThingCategoryDef selectedCategory;
 
         public Dialog_KillingReward()
         {
@@ -57,6 +58,16 @@ namespace KillingReward
                 DoSkillSkillView(body, tracker);
                 return;
             }
+            if (view == View.ItemCategory)
+            {
+                DoItemCategoryView(body);
+                return;
+            }
+            if (view == View.ItemThing && selectedCategory != null)
+            {
+                DoItemThingView(body, tracker);
+                return;
+            }
             if (tracker.PendingRewards <= 0)
             {
                 Widgets.Label(body, "KR_NoPending".Translate());
@@ -85,6 +96,82 @@ namespace KillingReward
             }
             GUI.color = Color.white;
             listing.Label("KR_RewardSkillDesc".Translate());
+            GUI.color = new Color(1f, 1f, 1f, hasPending ? 1f : 0.4f);
+            if (listing.ButtonTextLabeled("KR_RewardItem".Translate(), "KR_PickItem".Translate()) && hasPending)
+            {
+                view = View.ItemCategory;
+            }
+            GUI.color = Color.white;
+            listing.Label("KR_RewardItemDesc".Translate());
+        }
+
+        private void DoItemCategoryView(Rect inRect)
+        {
+            Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 32f), "KR_PickItem".Translate());
+            float y = inRect.y + 40f;
+            foreach (ThingCategoryDef category in ItemReward.RootCategories)
+            {
+                if (Widgets.ButtonText(new Rect(inRect.x, y, inRect.width, 32f), category.LabelCap))
+                {
+                    selectedCategory = category;
+                    view = View.ItemThing;
+                }
+                y += 36f;
+            }
+            if (Widgets.ButtonText(new Rect(inRect.x, inRect.yMax - 36f, 120f, 32f), "KR_Back".Translate()))
+            {
+                view = View.Main;
+            }
+        }
+
+        private void DoItemThingView(Rect inRect, KillRewardTracker tracker)
+        {
+            List<ThingDef> things = ItemReward.ThingsIn(selectedCategory);
+            Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 32f), "KR_PickItem".Translate() + " (" + selectedCategory.LabelCap + ")");
+            Rect listRect = new Rect(inRect.x, inRect.y + 36f, inRect.width, inRect.height - 76f);
+            Rect viewRect = new Rect(0f, 0f, listRect.width - 20f, things.Count * 32f);
+            Widgets.BeginScrollView(listRect, ref scrollPosition, viewRect);
+            float y = 0f;
+            foreach (ThingDef thingDef in things)
+            {
+                Rect row = new Rect(0f, y, viewRect.width, 30f);
+                if (Widgets.ButtonText(row, thingDef.LabelCap + " ×" + StackMath.FullStackCount(thingDef.stackLimit)))
+                {
+                    BeginItemTargeting(thingDef, tracker);
+                }
+                y += 32f;
+            }
+            Widgets.EndScrollView();
+            if (Widgets.ButtonText(new Rect(inRect.x, inRect.yMax - 36f, 120f, 32f), "KR_Back".Translate()))
+            {
+                view = View.ItemCategory;
+            }
+        }
+
+        private void BeginItemTargeting(ThingDef thingDef, KillRewardTracker tracker)
+        {
+            Map map = Find.CurrentMap;
+            if (map == null)
+            {
+                return;
+            }
+            Close();
+            TargetingParameters parameters = new TargetingParameters
+            {
+                canTargetLocations = true,
+                canTargetPawns = false,
+                canTargetBuildings = false,
+                canTargetSelf = false,
+                validator = ti => ti.Cell.InBounds(map) && ti.Cell.Walkable(map) && !ti.Cell.Fogged(map)
+            };
+            Find.Targeter.BeginTargeting(parameters, delegate(LocalTargetInfo target)
+            {
+                if (tracker.TryConsumeReward())
+                {
+                    ItemReward.Deliver(thingDef, target.Cell, map);
+                    Messages.Message("KR_Claimed".Translate(), MessageTypeDefOf.PositiveEvent);
+                }
+            }, null, null, null, "KR_PickCell".Translate());
         }
 
         private void DoResearchView(Rect inRect, KillRewardTracker tracker)
