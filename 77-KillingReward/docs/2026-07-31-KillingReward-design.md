@@ -38,7 +38,8 @@
   3. 击杀者是玩家派系的小人（`dinfo.Instigator is Pawn p && p.Faction == Faction.OfPlayer`）。
 - 明确不计：炮塔/陷阱（Instigator 为建筑）、落石等天灾（Instigator 为空）、敌方互殴"斗蛐蛐"（Instigator 非我方）。
 - 任何地图上的击杀都计入（含远征伏击图）。
-- 击杀反馈：判定成功时在**受害者头顶**弹出红色「祭品+1」浮字（MoteText，参照原版 MISS/闪避浮字机制；「祭品」指被献祭的敌人，故浮字锚定在敌人身上）。滴血特效（血花粒子/滴血贴图/滴血动画）已评估，本期不做，后续可叠加原版 `BloodSplash` 粒子实现。
+- 归属补窗（2026-08-01 实测后追加）：直接击杀者不是我方、但该敌对单位在 10000 tick（约 4 游戏小时）内被我方小人伤害过的，同样计为我方击杀——覆盖"被我方打倒后流血/休克而死"的常见情况；仍排除纯天灾、陷阱与敌方互殴。
+- 击杀反馈：判定成功时在**受害者头顶**弹出红色「祭品+1」浮字（MoteText，参照原版 MISS/闪避浮字机制；「祭品」指被献祭的敌人，故浮字锚定在敌人身上）。注意实现细节：`Pawn.Kill` 结束时 pawn 已被收入尸体（Corpse）并脱离地图，浮字必须用 `__instance.Corpse` 定位。滴血特效（血花粒子/滴血贴图/滴血动画）已评估，本期不做，后续可叠加原版 `BloodSplash` 粒子实现。
 - `KillRewardTracker`（GameComponent，随存档 ExposeData 序列化）字段：
   - `level`：已达成的等级数
   - `progress`：当前进度（击杀数）
@@ -65,7 +66,7 @@
 
 ## 奖励窗口（Dialog_KillingReward，IMGUI）
 
-- 顶部区域：当前等级、进度条（当前进度 / 当前要求）、待领取奖励次数。
+- 顶部区域：当前等级、进度条（当前进度 / 当前要求，条上文字为红色）、待领取奖励次数。
 - 三个奖励卡片（按钮），仅 pendingRewards > 0 时可用：
   1. **立刻完成研究**：列出当前可开始的研究项目（前置已满足、未隐藏、未完成，含正在进行中的当前项目），
      点选后立即完成（进度写满后调用原版 `ResearchManager.FinishProject`，保留原版完成信件/解锁逻辑）。
@@ -75,7 +76,7 @@
      `TotallyDisabled`（因无能特性/背景完全禁用）的技能不出现在可选列表。
   3. **领取物品**：按 ThingCategory 类别浏览（三个顶层类别：制成品 Manufactured、原材料 ResourcesRaw、
      物品 Items，可下钻子类别）→ 选具体 ThingDef
-     （可堆叠、玩家可获取）→ 进入选格模式，玩家点击一个有效格子 → 在该格 `GenSpawn.Spawn` 一整格
+     （可堆叠、玩家可获取；列表带物品图标，并有按名称（中英文/defName）过滤的搜索框）→ 进入选格模式，玩家点击一个有效格子 → 在该格 `GenSpawn.Spawn` 一整格
      （数量为 `def.stackLimit`）。
 - 每次领取后 pendingRewards −1，可继续领取直到次数用尽。
 - UI 迭代方式：先用 `~/mine/workspace/rimworld/rimworld-imgui-sim` 离线渲染 mockup PNG

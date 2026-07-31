@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using KillingReward.Core;
 using RimWorld;
 using UnityEngine;
@@ -18,6 +19,7 @@ namespace KillingReward
         private Vector2 scrollPosition;
         private Pawn selectedPawn;
         private ThingCategoryDef selectedCategory;
+        private string itemSearch = "";
 
         public Dialog_KillingReward()
         {
@@ -57,7 +59,9 @@ namespace KillingReward
                 : 0f;
             Widgets.FillableBar(barRect, fill);
             Text.Anchor = TextAnchor.MiddleCenter;
+            GUI.color = Color.red;
             Widgets.Label(barRect, "KR_Progress".Translate() + " " + tracker.Progress + " / " + tracker.RequiredForCurrentLevel);
+            GUI.color = Color.white;
             Text.Anchor = TextAnchor.UpperLeft;
 
             Rect body = new Rect(inRect.x, inRect.y + 112f, inRect.width, inRect.height - 112f);
@@ -233,18 +237,24 @@ namespace KillingReward
         {
             List<ThingDef> things = ItemReward.ThingsIn(selectedCategory);
             Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 32f), "KR_PickItem".Translate() + " (" + selectedCategory.LabelCap + ")");
-            Rect listRect = new Rect(inRect.x, inRect.y + 36f, inRect.width, inRect.height - 76f);
-            Rect viewRect = new Rect(0f, 0f, listRect.width - 20f, things.Count * 32f);
+            // 搜索框：按名称过滤当前类别（忽略大小写，支持中英文）
+            Rect searchRect = new Rect(inRect.x, inRect.y + 36f, inRect.width, 30f);
+            itemSearch = Widgets.TextField(searchRect, itemSearch);
+            List<ThingDef> filtered = things.Where(d => TextSearch.Matches(d.LabelCap, itemSearch) || TextSearch.Matches(d.defName, itemSearch)).ToList();
+            Rect listRect = new Rect(inRect.x, inRect.y + 72f, inRect.width, inRect.height - 112f);
+            Rect viewRect = new Rect(0f, 0f, listRect.width - 20f, filtered.Count * 36f);
             Widgets.BeginScrollView(listRect, ref scrollPosition, viewRect);
             float y = 0f;
-            foreach (ThingDef thingDef in things)
+            foreach (ThingDef thingDef in filtered)
             {
-                Rect row = new Rect(0f, y, viewRect.width, 30f);
-                if (Widgets.ButtonText(row, thingDef.LabelCap + " ×" + StackMath.FullStackCount(thingDef.stackLimit)))
+                Rect row = new Rect(0f, y, viewRect.width, 34f);
+                ThingDef stuff = thingDef.MadeFromStuff ? GenStuff.DefaultStuffFor(thingDef) : null;
+                Widgets.ThingIcon(new Rect(row.x + 2f, row.y + 2f, 30f, 30f), thingDef, stuff);
+                if (Widgets.ButtonText(new Rect(row.x + 38f, row.y + 1f, row.width - 38f, 32f), thingDef.LabelCap + " ×" + StackMath.FullStackCount(thingDef.stackLimit)))
                 {
                     BeginItemTargeting(thingDef, tracker);
                 }
-                y += 32f;
+                y += 36f;
             }
             Widgets.EndScrollView();
             if (Widgets.ButtonText(new Rect(inRect.x, inRect.yMax - 36f, 120f, 32f), "KR_Back".Translate()))
