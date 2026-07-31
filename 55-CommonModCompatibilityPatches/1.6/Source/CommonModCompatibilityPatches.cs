@@ -39,7 +39,8 @@ public static class CommonCompatibilityBootstrap
         applied += KiiroStealthMapTickCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += AlienRaceNullPawnRulesCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += MinifyEverythingReinstallReservationCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += DefaultsModAlienBirthdayCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += LifeStageMinAgeFallbackCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += QualityBuilderNullMapCompatibility.TryApply(Harmony) ? 1 : 0;
 
         Log.Message($"[CommonModCompatibilityPatches] Applied {applied} compatibility patch group(s).".Colorize(Color.green));
     }
@@ -908,21 +909,14 @@ internal static class MinifyEverythingReinstallReservationCompatibility
     }
 }
 
-internal static class DefaultsModAlienBirthdayCompatibility
+internal static class LifeStageMinAgeFallbackCompatibility
 {
-    public const string PackageId = "defaults.1trickPwnyta";
-    private const int AlienBirthdayWarningId = 82038133;
+    private const int MissingLifeStageWarningId = 82038133;
 
     public static bool TryApply(Harmony harmony)
     {
-        if (!ModDetection.IsActive(PackageId))
-        {
-            return false;
-        }
-
-        Type patchType = AccessTools.TypeByName("Defaults.Policies.Patch_Pawn_AgeTracker");
-        MethodInfo target = AccessTools.Method(patchType, "Postfix");
-        MethodInfo prefix = AccessTools.Method(typeof(DefaultsModAlienBirthdayCompatibility), nameof(Prefix));
+        MethodInfo target = AccessTools.Method(typeof(Pawn_AgeTracker), nameof(Pawn_AgeTracker.LifeStageMinAge));
+        MethodInfo prefix = AccessTools.Method(typeof(LifeStageMinAgeFallbackCompatibility), nameof(Prefix));
         if (target == null || prefix == null)
         {
             return false;
@@ -932,31 +926,76 @@ internal static class DefaultsModAlienBirthdayCompatibility
         return true;
     }
 
-    // The Defaults mod's birthday postfix looks up the min age of
-    // LifeStageDefOf.HumanlikeChild for every humanlike pawn, but alien races
-    // (e.g. Kiiro) define their own life stage defs and do not include
-    // HumanlikeChild in raceProps.lifeStageAges. Vanilla LifeStageMinAge then
-    // logs a red error on every biological birthday of every alien pawn.
-    // Skip the postfix for races without that life stage; there is no
-    // child-stage policy transition to apply for them anyway.
-    public static bool Prefix(Pawn ___pawn)
+    // Vanilla LifeStageMinAge logs a red error and returns 0 when the queried
+    // life stage def is absent from the pawn's race. Alien races (e.g. Kiiro)
+    // define their own life stage defs, so vanilla callers querying
+    // HumanlikeChild/HumanlikeAdult (the ideo certainty age curve) and mods
+    // doing the same (1trickPwnyta's Defaults birthday policy check) spam a
+    // red error for every alien pawn. Return the exact same 0f fallback
+    // vanilla produces after logging, just without the error, so every caller
+    // behaves bit-for-bit as it did unpatched.
+    public static bool Prefix(Pawn ___pawn, LifeStageDef lifeStage, ref float __result)
     {
         List<LifeStageAge> lifeStageAges = ___pawn?.RaceProps?.lifeStageAges;
         if (lifeStageAges == null)
         {
-            return false;
+            return true;
         }
 
         for (int i = 0; i < lifeStageAges.Count; i++)
         {
-            if (lifeStageAges[i].def == LifeStageDefOf.HumanlikeChild)
+            if (lifeStageAges[i].def == lifeStage)
             {
                 return true;
             }
         }
 
-        Log.WarningOnce("[CommonModCompatibilityPatches] Skipped Defaults mod birthday policy check for a race without the HumanlikeChild life stage; the original postfix would log a red LifeStageMinAge error on every alien birthday.", AlienBirthdayWarningId);
+        Log.WarningOnce("[CommonModCompatibilityPatches] Silenced vanilla LifeStageMinAge error for a life stage def missing from a pawn's race (e.g. HumanlikeChild on an alien race); returning the same 0 fallback vanilla would produce after logging.", MissingLifeStageWarningId);
+        __result = 0f;
         return false;
+    }
+}
+
+internal static class QualityBuilderNullMapCompatibility
+{
+    private const int NullMapWarningId = 82038135;
+
+    public static bool TryApply(Harmony harmony)
+    {
+        if (!ModDetection.AnyActive("hatti.qualitybuilder.fork", "hatti.qualitybuilder"))
+        {
+            return false;
+        }
+
+        Type qualityBuilderType = AccessTools.TypeByName("QualityBuilder.QualityBuilder");
+        MethodInfo target = AccessTools.Method(qualityBuilderType, "GetFirstBuildingBuildingOrFrame", new[] { typeof(Map), typeof(IntVec3) });
+        MethodInfo prefix = AccessTools.Method(typeof(QualityBuilderNullMapCompatibility), nameof(Prefix));
+        if (target == null || prefix == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(target, prefix: new HarmonyMethod(prefix));
+        return true;
+    }
+
+    // QualityBuilder captures the target frame's Map when the finish-frame
+    // toils are created and later dereferences it in
+    // GetFirstBuildingBuildingOrFrame without a null check. When the frame is
+    // despawned, carried, or otherwise mapless at that point (observed with
+    // chess table frames, likely via Replace Stuff interactions), the finish
+    // action throws a NullReferenceException and breaks the job. Return no
+    // building instead; the caller already handles that gracefully.
+    public static bool Prefix(Map map, ref Thing __result)
+    {
+        if (map == null)
+        {
+            Log.WarningOnce("[CommonModCompatibilityPatches] Skipped QualityBuilder building/frame lookup with a null map; the original method would throw a NullReferenceException inside the finish-frame job cleanup.", NullMapWarningId);
+            __result = null;
+            return false;
+        }
+
+        return true;
     }
 }
 
