@@ -54,6 +54,7 @@
 | KR_PickCell | 点击一个格子投放物资 | Click a cell to deliver the goods |
 | KR_Back | 返回 | Back |
 | KR_ItemDelivered | 虚空馈赠已送达。 | The gift from the void has arrived. |
+| KR_Offering | 祭品+1 | Offering +1 |
 
 ---
 
@@ -689,6 +690,7 @@ git commit -m "Add kill eligibility, skill and stack helpers with tests"
 	<KR_PickCell>Click a cell to deliver the goods</KR_PickCell>
 	<KR_Back>Back</KR_Back>
 	<KR_ItemDelivered>The gift from the void has arrived.</KR_ItemDelivered>
+	<KR_Offering>Offering +1</KR_Offering>
 </LanguageData>
 ```
 
@@ -999,6 +1001,7 @@ namespace KillingReward
 
 ```csharp
 using HarmonyLib;
+using UnityEngine;
 using Verse;
 
 namespace KillingReward
@@ -1008,14 +1011,23 @@ namespace KillingReward
     {
         public static void Postfix(Pawn __instance, DamageInfo? dinfo)
         {
-            if (KillEligibilityAdapter.ShouldCount(__instance, dinfo))
+            if (!KillEligibilityAdapter.ShouldCount(__instance, dinfo))
             {
-                KillRewardTracker.Instance?.AddKill();
+                return;
+            }
+            KillRewardTracker.Instance?.AddKill();
+            // 击杀反馈：受害者头顶红色「祭品+1」浮字（参照原版 MISS/闪避浮字机制）。
+            if (__instance.Map != null)
+            {
+                MoteMaker.ThrowText(__instance.DrawPos + new Vector3(0f, 0f, 0.5f), __instance.Map,
+                    "KR_Offering".Translate(), Color.red);
             }
         }
     }
 }
 ```
+
+注：`MoteMaker.ThrowText` 在 1.6 有 `(Vector3, Map, string, Color, float)` 与 `(Vector3, Map, string, float)` 等重载；若四参重载签名不符，改用 `FleckMaker.ThrowText(loc, map, text, Color.red, -1f)`，以编译为准。
 
 - [ ] **Step 4: Harmony 初始化 + 设置界面（修改 KillingRewardMod.cs）**
 
@@ -1789,7 +1801,7 @@ class StaticTests(unittest.TestCase):
 
     def test_design_flavor_strings_present(self):
         zh = (MOD_ROOT / "Languages" / "ChineseSimplified" / "Keyed" / "Keys.xml").read_text(encoding="utf-8")
-        for snippet in ["嗜血恩赐", "尽量别死", "黑暗超凡智能的恩赐", "血祭", "禁忌知识", "技艺灌注", "虚空馈赠", "杀戮即是祈祷"]:
+        for snippet in ["嗜血恩赐", "尽量别死", "黑暗超凡智能的恩赐", "血祭", "禁忌知识", "技艺灌注", "虚空馈赠", "杀戮即是祈祷", "祭品+1"]:
             self.assertIn(snippet, zh)
 
     def test_kill_patch_targets_pawn_kill(self):
@@ -1883,6 +1895,6 @@ git commit -m "Add whitebox tests and README for KillingReward"
 
 ## Self-Review 记录
 
-- **Spec coverage**：击杀计数（Task 6）✓；进度曲线+设置（Task 2/6）✓；升级信件+主按钮（Task 5）✓；研究/技能/物品奖励（Task 7/8/9）✓；选格投放（Task 9）✓；双语（Task 5 + DefInjected）✓；imgui-sim mockup（Task 10）✓；单元+白盒测试（Task 2-4、11）✓；软链接部署（Task 1）✓；事件类奖励不做 ✓。
+- **Spec coverage**：击杀计数（Task 6）✓；击杀浮字反馈「祭品+1」（Task 6 Step 3）✓；进度曲线+设置（Task 2/6）✓；升级信件+主按钮（Task 5）✓；研究/技能/物品奖励（Task 7/8/9）✓；选格投放（Task 9）✓；双语（Task 5 + DefInjected）✓；imgui-sim mockup（Task 10）✓；单元+白盒测试（Task 2-4、11）✓；软链接部署（Task 1）✓；事件类奖励不做 ✓。
 - **类型一致性**：`ProgressState.AddKill(Func<long,long>)` ↔ Tracker 调用一致；`SkillMath.ClampedAdd` 三处签名一致；`tracker.TryConsumeReward()` 三个奖励一致；`RewardNotifier.NotifyLevelUp` 定义（Task 5）先于使用（Task 6）。
 - **已知执行期注意点**：`canTargetLocations` vs `canTargetCells`（Task 9 Step 3 已注明以编译为准）；`GUIBlock` 不可用时用 `GUI.color` 替代（Task 7 Step 2 已注明）；Task 5 Step 4 要求先建 Tracker 骨架再构建（已在步骤内注明）。
