@@ -67,6 +67,9 @@ namespace ResearchPrerequisites
             List<ResearchProjectDef> queue = QueueFor(project);
             List<ResearchProjectDef> chain = new List<ResearchProjectDef>();
             AddWithPrerequisites(chain, project);
+            // 菱形依赖(同一前置被多条路径引用)会在递归中重复加入,先去重;
+            // DistinctInPlace 保留首次出现的位置,不破坏依赖顺序。
+            DistinctInPlace(chain);
             queue.RemoveAll(chain.Contains);
             queue.InsertRange(0, chain);
             return chain.Count;
