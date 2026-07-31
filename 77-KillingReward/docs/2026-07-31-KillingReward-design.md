@@ -38,7 +38,7 @@
   3. 击杀者是玩家派系的小人（`dinfo.Instigator is Pawn p && p.Faction == Faction.OfPlayer`）。
 - 明确不计：炮塔/陷阱（Instigator 为建筑）、落石等天灾（Instigator 为空）、敌方互殴"斗蛐蛐"（Instigator 非我方）。
 - 任何地图上的击杀都计入（含远征伏击图）。
-- 击杀反馈：判定成功时在**受害者头顶**弹出红色「祭品+1」浮字（MoteText，参照原版 MISS/闪避浮字机制；「祭品」指被献祭的敌人，故浮字锚定在敌人身上）。
+- 击杀反馈：判定成功时在**受害者头顶**弹出红色「祭品+1」浮字（MoteText，参照原版 MISS/闪避浮字机制；「祭品」指被献祭的敌人，故浮字锚定在敌人身上）。滴血特效（血花粒子/滴血贴图/滴血动画）已评估，本期不做，后续可叠加原版 `BloodSplash` 粒子实现。
 - `KillRewardTracker`（GameComponent，随存档 ExposeData 序列化）字段：
   - `level`：已达成的等级数
   - `progress`：当前进度（击杀数）
