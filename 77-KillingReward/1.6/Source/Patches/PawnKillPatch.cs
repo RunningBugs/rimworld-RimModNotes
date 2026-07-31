@@ -10,7 +10,7 @@ namespace KillingReward
     {
         public static void Postfix(Pawn __instance, DamageInfo? dinfo)
         {
-            if (!KillEligibilityAdapter.ShouldCount(__instance, dinfo))
+            if (!KillingRewardMod.Settings.Enabled || !KillEligibilityAdapter.ShouldCount(__instance, dinfo))
             {
                 return;
             }

@@ -15,6 +15,8 @@
 	<KR_RewardItemDesc>它从虚空中掷下物资。选择一种物品与投放地点，领取一整格。</KR_RewardItemDesc>
 	<KR_Claimed>恩赐已兑现。它仍在注视——继续取悦它吧。</KR_Claimed>
 	<KR_NoPending>它还没有新的恩赐。杀戮即是祈祷。</KR_NoPending>
+	<KR_SettingEnabled>启用嗜血恩赐</KR_SettingEnabled>
+	<KR_SettingEnabledDesc>总开关。关闭后击杀不再积累进度，主按钮隐藏——无需在模组列表中移除本 Mod。</KR_SettingEnabledDesc>
 	<KR_SettingInitial>初始击杀要求</KR_SettingInitial>
 	<KR_SettingInitialDesc>第一次升级所需的击杀数。</KR_SettingInitialDesc>
 	<KR_SettingMode>增长模式</KR_SettingMode>

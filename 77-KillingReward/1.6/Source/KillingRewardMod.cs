@@ -26,6 +26,8 @@ namespace KillingReward
             Listing_Standard listing = new Listing_Standard();
             listing.Begin(inRect);
 
+            listing.CheckboxLabeled("KR_SettingEnabled".Translate(), ref s.Enabled, "KR_SettingEnabledDesc".Translate());
+
             listing.Label((TaggedString)("KR_SettingInitial".Translate() + ": " + s.InitialKills), -1f, "KR_SettingInitialDesc".Translate());
             s.InitialKills = (int)listing.Slider(s.InitialKills, 1, 200);
 

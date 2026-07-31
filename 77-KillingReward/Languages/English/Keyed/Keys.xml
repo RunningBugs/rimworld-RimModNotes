@@ -15,6 +15,8 @@
 	<KR_RewardItemDesc>It casts provisions from the void. Choose an item and a drop cell to receive a full stack.</KR_RewardItemDesc>
 	<KR_Claimed>The boon is granted. It is still watching. Keep it entertained.</KR_Claimed>
 	<KR_NoPending>It has no boon for you yet. Slaughter is prayer.</KR_NoPending>
+	<KR_SettingEnabled>Enable KillingReward</KR_SettingEnabled>
+	<KR_SettingEnabledDesc>Master switch. When off, kills grant no progress and the main button is hidden — no need to remove the mod from your mod list.</KR_SettingEnabledDesc>
 	<KR_SettingInitial>Initial kills required</KR_SettingInitial>
 	<KR_SettingInitialDesc>Kills required for the first reward tier.</KR_SettingInitialDesc>
 	<KR_SettingMode>Growth mode</KR_SettingMode>

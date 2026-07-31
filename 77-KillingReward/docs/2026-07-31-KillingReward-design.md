@@ -52,6 +52,7 @@
   - 指数模式：`Round(initial × factor^n)`
   - 线性模式：`initial + increment × n`
 - Mod 设置（ModSettings + 设置界面）：
+  - 总开关 enabled，默认开（关闭后击杀补丁直接跳过、主按钮隐藏，无需在模组列表中移除 Mod）
   - 初始击杀要求 initialKills，默认 10（整数，范围 1–1000）
   - 增长模式 growthMode：指数 / 线性，默认指数
   - 指数倍率 exponentialFactor，默认 1.2（浮点，范围 1.0–5.0）
