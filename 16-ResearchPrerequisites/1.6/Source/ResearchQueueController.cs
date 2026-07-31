@@ -150,5 +150,39 @@ namespace ResearchPrerequisites
             AttemptBeginResearch(project);
             queue.QueueFor(category).Remove(project);
         }
+
+        /// <summary>
+        /// 不能立即开始的项目:将其与未完成的前置整体插队到队首,并立即开始
+        /// 链上第一个可开始的项目。被挤下的当前研究放回链首项目之后
+        /// (进度由原版按项目保存,不会丢),链上项目完成后按顺序自动继续。
+        /// </summary>
+        public static void JumpChainToFrontAndStart(ResearchProjectDef project)
+        {
+            ResearchQueue queue = ResearchQueue.Instance;
+            if (queue == null || project == null)
+            {
+                return;
+            }
+            KnowledgeCategoryDef category = project.knowledgeCategory;
+            queue.JumpChainToFront(project);
+            List<ResearchProjectDef> list = queue.QueueFor(category);
+            ResearchProjectDef first = list.FirstOrDefault(p => p.CanStartNow);
+            if (first == null)
+            {
+                // 链上暂无可开始项目(如缺科技印花/研究台),链已排在队首待命。
+                return;
+            }
+            ResearchProjectDef current = Find.ResearchManager.GetProject(category);
+            if (current == first)
+            {
+                return;
+            }
+            if (current != null && !list.Contains(current))
+            {
+                list.Insert(list.IndexOf(first) + 1, current);
+            }
+            AttemptBeginResearch(first);
+            list.Remove(first);
+        }
     }
 }
