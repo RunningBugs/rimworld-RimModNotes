@@ -36,9 +36,8 @@
   1. 受害者有派系（`victim.Faction != null`）；
   2. 该派系对玩家敌对（`victim.Faction.HostileTo(Faction.OfPlayer)`，机械族/虫族等天生敌对派系计入，无派系发狂动物不计）；
   3. 击杀者是玩家派系的小人（`dinfo.Instigator is Pawn p && p.Faction == Faction.OfPlayer`）。
-- 明确不计：炮塔/陷阱（Instigator 为建筑）、落石等天灾（Instigator 为空）、敌方互殴"斗蛐蛐"（Instigator 非我方）。
+- 明确不计：炮塔/陷阱（Instigator 为建筑）、落石等天灾（Instigator 为空）、敌方互殴"斗蛐蛐"（Instigator 非我方）、被打倒后流血/休克而死（死亡瞬间无击杀者）。
 - 任何地图上的击杀都计入（含远征伏击图）。
-- 归属补窗（2026-08-01 实测后追加）：直接击杀者不是我方、但该敌对单位在 10000 tick（约 4 游戏小时）内被我方小人伤害过的，同样计为我方击杀——覆盖"被我方打倒后流血/休克而死"的常见情况；仍排除纯天灾、陷阱与敌方互殴。
 - 击杀反馈：判定成功时在**受害者头顶**弹出红色「祭品+1」浮字（MoteText，参照原版 MISS/闪避浮字机制；「祭品」指被献祭的敌人，故浮字锚定在敌人身上）。注意实现细节：`Pawn.Kill` 结束时 pawn 已被收入尸体（Corpse）并脱离地图，浮字必须用 `__instance.Corpse` 定位。滴血特效（血花粒子/滴血贴图/滴血动画）已评估，本期不做，后续可叠加原版 `BloodSplash` 粒子实现。
 - `KillRewardTracker`（GameComponent，随存档 ExposeData 序列化）字段：
   - `level`：已达成的等级数
