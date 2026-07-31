@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -153,7 +154,7 @@ namespace ResearchPrerequisites
 
         /// <summary>
         /// 不能立即开始的项目:将其与未完成的前置整体插队到队首,并立即开始
-        /// 链上第一个可开始的项目。被挤下的当前研究放回链首项目之后
+        /// 链上第一个可开始的项目。被挤下的当前研究放回整条链之后
         /// (进度由原版按项目保存,不会丢),链上项目完成后按顺序自动继续。
         /// </summary>
         public static void JumpChainToFrontAndStart(ResearchProjectDef project)
@@ -164,7 +165,7 @@ namespace ResearchPrerequisites
                 return;
             }
             KnowledgeCategoryDef category = project.knowledgeCategory;
-            queue.JumpChainToFront(project);
+            int chainLength = queue.JumpChainToFront(project);
             List<ResearchProjectDef> list = queue.QueueFor(category);
             ResearchProjectDef first = list.FirstOrDefault(p => p.CanStartNow);
             if (first == null)
@@ -179,7 +180,9 @@ namespace ResearchPrerequisites
             }
             if (current != null && !list.Contains(current))
             {
-                list.Insert(list.IndexOf(first) + 1, current);
+                // 必须放在整条链之后,否则当前研究会插队到链中间,
+                // 链首完成后又抢先恢复,违背"最快启动目标项目"的意图。
+                list.Insert(Math.Min(chainLength, list.Count), current);
             }
             AttemptBeginResearch(first);
             list.Remove(first);
