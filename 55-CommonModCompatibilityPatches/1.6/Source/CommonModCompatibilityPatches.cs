@@ -36,6 +36,8 @@ public static class CommonCompatibilityBootstrap
         applied += SleepingSlotFallbackCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += PawnDuplicatorGeneCopyCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += PawnHealthBarBleedLabelCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += KiiroStealthMapTickCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += AlienRaceNullPawnRulesCompatibility.TryApply(Harmony) ? 1 : 0;
 
         Log.Message($"[CommonModCompatibilityPatches] Applied {applied} compatibility patch group(s).".Colorize(Color.green));
     }
@@ -759,6 +761,91 @@ internal static class PawnHealthBarBleedLabelCompatibility
         }
 
         return bleedRateTotal > 0.01f;
+    }
+}
+
+internal static class KiiroStealthMapTickCompatibility
+{
+    public const string PackageId = "Ancot.KiiroRace";
+    private const int OffMapStealthWarningId = 82038130;
+
+    public static bool TryApply(Harmony harmony)
+    {
+        if (!ModDetection.IsActive(PackageId))
+        {
+            return false;
+        }
+
+        Type compType = AccessTools.TypeByName("Kiiro.HediffComp_Stealth");
+        MethodInfo target = AccessTools.Method(compType, "CompPostTick");
+        MethodInfo prefix = AccessTools.Method(typeof(KiiroStealthMapTickCompatibility), nameof(Prefix));
+        if (target == null || prefix == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(target, prefix: new HarmonyMethod(prefix));
+        return true;
+    }
+
+    // Kiiro.HediffComp_Stealth.CompPostTick dereferences Pawn.Map.glowGrid every
+    // 90-tick hash interval without checking whether the pawn is spawned on a
+    // map. For pawns in a caravan, shuttle, or other mapless state the Map is
+    // null, so every tick throws a NullReferenceException and vanilla removes
+    // the hediff entirely (stealth permanently lost). Skip the tick while the
+    // pawn has no map; ground glow is meaningless off-map anyway.
+    public static bool Prefix(HediffComp __instance)
+    {
+        Pawn pawn = __instance?.parent?.pawn;
+        if (pawn == null || pawn.Map == null)
+        {
+            Log.WarningOnce("[CommonModCompatibilityPatches] Skipped Kiiro stealth hediff tick for a pawn without a map; the original method would dereference a null Map and make vanilla remove the hediff.", OffMapStealthWarningId);
+            return false;
+        }
+
+        return true;
+    }
+}
+
+internal static class AlienRaceNullPawnRulesCompatibility
+{
+    public const string PackageId = "erdelf.HumanoidAlienRaces";
+    private const int NullPawnRulesWarningId = 82038131;
+
+    public static bool TryApply(Harmony harmony)
+    {
+        if (!ModDetection.IsActive(PackageId))
+        {
+            return false;
+        }
+
+        Type patchesType = AccessTools.TypeByName("AlienRace.HarmonyPatches");
+        MethodInfo target = AccessTools.Method(patchesType, "RulesForPawnPostfix");
+        MethodInfo prefix = AccessTools.Method(typeof(AlienRaceNullPawnRulesCompatibility), nameof(Prefix));
+        if (target == null || prefix == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(target, prefix: new HarmonyMethod(prefix));
+        return true;
+    }
+
+    // AlienRace.HarmonyPatches.RulesForPawnPostfix unconditionally reads
+    // pawn.def.LabelCap, but vanilla GrammarUtility.RulesForPawn is also called
+    // with a null pawn (e.g. Kiiro Story's wanderer-join quest letter when its
+    // generated pawn is missing). The postfix then throws a
+    // NullReferenceException that aborts the whole quest generation. Vanilla
+    // handles null pawns fine, so just skip the postfix in that case.
+    public static bool Prefix(Pawn pawn)
+    {
+        if (pawn == null)
+        {
+            Log.WarningOnce("[CommonModCompatibilityPatches] Skipped AlienRace RulesForPawn postfix for a null pawn; the original postfix would throw a NullReferenceException and abort the calling quest/text generation.", NullPawnRulesWarningId);
+            return false;
+        }
+
+        return true;
     }
 }
 
