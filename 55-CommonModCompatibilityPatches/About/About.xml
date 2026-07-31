@@ -29,6 +29,7 @@
 		<li>Paluto22.PawnHealthBar</li>
 		<li>Ancot.KiiroRace</li>
 		<li>erdelf.HumanoidAlienRaces</li>
+		<li>erdelf.MinifyEverything</li>
 	</loadAfter>
 
 	<incompatibleWith>
@@ -59,6 +60,7 @@ Current patches:
 - Pawn Health Bar: tighten the bleed-label boundary check so a pawn bleeding at exactly 0.01 rate no longer passes a null label to GenUI.GetWidthCached, avoiding an ArgumentNullException every frame; a one-time warning is logged instead.
 - Kiiro Race: skip the stealth hediff's glow check while the pawn has no map (caravan, shuttle, or other mapless state), so the hediff is no longer removed by vanilla after a NullReferenceException every tick.
 - Humanoid Alien Races: skip the RulesForPawn postfix when the pawn is null (e.g. Kiiro Story's wanderer-join quest letter with a missing generated pawn), so quest generation is no longer aborted by a NullReferenceException.
+- Minify Everything: restore the vanilla maxPawns-1 reservation check when issuing reinstall haul jobs, so jobs are no longer created for buildings still in use (e.g. an occupied bed), eliminating the repeated red "Could not reserve" errors; the job waits until the building is free again.
 
 Target mods are listed under loadAfter, not as dependencies, so this mod can stay enabled even when some target mods are not installed.
 </description>

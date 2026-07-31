@@ -38,6 +38,7 @@ public static class CommonCompatibilityBootstrap
         applied += PawnHealthBarBleedLabelCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += KiiroStealthMapTickCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += AlienRaceNullPawnRulesCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += MinifyEverythingReinstallReservationCompatibility.TryApply(Harmony) ? 1 : 0;
 
         Log.Message($"[CommonModCompatibilityPatches] Applied {applied} compatibility patch group(s).".Colorize(Color.green));
     }
@@ -846,6 +847,63 @@ internal static class AlienRaceNullPawnRulesCompatibility
         }
 
         return true;
+    }
+}
+
+internal static class MinifyEverythingReinstallReservationCompatibility
+{
+    public const string PackageId = "erdelf.MinifyEverything";
+    private const int InUseReinstallWarningId = 82038132;
+
+    public static bool TryApply(Harmony harmony)
+    {
+        if (!ModDetection.IsActive(PackageId))
+        {
+            return false;
+        }
+
+        MethodInfo target = AccessTools.Method(typeof(WorkGiver_ConstructDeliverResources), "InstallJob");
+        MethodInfo prefix = AccessTools.Method(typeof(MinifyEverythingReinstallReservationCompatibility), nameof(Prefix));
+        if (target == null || prefix == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(target, prefix: new HarmonyMethod(prefix));
+        return true;
+    }
+
+    // MinifyEverything's InstallJobTranspiler rewrites the maxPawns literal in
+    // WorkGiver_ConstructDeliverResources.InstallJob's reservation check from
+    // 1 to 2. Vanilla reservation rules only allow stacking reservations whose
+    // maxPawns match, so the relaxed check also passes for buildings that are
+    // still in use (e.g. a bed reserved for LayDown with maxPawns 2). The
+    // issued HaulToContainer job then fails TryMakePreToilReservations with
+    // maxPawns 1, spamming a red "Could not reserve" error every retry.
+    // Restore the vanilla maxPawns-1 validation before the job is issued;
+    // the job simply waits until the building is no longer occupied.
+    public static bool Prefix(Pawn pawn, Blueprint_Install install, ref Job __result)
+    {
+        Thing thingToInstall = install?.MiniToInstallOrBuildingToReinstall;
+        if (pawn?.Map == null || thingToInstall == null)
+        {
+            return true;
+        }
+
+        if (pawn.CanReserve(thingToInstall, 1, -1, null, false))
+        {
+            return true;
+        }
+
+        Pawn reserver = pawn.Map.reservationManager.FirstRespectedReserver(thingToInstall, pawn);
+        if (reserver != null)
+        {
+            JobFailReason.Is("ReservedBy".Translate(reserver.LabelShort, reserver));
+        }
+
+        Log.WarningOnce("[CommonModCompatibilityPatches] Blocked a MinifyEverything reinstall haul job for a building that is still reserved with a different maxPawns (e.g. an occupied bed); the original relaxed check would issue a job that fails every StartJob with a red reservation error.", InUseReinstallWarningId);
+        __result = null;
+        return false;
     }
 }
 
