@@ -17,21 +17,18 @@ namespace KillingReward
 
         public static List<ThingDef> ThingsIn(ThingCategoryDef category)
         {
-            List<ThingDef> result = new List<ThingDef>();
-            Collect(category, result);
-            return result
-                .Where(d => d.PlayerAcquirable && !d.IsCorpse && !d.isUnfinishedThing && d.stackLimit > 0)
+            // 按 parent 链判断归属（childCategories 依赖启动期 FinalizeInit，
+            // 而 parent 直接来自 XML，任何时刻都可靠）。
+            return DefDatabase<ThingDef>.AllDefsListForReading
+                .Where(d => d.category == ThingCategory.Item
+                    && d.PlayerAcquirable
+                    && !d.IsCorpse
+                    && !d.isUnfinishedThing
+                    && d.stackLimit > 0
+                    && d.thingCategories != null
+                    && d.thingCategories.Any(c => c == category || c.Parents.Contains(category)))
                 .OrderBy(d => d.LabelCap.ToString())
                 .ToList();
-        }
-
-        private static void Collect(ThingCategoryDef category, List<ThingDef> into)
-        {
-            into.AddRange(category.childThingDefs);
-            foreach (ThingCategoryDef child in category.childCategories)
-            {
-                Collect(child, into);
-            }
         }
 
         public static void Deliver(ThingDef def, IntVec3 cell, Map map)
