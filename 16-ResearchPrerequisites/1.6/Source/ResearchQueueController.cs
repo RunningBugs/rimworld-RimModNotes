@@ -146,6 +146,9 @@ namespace ResearchPrerequisites
             }
             if (current != null)
             {
+                // 当前研究可能此前已在队列中(如通过原版按钮手动开始),
+                // 先移除再插回第 1 位,避免重复。
+                queue.QueueFor(category).Remove(current);
                 queue.QueueFor(category).Insert(1, current);
             }
             AttemptBeginResearch(project);
@@ -178,10 +181,12 @@ namespace ResearchPrerequisites
             {
                 return;
             }
-            if (current != null && !list.Contains(current))
+            if (current != null)
             {
                 // 必须放在整条链之后,否则当前研究会插队到链中间,
                 // 链首完成后又抢先恢复,违背"最快启动目标项目"的意图。
+                // 先移除再插入,避免当前研究已在队列中时出现重复。
+                list.Remove(current);
                 list.Insert(Math.Min(chainLength, list.Count), current);
             }
             AttemptBeginResearch(first);
