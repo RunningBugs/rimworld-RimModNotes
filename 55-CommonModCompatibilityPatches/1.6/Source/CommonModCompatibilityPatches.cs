@@ -39,6 +39,7 @@ public static class CommonCompatibilityBootstrap
         applied += KiiroStealthMapTickCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += AlienRaceNullPawnRulesCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += MinifyEverythingReinstallReservationCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += DefaultsModAlienBirthdayCompatibility.TryApply(Harmony) ? 1 : 0;
 
         Log.Message($"[CommonModCompatibilityPatches] Applied {applied} compatibility patch group(s).".Colorize(Color.green));
     }
@@ -903,6 +904,58 @@ internal static class MinifyEverythingReinstallReservationCompatibility
 
         Log.WarningOnce("[CommonModCompatibilityPatches] Blocked a MinifyEverything reinstall haul job for a building that is still reserved with a different maxPawns (e.g. an occupied bed); the original relaxed check would issue a job that fails every StartJob with a red reservation error.", InUseReinstallWarningId);
         __result = null;
+        return false;
+    }
+}
+
+internal static class DefaultsModAlienBirthdayCompatibility
+{
+    public const string PackageId = "defaults.1trickPwnyta";
+    private const int AlienBirthdayWarningId = 82038133;
+
+    public static bool TryApply(Harmony harmony)
+    {
+        if (!ModDetection.IsActive(PackageId))
+        {
+            return false;
+        }
+
+        Type patchType = AccessTools.TypeByName("Defaults.Policies.Patch_Pawn_AgeTracker");
+        MethodInfo target = AccessTools.Method(patchType, "Postfix");
+        MethodInfo prefix = AccessTools.Method(typeof(DefaultsModAlienBirthdayCompatibility), nameof(Prefix));
+        if (target == null || prefix == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(target, prefix: new HarmonyMethod(prefix));
+        return true;
+    }
+
+    // The Defaults mod's birthday postfix looks up the min age of
+    // LifeStageDefOf.HumanlikeChild for every humanlike pawn, but alien races
+    // (e.g. Kiiro) define their own life stage defs and do not include
+    // HumanlikeChild in raceProps.lifeStageAges. Vanilla LifeStageMinAge then
+    // logs a red error on every biological birthday of every alien pawn.
+    // Skip the postfix for races without that life stage; there is no
+    // child-stage policy transition to apply for them anyway.
+    public static bool Prefix(Pawn ___pawn)
+    {
+        List<LifeStageAge> lifeStageAges = ___pawn?.RaceProps?.lifeStageAges;
+        if (lifeStageAges == null)
+        {
+            return false;
+        }
+
+        for (int i = 0; i < lifeStageAges.Count; i++)
+        {
+            if (lifeStageAges[i].def == LifeStageDefOf.HumanlikeChild)
+            {
+                return true;
+            }
+        }
+
+        Log.WarningOnce("[CommonModCompatibilityPatches] Skipped Defaults mod birthday policy check for a race without the HumanlikeChild life stage; the original postfix would log a red LifeStageMinAge error on every alien birthday.", AlienBirthdayWarningId);
         return false;
     }
 }

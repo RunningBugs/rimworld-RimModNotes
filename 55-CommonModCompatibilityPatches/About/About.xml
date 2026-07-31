@@ -30,6 +30,7 @@
 		<li>Ancot.KiiroRace</li>
 		<li>erdelf.HumanoidAlienRaces</li>
 		<li>erdelf.MinifyEverything</li>
+		<li>defaults.1trickPwnyta</li>
 	</loadAfter>
 
 	<incompatibleWith>
@@ -61,6 +62,7 @@ Current patches:
 - Kiiro Race: skip the stealth hediff's glow check while the pawn has no map (caravan, shuttle, or other mapless state), so the hediff is no longer removed by vanilla after a NullReferenceException every tick.
 - Humanoid Alien Races: skip the RulesForPawn postfix when the pawn is null (e.g. Kiiro Story's wanderer-join quest letter with a missing generated pawn), so quest generation is no longer aborted by a NullReferenceException.
 - Minify Everything: restore the vanilla maxPawns-1 reservation check when issuing reinstall haul jobs, so jobs are no longer created for buildings still in use (e.g. an occupied bed), eliminating the repeated red "Could not reserve" errors; the job waits until the building is free again.
+- 1trickPwnyta's Defaults: skip the birthday policy postfix for races whose life stages do not include HumanlikeChild (e.g. Kiiro), eliminating the red "Life stage def HumanlikeChild not found" error on every alien biological birthday.
 
 Target mods are listed under loadAfter, not as dependencies, so this mod can stay enabled even when some target mods are not installed.
 </description>
