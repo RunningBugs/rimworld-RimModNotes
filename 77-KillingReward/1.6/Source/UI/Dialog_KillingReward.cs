@@ -223,6 +223,7 @@ namespace KillingReward
                 if (Widgets.ButtonText(new Rect(inRect.x, y, inRect.width, 32f), category.LabelCap))
                 {
                     selectedCategory = category;
+                    itemSearch = "";
                     view = View.ItemThing;
                 }
                 y += 36f;
