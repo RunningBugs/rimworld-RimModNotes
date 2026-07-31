@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KR_LetterTitle>Blood Boon</KR_LetterTitle>
+	<KR_LetterText>The dark archotech watches every kill, and your struggle amuses it greatly. This boon is yours. Claim it — and try to stay alive.</KR_LetterText>
+	<KR_LetterOpen>Accept the Boon</KR_LetterOpen>
+	<KR_WindowTitle>Boon of the Dark Archotech</KR_WindowTitle>
+	<KR_Progress>Blood Tithe</KR_Progress>
+	<KR_Tier>Boon Tier</KR_Tier>
+	<KR_Pending>Unclaimed Boons</KR_Pending>
+	<KR_RewardResearch>Forbidden Knowledge</KR_RewardResearch>
+	<KR_RewardResearchDesc>It sears knowledge straight into your scholars' minds. Instantly complete one available research project.</KR_RewardResearchDesc>
+	<KR_RewardSkill>Bestowed Prowess</KR_RewardSkill>
+	<KR_RewardSkillDesc>It plucks the strings of nerve and muscle. Choose a pawn; one of their skills gains 3 levels.</KR_RewardSkillDesc>
+	<KR_RewardItem>Gift from the Void</KR_RewardItem>
+	<KR_RewardItemDesc>It casts provisions from the void. Choose an item and a drop cell to receive a full stack.</KR_RewardItemDesc>
+	<KR_Claimed>The boon is granted. It is still watching. Keep it entertained.</KR_Claimed>
+	<KR_NoPending>It has no boon for you yet. Slaughter is prayer.</KR_NoPending>
+	<KR_SettingInitial>Initial kills required</KR_SettingInitial>
+	<KR_SettingInitialDesc>Kills required for the first reward tier.</KR_SettingInitialDesc>
+	<KR_SettingMode>Growth mode</KR_SettingMode>
+	<KR_SettingModeExponential>Exponential (× factor per tier)</KR_SettingModeExponential>
+	<KR_SettingModeLinear>Linear (+ increment per tier)</KR_SettingModeLinear>
+	<KR_SettingFactor>Exponential factor</KR_SettingFactor>
+	<KR_SettingFactorDesc>In exponential mode, each tier costs this factor times the previous one.</KR_SettingFactorDesc>
+	<KR_SettingIncrement>Linear increment</KR_SettingIncrement>
+	<KR_SettingIncrementDesc>In linear mode, each tier costs this many more kills than the previous one.</KR_SettingIncrementDesc>
+	<KR_PickProject>Choose a research to complete</KR_PickProject>
+	<KR_PickPawn>Choose a pawn</KR_PickPawn>
+	<KR_PickSkill>Choose a skill</KR_PickSkill>
+	<KR_PickItem>Choose an item</KR_PickItem>
+	<KR_PickCell>Click a cell to deliver the goods</KR_PickCell>
+	<KR_Back>Back</KR_Back>
+	<KR_ItemDelivered>The gift from the void has arrived.</KR_ItemDelivered>
+	<KR_Offering>Offering +1</KR_Offering>
+</LanguageData>
