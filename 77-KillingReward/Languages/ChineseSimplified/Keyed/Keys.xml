@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KR_LetterTitle>嗜血恩赐</KR_LetterTitle>
+	<KR_LetterText>它在黑暗中注视着每一场杀戮，你的挣扎令它非常满意。这份恩赐是你应得的。领取它——然后，尽量别死。</KR_LetterText>
+	<KR_LetterOpen>接受恩赐</KR_LetterOpen>
+	<KR_WindowTitle>黑暗超凡智能的恩赐</KR_WindowTitle>
+	<KR_Progress>血祭</KR_Progress>
+	<KR_Tier>恩赐等阶</KR_Tier>
+	<KR_Pending>待领取的恩赐</KR_Pending>
+	<KR_RewardResearch>禁忌知识</KR_RewardResearch>
+	<KR_RewardResearchDesc>它将知识直接烙进学者的脑海。立刻完成一项当前可研究的科技。</KR_RewardResearchDesc>
+	<KR_RewardSkill>技艺灌注</KR_RewardSkill>
+	<KR_RewardSkillDesc>它替你拨动了神经与肌肉。选择一名小人，其一项技能提升 3 级。</KR_RewardSkillDesc>
+	<KR_RewardItem>虚空馈赠</KR_RewardItem>
+	<KR_RewardItemDesc>它从虚空中掷下物资。选择一种物品与投放地点，领取一整格。</KR_RewardItemDesc>
+	<KR_Claimed>恩赐已兑现。它仍在注视——继续取悦它吧。</KR_Claimed>
+	<KR_NoPending>它还没有新的恩赐。杀戮即是祈祷。</KR_NoPending>
+	<KR_SettingInitial>初始击杀要求</KR_SettingInitial>
+	<KR_SettingInitialDesc>第一次升级所需的击杀数。</KR_SettingInitialDesc>
+	<KR_SettingMode>增长模式</KR_SettingMode>
+	<KR_SettingModeExponential>指数（每级 ×倍率）</KR_SettingModeExponential>
+	<KR_SettingModeLinear>线性（每级 +增量）</KR_SettingModeLinear>
+	<KR_SettingFactor>指数倍率</KR_SettingFactor>
+	<KR_SettingFactorDesc>指数模式下，每级要求变为上一级的该倍率。</KR_SettingFactorDesc>
+	<KR_SettingIncrement>线性增量</KR_SettingIncrement>
+	<KR_SettingIncrementDesc>线性模式下，每级比上一级多要求的击杀数。</KR_SettingIncrementDesc>
+	<KR_PickProject>选择要完成的研究</KR_PickProject>
+	<KR_PickPawn>选择一名小人</KR_PickPawn>
+	<KR_PickSkill>选择一项技能</KR_PickSkill>
+	<KR_PickItem>选择一种物品</KR_PickItem>
+	<KR_PickCell>点击一个格子投放物资</KR_PickCell>
+	<KR_Back>返回</KR_Back>
+	<KR_ItemDelivered>虚空馈赠已送达。</KR_ItemDelivered>
+	<KR_Offering>祭品+1</KR_Offering>
+</LanguageData>

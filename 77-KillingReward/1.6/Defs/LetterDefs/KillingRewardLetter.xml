@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<LetterDef>
+		<defName>KillingRewardBoon</defName>
+		<letterClass>KillingReward.ChoiceLetter_KillingReward</letterClass>
+		<icon>UI/Icons/KillingReward</icon>
+	</LetterDef>
+</Defs>
