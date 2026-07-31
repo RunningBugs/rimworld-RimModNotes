@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using KillingReward.Core;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -7,10 +8,11 @@ namespace KillingReward
 {
     public class Dialog_KillingReward : Window
     {
-        private enum View { Main, Research }
+        private enum View { Main, Research, SkillPawn, SkillSkill }
 
         private View view = View.Main;
         private Vector2 scrollPosition;
+        private Pawn selectedPawn;
 
         public Dialog_KillingReward()
         {
@@ -45,6 +47,16 @@ namespace KillingReward
                 DoResearchView(body, tracker);
                 return;
             }
+            if (view == View.SkillPawn)
+            {
+                DoSkillPawnView(body, tracker);
+                return;
+            }
+            if (view == View.SkillSkill && selectedPawn != null)
+            {
+                DoSkillSkillView(body, tracker);
+                return;
+            }
             if (tracker.PendingRewards <= 0)
             {
                 Widgets.Label(body, "KR_NoPending".Translate());
@@ -66,6 +78,13 @@ namespace KillingReward
             }
             GUI.color = Color.white;
             listing.Label("KR_RewardResearchDesc".Translate());
+            GUI.color = new Color(1f, 1f, 1f, hasPending ? 1f : 0.4f);
+            if (listing.ButtonTextLabeled("KR_RewardSkill".Translate(), "KR_PickPawn".Translate()) && hasPending)
+            {
+                view = View.SkillPawn;
+            }
+            GUI.color = Color.white;
+            listing.Label("KR_RewardSkillDesc".Translate());
         }
 
         private void DoResearchView(Rect inRect, KillRewardTracker tracker)
@@ -94,6 +113,61 @@ namespace KillingReward
             if (Widgets.ButtonText(new Rect(inRect.x, inRect.yMax - 36f, 120f, 32f), "KR_Back".Translate()))
             {
                 view = View.Main;
+            }
+        }
+
+        private void DoSkillPawnView(Rect inRect, KillRewardTracker tracker)
+        {
+            List<Pawn> pawns = SkillReward.Candidates();
+            Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 32f), "KR_PickPawn".Translate());
+            Rect listRect = new Rect(inRect.x, inRect.y + 36f, inRect.width, inRect.height - 76f);
+            Rect viewRect = new Rect(0f, 0f, listRect.width - 20f, pawns.Count * 32f);
+            Widgets.BeginScrollView(listRect, ref scrollPosition, viewRect);
+            float y = 0f;
+            foreach (Pawn pawn in pawns)
+            {
+                Rect row = new Rect(0f, y, viewRect.width, 30f);
+                if (Widgets.ButtonText(row, pawn.LabelShortCap))
+                {
+                    selectedPawn = pawn;
+                    view = View.SkillSkill;
+                }
+                y += 32f;
+            }
+            Widgets.EndScrollView();
+            if (Widgets.ButtonText(new Rect(inRect.x, inRect.yMax - 36f, 120f, 32f), "KR_Back".Translate()))
+            {
+                view = View.Main;
+            }
+        }
+
+        private void DoSkillSkillView(Rect inRect, KillRewardTracker tracker)
+        {
+            List<SkillRecord> skills = SkillReward.AvailableSkills(selectedPawn);
+            Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 32f), "KR_PickSkill".Translate() + " (" + selectedPawn.LabelShortCap + ")");
+            Rect listRect = new Rect(inRect.x, inRect.y + 36f, inRect.width, inRect.height - 76f);
+            Rect viewRect = new Rect(0f, 0f, listRect.width - 20f, skills.Count * 32f);
+            Widgets.BeginScrollView(listRect, ref scrollPosition, viewRect);
+            float y = 0f;
+            foreach (SkillRecord skill in skills)
+            {
+                Rect row = new Rect(0f, y, viewRect.width, 30f);
+                string label = skill.def.LabelCap + " " + skill.Level + " → " + SkillMath.ClampedAdd(skill.Level, 3, SkillRecord.MaxLevel);
+                if (Widgets.ButtonText(row, label))
+                {
+                    if (tracker.TryConsumeReward())
+                    {
+                        SkillReward.Apply(skill);
+                        Messages.Message("KR_Claimed".Translate(), MessageTypeDefOf.PositiveEvent);
+                        Close();
+                    }
+                }
+                y += 32f;
+            }
+            Widgets.EndScrollView();
+            if (Widgets.ButtonText(new Rect(inRect.x, inRect.yMax - 36f, 120f, 32f), "KR_Back".Translate()))
+            {
+                view = View.SkillPawn;
             }
         }
     }
