@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -126,7 +126,8 @@ namespace RestockingStatus
     {
         public static void Postfix(Settlement __instance, ref Texture2D __result)
         {
-            if (__instance.Faction != Faction.OfPlayer && !__instance.Faction.HostileTo(Faction.OfPlayer))
+            Faction faction = __instance.Faction;
+            if (faction != null && faction != Faction.OfPlayer && !IsHostileToPlayer(faction))
             {
                 //  nrt for Next Restock Tick
                 var nrt = __instance.NextRestockTick;
@@ -135,10 +136,17 @@ namespace RestockingStatus
                     // float daysToRestock = (nrt - Find.TickManager.TicksGame).TicksToDays();
                     if (nrt > Find.TickManager.TicksGame)
                     {
-                        __result = Start.GetFactionRestockingIcon(__instance.Faction);
+                        __result = Start.GetFactionRestockingIcon(faction);
                     }
                 }
             }
+        }
+
+        // 某些派系（如美狐 Miho）与玩家未建立关系时，RelationWith 默认会报红字；
+        // allowNull: true 静默返回 null，与原版 dummy relation 一样按非敌对处理。
+        private static bool IsHostileToPlayer(Faction faction)
+        {
+            return faction.RelationWith(Faction.OfPlayer, allowNull: true)?.kind == FactionRelationKind.Hostile;
         }
     }
 }
