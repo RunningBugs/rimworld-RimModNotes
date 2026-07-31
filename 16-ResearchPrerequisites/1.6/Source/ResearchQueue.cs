@@ -53,6 +53,23 @@ namespace ResearchPrerequisites
             queue.Insert(0, project);
         }
 
+        /// <summary>
+        /// 将项目及其所有未完成的前置(含隐藏前置,按依赖顺序)整体插入队首,
+        /// 队列中已有的同项会被提前。用于不能立即开始的项目尽快启动。
+        /// </summary>
+        public void JumpChainToFront(ResearchProjectDef project)
+        {
+            if (project == null)
+            {
+                return;
+            }
+            List<ResearchProjectDef> queue = QueueFor(project);
+            List<ResearchProjectDef> chain = new List<ResearchProjectDef>();
+            AddWithPrerequisites(chain, project);
+            queue.RemoveAll(chain.Contains);
+            queue.InsertRange(0, chain);
+        }
+
         public ResearchProjectDef NextStartable(KnowledgeCategoryDef category)
         {
             List<ResearchProjectDef> queue = QueueFor(category);

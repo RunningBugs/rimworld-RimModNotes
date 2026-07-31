@@ -36,8 +36,7 @@ namespace ResearchPrerequisites
             {
                 return;
             }
-            bool jump = project.CanStartNow
-                && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl));
+            bool jump = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
             string label = jump ? "ResearchJumpQueueFront".Translate() : "ResearchAddToQueue".Translate();
             TooltipHandler.TipRegion(queueButtonRect, "ResearchQueueButtonTip".Translate());
             if (Widgets.ButtonText(queueButtonRect, label))
@@ -47,14 +46,19 @@ namespace ResearchPrerequisites
                 {
                     return;
                 }
-                if (jump)
+                if (!jump)
+                {
+                    queue.Enqueue(project);
+                    ResearchQueueController.TryStartNext(project.knowledgeCategory);
+                }
+                else if (project.CanStartNow)
                 {
                     ResearchQueueController.JumpToFrontAndStart(project);
                 }
                 else
                 {
-                    queue.Enqueue(project);
-                    ResearchQueueController.TryStartNext(project.knowledgeCategory);
+                    // 不能立即开始:连同未完成的前置整体插队,尽快启动
+                    ResearchQueueController.JumpChainToFrontAndStart(project);
                 }
             }
         }
