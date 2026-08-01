@@ -16,6 +16,38 @@ internal static class GhoulAutoFrenzyDefs
     internal static KeyBindingDef GhoulFrenzyHotkey => DefDatabase<KeyBindingDef>.GetNamedSilentFail("GhoulAttackSpin_GhoulFrenzy");
 }
 
+/// <summary>临时诊断探针：定位自动激素心脏 toggle 不显示的原因，排查后移除。</summary>
+internal static class GasProbe
+{
+    private static readonly HashSet<int> LoggedPawns = new HashSet<int>();
+
+    internal static void Log(string message)
+    {
+        Verse.Log.Message("[GhoulAttackSpin][probe] " + message);
+    }
+
+    internal static void LogOncePerPawn(Pawn pawn, string message)
+    {
+        if (pawn != null && LoggedPawns.Add(pawn.thingIDNumber))
+        {
+            Log(message);
+        }
+    }
+}
+
+[StaticConstructorOnStartup]
+internal static class GasProbeStartup
+{
+    static GasProbeStartup()
+    {
+        bool compOnHuman = ThingDefOf.Human.comps.Any(c => c is CompProperties_GhoulAutoFrenzy);
+        GasProbe.Log("comp attached to Human def: " + compOnHuman
+            + "; GhoulFrenzy ability def found: " + (GhoulAutoFrenzyDefs.GhoulFrenzyAbility != null)
+            + "; hotkey def found: " + (GhoulAutoFrenzyDefs.GhoulFrenzyHotkey != null)
+            + "; enableAutoFrenzy setting: " + GhoulAttackSpinMod.Settings.enableAutoFrenzy);
+    }
+}
+
 public sealed class CompProperties_GhoulAutoFrenzy : CompProperties
 {
     public CompProperties_GhoulAutoFrenzy()
@@ -36,6 +68,16 @@ public sealed class CompGhoulAutoFrenzy : ThingComp
     public override IEnumerable<Gizmo> CompGetGizmosExtra()
     {
         AbilityDef abilityDef = GhoulAutoFrenzyDefs.GhoulFrenzyAbility;
+        if (parent is Pawn probePawn && probePawn.IsGhoul)
+        {
+            GasProbe.LogOncePerPawn(probePawn, "CompGetGizmosExtra on ghoul " + probePawn.LabelShort
+                + ": enableAutoFrenzy=" + GhoulAttackSpinMod.Settings.enableAutoFrenzy
+                + ", abilityDef!=" + (abilityDef != null)
+                + ", IsColonySubhumanPlayerControlled=" + probePawn.IsColonySubhumanPlayerControlled
+                + ", Drafted=" + probePawn.Drafted
+                + ", hasAbility=" + (probePawn.abilities?.GetAbility(abilityDef) != null));
+        }
+
         if (!GhoulAttackSpinMod.Settings.enableAutoFrenzy || abilityDef == null)
         {
             yield break;
@@ -85,6 +127,7 @@ public sealed class CompGhoulAutoFrenzy : ThingComp
         }
 
         // GhoulFrenzy 是 nonInterruptingSelfCast，QueueCastingJob 会立即自我释放。
+        GasProbe.LogOncePerPawn(pawn, "auto-casting GhoulFrenzy for " + pawn.LabelShort);
         ability.QueueCastingJob(pawn, pawn);
     }
 
