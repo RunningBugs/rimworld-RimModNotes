@@ -116,21 +116,21 @@ for (( k=0; k<${#TVS}; k++ )); do
 
   FRAMES_XML=""
   for i in $(seq 0 $((FRAME_COUNT-1))); do
-    FRAMES_XML+=$(printf '\n\t\t\t<li><texPath>Shows/%s/%s_%02d</texPath><graphicClass>Graphic_Single</graphicClass></li>' "$SID" "$SID" "$i")
+    FRAMES_XML+=$(printf '\n			<li><texPath>Shows/%s/%s_%02d</texPath><graphicClass>Graphic_Single</graphicClass></li>' "$SID" "$SID" "$i")
   done
   XML_BLOCKS+=("$(cat <<EOF
-\t<RimFlix.ShowDef>
-\t\t<defName>$SID</defName>
-\t\t<label>$LABEL - $SHORT</label>
-\t\t<description>Generated from $(basename "$VIDEO") [$(fmt_time "$T_START")~$(fmt_time "$T_END")] by make_show.sh.</description>
-\t\t<televisionDefs>
-\t\t\t<li>$TVDEF</li>
-\t\t</televisionDefs>
-\t\t<secondsBetweenFrames>$INTERVAL</secondsBetweenFrames>
-\t\t<sound />
-\t\t<frames>$FRAMES_XML
-\t\t</frames>
-\t</RimFlix.ShowDef>
+	<RimFlix.ShowDef>
+		<defName>$SID</defName>
+		<label>$LABEL - $SHORT</label>
+		<description>Generated from $(basename "$VIDEO") [$(fmt_time "$T_START")~$(fmt_time "$T_END")] by make_show.sh.</description>
+		<televisionDefs>
+			<li>$TVDEF</li>
+		</televisionDefs>
+		<secondsBetweenFrames>$INTERVAL</secondsBetweenFrames>
+		<sound />
+		<frames>$FRAMES_XML
+		</frames>
+	</RimFlix.ShowDef>
 EOF
 )")
 done
