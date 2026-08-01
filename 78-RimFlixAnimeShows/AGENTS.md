@@ -22,15 +22,17 @@ RimFlix (Continued)（packageId `zal.rimflix`，工坊 id `3194639480`）的本�
 tools/make_show.sh <视频文件>
 ```
 
-脚本会依次询问并回显确认：**节目ID → 显示名 → 电视类型（1 平板 620×256 / 2 巨屏 902×256 /
-3 显像管 157×128）→ 抽帧数量（默认 12）→ 帧间隔（默认 0.15s）→ 是否 ping-pong 循环（默认 y）**。
-确认后自动完成：居中裁切到目标宽高比 → 缩放到目标尺寸 → 按 fps=N/时长抽 N 帧 →
-（可选）ping-pong 成 2N-2 帧 → 写入 `Textures/Shows/<ID>/` 并生成 `Defs/ShowDefs/<ID>.xml`。
+脚本会先显示视频**总时长**，然后依次询问并回显确认：
+**起止时间（秒 / MM:SS / HH:MM:SS，只在范围内抽帧）→ 节目ID → 显示名 → 电视类型
+（1 平板 620×256 / 2 巨屏 902×256 / 3 显像管 157×128）→ 抽帧帧率（fps，帧数=fps×范围时长）
+→ 节目总时长（帧间隔=总时长÷帧数，自动换算显示）→ 是否 ping-pong 循环（默认 y）**。
+确认后自动完成：范围内抽帧（尾部防漏：实际帧数不足时从范围末尾补抽最后一帧）→
+居中裁切缩放 → ping-pong 组装 → 写入 `Textures/Shows/<ID>/` 并生成 `Defs/ShowDefs/<ID>.xml`。
 
-非交互用法（管道喂答案）：
+非交互用法（管道喂答案，顺序与提示一致）：
 
 ```bash
-printf 'my_show\n我的节目\n1\n12\n0.15\ny\ny\n' | tools/make_show.sh video.mp4
+printf '0\n01:30:00\nmy_show\n我的节目\n1\n2\n66\ny\ny\n' | tools/make_show.sh video.mp4
 ```
 
 规则备忘：
