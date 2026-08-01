@@ -1,0 +1,32 @@
+{
+  "10": {"class_type": "WanVideoLoraSelectMulti", "inputs": {
+      "lora_0": "DR34ML4Y_TI2V_5B_V1.safetensors", "strength_0": 1.0,
+      "lora_1": "none", "strength_1": 1.0, "lora_2": "none", "strength_2": 1.0,
+      "lora_3": "none", "strength_3": 1.0, "lora_4": "none", "strength_4": 1.0,
+      "merge_loras": false}},
+  "1": {"class_type": "WanVideoModelLoader", "inputs": {
+      "model": "Wan2.2-TI2V-5B-Q8_0.gguf",
+      "base_precision": "bf16", "quantization": "disabled", "load_device": "main_device",
+      "lora": ["10", 0]}},
+  "8": {"class_type": "LoadWanVideoT5TextEncoder", "inputs": {"model_name": "umt5-xxl-enc-bf16.safetensors", "precision": "bf16"}},
+  "2": {"class_type": "WanVideoTextEncode", "inputs": {
+      "t5": ["8", 0],
+      "positive_prompt": "the fox-eared shipgirl stands in space, seductive idle animation: long hair and jacket swaying gently, tail swaying, thrusters flickering, slow camera push-in, starry space background, anime style, high quality, consistent character",
+      "negative_prompt": "low quality, blurry, watermark, text, signature, deformed, morphing, melting, worst quality"}},
+  "9": {"class_type": "LoadImage", "inputs": {"image": "tv_shella_fox.png"}},
+  "5": {"class_type": "WanVideoVAELoader", "inputs": {"model_name": "wan2.2_vae.safetensors", "precision": "bf16"}},
+  "11": {"class_type": "WanVideoEncodeLatentBatch", "inputs": {
+      "vae": ["5", 0], "images": ["9", 0], "enable_vae_tiling": true,
+      "tile_x": 272, "tile_y": 272, "tile_stride_x": 144, "tile_stride_y": 128}},
+  "3": {"class_type": "WanVideoEmptyEmbeds", "inputs": {"width": 1152, "height": 480, "num_frames": 33}},
+  "12": {"class_type": "WanVideoAddExtraLatent", "inputs": {
+      "embeds": ["3", 0], "extra_latents": ["11", 0], "latent_index": 0}},
+  "4": {"class_type": "WanVideoSampler", "inputs": {
+      "model": ["1", 0], "image_embeds": ["12", 0], "text_embeds": ["2", 0],
+      "steps": 20, "cfg": 5.0, "shift": 5.0, "seed": 42,
+      "force_offload": true, "scheduler": "unipc", "riflex_freq_index": 0}},
+  "6": {"class_type": "WanVideoDecode", "inputs": {
+      "vae": ["5", 0], "samples": ["4", 0], "enable_vae_tiling": true,
+      "tile_x": 272, "tile_y": 272, "tile_stride_x": 144, "tile_stride_y": 128}},
+  "7": {"class_type": "SaveImage", "inputs": {"images": ["6", 0], "filename_prefix": "tvshows/ti2v_test/frame"}}
+}
