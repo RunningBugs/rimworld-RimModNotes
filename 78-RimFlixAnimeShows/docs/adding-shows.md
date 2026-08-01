@@ -4,19 +4,7 @@
 
 ## 前提
 
-- 本包是 **RimFlix (Continued)** 的内容扩展（无代码），必须先在游戏中启用 RimFlix 本体，并保证本包排在其后。
-- 订阅 RimFlix (Continued) 后，请到 `workshop/content/294100/3194639480/About/About.xml`
-  确认其 `packageId`，然后在本包 `About/About.xml` 中加入硬依赖（目前只有 loadAfter 软排序）：
-
-```xml
-<modDependencies>
-	<li>
-		<packageId>【这里填 RimFlix Continued 的实际 packageId】</packageId>
-		<displayName>RimFlix (Continued)</displayName>
-		<steamWorkshopUrl>steam://url/CommunityFilePage/3194639480</steamWorkshopUrl>
-	</li>
-</modDependencies>
-```
+- 本包是 **RimFlix (Continued)**（packageId `zal.rimflix`）的内容扩展（无代码），必须先在游戏中启用 RimFlix 本体，并保证本包排在其后（About.xml 已声明硬依赖，游戏会自动校验）。
 
 ## 图片尺寸
 
