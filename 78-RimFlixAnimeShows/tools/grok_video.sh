@@ -70,9 +70,14 @@ if [[ "$DRYRUN" == "1" ]]; then
   exit 0
 fi
 
+# 请求体写临时文件,避免 curl 参数过长
+TMPBODY=$(mktemp)
+trap 'rm -f "$TMPIMG" "$TMPBODY"' EXIT
+echo -n "$BODY" > "$TMPBODY"
+
 echo "提交任务 ($MODEL, ${DURATION}s, $RES)..."
 RESP=$(curl -s -m 120 -X POST "$API" -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $KEY" -d "$BODY")
+  -H "Authorization: Bearer $KEY" --data-binary @"$TMPBODY")
 JOB=$(echo "$RESP" | jq -r '.id // empty')
 [[ -z "$JOB" ]] && { echo "提交失败: $RESP" >&2; exit 1; }
 echo "job id: $JOB"
