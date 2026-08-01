@@ -17,8 +17,8 @@
 	</modDependencies>
 
 	<description>
-Adds a pure visual 360-degree spin to ghouls when their normal melee attack animation plays. The spin has no gameplay effect and automatically ends with the short melee jitter animation.
+Adds a pure visual 360-degree spin to ghouls when their normal melee attack animation plays. The spin has no gameplay effect and automatically ends with the short melee jitter animation. Spin direction is configurable (clockwise / counterclockwise / random, default random). Also adds an optional auto adrenal-heart toggle for drafted ghouls (auto-casts Ghoul Frenzy) and a configurable hotkey for Ghoul Frenzy (default: none).
 
-为食尸鬼普通近战攻击动画增加纯视觉 360 度旋转效果。旋转不改变任何战斗/寻路/命中逻辑，并会在短暂攻击动画结束后自动恢复正常。
+为食尸鬼普通近战攻击动画增加纯视觉 360 度旋转效果。旋转不改变任何战斗/寻路/命中逻辑，并会在短暂攻击动画结束后自动恢复正常。旋转方向可设置（顺时针/逆时针/随机，默认随机）。另提供食尸鬼自动激素心脏开关（征召时自动释放食尸鬼狂热）和食尸鬼狂热快捷键设置（默认无）。
 	</description>
 </ModMetaData>
