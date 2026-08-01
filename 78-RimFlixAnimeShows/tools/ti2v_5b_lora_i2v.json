@@ -1,6 +1,6 @@
 {
-  "last_node_id": 12,
-  "last_link_id": 12,
+  "last_node_id": 14,
+  "last_link_id": 14,
   "nodes": [
     {
       "id": 10,
@@ -435,7 +435,8 @@
           "name": "images",
           "type": "IMAGE",
           "links": [
-            12
+            12,
+            13
           ],
           "slot_index": 0
         }
@@ -478,6 +479,74 @@
       },
       "widgets_values": [
         "tvshows/ti2v_test/frame"
+      ]
+    },
+    {
+      "id": 13,
+      "type": "CreateVideo",
+      "pos": [
+        1560,
+        440
+      ],
+      "size": [
+        280,
+        90
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 13
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": [
+            14
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CreateVideo"
+      },
+      "widgets_values": [
+        12.0
+      ]
+    },
+    {
+      "id": 14,
+      "type": "SaveVideo",
+      "pos": [
+        1560,
+        560
+      ],
+      "size": [
+        320,
+        110
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 14
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveVideo"
+      },
+      "widgets_values": [
+        "tvshows/ti2v_test/video",
+        "auto"
       ]
     }
   ],
@@ -577,6 +646,22 @@
       7,
       0,
       "IMAGE"
+    ],
+    [
+      13,
+      6,
+      0,
+      13,
+      0,
+      "IMAGE"
+    ],
+    [
+      14,
+      13,
+      0,
+      14,
+      0,
+      "VIDEO"
     ]
   ],
   "groups": [],
