@@ -53,6 +53,7 @@ RimFlix (Continued)（packageId `zal.rimflix`，工坊 id `3194639480`）的本�
 - 标准帧：**620×256**（平板电视高清档；显像管 157×128、巨屏 451×128 见 `docs/adding-shows.md`）
 - 循环：取 ~12 帧做 **ping-pong**（正序 + 去头尾倒序 = 22 帧），0.15s/帧 ≈ 3.3s 循环
 - 静态图方案：`tools/kenburns.py`（推拉缓动伪动画）
+- 巨屏（Megascreen）：`tools/letterbox.py` 把节目帧等比缩放到 256 高后居中贴到 902×256 黑底画布（两侧留黑，不拉伸不裁切）；配套 ShowDef 用 `MegascreenTelevision`，示例 `Defs/ShowDefs/Shows_Megascreen.xml`
 - ShowDef 模板见 `Defs/ShowDefs/Shows_GrokVideo.xml` / `Shows_Local5B.xml`；
   写完后必须校验每个 texPath 对应文件存在（参考 git 历史里的校验写法）
 - 缓动/抽帧 crop 规则：源 848×480 → `crop=848:350` 居中 → `scale=620:256`；1216×512 源直接裁 848:350 亦可
