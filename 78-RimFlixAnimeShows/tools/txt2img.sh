@@ -12,7 +12,7 @@
 #   -W WIDTH      宽(默认 1216)   -H HEIGHT  高(默认 512)
 #   --steps N     步数(默认 28)   --cfg X    CFG(默认 6.0)
 #   -c CKPT       模型(默认 animagine-xl-4.0.safetensors)
-#   -d DIR        生成后把图复制到该目录(默认留在 ComfyUI output/tvshows/)
+#   -d DIR        生成后把图移动到该目录(默认:当前目录);ComfyUI 下的原始文件会被删除
 #
 # 示例:
 #   ./txt2img.sh -p "masterpiece, best quality, 1girl, fox ears, ..." -o my_fox -s 42
@@ -25,7 +25,7 @@ COMFY_DIR="$HOME/comfy/ComfyUI"
 CKPT="oneObsession_v23.safetensors"
 WIDTH=1216; HEIGHT=512; SEED=-1; STEPS=28; CFG="6.0"
 # 默认负向提示词:质量词 + 硬性屏蔽露点/全裸(想改尺度就改这一行)
-NEG="lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, jpeg artifacts, signature, watermark, username, blurry, worst quality, low quality, normal quality, lowres, bad quality, worst aesthetic, score_1, score_2, score_3, score_4, score_5, ugly, deformed, mutation, disfigured, blurry, distorted, bad anatomy, bad proportions, extra limbs, missing limbs, floating limbs, disconnected limbs, mutation, mutated, long neck, cross-eyed, asymmetrical, malformed, child, loli, young, underage, toddler, baby, flat chest, small breasts, petite, fat, obese, chubby, plump, belly fat, pot belly, thick waist, large belly, baby face, child face, round face, chubby face, chubby cheeks, soft face, doll face, cute face, ugly face, deformed face, disfigured face, bad face, asymmetrical face, poorly drawn hands, bad hands, extra fingers, missing fingers, fused fingers, too many fingers, mutated hands, deformed hands, bad anatomy hands, poorly drawn feet, bad feet, extra toes, missing toes, fused toes, deformed feet, mutated feet, poorly drawn face, bad eyes, asymmetrical eyes, deformed eyes, cross eyed, bad nose, deformed nose, bad mouth, deformed mouth, blurry face, incomplete face, poorly drawn teeth, bad teeth, deformed teeth, missing teeth, extra teeth, uneven teeth, crooked teeth, blurry teeth, poorly drawn nails, bad nails, deformed nails, missing nails, extra nails, fused nails, long nails, dirty nails, poorly drawn ears, bad ears, deformed ears, asymmetrical ears, missing ears, extra ears, fused ears, childlike body, immature body, short legs, short torso, stubby limbs, stocky, thick limbs, disproportionate body, short stature, chubby body"
+NEG="lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped"
 PROMPT=""; OUTNAME=""; OUTDIR=""
 
 while [[ $# -gt 0 ]]; do
@@ -86,13 +86,12 @@ for i in $(seq 1 60); do
   if [[ "$STATUS" == "success" ]]; then
     FILE=$(echo "$HIST" | jq -r 'to_entries[0].value.outputs["7"].images[0] | (if .subfolder == "" then .filename else .subfolder + "/" + .filename end)')
     SRC="$COMFY_DIR/output/$FILE"
-    if [[ -n "$OUTDIR" ]]; then
-      mkdir -p "$OUTDIR"
-      cp "$SRC" "$OUTDIR/"
-      echo "$OUTDIR/$(basename "$SRC")"
-    else
-      echo "$SRC"
-    fi
+    # 生成完成后移动到目标目录(默认当前目录)并删除 ComfyUI 下的原始文件
+    DEST_DIR="${OUTDIR:-$PWD}"
+    mkdir -p "$DEST_DIR"
+    DEST="$DEST_DIR/$(basename "$SRC")"
+    cp "$SRC" "$DEST" && rm -f "$SRC"
+    echo "$DEST"
     exit 0
   elif [[ "$STATUS" == "error" ]]; then
     echo "$HIST" | jq -r 'to_entries[0].value.status.messages[] | select(.[0]=="execution_error") | .[1].exception_message' >&2
