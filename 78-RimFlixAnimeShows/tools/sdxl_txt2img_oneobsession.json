@@ -1,0 +1,12 @@
+{
+  "1": {"class_type": "CheckpointLoaderSimple", "inputs": {"ckpt_name": "oneObsession_v23.safetensors"}},
+  "2": {"class_type": "CLIPTextEncode", "inputs": {"clip": ["1", 1], "text": "masterpiece, best quality, very aesthetic, 1girl, fox ears, fox tail, azur lane, shipgirl, huge breasts, deep cleavage, black slingshot swimsuit, open jacket draped off shoulders, thin clothes, taut clothes, bare shoulders, navel, holding staff, seductive smirk, wink, looking at viewer, detailed beautiful face, cel shading, space background, huge planet, starry sky, small spaceships, glowing blue thrusters, cowboy shot, upper body focus"}},
+  "3": {"class_type": "CLIPTextEncode", "inputs": {"clip": ["1", 1], "text": "lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, jpeg artifacts, signature, watermark, username, blurry, nude, nipples, topless, naked"}},
+  "4": {"class_type": "EmptyLatentImage", "inputs": {"width": 1216, "height": 512, "batch_size": 1}},
+  "5": {"class_type": "KSampler", "inputs": {
+      "model": ["1", 0], "positive": ["2", 0], "negative": ["3", 0], "latent_image": ["4", 0],
+      "seed": 207, "steps": 28, "cfg": 6.0,
+      "sampler_name": "euler_ancestral", "scheduler": "normal", "denoise": 1.0}},
+  "6": {"class_type": "VAEDecode", "inputs": {"samples": ["5", 0], "vae": ["1", 2]}},
+  "7": {"class_type": "SaveImage", "inputs": {"images": ["6", 0], "filename_prefix": "tvshows/txt2img"}}
+}
