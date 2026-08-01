@@ -23,8 +23,6 @@ internal static class GhoulAutoFrenzyDefs
 /// </summary>
 public sealed class AutoFrenzyState : GameComponent
 {
-    private const int CastCheckIntervalTicks = 250;
-
     private Dictionary<int, bool> enabledByPawnId = new Dictionary<int, bool>();
 
     public static AutoFrenzyState Instance => Current.Game?.GetComponent<AutoFrenzyState>();
@@ -52,10 +50,11 @@ public sealed class AutoFrenzyState : GameComponent
         enabledByPawnId ??= new Dictionary<int, bool>();
     }
 
+    // 战斗技能需要即时响应：每 tick 检测。
+    // 但没有任何食尸鬼打开开关时直接短路，不产生扫描开销。
     public override void GameComponentTick()
     {
-        if (Find.TickManager.TicksGame % CastCheckIntervalTicks != 0
-            || !GhoulAttackSpinMod.Settings.enableAutoFrenzy)
+        if (!GhoulAttackSpinMod.Settings.enableAutoFrenzy || !AnyEnabled())
         {
             return;
         }
@@ -74,6 +73,18 @@ public sealed class AutoFrenzyState : GameComponent
                 TryAutoCast(pawns[j], abilityDef);
             }
         }
+    }
+
+    private bool AnyEnabled()
+    {
+        foreach (KeyValuePair<int, bool> pair in enabledByPawnId)
+        {
+            if (pair.Value)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void TryAutoCast(Pawn pawn, AbilityDef abilityDef)
