@@ -23,7 +23,7 @@ set -euo pipefail
 SERVER="http://127.0.0.1:8188"
 COMFY_DIR="$HOME/comfy/ComfyUI"
 CKPT="oneObsession_v23.safetensors"
-WIDTH=1216; HEIGHT=512; SEED=-1; STEPS=28; CFG="6.0"
+WIDTH=1216; HEIGHT=512; SEED=-1; STEPS=20; CFG="5.0"
 # 默认负向提示词:质量词 + 硬性屏蔽露点/全裸(想改尺度就改这一行)
 NEG="lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped"
 PROMPT=""; OUTNAME=""; OUTDIR=""
@@ -68,7 +68,7 @@ BODY=$(jq -n \
     "2": {class_type:"CLIPTextEncode", inputs:{clip:["1",1], text:$pos}},
     "3": {class_type:"CLIPTextEncode", inputs:{clip:["1",1], text:$neg}},
     "4": {class_type:"EmptyLatentImage", inputs:{width:$w, height:$h, batch_size:1}},
-    "5": {class_type:"KSampler", inputs:{model:["1",0], positive:["2",0], negative:["3",0], latent_image:["4",0], seed:$seed, steps:$steps, cfg:$cfg, sampler_name:"euler_ancestral", scheduler:"normal", denoise:1.0}},
+    "5": {class_type:"KSampler", inputs:{model:["1",0], positive:["2",0], negative:["3",0], latent_image:["4",0], seed:$seed, steps:$steps, cfg:$cfg, sampler_name:"euler", scheduler:"karras", denoise:1.0}},
     "6": {class_type:"VAEDecode", inputs:{samples:["5",0], vae:["1",2]}},
     "7": {class_type:"SaveImage", inputs:{images:["6",0], filename_prefix:$out}}
   }')
