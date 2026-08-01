@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<KeyBindingDef>
+		<defName>GhoulAttackSpin_GhoulFrenzy</defName>
+		<label>ghoul frenzy</label>
+		<category>SelectionMisc</category>
+		<defaultKeyCodeA>None</defaultKeyCodeA>
+	</KeyBindingDef>
+</Defs>

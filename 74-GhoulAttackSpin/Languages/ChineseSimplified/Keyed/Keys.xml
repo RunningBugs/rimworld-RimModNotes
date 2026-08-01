@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<GAS_SettingsDirection>旋转方向</GAS_SettingsDirection>
+	<GAS_DirectionClockwise>顺时针</GAS_DirectionClockwise>
+	<GAS_DirectionCounterclockwise>逆时针</GAS_DirectionCounterclockwise>
+	<GAS_DirectionRandom>随机</GAS_DirectionRandom>
+	<GAS_SettingsAutoFrenzy>食尸鬼自动激素心脏按钮</GAS_SettingsAutoFrenzy>
+	<GAS_SettingsAutoFrenzyDesc>为拥有激素心脏的食尸鬼在征召时显示一个开关按钮；开启后，该食尸鬼会在征召状态下自动释放食尸鬼狂热。</GAS_SettingsAutoFrenzyDesc>
+	<GAS_AutoFrenzyLabel>自动激素心脏</GAS_AutoFrenzyLabel>
+	<GAS_AutoFrenzyDesc>开启后，该食尸鬼在征召状态下会自动释放食尸鬼狂热。</GAS_AutoFrenzyDesc>
+</LanguageData>

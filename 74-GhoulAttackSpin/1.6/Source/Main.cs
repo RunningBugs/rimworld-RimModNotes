@@ -5,11 +5,64 @@ using Verse;
 
 namespace GhoulAttackSpin;
 
+public enum SpinDirection
+{
+    Clockwise,
+    Counterclockwise,
+    Random
+}
+
+public sealed class GhoulAttackSpinSettings : ModSettings
+{
+    public SpinDirection direction = SpinDirection.Random;
+    public bool enableAutoFrenzy = true;
+
+    public override void ExposeData()
+    {
+        base.ExposeData();
+        Scribe_Values.Look(ref direction, "direction", SpinDirection.Random);
+        Scribe_Values.Look(ref enableAutoFrenzy, "enableAutoFrenzy", true);
+    }
+}
+
 public sealed class GhoulAttackSpinMod : Mod
 {
+    public static GhoulAttackSpinSettings Settings { get; private set; }
+
     public GhoulAttackSpinMod(ModContentPack content) : base(content)
     {
+        Settings = GetSettings<GhoulAttackSpinSettings>();
         new Harmony(content.PackageId).PatchAll();
+    }
+
+    public override string SettingsCategory()
+    {
+        return "Ghoul Attack Spin";
+    }
+
+    public override void DoSettingsWindowContents(Rect inRect)
+    {
+        Listing_Standard listing = new Listing_Standard();
+        listing.Begin(inRect);
+
+        listing.Label("GAS_SettingsDirection".Translate());
+        if (listing.RadioButton("GAS_DirectionClockwise".Translate(), Settings.direction == SpinDirection.Clockwise))
+        {
+            Settings.direction = SpinDirection.Clockwise;
+        }
+        if (listing.RadioButton("GAS_DirectionCounterclockwise".Translate(), Settings.direction == SpinDirection.Counterclockwise))
+        {
+            Settings.direction = SpinDirection.Counterclockwise;
+        }
+        if (listing.RadioButton("GAS_DirectionRandom".Translate(), Settings.direction == SpinDirection.Random))
+        {
+            Settings.direction = SpinDirection.Random;
+        }
+
+        listing.Gap();
+        listing.CheckboxLabeled("GAS_SettingsAutoFrenzy".Translate(), ref Settings.enableAutoFrenzy, "GAS_SettingsAutoFrenzyDesc".Translate());
+
+        listing.End();
     }
 }
 
@@ -23,6 +76,7 @@ internal static class GhoulAttackSpinState
     {
         public int startTick;
         public int endTick;
+        public float sign;
     }
 
     private static readonly Dictionary<int, SpinWindow> ActiveSpins = new Dictionary<int, SpinWindow>();
@@ -34,11 +88,19 @@ internal static class GhoulAttackSpinState
             return;
         }
 
+        float sign = GhoulAttackSpinMod.Settings.direction switch
+        {
+            SpinDirection.Clockwise => 1f,
+            SpinDirection.Counterclockwise => -1f,
+            _ => Rand.Bool ? 1f : -1f
+        };
+
         int now = Find.TickManager.TicksGame;
         ActiveSpins[pawn.thingIDNumber] = new SpinWindow
         {
             startTick = now,
-            endTick = now + SpinDurationTicks
+            endTick = now + SpinDurationTicks,
+            sign = sign
         };
     }
 
@@ -58,7 +120,7 @@ internal static class GhoulAttackSpinState
         }
 
         float progress = Mathf.Clamp01((now - window.startTick) / (float)SpinDurationTicks);
-        angle = progress * 360f;
+        angle = progress * 360f * window.sign;
         return true;
     }
 }

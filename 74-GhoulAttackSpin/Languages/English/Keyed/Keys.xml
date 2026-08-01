@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<GAS_SettingsDirection>Spin direction</GAS_SettingsDirection>
+	<GAS_DirectionClockwise>Clockwise</GAS_DirectionClockwise>
+	<GAS_DirectionCounterclockwise>Counterclockwise</GAS_DirectionCounterclockwise>
+	<GAS_DirectionRandom>Random</GAS_DirectionRandom>
+	<GAS_SettingsAutoFrenzy>Ghoul auto adrenal-heart toggle</GAS_SettingsAutoFrenzy>
+	<GAS_SettingsAutoFrenzyDesc>Show a toggle gizmo on drafted ghouls that have an adrenal heart. When enabled, the ghoul casts Ghoul Frenzy automatically while drafted.</GAS_SettingsAutoFrenzyDesc>
+	<GAS_AutoFrenzyLabel>Auto adrenal heart</GAS_AutoFrenzyLabel>
+	<GAS_AutoFrenzyDesc>When enabled, this ghoul automatically casts Ghoul Frenzy while drafted.</GAS_AutoFrenzyDesc>
+</LanguageData>
