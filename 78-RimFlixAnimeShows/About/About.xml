@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.RimFlix.AnimeShows</packageId>
+	<name>RimFlix Anime Shows 动漫电视秀</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.6</li>
+	</supportedVersions>
+	<loadAfter>
+		<li>aznplucky.RimFlix</li>
+	</loadAfter>
+	<description>
+Anime-style TV shows for RimFlix (Continued). Ships placeholder loops (blob mascot, starry sky) as working examples; drop your own images into Textures/Shows to make real shows. Load after RimFlix.
+
+RimFlix (Continued) 的动漫风电视节目包。自带可播放的占位节目（弹跳团子、星空闪烁）作为示例；把你自己收集的图片放进 Textures/Shows 即可制作真正的节目。请在 RimFlix 之后加载。
+	</description>
+</ModMetaData>
