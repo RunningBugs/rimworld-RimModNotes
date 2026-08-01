@@ -3,11 +3,11 @@
 #
 # 用法:
 #   ./make_show.sh <视频文件>
-#   显示视频总时长后,按提示输入: 起止时间 / 电视类型 / 抽帧帧率 / 节目总时长 / ping-pong
-#   确认后自动抽帧到 Textures/Shows/<ID>/ 并生成 Defs/ShowDefs/<ID>.xml
+#   显示视频总时长后,按提示输入: 起止时间 / 电视类型(可单选或多选) / 抽帧密度 / 节目总时长 / ping-pong
+#   确认后自动抽帧到 Textures/Shows/<ID>_<类型>/ 并生成 Defs/ShowDefs/<ID>.xml
 #
 # 非交互(管道):
-#   printf '0\n01:30:00\nmy_show\n我的节目\n1\n2\n66\ny\ny\n' | ./make_show.sh video.mp4
+#   printf '0\n01:30:00\nmy_show\n我的节目\n123\n2\n66\ny\ny\n' | ./make_show.sh video.mp4
 #
 set -euo pipefail
 
@@ -50,14 +50,20 @@ awk "BEGIN{exit !($RANGE>0)}" || { echo "错误: 结束时间必须大于起始�
 
 SHOW_ID=$(ask "节目ID (英文,用于目录和defName)" "$(basename "$VIDEO" | sed 's/\.[^.]*$//' | tr ' ' '_')")
 LABEL=$(ask "显示名 (游戏内节目名)" "$SHOW_ID")
-echo "电视类型: 1) Flatscreen 平板(620x256)  2) Megascreen 巨屏(902x256)  3) Tube 显像管(157x128)"
-TV=$(ask "选择" "1")
-case "$TV" in
-  1) TW=620; TH=256; TVDEF="FlatscreenTelevision";;
-  2) TW=902; TH=256; TVDEF="MegascreenTelevision";;
-  3) TW=157; TH=128; TVDEF="TubeTelevision";;
-  *) echo "无效选择" >&2; exit 1;;
-esac
+
+echo "电视类型 (可多选,直接连写): 1) Flatscreen 平板(620x256)  2) Megascreen 巨屏(902x256)  3) Tube 显像管(157x128)"
+TV=$(ask "选择 (如 1 或 123 或 13)" "1")
+# 校验: 只允许 1/2/3,去重
+[[ "$TV" =~ ^[123]+$ ]] || { echo "无效选择: $TV" >&2; exit 1; }
+TVS=$(echo "$TV" | fold -w1 | sort -u | tr -d '\n')
+
+tv_params() {  # tv_params <数字> -> 后缀 宽 高 def标签
+  case "$1" in
+    1) echo "_flat 620 256 FlatscreenTelevision Flat";;
+    2) echo "_mega 902 256 MegascreenTelevision Mega";;
+    3) echo "_tube 157 128 TubeTelevision Tube";;
+  esac
+}
 
 FPS=$(ask "抽帧密度 (每秒抽几张图, 越大动画越流畅)" "2")
 EXPECT=$(awk "BEGIN{printf \"%d\", int($FPS*$RANGE+0.5)}")
@@ -70,59 +76,73 @@ PINGPONG=$(ask "ping-pong 循环 (正放+倒放,无跳帧) [y/n]" "y")
 echo
 echo "--- 确认 ---"
 echo "范围: $(fmt_time "$T_START") ~ $(fmt_time "$T_END") ($(fmt_time "$RANGE"))"
-echo "ID: $SHOW_ID | 名称: $LABEL | 电视: $TVDEF (${TW}x${TH})"
+echo "ID: $SHOW_ID | 名称: $LABEL | 电视类型: $TVS"
+for (( k=0; k<${#TVS}; k++ )); do
+  read -r SUF TW TH TVDEF SHORT <<< "$(tv_params "${TVS:$k:1}")"
+  echo "  - ${SHOW_ID}${SUF} ($TVDEF, ${TW}x${TH})"
+done
 echo "抽帧: 每秒${FPS}张 × $(fmt_time "$RANGE") ≈ $EXPECT 帧 | 节目: ${TOTAL}s (间隔 ${INTERVAL}s) | ping-pong: $PINGPONG"
 CONFIRM=$(ask "开始生成? [y/n]" "y")
 [[ "$CONFIRM" != "y" && "$CONFIRM" != "Y" ]] && { echo "已取消"; exit 0; }
 
+# 生成节目帧函数: make_frames <宽> <高> <输出目录> <文件前缀>
+make_frames() {
+  local TW=$1 TH=$2 OUTDIR=$3 PREFIX=$4
+  local TMPF
+  TMPF=$(mktemp -d)
+  # 等比放缩完整容纳进目标尺寸,多余部分填黑(不裁切)
+  ffmpeg -y -loglevel error -ss "$T_START" -to "$T_END" -i "$VIDEO" \
+    -vf "fps=$FPS,scale=$TW:$TH:force_original_aspect_ratio=decrease,pad=$TW:$TH:(ow-iw)/2:(oh-ih)/2:color=black" \
+    "$TMPF/f_%04d.png"
+  mapfile -t FS < <(ls "$TMPF"/f_*.png 2>/dev/null | sort)
+  local SEQ=("${FS[@]}")
+  if [[ "$PINGPONG" == "y" || "$PINGPONG" == "Y" ]]; then
+    for (( i=${#FS[@]}-2; i>=1; i-- )); do SEQ+=("${FS[$i]}"); done
+  fi
+  mkdir -p "$OUTDIR"
+  for i in "${!SEQ[@]}"; do
+    cp "${SEQ[$i]}" "$OUTDIR/$(printf '%s_%02d.png' "$PREFIX" "$i")"
+  done
+  rm -rf "$TMPF"
+  FRAME_COUNT=${#SEQ[@]}
+}
 
-TMPF=$(mktemp -d)
-trap 'rm -rf "$TMPF"' EXIT
-# 等比放缩完整容纳进目标尺寸,多余部分填黑(不裁切)
-ffmpeg -y -loglevel error -ss "$T_START" -to "$T_END" -i "$VIDEO" \
-  -vf "fps=$FPS,scale=$TW:$TH:force_original_aspect_ratio=decrease,pad=$TW:$TH:(ow-iw)/2:(oh-ih)/2:color=black" \
-  "$TMPF/f_%04d.png"
+XML_BLOCKS=()
+for (( k=0; k<${#TVS}; k++ )); do
+  read -r SUF TW TH TVDEF SHORT <<< "$(tv_params "${TVS:$k:1}")"
+  SID="${SHOW_ID}${SUF}"
+  make_frames "$TW" "$TH" "$MOD_ROOT/Textures/Shows/$SID" "$SID"
+  echo "$SID: $FRAME_COUNT 帧 -> Textures/Shows/$SID"
 
-ACTUAL=$(ls "$TMPF"/f_*.png 2>/dev/null | wc -l)
-
-# ping-pong 组装
-mapfile -t FS < <(ls "$TMPF"/f_*.png 2>/dev/null | sort)
-SEQ=("${FS[@]}")
-if [[ "$PINGPONG" == "y" || "$PINGPONG" == "Y" ]]; then
-  for (( i=${#FS[@]}-2; i>=1; i-- )); do SEQ+=("${FS[$i]}"); done
-fi
-
-OUTDIR="$MOD_ROOT/Textures/Shows/$SHOW_ID"
-mkdir -p "$OUTDIR"
-for i in "${!SEQ[@]}"; do
-  cp "${SEQ[$i]}" "$OUTDIR/$(printf '%s_%02d.png' "$SHOW_ID" "$i")"
+  FRAMES_XML=""
+  for i in $(seq 0 $((FRAME_COUNT-1))); do
+    FRAMES_XML+=$(printf '\n\t\t\t<li><texPath>Shows/%s/%s_%02d</texPath><graphicClass>Graphic_Single</graphicClass></li>' "$SID" "$SID" "$i")
+  done
+  XML_BLOCKS+=("$(cat <<EOF
+\t<RimFlix.ShowDef>
+\t\t<defName>$SID</defName>
+\t\t<label>$LABEL - $SHORT</label>
+\t\t<description>Generated from $(basename "$VIDEO") [$(fmt_time "$T_START")~$(fmt_time "$T_END")] by make_show.sh.</description>
+\t\t<televisionDefs>
+\t\t\t<li>$TVDEF</li>
+\t\t</televisionDefs>
+\t\t<secondsBetweenFrames>$INTERVAL</secondsBetweenFrames>
+\t\t<sound />
+\t\t<frames>$FRAMES_XML
+\t\t</frames>
+\t</RimFlix.ShowDef>
+EOF
+)")
 done
-TOTAL_FRAMES=${#SEQ[@]}
 
-# 生成 ShowDef XML
 {
   echo '<?xml version="1.0" encoding="utf-8"?>'
   echo '<Defs>'
   echo
-  echo -e '\t<RimFlix.ShowDef>'
-  echo -e "\t\t<defName>$SHOW_ID</defName>"
-  echo -e "\t\t<label>$LABEL</label>"
-  echo -e "\t\t<description>Generated from $(basename "$VIDEO") [$(fmt_time "$T_START")~$(fmt_time "$T_END")] by make_show.sh.</description>"
-  echo -e '\t\t<televisionDefs>'
-  echo -e "\t\t\t<li>$TVDEF</li>"
-  echo -e '\t\t</televisionDefs>'
-  echo -e "\t\t<secondsBetweenFrames>$INTERVAL</secondsBetweenFrames>"
-  echo -e '\t\t<sound />'
-  echo -e '\t\t<frames>'
-  for i in $(seq 0 $((TOTAL_FRAMES-1))); do
-    printf '\t\t\t<li><texPath>Shows/%s/%s_%02d</texPath><graphicClass>Graphic_Single</graphicClass></li>\n' "$SHOW_ID" "$SHOW_ID" "$i"
-  done
-  echo -e '\t\t</frames>'
-  echo -e '\t</RimFlix.ShowDef>'
+  ( IFS=$'\n\n'; echo "${XML_BLOCKS[*]}" )
   echo
   echo '</Defs>'
 } > "$MOD_ROOT/Defs/ShowDefs/$SHOW_ID.xml"
 
 echo
-echo "完成: $TOTAL_FRAMES 帧 ($ACTUAL 抽自范围) -> $OUTDIR"
 echo "定义 -> $MOD_ROOT/Defs/ShowDefs/$SHOW_ID.xml"
