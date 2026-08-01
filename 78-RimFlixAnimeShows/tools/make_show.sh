@@ -42,10 +42,11 @@ echo "视频: $VIDEO"
 echo "总时长: $(fmt_time "$DUR") | 尺寸: ${SW}x${SH}"
 
 T_START=$(parse_time "$(ask "起始时间 (秒 或 MM:SS 或 HH:MM:SS)" "0")")
-T_END=$(parse_time "$(ask "结束时间" "$(awk "BEGIN{printf \"%.3f\", $DUR}")")")
+T_END=$(parse_time "$(ask "结束时间 (超出总时长按最后一帧算)" "$(awk "BEGIN{printf \"%.3f\", $DUR}")")")
+# 结束时间超过总时长 -> 按视频最后一帧处理
+awk "BEGIN{exit !($T_END>$DUR)}" && { T_END=$DUR; echo "(结束时间超出总时长,已按最后一帧 $DUR 秒处理)"; }
 RANGE=$(awk "BEGIN{printf \"%.3f\", $T_END-$T_START}")
 awk "BEGIN{exit !($RANGE>0)}" || { echo "错误: 结束时间必须大于起始时间" >&2; exit 1; }
-awk "BEGIN{exit !($T_END<=$DUR+0.5)}" || { echo "错误: 结束时间超出视频总时长" >&2; exit 1; }
 
 SHOW_ID=$(ask "节目ID (英文,用于目录和defName)" "$(basename "$VIDEO" | sed 's/\.[^.]*$//' | tr ' ' '_')")
 LABEL=$(ask "显示名 (游戏内节目名)" "$SHOW_ID")
@@ -58,7 +59,7 @@ case "$TV" in
   *) echo "无效选择" >&2; exit 1;;
 esac
 
-FPS=$(ask "抽帧帧率 (每秒抽几帧)" "2")
+FPS=$(ask "抽帧密度 (每秒抽几张图, 越大动画越流畅)" "2")
 EXPECT=$(awk "BEGIN{printf \"%d\", int($FPS*$RANGE+0.5)}")
 [[ "$EXPECT" -lt 1 ]] && EXPECT=1
 DEF_TOTAL=$(awk "BEGIN{printf \"%.2f\", $EXPECT*0.15}")
@@ -70,7 +71,7 @@ echo
 echo "--- 确认 ---"
 echo "范围: $(fmt_time "$T_START") ~ $(fmt_time "$T_END") ($(fmt_time "$RANGE"))"
 echo "ID: $SHOW_ID | 名称: $LABEL | 电视: $TVDEF (${TW}x${TH})"
-echo "抽帧: ${FPS}fps × $(fmt_time "$RANGE") ≈ $EXPECT 帧 | 节目: ${TOTAL}s (间隔 ${INTERVAL}s) | ping-pong: $PINGPONG"
+echo "抽帧: 每秒${FPS}张 × $(fmt_time "$RANGE") ≈ $EXPECT 帧 | 节目: ${TOTAL}s (间隔 ${INTERVAL}s) | ping-pong: $PINGPONG"
 CONFIRM=$(ask "开始生成? [y/n]" "y")
 [[ "$CONFIRM" != "y" && "$CONFIRM" != "Y" ]] && { echo "已取消"; exit 0; }
 
@@ -83,18 +84,10 @@ ffmpeg -y -loglevel error -ss "$T_START" -to "$T_END" -i "$VIDEO" \
   -vf "fps=$FPS,crop=$CW:$CH:(iw-$CW)/2:(ih-$CH)/2,scale=$TW:$TH" \
   "$TMPF/f_%04d.png"
 
-# 尾部防漏: 实际帧数不足时,从范围末尾补抽最后一帧
 ACTUAL=$(ls "$TMPF"/f_*.png 2>/dev/null | wc -l)
-if (( ACTUAL < EXPECT )); then
-  TAIL=$(awk "BEGIN{printf \"%.3f\", $T_END-0.05}")
-  ffmpeg -y -loglevel error -ss "$TAIL" -i "$VIDEO" -frames:v 1 \
-    -vf "crop=$CW:$CH:(iw-$CW)/2:(ih-$CH)/2,scale=$TW:$TH" \
-    "$TMPF/tail_%02d.png" || true
-  echo "(尾部补抽 $((EXPECT-ACTUAL)) 帧防漏)"
-fi
 
 # ping-pong 组装
-mapfile -t FS < <(ls "$TMPF"/f_*.png "$TMPF"/tail_*.png 2>/dev/null | sort)
+mapfile -t FS < <(ls "$TMPF"/f_*.png 2>/dev/null | sort)
 SEQ=("${FS[@]}")
 if [[ "$PINGPONG" == "y" || "$PINGPONG" == "Y" ]]; then
   for (( i=${#FS[@]}-2; i>=1; i-- )); do SEQ+=("${FS[$i]}"); done
