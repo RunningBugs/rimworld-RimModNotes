@@ -1,32 +1,137 @@
 {
-  "10": {"class_type": "WanVideoLoraSelectMulti", "inputs": {
-      "lora_0": "DR34ML4Y_TI2V_5B_V1.safetensors", "strength_0": 1.0,
-      "lora_1": "none", "strength_1": 1.0, "lora_2": "none", "strength_2": 1.0,
-      "lora_3": "none", "strength_3": 1.0, "lora_4": "none", "strength_4": 1.0,
-      "merge_loras": false}},
-  "1": {"class_type": "WanVideoModelLoader", "inputs": {
-      "model": "Wan2.2-TI2V-5B-Q8_0.gguf",
-      "base_precision": "bf16", "quantization": "disabled", "load_device": "main_device",
-      "lora": ["10", 0]}},
-  "8": {"class_type": "LoadWanVideoT5TextEncoder", "inputs": {"model_name": "umt5-xxl-enc-bf16.safetensors", "precision": "bf16"}},
-  "2": {"class_type": "WanVideoTextEncode", "inputs": {
-      "t5": ["8", 0],
-      "positive_prompt": "the fox-eared shipgirl stands in space, seductive idle animation: long hair and jacket swaying gently, tail swaying, thrusters flickering, slow camera push-in, starry space background, anime style, high quality, consistent character",
-      "negative_prompt": "low quality, blurry, watermark, text, signature, deformed, morphing, melting, worst quality"}},
-  "9": {"class_type": "LoadImage", "inputs": {"image": "tv_shella_fox.png"}},
-  "5": {"class_type": "WanVideoVAELoader", "inputs": {"model_name": "wan2.2_vae.safetensors", "precision": "bf16"}},
-  "11": {"class_type": "WanVideoEncodeLatentBatch", "inputs": {
-      "vae": ["5", 0], "images": ["9", 0], "enable_vae_tiling": true,
-      "tile_x": 272, "tile_y": 272, "tile_stride_x": 144, "tile_stride_y": 128}},
-  "3": {"class_type": "WanVideoEmptyEmbeds", "inputs": {"width": 1152, "height": 480, "num_frames": 33}},
-  "12": {"class_type": "WanVideoAddExtraLatent", "inputs": {
-      "embeds": ["3", 0], "extra_latents": ["11", 0], "latent_index": 0}},
-  "4": {"class_type": "WanVideoSampler", "inputs": {
-      "model": ["1", 0], "image_embeds": ["12", 0], "text_embeds": ["2", 0],
-      "steps": 20, "cfg": 5.0, "shift": 5.0, "seed": 42,
-      "force_offload": true, "scheduler": "unipc", "riflex_freq_index": 0}},
-  "6": {"class_type": "WanVideoDecode", "inputs": {
-      "vae": ["5", 0], "samples": ["4", 0], "enable_vae_tiling": true,
-      "tile_x": 272, "tile_y": 272, "tile_stride_x": 144, "tile_stride_y": 128}},
-  "7": {"class_type": "SaveImage", "inputs": {"images": ["6", 0], "filename_prefix": "tvshows/ti2v_test/frame"}}
+  "last_node_id": 12,
+  "last_link_id": 12,
+  "nodes": [
+    {
+      "id": 10, "type": "WanVideoLoraSelectMulti", "pos": [40, 60], "size": [320, 240],
+      "flags": {}, "order": 0, "mode": 0,
+      "inputs": [],
+      "outputs": [{"name": "lora", "type": "WANVIDLORA", "links": [1], "slot_index": 0}],
+      "properties": {"Node name for S&R": "WanVideoLoraSelectMulti"},
+      "widgets_values": ["DR34ML4Y_TI2V_5B_V1.safetensors", 1.0, "none", 1.0, "none", 1.0, "none", 1.0, "none", 1.0, false, false]
+    },
+    {
+      "id": 1, "type": "WanVideoModelLoader", "pos": [40, 330], "size": [320, 200],
+      "flags": {}, "order": 1, "mode": 0,
+      "inputs": [{"name": "lora", "type": "WANVIDLORA", "link": 1}],
+      "outputs": [{"name": "model", "type": "WANVIDEOMODEL", "links": [7], "slot_index": 0}],
+      "properties": {"Node name for S&R": "WanVideoModelLoader"},
+      "widgets_values": ["Wan2.2-TI2V-5B-Q8_0.gguf", "bf16", "disabled", "main_device", "sdpa", "default"]
+    },
+    {
+      "id": 8, "type": "LoadWanVideoT5TextEncoder", "pos": [40, 570], "size": [320, 110],
+      "flags": {}, "order": 2, "mode": 0,
+      "inputs": [],
+      "outputs": [{"name": "wan_t5_model", "type": "WANTEXTENCODER", "links": [2], "slot_index": 0}],
+      "properties": {"Node name for S&R": "LoadWanVideoT5TextEncoder"},
+      "widgets_values": ["umt5-xxl-enc-bf16.safetensors", "bf16", "offload_device", "disabled"]
+    },
+    {
+      "id": 2, "type": "WanVideoTextEncode", "pos": [420, 330], "size": [420, 240],
+      "flags": {}, "order": 3, "mode": 0,
+      "inputs": [{"name": "t5", "type": "WANTEXTENCODER", "link": 2}],
+      "outputs": [{"name": "text_embeds", "type": "WANVIDEOTEXTEMBEDS", "links": [9], "slot_index": 0}],
+      "properties": {"Node name for S&R": "WanVideoTextEncode"},
+      "widgets_values": [
+        "the fox-eared shipgirl stands in space, seductive idle animation: long hair and jacket swaying gently, tail swaying, thrusters flickering, slow camera push-in, starry space background, anime style, high quality, consistent character",
+        "low quality, blurry, watermark, text, signature, deformed, morphing, melting, worst quality",
+        true, false, "gpu"
+      ]
+    },
+    {
+      "id": 9, "type": "LoadImage", "pos": [420, 60], "size": [320, 110],
+      "flags": {}, "order": 4, "mode": 0,
+      "inputs": [],
+      "outputs": [{"name": "IMAGE", "type": "IMAGE", "links": [4], "slot_index": 0}],
+      "properties": {"Node name for S&R": "LoadImage"},
+      "widgets_values": ["fox_user.png", "image"]
+    },
+    {
+      "id": 5, "type": "WanVideoVAELoader", "pos": [420, 570], "size": [320, 90],
+      "flags": {}, "order": 5, "mode": 0,
+      "inputs": [],
+      "outputs": [{"name": "vae", "type": "WANVAE", "links": [3, 10], "slot_index": 0}],
+      "properties": {"Node name for S&R": "WanVideoVAELoader"},
+      "widgets_values": ["wan2.2_vae.safetensors", "bf16"]
+    },
+    {
+      "id": 11, "type": "WanVideoEncodeLatentBatch", "pos": [800, 60], "size": [320, 200],
+      "flags": {}, "order": 6, "mode": 0,
+      "inputs": [
+        {"name": "vae", "type": "WANVAE", "link": 3},
+        {"name": "images", "type": "IMAGE", "link": 4}
+      ],
+      "outputs": [{"name": "samples", "type": "LATENT", "links": [6], "slot_index": 0}],
+      "properties": {"Node name for S&R": "WanVideoEncodeLatentBatch"},
+      "widgets_values": [true, 272, 272, 144, 128]
+    },
+    {
+      "id": 3, "type": "WanVideoEmptyEmbeds", "pos": [800, 300], "size": [320, 110],
+      "flags": {}, "order": 7, "mode": 0,
+      "inputs": [],
+      "outputs": [{"name": "image_embeds", "type": "WANVIDIMAGE_EMBEDS", "links": [5], "slot_index": 0}],
+      "properties": {"Node name for S&R": "WanVideoEmptyEmbeds"},
+      "widgets_values": [1152, 480, 33]
+    },
+    {
+      "id": 12, "type": "WanVideoAddExtraLatent", "pos": [1180, 60], "size": [320, 90],
+      "flags": {}, "order": 8, "mode": 0,
+      "inputs": [
+        {"name": "embeds", "type": "WANVIDIMAGE_EMBEDS", "link": 5},
+        {"name": "extra_latents", "type": "LATENT", "link": 6}
+      ],
+      "outputs": [{"name": "image_embeds", "type": "WANVIDIMAGE_EMBEDS", "links": [8], "slot_index": 0}],
+      "properties": {"Node name for S&R": "WanVideoAddExtraLatent"},
+      "widgets_values": [0]
+    },
+    {
+      "id": 4, "type": "WanVideoSampler", "pos": [1180, 300], "size": [320, 300],
+      "flags": {}, "order": 9, "mode": 0,
+      "inputs": [
+        {"name": "model", "type": "WANVIDEOMODEL", "link": 7},
+        {"name": "image_embeds", "type": "WANVIDIMAGE_EMBEDS", "link": 8},
+        {"name": "text_embeds", "type": "WANVIDEOTEXTEMBEDS", "link": 9}
+      ],
+      "outputs": [{"name": "samples", "type": "LATENT", "links": [11], "slot_index": 0}],
+      "properties": {"Node name for S&R": "WanVideoSampler"},
+      "widgets_values": [20, 5.0, 5.0, 42, true, "unipc", 0, 1.0, false, "comfy"]
+    },
+    {
+      "id": 6, "type": "WanVideoDecode", "pos": [1560, 60], "size": [320, 200],
+      "flags": {}, "order": 10, "mode": 0,
+      "inputs": [
+        {"name": "vae", "type": "WANVAE", "link": 10},
+        {"name": "samples", "type": "LATENT", "link": 11}
+      ],
+      "outputs": [{"name": "images", "type": "IMAGE", "links": [12], "slot_index": 0}],
+      "properties": {"Node name for S&R": "WanVideoDecode"},
+      "widgets_values": [true, 272, 272, 144, 128]
+    },
+    {
+      "id": 7, "type": "SaveImage", "pos": [1560, 300], "size": [320, 90],
+      "flags": {}, "order": 11, "mode": 0,
+      "inputs": [{"name": "images", "type": "IMAGE", "link": 12}],
+      "outputs": [],
+      "properties": {"Node name for S&R": "SaveImage"},
+      "widgets_values": ["tvshows/ti2v_test/frame"]
+    }
+  ],
+  "links": [
+    [1, 10, 0, 1, 2, "WANVIDLORA"],
+    [2, 8, 0, 2, 0, "WANTEXTENCODER"],
+    [3, 5, 0, 11, 0, "WANVAE"],
+    [4, 9, 0, 11, 1, "IMAGE"],
+    [5, 3, 0, 12, 0, "WANVIDIMAGE_EMBEDS"],
+    [6, 11, 0, 12, 1, "LATENT"],
+    [7, 1, 0, 4, 0, "WANVIDEOMODEL"],
+    [8, 12, 0, 4, 1, "WANVIDIMAGE_EMBEDS"],
+    [9, 2, 0, 4, 2, "WANVIDEOTEXTEMBEDS"],
+    [10, 5, 0, 6, 0, "WANVAE"],
+    [11, 4, 0, 6, 1, "LATENT"],
+    [12, 6, 0, 7, 0, "IMAGE"]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
 }
