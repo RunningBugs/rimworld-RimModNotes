@@ -53,9 +53,9 @@
         0
       ],
       "seed": 207,
-      "steps": 20,
-      "cfg": 5.0,
-      "sampler_name": "euler",
+      "steps": 30,
+      "cfg": 3.5,
+      "sampler_name": "dpmpp_2m_sde",
       "scheduler": "karras",
       "denoise": 1.0
     }

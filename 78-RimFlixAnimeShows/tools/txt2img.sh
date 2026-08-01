@@ -23,7 +23,7 @@ set -euo pipefail
 SERVER="http://127.0.0.1:8188"
 COMFY_DIR="$HOME/comfy/ComfyUI"
 CKPT="lustifyNSFWCheckpoint_zenithV9.safetensors"
-WIDTH=1216; HEIGHT=512; SEED=-1; STEPS=20; CFG="5.0"
+WIDTH=1216; HEIGHT=512; SEED=-1; STEPS=30; CFG="3.5"
 # 默认负向提示词:质量词 + 硬性屏蔽露点/全裸(想改尺度就改这一行)
 NEG="lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped"
 PROMPT=""; OUTNAME=""; OUTDIR=""
@@ -68,7 +68,7 @@ BODY=$(jq -n \
     "2": {class_type:"CLIPTextEncode", inputs:{clip:["1",1], text:$pos}},
     "3": {class_type:"CLIPTextEncode", inputs:{clip:["1",1], text:$neg}},
     "4": {class_type:"EmptyLatentImage", inputs:{width:$w, height:$h, batch_size:1}},
-    "5": {class_type:"KSampler", inputs:{model:["1",0], positive:["2",0], negative:["3",0], latent_image:["4",0], seed:$seed, steps:$steps, cfg:$cfg, sampler_name:"euler", scheduler:"karras", denoise:1.0}},
+    "5": {class_type:"KSampler", inputs:{model:["1",0], positive:["2",0], negative:["3",0], latent_image:["4",0], seed:$seed, steps:$steps, cfg:$cfg, sampler_name:"dpmpp_2m_sde", scheduler:"karras", denoise:1.0}},
     "6": {class_type:"VAEDecode", inputs:{samples:["5",0], vae:["1",2]}},
     "7": {class_type:"SaveImage", inputs:{images:["6",0], filename_prefix:$out}}
   }')
