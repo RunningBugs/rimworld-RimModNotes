@@ -75,13 +75,12 @@ echo "抽帧: 每秒${FPS}张 × $(fmt_time "$RANGE") ≈ $EXPECT 帧 | 节目: 
 CONFIRM=$(ask "开始生成? [y/n]" "y")
 [[ "$CONFIRM" != "y" && "$CONFIRM" != "Y" ]] && { echo "已取消"; exit 0; }
 
-# 目标宽高比居中裁切
-read CW CH <<< "$(awk "BEGIN{tw=$TW; th=$TH; sw=$SW; sh=$SH; cw=sw; ch=int(sw*th/tw); if(ch>sh){ch=sh; cw=int(sh*tw/th)} cw=int(cw/2)*2; ch=int(ch/2)*2; print cw, ch}")"
 
 TMPF=$(mktemp -d)
 trap 'rm -rf "$TMPF"' EXIT
+# 等比放缩完整容纳进目标尺寸,多余部分填黑(不裁切)
 ffmpeg -y -loglevel error -ss "$T_START" -to "$T_END" -i "$VIDEO" \
-  -vf "fps=$FPS,crop=$CW:$CH:(iw-$CW)/2:(ih-$CH)/2,scale=$TW:$TH" \
+  -vf "fps=$FPS,scale=$TW:$TH:force_original_aspect_ratio=decrease,pad=$TW:$TH:(ow-iw)/2:(oh-ih)/2:color=black" \
   "$TMPF/f_%04d.png"
 
 ACTUAL=$(ls "$TMPF"/f_*.png 2>/dev/null | wc -l)

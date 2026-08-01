@@ -28,7 +28,7 @@ tools/make_show.sh <视频文件>
 → 抽帧密度（每秒抽几张图，帧数=密度×范围时长）→ 节目总时长（帧间隔=总时长÷帧数，自动换算显示）
 → 是否 ping-pong 循环（默认 y）**。
 确认后自动完成：范围内抽帧 →
-居中裁切缩放 → ping-pong 组装 → 写入 `Textures/Shows/<ID>/` 并生成 `Defs/ShowDefs/<ID>.xml`。
+**等比放缩完整容纳目标尺寸，多余部分填黑（任何情况下都不裁切画面）** → ping-pong 组装 → 写入 `Textures/Shows/<ID>/` 并生成 `Defs/ShowDefs/<ID>.xml`。
 
 非交互用法（管道喂答案，顺序与提示一致）：
 
