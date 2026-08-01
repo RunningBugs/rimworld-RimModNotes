@@ -16,106 +16,76 @@ internal static class GhoulAutoFrenzyDefs
     internal static KeyBindingDef GhoulFrenzyHotkey => DefDatabase<KeyBindingDef>.GetNamedSilentFail("GhoulAttackSpin_GhoulFrenzy");
 }
 
-/// <summary>临时诊断探针：定位自动激素心脏 toggle 不显示的原因，排查后移除。</summary>
-internal static class GasProbe
-{
-    private static readonly HashSet<int> LoggedPawns = new HashSet<int>();
-
-    internal static void Log(string message)
-    {
-        Verse.Log.Message("[GhoulAttackSpin][probe] " + message);
-    }
-
-    internal static void LogOncePerPawn(Pawn pawn, string message)
-    {
-        if (pawn != null && LoggedPawns.Add(pawn.thingIDNumber))
-        {
-            Log(message);
-        }
-    }
-}
-
-[StaticConstructorOnStartup]
-internal static class GasProbeStartup
-{
-    static GasProbeStartup()
-    {
-        bool compOnHuman = ThingDefOf.Human.comps.Any(c => c is CompProperties_GhoulAutoFrenzy);
-        GasProbe.Log("comp attached to Human def: " + compOnHuman
-            + "; GhoulFrenzy ability def found: " + (GhoulAutoFrenzyDefs.GhoulFrenzyAbility != null)
-            + "; hotkey def found: " + (GhoulAutoFrenzyDefs.GhoulFrenzyHotkey != null)
-            + "; enableAutoFrenzy setting: " + GhoulAttackSpinMod.Settings.enableAutoFrenzy);
-    }
-}
-
-public sealed class CompProperties_GhoulAutoFrenzy : CompProperties
-{
-    public CompProperties_GhoulAutoFrenzy()
-    {
-        compClass = typeof(CompGhoulAutoFrenzy);
-    }
-}
-
 /// <summary>
-/// 参考 GhoulCommands 的实现：单个 Command_Toggle 开关「自动激素心脏」。
-/// 仅当食尸鬼被征召、且拥有激素心脏（GhoulFrenzy 能力）时显示；
-/// 开启后在征召状态下自动释放食尸鬼狂热。
+/// 「自动激素心脏」开关状态与自动释放驱动。
+/// 不依赖给种族 def 挂 comp（对任何种族的食尸鬼都生效），
+/// 开关状态按 pawn id 随存档持久化。
 /// </summary>
-public sealed class CompGhoulAutoFrenzy : ThingComp
+public sealed class AutoFrenzyState : GameComponent
 {
-    private bool autoFrenzy;
+    private const int CastCheckIntervalTicks = 250;
 
-    public override IEnumerable<Gizmo> CompGetGizmosExtra()
+    private Dictionary<int, bool> enabledByPawnId = new Dictionary<int, bool>();
+
+    public static AutoFrenzyState Instance => Current.Game?.GetComponent<AutoFrenzyState>();
+
+    public AutoFrenzyState(Game game)
     {
-        AbilityDef abilityDef = GhoulAutoFrenzyDefs.GhoulFrenzyAbility;
-        if (parent is Pawn probePawn && probePawn.IsGhoul)
-        {
-            GasProbe.LogOncePerPawn(probePawn, "CompGetGizmosExtra on ghoul " + probePawn.LabelShort
-                + ": enableAutoFrenzy=" + GhoulAttackSpinMod.Settings.enableAutoFrenzy
-                + ", abilityDef!=" + (abilityDef != null)
-                + ", IsColonySubhumanPlayerControlled=" + probePawn.IsColonySubhumanPlayerControlled
-                + ", Drafted=" + probePawn.Drafted
-                + ", hasAbility=" + (probePawn.abilities?.GetAbility(abilityDef) != null));
-        }
-
-        if (!GhoulAttackSpinMod.Settings.enableAutoFrenzy || abilityDef == null)
-        {
-            yield break;
-        }
-        if (parent is not Pawn pawn || !pawn.IsGhoul || !pawn.IsColonySubhumanPlayerControlled || !pawn.Drafted)
-        {
-            yield break;
-        }
-        if (pawn.abilities?.GetAbility(abilityDef) == null)
-        {
-            yield break;
-        }
-
-        yield return new Command_Toggle
-        {
-            defaultLabel = "GAS_AutoFrenzyLabel".Translate(),
-            defaultDesc = "GAS_AutoFrenzyDesc".Translate(),
-            icon = abilityDef.uiIcon,
-            isActive = () => autoFrenzy,
-            toggleAction = () => autoFrenzy = !autoFrenzy
-        };
     }
 
-    public override void CompTickRare()
+    public bool IsEnabled(Pawn pawn)
     {
-        base.CompTickRare();
-        if (!autoFrenzy || !GhoulAttackSpinMod.Settings.enableAutoFrenzy)
+        return pawn != null && enabledByPawnId.TryGetValue(pawn.thingIDNumber, out bool enabled) && enabled;
+    }
+
+    public void SetEnabled(Pawn pawn, bool enabled)
+    {
+        if (pawn != null)
+        {
+            enabledByPawnId[pawn.thingIDNumber] = enabled;
+        }
+    }
+
+    public override void ExposeData()
+    {
+        Scribe_Collections.Look(ref enabledByPawnId, "enabledByPawnId", LookMode.Value, LookMode.Value);
+        enabledByPawnId ??= new Dictionary<int, bool>();
+    }
+
+    public override void GameComponentTick()
+    {
+        if (Find.TickManager.TicksGame % CastCheckIntervalTicks != 0
+            || !GhoulAttackSpinMod.Settings.enableAutoFrenzy)
         {
             return;
         }
         AbilityDef abilityDef = GhoulAutoFrenzyDefs.GhoulFrenzyAbility;
-        if (abilityDef == null || parent is not Pawn pawn || !pawn.Spawned || pawn.Dead || pawn.Downed
+        if (abilityDef == null)
+        {
+            return;
+        }
+
+        List<Map> maps = Find.Maps;
+        for (int i = 0; i < maps.Count; i++)
+        {
+            IReadOnlyList<Pawn> pawns = maps[i].mapPawns.AllPawnsSpawned;
+            for (int j = 0; j < pawns.Count; j++)
+            {
+                TryAutoCast(pawns[j], abilityDef);
+            }
+        }
+    }
+
+    private void TryAutoCast(Pawn pawn, AbilityDef abilityDef)
+    {
+        if (!IsEnabled(pawn) || !pawn.Spawned || pawn.Dead || pawn.Downed
             || !pawn.Drafted || !pawn.IsGhoul || !pawn.IsColonySubhumanPlayerControlled)
         {
             return;
         }
 
-        Ability ability = pawn.abilities?.GetAbility(abilityDef);
+        // 激素心脏等植入体授予的能力在「临时能力」列表里，必须 includeTemporary。
+        Ability ability = pawn.abilities?.GetAbility(abilityDef, includeTemporary: true);
         if (ability == null || !ability.CanCast || ability.CooldownTicksRemaining > 0)
         {
             return;
@@ -127,37 +97,65 @@ public sealed class CompGhoulAutoFrenzy : ThingComp
         }
 
         // GhoulFrenzy 是 nonInterruptingSelfCast，QueueCastingJob 会立即自我释放。
-        GasProbe.LogOncePerPawn(pawn, "auto-casting GhoulFrenzy for " + pawn.LabelShort);
         ability.QueueCastingJob(pawn, pawn);
-    }
-
-    public override void PostExposeData()
-    {
-        Scribe_Values.Look(ref autoFrenzy, "autoFrenzy", false);
     }
 }
 
 /// <summary>
-/// 为食尸鬼狂热的能力按钮挂上快捷键（Mod 设置里的按键绑定，默认 None）。
+/// 为食尸鬼注入「自动激素心脏」开关 gizmo（任何种族的食尸鬼均可），
+/// 并为食尸鬼狂热的能力按钮挂上快捷键（Mod 设置里的按键绑定，默认 None）。
 /// </summary>
 [HarmonyPatch(typeof(Pawn), nameof(Pawn.GetGizmos))]
-internal static class PawnGetGizmos_GhoulFrenzyHotkeyPatch
+internal static class PawnGetGizmos_GhoulFrenzyPatch
 {
-    private static void Postfix(Pawn __instance, IEnumerable<Gizmo> __result)
+    private static void Postfix(Pawn __instance, ref IEnumerable<Gizmo> __result)
     {
-        KeyBindingDef hotkey = GhoulAutoFrenzyDefs.GhoulFrenzyHotkey;
-        AbilityDef abilityDef = GhoulAutoFrenzyDefs.GhoulFrenzyAbility;
-        if (hotkey == null || abilityDef == null || __instance == null || !__instance.IsGhoul)
-        {
-            return;
-        }
+        __result = Process(__instance, __result);
+    }
 
-        foreach (Gizmo gizmo in __result)
+    private static IEnumerable<Gizmo> Process(Pawn pawn, IEnumerable<Gizmo> gizmos)
+    {
+        AbilityDef abilityDef = GhoulAutoFrenzyDefs.GhoulFrenzyAbility;
+        KeyBindingDef hotkey = GhoulAutoFrenzyDefs.GhoulFrenzyHotkey;
+
+        foreach (Gizmo gizmo in gizmos)
         {
-            if (gizmo is Command_Ability commandAbility && commandAbility.Ability?.def == abilityDef && commandAbility.hotKey == null)
+            if (abilityDef != null && hotkey != null
+                && gizmo is Command_Ability commandAbility
+                && commandAbility.Ability?.def == abilityDef
+                && commandAbility.hotKey == null)
             {
                 commandAbility.hotKey = hotkey;
             }
+            yield return gizmo;
         }
+
+        if (!GhoulAttackSpinMod.Settings.enableAutoFrenzy || abilityDef == null)
+        {
+            yield break;
+        }
+        if (pawn == null || !pawn.IsGhoul || !pawn.IsColonySubhumanPlayerControlled || !pawn.Drafted)
+        {
+            yield break;
+        }
+        // 激素心脏等植入体授予的能力在「临时能力」列表里，必须 includeTemporary。
+        if (pawn.abilities?.GetAbility(abilityDef, includeTemporary: true) == null)
+        {
+            yield break;
+        }
+        AutoFrenzyState state = AutoFrenzyState.Instance;
+        if (state == null)
+        {
+            yield break;
+        }
+
+        yield return new Command_Toggle
+        {
+            defaultLabel = "GAS_AutoFrenzyLabel".Translate(),
+            defaultDesc = "GAS_AutoFrenzyDesc".Translate(),
+            icon = abilityDef.uiIcon,
+            isActive = () => state.IsEnabled(pawn),
+            toggleAction = () => state.SetEnabled(pawn, !state.IsEnabled(pawn))
+        };
     }
 }
