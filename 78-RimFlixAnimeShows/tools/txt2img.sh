@@ -22,7 +22,7 @@ set -euo pipefail
 
 SERVER="http://127.0.0.1:8188"
 COMFY_DIR="$HOME/comfy/ComfyUI"
-CKPT="oneObsession_v23.safetensors"
+CKPT="lustifyNSFWCheckpoint_zenithV9.safetensors"
 WIDTH=1216; HEIGHT=512; SEED=-1; STEPS=20; CFG="5.0"
 # 默认负向提示词:质量词 + 硬性屏蔽露点/全裸(想改尺度就改这一行)
 NEG="lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped"
