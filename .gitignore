@@ -4,6 +4,11 @@ bin/
 
 mono_crash.*
 
+# 78-RimFlixAnimeShows 生成的节目资产:体积大且可再生,只保留本地文件,不入库
+78-RimFlixAnimeShows/Defs/ShowDefs/
+78-RimFlixAnimeShows/Textures/Shows/
+78-RimFlixAnimeShows/tools/rimflix-tmp/
+
 *.zip
 *.tar.gz
 *.tar.bz2
