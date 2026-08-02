@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using RimWorld;
 using Verse;
 
@@ -17,22 +16,17 @@ namespace ResearchPrerequisites
 
         public static ResearchQueue Instance => Current.Game?.GetComponent<ResearchQueue>();
 
-        public List<ResearchProjectDef> QueueFor(ResearchProjectDef project)
+        public List<ResearchProjectDef> QueueFor(ResearchCategory category)
         {
-            return QueueFor(project?.knowledgeCategory);
-        }
-
-        public List<ResearchProjectDef> QueueFor(KnowledgeCategoryDef category)
-        {
-            if (category == null)
+            switch (category)
             {
-                return normalQueue;
+                case ResearchCategory.AnomalyBasic:
+                    return anomalyBasicQueue;
+                case ResearchCategory.AnomalyAdvanced:
+                    return anomalyAdvancedQueue;
+                default:
+                    return normalQueue;
             }
-            if (category == KnowledgeCategoryDefOf.Basic)
-            {
-                return anomalyBasicQueue;
-            }
-            return anomalyAdvancedQueue;
         }
 
         public void Enqueue(ResearchProjectDef project)
@@ -41,7 +35,7 @@ namespace ResearchPrerequisites
             {
                 return;
             }
-            List<ResearchProjectDef> queue = QueueFor(project);
+            List<ResearchProjectDef> queue = QueueFor(ResearchCategories.Of(project));
             AddWithPrerequisites(queue, project);
             DistinctInPlace(queue);
         }
@@ -57,7 +51,7 @@ namespace ResearchPrerequisites
             {
                 return 0;
             }
-            List<ResearchProjectDef> queue = QueueFor(project);
+            List<ResearchProjectDef> queue = QueueFor(ResearchCategories.Of(project));
             List<ResearchProjectDef> chain = new List<ResearchProjectDef>();
             AddWithPrerequisites(chain, project);
             // 菱形依赖(同一前置被多条路径引用)会在递归中重复加入,先去重;
@@ -68,7 +62,7 @@ namespace ResearchPrerequisites
             return chain.Count;
         }
 
-        public void ClearQueue(KnowledgeCategoryDef category)
+        public void ClearQueue(ResearchCategory category)
         {
             QueueFor(category).Clear();
         }
@@ -76,7 +70,7 @@ namespace ResearchPrerequisites
         /// <summary>
         /// 弹出队首所有已完成/为 null 的项。
         /// </summary>
-        public void PopFinishedHeads(KnowledgeCategoryDef category)
+        public void PopFinishedHeads(ResearchCategory category)
         {
             List<ResearchProjectDef> queue = QueueFor(category);
             while (queue.Count > 0 && (queue[0] == null || queue[0].IsFinished))
@@ -88,7 +82,7 @@ namespace ResearchPrerequisites
         /// <summary>
         /// 弹出已完成队首后返回新队首。只查看,不启动、不移除。
         /// </summary>
-        public ResearchProjectDef PeekHead(KnowledgeCategoryDef category)
+        public ResearchProjectDef PeekHead(ResearchCategory category)
         {
             PopFinishedHeads(category);
             List<ResearchProjectDef> queue = QueueFor(category);
@@ -105,7 +99,7 @@ namespace ResearchPrerequisites
             {
                 return;
             }
-            List<ResearchProjectDef> queue = QueueFor(project);
+            List<ResearchProjectDef> queue = QueueFor(ResearchCategories.Of(project));
             queue.Remove(project);
             queue.Insert(0, project);
         }
@@ -150,11 +144,11 @@ namespace ResearchPrerequisites
         /// </summary>
         public override void GameComponentTick()
         {
-            ResearchQueueController.AdvanceCategory(null);
+            ResearchQueueController.AdvanceCategory(ResearchCategory.Normal);
             if (ModsConfig.AnomalyActive)
             {
-                ResearchQueueController.AdvanceCategory(KnowledgeCategoryDefOf.Basic);
-                ResearchQueueController.AdvanceCategory(KnowledgeCategoryDefOf.Advanced);
+                ResearchQueueController.AdvanceCategory(ResearchCategory.AnomalyBasic);
+                ResearchQueueController.AdvanceCategory(ResearchCategory.AnomalyAdvanced);
             }
         }
 

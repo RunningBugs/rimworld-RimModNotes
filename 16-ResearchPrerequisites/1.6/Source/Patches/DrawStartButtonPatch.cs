@@ -49,7 +49,7 @@ namespace ResearchPrerequisites
                 if (!jump)
                 {
                     queue.Enqueue(project);
-                    ResearchQueueController.AdvanceCategory(project.knowledgeCategory);
+                    ResearchQueueController.AdvanceCategory(ResearchCategories.Of(project));
                 }
                 else
                 {

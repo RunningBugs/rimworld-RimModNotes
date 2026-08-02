@@ -13,7 +13,7 @@ namespace ResearchPrerequisites
             {
                 return;
             }
-            ResearchQueue.Instance?.ClearQueue(proj.knowledgeCategory);
+            ResearchQueue.Instance?.ClearQueue(ResearchCategories.Of(proj));
         }
     }
 }
