@@ -20,7 +20,7 @@ namespace ResearchPrerequisites
             {
                 return;
             }
-            List<ResearchProjectDef> list = queue.QueueFor(project);
+            List<ResearchProjectDef> list = queue.QueueFor(ResearchCategories.Of(project));
             ResearchProjectDef current = Find.ResearchManager.GetProject(project.knowledgeCategory);
             if (list.Count == 0 && current == null)
             {
@@ -31,7 +31,7 @@ namespace ResearchPrerequisites
             if ((list.Count > 0 || current != null) && Widgets.ButtonText(new Rect(rect.x, y, rect.width, Text.LineHeight), "ClearResearchQueue".Translate()))
             {
                 // 清空队列并停止当前研究(StopProject 会经 StopProjectPatch 再次清队,为无害 no-op)
-                queue.ClearQueue(project.knowledgeCategory);
+                queue.ClearQueue(ResearchCategories.Of(project));
                 if (current != null)
                 {
                     Find.ResearchManager.StopProject(current);

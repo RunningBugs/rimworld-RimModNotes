@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -72,7 +71,7 @@ namespace ResearchPrerequisites
         {
             Find.ResearchManager.SetCurrentProject(projectToStart);
             TutorSystem.Notify_Event("StartResearchProject");
-            if ((!ModsConfig.AnomalyActive || projectToStart.knowledgeCategory == null) && !ColonistsHaveResearchBench)
+            if ((!ModsConfig.AnomalyActive || ResearchCategories.Of(projectToStart) == ResearchCategory.Normal) && !ColonistsHaveResearchBench)
             {
                 Messages.Message("MessageResearchMenuWithoutBench".Translate(), MessageTypeDefOf.CautionInput);
             }
@@ -107,21 +106,20 @@ namespace ResearchPrerequisites
         }
 
         /// <summary>
-        /// 每个知识类别上次实际尝试启动的队首。
+        /// 每个知识类别上次实际尝试启动的队首,按 ResearchCategory 枚举值索引。
         /// 玩家在 meme 确认弹窗取消后,同一队首不再每 tick 重复弹窗,
         /// 直到队首变化(完成/入队/插队/清空)才恢复自动尝试。
         /// </summary>
-        private static readonly Dictionary<KnowledgeCategoryDef, ResearchProjectDef> LastAttemptedHead =
-            new Dictionary<KnowledgeCategoryDef, ResearchProjectDef>();
+        private static readonly ResearchProjectDef[] LastAttemptedHead = new ResearchProjectDef[ResearchCategories.Count];
 
         /// <summary>
         /// 推进一个类别:槽位被占用则自愈"当前研究 = 队首"不变量;
         /// 槽位空闲则严格按队首推进,队首卡住则保留队列等待。
         /// 由 GameComponentTick 每 tick 调用,也可在入队后立即调用。
         /// </summary>
-        public static void AdvanceCategory(KnowledgeCategoryDef category)
+        public static void AdvanceCategory(ResearchCategory category)
         {
-            if (category != null && !ModsConfig.AnomalyActive)
+            if (category != ResearchCategory.Normal && !ModsConfig.AnomalyActive)
             {
                 return;
             }
@@ -130,7 +128,7 @@ namespace ResearchPrerequisites
             {
                 return;
             }
-            ResearchProjectDef current = Find.ResearchManager.GetProject(category);
+            ResearchProjectDef current = Find.ResearchManager.GetProject(ResearchCategories.ToVanillaDef(category));
             if (current != null)
             {
                 // 自愈:当前研究必须在队首(同时覆盖旧存档迁移与外部启动路径)。
@@ -138,13 +136,13 @@ namespace ResearchPrerequisites
                 {
                     queue.MoveToHead(current);
                 }
-                LastAttemptedHead[category] = current;
+                LastAttemptedHead[(int)category] = current;
                 return;
             }
             ResearchProjectDef head = queue.PeekHead(category);
             if (head == null)
             {
-                LastAttemptedHead.Remove(category);
+                LastAttemptedHead[(int)category] = null;
                 return;
             }
             if (!head.CanStartNow)
@@ -152,12 +150,12 @@ namespace ResearchPrerequisites
                 // 队首卡住:保留队列等待,不记录,解锁后自动启动。
                 return;
             }
-            if (LastAttemptedHead.TryGetValue(category, out ResearchProjectDef last) && last == head)
+            if (LastAttemptedHead[(int)category] == head)
             {
                 // 已尝试过且被玩家取消,等待队首变化。
                 return;
             }
-            LastAttemptedHead[category] = head;
+            LastAttemptedHead[(int)category] = head;
             AttemptBeginResearch(head);
         }
 
@@ -174,7 +172,7 @@ namespace ResearchPrerequisites
             {
                 return;
             }
-            KnowledgeCategoryDef category = project.knowledgeCategory;
+            ResearchCategory category = ResearchCategories.Of(project);
             queue.JumpChainToFront(project);
             ResearchProjectDef head = queue.PeekHead(category);
             if (head == null || !head.CanStartNow)
@@ -182,12 +180,12 @@ namespace ResearchPrerequisites
                 // 链上暂无可开始项目(如缺科技印花/研究台),链已排在队首待命。
                 return;
             }
-            if (Find.ResearchManager.GetProject(category) == head)
+            if (Find.ResearchManager.GetProject(ResearchCategories.ToVanillaDef(category)) == head)
             {
                 // 链首已在研究中,无需动作。
                 return;
             }
-            LastAttemptedHead[category] = head;
+            LastAttemptedHead[(int)category] = head;
             AttemptBeginResearch(head);
         }
     }
