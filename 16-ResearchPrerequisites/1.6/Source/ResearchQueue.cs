@@ -46,13 +46,6 @@ namespace ResearchPrerequisites
             DistinctInPlace(queue);
         }
 
-        public void JumpToFront(ResearchProjectDef project)
-        {
-            List<ResearchProjectDef> queue = QueueFor(project);
-            queue.Remove(project);
-            queue.Insert(0, project);
-        }
-
         /// <summary>
         /// 将项目及其所有未完成的前置(含隐藏前置,按依赖顺序)整体插入队首,
         /// 队列中已有的同项会被提前。用于不能立即开始的项目尽快启动。
@@ -75,16 +68,46 @@ namespace ResearchPrerequisites
             return chain.Count;
         }
 
-        public ResearchProjectDef NextStartable(KnowledgeCategoryDef category)
-        {
-            List<ResearchProjectDef> queue = QueueFor(category);
-            queue.RemoveAll(p => p == null || p.IsFinished);
-            return queue.FirstOrDefault(p => p.CanStartNow);
-        }
-
         public void ClearQueue(KnowledgeCategoryDef category)
         {
             QueueFor(category).Clear();
+        }
+
+        /// <summary>
+        /// 弹出队首所有已完成/为 null 的项。
+        /// </summary>
+        public void PopFinishedHeads(KnowledgeCategoryDef category)
+        {
+            List<ResearchProjectDef> queue = QueueFor(category);
+            while (queue.Count > 0 && (queue[0] == null || queue[0].IsFinished))
+            {
+                queue.RemoveAt(0);
+            }
+        }
+
+        /// <summary>
+        /// 弹出已完成队首后返回新队首。只查看,不启动、不移除。
+        /// </summary>
+        public ResearchProjectDef PeekHead(KnowledgeCategoryDef category)
+        {
+            PopFinishedHeads(category);
+            List<ResearchProjectDef> queue = QueueFor(category);
+            return queue.Count > 0 ? queue[0] : null;
+        }
+
+        /// <summary>
+        /// 把项目挪到对应队列的队首;不在队列中则插入队首。
+        /// 用于维持"当前研究 = 队首"的不变量。
+        /// </summary>
+        public void MoveToHead(ResearchProjectDef project)
+        {
+            if (project == null)
+            {
+                return;
+            }
+            List<ResearchProjectDef> queue = QueueFor(project);
+            queue.Remove(project);
+            queue.Insert(0, project);
         }
 
         private static void AddWithPrerequisites(List<ResearchProjectDef> queue, ResearchProjectDef project)
@@ -119,6 +142,20 @@ namespace ResearchPrerequisites
         {
             HashSet<ResearchProjectDef> seen = new HashSet<ResearchProjectDef>();
             queue.RemoveAll(p => !seen.Add(p));
+        }
+
+        /// <summary>
+        /// 每 tick 推进各类别队列:自愈"当前研究 = 队首"不变量,
+        /// 槽位空闲时严格按队首启动下一项。
+        /// </summary>
+        public override void GameComponentTick()
+        {
+            ResearchQueueController.AdvanceCategory(null);
+            if (ModsConfig.AnomalyActive)
+            {
+                ResearchQueueController.AdvanceCategory(KnowledgeCategoryDefOf.Basic);
+                ResearchQueueController.AdvanceCategory(KnowledgeCategoryDefOf.Advanced);
+            }
         }
 
         public override void ExposeData()
