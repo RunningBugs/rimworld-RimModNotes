@@ -29,7 +29,7 @@ public sealed class RimLocksmithSettings : ModSettings
         listing.CheckboxLabeled("RimLocksmith.ApplyDefaultToNewColonyDoors".Translate(), ref ApplyDefaultToNewColonyDoors, "RimLocksmith.ApplyDefaultToNewColonyDoorsDesc".Translate());
         listing.GapLine();
         listing.Label("RimLocksmith.DefaultPreset".Translate());
-        UIUtil.DrawConfigToggles(listing, DefaultConfig, markConfigured: false);
+        UIUtil.DrawConfigControls(listing, DefaultConfig, markConfigured: false);
         listing.GapLine();
         if (listing.ButtonText("RimLocksmith.ApplyDefaultToUnconfiguredColonyDoors".Translate()))
         {

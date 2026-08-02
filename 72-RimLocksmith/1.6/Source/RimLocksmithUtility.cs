@@ -14,13 +14,14 @@ public static class RimLocksmithUtility
 
     public static CompRimLocksmithDoor GetComp(Building_Door door) => door?.TryGetComp<CompRimLocksmithDoor>();
 
-    public static bool TryAllowsOpen(Building_Door door, Pawn pawn, out bool allowed)
+    /// <summary>
+    /// postfix 只收窄语义:该门配置是否要把这个(原版已允许开门的)pawn 拦下。
+    /// 敌人/野生动物/囚犯/其他不可配置类别与原版的特殊放行
+    /// (CanOpenAnyDoor:越狱/叛乱/商队/远行队/野人)一律不动。
+    /// </summary>
+    public static bool ShouldDeny(Building_Door door, Pawn pawn)
     {
-        allowed = false;
-        // Do not read the computed free-passage property here. It can call WillCloseSoon,
-        // which calls PawnCanOpen, recursively re-entering this prefix and overflowing
-        // the stack while doors tick. Open is a direct openInt-backed property.
-        if (!IsColonyDoor(door) || pawn == null || door.Open)
+        if (!IsColonyDoor(door) || pawn == null)
         {
             return false;
         }
@@ -29,11 +30,17 @@ public static class RimLocksmithUtility
         {
             return false;
         }
+        if (pawn.CanOpenAnyDoor)
+        {
+            return false;
+        }
         LockConfigData config = comp.EnsureConfig();
-        PawnAccessFacts pawnFacts = PawnAccessFactsFactory.FromPawn(pawn);
-        DoorAccessFacts doorFacts = new DoorAccessFacts(isColonyDoor: true, isOpenOrFreePassage: false, roamerCanOpen: door.def?.building?.roamerCanOpen ?? false);
-        allowed = LockPolicy.AllowsOpeningClosedDoor(pawnFacts, doorFacts, config);
-        return true;
+        PawnAccessFacts facts = PawnAccessFactsFactory.FromPawn(pawn);
+        if (!LockPolicy.IsConfigurable(facts.Category))
+        {
+            return false;
+        }
+        return !LockPolicy.Allows(config, facts);
     }
 
     public static List<Building_Door> SelectedDoors()

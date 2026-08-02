@@ -1,4 +1,3 @@
-using System.Reflection;
 using RimWorld;
 using RunningBugs.RimLocksmith.Core;
 using Verse;
@@ -7,77 +6,61 @@ namespace RunningBugs.RimLocksmith;
 
 public static class PawnAccessFactsFactory
 {
+    /// <summary>
+    /// Locks 式分类:先按派系敌对性分流(敌对/无派系不可配置,跟随原版),
+    /// 再按生物类型与身份细分。商队/访客的动物归入 Guest,不再误当野生动物。
+    /// </summary>
     public static PawnAccessFacts FromPawn(Pawn pawn)
     {
         if (pawn == null)
         {
-            return new PawnAccessFacts(AccessCategory.Other, canOpenDoors: false);
+            return new PawnAccessFacts(AccessCategory.Other);
         }
-
-        bool canOpenDoors = pawn.CanOpenDoors;
-        bool isFenceBlockedRoamer = IsFenceBlockedRoamer(pawn);
-        bool isRopedByPawn = pawn.roping?.IsRopedByPawn ?? false;
-        bool roperCanOpen = isRopedByPawn && pawn.roping.RopedByPawn != null && pawn.roping.RopedByPawn.CanOpenDoors;
-
-        if (pawn.Faction != null && pawn.Faction.HostileTo(Faction.OfPlayer)) return Make(AccessCategory.Hostile);
-        if (pawn.IsPrisonerOfColony) return Make(AccessCategory.Prisoner);
-        if (pawn.IsSlaveOfColony) return Make(AccessCategory.Slave);
-        if (ModsConfig.BiotechActive && pawn.IsColonyMech) return Make(AccessCategory.ColonyMechanoid);
-        if (pawn.Faction == Faction.OfPlayer && pawn.RaceProps.Animal) return Make(AccessCategory.ColonyAnimal);
-        if (pawn.IsColonist || pawn.Faction == Faction.OfPlayer) return Make(AccessCategory.Colonist);
-        if (pawn.RaceProps.Animal) return Make(AccessCategory.WildAnimal);
-        if (pawn.TraderKind != null) return Make(AccessCategory.Trader);
-        if (pawn.Faction != null && !pawn.Faction.HostileTo(Faction.OfPlayer))
-        {
-            return pawn.Faction.PlayerGoodwill >= 75
-                ? Make(AccessCategory.Ally)
-                : Make(AccessCategory.Guest);
-        }
-        return Make(AccessCategory.Other);
 
         PawnAccessFacts Make(AccessCategory category)
         {
-            return new PawnAccessFacts(category, canOpenDoors, isFenceBlockedRoamer, isRopedByPawn, roperCanOpen);
+            float bodySize = pawn.RaceProps?.baseBodySize ?? 0f;
+            bool hasOverseer = ModsConfig.BiotechActive && pawn.GetOverseer() != null;
+            return new PawnAccessFacts(category, bodySize, hasOverseer);
         }
-    }
 
-    public static bool IsFenceBlockedRoamer(Pawn pawn)
-    {
-        if (pawn?.RaceProps?.FenceBlocked != true)
+        if (pawn.Faction != null && pawn.Faction.HostileTo(Faction.OfPlayer))
         {
-            return false;
+            return Make(AccessCategory.Hostile);
         }
-
-        return !HasObjectSpecificRoamSuppression(pawn);
-    }
-
-    private static bool HasObjectSpecificRoamSuppression(Pawn pawn)
-    {
-        if (!ModsConfig.OdysseyActive || pawn?.health?.hediffSet?.hediffs == null)
+        if (pawn.Faction == Faction.OfPlayer)
         {
-            return false;
+            if (pawn.RaceProps.Animal)
+            {
+                return Make(AccessCategory.ColonyAnimal);
+            }
+            if (ModsConfig.BiotechActive && pawn.IsColonyMech)
+            {
+                return Make(AccessCategory.ColonyMechanoid);
+            }
+            if (pawn.IsSlaveOfColony)
+            {
+                return Make(AccessCategory.Slave);
+            }
+            return Make(AccessCategory.Colonist);
         }
-
-        foreach (Hediff hediff in pawn.health.hediffSet.hediffs)
+        if (pawn.IsPrisonerOfColony)
         {
-            if (hediff == null)
-            {
-                continue;
-            }
-
-            if (hediff.def?.defName == "SentienceCatalyst")
-            {
-                return true;
-            }
-
-            object curStage = hediff.CurStage;
-            FieldInfo removeRoamMtbField = curStage?.GetType().GetField("removeRoamMtb", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            if (removeRoamMtbField != null && removeRoamMtbField.GetValue(curStage) is bool removeRoamMtb && removeRoamMtb)
-            {
-                return true;
-            }
+            return Make(AccessCategory.Prisoner);
         }
-
-        return false;
+        if (pawn.Faction == null)
+        {
+            return Make(pawn.RaceProps?.Animal == true ? AccessCategory.WildAnimal : AccessCategory.Other);
+        }
+        // 非敌对外来派系:动物跟随访客开关(商队驮兽不再误归野生动物)。
+        if (pawn.RaceProps.Animal)
+        {
+            return Make(AccessCategory.Guest);
+        }
+        if (pawn.TraderKind != null)
+        {
+            return Make(AccessCategory.Trader);
+        }
+        return Make(AccessCategory.Guest);
     }
 }

@@ -9,20 +9,30 @@
   <RimLocksmith.ApplyDefaultToAllColonyDoors>应用默认到所有殖民地门</RimLocksmith.ApplyDefaultToAllColonyDoors>
   <RimLocksmith.ResetDefaultPreset>重置默认配置</RimLocksmith.ResetDefaultPreset>
   <RimLocksmith.AppliedDefaultCount>已将边缘锁匠默认配置应用到 {0} 扇殖民地门。</RimLocksmith.AppliedDefaultCount>
-  <RimLocksmith.SelectionSummary>正在配置 {0} 扇殖民地门。将忽略 {1} 扇非殖民地或不支持的门。</RimLocksmith.SelectionSummary>
-  <RimLocksmith.NoConfigurableDoors>没有选中可配置的殖民地门。</RimLocksmith.NoConfigurableDoors>
   <RimLocksmith.Mixed>混合</RimLocksmith.Mixed>
-  <RimLocksmith.ResetSelectedToDefault>将选中的殖民地门重置为默认配置</RimLocksmith.ResetSelectedToDefault>
-  <RimLocksmith.AllowOpenTooltip>控制该类别是否可以主动打开这扇关闭的殖民地门。已经打开的门仍按游戏原版规则通行。</RimLocksmith.AllowOpenTooltip>
+  <RimLocksmith.MixedClickToUnify>混合,点击统一</RimLocksmith.MixedClickToUnify>
+  <RimLocksmith.CurrentConfig>当前配置</RimLocksmith.CurrentConfig>
+  <RimLocksmith.CurrentConfigMerged>当前配置({0} 扇殖民地门合并视图,忽略 {1} 扇)</RimLocksmith.CurrentConfigMerged>
+  <RimLocksmith.VanillaNote>敌人、囚犯、野生动物始终遵循原版规则,不受此配置影响。</RimLocksmith.VanillaNote>
+  <RimLocksmith.State.Allowed>允许</RimLocksmith.State.Allowed>
+  <RimLocksmith.State.Denied>禁止</RimLocksmith.State.Denied>
+  <RimLocksmith.Edit>编辑…</RimLocksmith.Edit>
+  <RimLocksmith.Copy>复制</RimLocksmith.Copy>
+  <RimLocksmith.Paste>粘贴</RimLocksmith.Paste>
+  <RimLocksmith.ResetToDefault>重置默认</RimLocksmith.ResetToDefault>
+  <RimLocksmith.EditDialogTitle>编辑门锁配置({0} 扇)</RimLocksmith.EditDialogTitle>
+  <RimLocksmith.NoConfigurableDoors>没有选中可配置的殖民地门。</RimLocksmith.NoConfigurableDoors>
+  <RimLocksmith.AllowOpenTooltip>控制该类别是否可以主动打开这扇关闭的殖民地门。已经打开的门仍按游戏原版规则通行。敌人、囚犯、野生动物等始终遵循原版规则,不受此处控制。</RimLocksmith.AllowOpenTooltip>
   <RimLocksmith.AllowColonists>殖民者</RimLocksmith.AllowColonists>
   <RimLocksmith.AllowSlaves>奴隶</RimLocksmith.AllowSlaves>
-  <RimLocksmith.AllowPrisoners>囚犯</RimLocksmith.AllowPrisoners>
-  <RimLocksmith.AllowColonyAnimals>殖民地动物</RimLocksmith.AllowColonyAnimals>
-  <RimLocksmith.AllowColonyMechanoids>殖民地机械体</RimLocksmith.AllowColonyMechanoids>
-  <RimLocksmith.AllowGuests>访客</RimLocksmith.AllowGuests>
-  <RimLocksmith.AllowAllies>盟友</RimLocksmith.AllowAllies>
+  <RimLocksmith.AllowGuests>访客(含外来动物)</RimLocksmith.AllowGuests>
   <RimLocksmith.AllowTraders>商队</RimLocksmith.AllowTraders>
-  <RimLocksmith.AllowHostiles>敌人</RimLocksmith.AllowHostiles>
-  <RimLocksmith.AllowWildAnimals>野生动物</RimLocksmith.AllowWildAnimals>
-  <RimLocksmith.AllowOthers>其他对象</RimLocksmith.AllowOthers>
+  <RimLocksmith.AnimalAccess>殖民地动物</RimLocksmith.AnimalAccess>
+  <RimLocksmith.AnimalAccess.None>禁止</RimLocksmith.AnimalAccess.None>
+  <RimLocksmith.AnimalAccess.OnlyPets>仅宠物(体型≤0.86)</RimLocksmith.AnimalAccess.OnlyPets>
+  <RimLocksmith.AnimalAccess.All>全部允许</RimLocksmith.AnimalAccess.All>
+  <RimLocksmith.MechAccess>殖民地机械体</RimLocksmith.MechAccess>
+  <RimLocksmith.MechAccess.None>禁止</RimLocksmith.MechAccess.None>
+  <RimLocksmith.MechAccess.OnlyOverseen>仅受控机械体</RimLocksmith.MechAccess.OnlyOverseen>
+  <RimLocksmith.MechAccess.All>全部允许</RimLocksmith.MechAccess.All>
 </LanguageData>
