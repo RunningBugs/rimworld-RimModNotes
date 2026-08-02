@@ -42,16 +42,17 @@ namespace ResearchPrerequisites
             y += Text.LineHeight;
             Widgets.Label(new Rect(rect.x, y, rect.width, Text.LineHeight), "CurrentResearchQueue".Translate());
             y += Text.LineHeight;
-            if (current != null)
-            {
-                // 当前正在研究的项目显示为队首,加粗 + 箭头标记
-                Widgets.Label(new Rect(rect.x + 10f, y, rect.width - 10f, Text.LineHeight),
-                    "<b>→ " + current.LabelCap + " (" + "InProgress".Translate() + ")</b>");
-                y += Text.LineHeight;
-            }
+            // 队列包含当前研究(队首):单段绘制,进行中的项加粗 + 箭头标记。
             foreach (ResearchProjectDef p in list)
             {
-                Widgets.Label(new Rect(rect.x + 10f, y, rect.width - 10f, Text.LineHeight), p.LabelCap);
+                if (p == null)
+                {
+                    continue;
+                }
+                string text = p == current
+                    ? "<b>→ " + p.LabelCap + " (" + "InProgress".Translate() + ")</b>"
+                    : p.LabelCap;
+                Widgets.Label(new Rect(rect.x + 10f, y, rect.width - 10f, Text.LineHeight), text);
                 y += Text.LineHeight;
             }
             __result = y - rect.y;

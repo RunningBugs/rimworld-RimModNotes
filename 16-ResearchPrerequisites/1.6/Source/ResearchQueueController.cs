@@ -107,58 +107,65 @@ namespace ResearchPrerequisites
         }
 
         /// <summary>
-        /// 槽位空闲时,从对应队列取下一个可立即开始的项目开始研究,并将其移出队列。
-        /// 注意:若 meme 确认弹窗被玩家取消,该项目仍已移出队列(可接受的边界行为)。
+        /// 每个知识类别上次实际尝试启动的队首。
+        /// 玩家在 meme 确认弹窗取消后,同一队首不再每 tick 重复弹窗,
+        /// 直到队首变化(完成/入队/插队/清空)才恢复自动尝试。
         /// </summary>
-        public static void TryStartNext(KnowledgeCategoryDef category)
-        {
-            if (Find.ResearchManager.GetProject(category) != null)
-            {
-                return;
-            }
-            ResearchQueue queue = ResearchQueue.Instance;
-            ResearchProjectDef next = queue?.NextStartable(category);
-            if (next == null)
-            {
-                return;
-            }
-            AttemptBeginResearch(next);
-            queue.QueueFor(category).Remove(next);
-        }
+        private static readonly Dictionary<KnowledgeCategoryDef, ResearchProjectDef> LastAttemptedHead =
+            new Dictionary<KnowledgeCategoryDef, ResearchProjectDef>();
 
         /// <summary>
-        /// 插队到队首并立即开始研究。被挤下的当前研究放回队列第 1 位
-        /// (进度由原版按项目保存,不会丢),插队项目完成后会自动继续。
+        /// 推进一个类别:槽位被占用则自愈"当前研究 = 队首"不变量;
+        /// 槽位空闲则严格按队首推进,队首卡住则保留队列等待。
+        /// 由 GameComponentTick 每 tick 调用,也可在入队后立即调用。
         /// </summary>
-        public static void JumpToFrontAndStart(ResearchProjectDef project)
+        public static void AdvanceCategory(KnowledgeCategoryDef category)
         {
+            if (category != null && !ModsConfig.AnomalyActive)
+            {
+                return;
+            }
             ResearchQueue queue = ResearchQueue.Instance;
-            if (queue == null || project == null)
+            if (queue == null)
             {
                 return;
             }
-            KnowledgeCategoryDef category = project.knowledgeCategory;
-            queue.JumpToFront(project);
             ResearchProjectDef current = Find.ResearchManager.GetProject(category);
-            if (current == project)
-            {
-                return;
-            }
             if (current != null)
             {
-                // 当前研究可能此前已在队列中(如通过原版按钮手动开始),
-                // 先移除再插回第 1 位,避免重复。
-                queue.QueueFor(category).Remove(current);
-                queue.QueueFor(category).Insert(1, current);
+                // 自愈:当前研究必须在队首(同时覆盖旧存档迁移与外部启动路径)。
+                if (queue.PeekHead(category) != current)
+                {
+                    queue.MoveToHead(current);
+                }
+                LastAttemptedHead[category] = current;
+                return;
             }
-            AttemptBeginResearch(project);
-            queue.QueueFor(category).Remove(project);
+            ResearchProjectDef head = queue.PeekHead(category);
+            if (head == null)
+            {
+                LastAttemptedHead.Remove(category);
+                return;
+            }
+            if (!head.CanStartNow)
+            {
+                // 队首卡住:保留队列等待,不记录,解锁后自动启动。
+                return;
+            }
+            if (LastAttemptedHead.TryGetValue(category, out ResearchProjectDef last) && last == head)
+            {
+                // 已尝试过且被玩家取消,等待队首变化。
+                return;
+            }
+            LastAttemptedHead[category] = head;
+            AttemptBeginResearch(head);
         }
 
         /// <summary>
-        /// 不能立即开始的项目:将其与未完成的前置整体插队到队首,并立即开始
-        /// 链上第一个可开始的项目。被挤下的当前研究放回整条链之后
-        /// (进度由原版按项目保存,不会丢),链上项目完成后按顺序自动继续。
+        /// 插队到队首并尽快启动:将项目及其未完成的前置整体插到队首,
+        /// 链首可开始则立即开始。被挤下的当前研究留在队列中
+        /// (进度由原版按项目保存),之后按队列顺序自动恢复。
+        /// 可立即开始的项目其前置链就是自身,本入口涵盖全部插队场景。
         /// </summary>
         public static void JumpChainToFrontAndStart(ResearchProjectDef project)
         {
@@ -168,29 +175,20 @@ namespace ResearchPrerequisites
                 return;
             }
             KnowledgeCategoryDef category = project.knowledgeCategory;
-            int chainLength = queue.JumpChainToFront(project);
-            List<ResearchProjectDef> list = queue.QueueFor(category);
-            ResearchProjectDef first = list.FirstOrDefault(p => p.CanStartNow);
-            if (first == null)
+            queue.JumpChainToFront(project);
+            ResearchProjectDef head = queue.PeekHead(category);
+            if (head == null || !head.CanStartNow)
             {
                 // 链上暂无可开始项目(如缺科技印花/研究台),链已排在队首待命。
                 return;
             }
-            ResearchProjectDef current = Find.ResearchManager.GetProject(category);
-            if (current == first)
+            if (Find.ResearchManager.GetProject(category) == head)
             {
+                // 链首已在研究中,无需动作。
                 return;
             }
-            if (current != null)
-            {
-                // 必须放在整条链之后,否则当前研究会插队到链中间,
-                // 链首完成后又抢先恢复,违背"最快启动目标项目"的意图。
-                // 先移除再插入,避免当前研究已在队列中时出现重复。
-                list.Remove(current);
-                list.Insert(Math.Min(chainLength, list.Count), current);
-            }
-            AttemptBeginResearch(first);
-            list.Remove(first);
+            LastAttemptedHead[category] = head;
+            AttemptBeginResearch(head);
         }
     }
 }

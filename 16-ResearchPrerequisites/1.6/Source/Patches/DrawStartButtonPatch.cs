@@ -49,15 +49,11 @@ namespace ResearchPrerequisites
                 if (!jump)
                 {
                     queue.Enqueue(project);
-                    ResearchQueueController.TryStartNext(project.knowledgeCategory);
-                }
-                else if (project.CanStartNow)
-                {
-                    ResearchQueueController.JumpToFrontAndStart(project);
+                    ResearchQueueController.AdvanceCategory(project.knowledgeCategory);
                 }
                 else
                 {
-                    // 不能立即开始:连同未完成的前置整体插队,尽快启动
+                    // 可立即开始的项目其前置链就是自身,统一走链式插队
                     ResearchQueueController.JumpChainToFrontAndStart(project);
                 }
             }
