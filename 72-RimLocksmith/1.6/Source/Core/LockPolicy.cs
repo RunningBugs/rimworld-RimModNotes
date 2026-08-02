@@ -2,41 +2,61 @@ namespace RunningBugs.RimLocksmith.Core;
 
 public static class LockPolicy
 {
-    public static bool AllowsOpeningClosedDoor(PawnAccessFacts pawn, DoorAccessFacts door, LockConfigData config)
+    /// <summary>仅宠物体型上限(与 Locks 一致)。</summary>
+    public const float MaxPetBodySize = 0.86f;
+
+    /// <summary>该类别是否参与配置;不可配置类别一律跟随原版,Mod 不加锁。</summary>
+    public static bool IsConfigurable(AccessCategory category)
     {
-        if (!door.IsColonyDoor)
+        switch (category)
         {
-            return false;
+            case AccessCategory.Colonist:
+            case AccessCategory.Slave:
+            case AccessCategory.ColonyAnimal:
+            case AccessCategory.ColonyMechanoid:
+            case AccessCategory.Guest:
+            case AccessCategory.Trader:
+                return true;
+            default:
+                return false;
         }
+    }
 
-        if (door.IsOpenOrFreePassage)
+    /// <summary>配置是否允许该 pawn 开门。只用于"在原版允许的基础上收窄"。</summary>
+    public static bool Allows(LockConfigData config, PawnAccessFacts pawn)
+    {
+        switch (pawn.Category)
         {
-            return true;
+            case AccessCategory.Colonist:
+                return config.AllowColonists;
+            case AccessCategory.Slave:
+                return config.AllowSlaves;
+            case AccessCategory.Guest:
+                return config.AllowGuests;
+            case AccessCategory.Trader:
+                return config.AllowTraders;
+            case AccessCategory.ColonyAnimal:
+                switch (config.AnimalAccess)
+                {
+                    case AnimalAccess.All:
+                        return true;
+                    case AnimalAccess.OnlyPets:
+                        return pawn.BodySize <= MaxPetBodySize;
+                    default:
+                        return false;
+                }
+            case AccessCategory.ColonyMechanoid:
+                switch (config.MechAccess)
+                {
+                    case MechAccess.All:
+                        return true;
+                    case MechAccess.OnlyOverseen:
+                        return pawn.HasOverseer;
+                    default:
+                        return false;
+                }
+            default:
+                return true;
         }
-
-        if (!pawn.CanOpenDoors)
-        {
-            return false;
-        }
-
-        if (pawn.IsFenceBlockedRoamer && !door.RoamerCanOpen && (!pawn.IsRopedByPawn || !pawn.RoperCanOpen))
-        {
-            return false;
-        }
-
-        return pawn.Category switch
-        {
-            AccessCategory.Colonist => config.AllowColonists,
-            AccessCategory.Slave => config.AllowSlaves,
-            AccessCategory.Prisoner => config.AllowPrisoners,
-            AccessCategory.ColonyAnimal => config.AllowColonyAnimals,
-            AccessCategory.ColonyMechanoid => config.AllowColonyMechanoids,
-            AccessCategory.Guest => config.AllowGuests,
-            AccessCategory.Ally => config.AllowAllies,
-            AccessCategory.Trader => config.AllowTraders,
-            AccessCategory.Hostile => config.AllowHostiles,
-            AccessCategory.WildAnimal => config.AllowWildAnimals,
-            _ => config.AllowOthers
-        };
     }
 }

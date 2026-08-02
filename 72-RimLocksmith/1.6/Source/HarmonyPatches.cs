@@ -12,49 +12,20 @@ public static class RimLocksmithStartup
     static RimLocksmithStartup() { }
 }
 
+/// <summary>
+/// postfix 只收窄:原版 PawnCanOpen 已包含全部特殊判定(敌对/囚犯/围栏/
+/// CanOpenAnyDoor/Released 等),Mod 仅在原版允许时按门配置进一步拦下
+/// 可配置类别,永远不把原版的 false 改成 true。
+/// </summary>
 [HarmonyPatch(typeof(Building_Door), nameof(Building_Door.PawnCanOpen))]
 public static class Patch_BuildingDoor_PawnCanOpen
 {
-    public static bool Prefix(Building_Door __instance, Pawn p, ref bool __result)
+    public static void Postfix(Building_Door __instance, Pawn p, ref bool __result)
     {
-        if (RimLocksmithUtility.TryAllowsOpen(__instance, p, out bool allowed))
+        if (__result && RimLocksmithUtility.ShouldDeny(__instance, p))
         {
-            __result = allowed;
-            return false;
+            __result = false;
         }
-        return true;
-    }
-}
-
-[HarmonyPatch(typeof(PathUtility), nameof(PathUtility.GetDoorCost))]
-public static class Patch_PathUtility_GetDoorCost
-{
-    public static bool Prefix(Building_Door door, TraverseParms traverseParms, Pawn pawn, ref ushort __result)
-    {
-        if (traverseParms.mode == TraverseMode.NoPassClosedDoors || traverseParms.mode == TraverseMode.NoPassClosedDoorsOrWater)
-        {
-            return true;
-        }
-        if (traverseParms.mode == TraverseMode.ByPawn && !traverseParms.canBashDoors && pawn != null && door.IsForbiddenToPass(pawn))
-        {
-            return true;
-        }
-        if (!RimLocksmithUtility.TryAllowsOpen(door, pawn, out bool allowed))
-        {
-            return true;
-        }
-        if (allowed)
-        {
-            __result = (ushort)door.TicksToOpenNow;
-            return false;
-        }
-        if (traverseParms.canBashDoors)
-        {
-            __result = 300;
-            return false;
-        }
-        __result = ushort.MaxValue;
-        return false;
     }
 }
 
@@ -76,13 +47,11 @@ public static class Patch_KnownCompatDoor_PawnCanOpen
         if (legacyDoorsExpanded != null) yield return legacyDoorsExpanded;
     }
 
-    public static bool Prefix(object __instance, Pawn p, ref bool __result)
+    public static void Postfix(object __instance, Pawn p, ref bool __result)
     {
-        if (__instance is Building_Door door && RimLocksmithUtility.TryAllowsOpen(door, p, out bool allowed))
+        if (__result && __instance is Building_Door door && RimLocksmithUtility.ShouldDeny(door, p))
         {
-            __result = allowed;
-            return false;
+            __result = false;
         }
-        return true;
     }
 }

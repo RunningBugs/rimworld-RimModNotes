@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using RunningBugs.RimLocksmith.Core;
 using Verse;
 
@@ -5,20 +7,40 @@ namespace RunningBugs.RimLocksmith;
 
 public static class UIUtil
 {
-    public static void DrawConfigToggles(Listing_Standard listing, LockConfigData config, bool markConfigured)
+    public static string ModeLabel(AnimalAccess mode) => ("RimLocksmith.AnimalAccess." + mode).Translate();
+
+    public static string ModeLabel(MechAccess mode) => ("RimLocksmith.MechAccess." + mode).Translate();
+
+    /// <summary>绘制一份配置的完整编辑控件(设置页默认预设用)。改动即生效。</summary>
+    public static void DrawConfigControls(Listing_Standard listing, LockConfigData config, bool markConfigured)
     {
         DrawToggle(listing, "RimLocksmith.AllowColonists", ref config.AllowColonists);
         DrawToggle(listing, "RimLocksmith.AllowSlaves", ref config.AllowSlaves);
-        DrawToggle(listing, "RimLocksmith.AllowPrisoners", ref config.AllowPrisoners);
-        DrawToggle(listing, "RimLocksmith.AllowColonyAnimals", ref config.AllowColonyAnimals);
-        DrawToggle(listing, "RimLocksmith.AllowColonyMechanoids", ref config.AllowColonyMechanoids);
         DrawToggle(listing, "RimLocksmith.AllowGuests", ref config.AllowGuests);
-        DrawToggle(listing, "RimLocksmith.AllowAllies", ref config.AllowAllies);
         DrawToggle(listing, "RimLocksmith.AllowTraders", ref config.AllowTraders);
-        DrawToggle(listing, "RimLocksmith.AllowHostiles", ref config.AllowHostiles);
-        DrawToggle(listing, "RimLocksmith.AllowWildAnimals", ref config.AllowWildAnimals);
-        DrawToggle(listing, "RimLocksmith.AllowOthers", ref config.AllowOthers);
-        if (markConfigured) config.UserConfigured = true;
+        if (listing.ButtonText("RimLocksmith.AnimalAccess".Translate() + ": " + ModeLabel(config.AnimalAccess)))
+        {
+            OpenModeMenu<AnimalAccess>(mode => config.AnimalAccess = mode, ModeLabel);
+        }
+        if (listing.ButtonText("RimLocksmith.MechAccess".Translate() + ": " + ModeLabel(config.MechAccess)))
+        {
+            OpenModeMenu<MechAccess>(mode => config.MechAccess = mode, ModeLabel);
+        }
+        if (markConfigured)
+        {
+            config.UserConfigured = true;
+        }
+    }
+
+    public static void OpenModeMenu<T>(Action<T> onSelect, Func<T, string> label) where T : Enum
+    {
+        List<FloatMenuOption> options = new List<FloatMenuOption>();
+        foreach (T mode in Enum.GetValues(typeof(T)))
+        {
+            T current = mode;
+            options.Add(new FloatMenuOption(label(current), () => onSelect(current)));
+        }
+        Find.WindowStack.Add(new FloatMenu(options));
     }
 
     private static void DrawToggle(Listing_Standard listing, string key, ref bool value)

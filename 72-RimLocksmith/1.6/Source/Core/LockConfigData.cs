@@ -2,7 +2,7 @@ namespace RunningBugs.RimLocksmith.Core;
 
 public sealed class LockConfigData
 {
-    public const int CurrentVersion = 1;
+    public const int CurrentVersion = 2;
 
     public int Version = CurrentVersion;
     public bool UserConfigured;
@@ -10,15 +10,10 @@ public sealed class LockConfigData
 
     public bool AllowColonists = true;
     public bool AllowSlaves = true;
-    public bool AllowPrisoners = false;
-    public bool AllowColonyAnimals = true;
-    public bool AllowColonyMechanoids = true;
     public bool AllowGuests = true;
-    public bool AllowAllies = true;
     public bool AllowTraders = true;
-    public bool AllowHostiles = false;
-    public bool AllowWildAnimals = false;
-    public bool AllowOthers = false;
+    public AnimalAccess AnimalAccess = AnimalAccess.All;
+    public MechAccess MechAccess = MechAccess.All;
 
     public static LockConfigData CreateDefault(bool userConfigured = false)
     {
@@ -34,15 +29,10 @@ public sealed class LockConfigData
             LinkedPresetId = LinkedPresetId,
             AllowColonists = AllowColonists,
             AllowSlaves = AllowSlaves,
-            AllowPrisoners = AllowPrisoners,
-            AllowColonyAnimals = AllowColonyAnimals,
-            AllowColonyMechanoids = AllowColonyMechanoids,
             AllowGuests = AllowGuests,
-            AllowAllies = AllowAllies,
             AllowTraders = AllowTraders,
-            AllowHostiles = AllowHostiles,
-            AllowWildAnimals = AllowWildAnimals,
-            AllowOthers = AllowOthers
+            AnimalAccess = AnimalAccess,
+            MechAccess = MechAccess
         };
     }
 

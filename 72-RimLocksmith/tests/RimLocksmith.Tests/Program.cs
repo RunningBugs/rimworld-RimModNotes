@@ -1,11 +1,5 @@
 using System;
-using System.Collections.Generic;
 using RunningBugs.RimLocksmith.Core;
-
-static void Assert(bool condition, string message)
-{
-    if (!condition) throw new Exception(message);
-}
 
 static void Eq(bool expected, bool actual, string message)
 {
@@ -13,59 +7,65 @@ static void Eq(bool expected, bool actual, string message)
 }
 
 var cfg = LockConfigData.CreateDefault();
-var closedColonyDoor = new DoorAccessFacts(isColonyDoor: true, isOpenOrFreePassage: false);
-var animalFlapDoor = new DoorAccessFacts(isColonyDoor: true, isOpenOrFreePassage: false, roamerCanOpen: true);
-var openColonyDoor = new DoorAccessFacts(isColonyDoor: true, isOpenOrFreePassage: true);
-var nonColonyDoor = new DoorAccessFacts(isColonyDoor: false, isOpenOrFreePassage: false);
 
-var expectedDefaults = new Dictionary<AccessCategory, bool>
-{
-    [AccessCategory.Colonist] = true,
-    [AccessCategory.Slave] = true,
-    [AccessCategory.Prisoner] = false,
-    [AccessCategory.ColonyAnimal] = true,
-    [AccessCategory.ColonyMechanoid] = true,
-    [AccessCategory.Guest] = true,
-    [AccessCategory.Ally] = true,
-    [AccessCategory.Trader] = true,
-    [AccessCategory.Hostile] = false,
-    [AccessCategory.WildAnimal] = false,
-    [AccessCategory.Other] = false,
-};
+// 可配置类别判定
+Eq(true, LockPolicy.IsConfigurable(AccessCategory.Colonist), "colonist configurable");
+Eq(true, LockPolicy.IsConfigurable(AccessCategory.Slave), "slave configurable");
+Eq(true, LockPolicy.IsConfigurable(AccessCategory.ColonyAnimal), "colony animal configurable");
+Eq(true, LockPolicy.IsConfigurable(AccessCategory.ColonyMechanoid), "colony mech configurable");
+Eq(true, LockPolicy.IsConfigurable(AccessCategory.Guest), "guest configurable");
+Eq(true, LockPolicy.IsConfigurable(AccessCategory.Trader), "trader configurable");
 
-foreach (var pair in expectedDefaults)
+// 不可配置类别(跟随原版)
+Eq(false, LockPolicy.IsConfigurable(AccessCategory.Hostile), "hostile not configurable");
+Eq(false, LockPolicy.IsConfigurable(AccessCategory.Prisoner), "prisoner not configurable");
+Eq(false, LockPolicy.IsConfigurable(AccessCategory.WildAnimal), "wild animal not configurable");
+Eq(false, LockPolicy.IsConfigurable(AccessCategory.Other), "other not configurable");
+
+// 不可配置类别永远不被收窄(即使配置全关)
+var denyAll = LockConfigData.CreateDefault();
+denyAll.AllowColonists = false;
+denyAll.AllowSlaves = false;
+denyAll.AllowGuests = false;
+denyAll.AllowTraders = false;
+denyAll.AnimalAccess = AnimalAccess.None;
+denyAll.MechAccess = MechAccess.None;
+foreach (AccessCategory category in new[] { AccessCategory.Hostile, AccessCategory.Prisoner, AccessCategory.WildAnimal, AccessCategory.Other })
 {
-    Eq(pair.Value, LockPolicy.AllowsOpeningClosedDoor(new PawnAccessFacts(pair.Key), closedColonyDoor, cfg), $"default {pair.Key}");
+    Eq(true, LockPolicy.Allows(denyAll, new PawnAccessFacts(category)), $"non-configurable {category} always follows vanilla");
 }
 
-foreach (AccessCategory category in Enum.GetValues<AccessCategory>())
-{
-    Eq(false, LockPolicy.AllowsOpeningClosedDoor(new PawnAccessFacts(category), nonColonyDoor, cfg), $"non-colony door bypass {category}");
-    Eq(true, LockPolicy.AllowsOpeningClosedDoor(new PawnAccessFacts(category), openColonyDoor, cfg), $"open door not blocked {category}");
-    Eq(false, LockPolicy.AllowsOpeningClosedDoor(new PawnAccessFacts(category, canOpenDoors: false), closedColonyDoor, cfg), $"cannot open physical ability {category}");
-}
+// 布尔开关
+Eq(true, LockPolicy.Allows(cfg, new PawnAccessFacts(AccessCategory.Colonist)), "default colonist allowed");
+Eq(false, LockPolicy.Allows(denyAll, new PawnAccessFacts(AccessCategory.Colonist)), "denyAll colonist denied");
+Eq(false, LockPolicy.Allows(denyAll, new PawnAccessFacts(AccessCategory.Slave)), "denyAll slave denied");
+Eq(false, LockPolicy.Allows(denyAll, new PawnAccessFacts(AccessCategory.Guest)), "denyAll guest denied");
+Eq(false, LockPolicy.Allows(denyAll, new PawnAccessFacts(AccessCategory.Trader)), "denyAll trader denied");
 
-var overrideCfg = cfg.Clone();
-overrideCfg.AllowHostiles = true;
-overrideCfg.AllowColonists = false;
-overrideCfg.AllowColonyAnimals = true;
-overrideCfg.AllowGuests = false;
-Eq(true, LockPolicy.AllowsOpeningClosedDoor(new PawnAccessFacts(AccessCategory.Hostile), closedColonyDoor, overrideCfg), "hostile override allow");
-Eq(false, LockPolicy.AllowsOpeningClosedDoor(new PawnAccessFacts(AccessCategory.Colonist), closedColonyDoor, overrideCfg), "colonist override deny");
-Eq(true, LockPolicy.AllowsOpeningClosedDoor(new PawnAccessFacts(AccessCategory.ColonyAnimal), closedColonyDoor, overrideCfg), "animal override allow");
-Eq(false, LockPolicy.AllowsOpeningClosedDoor(new PawnAccessFacts(AccessCategory.Guest), closedColonyDoor, overrideCfg), "guest override deny");
-Eq(false, LockPolicy.AllowsOpeningClosedDoor(new PawnAccessFacts(AccessCategory.ColonyAnimal, isFenceBlockedRoamer: true), closedColonyDoor, overrideCfg), "fence-blocked colony animal cannot open normal door even when animal rule allows");
-Eq(true, LockPolicy.AllowsOpeningClosedDoor(new PawnAccessFacts(AccessCategory.ColonyAnimal, isFenceBlockedRoamer: true), animalFlapDoor, overrideCfg), "fence-blocked colony animal can open roamerCanOpen door when animal rule allows");
-Eq(true, LockPolicy.AllowsOpeningClosedDoor(new PawnAccessFacts(AccessCategory.ColonyAnimal, isFenceBlockedRoamer: true, isRopedByPawn: true, roperCanOpen: true), closedColonyDoor, overrideCfg), "roped fence-blocked colony animal may pass normal door when roper can open");
-Eq(false, LockPolicy.AllowsOpeningClosedDoor(new PawnAccessFacts(AccessCategory.ColonyAnimal, isFenceBlockedRoamer: true, isRopedByPawn: true, roperCanOpen: false), closedColonyDoor, overrideCfg), "roped fence-blocked colony animal cannot pass normal door when roper cannot open");
-Eq(false, LockPolicy.AllowsOpeningClosedDoor(new PawnAccessFacts(AccessCategory.ColonyAnimal, isFenceBlockedRoamer: true), closedColonyDoor, cfg), "default fence-blocked colony animal cannot open normal door");
-Eq(true, LockPolicy.AllowsOpeningClosedDoor(new PawnAccessFacts(AccessCategory.ColonyAnimal, isFenceBlockedRoamer: true), animalFlapDoor, cfg), "default fence-blocked colony animal can open roamerCanOpen door");
+// 动物三态
+var onlyPets = cfg.Clone();
+onlyPets.AnimalAccess = AnimalAccess.OnlyPets;
+Eq(true, LockPolicy.Allows(onlyPets, new PawnAccessFacts(AccessCategory.ColonyAnimal, bodySize: 0.5f)), "small pet allowed in OnlyPets");
+Eq(true, LockPolicy.Allows(onlyPets, new PawnAccessFacts(AccessCategory.ColonyAnimal, bodySize: LockPolicy.MaxPetBodySize)), "boundary pet size allowed");
+Eq(false, LockPolicy.Allows(onlyPets, new PawnAccessFacts(AccessCategory.ColonyAnimal, bodySize: 1.2f)), "large animal denied in OnlyPets");
+Eq(false, LockPolicy.Allows(denyAll, new PawnAccessFacts(AccessCategory.ColonyAnimal, bodySize: 0.5f)), "AnimalAccess.None denies even pets");
+Eq(true, LockPolicy.Allows(cfg, new PawnAccessFacts(AccessCategory.ColonyAnimal, bodySize: 2.0f)), "AnimalAccess.All allows large animal");
 
-var clone = overrideCfg.Clone();
-Assert(clone != overrideCfg, "clone should be a different instance");
-Eq(overrideCfg.AllowHostiles, clone.AllowHostiles, "clone preserves hostiles");
+// 机械体三态
+var onlyOverseen = cfg.Clone();
+onlyOverseen.MechAccess = MechAccess.OnlyOverseen;
+Eq(true, LockPolicy.Allows(onlyOverseen, new PawnAccessFacts(AccessCategory.ColonyMechanoid, hasOverseer: true)), "overseen mech allowed");
+Eq(false, LockPolicy.Allows(onlyOverseen, new PawnAccessFacts(AccessCategory.ColonyMechanoid, hasOverseer: false)), "overseer-less mech denied");
+Eq(false, LockPolicy.Allows(denyAll, new PawnAccessFacts(AccessCategory.ColonyMechanoid, hasOverseer: true)), "MechAccess.None denies even overseen");
+Eq(true, LockPolicy.Allows(cfg, new PawnAccessFacts(AccessCategory.ColonyMechanoid, hasOverseer: false)), "MechAccess.All allows overseer-less");
+
+// Clone / Normalize
+var clone = denyAll.Clone();
+if (clone == denyAll) throw new Exception("clone should be a different instance");
+if (clone.AnimalAccess != denyAll.AnimalAccess) throw new Exception("clone preserves animal access");
 clone.Version = -1;
 clone.Normalize();
-Assert(clone.Version == LockConfigData.CurrentVersion, "normalize fixes version");
+if (clone.Version != LockConfigData.CurrentVersion) throw new Exception("normalize fixes version");
+if (LockConfigData.CurrentVersion != 2) throw new Exception("config schema is v2");
 
 Console.WriteLine("RimLocksmith whitebox tests PASS");

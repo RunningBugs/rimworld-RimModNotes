@@ -2,18 +2,14 @@ namespace RunningBugs.RimLocksmith.Core;
 
 public readonly struct PawnAccessFacts
 {
-    public PawnAccessFacts(AccessCategory category, bool canOpenDoors = true, bool isFenceBlockedRoamer = false, bool isRopedByPawn = false, bool roperCanOpen = false)
+    public PawnAccessFacts(AccessCategory category, float bodySize = 0f, bool hasOverseer = false)
     {
         Category = category;
-        CanOpenDoors = canOpenDoors;
-        IsFenceBlockedRoamer = isFenceBlockedRoamer;
-        IsRopedByPawn = isRopedByPawn;
-        RoperCanOpen = roperCanOpen;
+        BodySize = bodySize;
+        HasOverseer = hasOverseer;
     }
 
     public AccessCategory Category { get; }
-    public bool CanOpenDoors { get; }
-    public bool IsFenceBlockedRoamer { get; }
-    public bool IsRopedByPawn { get; }
-    public bool RoperCanOpen { get; }
+    public float BodySize { get; }
+    public bool HasOverseer { get; }
 }
