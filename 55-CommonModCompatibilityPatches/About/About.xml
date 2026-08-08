@@ -31,6 +31,7 @@
 		<li>erdelf.HumanoidAlienRaces</li>
 		<li>erdelf.MinifyEverything</li>
 		<li>hatti.qualitybuilder.fork</li>
+		<li>vanillaexpanded.backgrounds</li>
 	</loadAfter>
 
 	<incompatibleWith>
@@ -64,6 +65,8 @@ Current patches:
 - Minify Everything: restore the vanilla maxPawns-1 reservation check when issuing reinstall haul jobs, so jobs are no longer created for buildings still in use (e.g. an occupied bed), eliminating the repeated red "Could not reserve" errors; the job waits until the building is free again.
 - Vanilla LifeStageMinAge: when a life stage def is missing from a pawn's race (e.g. HumanlikeChild on alien races like Kiiro), return the same 0-age fallback vanilla produces after logging, but skip the red error; every caller (vanilla ideo certainty curve, 1trickPwnyta's Defaults birthday check, etc.) behaves exactly as unpatched, without the red spam.
 - QualityBuilder: guard the building/frame lookup against a null map captured from a despawned or carried frame, so the finish-frame job cleanup no longer throws a NullReferenceException.
+- Vanilla Backgrounds Expanded: escape animated-background video paths as file:// URIs before they reach Unity VideoPlayer, fixing user-folder .webm backgrounds (whose config path contains spaces, e.g. "RimWorld by Ludeon Studios") silently never preparing on Linux and showing only a blank slot.
+- Vanilla shuttle wait jobs: null-guard the "send away if all despawned" map check in ShipJob_Wait.TickInterval, so a required pawn who left the map (e.g. a healed ShuttleCrash_Rescue guard who walked off instead of boarding) no longer causes a NullReferenceException every 60 ticks that aborts the rest of the game tick and traps the shuttle on the ground.
 
 Target mods are listed under loadAfter, not as dependencies, so this mod can stay enabled even when some target mods are not installed.
 </description>

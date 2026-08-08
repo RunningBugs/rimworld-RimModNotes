@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Emit;
 using HarmonyLib;
 using RimWorld;
+using RimWorld.Planet;
 using UnityEngine;
 using Verse;
 using Verse.AI;
@@ -41,6 +44,8 @@ public static class CommonCompatibilityBootstrap
         applied += MinifyEverythingReinstallReservationCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += LifeStageMinAgeFallbackCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += QualityBuilderNullMapCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += VbeVideoPathEscapingCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += ShipJobWaitDespawnedThingsCompatibility.TryApply(Harmony) ? 1 : 0;
 
         Log.Message($"[CommonModCompatibilityPatches] Applied {applied} compatibility patch group(s).".Colorize(Color.green));
     }
@@ -999,6 +1004,55 @@ internal static class QualityBuilderNullMapCompatibility
     }
 }
 
+internal static class VbeVideoPathEscapingCompatibility
+{
+    public const string PackageId = "vanillaexpanded.backgrounds";
+
+    public static bool TryApply(Harmony harmony)
+    {
+        if (!ModDetection.IsActive(PackageId))
+        {
+            return false;
+        }
+
+        Type defType = AccessTools.TypeByName("VBE.BackgroundImageDef");
+        MethodInfo target = AccessTools.PropertyGetter(defType, "Video");
+        MethodInfo postfix = AccessTools.Method(typeof(VbeVideoPathEscapingCompatibility), nameof(Postfix));
+        if (defType == null || target == null || postfix == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(target, postfix: new HarmonyMethod(postfix));
+        return true;
+    }
+
+    // VBE assigns BackgroundImageDef.Video directly to UnityEngine.Video.VideoPlayer.url.
+    // User-provided animated backgrounds live under the RimWorld config folder, whose
+    // path contains spaces (".../RimWorld by Ludeon Studios/Config/..."). VideoPlayer
+    // parses url as a URI, and an unescaped absolute path with spaces never finishes
+    // Prepare() on Linux: no errorReceived, no frames, no preview, only a blank
+    // background slot. Convert rooted filesystem paths to proper file:// URIs so
+    // spaces and other reserved characters are percent-encoded before VBE uses them.
+    public static void Postfix(ref string __result)
+    {
+        if (string.IsNullOrEmpty(__result) || __result.Contains("://"))
+        {
+            return;
+        }
+
+        if (!Path.IsPathRooted(__result))
+        {
+            return;
+        }
+
+        if (Uri.TryCreate(__result, UriKind.Absolute, out Uri uri) && uri.IsFile)
+        {
+            __result = uri.AbsoluteUri;
+        }
+    }
+}
+
 internal static class ModDetection
 {
     public static bool IsActive(string packageId)
@@ -1810,6 +1864,73 @@ internal static class RimStoryMassFuneralCompatibility
         {
             buriedPawns.Clear();
         }
+    }
+}
+
+internal static class ShipJobWaitDespawnedThingsCompatibility
+{
+    public static bool TryApply(Harmony harmony)
+    {
+        MethodInfo target = AccessTools.Method(typeof(ShipJob_Wait), nameof(ShipJob_Wait.TickInterval));
+        MethodInfo transpiler = AccessTools.Method(typeof(ShipJobWaitDespawnedThingsCompatibility), nameof(TickIntervalTranspiler));
+        if (target == null || transpiler == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(target, transpiler: new HarmonyMethod(transpiler));
+        return true;
+    }
+
+    // Vanilla ShipJob_Wait.TickInterval evaluates
+    // "item.MapHeld.PocketMapParent.sourceMap == transportShip.shipThing.Map"
+    // for every sendAwayIfAllDespawned entry without null checks. A pawn who
+    // left the map (e.g. a healed ShuttleCrash_Rescue guard who walked off
+    // instead of boarding) has MapHeld == null, and a pawn on a regular map
+    // has PocketMapParent == null, so the check throws a NullReferenceException
+    // every 60 ticks, aborting the rest of the game tick while the shuttle
+    // stays grounded. Route both dereferences through null-safe helpers so such
+    // an entry simply counts as "not on this map", matching vanilla intent.
+    public static IEnumerable<CodeInstruction> TickIntervalTranspiler(IEnumerable<CodeInstruction> instructions)
+    {
+        MethodInfo pocketMapParentGetter = AccessTools.PropertyGetter(typeof(Map), nameof(Map.PocketMapParent));
+        FieldInfo sourceMapField = AccessTools.Field(typeof(PocketMapParent), nameof(PocketMapParent.sourceMap));
+        MethodInfo safePocketMapParent = AccessTools.Method(typeof(ShipJobWaitDespawnedThingsCompatibility), nameof(SafePocketMapParent));
+        MethodInfo safeSourceMap = AccessTools.Method(typeof(ShipJobWaitDespawnedThingsCompatibility), nameof(SafeSourceMap));
+
+        int replacements = 0;
+        foreach (CodeInstruction instruction in instructions)
+        {
+            if (pocketMapParentGetter != null && safePocketMapParent != null && instruction.Calls(pocketMapParentGetter))
+            {
+                replacements++;
+                yield return new CodeInstruction(OpCodes.Call, safePocketMapParent);
+            }
+            else if (sourceMapField != null && safeSourceMap != null && instruction.LoadsField(sourceMapField))
+            {
+                replacements++;
+                yield return new CodeInstruction(OpCodes.Call, safeSourceMap);
+            }
+            else
+            {
+                yield return instruction;
+            }
+        }
+
+        if (replacements != 2)
+        {
+            Log.Warning($"[CommonModCompatibilityPatches] ShipJob_Wait.TickInterval transpiler made {replacements} null-safety replacement(s), expected 2; vanilla code may have changed.");
+        }
+    }
+
+    private static PocketMapParent SafePocketMapParent(Map map)
+    {
+        return map?.PocketMapParent;
+    }
+
+    private static Map SafeSourceMap(PocketMapParent pocketMapParent)
+    {
+        return pocketMapParent?.sourceMap;
     }
 }
 

@@ -201,6 +201,26 @@ class PatchSourceTests(unittest.TestCase):
         self.assertIn("Sequence contains no matching element", self.src)
         self.assertIn("left the override link empty instead of throwing", self.src)
 
+    def test_vbe_video_path_escaping_targets_video_getter(self) -> None:
+        self.assertIn("VbeVideoPathEscapingCompatibility", self.src)
+        self.assertIn('"vanillaexpanded.backgrounds"', self.src)
+        self.assertIn('AccessTools.TypeByName("VBE.BackgroundImageDef")', self.src)
+        self.assertIn('AccessTools.PropertyGetter(defType, "Video")', self.src)
+        self.assertIn('__result.Contains("://")', self.src)
+        self.assertIn("Path.IsPathRooted(__result)", self.src)
+        self.assertIn("uri.IsFile", self.src)
+        self.assertIn("__result = uri.AbsoluteUri", self.src)
+
+    def test_ship_job_wait_despawned_check_is_null_safe(self) -> None:
+        self.assertIn("ShipJobWaitDespawnedThingsCompatibility", self.src)
+        self.assertIn("nameof(ShipJob_Wait.TickInterval)", self.src)
+        self.assertIn("AccessTools.PropertyGetter(typeof(Map), nameof(Map.PocketMapParent))", self.src)
+        self.assertIn("AccessTools.Field(typeof(PocketMapParent), nameof(PocketMapParent.sourceMap))", self.src)
+        self.assertIn("instruction.Calls(pocketMapParentGetter)", self.src)
+        self.assertIn("instruction.LoadsField(sourceMapField)", self.src)
+        self.assertIn("return map?.PocketMapParent", self.src)
+        self.assertIn("return pocketMapParent?.sourceMap", self.src)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
