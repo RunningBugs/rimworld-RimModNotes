@@ -233,6 +233,35 @@ class PatchSourceTests(unittest.TestCase):
         self.assertIn("StringComparison.Ordinal", self.src)
         self.assertIn("flickering", self.src)
 
+    def test_gd3_black_shield_skips_mapless_pawn(self) -> None:
+        self.assertIn("GD3BlackShieldMaplessRemovalCompatibility", self.src)
+        self.assertIn('"fxz.glitterworlddestroyer.mk5"', self.src)
+        self.assertIn('AccessTools.TypeByName("GD3.HediffComp_BlackShield")', self.src)
+        self.assertIn('"CompPostPostRemoved", Type.EmptyTypes', self.src)
+        self.assertIn("pawn.Map == null", self.src)
+        self.assertIn("PawnFlyer", self.src)
+
+    def test_pawn_body_silhouette_draw_is_discard_safe(self) -> None:
+        self.assertIn("PawnBodySilhouetteDrawCompatibility", self.src)
+        self.assertIn('AccessTools.Method(typeof(Graphic_PawnBodySilhouette), "DrawWorker")', self.src)
+        self.assertIn('AccessTools.Field(typeof(Graphic_PawnBodySilhouette), "lastPawn")', self.src)
+        self.assertIn("pawn.Destroyed || pawn.Discarded", self.src)
+        self.assertIn("public static Exception Finalizer", self.src)
+        self.assertIn("mote.link1.Target.Thing", self.src)
+
+    def test_tactical_groups_colony_group_id_collision_repair(self) -> None:
+        self.assertIn("TacticalGroupsColonyGroupIdCollisionCompatibility", self.src)
+        self.assertIn('"DerekBickley.LTOColonyGroupsFinal"', self.src)
+        self.assertIn('AccessTools.TypeByName("TacticalGroups.ColonyGroup")', self.src)
+        self.assertIn('AccessTools.Constructor(colonyGroupType, new[] { typeof(List<Pawn>) })', self.src)
+        self.assertIn('"ConvertToTaskForce"', self.src)
+        self.assertIn('"ConvertToColonyGroup"', self.src)
+        self.assertIn("Scribe.mode == LoadSaveMode.Saving", self.src)
+        self.assertIn("Scribe.mode == LoadSaveMode.LoadingVars", self.src)
+        self.assertIn("PostLoadInit", self.src)
+        self.assertIn("EnsureUniqueGroupId(__instance)", self.src)
+        self.assertIn("groupIDField.SetValue(group, newId)", self.src)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

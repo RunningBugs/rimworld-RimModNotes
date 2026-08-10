@@ -47,6 +47,9 @@ public static class CommonCompatibilityBootstrap
         applied += VbeVideoPathEscapingCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += ShipJobWaitDespawnedThingsCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += InventoryTabStableSortCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += GD3BlackShieldMaplessRemovalCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += PawnBodySilhouetteDrawCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += TacticalGroupsColonyGroupIdCollisionCompatibility.TryApply(Harmony) ? 1 : 0;
 
         Log.Message($"[CommonModCompatibilityPatches] Applied {applied} compatibility patch group(s).".Colorize(Color.green));
     }
@@ -2005,6 +2008,265 @@ internal static class InventoryTabStableSortCompatibility
         string idA = thingIdField?.GetValue(slotA) as string;
         string idB = thingIdField?.GetValue(slotB) as string;
         return string.Compare(idA, idB, StringComparison.Ordinal);
+    }
+}
+
+internal static class GD3BlackShieldMaplessRemovalCompatibility
+{
+    public const string PackageId = "fxz.glitterworlddestroyer.mk5";
+    private const int MaplessShieldWarningId = 82038134;
+
+    public static bool TryApply(Harmony harmony)
+    {
+        if (!ModDetection.IsActive(PackageId))
+        {
+            return false;
+        }
+
+        Type compType = AccessTools.TypeByName("GD3.HediffComp_BlackShield");
+        MethodInfo target = AccessTools.Method(compType, "CompPostPostRemoved", Type.EmptyTypes);
+        MethodInfo prefix = AccessTools.Method(typeof(GD3BlackShieldMaplessRemovalCompatibility), nameof(Prefix));
+        if (compType == null || target == null || prefix == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(target, prefix: new HarmonyMethod(prefix));
+        return true;
+    }
+
+    // GD3.HediffComp_BlackShield.CompPostPostRemoved unconditionally plays
+    // shield-break effects and queries p.Map.mapPawns, but the hediff can be
+    // removed while the pawn has no map (observed on a PawnFlyer mid-flight
+    // during its HealthTick). p.Map is then null and FleckMaker.Static throws
+    // a NullReferenceException every tick. The shield-break visuals and AoE
+    // damage are meaningless off-map, so skip the whole effect while mapless.
+    public static bool Prefix(HediffComp __instance)
+    {
+        Pawn pawn = __instance?.parent?.pawn;
+        if (pawn == null || pawn.Map == null)
+        {
+            Log.WarningOnce("[CommonModCompatibilityPatches] Skipped GD3 BlackShield break effect for a mapless pawn (e.g. a PawnFlyer mid-flight); the original method would dereference a null Map and throw a NullReferenceException every tick.", MaplessShieldWarningId);
+            return false;
+        }
+
+        return true;
+    }
+}
+
+internal static class PawnBodySilhouetteDrawCompatibility
+{
+    private const int UnsafeSilhouetteWarningId = 82038136;
+    private const int SuppressedSilhouetteExceptionWarningId = 82038137;
+    private static FieldInfo lastPawnField;
+
+    public static bool TryApply(Harmony harmony)
+    {
+        MethodInfo target = AccessTools.Method(typeof(Graphic_PawnBodySilhouette), "DrawWorker");
+        MethodInfo prefix = AccessTools.Method(typeof(PawnBodySilhouetteDrawCompatibility), nameof(Prefix));
+        MethodInfo finalizer = AccessTools.Method(typeof(PawnBodySilhouetteDrawCompatibility), nameof(Finalizer));
+        if (target == null || prefix == null || finalizer == null)
+        {
+            return false;
+        }
+
+        lastPawnField = AccessTools.Field(typeof(Graphic_PawnBodySilhouette), "lastPawn");
+        if (lastPawnField == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(target, prefix: new HarmonyMethod(prefix), finalizer: new HarmonyMethod(finalizer));
+        return true;
+    }
+
+    // Graphic_PawnBodySilhouette.DrawWorker (used by motes such as
+    // Mote_MechResurrectWarmupOnTarget) keeps drawing for its linked pawn even
+    // after that pawn was destroyed and discarded (e.g. the resurrection
+    // finishes and the corpse's inner pawn is discarded while the mote lives
+    // on). A discarded pawn has ParentHolder == null, so PawnRenderer.BodyAngle
+    // dereferences pawn.ParentHolder.ParentHolder and throws a
+    // NullReferenceException every frame the mote is on screen. Skip drawing
+    // for destroyed/discarded pawns; a finalizer suppresses any residual
+    // null-shape exception as a safety net.
+    public static bool Prefix(Graphic_PawnBodySilhouette __instance, Thing thing)
+    {
+        Pawn pawn = ResolveLinkedPawn(__instance, thing as Mote);
+        if (pawn != null && (pawn.Destroyed || pawn.Discarded))
+        {
+            Log.WarningOnce("[CommonModCompatibilityPatches] Skipped pawn-body silhouette mote drawing for a destroyed/discarded linked pawn; the original DrawWorker would throw a NullReferenceException in PawnRenderer.BodyAngle every frame.", UnsafeSilhouetteWarningId);
+            return false;
+        }
+
+        return true;
+    }
+
+    public static Exception Finalizer(Exception __exception)
+    {
+        if (__exception == null)
+        {
+            return null;
+        }
+
+        if (__exception is NullReferenceException || __exception is ArgumentException)
+        {
+            Log.WarningOnce("[CommonModCompatibilityPatches] Suppressed pawn-body silhouette DrawWorker exception: " + __exception.GetType().Name + ": " + __exception.Message, SuppressedSilhouetteExceptionWarningId);
+            return null;
+        }
+
+        return __exception;
+    }
+
+    private static Pawn ResolveLinkedPawn(Graphic_PawnBodySilhouette instance, Mote mote)
+    {
+        if (mote == null)
+        {
+            return null;
+        }
+
+        Thing linked = mote.link1.Target.Thing;
+        Pawn pawn = (linked as Corpse)?.InnerPawn ?? linked as Pawn;
+        if (pawn == null)
+        {
+            pawn = lastPawnField?.GetValue(instance) as Pawn;
+        }
+
+        return pawn;
+    }
+}
+
+internal static class TacticalGroupsColonyGroupIdCollisionCompatibility
+{
+    public const string PackageId = "DerekBickley.LTOColonyGroupsFinal";
+    private const int ReassignedGroupIdWarningId = 82038138;
+    private static FieldInfo groupIDField;
+    private static FieldInfo defaultGroupNameField;
+    private static FieldInfo curGroupNameField;
+    private static PropertyInfo tacticalGroupsProperty;
+    private static FieldInfo colonyGroupsField;
+
+    public static bool TryApply(Harmony harmony)
+    {
+        if (!ModDetection.IsActive(PackageId))
+        {
+            return false;
+        }
+
+        Type colonyGroupType = AccessTools.TypeByName("TacticalGroups.ColonyGroup");
+        Type colonistGroupType = AccessTools.TypeByName("TacticalGroups.ColonistGroup");
+        Type tacticUtilsType = AccessTools.TypeByName("TacticalGroups.TacticUtils");
+        Type tacticalGroupsType = AccessTools.TypeByName("TacticalGroups.TacticalGroups");
+        MethodInfo postfix = AccessTools.Method(typeof(TacticalGroupsColonyGroupIdCollisionCompatibility), nameof(Postfix));
+        if (colonyGroupType == null || colonistGroupType == null || tacticUtilsType == null || tacticalGroupsType == null || postfix == null)
+        {
+            return false;
+        }
+
+        groupIDField = AccessTools.Field(colonistGroupType, "groupID");
+        defaultGroupNameField = AccessTools.Field(colonistGroupType, "defaultGroupName");
+        curGroupNameField = AccessTools.Field(colonistGroupType, "curGroupName");
+        tacticalGroupsProperty = AccessTools.Property(tacticUtilsType, "TacticalGroups");
+        colonyGroupsField = AccessTools.Field(tacticalGroupsType, "colonyGroups");
+        if (groupIDField == null || tacticalGroupsProperty == null || colonyGroupsField == null)
+        {
+            return false;
+        }
+
+        ConstructorInfo listCtor = AccessTools.Constructor(colonyGroupType, new[] { typeof(List<Pawn>) });
+        ConstructorInfo pawnCtor = AccessTools.Constructor(colonyGroupType, new[] { typeof(Pawn) });
+        MethodInfo convertToTaskForce = AccessTools.Method(colonyGroupType, "ConvertToTaskForce");
+        MethodInfo convertToColonyGroup = AccessTools.Method(colonyGroupType, "ConvertToColonyGroup");
+        MethodInfo exposeData = AccessTools.Method(colonyGroupType, "ExposeData");
+        if (listCtor == null || pawnCtor == null || convertToTaskForce == null || convertToColonyGroup == null || exposeData == null)
+        {
+            return false;
+        }
+
+        HarmonyMethod harmonyPostfix = new HarmonyMethod(postfix);
+        harmony.Patch(listCtor, postfix: harmonyPostfix);
+        harmony.Patch(pawnCtor, postfix: harmonyPostfix);
+        harmony.Patch(convertToTaskForce, postfix: harmonyPostfix);
+        harmony.Patch(convertToColonyGroup, postfix: harmonyPostfix);
+        harmony.Patch(exposeData, postfix: harmonyPostfix);
+        return true;
+    }
+
+    // TacticalGroups assigns ColonyGroup.groupID from per-category counts:
+    // constructors use colonyGroups.Count + 1 or the isColonyGroup count + 1,
+    // while ConvertToTaskForce/ConvertToColonyGroup use the isTaskForce /
+    // isColonyGroup count + 1. The categories do not avoid each other, but
+    // GetUniqueLoadID is just type name + groupID, so a colony group and a
+    // task force can both end up as "TacticalGroups.ColonyGroup1"; the next
+    // save/load then throws "An item with the same key has already been added"
+    // while registering the second group in the loaded object directory.
+    // After every ID (re)assignment, bump the ID until it is unique among
+    // loaded groups of the same type; the ExposeData postfix additionally
+    // repairs already-colliding saves at PostLoadInit time.
+    public static void Postfix(object __instance)
+    {
+        if (__instance == null || Scribe.mode == LoadSaveMode.Saving || Scribe.mode == LoadSaveMode.LoadingVars)
+        {
+            return;
+        }
+
+        try
+        {
+            EnsureUniqueGroupId(__instance);
+        }
+        catch
+        {
+            // Keep the compatibility patch quiet if a future TacticalGroups version changes these members.
+        }
+    }
+
+    private static void EnsureUniqueGroupId(object group)
+    {
+        object manager = tacticalGroupsProperty.GetValue(null, null);
+        if (manager == null || colonyGroupsField.GetValue(manager) is not IDictionary colonyGroups)
+        {
+            return;
+        }
+
+        Type type = group.GetType();
+        int id = (int)groupIDField.GetValue(group);
+        if (!HasCollision(colonyGroups, group, type, id))
+        {
+            return;
+        }
+
+        int newId = id;
+        do
+        {
+            newId++;
+        }
+        while (HasCollision(colonyGroups, group, type, newId));
+
+        groupIDField.SetValue(group, newId);
+        string defaultName = defaultGroupNameField?.GetValue(group) as string;
+        if (defaultName != null && curGroupNameField?.GetValue(group) as string == defaultName + " " + id)
+        {
+            curGroupNameField.SetValue(group, defaultName + " " + newId);
+        }
+
+        Log.WarningOnce($"[CommonModCompatibilityPatches] Reassigned a colliding TacticalGroups ColonyGroup id {id} to {newId}; the mod's per-category id counting lets a colony group and a task force share a load ID, which otherwise throws a duplicate-key exception on every save load.", ReassignedGroupIdWarningId);
+    }
+
+    private static bool HasCollision(IDictionary colonyGroups, object group, Type type, int id)
+    {
+        foreach (object value in colonyGroups.Values)
+        {
+            if (value == null || ReferenceEquals(value, group) || value.GetType() != type)
+            {
+                continue;
+            }
+
+            if ((int)groupIDField.GetValue(value) == id)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
 

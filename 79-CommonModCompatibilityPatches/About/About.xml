@@ -34,6 +34,8 @@
 		<li>hatti.qualitybuilder</li>
 		<li>vanillaexpanded.backgrounds</li>
 		<li>Kota.InventoryTab</li>
+		<li>fxz.glitterworlddestroyer.mk5</li>
+		<li>DerekBickley.LTOColonyGroupsFinal</li>
 	</loadAfter>
 
 	<incompatibleWith>
@@ -70,6 +72,9 @@
 - Vanilla Backgrounds Expanded：在动画背景视频路径传入 Unity VideoPlayer 前转义为 file:// URI，修复 Linux 上用户目录 .webm 背景（配置路径含空格，如"RimWorld by Ludeon Studios"）永远无法完成加载、只显示空白槽位的问题。
 - 原版穿梭机等待工作：为 ShipJob_Wait.TickInterval 中"全部消失即放走"的地图检查增加 null 防护，必需小人离开地图（例如被治好的 ShuttleCrash_Rescue 护卫直接走掉而没有登机）不再导致每 60 tick 抛出 NullReferenceException、中断其余游戏 tick 并把穿梭机困在地面。
 - InventoryTab：把只比较市值的槽位比较器（其名称决胜代码被原作者注释掉了）替换为完全确定性的比较器（市值 → 物品名称 → 分组键），市值相同的行不再在每次自动刷新时互换位置——即库存列表可见的"闪烁"问题。
+- Glitterworld Destroyer 5（闪耀世界毁灭者5）：当佩戴护盾的小人不在任何地图上时（例如 PawnFlyer 飞行途中被移除护盾），跳过护盾破碎特效与 AoE 结算——原方法会解引用 null 的 Map 并每 tick 抛出 NullReferenceException。
+- 原版小人轮廓剪影绘制：当剪影 Mote（如机械复活预热的 Mote_MechResurrectWarmupOnTarget）链接的小人已被摧毁/丢弃时跳过绘制，并用 finalizer 抑制残留的 NullReferenceException——原方法会在 PawnRenderer.BodyAngle 中每帧抛异常刷红字。
+- [LTO] Colony Groups：在每次分配/重算 ColonyGroup 的 groupID 后检测并修正撞号（殖民分组与特遣队用各自独立的计数，但 load ID 只是类型名+ID，互不避让），不再出现"TacticalGroups.ColonyGroup1"重复键导致每次读档报"An item with the same key has already been added"；读档时（PostLoadInit）也会顺带修复已撞号的存档。
 
 目标模组列在 loadAfter 而非依赖中，因此即使部分目标模组未安装，本模组也可以保持启用。
 
@@ -102,6 +107,9 @@ Current patches:
 - Vanilla Backgrounds Expanded: escape animated-background video paths as file:// URIs before they reach Unity VideoPlayer, fixing user-folder .webm backgrounds (whose config path contains spaces, e.g. "RimWorld by Ludeon Studios") silently never preparing on Linux and showing only a blank slot.
 - Vanilla shuttle wait jobs: null-guard the "send away if all despawned" map check in ShipJob_Wait.TickInterval, so a required pawn who left the map (e.g. a healed ShuttleCrash_Rescue guard who walked off instead of boarding) no longer causes a NullReferenceException every 60 ticks that aborts the rest of the game tick and traps the shuttle on the ground.
 - InventoryTab: replace the market-value-only slot comparator (whose name tie-break is commented out) with a fully deterministic one (market value, then item label, then grouping key), so equal-value rows no longer swap places on every auto-update refresh — the visible "flickering" of the inventory list.
+- Glitterworld Destroyer 5: skip the BlackShield shield-break effect and AoE when the wearer's hediff is removed while the pawn has no map (e.g. a PawnFlyer mid-flight), instead of dereferencing a null Map and throwing a NullReferenceException every tick.
+- Vanilla pawn-body silhouette drawing: skip silhouette motes (e.g. Mote_MechResurrectWarmupOnTarget) whose linked pawn was destroyed/discarded, and suppress residual NullReferenceExceptions with a finalizer — the original DrawWorker throws inside PawnRenderer.BodyAngle every frame while the mote is on screen.
+- [LTO] Colony Groups: detect and repair ColonyGroup groupID collisions after every id (re)assignment (colony groups and task forces use independent per-category counts, but the load ID is just type name + id, so they can collide as "TacticalGroups.ColonyGroup1" and throw a duplicate-key exception on every save load); loading (PostLoadInit) also repairs already-colliding saves.
 
 Target mods are listed under loadAfter, not as dependencies, so this mod can stay enabled even when some target mods are not installed.
 </description>
