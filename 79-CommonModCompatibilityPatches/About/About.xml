@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 	<packageId>RunningBugs.CommonModCompatibilityPatches</packageId>
-	<name>Common Mod Compatibility Patches</name>
+	<name>通用模组兼容补丁 Common Mod Compatibility Patches</name>
 	<author>RunningBugs</author>
 	<supportedVersions>
 		<li>1.6</li>
@@ -31,7 +31,9 @@
 		<li>erdelf.HumanoidAlienRaces</li>
 		<li>erdelf.MinifyEverything</li>
 		<li>hatti.qualitybuilder.fork</li>
+		<li>hatti.qualitybuilder</li>
 		<li>vanillaexpanded.backgrounds</li>
+		<li>Kota.InventoryTab</li>
 	</loadAfter>
 
 	<incompatibleWith>
@@ -41,6 +43,38 @@
 	</incompatibleWith>
 
 	<description>
+一组针对常用 RimWorld 模组的运行时兼容补丁。每个补丁都在启动时动态检测：如果目标模组/类型/方法不存在，对应补丁会被静默跳过。
+
+当前补丁：
+- 原版音乐：当最近播放过滤后只剩零权重的特殊用途音乐时，清除最近播放过滤，让原版能正常选择正权重音乐，而不是返回 null 并刷红字。
+- Allow Tool：在调用 RimWorld 搬运 API 前，清理 Haul Urgently 缓存中已失效的物品。
+- Build From Inventory / Replace Stuff：为原版寻路者的预留通知增加防护，处理物品栏持有或未生成的预留目标。
+- Build From Inventory：在物品从物品栏掉落导致预留堆叠数超过实际可用数量时，将 HaulToContainer 的预留堆叠数钳制到合理范围。
+- Replace Stuff / TinyTweaks：为 Replace Stuff 的自动桥梁放置辅助函数增加防护，处理 null/非法的蓝图上下文。
+- Replace Stuff / TinyTweaks：为 Replace Stuff 的"覆盖矿脉"蓝图辅助函数增加防护，处理 null/非法的蓝图上下文。
+- TinyTweaks：当已发射的建筑缺少先前地图上下文时，跳过自动重建蓝图的放置。
+- RimStory：为损坏的已保存单人死亡纪念日事件（ADead，对应小人缺失/非法）增加防护，并抑制该事件路径上的异常。
+- RimStory：为损坏的已保存集体葬礼状态增加防护（最后使用的坟墓缺失、已摧毁、未生成或属于其他地图），丢弃过期的葬礼队列而不是反复抛出 NullReferenceException。
+- Vanilla Expanded Framework：将原版派系关系（goodwill）缓存的访问串行化，并在缓存已被并发访问破坏时重建缓存。
+- [NL] Dynamic Portraits：对 ThingDef/贴图数据不完整的工作目标跳过工作物品悬浮显示，并抑制 DrawWorkItems 残留的 UI 异常。
+- NewRatkinPlus：用等价的空安全实现替换游荡商队清理逻辑，使存档中过期的 settler-pool 引用不会在鼠族游荡商人事件中调用 Dictionary.Remove(null)。
+- 异象 Invoke Horax 仪式：在把祭品转移到手持追踪器前先对召唤者物品栏做快照，并在仪式结束时安全地消耗手持/物品栏中的祭品，避免"集合被修改"和"祭品数量对不上"的错误。
+- 原版床铺睡眠位置：把红色的"Could not find good sleeping slot position"错误（床位被重新分配或满员时仍有小人躺在床上）替换为优雅回退——返回小人实际占用的床位，只记录一次性警告。
+- 异象小人复制器（非自然尸体事件）：先完整复制两组基因再解析覆盖链接，并容忍复制体上缺失的覆盖基因（模组异种），不再因"Sequence contains no matching element"崩溃。
+- Pawn Health Bar：收紧失血标签的边界判断，流血速率恰好为 0.01 的小人不再把 null 标签传给 GenUI.GetWidthCached，避免每帧抛出 ArgumentNullException；改为记录一次性警告。
+- Kiiro Race：当小人不在任何地图上（远行队、穿梭机或其他无地图状态）时跳过隐形健康状态的地面亮度检查，避免每 tick 抛出 NullReferenceException 后被原版移除该健康状态。
+- Humanoid Alien Races：当小人为 null 时跳过 RulesForPawn 的 postfix（例如 Kiiro Story 流浪者加入任务信件中生成的小人缺失），任务生成不再因 NullReferenceException 中断。
+- Minify Everything：在签发重新安装搬运工作时恢复原版 maxPawns=1 的预留检查，仍在使用中的建筑（如被占用的床）不再生成搬运工作，消除反复出现的红色"Could not reserve"错误；工作会等到建筑空闲后再执行。
+- 原版 LifeStageMinAge：当 pawn 的种族缺少被查询的生命阶段定义时（例如 Kiiro 等外星种族没有 HumanlikeChild），返回与原版记录错误后完全相同的 0 回退值，但不再刷红字；所有调用方（原版意识形态年龄曲线、1trickPwnyta's Defaults 生日检查等）行为与未打补丁时完全一致。
+- QualityBuilder：为建筑/框架查找增加 null 地图防护（框架被取走或携带时捕获的地图为 null），完成框架工作的清理不再抛出 NullReferenceException。
+- Vanilla Backgrounds Expanded：在动画背景视频路径传入 Unity VideoPlayer 前转义为 file:// URI，修复 Linux 上用户目录 .webm 背景（配置路径含空格，如"RimWorld by Ludeon Studios"）永远无法完成加载、只显示空白槽位的问题。
+- 原版穿梭机等待工作：为 ShipJob_Wait.TickInterval 中"全部消失即放走"的地图检查增加 null 防护，必需小人离开地图（例如被治好的 ShuttleCrash_Rescue 护卫直接走掉而没有登机）不再导致每 60 tick 抛出 NullReferenceException、中断其余游戏 tick 并把穿梭机困在地面。
+- InventoryTab：把只比较市值的槽位比较器（其名称决胜代码被原作者注释掉了）替换为完全确定性的比较器（市值 → 物品名称 → 分组键），市值相同的行不再在每次自动刷新时互换位置——即库存列表可见的"闪烁"问题。
+
+目标模组列在 loadAfter 而非依赖中，因此即使部分目标模组未安装，本模组也可以保持启用。
+
+---
+
 A small collection of runtime compatibility patches for commonly used RimWorld mods. Every target-mod patch is dynamically detected at startup: if the corresponding mod/type/method is absent, the patch is skipped silently.
 
 Current patches:
@@ -67,6 +101,7 @@ Current patches:
 - QualityBuilder: guard the building/frame lookup against a null map captured from a despawned or carried frame, so the finish-frame job cleanup no longer throws a NullReferenceException.
 - Vanilla Backgrounds Expanded: escape animated-background video paths as file:// URIs before they reach Unity VideoPlayer, fixing user-folder .webm backgrounds (whose config path contains spaces, e.g. "RimWorld by Ludeon Studios") silently never preparing on Linux and showing only a blank slot.
 - Vanilla shuttle wait jobs: null-guard the "send away if all despawned" map check in ShipJob_Wait.TickInterval, so a required pawn who left the map (e.g. a healed ShuttleCrash_Rescue guard who walked off instead of boarding) no longer causes a NullReferenceException every 60 ticks that aborts the rest of the game tick and traps the shuttle on the ground.
+- InventoryTab: replace the market-value-only slot comparator (whose name tie-break is commented out) with a fully deterministic one (market value, then item label, then grouping key), so equal-value rows no longer swap places on every auto-update refresh — the visible "flickering" of the inventory list.
 
 Target mods are listed under loadAfter, not as dependencies, so this mod can stay enabled even when some target mods are not installed.
 </description>

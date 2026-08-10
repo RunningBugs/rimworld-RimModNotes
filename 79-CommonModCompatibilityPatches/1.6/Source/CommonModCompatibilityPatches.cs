@@ -46,6 +46,7 @@ public static class CommonCompatibilityBootstrap
         applied += QualityBuilderNullMapCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += VbeVideoPathEscapingCompatibility.TryApply(Harmony) ? 1 : 0;
         applied += ShipJobWaitDespawnedThingsCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += InventoryTabStableSortCompatibility.TryApply(Harmony) ? 1 : 0;
 
         Log.Message($"[CommonModCompatibilityPatches] Applied {applied} compatibility patch group(s).".Colorize(Color.green));
     }
@@ -1931,6 +1932,79 @@ internal static class ShipJobWaitDespawnedThingsCompatibility
     private static Map SafeSourceMap(PocketMapParent pocketMapParent)
     {
         return pocketMapParent?.sourceMap;
+    }
+}
+
+internal static class InventoryTabStableSortCompatibility
+{
+    public const string PackageId = "Kota.InventoryTab";
+    private static PropertyInfo thingInSlotProperty;
+    private static FieldInfo thingIdField;
+
+    public static bool TryApply(Harmony harmony)
+    {
+        if (!ModDetection.IsActive(PackageId))
+        {
+            return false;
+        }
+
+        Type slotType = AccessTools.TypeByName("InventoryTab.Slot");
+        MethodInfo target = slotType == null ? null : AccessTools.Method(slotType, "CompareTo", new[] { slotType });
+        MethodInfo prefix = AccessTools.Method(typeof(InventoryTabStableSortCompatibility), nameof(Prefix));
+        if (slotType == null || target == null || prefix == null)
+        {
+            return false;
+        }
+
+        thingInSlotProperty = AccessTools.Property(slotType, "thingInSlot");
+        thingIdField = AccessTools.Field(slotType, "thingId");
+        if (thingInSlotProperty == null || thingIdField == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(target, prefix: new HarmonyMethod(prefix));
+        return true;
+    }
+
+    // InventoryTab sorts its item rows with the unstable List<Slot>.Sort() and a
+    // Slot.CompareTo that only compares MarketValue: its name tie-break is
+    // commented out, so equal-value slots compare as 0. The sorted list is
+    // rebuilt every auto-update interval from map.listerThings.AllThings (whose
+    // order changes constantly as haulers pick up/merge stacks) via a
+    // Dictionary dump, so the input order to the unstable sort keeps changing
+    // and equal-value rows visibly swap places on every refresh ("flickering").
+    // Replace the comparator with a fully deterministic one: market value
+    // descending (same as the original), then the item label, then the unique
+    // grouping key, so the output order no longer depends on the input order.
+    public static bool Prefix(object __instance, object other, ref int __result)
+    {
+        __result = CompareSlots(__instance, other);
+        return false;
+    }
+
+    private static int CompareSlots(object slotA, object slotB)
+    {
+        Thing thingA = thingInSlotProperty?.GetValue(slotA, null) as Thing;
+        Thing thingB = thingInSlotProperty?.GetValue(slotB, null) as Thing;
+
+        float valueA = thingA?.MarketValue ?? 0f;
+        float valueB = thingB?.MarketValue ?? 0f;
+        int valueComparison = valueB.CompareTo(valueA);
+        if (valueComparison != 0)
+        {
+            return valueComparison;
+        }
+
+        int labelComparison = string.Compare(thingA?.LabelNoCount, thingB?.LabelNoCount, StringComparison.CurrentCulture);
+        if (labelComparison != 0)
+        {
+            return labelComparison;
+        }
+
+        string idA = thingIdField?.GetValue(slotA) as string;
+        string idB = thingIdField?.GetValue(slotB) as string;
+        return string.Compare(idA, idB, StringComparison.Ordinal);
     }
 }
 

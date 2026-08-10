@@ -221,6 +221,18 @@ class PatchSourceTests(unittest.TestCase):
         self.assertIn("return map?.PocketMapParent", self.src)
         self.assertIn("return pocketMapParent?.sourceMap", self.src)
 
+    def test_inventory_tab_slot_sort_is_fully_deterministic(self) -> None:
+        self.assertIn("InventoryTabStableSortCompatibility", self.src)
+        self.assertIn('"Kota.InventoryTab"', self.src)
+        self.assertIn('AccessTools.TypeByName("InventoryTab.Slot")', self.src)
+        self.assertIn('AccessTools.Method(slotType, "CompareTo", new[] { slotType })', self.src)
+        self.assertIn('AccessTools.Property(slotType, "thingInSlot")', self.src)
+        self.assertIn('AccessTools.Field(slotType, "thingId")', self.src)
+        self.assertIn("valueB.CompareTo(valueA)", self.src)
+        self.assertIn("thingA?.LabelNoCount", self.src)
+        self.assertIn("StringComparison.Ordinal", self.src)
+        self.assertIn("flickering", self.src)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

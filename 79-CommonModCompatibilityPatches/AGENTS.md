@@ -11,8 +11,8 @@ Runtime Harmony compatibility patches for commonly used RimWorld mods. Each patc
 
 ## Conventions
 
-- **Always sync `About/About.xml` on every change.** When adding, removing, or modifying a patch:
-  - Update the `Current patches:` bullet list in `<description>` so it matches the actual patch groups in the source.
+- **`About/About.xml` is bilingual: `<name>` and `<description>` carry Chinese first, then English.** When adding, removing, or modifying a patch:
+  - Update the `Current patches:` bullet list in `<description>` so it matches the actual patch groups in the source — update both the Chinese block and the English block; they must describe the same set of patches.
   - If the patch targets a third-party mod, add its `packageId` to `<loadAfter>` (target mods are listed under `loadAfter`, not as dependencies). Vanilla/Anomaly targets do not need a `loadAfter` entry.
 - Rebuild the DLL after source changes and commit it together with the source.
 - New patch groups follow the existing pattern: `TryApply` returns `false` (skipped) unless the target mod is active and the target method was found.
