@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 	<packageId>RunningBugs.RACurseSA</packageId>
-	<name>鼠异诅咒独立模组 RACurseStandalone</name>
+	<name>鼠异诅咒独立模组 Ratkin Curse Standalone</name>
 	<author>RunningBugs</author>
 	<supportedVersions>
-		<li>1.5</li>
+		<li>1.6</li>
 	</supportedVersions>
 
 	<modDependencies>
@@ -25,8 +25,18 @@
 	</loadAfter>
 
 	<description>
-鼠异的诅咒机制非常有趣，但是需要各种前置并且不能只对殖民者生效，本模组将其从原模组抽出，并增加了模组选项，只对殖民者生效。
+鼠异（Ratkin Anomaly）的诅咒机制非常有趣，但是需要各种前置并且不能只对殖民者生效，本模组将其从原模组抽出并独立实现，无需鼠异本体。
 
-The RACurse is really interesting, but it requires the Ratkin mod as dependency and cannot be configured to affect only colonists. This standalone mod extracts that curse system and adds configurable options to limit its effects to colonists only.
+特性：
+- 五种诅咒（无桌吃饭、研究、杀戮动物、受伤、伐木）各自拆分为独立事件，外加一个随机诅咒事件，可同时存在多种诅咒；
+- 所有事件默认不会被叙事者触发，只能由玩家主动触发；
+- 模组选项：可设置诅咒只对殖民者生效；可开启永久诅咒模式，永久模式下的诅咒同时也可作为剧本的永久游戏状态添加，效果相同。
+
+The curse system from Ratkin Anomaly is really interesting, but it requires the Ratkin mod as a dependency and cannot be configured to affect only colonists. This standalone mod extracts and reimplements that curse system without requiring the original mod.
+
+Features:
+- Each of the five curses (eating without table, research, killing animals, getting wounded, cutting trees) is its own separate incident, plus a random-curse incident; multiple curses can be active at the same time;
+- None of the incidents are fired by storytellers by default; they can only be triggered manually by the player;
+- Mod options: curses can be limited to colonists only; a permanent curse mode is available, and permanent curses can also be added as scenario permanent game conditions with identical effects.
 	</description>
 </ModMetaData>

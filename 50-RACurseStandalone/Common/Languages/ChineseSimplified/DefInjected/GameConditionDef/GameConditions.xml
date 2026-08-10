@@ -8,4 +8,15 @@
 <!-- EN: As a wave of psychic energy swept across the sky, an evil curse fell! This power is essentially derived from a dark archotechnology program that, despite its wide coverage, has very little precision. If we can avoid doing things that attract its attention, we shouldn't have a big problem. \n\nThe colonists heard a low whisper: \n\n{CurseDesc} -->
 <RACurseSA_CurseCondition.letterText
     >随着一阵灵能波动掠过天空，邪恶的诅咒降临了！这股力量本质上来源于某个暗黑超凡智能的程序，尽管覆盖范围相当广，其精度却很低。如果我们能避免做出容易引起它注意的事情，就应该不会有大问题。\n\n殖民者们听见一阵低沉的耳语说道：\n\n{CurseDesc}</RACurseSA_CurseCondition.letterText>
+<!-- display-only conditions -->
+<!-- EN: curse: dining -->
+<RACurseSA_CurseDisplay_EatingWithoutTable.label>诅咒：进食</RACurseSA_CurseDisplay_EatingWithoutTable.label>
+<!-- EN: curse: research -->
+<RACurseSA_CurseDisplay_Research.label>诅咒：研究</RACurseSA_CurseDisplay_Research.label>
+<!-- EN: curse: killing animals -->
+<RACurseSA_CurseDisplay_KillAnimals.label>诅咒：杀戮动物</RACurseSA_CurseDisplay_KillAnimals.label>
+<!-- EN: curse: getting wounded -->
+<RACurseSA_CurseDisplay_Wounded.label>诅咒：受伤</RACurseSA_CurseDisplay_Wounded.label>
+<!-- EN: curse: cutting trees -->
+<RACurseSA_CurseDisplay_CutTree.label>诅咒：伐木</RACurseSA_CurseDisplay_CutTree.label>
 </LanguageData>

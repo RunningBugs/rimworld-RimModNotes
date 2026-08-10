@@ -1,3 +1,28 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
+<!-- curse -->
+<RACurseSA.CurseEnded>Curse lifted</RACurseSA.CurseEnded>
+<RACurseSA.CurseEndedDesc>The vicious curse from the void has dissipated. The colonists are free to act again.</RACurseSA.CurseEndedDesc>
+<RACurseSA.EatingWithoutTableDesc>Everyone must eat at a table. Violators will be severely punished.</RACurseSA.EatingWithoutTableDesc>
+<RACurseSA.CursePoisoning>{0} got food poisoning for breaking the curse's taboo.</RACurseSA.CursePoisoning>
+<RACurseSA.ResearchDesc>No one may perform research or scanning work. Violators will be severely punished.</RACurseSA.ResearchDesc>
+<RACurseSA.KillAnimalsDesc>No innocent animal may be killed. Violators will be severely punished.</RACurseSA.KillAnimalsDesc>
+<RACurseSA.CurseChimeraSpawn>A chimera bursts out of the body of the wrongfully killed animal!</RACurseSA.CurseChimeraSpawn>
+<RACurseSA.WoundedDesc>No one may suffer any harm. Violators will be severely punished.</RACurseSA.WoundedDesc>
+<RACurseSA.CutTreeDesc>No tree may be cut down. Violators will be severely punished.</RACurseSA.CutTreeDesc>
+<!-- settings -->
+<RACurseSA.SettingsCategory>RACurse Standalone</RACurseSA.SettingsCategory>
+<RACurseSA.OnlyApplyToColonists>Only apply to colonists</RACurseSA.OnlyApplyToColonists>
+<RACurseSA.OnlyApplyToColonistsDesc>If enabled, curse punishments only affect colonists. If disabled, they affect everyone involved (including raiders, guests, etc.).</RACurseSA.OnlyApplyToColonistsDesc>
+<RACurseSA.PermanentCurse>Permanent curse</RACurseSA.PermanentCurse>
+<RACurseSA.PermanentCurseDesc>If enabled, curse incidents no longer apply a timed game condition. Once a curse falls, it stays forever until you clear it manually with the button below.</RACurseSA.PermanentCurseDesc>
+<RACurseSA.ClearAllCurses>Clear all active curses</RACurseSA.ClearAllCurses>
+<RACurseSA.CursesCleared>All active curses have been cleared.</RACurseSA.CursesCleared>
+<RACurseSA.ActiveCurses>Active curses:</RACurseSA.ActiveCurses>
+<RACurseSA.NoActiveCurses>none</RACurseSA.NoActiveCurses>
+<RACurseSA.CurseName.EatingWithoutTable>dining curse</RACurseSA.CurseName.EatingWithoutTable>
+<RACurseSA.CurseName.Research>research curse</RACurseSA.CurseName.Research>
+<RACurseSA.CurseName.KillAnimals>animal killing curse</RACurseSA.CurseName.KillAnimals>
+<RACurseSA.CurseName.Wounded>wound curse</RACurseSA.CurseName.Wounded>
+<RACurseSA.CurseName.CutTree>tree cutting curse</RACurseSA.CurseName.CutTree>
 </LanguageData>

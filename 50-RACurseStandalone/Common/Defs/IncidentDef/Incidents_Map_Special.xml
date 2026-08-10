@@ -1,9 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<!-- 诅咒 -->
+
+	<!-- 随机诅咒：从当前未激活的诅咒中随机挑一个 -->
 	<IncidentDef ParentName="AnomalyIncidentBase">
 		<defName>RA_Curse_SA</defName>
-		<label>curse</label>
+		<label>curse (random)</label>
 		<category>ThreatSmall</category>
 		<targetTags>
 		  <li>Map_PlayerHome</li>
@@ -12,7 +13,7 @@
 		<gameCondition>RACurseSA_CurseCondition</gameCondition>
 		<letterLabel>Curse falls</letterLabel>
 		<letterDef>ThreatBig</letterDef>
-		<baseChance>0.5</baseChance>
+		<baseChance>0</baseChance>
 		<minAnomalyThreatLevel>1</minAnomalyThreatLevel>
 		<earliestDay>15</earliestDay>
 		<minRefireDays>30</minRefireDays>
@@ -20,6 +21,146 @@
 		  <extremeWeatherIncidentsDisabled>true</extremeWeatherIncidentsDisabled>
 		</disabledWhen>
 		<durationDays>1~3</durationDays>
+		<modExtensions>
+		  <li Class="RACurseSA.CurseExtension">
+			<curse>Random</curse>
+		  </li>
+		</modExtensions>
+	</IncidentDef>
+
+	<!-- 无桌吃饭诅咒 -->
+	<IncidentDef ParentName="AnomalyIncidentBase">
+		<defName>RA_Curse_SA_EatingWithoutTable</defName>
+		<label>curse (dining)</label>
+		<category>ThreatSmall</category>
+		<targetTags>
+		  <li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>RACurseSA.IncidentWorker_Curse</workerClass>
+		<gameCondition>RACurseSA_CurseCondition</gameCondition>
+		<letterLabel>Curse falls</letterLabel>
+		<letterDef>ThreatBig</letterDef>
+		<baseChance>0</baseChance>
+		<minAnomalyThreatLevel>1</minAnomalyThreatLevel>
+		<earliestDay>15</earliestDay>
+		<minRefireDays>30</minRefireDays>
+		<disabledWhen>
+		  <extremeWeatherIncidentsDisabled>true</extremeWeatherIncidentsDisabled>
+		</disabledWhen>
+		<durationDays>1~3</durationDays>
+		<modExtensions>
+		  <li Class="RACurseSA.CurseExtension">
+			<curse>EatingWithoutTable</curse>
+		  </li>
+		</modExtensions>
+	</IncidentDef>
+
+	<!-- 研究诅咒 -->
+	<IncidentDef ParentName="AnomalyIncidentBase">
+		<defName>RA_Curse_SA_Research</defName>
+		<label>curse (research)</label>
+		<category>ThreatSmall</category>
+		<targetTags>
+		  <li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>RACurseSA.IncidentWorker_Curse</workerClass>
+		<gameCondition>RACurseSA_CurseCondition</gameCondition>
+		<letterLabel>Curse falls</letterLabel>
+		<letterDef>ThreatBig</letterDef>
+		<baseChance>0</baseChance>
+		<minAnomalyThreatLevel>1</minAnomalyThreatLevel>
+		<earliestDay>15</earliestDay>
+		<minRefireDays>30</minRefireDays>
+		<disabledWhen>
+		  <extremeWeatherIncidentsDisabled>true</extremeWeatherIncidentsDisabled>
+		</disabledWhen>
+		<durationDays>1~3</durationDays>
+		<modExtensions>
+		  <li Class="RACurseSA.CurseExtension">
+			<curse>Research</curse>
+		  </li>
+		</modExtensions>
+	</IncidentDef>
+
+	<!-- 杀动物诅咒 -->
+	<IncidentDef ParentName="AnomalyIncidentBase">
+		<defName>RA_Curse_SA_KillAnimals</defName>
+		<label>curse (killing animals)</label>
+		<category>ThreatSmall</category>
+		<targetTags>
+		  <li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>RACurseSA.IncidentWorker_Curse</workerClass>
+		<gameCondition>RACurseSA_CurseCondition</gameCondition>
+		<letterLabel>Curse falls</letterLabel>
+		<letterDef>ThreatBig</letterDef>
+		<baseChance>0</baseChance>
+		<minAnomalyThreatLevel>1</minAnomalyThreatLevel>
+		<earliestDay>15</earliestDay>
+		<minRefireDays>30</minRefireDays>
+		<disabledWhen>
+		  <extremeWeatherIncidentsDisabled>true</extremeWeatherIncidentsDisabled>
+		</disabledWhen>
+		<durationDays>1~3</durationDays>
+		<modExtensions>
+		  <li Class="RACurseSA.CurseExtension">
+			<curse>KillAnimals</curse>
+		  </li>
+		</modExtensions>
+	</IncidentDef>
+
+	<!-- 受伤诅咒：叙事者永不随机触发（baseChance = 0），只能由玩家主动触发 -->
+	<IncidentDef ParentName="AnomalyIncidentBase">
+		<defName>RA_Curse_SA_Wounded</defName>
+		<label>curse (getting wounded)</label>
+		<category>ThreatSmall</category>
+		<targetTags>
+		  <li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>RACurseSA.IncidentWorker_Curse</workerClass>
+		<gameCondition>RACurseSA_CurseCondition</gameCondition>
+		<letterLabel>Curse falls</letterLabel>
+		<letterDef>ThreatBig</letterDef>
+		<baseChance>0</baseChance>
+		<minAnomalyThreatLevel>1</minAnomalyThreatLevel>
+		<earliestDay>15</earliestDay>
+		<minRefireDays>30</minRefireDays>
+		<disabledWhen>
+		  <extremeWeatherIncidentsDisabled>true</extremeWeatherIncidentsDisabled>
+		</disabledWhen>
+		<durationDays>1~3</durationDays>
+		<modExtensions>
+		  <li Class="RACurseSA.CurseExtension">
+			<curse>Wounded</curse>
+		  </li>
+		</modExtensions>
+	</IncidentDef>
+
+	<!-- 砍树诅咒 -->
+	<IncidentDef ParentName="AnomalyIncidentBase">
+		<defName>RA_Curse_SA_CutTree</defName>
+		<label>curse (cutting trees)</label>
+		<category>ThreatSmall</category>
+		<targetTags>
+		  <li>Map_PlayerHome</li>
+		</targetTags>
+		<workerClass>RACurseSA.IncidentWorker_Curse</workerClass>
+		<gameCondition>RACurseSA_CurseCondition</gameCondition>
+		<letterLabel>Curse falls</letterLabel>
+		<letterDef>ThreatBig</letterDef>
+		<baseChance>0</baseChance>
+		<minAnomalyThreatLevel>1</minAnomalyThreatLevel>
+		<earliestDay>15</earliestDay>
+		<minRefireDays>30</minRefireDays>
+		<disabledWhen>
+		  <extremeWeatherIncidentsDisabled>true</extremeWeatherIncidentsDisabled>
+		</disabledWhen>
+		<durationDays>1~3</durationDays>
+		<modExtensions>
+		  <li Class="RACurseSA.CurseExtension">
+			<curse>CutTree</curse>
+		  </li>
+		</modExtensions>
 	</IncidentDef>
 
 </Defs>

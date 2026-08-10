@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 	<packageId>RunningBugs.CommonModCompatibilityPatches</packageId>
-	<name>通用模组兼容补丁 Common Mod Compatibility Patches</name>
+	<name>常见模组兼容补丁 Common Mod Compatibility Patches</name>
 	<author>RunningBugs</author>
 	<supportedVersions>
 		<li>1.6</li>

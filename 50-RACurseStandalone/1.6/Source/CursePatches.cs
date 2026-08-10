@@ -20,8 +20,7 @@ public static class RACurseSAUtility
 
     public static bool IfCurseActive(string curse)
     {
-        if (GetGameComponent().Curse == curse) return true;
-        return false;
+        return GetGameComponent().IsActive(curse);
     }
 
     public static void LeaveFilthAtPawn(this Pawn pawn, ThingDef filth, int radius, int count)
@@ -53,7 +52,7 @@ public static class AteWithoutTable_Patch
     [HarmonyPrefix]
     public static void Postfix(MemoryThoughtHandler __instance, Thought_Memory newThought)
     {
-        if (!__instance.pawn.IsColonist) return;
+        if (RACurseSAMod.settings.onlyApplyToColonists && !__instance.pawn.IsColonist) return;
 
         if (!RACurseSAUtility.IfCurseActive("EatingWithoutTable"))
         {
@@ -114,7 +113,14 @@ public static class KillAnimals_Patch
         {
             return;
         }
-        if (dinfo?.Instigator?.Faction == null)
+        if (RACurseSAMod.settings.onlyApplyToColonists)
+        {
+            if (dinfo?.Instigator is not Pawn instigator || !instigator.IsColonist)
+            {
+                return;
+            }
+        }
+        else if (dinfo?.Instigator?.Faction == null)
         {
             return;
         }
@@ -125,7 +131,7 @@ public static class KillAnimals_Patch
             {
                 return;
             }
-            Pawn chimera = PawnGenerator.GeneratePawn(PawnKindDefOf.Chimera, Faction.OfEntities);
+            Pawn chimera = PawnGenerator.GeneratePawn(new PawnGenerationRequest(PawnKindDefOf.Chimera, Faction.OfEntities));
             GenSpawn.Spawn(chimera, __instance.PositionHeld, map);
             Lord lord = LordMaker.MakeNewLord(Faction.OfEntities, new LordJob_AssaultColony(), map);
             lord.AddPawn(chimera);
@@ -140,6 +146,10 @@ public static class Wounded_Patch
     public static void Prefix(Pawn __instance, DamageInfo dinfo)
     {
         if (!RACurseSAUtility.IfCurseActive("Wounded"))
+        {
+            return;
+        }
+        if (RACurseSAMod.settings.onlyApplyToColonists && !__instance.IsColonist)
         {
             return;
         }

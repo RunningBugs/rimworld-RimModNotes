@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+<!-- EN: curse (random) -->
+<RA_Curse_SA.label>诅咒（随机）</RA_Curse_SA.label>
+<!-- EN: Curse falls -->
+<RA_Curse_SA.letterLabel>诅咒降临</RA_Curse_SA.letterLabel>
+
+<!-- EN: curse (dining) -->
+<RA_Curse_SA_EatingWithoutTable.label>诅咒：进食</RA_Curse_SA_EatingWithoutTable.label>
+<!-- EN: Curse falls -->
+<RA_Curse_SA_EatingWithoutTable.letterLabel>诅咒降临</RA_Curse_SA_EatingWithoutTable.letterLabel>
+
+<!-- EN: curse (research) -->
+<RA_Curse_SA_Research.label>诅咒：研究</RA_Curse_SA_Research.label>
+<!-- EN: Curse falls -->
+<RA_Curse_SA_Research.letterLabel>诅咒降临</RA_Curse_SA_Research.letterLabel>
+
+<!-- EN: curse (killing animals) -->
+<RA_Curse_SA_KillAnimals.label>诅咒：杀戮动物</RA_Curse_SA_KillAnimals.label>
+<!-- EN: Curse falls -->
+<RA_Curse_SA_KillAnimals.letterLabel>诅咒降临</RA_Curse_SA_KillAnimals.letterLabel>
+
+<!-- EN: curse (getting wounded) -->
+<RA_Curse_SA_Wounded.label>诅咒：受伤</RA_Curse_SA_Wounded.label>
+<!-- EN: Curse falls -->
+<RA_Curse_SA_Wounded.letterLabel>诅咒降临</RA_Curse_SA_Wounded.letterLabel>
+
+<!-- EN: curse (cutting trees) -->
+<RA_Curse_SA_CutTree.label>诅咒：伐木</RA_Curse_SA_CutTree.label>
+<!-- EN: Curse falls -->
+<RA_Curse_SA_CutTree.letterLabel>诅咒降临</RA_Curse_SA_CutTree.letterLabel>
+</LanguageData>

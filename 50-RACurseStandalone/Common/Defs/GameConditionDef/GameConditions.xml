@@ -13,4 +13,81 @@
   <natural>false</natural>
   <allowUnderground>true</allowUnderground>
 </GameConditionDef>
+
+<!-- 展示用状态：只负责在右上角显示当前激活的永久诅咒，无任何实际效果，诅咒失效时自动消失 -->
+<GameConditionDef>
+  <defName>RACurseSA_CurseDisplay_EatingWithoutTable</defName>
+  <conditionClass>RACurseSA.GameCondition_CurseDisplay</conditionClass>
+  <label>curse: dining</label>
+  <description>The curse of dining is hanging over this place. Everyone must eat at a table.</description>
+  <canBePermanent>true</canBePermanent>
+  <natural>false</natural>
+  <allowUnderground>true</allowUnderground>
+  <modExtensions>
+    <li Class="RACurseSA.CurseExtension">
+      <curse>EatingWithoutTable</curse>
+    </li>
+  </modExtensions>
+</GameConditionDef>
+
+<GameConditionDef>
+  <defName>RACurseSA_CurseDisplay_Research</defName>
+  <conditionClass>RACurseSA.GameCondition_CurseDisplay</conditionClass>
+  <label>curse: research</label>
+  <description>The curse of research is hanging over this place. No one may perform research or scanning work.</description>
+  <canBePermanent>true</canBePermanent>
+  <natural>false</natural>
+  <allowUnderground>true</allowUnderground>
+  <modExtensions>
+    <li Class="RACurseSA.CurseExtension">
+      <curse>Research</curse>
+    </li>
+  </modExtensions>
+</GameConditionDef>
+
+<GameConditionDef>
+  <defName>RACurseSA_CurseDisplay_KillAnimals</defName>
+  <conditionClass>RACurseSA.GameCondition_CurseDisplay</conditionClass>
+  <label>curse: killing animals</label>
+  <description>The curse of killing is hanging over this place. No innocent animal may be killed.</description>
+  <canBePermanent>true</canBePermanent>
+  <natural>false</natural>
+  <allowUnderground>true</allowUnderground>
+  <modExtensions>
+    <li Class="RACurseSA.CurseExtension">
+      <curse>KillAnimals</curse>
+    </li>
+  </modExtensions>
+</GameConditionDef>
+
+<GameConditionDef>
+  <defName>RACurseSA_CurseDisplay_Wounded</defName>
+  <conditionClass>RACurseSA.GameCondition_CurseDisplay</conditionClass>
+  <label>curse: getting wounded</label>
+  <description>The curse of wounds is hanging over this place. No one may suffer any harm.</description>
+  <canBePermanent>true</canBePermanent>
+  <natural>false</natural>
+  <allowUnderground>true</allowUnderground>
+  <modExtensions>
+    <li Class="RACurseSA.CurseExtension">
+      <curse>Wounded</curse>
+    </li>
+  </modExtensions>
+</GameConditionDef>
+
+<GameConditionDef>
+  <defName>RACurseSA_CurseDisplay_CutTree</defName>
+  <conditionClass>RACurseSA.GameCondition_CurseDisplay</conditionClass>
+  <label>curse: cutting trees</label>
+  <description>The curse of lumbering is hanging over this place. No tree may be cut down.</description>
+  <canBePermanent>true</canBePermanent>
+  <natural>false</natural>
+  <allowUnderground>true</allowUnderground>
+  <modExtensions>
+    <li Class="RACurseSA.CurseExtension">
+      <curse>CutTree</curse>
+    </li>
+  </modExtensions>
+</GameConditionDef>
+
 </Defs>

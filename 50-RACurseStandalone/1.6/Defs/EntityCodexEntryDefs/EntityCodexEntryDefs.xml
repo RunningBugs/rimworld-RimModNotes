@@ -10,6 +10,11 @@
   <category>Basic</category>
   <linkedIncidents>
     <li>RA_Curse_SA</li>
+    <li>RA_Curse_SA_EatingWithoutTable</li>
+    <li>RA_Curse_SA_Research</li>
+    <li>RA_Curse_SA_KillAnimals</li>
+    <li>RA_Curse_SA_Wounded</li>
+    <li>RA_Curse_SA_CutTree</li>
   </linkedIncidents>
   <!-- <discoveredResearchProjects>
     <li>RA_EvilProphecy</li>

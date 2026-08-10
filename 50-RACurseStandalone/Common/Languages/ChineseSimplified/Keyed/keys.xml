@@ -10,4 +10,19 @@
 <RACurseSA.CurseChimeraSpawn>一只嵌合兽从蒙冤而死的动物尸体内钻了出来！</RACurseSA.CurseChimeraSpawn>
 <RACurseSA.WoundedDesc>任何人不得受到任何伤害。如敢违反，将受到严惩。</RACurseSA.WoundedDesc>
 <RACurseSA.CutTreeDesc>不得伐倒任何树木。如敢违反，将受到严惩。</RACurseSA.CutTreeDesc>
+<!-- settings -->
+<RACurseSA.SettingsCategory>鼠异诅咒</RACurseSA.SettingsCategory>
+<RACurseSA.OnlyApplyToColonists>只对殖民者生效</RACurseSA.OnlyApplyToColonists>
+<RACurseSA.OnlyApplyToColonistsDesc>启用后，诅咒的惩罚只对殖民者生效；关闭后，对所有相关人员（包括袭击者、访客等）同样生效。</RACurseSA.OnlyApplyToColonistsDesc>
+<RACurseSA.PermanentCurse>永久诅咒</RACurseSA.PermanentCurse>
+<RACurseSA.PermanentCurseDesc>启用后，诅咒事件不再附加限时的游戏状态，诅咒一旦降临便永久生效，直到你点击下方按钮手动清除。</RACurseSA.PermanentCurseDesc>
+<RACurseSA.ClearAllCurses>清除所有进行中的诅咒</RACurseSA.ClearAllCurses>
+<RACurseSA.CursesCleared>所有进行中的诅咒已被清除。</RACurseSA.CursesCleared>
+<RACurseSA.ActiveCurses>当前激活的诅咒：</RACurseSA.ActiveCurses>
+<RACurseSA.NoActiveCurses>无</RACurseSA.NoActiveCurses>
+<RACurseSA.CurseName.EatingWithoutTable>进食诅咒</RACurseSA.CurseName.EatingWithoutTable>
+<RACurseSA.CurseName.Research>研究诅咒</RACurseSA.CurseName.Research>
+<RACurseSA.CurseName.KillAnimals>杀戮动物诅咒</RACurseSA.CurseName.KillAnimals>
+<RACurseSA.CurseName.Wounded>受伤诅咒</RACurseSA.CurseName.Wounded>
+<RACurseSA.CurseName.CutTree>伐木诅咒</RACurseSA.CurseName.CutTree>
 </LanguageData>
