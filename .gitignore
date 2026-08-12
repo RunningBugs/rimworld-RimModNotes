@@ -8,6 +8,7 @@ mono_crash.*
 78-RimFlixAnimeShows/Defs/ShowDefs/
 78-RimFlixAnimeShows/Textures/Shows/
 78-RimFlixAnimeShows/tools/rimflix-tmp/
+78-RimFlixAnimeShows/assets_src/
 
 *.zip
 *.tar.gz
