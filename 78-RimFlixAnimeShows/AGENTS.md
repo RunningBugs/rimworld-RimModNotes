@@ -10,7 +10,7 @@ RimFlix (Continued)（packageId `zal.rimflix`，工坊 id `3194639480`）的本�
 ├── About/About.xml        # packageId RunningBugs.RimFlix.AnimeShows，硬依赖 zal.rimflix
 ├── Defs/ShowDefs/         # 每个节目一个 <ID>.xml（由脚本生成）
 ├── Textures/Shows/<ID>/   # 每个节目一个帧图目录（由脚本生成）
-├── assets_src/            # 原图/视频素材（游戏不加载）
+├── assets_src/            # 原图/视频素材（游戏不加载；已 gitignore，仅本地保留）
 └── tools/make_show.sh     # 唯一的生产脚本
 ```
 
