@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<PawnColumnDef>
+		<defName>CarryPolicyColumn</defName>
+		<label>carry policy</label>
+		<workerClass>_CarryPolicy.PawnColumnWorker_CarryPolicy</workerClass>
+		<sortable>true</sortable>
+	</PawnColumnDef>
+
+	<JobDef>
+		<defName>CarryPolicyTakeFromDispenser</defName>
+		<driverClass>_CarryPolicy.JobDriver_TakeFromDispenser</driverClass>
+		<reportString>Taking a meal from TargetA.</reportString>
+		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+	</JobDef>
+</Defs>

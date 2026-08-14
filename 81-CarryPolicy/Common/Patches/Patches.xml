@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<!-- 补货 JobGiver：插到原版库存补货（医药）之后 -->
+	<Operation Class="PatchOperationInsert">
+		<xpath>Defs/ThinkTreeDef[defName="Humanlike"]/thinkRoot[@Class="ThinkNode_Priority"]/subNodes/li[@Class="ThinkNode_ConditionalColonist"]/subNodes/li[tagToGive="TakeForInventoryStock"]/subNodes/li[@Class="JobGiver_TakeForInventoryStock"]</xpath>
+		<value>
+			<li Class="_CarryPolicy.JobGiver_CarryPolicy">
+				<leaveJoinableLordIfIssuesJob>true</leaveJoinableLordIfIssuesJob>
+			</li>
+		</value>
+	</Operation>
+
+	<!-- 分配页签：在原版携带(Carry)列后插入携带方案列 -->
+	<Operation Class="PatchOperationInsert">
+		<xpath>Defs/PawnTableDef[defName="Assign"]/columns/li[.="Carry"]</xpath>
+		<value>
+			<li>GapTiny</li>
+			<li>CarryPolicyColumn</li>
+		</value>
+	</Operation>
+</Patch>

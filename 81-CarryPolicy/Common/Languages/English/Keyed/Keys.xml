@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CarryPolicyTitle>Manage carry policies</CarryPolicyTitle>
+	<CarryPolicyTip>Configure shared carry lists and assign them to colonists in the Assign tab. Food amounts are in portions, not items: one portion is what an average adult eats in one meal.</CarryPolicyTip>
+	<CarryPolicy>carry policy</CarryPolicy>
+	<DefaultCarryPolicy>Default carry policy</DefaultCarryPolicy>
+	<CarryPolicyInUse>{0} is using this policy.</CarryPolicyInUse>
+	<ManageCarryPolicies>Manage carry policies</ManageCarryPolicies>
+	<NoCarryEntries>Empty. Check items on the right and press "Add selected".</NoCarryEntries>
+	<ClearAllCarryEntries>Clear all</ClearAllCarryEntries>
+	<CarryNameColumnLabel>Item</CarryNameColumnLabel>
+	<CarryCountColumnLabel>Amount</CarryCountColumnLabel>
+	<CarryEstimateColumnLabel>~items (avg)</CarryEstimateColumnLabel>
+	<CarryCountDesc>Portion is not the same as one item.
+
+For food, one portion is what an average adult eats in a single meal (0.9 nutrition, lasts about 13.5 hours). Pawns that get hungry faster (modded races, genes, ...) automatically carry proportionally more items.
+
+For non-food items the amount is a plain item count.</CarryCountDesc>
+	<CarryItemsShort>x</CarryItemsShort>
+	<CarrySelectedCount>{0} selected</CarrySelectedCount>
+	<AddSelectedCarryItems>Add selected</AddSelectedCarryItems>
+	<AlreadyInCarryList>added</AlreadyInCarryList>
+</LanguageData>

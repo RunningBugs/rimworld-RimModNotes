@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<CarryPolicyTitle>管理携带方案</CarryPolicyTitle>
+	<CarryPolicyTip>为殖民地配置通用携带清单，在「分配」页签中指派给小人。食物数量单位是「份」而非「个」：1份=普通小人一顿的量。</CarryPolicyTip>
+	<CarryPolicy>携带方案</CarryPolicy>
+	<DefaultCarryPolicy>默认携带方案</DefaultCarryPolicy>
+	<CarryPolicyInUse>{0}正在使用该方案。</CarryPolicyInUse>
+	<ManageCarryPolicies>管理携带方案</ManageCarryPolicies>
+	<NoCarryEntries>清单为空。在右侧勾选物品后点击「添加所选」。</NoCarryEntries>
+	<ClearAllCarryEntries>清除全部</ClearAllCarryEntries>
+	<CarryNameColumnLabel>物品</CarryNameColumnLabel>
+	<CarryCountColumnLabel>数量</CarryCountColumnLabel>
+	<CarryEstimateColumnLabel>≈件数(按普通小人)</CarryEstimateColumnLabel>
+	<CarryCountDesc>「份」不等于「个」。
+
+食物条目的 1 份 = 普通成年人一顿饭的量（0.9 营养，约可维持 13.5 小时）。饥饿消耗更快的种族或个体（mod 种族、基因等）会自动按比例携带更多件数。
+
+非食物条目的数量就是件数。</CarryCountDesc>
+	<CarryItemsShort>件</CarryItemsShort>
+	<CarrySelectedCount>已选 {0} 项</CarrySelectedCount>
+	<AddSelectedCarryItems>添加所选</AddSelectedCarryItems>
+	<AlreadyInCarryList>已添加</AlreadyInCarryList>
+</LanguageData>

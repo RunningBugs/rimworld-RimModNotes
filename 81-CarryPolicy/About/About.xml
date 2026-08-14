@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.CarryPolicy</packageId>
+	<name>Carry Policy</name>
+	<author>RunningBugs</author>
+	<supportedVersions>
+		<li>1.6</li>
+	</supportedVersions>
+	<description>Carry policies for RimWorld 1.6.
+
+Configure named carry policies (like vanilla drug policies) that specify which items colonists keep in their inventory. Assign them per colonist in the Assign tab.
+
+Features:
+
+- Vanilla-style policy management dialog: create / duplicate / rename / default policies, left list + right two-column editor (carry list and pickable items with category browsing, search and multi-select).
+- Anything that can enter a pawn inventory can be carried: meals, nutrient paste, milk, drugs, medicine, resources...
+- Nutrient paste is fetched from paste dispensers (one meal per trip).
+- Food amounts are measured in portions: one portion is what an average adult eats in one meal (0.9 nutrition, about 13.5 hours). Pawns with faster hunger (modded races, genes...) automatically carry proportionally more items.
+- Pawns top up their inventory automatically and never drop or haul away items covered by their policy.
+
+Mod published in MIT license at https://github.com/lisanhu/rimworld-RimModNotes.git
+Folder name 81-CarryPolicy</description>
+</ModMetaData>
