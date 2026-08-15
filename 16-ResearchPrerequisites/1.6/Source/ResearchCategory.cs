@@ -22,13 +22,16 @@ namespace ResearchPrerequisites
 
         public static ResearchCategory Of(KnowledgeCategoryDef category)
         {
-            if (category == KnowledgeCategoryDefOf.Basic)
-            {
-                return ResearchCategory.AnomalyBasic;
-            }
             if (category == null)
             {
                 return ResearchCategory.Normal;
+            }
+            // 未启用 Anomaly 时 KnowledgeCategoryDefOf.Basic 本身也是 null。
+            // 必须先处理原版用于普通研究的 null 类别，否则所有普通研究都会
+            // 被误分到 AnomalyBasic，并被无 Anomaly 的推进守卫永久跳过。
+            if (category == KnowledgeCategoryDefOf.Basic)
+            {
+                return ResearchCategory.AnomalyBasic;
             }
             return ResearchCategory.AnomalyAdvanced;
         }
