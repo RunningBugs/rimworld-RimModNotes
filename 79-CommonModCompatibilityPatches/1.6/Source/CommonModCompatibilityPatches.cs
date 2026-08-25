@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
+using System.Runtime.CompilerServices;
 using HarmonyLib;
 using RimWorld;
 using RimWorld.Planet;
@@ -23,35 +24,55 @@ public static class CommonCompatibilityBootstrap
     static CommonCompatibilityBootstrap()
     {
         int applied = 0;
-        applied += AllowToolHaulUrgentlyCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += ReservationEventCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += ReplaceStuffBridgeCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += ReplaceStuffOverMineableCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += BuildFromInventoryReservationCountCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += TinyTweaksAutoRebuildCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += RimStoryADeadCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += RimStoryMassFuneralCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += GoodwillSituationManagerThreadSafetyCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += ZeroWeightSongSelectionCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += NalsDynamicPortraitsWorkItemsCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += NewRatkinWanderingCaravanCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += InvokeHoraxOfferingCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += SleepingSlotFallbackCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += PawnDuplicatorGeneCopyCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += PawnHealthBarBleedLabelCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += KiiroStealthMapTickCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += AlienRaceNullPawnRulesCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += MinifyEverythingReinstallReservationCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += LifeStageMinAgeFallbackCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += QualityBuilderNullMapCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += VbeVideoPathEscapingCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += ShipJobWaitDespawnedThingsCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += InventoryTabStableSortCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += GD3BlackShieldMaplessRemovalCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += PawnBodySilhouetteDrawCompatibility.TryApply(Harmony) ? 1 : 0;
-        applied += TacticalGroupsColonyGroupIdCollisionCompatibility.TryApply(Harmony) ? 1 : 0;
+        applied += Apply(AllowToolHaulUrgentlyCompatibility.TryApply);
+        applied += Apply(ReservationEventCompatibility.TryApply);
+        applied += Apply(ReplaceStuffBridgeCompatibility.TryApply);
+        applied += Apply(ReplaceStuffOverMineableCompatibility.TryApply);
+        applied += Apply(BuildFromInventoryReservationCountCompatibility.TryApply);
+        applied += Apply(TinyTweaksAutoRebuildCompatibility.TryApply);
+        applied += Apply(RimStoryADeadCompatibility.TryApply);
+        applied += Apply(RimStoryMassFuneralCompatibility.TryApply);
+        applied += Apply(GoodwillSituationManagerThreadSafetyCompatibility.TryApply);
+        applied += Apply(ZeroWeightSongSelectionCompatibility.TryApply);
+        applied += Apply(NalsDynamicPortraitsWorkItemsCompatibility.TryApply);
+        applied += Apply(NewRatkinWanderingCaravanCompatibility.TryApply);
+        applied += Apply(InvokeHoraxOfferingCompatibility.TryApply);
+        applied += Apply(SleepingSlotFallbackCompatibility.TryApply);
+        applied += Apply(PawnDuplicatorGeneCopyCompatibility.TryApply);
+        applied += Apply(PawnHealthBarBleedLabelCompatibility.TryApply);
+        applied += Apply(KiiroStealthMapTickCompatibility.TryApply);
+        applied += Apply(AlienRaceNullPawnRulesCompatibility.TryApply);
+        applied += Apply(MinifyEverythingReinstallReservationCompatibility.TryApply);
+        applied += Apply(LifeStageMinAgeFallbackCompatibility.TryApply);
+        applied += Apply(QualityBuilderNullMapCompatibility.TryApply);
+        applied += Apply(VbeVideoPathEscapingCompatibility.TryApply);
+        applied += Apply(ShipJobWaitDespawnedThingsCompatibility.TryApply);
+        applied += Apply(InventoryTabStableSortCompatibility.TryApply);
+        applied += Apply(GD3BlackShieldMaplessRemovalCompatibility.TryApply);
+        applied += Apply(PawnBodySilhouetteDrawCompatibility.TryApply);
+        applied += Apply(TacticalGroupsColonyGroupIdCollisionCompatibility.TryApply);
+        applied += Apply(TacticalGroupsBillPawnRestrictionCompatibility.TryApply);
+        applied += Apply(AllowToolPartyHuntWorldSettingsCompatibility.TryApply);
+        applied += Apply(ListerHaulablesSharedScanCursorCompatibility.TryApply);
 
         Log.Message($"[CommonModCompatibilityPatches] Applied {applied} compatibility patch group(s).".Colorize(Color.green));
+    }
+
+    // A TryApply that throws (e.g. a Harmony argument-injection mismatch)
+    // must never take down the whole static constructor: without this guard a
+    // single broken group aborts the .cctor with a TypeInitializationException
+    // and silently disables every other patch group too.
+    private static int Apply(Func<Harmony, bool> tryApply)
+    {
+        try
+        {
+            return tryApply(Harmony) ? 1 : 0;
+        }
+        catch (Exception exception)
+        {
+            Log.Warning($"[CommonModCompatibilityPatches] Skipped a compatibility patch group because it failed to apply: {exception.GetType().Name}: {exception.Message}");
+            return 0;
+        }
     }
 }
 
@@ -1187,6 +1208,62 @@ internal static class AllowToolHaulUrgentlyCompatibility
     }
 }
 
+internal static class AllowToolPartyHuntWorldSettingsCompatibility
+{
+    public const string PackageId = "UnlimitedHugs.AllowTool";
+    private const int WorldSettingsNotReadyWarningId = 82038140;
+    private static PropertyInfo controllerInstanceProperty;
+    private static PropertyInfo worldSettingsProperty;
+
+    public static bool TryApply(Harmony harmony)
+    {
+        if (!ModDetection.IsActive(PackageId))
+        {
+            return false;
+        }
+
+        Type patchType = AccessTools.TypeByName("AllowTool.Patches.JobDriverWait_CheckForAutoAttack_Patch");
+        Type controllerType = AccessTools.TypeByName("AllowTool.AllowToolController");
+        MethodInfo target = AccessTools.Method(patchType, "DoPartyHunting");
+        MethodInfo prefix = AccessTools.Method(typeof(AllowToolPartyHuntWorldSettingsCompatibility), nameof(Prefix));
+        if (patchType == null || controllerType == null || target == null || prefix == null)
+        {
+            return false;
+        }
+
+        controllerInstanceProperty = AccessTools.Property(controllerType, "Instance");
+        worldSettingsProperty = AccessTools.Property(controllerType, "WorldSettings");
+        if (controllerInstanceProperty == null || worldSettingsProperty == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(target, prefix: new HarmonyMethod(prefix));
+        return true;
+    }
+
+    // AllowToolController.WorldSettings is only assigned in HugsLib's
+    // WorldLoaded() callback. While a save is still loading, Map.FinalizeInit
+    // resumes pawn jobs; a drafted pawn whose pathing failed gets a fresh
+    // JobDriver_Wait (Wait_Combat), whose CheckForAutoAttack runs AllowTool's
+    // DoPartyHunting postfix. PartyHuntHandler.WorldSettings then dereferences
+    // the still-null WorldSettings and throws a NullReferenceException; the
+    // vanilla error-recover job hits the same postfix again, so the game
+    // gives up and leaves the pawn jobless. Skip the postfix until the world
+    // settings exist; party hunting is meaningless mid-load anyway.
+    public static bool Prefix()
+    {
+        object controller = controllerInstanceProperty.GetValue(null, null);
+        if (controller != null && worldSettingsProperty.GetValue(controller, null) != null)
+        {
+            return true;
+        }
+
+        Log.WarningOnce("[CommonModCompatibilityPatches] Skipped AllowTool party-hunt behavior because AllowToolController.WorldSettings is not initialized yet (HugsLib WorldLoaded has not run during save loading); the original postfix would throw a NullReferenceException inside JobDriver_Wait and leave the pawn jobless.", WorldSettingsNotReadyWarningId);
+        return false;
+    }
+}
+
 internal static class ReservationEventCompatibility
 {
     public const string BuildFromInventoryPackageId = "Memegoddess.BuildFromInventory";
@@ -2267,6 +2344,207 @@ internal static class TacticalGroupsColonyGroupIdCollisionCompatibility
         }
 
         return false;
+    }
+}
+
+internal static class TacticalGroupsBillPawnRestrictionCompatibility
+{
+    public const string PackageId = "DerekBickley.LTOColonyGroupsFinal";
+    private const int UnsafeGroupPawnWarningId = 82038139;
+    private static PropertyInfo allPawnGroupsProperty;
+    private static PropertyInfo billsSelectedGroupProperty;
+    private static FieldInfo pawnsField;
+    private static FieldInfo curGroupNameField;
+
+    public static bool TryApply(Harmony harmony)
+    {
+        if (!ModDetection.IsActive(PackageId))
+        {
+            return false;
+        }
+
+        Type patchesType = AccessTools.TypeByName("TacticalGroups.HarmonyPatches_GroupBills");
+        Type tacticUtilsType = AccessTools.TypeByName("TacticalGroups.TacticUtils");
+        Type pawnGroupType = AccessTools.TypeByName("TacticalGroups.PawnGroup");
+        MethodInfo target = AccessTools.Method(patchesType, "GeneratePawnRestrictionOptions");
+        MethodInfo prefix = AccessTools.Method(typeof(TacticalGroupsBillPawnRestrictionCompatibility), nameof(Prefix));
+        if (patchesType == null || tacticUtilsType == null || pawnGroupType == null || target == null || prefix == null)
+        {
+            return false;
+        }
+
+        allPawnGroupsProperty = AccessTools.Property(tacticUtilsType, "AllPawnGroups");
+        billsSelectedGroupProperty = AccessTools.Property(patchesType, "BillsSelectedGroup");
+        pawnsField = AccessTools.Field(pawnGroupType, "pawns");
+        curGroupNameField = AccessTools.Field(pawnGroupType, "curGroupName");
+        if (allPawnGroupsProperty == null || billsSelectedGroupProperty == null || pawnsField == null || curGroupNameField == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(target, prefix: new HarmonyMethod(prefix));
+        return true;
+    }
+
+    // HarmonyPatches_GroupBills.GeneratePawnRestrictionOptions calls
+    // pawn.skills.GetSkill(...) for every pawn of every pawn group without
+    // null checks. Vanilla only creates the skills tracker for ToolUser
+    // pawns, so a group containing an animal or mechanoid (or a stale null
+    // pawn entry) throws a NullReferenceException every time
+    // Dialog_BillConfig renders its worker dropdown. Reimplement the postfix
+    // with identical behavior but skip the unsafe entries, so valid groups
+    // keep their dropdown options.
+    //
+    // The target's own parameters are named ___bill/__result (it is itself a
+    // postfix on Dialog_BillConfig). We cannot declare a ___bill parameter
+    // here: for Harmony, a triple-underscore prefix means "inject this field
+    // of the patched type", and HarmonyPatches_GroupBills has no bill field,
+    // so patch application throws ArgumentException. Use __args instead; its
+    // writes are copied back into the target's ref parameter.
+    public static bool Prefix(object[] __args)
+    {
+        Bill_Production bill = __args[0] as Bill_Production;
+        IEnumerable<Widgets.DropdownMenuElement<Pawn>> result = __args[1] as IEnumerable<Widgets.DropdownMenuElement<Pawn>>;
+        if (bill == null || result == null)
+        {
+            return true;
+        }
+
+        List<Widgets.DropdownMenuElement<Pawn>> options = result.ToList();
+        bool skippedUnsafePawn = false;
+        if (allPawnGroupsProperty.GetValue(null, null) is IEnumerable pawnGroups)
+        {
+            foreach (object pawnGroup in pawnGroups)
+            {
+                if (pawnGroup == null)
+                {
+                    skippedUnsafePawn = true;
+                    continue;
+                }
+                if (pawnsField.GetValue(pawnGroup) is not List<Pawn> pawns || pawns.Count == 0)
+                {
+                    continue;
+                }
+
+                for (int i = 0; i < pawns.Count; i++)
+                {
+                    Pawn pawn = pawns[i];
+                    bool allowed = true;
+                    if (bill.recipe?.workSkill != null)
+                    {
+                        if (pawn?.skills == null)
+                        {
+                            skippedUnsafePawn = true;
+                            continue;
+                        }
+
+                        int level = pawn.skills.GetSkill(bill.recipe.workSkill).Level;
+                        allowed = level >= bill.allowedSkillRange.min && level <= bill.allowedSkillRange.max;
+                    }
+
+                    if (!allowed)
+                    {
+                        continue;
+                    }
+
+                    object capturedGroup = pawnGroup;
+                    string groupName = curGroupNameField.GetValue(pawnGroup) as string;
+                    Widgets.DropdownMenuElement<Pawn> item = new Widgets.DropdownMenuElement<Pawn>
+                    {
+                        option = new FloatMenuOption("TG.AnyPawnOfGroup".Translate(groupName ?? string.Empty), delegate
+                        {
+                            bill.SetAnyPawnRestriction();
+                            SetBillSelectedGroup(bill, capturedGroup);
+                        }, (MenuOptionPriority)4, null, null, 0f, null, null, true, 0),
+                        payload = null
+                    };
+                    int insertIndex = ModsConfig.IdeologyActive ? 2 : 1;
+                    options.Insert(Math.Min(insertIndex, options.Count), item);
+                    break;
+                }
+            }
+        }
+
+        if (skippedUnsafePawn)
+        {
+            Log.WarningOnce("[CommonModCompatibilityPatches] Skipped null/unskilled pawn entries (e.g. animals or mechanoids) in [LTO] Colony Groups pawn groups while building the bill worker dropdown; the original postfix would throw a NullReferenceException every time Dialog_BillConfig renders.", UnsafeGroupPawnWarningId);
+        }
+
+        __args[1] = options;
+        return false;
+    }
+
+    private static void SetBillSelectedGroup(Bill_Production bill, object pawnGroup)
+    {
+        if (billsSelectedGroupProperty.GetValue(null, null) is IDictionary billsSelectedGroup)
+        {
+            billsSelectedGroup[bill] = pawnGroup;
+        }
+    }
+}
+
+internal static class ListerHaulablesSharedScanCursorCompatibility
+{
+    // ListerHaulables keeps its periodic rescan cursors in static fields shared
+    // by every map (groupCycleIndex / cellCycleIndices). ListerHaulablesTick runs
+    // once per map per game tick, so with two or more maps ticking (second
+    // settlement, Odyssey pocket map, quest site) the shared cursor advances
+    // several steps per tick and each map only ever rescans the slot groups at
+    // one residue class of groupCycleIndex % groups.Count. Slot groups on the
+    // other residue classes are never rescanned at all: event-driven updates only
+    // recalculate the storage whose own settings changed, so an item sitting in
+    // a starved group that newly gained a better storage never re-enters the
+    // haulables set and is never re-hauled (and AllowTool's Haul Urgently marks
+    // on it get cleaned up because the item is not in the set). Swap a per-map
+    // cursor state in before each tick and save it back afterwards, so every map
+    // gets the vanilla single-map cursor sequence while the original method body
+    // (and any other mod's patches on it) keeps running unchanged.
+    private sealed class ScanCursorState
+    {
+        public int GroupCycleIndex;
+        public readonly List<int> CellCycleIndices = new List<int>();
+    }
+
+    private static readonly ConditionalWeakTable<ListerHaulables, ScanCursorState> States = new ConditionalWeakTable<ListerHaulables, ScanCursorState>();
+
+    public static bool TryApply(Harmony harmony)
+    {
+        FieldInfo groupCycleIndex = AccessTools.Field(typeof(ListerHaulables), "groupCycleIndex");
+        FieldInfo cellCycleIndices = AccessTools.Field(typeof(ListerHaulables), "cellCycleIndices");
+        MethodInfo target = AccessTools.Method(typeof(ListerHaulables), nameof(ListerHaulables.ListerHaulablesTick));
+        MethodInfo prefix = AccessTools.Method(typeof(ListerHaulablesSharedScanCursorCompatibility), nameof(Prefix));
+        MethodInfo postfix = AccessTools.Method(typeof(ListerHaulablesSharedScanCursorCompatibility), nameof(Postfix));
+        if (groupCycleIndex == null || !groupCycleIndex.IsStatic || cellCycleIndices == null || !cellCycleIndices.IsStatic || target == null || prefix == null || postfix == null)
+        {
+            // Upstream made the cursors per-instance (bug fixed) or renamed them.
+            return false;
+        }
+
+        harmony.Patch(target, prefix: new HarmonyMethod(prefix), postfix: new HarmonyMethod(postfix));
+        return true;
+    }
+
+    public static void Prefix(ListerHaulables __instance)
+    {
+        ScanCursorState state = States.GetOrCreateValue(__instance);
+        ListerHaulables.groupCycleIndex = state.GroupCycleIndex;
+        CopyContents(ListerHaulables.cellCycleIndices, state.CellCycleIndices);
+    }
+
+    public static void Postfix(ListerHaulables __instance)
+    {
+        ScanCursorState state = States.GetOrCreateValue(__instance);
+        state.GroupCycleIndex = ListerHaulables.groupCycleIndex;
+        CopyContents(state.CellCycleIndices, ListerHaulables.cellCycleIndices);
+    }
+
+    // cellCycleIndices is static readonly, so swap the contents rather than the
+    // reference; the lists are as long as the map's slot-group count, i.e. a
+    // handful of ints per call.
+    private static void CopyContents(List<int> target, List<int> source)
+    {
+        target.Clear();
+        target.AddRange(source);
     }
 }
 

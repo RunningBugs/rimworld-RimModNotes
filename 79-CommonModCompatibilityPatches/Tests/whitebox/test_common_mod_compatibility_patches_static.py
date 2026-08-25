@@ -262,6 +262,49 @@ class PatchSourceTests(unittest.TestCase):
         self.assertIn("EnsureUniqueGroupId(__instance)", self.src)
         self.assertIn("groupIDField.SetValue(group, newId)", self.src)
 
+    def test_tactical_groups_bill_pawn_restriction_dropdown_is_null_safe(self) -> None:
+        self.assertIn("TacticalGroupsBillPawnRestrictionCompatibility", self.src)
+        self.assertIn('AccessTools.TypeByName("TacticalGroups.HarmonyPatches_GroupBills")', self.src)
+        self.assertIn('AccessTools.TypeByName("TacticalGroups.TacticUtils")', self.src)
+        self.assertIn('AccessTools.Method(patchesType, "GeneratePawnRestrictionOptions")', self.src)
+        self.assertIn('AccessTools.Property(tacticUtilsType, "AllPawnGroups")', self.src)
+        self.assertIn('AccessTools.Property(patchesType, "BillsSelectedGroup")', self.src)
+        self.assertIn('AccessTools.Field(pawnGroupType, "pawns")', self.src)
+        self.assertIn('AccessTools.Field(pawnGroupType, "curGroupName")', self.src)
+        self.assertIn("pawn?.skills == null", self.src)
+        self.assertIn("SetBillSelectedGroup(bill, capturedGroup)", self.src)
+        self.assertIn("TG.AnyPawnOfGroup", self.src)
+        self.assertIn("public static bool Prefix(object[] __args)", self.src)
+        self.assertIn("__args[1] = options", self.src)
+
+    def test_bootstrap_isolates_failing_patch_groups(self) -> None:
+        self.assertIn("private static int Apply(Func<Harmony, bool> tryApply)", self.src)
+        self.assertIn("catch (Exception exception)", self.src)
+        self.assertIn("failed to apply", self.src)
+        self.assertNotIn(".TryApply(Harmony) ? 1 : 0", self.src)
+
+    def test_lister_haulables_shared_scan_cursor_is_per_map_swapped(self) -> None:
+        self.assertIn("ListerHaulablesSharedScanCursorCompatibility", self.src)
+        self.assertIn('AccessTools.Field(typeof(ListerHaulables), "groupCycleIndex")', self.src)
+        self.assertIn('AccessTools.Field(typeof(ListerHaulables), "cellCycleIndices")', self.src)
+        self.assertIn("nameof(ListerHaulables.ListerHaulablesTick)", self.src)
+        self.assertIn("ConditionalWeakTable<ListerHaulables, ScanCursorState>", self.src)
+        self.assertIn("!groupCycleIndex.IsStatic", self.src)
+        self.assertIn("!cellCycleIndices.IsStatic", self.src)
+        self.assertIn("ListerHaulables.groupCycleIndex = state.GroupCycleIndex", self.src)
+        self.assertIn("state.GroupCycleIndex = ListerHaulables.groupCycleIndex", self.src)
+        self.assertIn("CopyContents(ListerHaulables.cellCycleIndices, state.CellCycleIndices)", self.src)
+        self.assertIn("CopyContents(state.CellCycleIndices, ListerHaulables.cellCycleIndices)", self.src)
+
+    def test_allow_tool_party_hunt_skips_uninitialized_world_settings(self) -> None:
+        self.assertIn("AllowToolPartyHuntWorldSettingsCompatibility", self.src)
+        self.assertIn('AccessTools.TypeByName("AllowTool.Patches.JobDriverWait_CheckForAutoAttack_Patch")', self.src)
+        self.assertIn('AccessTools.TypeByName("AllowTool.AllowToolController")', self.src)
+        self.assertIn('AccessTools.Method(patchType, "DoPartyHunting")', self.src)
+        self.assertIn('AccessTools.Property(controllerType, "Instance")', self.src)
+        self.assertIn('AccessTools.Property(controllerType, "WorldSettings")', self.src)
+        self.assertIn("WorldSettings is not initialized yet", self.src)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

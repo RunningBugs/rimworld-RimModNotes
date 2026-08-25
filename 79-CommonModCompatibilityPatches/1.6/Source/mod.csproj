@@ -18,6 +18,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4494-beta" />
+		<PackageReference Include="Krafs.Publicizer" Version="2.3.1" />
 		<PackageReference Include="Lib.Harmony" Version="2.3.*" />
 	</ItemGroup>
 </Project>

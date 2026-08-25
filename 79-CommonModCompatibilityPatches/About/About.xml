@@ -75,6 +75,9 @@
 - Glitterworld Destroyer 5（闪耀世界毁灭者5）：当佩戴护盾的小人不在任何地图上时（例如 PawnFlyer 飞行途中被移除护盾），跳过护盾破碎特效与 AoE 结算——原方法会解引用 null 的 Map 并每 tick 抛出 NullReferenceException。
 - 原版小人轮廓剪影绘制：当剪影 Mote（如机械复活预热的 Mote_MechResurrectWarmupOnTarget）链接的小人已被摧毁/丢弃时跳过绘制，并用 finalizer 抑制残留的 NullReferenceException——原方法会在 PawnRenderer.BodyAngle 中每帧抛异常刷红字。
 - [LTO] Colony Groups：在每次分配/重算 ColonyGroup 的 groupID 后检测并修正撞号（殖民分组与特遣队用各自独立的计数，但 load ID 只是类型名+ID，互不避让），不再出现"TacticalGroups.ColonyGroup1"重复键导致每次读档报"An item with the same key has already been added"；读档时（PostLoadInit）也会顺带修复已撞号的存档。
+- [LTO] Colony Groups：用等价的空安全实现替换账单配置窗口"按分组指定工人"下拉选项的生成——分组中混入动物/机械族（原版不给它们创建 skills 追踪器）或残留 null 小人时，原 postfix 会在每次渲染 Dialog_BillConfig 时抛出 NullReferenceException 刷红字；现在跳过这些非法条目，正常分组的选项不受影响。
+- Allow Tool：读档过程中（HugsLib 的 WorldLoaded 回调尚未执行、WorldSettings 仍为 null）跳过 Party Hunt 行为检查，避免 JobDriver_Wait 的 postfix 反复抛出 NullReferenceException，导致读档后小人被原版置为"无工作"状态。
+- 原版搬运周期重算（ListerHaulables）：原版的重算游标是所有地图共享的 static 字段，多张地图同时 tick 时（第二定居点、奥德赛口袋地图、任务地图）游标每 tick 多跳，每张地图只能重算到部分存储组；其余组里"应被搬去更优存储"的物品永远得不到重算，永远不会被搬走（Allow Tool 的紧急搬运标记也会因此被自己清理掉）。补丁在每次 tick 前后换入/存回按地图独立的游标，原方法（及其他模组对它的补丁）照常运行。
 
 目标模组列在 loadAfter 而非依赖中，因此即使部分目标模组未安装，本模组也可以保持启用。
 
@@ -110,6 +113,9 @@ Current patches:
 - Glitterworld Destroyer 5: skip the BlackShield shield-break effect and AoE when the wearer's hediff is removed while the pawn has no map (e.g. a PawnFlyer mid-flight), instead of dereferencing a null Map and throwing a NullReferenceException every tick.
 - Vanilla pawn-body silhouette drawing: skip silhouette motes (e.g. Mote_MechResurrectWarmupOnTarget) whose linked pawn was destroyed/discarded, and suppress residual NullReferenceExceptions with a finalizer — the original DrawWorker throws inside PawnRenderer.BodyAngle every frame while the mote is on screen.
 - [LTO] Colony Groups: detect and repair ColonyGroup groupID collisions after every id (re)assignment (colony groups and task forces use independent per-category counts, but the load ID is just type name + id, so they can collide as "TacticalGroups.ColonyGroup1" and throw a duplicate-key exception on every save load); loading (PostLoadInit) also repairs already-colliding saves.
+- [LTO] Colony Groups: replace the bill-config worker dropdown generation with a null-safe equivalent — when a pawn group contains an animal or mechanoid (vanilla never creates a skills tracker for them) or a stale null pawn entry, the original postfix throws a NullReferenceException on every Dialog_BillConfig render; the unsafe entries are now skipped and valid groups keep their options.
+- Allow Tool: skip the Party Hunt behavior check while a save is still loading (HugsLib's WorldLoaded callback has not run yet and WorldSettings is null), so the JobDriver_Wait postfix no longer throws repeated NullReferenceExceptions that make vanilla leave the pawn jobless after loading.
+- Vanilla haulable periodic rescan (ListerHaulables): the vanilla rescan cursors are static fields shared by all maps, so with two or more maps ticking (second settlement, Odyssey pocket map, quest site) the shared cursor advances multiple steps per tick and each map only ever rescans a fraction of its slot groups; items in the remaining groups that newly gained a better storage are never re-evaluated and never get hauled (Allow Tool's Haul Urgently marks on them are then removed by its own cleanup). The patch swaps per-map cursor state in/out around each tick, leaving the original method (and other mods' patches on it) running unchanged.
 
 Target mods are listed under loadAfter, not as dependencies, so this mod can stay enabled even when some target mods are not installed.
 </description>
