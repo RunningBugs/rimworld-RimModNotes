@@ -4,6 +4,10 @@
   <RimLocksmith.TabLabel>门锁</RimLocksmith.TabLabel>
   <RimLocksmith.ApplyDefaultToNewColonyDoors>新殖民地门使用默认配置</RimLocksmith.ApplyDefaultToNewColonyDoors>
   <RimLocksmith.ApplyDefaultToNewColonyDoorsDesc>首次初始化的殖民地门会使用当前默认配置。</RimLocksmith.ApplyDefaultToNewColonyDoorsDesc>
+  <RimLocksmith.ManageColonyPawns>管理殖民地单位(殖民者/奴隶/动物/机械体)</RimLocksmith.ManageColonyPawns>
+  <RimLocksmith.ManageColonyPawnsDesc>启用(默认)后,门锁配置中显示殖民者、奴隶、殖民地动物、殖民地机械体开关,可逐类禁止他们打开关闭的殖民地门。禁用后玩家派系单位一律遵循原版规则(原版已有禁用门/区域管制/畜栏/机械师等机制),已设置的这四项开关不生效但保留配置。</RimLocksmith.ManageColonyPawnsDesc>
+  <RimLocksmith.ControlAnomalies>控制异象实体</RimLocksmith.ControlAnomalies>
+  <RimLocksmith.ControlAnomaliesDesc>关闭(默认)时,所有异象实体遵循原版规则,不受门锁配置影响。启用后,敌对异象实体仍遵循原版;非敌对异象实体(如食尸鬼、蹒跚怪)受门锁配置中的「异象实体」开关控制。</RimLocksmith.ControlAnomaliesDesc>
   <RimLocksmith.DefaultPreset>默认配置</RimLocksmith.DefaultPreset>
   <RimLocksmith.ApplyDefaultToUnconfiguredColonyDoors>应用默认到所有未设置过的殖民地门</RimLocksmith.ApplyDefaultToUnconfiguredColonyDoors>
   <RimLocksmith.ApplyDefaultToAllColonyDoors>应用默认到所有殖民地门</RimLocksmith.ApplyDefaultToAllColonyDoors>
@@ -13,7 +17,7 @@
   <RimLocksmith.MixedClickToUnify>混合,点击统一</RimLocksmith.MixedClickToUnify>
   <RimLocksmith.CurrentConfig>当前配置</RimLocksmith.CurrentConfig>
   <RimLocksmith.CurrentConfigMerged>当前配置({0} 扇殖民地门合并视图,忽略 {1} 扇)</RimLocksmith.CurrentConfigMerged>
-  <RimLocksmith.VanillaNote>敌人、囚犯、野生动物始终遵循原版规则,不受此配置影响。</RimLocksmith.VanillaNote>
+  <RimLocksmith.VanillaNote>未在此列出的类别(敌人、囚犯、野生动物等)始终遵循原版规则,不受此配置影响。</RimLocksmith.VanillaNote>
   <RimLocksmith.State.Allowed>允许</RimLocksmith.State.Allowed>
   <RimLocksmith.State.Denied>禁止</RimLocksmith.State.Denied>
   <RimLocksmith.Edit>编辑…</RimLocksmith.Edit>
@@ -22,14 +26,13 @@
   <RimLocksmith.ResetToDefault>重置默认</RimLocksmith.ResetToDefault>
   <RimLocksmith.EditDialogTitle>编辑门锁配置({0} 扇)</RimLocksmith.EditDialogTitle>
   <RimLocksmith.NoConfigurableDoors>没有选中可配置的殖民地门。</RimLocksmith.NoConfigurableDoors>
-  <RimLocksmith.AllowOpenTooltip>控制该类别是否可以主动打开这扇关闭的殖民地门。已经打开的门仍按游戏原版规则通行。敌人、囚犯、野生动物等始终遵循原版规则,不受此处控制。</RimLocksmith.AllowOpenTooltip>
+  <RimLocksmith.AllowOpenTooltip>控制所列类别是否可以主动打开这扇关闭的殖民地门。已经打开的门仍按游戏原版规则通行。未列出的类别始终遵循原版规则,不受此处控制。</RimLocksmith.AllowOpenTooltip>
   <RimLocksmith.AllowColonists>殖民者</RimLocksmith.AllowColonists>
   <RimLocksmith.AllowSlaves>奴隶</RimLocksmith.AllowSlaves>
-  <RimLocksmith.AllowGuests>访客(含外来动物)</RimLocksmith.AllowGuests>
-  <RimLocksmith.AllowTraders>商队</RimLocksmith.AllowTraders>
+  <RimLocksmith.AllowGuests>访客(含商队与外来动物)</RimLocksmith.AllowGuests>
+  <RimLocksmith.AllowAnomalies>异象实体(食尸鬼/蹒跚怪等非敌对)</RimLocksmith.AllowAnomalies>
   <RimLocksmith.AnimalAccess>殖民地动物</RimLocksmith.AnimalAccess>
   <RimLocksmith.AnimalAccess.None>禁止</RimLocksmith.AnimalAccess.None>
-  <RimLocksmith.AnimalAccess.OnlyPets>仅宠物(体型≤0.86)</RimLocksmith.AnimalAccess.OnlyPets>
   <RimLocksmith.AnimalAccess.All>全部允许</RimLocksmith.AnimalAccess.All>
   <RimLocksmith.MechAccess>殖民地机械体</RimLocksmith.MechAccess>
   <RimLocksmith.MechAccess.None>禁止</RimLocksmith.MechAccess.None>

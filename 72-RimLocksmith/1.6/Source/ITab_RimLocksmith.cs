@@ -55,14 +55,26 @@ public sealed class ITab_RimLocksmith : ITab
         Widgets.DrawLineHorizontal(rect.x, y, rect.width);
         y += 6f;
 
-        DrawSummaryRow(rect.x + 8f, ref y, rect.width - 8f, "RimLocksmith.AllowColonists", MergedBool(targets, c => c.AllowColonists));
-        DrawSummaryRow(rect.x + 8f, ref y, rect.width - 8f, "RimLocksmith.AllowSlaves", MergedBool(targets, c => c.AllowSlaves));
+        // 玩家派系摘要行受设置项「管理殖民地单位」门控。
+        bool manageColony = RimLocksmithMod.Settings?.ManageColonyPawns ?? true;
+        if (manageColony)
+        {
+            DrawSummaryRow(rect.x + 8f, ref y, rect.width - 8f, "RimLocksmith.AllowColonists", MergedBool(targets, c => c.AllowColonists));
+            DrawSummaryRow(rect.x + 8f, ref y, rect.width - 8f, "RimLocksmith.AllowSlaves", MergedBool(targets, c => c.AllowSlaves));
+        }
         DrawSummaryRow(rect.x + 8f, ref y, rect.width - 8f, "RimLocksmith.AllowGuests", MergedBool(targets, c => c.AllowGuests));
-        DrawSummaryRow(rect.x + 8f, ref y, rect.width - 8f, "RimLocksmith.AllowTraders", MergedBool(targets, c => c.AllowTraders));
-        DrawSummaryRow(rect.x + 8f, ref y, rect.width - 8f, "RimLocksmith.AnimalAccess",
-            MergedMode(targets, c => c.AnimalAccess, UIUtil.ModeLabel, c => c switch { AnimalAccess.All => StateOn, AnimalAccess.None => StateOff, _ => StatePartial }));
-        DrawSummaryRow(rect.x + 8f, ref y, rect.width - 8f, "RimLocksmith.MechAccess",
-            MergedMode(targets, c => c.MechAccess, UIUtil.ModeLabel, c => c switch { MechAccess.All => StateOn, MechAccess.None => StateOff, _ => StatePartial }));
+        // ANOMALY-CONTROL(disabled): 异象摘要行注释保留。
+        // if (RimLocksmithMod.Settings?.ControlAnomalies ?? false)
+        // {
+        //     DrawSummaryRow(rect.x + 8f, ref y, rect.width - 8f, "RimLocksmith.AllowAnomalies", MergedBool(targets, c => c.AllowAnomalies));
+        // }
+        if (manageColony)
+        {
+            DrawSummaryRow(rect.x + 8f, ref y, rect.width - 8f, "RimLocksmith.AnimalAccess",
+                MergedMode(targets, c => c.AnimalAccess, UIUtil.ModeLabel, c => c switch { AnimalAccess.All => StateOn, _ => StateOff }));
+            DrawSummaryRow(rect.x + 8f, ref y, rect.width - 8f, "RimLocksmith.MechAccess",
+                MergedMode(targets, c => c.MechAccess, UIUtil.ModeLabel, c => c switch { MechAccess.All => StateOn, MechAccess.None => StateOff, _ => StatePartial }));
+        }
         y += 2f;
         Widgets.DrawLineHorizontal(rect.x, y, rect.width);
         y += 6f;

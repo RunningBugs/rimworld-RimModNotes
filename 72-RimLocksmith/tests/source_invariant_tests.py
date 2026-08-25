@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 from pathlib import Path
-import re
 root = Path(__file__).resolve().parents[1]
 errors = []
 for path in (root/'1.6/Source/Core').glob('**/*.cs'):
@@ -20,26 +19,46 @@ patches = list((root/'1.6/Patches').glob('**/*.xml'))
 if not patches:
     errors.append('missing XML patches')
 source = '\n'.join(p.read_text() for p in (root/'1.6/Source').glob('**/*.cs'))
-for needle in ['Patch_BuildingDoor_PawnCanOpen', 'Patch_PathUtility_GetDoorCost', 'ITab_RimLocksmith', 'IsColonyDoor', 'Patch_MainTabWindowInspect_CurTabs', 'Patch_MainTabWindowInspect_ShouldShowPaneContents']:
+for needle in ['Patch_BuildingDoor_PawnCanOpen', 'ITab_RimLocksmith', 'IsColonyDoor', 'ShouldDeny',
+               'Patch_MainTabWindowInspect_CurTabs', 'Patch_MainTabWindowInspect_ShouldShowPaneContents']:
     if needle not in source:
         errors.append(f'missing source invariant {needle}')
-utility = (root/'1.6/Source/RimLocksmithUtility.cs').read_text()
-try_allows = utility.split('public static bool TryAllowsOpen', 1)[1].split('public static List<Building_Door> SelectedDoors', 1)[0]
-if '.FreePassage' in try_allows:
-    errors.append('TryAllowsOpen must not read Building_Door.FreePassage; it recurses through WillCloseSoon -> PawnCanOpen')
+# 旧架构(prefix 接管 + 寻路代价 patch)会因 PassDoors 探测代价 MaxValue 冻结狂暴动物,不得回归
+if 'GetDoorCost' in source:
+    errors.append('PathUtility.GetDoorCost patch must stay deleted (it froze manhunters probing with PassDoors)')
+if 'Patch_PathUtility' in source:
+    errors.append('path-cost patches must stay deleted; vanilla pathing calls the postfix-narrowed PawnCanOpen')
+harmony_patches = (root/'1.6/Source/HarmonyPatches.cs').read_text()
+door_patch = harmony_patches.split('public static class Patch_BuildingDoor_PawnCanOpen', 1)[1]
+if 'Postfix' not in door_patch or 'Prefix' in door_patch:
+    errors.append('Patch_BuildingDoor_PawnCanOpen must be postfix-only (narrow vanilla true -> false, never widen)')
 if 'Scribe_Deep.Look(ref DefaultConfig' in source or 'Scribe_Deep.Look(ref config' in source:
     errors.append('LockConfigData is a pure Core DTO; use LockConfigScribe/Scribe_Values, not Scribe_Deep.Look')
-harmony_patches = (root/'1.6/Source/HarmonyPatches.cs').read_text()
-path_cost_prefix = harmony_patches.split('public static class Patch_PathUtility_GetDoorCost', 1)[1].split('[HarmonyPatch]', 1)[0]
-for needle in ['traverseParms.mode == TraverseMode.ByPawn', '!traverseParms.canBashDoors', 'door.IsForbiddenToPass(pawn)', 'return true;']:
-    if needle not in path_cost_prefix:
-        errors.append(f'PathUtility.GetDoorCost patch must preserve vanilla forbidden-door pathing before RimLocksmith allow overrides: {needle}')
-pawn_facts_factory = (root/'1.6/Source/PawnAccessFactsFactory.cs').read_text()
-for needle in ['IsFenceBlockedRoamer(Pawn pawn)', 'HasObjectSpecificRoamSuppression(pawn)', 'SentienceCatalyst', 'removeRoamMtb']:
-    if needle not in pawn_facts_factory:
-        errors.append(f'PawnAccessFactsFactory missing object-specific animal door check: {needle}')
-if 'pawn.RaceProps?.FenceBlocked ?? false' in pawn_facts_factory:
-    errors.append('PawnAccessFactsFactory must not classify fence-blocked animals from race props alone; sentience catalyst is per-pawn')
+utility = (root/'1.6/Source/RimLocksmithUtility.cs').read_text()
+if 'LordJob_TradeWithColony' not in utility:
+    errors.append('ShouldDeny must carve out LordJob_TradeWithColony pack animals from the CanOpenAnyDoor exemption '
+                  '(caravan animals are controlled by the guest toggle)')
+if 'guest.Released' not in utility:
+    errors.append('ShouldDeny must exempt released prisoners (guest.Released) so they can always leave, like vanilla')
+if 'ManageColonyPawns' not in utility:
+    errors.append('ShouldDeny must exempt player-faction pawns when the ManageColonyPawns setting is off')
+settings = (root/'1.6/Source/RimLocksmithSettings.cs').read_text()
+if 'ManageColonyPawns' not in settings or 'manageColonyPawns' not in settings:
+    errors.append('RimLocksmithSettings must expose the ManageColonyPawns toggle (default enabled) and scribe it')
+factory = (root/'1.6/Source/PawnAccessFactsFactory.cs').read_text()
+if 'TraderKind' in factory:
+    errors.append('Trader concept is deleted; caravan members classify as Guest, not via TraderKind')
+# ANOMALY-CONTROL(disabled): 异象控制功能暂禁用,相关代码以注释保留,不做强制断言
+core = '\n'.join(p.read_text() for p in (root/'1.6/Source/Core').glob('**/*.cs'))
+for banned in ['Trader', 'OnlyPets', 'MaxPetBodySize']:
+    if banned in core:
+        errors.append(f'Core must not reference deleted concept: {banned}')
+for lang in ['English', 'ChineseSimplified']:
+    keyed = (root/f'Common/Languages/{lang}/Keyed/RimLocksmith_Keys.xml').read_text()
+    if 'AllowTraders' in keyed or 'OnlyPets' in keyed:
+        errors.append(f'{lang} keyed xml still references deleted Trader/OnlyPets concept')
+    if 'AllowGuests' not in keyed:
+        errors.append(f'{lang} keyed xml missing AllowGuests')
 if errors:
     print('\n'.join(errors))
     raise SystemExit(1)

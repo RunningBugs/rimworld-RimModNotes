@@ -14,17 +14,28 @@ public static class UIUtil
     /// <summary>绘制一份配置的完整编辑控件(设置页默认预设用)。改动即生效。</summary>
     public static void DrawConfigControls(Listing_Standard listing, LockConfigData config, bool markConfigured)
     {
-        DrawToggle(listing, "RimLocksmith.AllowColonists", ref config.AllowColonists);
-        DrawToggle(listing, "RimLocksmith.AllowSlaves", ref config.AllowSlaves);
-        DrawToggle(listing, "RimLocksmith.AllowGuests", ref config.AllowGuests);
-        DrawToggle(listing, "RimLocksmith.AllowTraders", ref config.AllowTraders);
-        if (listing.ButtonText("RimLocksmith.AnimalAccess".Translate() + ": " + ModeLabel(config.AnimalAccess)))
+        // 玩家派系四类开关受设置项「管理殖民地单位」门控。
+        if (RimLocksmithMod.Settings?.ManageColonyPawns ?? true)
         {
-            OpenModeMenu<AnimalAccess>(mode => config.AnimalAccess = mode, ModeLabel);
+            DrawToggle(listing, "RimLocksmith.AllowColonists", ref config.AllowColonists);
+            DrawToggle(listing, "RimLocksmith.AllowSlaves", ref config.AllowSlaves);
         }
-        if (listing.ButtonText("RimLocksmith.MechAccess".Translate() + ": " + ModeLabel(config.MechAccess)))
+        DrawToggle(listing, "RimLocksmith.AllowGuests", ref config.AllowGuests);
+        // ANOMALY-CONTROL(disabled): 异象开关行注释保留。
+        // if (RimLocksmithMod.Settings?.ControlAnomalies ?? false)
+        // {
+        //     DrawToggle(listing, "RimLocksmith.AllowAnomalies", ref config.AllowAnomalies);
+        // }
+        if (RimLocksmithMod.Settings?.ManageColonyPawns ?? true)
         {
-            OpenModeMenu<MechAccess>(mode => config.MechAccess = mode, ModeLabel);
+            if (listing.ButtonText("RimLocksmith.AnimalAccess".Translate() + ": " + ModeLabel(config.AnimalAccess)))
+            {
+                OpenModeMenu<AnimalAccess>(mode => config.AnimalAccess = mode, ModeLabel);
+            }
+            if (listing.ButtonText("RimLocksmith.MechAccess".Translate() + ": " + ModeLabel(config.MechAccess)))
+            {
+                OpenModeMenu<MechAccess>(mode => config.MechAccess = mode, ModeLabel);
+            }
         }
         if (markConfigured)
         {

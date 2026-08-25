@@ -4,6 +4,10 @@
   <RimLocksmith.TabLabel>Locks</RimLocksmith.TabLabel>
   <RimLocksmith.ApplyDefaultToNewColonyDoors>Use default preset for new colony doors</RimLocksmith.ApplyDefaultToNewColonyDoors>
   <RimLocksmith.ApplyDefaultToNewColonyDoorsDesc>Newly initialized colony doors receive the current default preset.</RimLocksmith.ApplyDefaultToNewColonyDoorsDesc>
+  <RimLocksmith.ManageColonyPawns>Manage colony units (colonists/slaves/animals/mechanoids)</RimLocksmith.ManageColonyPawns>
+  <RimLocksmith.ManageColonyPawnsDesc>When enabled (default), door configuration shows toggles for colonists, slaves, colony animals and colony mechanoids, allowing you to forbid each group from opening closed colony doors. When disabled, player-faction pawns always follow vanilla rules (vanilla already provides forbidden doors, allowed areas, pens and mechanitor mechanics); these four toggles then have no effect but their configuration is kept.</RimLocksmith.ManageColonyPawnsDesc>
+  <RimLocksmith.ControlAnomalies>Control anomaly entities</RimLocksmith.ControlAnomalies>
+  <RimLocksmith.ControlAnomaliesDesc>When off (default), all anomaly entities follow vanilla rules and door configuration does not affect them. When on, hostile anomalies still follow vanilla rules, while non-hostile anomalies (e.g. ghouls, shamblers) are controlled by the "Anomaly entities" toggle in the door configuration.</RimLocksmith.ControlAnomaliesDesc>
   <RimLocksmith.DefaultPreset>Default preset</RimLocksmith.DefaultPreset>
   <RimLocksmith.ApplyDefaultToUnconfiguredColonyDoors>Apply default to unconfigured colony doors</RimLocksmith.ApplyDefaultToUnconfiguredColonyDoors>
   <RimLocksmith.ApplyDefaultToAllColonyDoors>Apply default to all colony doors</RimLocksmith.ApplyDefaultToAllColonyDoors>
@@ -13,7 +17,7 @@
   <RimLocksmith.MixedClickToUnify>mixed, click to unify</RimLocksmith.MixedClickToUnify>
   <RimLocksmith.CurrentConfig>Current configuration</RimLocksmith.CurrentConfig>
   <RimLocksmith.CurrentConfigMerged>Current configuration (merged view of {0} colony doors, {1} ignored)</RimLocksmith.CurrentConfigMerged>
-  <RimLocksmith.VanillaNote>Hostiles, prisoners and wild animals always follow vanilla rules and are not affected by this configuration.</RimLocksmith.VanillaNote>
+  <RimLocksmith.VanillaNote>Categories not listed here (hostiles, prisoners, wild animals, etc.) always follow vanilla rules and are unaffected by this configuration.</RimLocksmith.VanillaNote>
   <RimLocksmith.State.Allowed>Allowed</RimLocksmith.State.Allowed>
   <RimLocksmith.State.Denied>Denied</RimLocksmith.State.Denied>
   <RimLocksmith.Edit>Edit…</RimLocksmith.Edit>
@@ -22,14 +26,13 @@
   <RimLocksmith.ResetToDefault>Reset to default</RimLocksmith.ResetToDefault>
   <RimLocksmith.EditDialogTitle>Edit door configuration ({0} doors)</RimLocksmith.EditDialogTitle>
   <RimLocksmith.NoConfigurableDoors>No configurable colony doors selected.</RimLocksmith.NoConfigurableDoors>
-  <RimLocksmith.AllowOpenTooltip>Controls whether this group may actively open this closed colony door. Already-open doors use vanilla passage behavior. Hostiles, prisoners and wild animals always follow vanilla rules and are not controlled here.</RimLocksmith.AllowOpenTooltip>
+  <RimLocksmith.AllowOpenTooltip>Controls whether the listed groups may actively open this closed colony door. Already-open doors use vanilla passage behavior. Groups not listed here always follow vanilla rules and are not controlled here.</RimLocksmith.AllowOpenTooltip>
   <RimLocksmith.AllowColonists>Colonists</RimLocksmith.AllowColonists>
   <RimLocksmith.AllowSlaves>Slaves</RimLocksmith.AllowSlaves>
-  <RimLocksmith.AllowGuests>Guests / visitors (incl. their animals)</RimLocksmith.AllowGuests>
-  <RimLocksmith.AllowTraders>Traders</RimLocksmith.AllowTraders>
+  <RimLocksmith.AllowGuests>Guests / visitors (incl. trade caravans and their animals)</RimLocksmith.AllowGuests>
+  <RimLocksmith.AllowAnomalies>Anomaly entities (non-hostile: ghouls, shamblers, etc.)</RimLocksmith.AllowAnomalies>
   <RimLocksmith.AnimalAccess>Colony animals</RimLocksmith.AnimalAccess>
   <RimLocksmith.AnimalAccess.None>Denied</RimLocksmith.AnimalAccess.None>
-  <RimLocksmith.AnimalAccess.OnlyPets>Pets only (body size ≤ 0.86)</RimLocksmith.AnimalAccess.OnlyPets>
   <RimLocksmith.AnimalAccess.All>All allowed</RimLocksmith.AnimalAccess.All>
   <RimLocksmith.MechAccess>Colony mechanoids</RimLocksmith.MechAccess>
   <RimLocksmith.MechAccess.None>Denied</RimLocksmith.MechAccess.None>

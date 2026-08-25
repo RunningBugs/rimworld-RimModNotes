@@ -2,10 +2,12 @@ namespace RunningBugs.RimLocksmith.Core;
 
 public static class LockPolicy
 {
-    /// <summary>仅宠物体型上限(与 Locks 一致)。</summary>
-    public const float MaxPetBodySize = 0.86f;
-
-    /// <summary>该类别是否参与配置;不可配置类别一律跟随原版,Mod 不加锁。</summary>
+    /// <summary>
+    /// 该类别是否参与配置;不可配置类别一律跟随原版,Mod 不加锁。
+    /// 玩家派系四类(Colonist/Slave/ColonyAnimal/ColonyMechanoid)的可配置性
+    /// 另受设置项「管理殖民地单位」门控:设置关闭时由 ShouldDeny 直接豁免,
+    /// 不会走到本方法。
+    /// </summary>
     public static bool IsConfigurable(AccessCategory category)
     {
         switch (category)
@@ -15,8 +17,9 @@ public static class LockPolicy
             case AccessCategory.ColonyAnimal:
             case AccessCategory.ColonyMechanoid:
             case AccessCategory.Guest:
-            case AccessCategory.Trader:
                 return true;
+            // ANOMALY-CONTROL(disabled): 异象控制暂禁用。
+            // case AccessCategory.Anomaly:
             default:
                 return false;
         }
@@ -33,18 +36,11 @@ public static class LockPolicy
                 return config.AllowSlaves;
             case AccessCategory.Guest:
                 return config.AllowGuests;
-            case AccessCategory.Trader:
-                return config.AllowTraders;
+            // ANOMALY-CONTROL(disabled)
+            // case AccessCategory.Anomaly:
+            //     return config.AllowAnomalies;
             case AccessCategory.ColonyAnimal:
-                switch (config.AnimalAccess)
-                {
-                    case AnimalAccess.All:
-                        return true;
-                    case AnimalAccess.OnlyPets:
-                        return pawn.BodySize <= MaxPetBodySize;
-                    default:
-                        return false;
-                }
+                return config.AnimalAccess == AnimalAccess.All;
             case AccessCategory.ColonyMechanoid:
                 switch (config.MechAccess)
                 {

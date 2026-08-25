@@ -1,10 +1,11 @@
 namespace RunningBugs.RimLocksmith.Core;
 
-/// <summary>殖民地动物通行档位。仅宠物参考 Locks:体型 ≤ 0.86。</summary>
+// 殖民地动物/机械体档位;受设置项「管理殖民地单位」门控。
+
+/// <summary>殖民地动物通行档位。</summary>
 public enum AnimalAccess
 {
     None,
-    OnlyPets,
     All
 }
 

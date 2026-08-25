@@ -8,7 +8,7 @@ using Verse;
 namespace RunningBugs.RimLocksmith;
 
 /// <summary>
-/// 编辑选中门锁配置的弹窗:4 个复选框 + 2 个三态档位。
+/// 编辑选中门锁配置的弹窗:复选框 + 档位菜单。
 /// 多门时混合项标注"点击统一",修改应用到所有选中的可配置殖民地门。
 /// </summary>
 public sealed class Dialog_EditLockConfig : Window
@@ -38,12 +38,24 @@ public sealed class Dialog_EditLockConfig : Window
 
         Listing_Standard listing = new Listing_Standard();
         listing.Begin(new Rect(inRect.x, y, inRect.width, inRect.height - y));
-        DrawBulkToggle(listing, "RimLocksmith.AllowColonists", c => c.AllowColonists, (c, v) => c.AllowColonists = v);
-        DrawBulkToggle(listing, "RimLocksmith.AllowSlaves", c => c.AllowSlaves, (c, v) => c.AllowSlaves = v);
+        // 玩家派系开关受设置项「管理殖民地单位」门控。
+        bool manageColony = RimLocksmithMod.Settings?.ManageColonyPawns ?? true;
+        if (manageColony)
+        {
+            DrawBulkToggle(listing, "RimLocksmith.AllowColonists", c => c.AllowColonists, (c, v) => c.AllowColonists = v);
+            DrawBulkToggle(listing, "RimLocksmith.AllowSlaves", c => c.AllowSlaves, (c, v) => c.AllowSlaves = v);
+        }
         DrawBulkToggle(listing, "RimLocksmith.AllowGuests", c => c.AllowGuests, (c, v) => c.AllowGuests = v);
-        DrawBulkToggle(listing, "RimLocksmith.AllowTraders", c => c.AllowTraders, (c, v) => c.AllowTraders = v);
-        DrawBulkMode(listing, "RimLocksmith.AnimalAccess", c => c.AnimalAccess, (c, v) => c.AnimalAccess = v, UIUtil.ModeLabel);
-        DrawBulkMode(listing, "RimLocksmith.MechAccess", c => c.MechAccess, (c, v) => c.MechAccess = v, UIUtil.ModeLabel);
+        // ANOMALY-CONTROL(disabled): 异象开关行注释保留。
+        // if (RimLocksmithMod.Settings?.ControlAnomalies ?? false)
+        // {
+        //     DrawBulkToggle(listing, "RimLocksmith.AllowAnomalies", c => c.AllowAnomalies, (c, v) => c.AllowAnomalies = v);
+        // }
+        if (manageColony)
+        {
+            DrawBulkMode(listing, "RimLocksmith.AnimalAccess", c => c.AnimalAccess, (c, v) => c.AnimalAccess = v, UIUtil.ModeLabel);
+            DrawBulkMode(listing, "RimLocksmith.MechAccess", c => c.MechAccess, (c, v) => c.MechAccess = v, UIUtil.ModeLabel);
+        }
         listing.End();
 
         Text.Font = GameFont.Tiny;
