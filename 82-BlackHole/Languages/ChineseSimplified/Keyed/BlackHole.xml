@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <BlackHole.DevouredPawn>{0}被黑洞吞噬了。</BlackHole.DevouredPawn>
+  <BlackHole.DevourGizmo>送入黑洞</BlackHole.DevourGizmo>
+  <BlackHole.DevourGizmoDesc>打开选择窗口，勾选的物品或小人将被送入黑洞并永远消失。</BlackHole.DevourGizmoDesc>
+  <BlackHole.DevourDialogTitle>选择要送入黑洞的物品或小人</BlackHole.DevourDialogTitle>
+  <BlackHole.CantDevourEmpty>没有勾选任何内容，黑洞不会吞噬空气。</BlackHole.CantDevourEmpty>
+  <BlackHole.PawnCantReachBlackHole>{0}无法到达黑洞。</BlackHole.PawnCantReachBlackHole>
+  <BlackHole.LoadingStarted>黑洞开始吞噬。</BlackHole.LoadingStarted>
+  <BlackHole.LoadingFinished>黑洞吞噬完毕。</BlackHole.LoadingFinished>
+  <BlackHole.CantLoadMore>无法继续向黑洞装载：暂时没有人能运送{0}（缺少可用的搬运者或路径）。</BlackHole.CantLoadMore>
+  <BlackHole.CancelDevour>取消吞噬</BlackHole.CancelDevour>
+  <BlackHole.CancelDevourDesc>停止装载。搬运途中的货物会留在搬运者手中，随后按常规搬运逻辑处理。</BlackHole.CancelDevourDesc>
+</LanguageData>

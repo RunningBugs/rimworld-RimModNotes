@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <BlackHole.DevouredPawn>{0} has been devoured by the black hole.</BlackHole.DevouredPawn>
+  <BlackHole.DevourGizmo>Send into black hole</BlackHole.DevourGizmo>
+  <BlackHole.DevourGizmoDesc>Open the selection dialog. Chosen items or pawns will be sent into the black hole and vanish forever.</BlackHole.DevourGizmoDesc>
+  <BlackHole.DevourDialogTitle>Choose items or pawns to send into the black hole</BlackHole.DevourDialogTitle>
+  <BlackHole.CantDevourEmpty>Nothing is selected. The black hole will not devour thin air.</BlackHole.CantDevourEmpty>
+  <BlackHole.PawnCantReachBlackHole>{0} cannot reach the black hole.</BlackHole.PawnCantReachBlackHole>
+  <BlackHole.LoadingStarted>The black hole begins to devour.</BlackHole.LoadingStarted>
+  <BlackHole.LoadingFinished>The black hole has finished devouring.</BlackHole.LoadingFinished>
+  <BlackHole.CantLoadMore>Cannot continue loading the black hole: no one can deliver {0} right now (no available hauler or path).</BlackHole.CantLoadMore>
+  <BlackHole.CancelDevour>Cancel devouring</BlackHole.CancelDevour>
+  <BlackHole.CancelDevourDesc>Stop loading. Cargo already being carried stays in the haulers' hands and is handled by normal hauling logic afterwards.</BlackHole.CancelDevourDesc>
+</LanguageData>

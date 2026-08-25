@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- 原版 HaulToTransporter 同款 flags。注意不要 allowOpportunisticPrefix：
+       原版 targetA=Invalid 使 TryOpportunisticJob 提前返回 null（实际永不生效），
+       本 mod 发 job 时烘入 targetA，该 flag 会半生效（只预约队列不拾取），故移除。 -->
+  <JobDef>
+    <defName>BlackHoleHaul</defName>
+    <driverClass>BlackHole.JobDriver_HaulToBlackHole</driverClass>
+    <reportString>Feeding targetA to the black hole.</reportString>
+    <suspendable>false</suspendable>
+    <dropThingBeforeJob>false</dropThingBeforeJob>
+  </JobDef>
+
+  <JobDef>
+    <defName>BlackHoleEnter</defName>
+    <driverClass>BlackHole.JobDriver_EnterBlackHole</driverClass>
+    <reportString>Entering the black hole.</reportString>
+    <suspendable>false</suspendable>
+  </JobDef>
+
+  <!-- 原版 LoadAndEnterTransporters 同款 thinktree：紧急需求 → 搬货 → 卸背包 → 走入 -->
+  <DutyDef>
+    <defName>DevourToBlackHole</defName>
+    <label>feed the black hole</label>
+    <thinkNode Class="ThinkNode_Priority">
+      <subNodes>
+        <!-- Basic needs -->
+        <li Class="ThinkNode_Subtree">
+          <treeDef>SatisfyVeryUrgentNeeds</treeDef>
+        </li>
+        <!-- Haul items into the black hole -->
+        <li Class="BlackHole.JobGiver_DevourToBlackHole" />
+        <!-- Drop items if you're assigned to unload everything (before entering!) -->
+        <li Class="JobGiver_UnloadYourInventory" />
+        <!-- Pawns selected as cargo walk into the black hole themselves -->
+        <li Class="BlackHole.JobGiver_EnterBlackHole" />
+      </subNodes>
+    </thinkNode>
+  </DutyDef>
+
+  <!-- 原版 LoadTransporters 同款：普通搬运工按 Hauling 优先级帮忙装黑洞 -->
+  <WorkGiverDef>
+    <defName>BlackHoleLoad</defName>
+    <label>feed the black hole</label>
+    <giverClass>BlackHole.WorkGiver_BlackHole</giverClass>
+    <workType>Hauling</workType>
+    <verb>feed</verb>
+    <gerund>feeding</gerund>
+    <priorityInType>110</priorityInType>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+  </WorkGiverDef>
+</Defs>

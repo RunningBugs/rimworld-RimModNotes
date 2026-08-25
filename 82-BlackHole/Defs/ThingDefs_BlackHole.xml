@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>BlackHole</defName>
+    <label>black hole</label>
+    <description>A black hole. Anything sent into it — items or pawns — vanishes forever. Nothing comes back.</description>
+    <thingClass>Building</thingClass>
+    <graphicData>
+      <texPath>BlackHole</texPath>
+      <graphicClass>BlackHole.Graphic_BlackHole</graphicClass>
+      <drawSize>(2.9,2.9)</drawSize>
+      <shaderType>Transparent</shaderType>
+    </graphicData>
+    <drawerType>RealtimeOnly</drawerType>
+    <uiIconPath>BlackHole/BlackHole</uiIconPath>
+    <uiIconScale>0.85</uiIconScale>
+    <size>(1,1)</size>
+    <rotatable>false</rotatable>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>0.4</fillPercent>
+    <designationCategory>Misc</designationCategory>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <statBases>
+      <MaxHitPoints>1000</MaxHitPoints>
+      <WorkToBuild>5000</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Beauty>-60</Beauty>
+    </statBases>
+    <costList>
+      <Steel>517</Steel>
+    </costList>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <comps>
+      <li Class="BlackHole.CompProperties_BlackHole" />
+    </comps>
+  </ThingDef>
+</Defs>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>BlackHole 黑洞</name>
+  <author>RunningBugs</author>
+  <packageId>RunningBugs.BlackHole</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <description>黑洞：一座不可名状的建筑。选中它并点击"装载"，就能像穿梭机一样勾选要丢进去的物品，小人会把它们搬运进黑洞——然后它们就永远消失了。造价 517 个钢，这个数字正是原版放置搜索的格子数，恰好是复刻原版"黑洞BUG"所需的规模。注意：千万不要把小人选进装载清单，他们真的会被吃掉。
+
+灵感来自 德国猎 的发现（半径13的圆铺满铁即可吞噬物品的"黑洞"机制）：https://www.bilibili.com/video/BV1fe411J7As/
+
+Black Hole: an indescribable 1x1 building. Select it and press "Load" to pick items with the shuttle-style load dialog; pawns will haul them into the hole, where they vanish forever. Costs exactly 517 steel - the number of cells the vanilla placement search scans. Warning: never add colonists to the load list. They will be eaten.
+
+Inspired by the discovery of 德国猎 (the vanilla "black hole" trick: pave a radius-13 circle with steel and anything dropped in the center vanishes): https://www.bilibili.com/video/BV1fe411J7As/</description>
+  <modDependencies />
+</ModMetaData>
