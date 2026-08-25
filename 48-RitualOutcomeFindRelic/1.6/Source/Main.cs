@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using LudeonTK;
 using RimWorld;
+using RimWorld.Planet;
 using RimWorld.QuestGen;
 using UnityEngine;
 using Verse;
@@ -125,28 +125,27 @@ public class MyDefOf
 
 public class RitualAttachableOutcomeEffectWorker_FindRelic : RitualAttachableOutcomeEffectWorker
 {
-    // Method to generate and send a quest to the player
     [DebugAction("Quests", "GenerateAndSendFindRelicQuest", actionType = DebugActionType.Action, allowedGameStates = AllowedGameStates.PlayingOnMap)]
     public static void DebugAction()
     {
         GenerateAndSendQuest();
     }
 
-    public static void GenerateAndSendQuest()
+    // Returns true only when a relic info subquest was actually generated,
+    // so the ritual outcome text doesn't claim success when nothing happened.
+    public static bool GenerateAndSendQuest()
     {
         if (!ModLister.CheckIdeology("Relic hunt rescue"))
         {
-            return;
+            return false;
         }
 
         QuestScriptDef questScriptDef = MyDefOf.RelicHunt;
         Ideo primaryIdeo = Faction.OfPlayer.ideos.PrimaryIdeo;
-        if ((from p in primaryIdeo.GetAllPreceptsOfType<Precept_Relic>()
-             where p.CanGenerateRelic
-             select p).Count() == 0)
+        if (!primaryIdeo.GetAllPreceptsOfType<Precept_Relic>().Any(p => p.CanGenerateRelic))
         {
             Messages.Message("NoRelicsToGenerate".Translate(primaryIdeo.name), MessageTypeDefOf.RejectInput, false);
-            return;
+            return false;
         }
 
         // Find existing RelicHunt quests that are ongoing
@@ -157,10 +156,13 @@ public class RitualAttachableOutcomeEffectWorker_FindRelic : RitualAttachableOut
         if (existingRelicHuntQuest == null)
         {
             Slate slate = new();
+            // The vanilla epic quest channel passes scaled threat points; an empty slate
+            // would leave points=0 and the relic site would get minimum-strength security.
+            slate.Set("points", StorytellerUtility.DefaultThreatPointsNow(Find.World));
             if (!questScriptDef.CanRun(slate, Find.World))
             {
                 Log.Error($"Cannot generate quest {questScriptDef.defName} with the current parameters.");
-                return;
+                return false;
             }
             try
             {
@@ -169,85 +171,93 @@ public class RitualAttachableOutcomeEffectWorker_FindRelic : RitualAttachableOut
             catch (System.Exception e)
             {
                 Log.Error($"Error generating quest possibly due to no available relic to generate: {e}");
-                return;
+                return false;
             }
             QuestUtility.SendLetterQuestAvailable(existingRelicHuntQuest);
         }
 
-        GenerateSubquestForExistingRelicHunt(existingRelicHuntQuest);
+        return GenerateSubquestForExistingRelicHunt(existingRelicHuntQuest);
     }
 
-    private static void GenerateSubquestForExistingRelicHunt(Quest relicHuntQuest)
+    private static bool GenerateSubquestForExistingRelicHunt(Quest relicHuntQuest)
     {
         // Find the subquest generator in the quest
         QuestPart_SubquestGenerator_RelicHunt subquestGenerator = relicHuntQuest.PartsListForReading
             .OfType<QuestPart_SubquestGenerator_RelicHunt>()
             .FirstOrDefault();
 
-        if (subquestGenerator == null)
+        if (subquestGenerator == null || subquestGenerator.relic == null)
         {
-            return;
+            return false;
         }
 
-        // // Get the relic from the quest
-        // Precept_Relic relic = null;
-        // foreach (QuestPart part in relicHuntQuest.PartsListForReading)
-        // {
-        //     if (part is QuestPart_SubquestGenerator_RelicHunt subquestGen)
-        //     {
-        //         relic = subquestGen.relic;
-        //         break;
-        //     }
-        // }
-
-        // if (relic == null)
-        // {
-        //     return;
-        // }
-        if (subquestGenerator.relic == null)
-        {
-            return;
-        }
-
-        // Trigger the subquest generation manually
-        GenerateSubquest(subquestGenerator, relicHuntQuest);
-        return;
+        return GenerateSubquest(subquestGenerator, relicHuntQuest);
     }
 
-    private static void GenerateSubquest(QuestPart_SubquestGenerator_RelicHunt subquestGenerator, Quest parent)
+    private static bool GenerateSubquest(QuestPart_SubquestGenerator_RelicHunt subquestGenerator, Quest parent)
     {
-        if (parent.GetSubquests().Count(q => q.State <= QuestState.Ongoing) >= 2)
+        // Mirror the vanilla limits from QuestPart_SubquestGenerator.CanGenerateSubquest
+        int pendingCount = parent.GetSubquests().Count(q => q.State <= QuestState.Ongoing);
+        if (pendingCount >= subquestGenerator.maxActiveSubquests)
         {
             Messages.Message("TooManyOngoingOrNotAcceptedSubquests".Translate(), MessageTypeDefOf.RejectInput, false);
-            return;
+            return false;
         }
 
-        // MethodInfo methodInfo = typeof(QuestPart_SubquestGenerator).GetMethod("TryGenerateSubquest", BindingFlags.NonPublic | BindingFlags.Instance);
-        // methodInfo.Invoke(subquestGenerator, null);
-        subquestGenerator.TryGenerateSubquest();
+        int successfulCount = parent.GetSubquests(QuestState.EndedSuccess).Count();
+        if (subquestGenerator.maxSuccessfulSubquests >= 0
+            && successfulCount + pendingCount >= subquestGenerator.maxSuccessfulSubquests)
+        {
+            Messages.Message("RelicInfoGatheringComplete".Translate(), MessageTypeDefOf.RejectInput, false);
+            return false;
+        }
 
-        // MethodInfo methodInfo = typeof(QuestPart_SubquestGenerator_RelicHunt).GetMethod("GetNextSubquestDef", BindingFlags.NonPublic | BindingFlags.Instance);
-        // QuestScriptDef nextSubquestDef = (QuestScriptDef)methodInfo.Invoke(subquestGenerator, null);
-        // if (nextSubquestDef != null)
-        // {
+        if (TryGenerateAnySubquest(subquestGenerator, parent))
+        {
+            return true;
+        }
 
-        //     methodInfo = typeof(QuestPart_SubquestGenerator_RelicHunt).GetMethod("InitSlate", BindingFlags.NonPublic | BindingFlags.Instance);
-        //     Slate vars = (Slate)methodInfo.Invoke(subquestGenerator, null);
-        //     Quest quest = QuestUtility.GenerateQuestAndMakeAvailable(nextSubquestDef, vars);
-        //     quest.parent = subquestGenerator.quest;
-        //     if (!quest.hidden && quest.root.sendAvailableLetter)
-        //     {
-        //         QuestUtility.SendLetterQuestAvailable(quest);
-        //     }
-        // }
+        Messages.Message("FindRelicNoSubquestAvailable".Translate(), MessageTypeDefOf.RejectInput, false);
+        return false;
     }
 
+    // The vanilla TryGenerateSubquest shuffles the subquest list and only checks CanRun
+    // on the first entry, wasting the roll if that one can't run. Fall back to trying
+    // every remaining subquest def so a single unrunnable def can't sink the ritual reward.
+    private static bool TryGenerateAnySubquest(QuestPart_SubquestGenerator_RelicHunt subquestGenerator, Quest parent)
+    {
+        if (subquestGenerator.TryGenerateSubquest())
+        {
+            return true;
+        }
+
+        IIncidentTarget target = (subquestGenerator.useMapParentThreatPoints != null && subquestGenerator.useMapParentThreatPoints.HasMap)
+            ? subquestGenerator.useMapParentThreatPoints.Map
+            : (Find.AnyPlayerHomeMap == null ? (IIncidentTarget)Find.World : (IIncidentTarget)Find.AnyPlayerHomeMap);
+
+        foreach (QuestScriptDef subquestDef in subquestGenerator.subquestDefs.InRandomOrder())
+        {
+            Slate vars = subquestGenerator.InitSlate();
+            if (!subquestDef.CanRun(vars, target))
+            {
+                continue;
+            }
+            Quest quest = QuestUtility.GenerateQuestAndMakeAvailable(subquestDef, vars);
+            quest.parent = parent;
+            if (!quest.hidden && quest.root.sendAvailableLetter)
+            {
+                QuestUtility.SendLetterQuestAvailable(quest);
+            }
+            return true;
+        }
+
+        return false;
+    }
 
     public override void Apply(Dictionary<Pawn, int> totalPresence, LordJob_Ritual jobRitual, RitualOutcomePossibility outcome, out string extraOutcomeDesc, ref LookTargets letterLookTargets)
     {
-        if (Rand.Chance(Settings.FindRelicChance))
+        if (Rand.Chance(Settings.FindRelicChance) && GenerateAndSendQuest())
         {
-            GenerateAndSendQuest();
             extraOutcomeDesc = def.letterInfoText;
         }
         else
@@ -256,5 +266,3 @@ public class RitualAttachableOutcomeEffectWorker_FindRelic : RitualAttachableOut
         }
     }
 }
-
-

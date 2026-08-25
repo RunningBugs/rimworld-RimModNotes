@@ -29,6 +29,5 @@
 		</PackageReference>
 		<PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4488-beta" />
 		<PackageReference Include="Lib.Harmony" Version="2.3.*" />
-		<PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="10.*" />
 	</ItemGroup>
 </Project>
