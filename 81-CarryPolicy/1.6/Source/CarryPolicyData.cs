@@ -45,6 +45,11 @@ public class CarryPolicy : Policy
 	{
 		base.ExposeData();
 		Scribe_Collections.Look(ref entries, "entries", LookMode.Deep);
+		// 读档后清掉 def 已缺失的条目（如退订了对应 Mod），否则管理弹窗访问 entry.thing 会 NRE
+		if (Scribe.mode == LoadSaveMode.PostLoadInit)
+		{
+			entries.RemoveAll((CarryPolicyEntry e) => e?.thing == null);
+		}
 	}
 
 	public override void CopyFrom(Policy other)
@@ -66,6 +71,10 @@ public class CarryPolicyDatabase : GameComponent
 	public List<CarryPolicy> policies = new List<CarryPolicy>();
 
 	public Dictionary<Pawn, CarryPolicy> assignments = new Dictionary<Pawn, CarryPolicy>();
+
+	// JobGiver_CarryPolicy 的节流表（不存档）。必须随 GameComponent 每局新建，
+	// 不能 static——绝对 tick 跨存档存活会让老档的大 tick 值使新档长期不补货
+	public readonly Dictionary<Pawn, int> nextCheckTick = new Dictionary<Pawn, int>();
 
 	public List<CarryPolicy> AllPolicies => policies;
 
@@ -240,16 +249,5 @@ public static class CarryPolicyUtility
 			return false;
 		}
 		return !typeof(Corpse).IsAssignableFrom(def.thingClass);
-	}
-
-	// 条目仍需保留在背包里（未超目标件数）则 true，供防丢弃补丁使用
-	public static bool ShouldKeepInInventory(Pawn pawn, ThingDef def)
-	{
-		CarryPolicyEntry carryPolicyEntry = CurrentPolicyFor(pawn)?.EntryFor(def);
-		if (carryPolicyEntry == null || carryPolicyEntry.count <= 0f)
-		{
-			return false;
-		}
-		return pawn.inventory.Count(def) <= TargetCount(carryPolicyEntry, pawn);
 	}
 }

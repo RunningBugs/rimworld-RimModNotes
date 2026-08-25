@@ -44,6 +44,13 @@ public class Dialog_ManageCarryPolicies : Dialog_ManagePolicies<CarryPolicy>
 
 	private string cachedOptionsKey;
 
+	// 类别列表只需算一次（要扫全部 DescendantThingDefs，每帧重算浪费）
+	private List<ThingCategoryDef> cachedCategories;
+
+	private CarryPolicy lastSelectedPolicy;
+
+	private List<ThingCategoryDef> Categories => cachedCategories ??= AvailableCategories().ToList();
+
 	protected override string TitleKey => "CarryPolicyTitle";
 
 	protected override string TipKey => "CarryPolicyTip";
@@ -82,6 +89,12 @@ public class Dialog_ManageCarryPolicies : Dialog_ManagePolicies<CarryPolicy>
 
 	protected override void DoContentsRect(Rect rect)
 	{
+		// 切换方案时清空右栏勾选，避免残留选择误加到别的方案
+		if (SelectedPolicy != lastSelectedPolicy)
+		{
+			lastSelectedPolicy = SelectedPolicy;
+			checkedDefs.Clear();
+		}
 		float num = Mathf.Min(LeftColumnWidth, rect.width * 0.6f);
 		Rect rect2 = new Rect(rect.x, rect.y, num, rect.height);
 		Rect rect3 = new Rect(rect2.xMax + 10f, rect.y, rect.width - num - 10f, rect.height);
@@ -139,7 +152,7 @@ public class Dialog_ManageCarryPolicies : Dialog_ManagePolicies<CarryPolicy>
 	private void DoEntryColumnLabels(Rect rect)
 	{
 		rect.width -= 16f;
-		float x = CalculateEntryColumns(rect, out var _, out var nameWidth, out var _, out var _, out var _);
+		var (x, _, nameWidth, _, _, _) = CalculateEntryColumns(rect);
 		Text.Anchor = TextAnchor.LowerLeft;
 		Rect rect2 = new Rect(x, rect.y, IconSize + nameWidth, rect.height);
 		Widgets.Label(rect2, "CarryNameColumnLabel".Translate());
@@ -163,14 +176,23 @@ public class Dialog_ManageCarryPolicies : Dialog_ManagePolicies<CarryPolicy>
 		{
 			Widgets.DrawLightHighlight(rect);
 		}
-		float x = CalculateEntryColumns(rect, out var deleteX, out var nameWidth, out var countX, out var hintX, out var infoX);
+		var (x, deleteX, nameWidth, countX, hintX, infoX) = CalculateEntryColumns(rect);
 		Text.Anchor = TextAnchor.MiddleLeft;
 		Widgets.ThingIcon(new Rect(x, rect.y + (rect.height - IconSize) / 2f, IconSize, IconSize), entry.thing);
 		Rect rect2 = new Rect(x + IconSize, rect.y, nameWidth, rect.height).ContractedBy(4f);
 		Widgets.Label(rect2, entry.thing.LabelCap);
 		Widgets.InfoCardButton(new Rect(infoX, rect.y + (rect.height - InfoButtonSize) / 2f, InfoButtonSize, InfoButtonSize), entry.thing);
-		float max = entry.IsFood ? 20f : 999f;
-		Widgets.TextFieldNumeric(new Rect(countX, rect.y + 6f, CountFieldWidth, rect.height - 12f), ref entry.count, ref entry.countBuffer, 0f, max);
+		// 食物按「份」（float，0.1 步进）；其他物品按「件」，只接受整数
+		if (entry.IsFood)
+		{
+			Widgets.TextFieldNumeric(new Rect(countX, rect.y + 6f, CountFieldWidth, rect.height - 12f), ref entry.count, ref entry.countBuffer, 0f, 20f);
+		}
+		else
+		{
+			int num = Mathf.Max(0, Mathf.RoundToInt(entry.count));
+			Widgets.TextFieldNumeric(new Rect(countX, rect.y + 6f, CountFieldWidth, rect.height - 12f), ref num, ref entry.countBuffer, 0f, 999f);
+			entry.count = num;
+		}
 		GUI.color = Color.grey;
 		string text = (entry.IsFood ? ("≈" + CarryPolicyUtility.BaselineTargetCount(entry) + "CarryItemsShort".Translate()) : "CarryItemsShort".Translate());
 		Widgets.Label(new Rect(hintX, rect.y, HintWidth, rect.height), text);
@@ -183,14 +205,14 @@ public class Dialog_ManageCarryPolicies : Dialog_ManagePolicies<CarryPolicy>
 		return result;
 	}
 
-	private float CalculateEntryColumns(Rect rect, out float deleteX, out float nameWidth, out float countX, out float hintX, out float infoX)
+	private (float x, float deleteX, float nameWidth, float countX, float hintX, float infoX) CalculateEntryColumns(Rect rect)
 	{
-		deleteX = rect.xMax - DeleteWidth;
-		hintX = deleteX - HintWidth;
-		countX = hintX - CountFieldWidth;
-		nameWidth = countX - (rect.x + IconSize) - InfoButtonSize - 4f;
-		infoX = rect.x + IconSize + nameWidth;
-		return rect.x;
+		float deleteX = rect.xMax - DeleteWidth;
+		float hintX = deleteX - HintWidth;
+		float countX = hintX - CountFieldWidth;
+		float nameWidth = countX - (rect.x + IconSize) - InfoButtonSize - 4f;
+		float infoX = rect.x + IconSize + nameWidth;
+		return (rect.x, deleteX, nameWidth, countX, hintX, infoX);
 	}
 
 	// ---------- 右栏：可选项 ----------
@@ -203,7 +225,7 @@ public class Dialog_ManageCarryPolicies : Dialog_ManagePolicies<CarryPolicy>
 		Rect rect6 = new Rect(rect2.x + CategoryDropdownWidth + 8f, rect2.yMax - 24f, rect2.width - CategoryDropdownWidth - 8f, 24f);
 		if (currentCategory == null)
 		{
-			currentCategory = AvailableCategories().FirstOrDefault() ?? ThingCategoryDefOf.Root;
+			currentCategory = Categories.FirstOrDefault() ?? ThingCategoryDefOf.Root;
 		}
 		Widgets.Dropdown(rect5, this, (Dialog_ManageCarryPolicies d) => d.currentCategory, GenerateCategoryMenu, currentCategory.LabelCap, null, currentCategory.LabelCap, null, null, paintable: false);
 		searchWidget.OnGUI(rect6, RefreshOptions);
@@ -292,7 +314,7 @@ public class Dialog_ManageCarryPolicies : Dialog_ManagePolicies<CarryPolicy>
 
 	private IEnumerable<Widgets.DropdownMenuElement<ThingCategoryDef>> GenerateCategoryMenu(Dialog_ManageCarryPolicies dialog)
 	{
-		foreach (ThingCategoryDef item in dialog.AvailableCategories())
+		foreach (ThingCategoryDef item in dialog.Categories)
 		{
 			ThingCategoryDef cat = item;
 			yield return new Widgets.DropdownMenuElement<ThingCategoryDef>

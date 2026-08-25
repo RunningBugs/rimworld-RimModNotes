@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patch>
-	<!-- 补货 JobGiver：插到原版库存补货（医药）之后 -->
-	<Operation Class="PatchOperationInsert">
+	<!-- 补货 JobGiver：插到原版库存补货（医药）之后。
+		 用 Conditional 包裹：若 XPath 因版本变化或其他 Mod 改树而失配，静默跳过（不注入），而不是报错 -->
+	<Operation Class="PatchOperationConditional">
 		<xpath>Defs/ThinkTreeDef[defName="Humanlike"]/thinkRoot[@Class="ThinkNode_Priority"]/subNodes/li[@Class="ThinkNode_ConditionalColonist"]/subNodes/li[tagToGive="TakeForInventoryStock"]/subNodes/li[@Class="JobGiver_TakeForInventoryStock"]</xpath>
-		<value>
-			<li Class="_CarryPolicy.JobGiver_CarryPolicy">
-				<leaveJoinableLordIfIssuesJob>true</leaveJoinableLordIfIssuesJob>
-			</li>
-		</value>
+		<match Class="PatchOperationInsert">
+			<xpath>Defs/ThinkTreeDef[defName="Humanlike"]/thinkRoot[@Class="ThinkNode_Priority"]/subNodes/li[@Class="ThinkNode_ConditionalColonist"]/subNodes/li[tagToGive="TakeForInventoryStock"]/subNodes/li[@Class="JobGiver_TakeForInventoryStock"]</xpath>
+			<value>
+				<li Class="_CarryPolicy.JobGiver_CarryPolicy">
+					<leaveJoinableLordIfIssuesJob>true</leaveJoinableLordIfIssuesJob>
+				</li>
+			</value>
+		</match>
 	</Operation>
 
 	<!-- 分配页签：在原版携带(Carry)列后插入携带方案列 -->

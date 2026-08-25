@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 	<packageId>RunningBugs.CarryPolicy</packageId>
-	<name>Carry Policy</name>
+	<name>携带方案 Carry Policy</name>
 	<author>RunningBugs</author>
 	<supportedVersions>
 		<li>1.6</li>
 	</supportedVersions>
-	<description>Carry policies for RimWorld 1.6.
+	<description>
+适用于 RimWorld 1.6 的携带策略（Carry Policies）。
+
+可以配置命名的携带策略（类似原版的药物策略），指定殖民者应当在物品栏中随身携带哪些物品。可以在「分配」选项卡中为每名殖民者单独指定策略。
+
+功能：
+
+原版风格的策略管理界面：支持创建、复制、重命名和设置默认策略。左侧为策略列表，右侧为双栏编辑器（携带列表 + 可选择物品），支持按类别浏览、搜索和多选。
+任何能够放入殖民者物品栏的物品都可以设置为随身携带：食物、营养膏、牛奶、药物、医疗用品、资源等。
+营养膏会直接从营养膏分配机获取（每次获取一份）。
+食物数量以份数计算：一份相当于普通成年殖民者一顿饭的食量（0.9 营养值，约可维持 13.5 小时）。饥饿速度更快的殖民者（例如模组种族、基因效果等）会自动按比例携带更多食物。
+殖民者会自动补充策略要求的随身物品，并且不会主动丢弃或搬走策略中要求携带的物品。
+
+模组以 MIT 许可证开源发布：
+https://github.com/lisanhu/rimworld-RimModNotes.git
+
+
+之前发布过一个ItemPolicy，做的功能也相似，但是那个UI特别简陋，且没有使用物品过滤器，导致小人可以带迫击炮建筑在身上，并在任何位置直接放下（不需要建造时间），因为已经有玩家使用这个携带建筑的功能所以也不方便取消，正好这次使用GLM 5.3写一个新版本发布出来。
+
+
+Carry policies for RimWorld 1.6.
 
 Configure named carry policies (like vanilla drug policies) that specify which items colonists keep in their inventory. Assign them per colonist in the Assign tab.
 
@@ -19,5 +39,12 @@ Features:
 - Pawns top up their inventory automatically and never drop or haul away items covered by their policy.
 
 Mod published in MIT license at https://github.com/lisanhu/rimworld-RimModNotes.git
-Folder name 81-CarryPolicy</description>
+
+
+I previously released a mod called ItemPolicy with similar functionality, but its UI was very basic, and it didn’t use proper item filtering. As a result, pawns could carry things like mortar buildings in their inventory and place them down anywhere instantly, without any construction time.
+
+Since some players have already started using this building-carrying behavior as a feature, it would be awkward to remove it from ItemPolicy now. So I took the opportunity to use GLM 5.3 to write a new version and release it separately.
+
+
+</description>
 </ModMetaData>
