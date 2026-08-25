@@ -12,8 +12,9 @@ namespace KillingReward
 
         public static List<Pawn> Candidates()
         {
-            return PawnsFinder.AllMaps_FreeColonists
-                .Where(p => !p.Dead && p.skills != null && p.RaceProps.Humanlike)
+            // 与特质/基因修改一致：远行队、运输舱中的成员也可选。
+            return PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive_OfPlayerFaction
+                .Where(p => p.skills != null && p.RaceProps.Humanlike)
                 .OrderBy(p => p.LabelShort)
                 .ToList();
         }

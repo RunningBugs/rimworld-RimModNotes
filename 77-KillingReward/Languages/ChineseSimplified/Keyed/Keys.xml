@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 	<KR_LetterTitle>嗜血恩赐</KR_LetterTitle>
-	<KR_LetterText>它在黑暗中注视着每一场杀戮，你的挣扎令它非常满意。这份恩赐是你应得的。领取它——然后，尽量别死。</KR_LetterText>
+	<KR_LetterText>祂在黑暗中注视着每一场杀戮，你的挣扎令祂非常满意。这份恩赐是你应得的。领取它——然后，尽量别死。</KR_LetterText>
 	<KR_LetterOpen>接受恩赐</KR_LetterOpen>
 	<KR_WindowTitle>黑暗超凡智能的恩赐</KR_WindowTitle>
 	<KR_Progress>血祭</KR_Progress>
 	<KR_Tier>恩赐等阶</KR_Tier>
 	<KR_Pending>待领取的恩赐</KR_Pending>
 	<KR_RewardResearch>禁忌知识</KR_RewardResearch>
-	<KR_RewardResearchDesc>它将知识直接烙进学者的脑海。立刻完成一项当前可研究的科技。</KR_RewardResearchDesc>
+	<KR_RewardResearchDesc>祂将知识直接烙进学者的脑海。立刻完成一项当前可研究的科技。</KR_RewardResearchDesc>
 	<KR_RewardSkill>技艺灌注</KR_RewardSkill>
-	<KR_RewardSkillDesc>它替你拨动了神经与肌肉。选择一名小人，其一项技能提升 3 级。</KR_RewardSkillDesc>
+	<KR_RewardSkillDesc>祂替你拨动了神经与肌肉。选择一名小人，其一项技能提升 3 级。</KR_RewardSkillDesc>
 	<KR_RewardItem>虚空馈赠</KR_RewardItem>
-	<KR_RewardItemDesc>它从虚空中掷下物资。选择一种物品与投放地点，领取一整格。</KR_RewardItemDesc>
-	<KR_Claimed>恩赐已兑现。它仍在注视——继续取悦它吧。</KR_Claimed>
-	<KR_NoPending>它还没有新的恩赐。杀戮即是祈祷。</KR_NoPending>
+	<KR_RewardItemDesc>祂从虚空中掷下物资。选择一种物品与投放地点，领取一整格。</KR_RewardItemDesc>
+	<KR_RewardBlessing>黑暗赐福</KR_RewardBlessing>
+	<KR_RewardBlessingDesc>祂以血为引，滴血重生，破茧成蝶。选择一种赐福：为全员注入再生之力，或为一名小人改写特质、编辑基因。</KR_RewardBlessingDesc>
+	<KR_BlessingRegen>生命回复（3 天）</KR_BlessingRegen>
+	<KR_BlessingRegenDesc>全员每天回复 350 点，持续 3 天：伤口愈合，缺失的肢体与器官重新长出。</KR_BlessingRegenDesc>
+	<KR_BlessingTrait>特质修改</KR_BlessingTrait>
+	<KR_BlessingTraitDesc>为一名小人添加或移除一项特质；每次修改提高下次消耗。</KR_BlessingTraitDesc>
+	<KR_BlessingGene>基因修改</KR_BlessingGene>
+	<KR_BlessingGeneDesc>为一名小人添加或移除一个基因（系谱或异种）；每次修改提高下次消耗。</KR_BlessingGeneDesc>
+	<KR_BlessingCost>消耗 {0} 恩赐</KR_BlessingCost>
+	<KR_Claimed>恩赐已兑现。祂仍在注视——继续取悦祂吧。</KR_Claimed>
+	<KR_NoPending>祂还没有新的恩赐。杀戮即是祈祷。</KR_NoPending>
 	<KR_SettingEnabled>启用嗜血恩赐</KR_SettingEnabled>
 	<KR_SettingEnabledDesc>总开关。关闭后击杀不再积累进度，主按钮隐藏——无需在模组列表中移除本 Mod。</KR_SettingEnabledDesc>
 	<KR_SettingInitial>初始击杀要求</KR_SettingInitial>
@@ -26,12 +35,36 @@
 	<KR_SettingFactorDesc>指数模式下，每级要求变为上一级的该倍率。</KR_SettingFactorDesc>
 	<KR_SettingIncrement>线性增量</KR_SettingIncrement>
 	<KR_SettingIncrementDesc>线性模式下，每级比上一级多要求的击杀数。</KR_SettingIncrementDesc>
+	<KR_SettingTraitModHeader>特质修改点数消耗</KR_SettingTraitModHeader>
+	<KR_SettingGeneModHeader>基因修改点数消耗</KR_SettingGeneModHeader>
+	<KR_SettingModInitialCost>初始点数消耗</KR_SettingModInitialCost>
+	<KR_SettingModInitialCostDesc>第一次修改所需的恩赐点数，之后每次修改按所选曲线增加。</KR_SettingModInitialCostDesc>
 	<KR_PickProject>选择要完成的研究</KR_PickProject>
 	<KR_PickPawn>选择一名小人</KR_PickPawn>
 	<KR_PickSkill>选择一项技能</KR_PickSkill>
 	<KR_PickItem>选择一种物品</KR_PickItem>
+	<KR_PickBlessing>选择一种赐福</KR_PickBlessing>
 	<KR_PickCell>点击一个格子投放物资</KR_PickCell>
 	<KR_Back>返回</KR_Back>
 	<KR_ItemDelivered>虚空馈赠已送达。</KR_ItemDelivered>
+	<KR_BlessingApplied>{0}已覆盖 {1} 名殖民地成员。</KR_BlessingApplied>
+	<KR_PickOperation>选择操作</KR_PickOperation>
+	<KR_TraitOpAdd>添加特质</KR_TraitOpAdd>
+	<KR_TraitOpRemove>移除特质</KR_TraitOpRemove>
+	<KR_PickTraitAdd>选择要添加的特质</KR_PickTraitAdd>
+	<KR_PickTraitRemove>选择要移除的特质</KR_PickTraitRemove>
+	<KR_TraitAdded>{0} 获得特质「{1}」。</KR_TraitAdded>
+	<KR_TraitRemoved>{0} 失去特质「{1}」。</KR_TraitRemoved>
+	<KR_PickGeneType>选择基因类型</KR_PickGeneType>
+	<KR_GeneTypeGermline>系谱基因</KR_GeneTypeGermline>
+	<KR_GeneTypeXeno>异种基因</KR_GeneTypeXeno>
+	<KR_GeneOpAdd>添加基因</KR_GeneOpAdd>
+	<KR_GeneOpRemove>移除基因</KR_GeneOpRemove>
+	<KR_PickGeneAdd>选择要添加的基因</KR_PickGeneAdd>
+	<KR_PickGeneRemove>选择要移除的基因</KR_PickGeneRemove>
+	<KR_GeneAdded>{0} 获得基因「{1}」。</KR_GeneAdded>
+	<KR_GeneRemoved>{0} 失去基因「{1}」。</KR_GeneRemoved>
+	<KR_GeneStats>代谢 {0} · 复杂 {1}</KR_GeneStats>
 	<KR_Offering>祭品+1</KR_Offering>
+	<KR_PawnUnavailable>目标小人已不可用。</KR_PawnUnavailable>
 </LanguageData>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- 黑暗赐福·生命回复：3 天（180000 tick）持续再生。 -->
+	<HediffDef>
+		<defName>KillingReward_BlessingRegen</defName>
+		<label>life renewal</label>
+		<description>Dark archotech vitality surges through the body, regenerating 350 HP per day: wounds steadily close, and missing limbs and organs regrow from nothing.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<isBad>false</isBad>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>180000~180000</disappearsAfterTicks>
+				<showRemainingTime>true</showRemainingTime>
+			</li>
+			<li Class="KillingReward.HediffCompProperties_KRRegeneration">
+				<healPerDay>350</healPerDay>
+			</li>
+		</comps>
+	</HediffDef>
+</Defs>

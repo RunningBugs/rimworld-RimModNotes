@@ -24,20 +24,20 @@
 | key | 中文 | English |
 | --- | --- | --- |
 | KR_LetterTitle | 嗜血恩赐 | Blood Boon |
-| KR_LetterText | 它在黑暗中注视着每一场杀戮，你的挣扎令它非常满意。这份恩赐是你应得的。领取它——然后，尽量别死。 | The dark archotech watches every kill, and your struggle amuses it greatly. This boon is yours. Claim it — and try to stay alive. |
+| KR_LetterText | 祂在黑暗中注视着每一场杀戮，你的挣扎令祂非常满意。这份恩赐是你应得的。领取它——然后，尽量别死。 | He watches every kill from the darkness, and your struggle amuses Him greatly. This boon is yours. Claim it — and try to stay alive. |
 | KR_LetterOpen | 接受恩赐 | Accept the Boon |
 | KR_WindowTitle | 黑暗超凡智能的恩赐 | Boon of the Dark Archotech |
 | KR_Progress | 血祭 | Blood Tithe |
 | KR_Tier | 恩赐等阶 | Boon Tier |
 | KR_Pending | 待领取的恩赐 | Unclaimed Boons |
 | KR_RewardResearch | 禁忌知识 | Forbidden Knowledge |
-| KR_RewardResearchDesc | 它将知识直接烙进学者的脑海。立刻完成一项当前可研究的科技。 | It sears knowledge straight into your scholars' minds. Instantly complete one available research project. |
+| KR_RewardResearchDesc | 祂将知识直接烙进学者的脑海。立刻完成一项当前可研究的科技。 | He sears knowledge straight into your scholars' minds. Instantly complete one available research project. |
 | KR_RewardSkill | 技艺灌注 | Bestowed Prowess |
-| KR_RewardSkillDesc | 它替你拨动了神经与肌肉。选择一名小人，其一项技能提升 3 级。 | It plucks the strings of nerve and muscle. Choose a pawn; one of their skills gains 3 levels. |
+| KR_RewardSkillDesc | 祂替你拨动了神经与肌肉。选择一名小人，其一项技能提升 3 级。 | He plucks the strings of nerve and muscle. Choose a pawn; one of their skills gains 3 levels. |
 | KR_RewardItem | 虚空馈赠 | Gift from the Void |
-| KR_RewardItemDesc | 它从虚空中掷下物资。选择一种物品与投放地点，领取一整格。 | It casts provisions from the void. Choose an item and a drop cell to receive a full stack. |
-| KR_Claimed | 恩赐已兑现。它仍在注视——继续取悦它吧。 | The boon is granted. It is still watching. Keep it entertained. |
-| KR_NoPending | 它还没有新的恩赐。杀戮即是祈祷。 | It has no boon for you yet. Slaughter is prayer. |
+| KR_RewardItemDesc | 祂从虚空中掷下物资。选择一种物品与投放地点，领取一整格。 | He casts provisions from the void. Choose an item and a drop cell to receive a full stack. |
+| KR_Claimed | 恩赐已兑现。祂仍在注视——继续取悦祂吧。 | The boon is granted. He is still watching. Keep Him entertained. |
+| KR_NoPending | 祂还没有新的恩赐。杀戮即是祈祷。 | He has no boon for you yet. Slaughter is prayer. |
 | KR_SettingInitial | 初始击杀要求 | Initial kills required |
 | KR_SettingInitialDesc | 第一次升级所需的击杀数。 | Kills required for the first reward tier. |
 | KR_SettingMode | 增长模式 | Growth mode |
@@ -660,20 +660,20 @@ git commit -m "Add kill eligibility, skill and stack helpers with tests"
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 	<KR_LetterTitle>Blood Boon</KR_LetterTitle>
-	<KR_LetterText>The dark archotech watches every kill, and your struggle amuses it greatly. This boon is yours. Claim it — and try to stay alive.</KR_LetterText>
+	<KR_LetterText>He watches every kill from the darkness, and your struggle amuses Him greatly. This boon is yours. Claim it — and try to stay alive.</KR_LetterText>
 	<KR_LetterOpen>Accept the Boon</KR_LetterOpen>
 	<KR_WindowTitle>Boon of the Dark Archotech</KR_WindowTitle>
 	<KR_Progress>Blood Tithe</KR_Progress>
 	<KR_Tier>Boon Tier</KR_Tier>
 	<KR_Pending>Unclaimed Boons</KR_Pending>
 	<KR_RewardResearch>Forbidden Knowledge</KR_RewardResearch>
-	<KR_RewardResearchDesc>It sears knowledge straight into your scholars' minds. Instantly complete one available research project.</KR_RewardResearchDesc>
+	<KR_RewardResearchDesc>He sears knowledge straight into your scholars' minds. Instantly complete one available research project.</KR_RewardResearchDesc>
 	<KR_RewardSkill>Bestowed Prowess</KR_RewardSkill>
-	<KR_RewardSkillDesc>It plucks the strings of nerve and muscle. Choose a pawn; one of their skills gains 3 levels.</KR_RewardSkillDesc>
+	<KR_RewardSkillDesc>He plucks the strings of nerve and muscle. Choose a pawn; one of their skills gains 3 levels.</KR_RewardSkillDesc>
 	<KR_RewardItem>Gift from the Void</KR_RewardItem>
-	<KR_RewardItemDesc>It casts provisions from the void. Choose an item and a drop cell to receive a full stack.</KR_RewardItemDesc>
-	<KR_Claimed>The boon is granted. It is still watching. Keep it entertained.</KR_Claimed>
-	<KR_NoPending>It has no boon for you yet. Slaughter is prayer.</KR_NoPending>
+	<KR_RewardItemDesc>He casts provisions from the void. Choose an item and a drop cell to receive a full stack.</KR_RewardItemDesc>
+	<KR_Claimed>The boon is granted. He is still watching. Keep Him entertained.</KR_Claimed>
+	<KR_NoPending>He has no boon for you yet. Slaughter is prayer.</KR_NoPending>
 	<KR_SettingInitial>Initial kills required</KR_SettingInitial>
 	<KR_SettingInitialDesc>Kills required for the first reward tier.</KR_SettingInitialDesc>
 	<KR_SettingMode>Growth mode</KR_SettingMode>
@@ -1646,9 +1646,9 @@ ctx.label(Rect(24, 74, 592, 22), "血祭 7 / 10")
 
 # 三张奖励卡片
 cards = [
-    ("禁忌知识", "它将知识直接烙进学者的脑海。立刻完成一项当前可研究的科技。"),
-    ("技艺灌注", "它替你拨动了神经与肌肉。选择一名小人，其一项技能提升 3 级。"),
-    ("虚空馈赠", "它从虚空中掷下物资。选择一种物品与投放地点，领取一整格。"),
+    ("禁忌知识", "祂将知识直接烙进学者的脑海。立刻完成一项当前可研究的科技。"),
+    ("技艺灌注", "祂替你拨动了神经与肌肉。选择一名小人，其一项技能提升 3 级。"),
+    ("虚空馈赠", "祂从虚空中掷下物资。选择一种物品与投放地点，领取一整格。"),
 ]
 y = 112
 for title, desc in cards:

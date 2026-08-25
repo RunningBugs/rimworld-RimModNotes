@@ -7,6 +7,7 @@ namespace KillingReward
     public static class KillingRewardDefOf
     {
         public static LetterDef KillingRewardBoon;
+        public static HediffDef KillingReward_BlessingRegen;
 
         static KillingRewardDefOf()
         {

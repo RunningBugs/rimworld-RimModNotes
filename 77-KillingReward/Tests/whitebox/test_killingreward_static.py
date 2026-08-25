@@ -30,7 +30,7 @@ class StaticTests(unittest.TestCase):
 
     def test_design_flavor_strings_present(self):
         zh = (MOD_ROOT / "Languages" / "ChineseSimplified" / "Keyed" / "Keys.xml").read_text(encoding="utf-8")
-        for snippet in ["嗜血恩赐", "尽量别死", "黑暗超凡智能的恩赐", "血祭", "禁忌知识", "技艺灌注", "虚空馈赠", "杀戮即是祈祷", "祭品+1"]:
+        for snippet in ["嗜血恩赐", "尽量别死", "黑暗超凡智能的恩赐", "血祭", "禁忌知识", "技艺灌注", "虚空馈赠", "杀戮即是祈祷", "祭品+1", "黑暗赐福", "生命回复", "特质修改", "基因修改"]:
             self.assertIn(snippet, zh)
 
     def test_kill_patch_targets_pawn_kill(self):

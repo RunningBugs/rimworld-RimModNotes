@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 	<KR_LetterTitle>Blood Boon</KR_LetterTitle>
-	<KR_LetterText>The dark archotech watches every kill, and your struggle amuses it greatly. This boon is yours. Claim it — and try to stay alive.</KR_LetterText>
+	<KR_LetterText>He watches every kill from the darkness, and your struggle amuses Him greatly. This boon is yours. Claim it — and try to stay alive.</KR_LetterText>
 	<KR_LetterOpen>Accept the Boon</KR_LetterOpen>
 	<KR_WindowTitle>Boon of the Dark Archotech</KR_WindowTitle>
 	<KR_Progress>Blood Tithe</KR_Progress>
 	<KR_Tier>Boon Tier</KR_Tier>
 	<KR_Pending>Unclaimed Boons</KR_Pending>
 	<KR_RewardResearch>Forbidden Knowledge</KR_RewardResearch>
-	<KR_RewardResearchDesc>It sears knowledge straight into your scholars' minds. Instantly complete one available research project.</KR_RewardResearchDesc>
+	<KR_RewardResearchDesc>He sears knowledge straight into your scholars' minds. Instantly complete one available research project.</KR_RewardResearchDesc>
 	<KR_RewardSkill>Bestowed Prowess</KR_RewardSkill>
-	<KR_RewardSkillDesc>It plucks the strings of nerve and muscle. Choose a pawn; one of their skills gains 3 levels.</KR_RewardSkillDesc>
+	<KR_RewardSkillDesc>He plucks the strings of nerve and muscle. Choose a pawn; one of their skills gains 3 levels.</KR_RewardSkillDesc>
 	<KR_RewardItem>Gift from the Void</KR_RewardItem>
-	<KR_RewardItemDesc>It casts provisions from the void. Choose an item and a drop cell to receive a full stack.</KR_RewardItemDesc>
-	<KR_Claimed>The boon is granted. It is still watching. Keep it entertained.</KR_Claimed>
-	<KR_NoPending>It has no boon for you yet. Slaughter is prayer.</KR_NoPending>
+	<KR_RewardItemDesc>He casts provisions from the void. Choose an item and a drop cell to receive a full stack.</KR_RewardItemDesc>
+	<KR_RewardBlessing>Dark Blessing</KR_RewardBlessing>
+	<KR_RewardBlessingDesc>By His blood: rebirth from a single drop, a butterfly from its cocoon. Choose a blessing: renewal for the whole colony, or reshaping one pawn's traits and genes.</KR_RewardBlessingDesc>
+	<KR_BlessingRegen>Life Renewal (3 days)</KR_BlessingRegen>
+	<KR_BlessingRegenDesc>All members regenerate 350 HP per day for 3 days: wounds close and missing limbs and organs regrow.</KR_BlessingRegenDesc>
+	<KR_BlessingTrait>Trait Reshape</KR_BlessingTrait>
+	<KR_BlessingTraitDesc>Add or remove one trait for a pawn; each use raises the next cost.</KR_BlessingTraitDesc>
+	<KR_BlessingGene>Gene Rewrite</KR_BlessingGene>
+	<KR_BlessingGeneDesc>Add or remove one gene (germline or xenogene) for a pawn; each use raises the next cost.</KR_BlessingGeneDesc>
+	<KR_BlessingCost>Costs {0} boon(s)</KR_BlessingCost>
+	<KR_Claimed>The boon is granted. He is still watching. Keep Him entertained.</KR_Claimed>
+	<KR_NoPending>He has no boon for you yet. Slaughter is prayer.</KR_NoPending>
 	<KR_SettingEnabled>Enable KillingReward</KR_SettingEnabled>
 	<KR_SettingEnabledDesc>Master switch. When off, kills grant no progress and the main button is hidden — no need to remove the mod from your mod list.</KR_SettingEnabledDesc>
 	<KR_SettingInitial>Initial kills required</KR_SettingInitial>
@@ -26,12 +35,36 @@
 	<KR_SettingFactorDesc>In exponential mode, each tier costs this factor times the previous one.</KR_SettingFactorDesc>
 	<KR_SettingIncrement>Linear increment</KR_SettingIncrement>
 	<KR_SettingIncrementDesc>In linear mode, each tier costs this many more kills than the previous one.</KR_SettingIncrementDesc>
+	<KR_SettingTraitModHeader>Trait modification point cost</KR_SettingTraitModHeader>
+	<KR_SettingGeneModHeader>Gene modification point cost</KR_SettingGeneModHeader>
+	<KR_SettingModInitialCost>Initial point cost</KR_SettingModInitialCost>
+	<KR_SettingModInitialCostDesc>Boons required for the first modification; each further modification costs more per the chosen curve.</KR_SettingModInitialCostDesc>
 	<KR_PickProject>Choose a research to complete</KR_PickProject>
 	<KR_PickPawn>Choose a pawn</KR_PickPawn>
 	<KR_PickSkill>Choose a skill</KR_PickSkill>
 	<KR_PickItem>Choose an item</KR_PickItem>
+	<KR_PickBlessing>Choose a blessing</KR_PickBlessing>
 	<KR_PickCell>Click a cell to deliver the goods</KR_PickCell>
 	<KR_Back>Back</KR_Back>
 	<KR_ItemDelivered>The gift from the void has arrived.</KR_ItemDelivered>
+	<KR_BlessingApplied>{0} now covers {1} colony members.</KR_BlessingApplied>
+	<KR_PickOperation>Choose an operation</KR_PickOperation>
+	<KR_TraitOpAdd>Add a trait</KR_TraitOpAdd>
+	<KR_TraitOpRemove>Remove a trait</KR_TraitOpRemove>
+	<KR_PickTraitAdd>Choose a trait to add</KR_PickTraitAdd>
+	<KR_PickTraitRemove>Choose a trait to remove</KR_PickTraitRemove>
+	<KR_TraitAdded>{0} gained the trait "{1}".</KR_TraitAdded>
+	<KR_TraitRemoved>{0} lost the trait "{1}".</KR_TraitRemoved>
+	<KR_PickGeneType>Choose a gene type</KR_PickGeneType>
+	<KR_GeneTypeGermline>Germline genes</KR_GeneTypeGermline>
+	<KR_GeneTypeXeno>Xenogenes</KR_GeneTypeXeno>
+	<KR_GeneOpAdd>Add a gene</KR_GeneOpAdd>
+	<KR_GeneOpRemove>Remove a gene</KR_GeneOpRemove>
+	<KR_PickGeneAdd>Choose a gene to add</KR_PickGeneAdd>
+	<KR_PickGeneRemove>Choose a gene to remove</KR_PickGeneRemove>
+	<KR_GeneAdded>{0} gained the gene "{1}".</KR_GeneAdded>
+	<KR_GeneRemoved>{0} lost the gene "{1}".</KR_GeneRemoved>
+	<KR_GeneStats>Met {0} · Cpx {1}</KR_GeneStats>
 	<KR_Offering>Offering +1</KR_Offering>
+	<KR_PawnUnavailable>That pawn is no longer available.</KR_PawnUnavailable>
 </LanguageData>
