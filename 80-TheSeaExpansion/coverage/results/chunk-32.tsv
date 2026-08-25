@@ -1,0 +1,250 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageWorker_MiningBomb.cs	PASS	Odyssey 矿用炸药对 Mineable 走 buildingDamageFactor，弱相关不单列
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageWorker_Nerve.cs	PASS	神经伤害/眩晕 Worker，纯伤害数值
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageWorker_Scratch.cs	PASS	抓伤 Worker，纯伤害数值
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageWorker_Stab.cs	PASS	刺伤 Worker，纯伤害数值
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageWorker_Stun.cs	PASS	眩晕 Worker，纯标记 stunned
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageWorker_Vaporize.cs	PASS	汽化爆炸 Worker（半径2.9内伤害+点火），伤害模式无海洋特定性
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Danger.cs	SKIP	纯枚举/极简单数据类定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DangerUtility.cs	PASS	寻路危险度工具；含温度伤害对玩家pawn的Danger豁免逻辑，环境致死走Region.DangerFor（Region层，不在本片）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DarklightUtility.cs	NOTE	暗光色判定（青绿色相启发式）+ IsDarklightAt（有屋顶+满发光+暗光色）→ 深海生物荧光照明可直接借用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DarknessSource.cs	NOTE	非自然黑暗作为寻路布尔网格（SimpleBoolPathFinderDataSource），监听 GlowChanged 增量更新 → 深海低光影响寻路的挂接点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DataExposeUtility.cs	PASS	存档序列化工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DataSerializeUtility.cs	PASS	存档序列化工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DdsHeader.cs	SKIP	DDS 贴图格式头结构定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DdsHeaderFlags.cs	SKIP	DDS 贴图格式头结构定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DdsPixelFormat.cs	SKIP	DDS 贴图格式头结构定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DdsPixelFormatFlags.cs	SKIP	DDS 贴图格式头结构定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DeathActionProperties.cs	PASS	死亡动作属性基类(workerClass反射)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DeathActionProperties_Divide.cs	PASS	分裂死亡动作参数(Anomaly fleshbeast)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DeathActionProperties_Vanish.cs	PASS	消失死亡动作参数(fleck/filth)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DeathActionWorker.cs	PASS	死亡动作 Worker 抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DeathActionWorker_Divide.cs	PASS	fleshbeast 分裂死亡 Worker(Anomaly)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DeathActionWorker_Simple.cs	PASS	空实现的死亡 Worker
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DeathActionWorker_Vanish.cs	PASS	死亡播fleck/生filth后销毁尸体的 Worker
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DeathLetter.cs	PASS	死亡通知信件 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugActionCategories.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugActionDisplayPriority.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugActionsIdeo.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugActionsIncidents.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugActionsMapManagement.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugActionsMisc.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugActionsMods.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugActionsPrefabs.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugActionsQuests.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugActionsRoyalty.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugActionsTranslations.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugActionsUtility.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugAutotests.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugCell.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugCellDrawer.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugGenerationSettings.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugInputLogger.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugLine.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugLoadIDsSavingErrorsChecker.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugMatsRandom.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugMatsSpectrum.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugOutputsBossgroups.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugOutputsEcology.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugOutputsEconomy.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugOutputsFactions.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugOutputsGeneral.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugOutputsHealth.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugOutputsIncidents.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugOutputsInfection.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugOutputsJoy.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugOutputsMisc.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugOutputsPawns.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugOutputsSystem.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugOutputsTechnical.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugOutputsTerrain.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugOutputsTextGen.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugOutputsWorldPawns.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugSettings.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugSolidColorMats.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugThingPlaceHelper.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugToolsGeneral.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugTools_Health.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugTools_MapGen.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugToolsMisc.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugToolsPawns.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugToolsSpawning.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugToolsTrailer.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugViewSettings.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DebugWindowsOpener.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DeepProfiler.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DeepProfilerScope.cs	SKIP	调试/开发工具(DebugActions/DebugOutputs/DebugTools等)，非游戏机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DeepResourceGrid.cs	NOTE	深钻资源网格（def shortHash+数量两 ushort 网格+扫描仪可见性）→ 海底矿床直接复用深钻体系
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DefaultEmptyListAttribute.cs	SKIP	Def 编辑器特性(Attribute)标记类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DefaultFloatRangeAttribute.cs	SKIP	Def 编辑器特性(Attribute)标记类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DefaultValueAttribute.cs	SKIP	Def 编辑器特性(Attribute)标记类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DefaultWindowDrawing.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Def.cs	PASS	Def 基类，通用 modding 基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DefDatabase.cs	PASS	Def 数据库基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DefHyperlink.cs	PASS	Def 超链接 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DefInjectionPackage.cs	PASS	Def 翻译注入
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DefInjectionPathPartKind.cs	SKIP	纯枚举/极简单数据类定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DefInjectionUtility.cs	PASS	Def 翻译注入
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DefMap.cs	PASS	Def 按类映射容器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DefModExtension.cs	PASS	DefModExtension 基类（通用扩展点，无海洋内容）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DelayedErrorWindowRequest.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Deque.cs	PASS	双端队列容器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DescriptionAttribute.cs	SKIP	Def 编辑器特性(Attribute)标记类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DesignationCategoryDef.cs	PASS	指定类别 Def 数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Designation.cs	PASS	指定(采矿/拆除等)数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DesignationDef.cs	PASS	指定 Def 数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DesignationDragger.cs	PASS	指定拖拽 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DesignationManager.cs	PASS	指定管理器，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Designator_Cells.cs	PASS	格选设计器基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Designator.cs	PASS	设计器基类 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DesignatorDropdownGroupDef.cs	SKIP	纯枚举/极简单数据类定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DesignatorManager.cs	PASS	设计器管理器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DesignatorUtility.cs	PASS	设计器工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DestroyMode.cs	SKIP	纯枚举/极简单数据类定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DetritusLeavingType.cs	SKIP	纯枚举/极简单数据类定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DevelopmentalStage.cs	SKIP	纯枚举/极简单数据类定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DevelopmentalStageExtensions.cs	SKIP	纯枚举/极简单数据类定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_CameraConfig.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_CameraConfigList.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_CameraConfigList_Load.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_CameraConfigList_Save.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_Confirm.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DialogDatabase.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_DebugSetHediffRemaining.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_DebugSetSeverity.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_InfoCard.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_MessageBox.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_NamePawn.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_NodeTree.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_PawnTableTest.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_RechargeSettings.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_RenameAnimalPen.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_RenameArea.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_RenameBill.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_RenameBuildingStorage_CreateNew.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_RenameBuildingStorage.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_Rename.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_RenameGravship.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_RenamePolicy.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_RenameZone.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_ResolutionConfirm.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dialog_Slider.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DiaNode.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DiaNodeList.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DiaNodeMold.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DiaNodeType.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DiaOption.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DiaOptionMold.cs	SKIP	UI 对话框/对话节点基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DietCategory.cs	SKIP	纯枚举/极简单数据类定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DietCategoryUtility.cs	PASS	食性类别工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Dijkstra.cs	PASS	通用 Dijkstra 寻路算法
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DijkstraUtility.cs	PASS	Dijkstra 工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DirectedAcyclicGraph.cs	PASS	DAG 容器(研究前置等)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DirectXmlCrossRefLoader.cs	SKIP	XML Def 序列化/加载基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DirectXmlLoader.cs	SKIP	XML Def 序列化/加载基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DirectXmlLoaderSimple.cs	SKIP	XML Def 序列化/加载基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DirectXmlSaveFormatter.cs	SKIP	XML Def 序列化/加载基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DirectXmlSaveLoadUtility.cs	SKIP	XML Def 序列化/加载基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DirectXmlSaver.cs	SKIP	XML Def 序列化/加载基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DirectXmlToObject.cs	SKIP	XML Def 序列化/加载基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DirectXmlToObjectNew.cs	SKIP	XML Def 序列化/加载基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/District.cs	NOTE	District.ExposedVacuumCount 增量缓存计数"暴露真空格"（无屋顶或 terrain.exposesToVacuum）→ 海水泄漏/气密检测直接模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DotHighlightDisplayMode.cs	SKIP	纯枚举/极简单数据类定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DragAndDropWidget.cs	PASS	拖拽 UI 组件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DraggableResultUtility.cs	PASS	拖拽结果工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DragSliderCallback.cs	SKIP	纯枚举/极简单数据类定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DragSliderManager.cs	PASS	拖滑管理器 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DrawBatch.cs	PASS	渲染合批
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DrawBatchPropertyBlock.cs	PASS	渲染属性块
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DrawData.cs	PASS	绘制数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DrawerType.cs	SKIP	纯枚举/极简单数据类定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DrawPhase.cs	SKIP	纯枚举/极简单数据类定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DrawStyle_AngledLine.cs	SKIP	绘制样式(线/矩形/椭圆)工具类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DrawStyleCategoryDef.cs	SKIP	绘制样式(线/矩形/椭圆)工具类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DrawStyle.cs	SKIP	绘制样式(线/矩形/椭圆)工具类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DrawStyleDef.cs	SKIP	绘制样式(线/矩形/椭圆)工具类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DrawStyle_EmptyOval.cs	SKIP	绘制样式(线/矩形/椭圆)工具类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DrawStyle_EmptyRectangle.cs	SKIP	绘制样式(线/矩形/椭圆)工具类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DrawStyle_FilledOval.cs	SKIP	绘制样式(线/矩形/椭圆)工具类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DrawStyle_FilledRectangle.cs	SKIP	绘制样式(线/矩形/椭圆)工具类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DrawStyle_Line.cs	SKIP	绘制样式(线/矩形/椭圆)工具类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DynamicDrawManager.cs	PASS	动态绘制管理器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DynamicPawnRenderNodeSetup_Apparel.cs	SKIP	Pawn 动态渲染节点设置(服装/基因/hediff等)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DynamicPawnRenderNodeSetup.cs	SKIP	Pawn 动态渲染节点设置(服装/基因/hediff等)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DynamicPawnRenderNodeSetup_Genes.cs	SKIP	Pawn 动态渲染节点设置(服装/基因/hediff等)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DynamicPawnRenderNodeSetup_Hediffs.cs	SKIP	Pawn 动态渲染节点设置(服装/基因/hediff等)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DynamicPawnRenderNodeSetup_Mutants.cs	SKIP	Pawn 动态渲染节点设置(服装/基因/hediff等)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DynamicPawnRenderNodeSetup_Traits.cs	SKIP	Pawn 动态渲染节点设置(服装/基因/hediff等)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/EasingFunctions.cs	SKIP	纯枚举/极简单数据类定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/EdgeSpan.cs	PASS	已读/已扫，与海洋语境无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/EdificeGrid.cs	PASS	已读/已扫，与海洋语境无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/EdificeUtility.cs	PASS	已读/已扫，与海洋语境无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Editable.cs	PASS	已读/已扫，与海洋语境无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/EditorHiddenAttribute.cs	SKIP	Def 编辑器特性(Attribute)标记类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/EditorNullableAttribute.cs	SKIP	Def 编辑器特性(Attribute)标记类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/EditorReplaceableAttribute.cs	SKIP	Def 编辑器特性(Attribute)标记类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/EditorShowClassNameAttribute.cs	SKIP	Def 编辑器特性(Attribute)标记类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/EditSliderRangeAttribute.cs	SKIP	Def 编辑器特性(Attribute)标记类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/EditTreeNodeDatabase.cs	PASS	已读/已扫，与海洋语境无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/EditTreeNodeType.cs	SKIP	纯枚举/极简单数据类定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Effecter.cs	PASS	已读/已扫，与海洋语境无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/EffecterDef.cs	PASS	已读/已扫，与海洋语境无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/EloUtility.cs	PASS	已读/已扫，与海洋语境无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/EndogeneCategory.cs	SKIP	纯枚举/极简单数据类定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Entity.cs	PASS	Entity 抽象基类(Label/SpawnSetup/Tick)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/EnvironmentStatsDrawer.cs	PASS	房间统计/美观度悬浮窗 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/EquipmentType.cs	SKIP	纯枚举/极简单数据类定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/EventQueue.cs	PASS	事件队列
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ExitMapGrid.cs	NOTE	map.Biome.inVacuum 时禁用地图边缘撤离网格 → 海底 biome 需同样屏蔽边缘撤离
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Explosion.cs	NOTE	postExplosionSpawnThingDefWater：爆炸生成物的水格专用变体字段 → "效果在水格走另一套参数"的官方扩展点先例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ExponentialMovingAverage.cs	PASS	指数滑动平均数学工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ExtendedShakeRequest.cs	PASS	屏幕震动请求
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ExtraDamage.cs	PASS	额外伤害数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FactionSource.cs	PASS	派系源接口/数据
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FadedMaterialPool.cs	PASS	半透明材质池
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FailMode.cs	SKIP	纯枚举/极简单数据类定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FastEntityTypeComparer.cs	PASS	比较器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FastPawnCapacityDefComparer.cs	PASS	比较器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FastPriorityQueue.cs	PASS	优先队列容器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FastVector2Comparer.cs	PASS	比较器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Favorability.cs	SKIP	纯枚举/极简单数据类定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FeedbackFloaters.cs	PASS	反馈飘字
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FeedbackItem.cs	PASS	反馈项基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FeedbackItem_FoodGain.cs	PASS	食物获取反馈
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FeedbackItem_HealthGain.cs	PASS	治疗反馈
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FenceSource.cs	PASS	围栏源数据
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FillCategory.cs	SKIP	纯枚举/极简单数据类定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Find.cs	PASS	全局查找器(Current/Find 静态入口)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FishShadowComponent.cs	NOTE	Odyssey 水体鱼影 fleck 组件（WaterBody.HasFish，纯水格随机生成）→ 海底氛围/海面鱼影直接借用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FleckAttachLink.cs	SKIP	Fleck 粒子系统基础设施（通用，无海洋特定逻辑）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FleckCreationData.cs	SKIP	Fleck 粒子系统基础设施（通用，无海洋特定逻辑）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FleckDef.cs	SKIP	Fleck 粒子系统基础设施（通用，无海洋特定逻辑）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FleckDrawData.cs	SKIP	Fleck 粒子系统基础设施（通用，无海洋特定逻辑）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FleckDrawPosition.cs	SKIP	Fleck 粒子系统基础设施（通用，无海洋特定逻辑）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FleckManager.cs	SKIP	Fleck 粒子系统基础设施（通用，无海洋特定逻辑）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FleckSplash.cs	SKIP	Fleck 粒子系统基础设施（通用，无海洋特定逻辑）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FleckStatic.cs	SKIP	Fleck 粒子系统基础设施（通用，无海洋特定逻辑）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FleckSystemBase.cs	SKIP	Fleck 粒子系统基础设施（通用，无海洋特定逻辑）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FleckSystem.cs	SKIP	Fleck 粒子系统基础设施（通用，无海洋特定逻辑）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FleckSystemSplash.cs	SKIP	Fleck 粒子系统基础设施（通用，无海洋特定逻辑）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FleckSystemStatic.cs	SKIP	Fleck 粒子系统基础设施（通用，无海洋特定逻辑）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FleckSystemThrown.cs	SKIP	Fleck 粒子系统基础设施（通用，无海洋特定逻辑）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FleckThrown.cs	SKIP	Fleck 粒子系统基础设施（通用，无海洋特定逻辑）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FloatMenu.cs	PASS	浮动菜单 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FloatMenuGrid.cs	PASS	网格浮动菜单
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FloatMenuGridOption.cs	PASS	网格菜单项
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FloatMenuMap.cs	PASS	地图右键菜单
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FloatMenuOption.cs	PASS	菜单项
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FloatMenuSizeMode.cs	PASS	菜单尺寸枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FloatMenuWorld.cs	PASS	世界地图菜单
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FloatMinComparer.cs	PASS	比较器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FloatRange.cs	PASS	浮点区间结构
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FloodFiller.cs	PASS	通用洪水填充算法(Region 系统用)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FloodFillerFog.cs	PASS	迷雾揭开用洪水填充
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FloodFillRange.cs	PASS	洪水填充范围结构
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FloodFillRangeQueue.cs	PASS	填充队列
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FloodUnfogResult.cs	PASS	迷雾揭开结果结构
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FogGrid.cs	PASS	战争迷雾网格(通用，无海洋特定逻辑)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FogSource.cs	PASS	迷雾作为寻路布尔源(喂给寻路避开未探索区)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FreezeManager.cs	NOTE	Odyssey 水面结冰/融冰系统（-7°C 冻结为 ThinIce，依赖 WaterBody 统计）→ 海底 4°C 恒温下需确认不触发；水体随温度变地形的模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/FullPool.cs	PASS	对象池
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GameAndMapInitExceptionHandlers.cs	PASS	初始化异常处理

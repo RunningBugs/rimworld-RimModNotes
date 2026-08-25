@@ -1,0 +1,151 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SiteMaker.cs	NOTE	Site 工厂：按威胁点生成 SitePart 参数，可复用于海底站点（文档主题二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SiteMakerHelper.cs	PASS	SitePart/派系匹配辅助，纯通用逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SitePart.cs	PASS	SitePart 数据载体（things/loot/conditionCauser），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SitePartDefWithParams.cs	SKIP	纯数据类：def+parms 配对
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SitePartParams.cs	SKIP	纯数据类：站点参数字段集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SitePartWorker_AbandonedSettlement.cs	NOTE	PostMapGenerate 撒尸体+战利品的范式，沉没遗迹站点模板（文档主题二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SitePartWorker_Ambush.cs	PASS	伏击站点威胁点×0.8，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SitePartWorker_Asteroid.cs	PASS	小行星站点命名，仅设 customLabel
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SitePartWorker_DistressCall.cs	PASS	求救信号站点标签处理，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SitePartWorker_DistressCall_Fleshbeasts.cs	NOTE	生成派系+血肉兽三方混战的 PostMapGenerate 范式（文档主题二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SitePartWorker_DownedRefugee.cs	PASS	难民任务站点，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SitePartWorker_InsectLair.cs	PASS	虫巢入口信件，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SitePartWorker_ItemStash.cs	PASS	物品储藏任务站点，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SitePartWorker_MechanoidRelay.cs	PASS	机械中继站点物品初始化，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SitePartWorker_PreciousLump.cs	PASS	矿脉站点威胁标签，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SitePartWorker_PrisonerWillingToJoin.cs	PASS	囚犯任务站点，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SitePartWorker_UnknownThreatMarker.cs	PASS	未知威胁标签隐藏逻辑，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SiteTuning.cs	NOTE	站点威胁点曲线/超时常量，海底站点直接复用（文档主题二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SpaceMapParent.cs	NOTE	Odyssey 太空站点 MapParent 完整模板，可整套借用为海底考察站（TL;DR 6）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SphereGenerator.cs	SKIP	球面网格细分数学工具，与玩法无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SurfaceTile.cs	NOTE	WaterCovered=elevation<=0：海洋格的本质定义（TL;DR 1）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/Tile.cs	NOTE	世界格核心：biome/mutator 体系、鱼密度系数、IsCoastal（TL;DR 5）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TileFinder.cs	NOTE	定居/站点选址门槛 canBuildBase 及水格兜底缝隙（TL;DR 2）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TileFinderMode.cs	SKIP	枚举：Random/Near/Furthest
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TilePollutionComp.cs	PASS	世界污染衰减组件，biome.allowPollution 门控，弱相关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TilesPerDayCalculator.cs	PASS	商队速度估算 UI 辅助，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TileTemperaturesComp.cs	NOTE	世界格温度缓存+GameCondition 温度偏移聚合点（TL;DR 7）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TimedDetectionRaids.cs	NOTE	站点被发现后定时发袭击的 comp，可借用为海底声呐探测袭击（TL;DR 8）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TimedForcedExit.cs	NOTE	强制撤离 comp，已标 Obsolete，明确不要参考（文档主题二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TimedMakeFactionHostile.cs	NOTE	进图倒计时后派系翻脸 comp，海底站点可复用（文档主题二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TimeoutComp.cs	NOTE	站点限时销毁 comp，海底限时站点可复用（文档主题二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TradeRequestComp.cs	PASS	贸易请求 comp，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TradeRequestUtility.cs	SKIP	请求物品标签格式化工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TransportersArrivalAction_AttackSettlement.cs	PASS	攻击定居点到达动作，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TransportersArrivalAction.cs	SKIP	抽象基类：GeneratesMap/StillValid/Arrived 三件套
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TransportersArrivalAction_FormCaravan.cs	NOTE	海格无法组商队（Impassable+canFormCaravans 双重门）（TL;DR 3）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TransportersArrivalAction_GiveGift.cs	PASS	送礼到达动作，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TransportersArrivalAction_GiveToCaravan.cs	PASS	投送给商队，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TransportersArrivalAction_LandInSpecificCell.cs	PASS	落到已有地图指定格，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TransportersArrivalAction_Trade.cs	PASS	贸易到达动作，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TransportersArrivalActionUtility.cs	PASS	空投/穿梭机落地工具集，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TransportersArrivalAction_VisitSettlement.cs	PASS	访问定居点，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TransportersArrivalAction_VisitSite.cs	NOTE	OrbitalWarning 二次确认弹窗模式②（文档主题二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TransportersArrivalAction_VisitSpace.cs	NOTE	OrbitalWarning 弹窗+太空图生成，深海下潜警告的直接模板（TL;DR 6）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TravellingTransporters.cs	NOTE	运输舱飞行与到达兜底（无有效动作时物资丢失），海格降落必须提供到达动作（文档主题二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/TriangleIndices.cs	SKIP	三角形索引结构体，网格数学
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/VirtualPlantsUtility.cs	NOTE	世界格放牧门控 biome.hasVirtualPlants+温度（TL;DR 关联/文档主题四）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WITab_Caravan_Feeding.cs	PASS	商队喂食 UI，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WITab_Caravan_Gear.cs	PASS	商队装备 UI，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WITab_Caravan_Health.cs	PASS	商队健康 UI，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WITab_Caravan_Items.cs	PASS	商队物品 UI，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WITab_Caravan_Needs.cs	PASS	商队需求 UI，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WITab_Caravan_Social.cs	PASS	商队社交 UI，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WITab.cs	SKIP	世界检查面板 tab 抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WITab_Orbit.cs	NOTE	层专属信息 tab 先例（仅 Orbit 层可见），海底层方案的 UI 模板（文档主题六）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WITab_Planet.cs	PASS	行星信息 tab，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WITab_Terrain.cs	NOTE	地表格信息 tab（biome/mutator/移动难度/石材），海底格可直接复用（文档主题六）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldAltitudeOffsets.cs	SKIP	世界绘制高度常量集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldCameraConfig_Car.cs	SKIP	相机参数子类（载具模式）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldCameraConfig_CarWithContinuousZoom.cs	SKIP	相机参数子类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldCameraConfig_ContinuousPanAndZoom.cs	SKIP	相机参数子类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldCameraConfig_ContinuousPan.cs	SKIP	相机参数子类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldCameraConfig.cs	SKIP	相机配置基类，默认参数
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldCameraConfig_Normal.cs	SKIP	空子类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldCameraConfig_SmoothZoom.cs	SKIP	相机参数子类（smoothZoom=true）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldCameraDriver.cs	PASS	世界相机驱动，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldCameraManager.cs	PASS	世界相机创建，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldCameraZoomRange.cs	SKIP	枚举：缩放档位
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldComponent.cs	SKIP	WorldComponent 抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldComponent_LocationGenerator.cs	NOTE	GeneratedLocationDef 按层自动刷世界对象；海洋类兴趣点选址需自行限定（文档主题六）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldComponentUtility.cs	SKIP	组件 tick 静态分发器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/World.cs	NOTE	CoastDirectionAt/LakeDirectionAt 海岸判定、landmark 兼容重生成（文档主题一）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDebugDrawer.cs	PASS	调试绘制，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDebugMatsSpectrum.cs	SKIP	调试色谱材质
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDragBox.cs	PASS	拖框选择 UI，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayerBase.cs	PASS	绘制层基类（submesh/脏标记），纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayer_ClosestTile.cs	PASS	最近格高亮，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayer_Clouds.cs	PASS	云层渲染，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayer.cs	PASS	绘制层（带层归属/碰撞），纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayer_CurrentMapTile.cs	PASS	当前地图格高亮，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayer_DebugNoise.cs	PASS	噪声调试视图，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayer_Glow.cs	PASS	行星辉光，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayer_Hills.cs	PASS	丘陵叠加图标渲染，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayer_Landmarks.cs	PASS	地标渲染，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayer_MouseTile.cs	PASS	鼠标格高亮，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayer_Paths.cs	PASS	路径绘制基类（道路/河流用），纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayer_Pollution.cs	PASS	污染覆盖渲染，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayer_RaycastableGrid.cs	PASS	拾取网格，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayer_Rivers.cs	PASS	河流渲染，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayer_Roads.cs	PASS	道路渲染，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayer_Satellites.cs	PASS	卫星动画渲染，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayer_SelectedTile.cs	PASS	选中格高亮，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayer_SettleTile.cs	PASS	定居目标格闪烁，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayer_SingleTile.cs	PASS	单格高亮基类，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayer_Terrain.cs	NOTE	地形渲染：ocean shader 与 elevation<0 海床着色特例（TL;DR 10）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayer_UngeneratedPlanetParts.cs	PASS	未生成区域遮蔽球壳，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayer_WorldObjects.cs	PASS	世界对象批量绘制，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayer_WorldObjects_Expandable.cs	PASS	可展开图标过滤，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDrawLayer_WorldObjects_NonExpandable.cs	SKIP	仅一行 ShouldSkip 覆写
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldDynamicDrawManager.cs	PASS	动态世界对象绘制管理，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldFactionsUIUtility.cs	PASS	开局派系选择 UI，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldFeature.cs	PASS	世界地名标签数据，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldFeatures.cs	PASS	地名标签管理/存档，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldFeatureTextMesh.cs	SKIP	文字网格抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldFeatureTextMesh_Legacy.cs	PASS	旧版文字网格，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldFeatureTextMesh_TextMeshPro.cs	PASS	TMP 文字网格，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldGenData.cs	SKIP	纯数据类：道路节点/古迹列表
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldGenerator.cs	NOTE	世界生成驱动：每层按 PlanetLayerDef.GenStepsInOrder 跑，Mod 可 XML 追加 gen step（TL;DR 4）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldGenStep_AncientRoads.cs	PASS	古代道路生成，陆地逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldGenStep_AncientSites.cs	PASS	古迹选址（用 RandomSettlementTileFor），陆地逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldGenStep_Factions.cs	PASS	派系生成入口，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldGenStep_Features.cs	PASS	地名生成入口，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldGenStep_Lakes.cs	NOTE	≤15 格海洋块改写为 Lake biome：海/湖判定边界（TL;DR 9）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldGenStep_Landmarks.cs	NOTE	Landmark 生成（Odyssey），可与 mutator 联用做海洋 POI（TL;DR 5）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldGenStep_Mutators.cs	NOTE	海岸/湖畔/河流 mutator 附加逻辑，海洋 mutator 的挂载点（TL;DR 5）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldGenStep_Pollution.cs	PASS	污染噪声生成，biome.allowPollution 门控
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldGenStep_Rivers.cs	NOTE	河流以海洋格为汇、以 WaterCovered 为边界谓词（文档主题一）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldGenStep_Roads.cs	PASS	道路网生成，陆地逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldGenStep_Terrain.cs	NOTE	海拔/温度/biome 评分生成管线，海洋格成因与自定义 biome 入口（TL;DR 关联）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldGenStep_Tiles.cs	NOTE	格生成基类：默认 biome=LayerDef.DefaultBiome（文档主题三）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldGizmoUtility.cs	PASS	世界 gizmo 绘制/跳转列表，通用 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldGlobalControls.cs	PASS	世界界面右下控制条，通用 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldGrid.cs	NOTE	PlanetLayer 注册/连接系统，海底层备选架构核心（TL;DR 4）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldInfo.cs	PASS	世界参数数据（种子/覆盖率/初始地图尺寸）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldInspectPane.cs	PASS	世界检查面板窗口，通用 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldInspectPaneUtility.cs	SKIP	多选标签格式化工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldLandmarks.cs	NOTE	Landmark 附加 mutator 的管线（mutatorChances/combo）（TL;DR 5）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldMaterials.cs	PASS	世界材质静态集（含 WorldOcean 材质引用），纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldObjectComp.cs	SKIP	WorldObjectComp 抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldObjectCompProperties_EnterCooldown.cs	SKIP	纯数据 props：进入冷却
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldObject.cs	PASS	世界对象基类（comps/tile/派系），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldObjectMaker.cs	SKIP	20 行工厂
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldObjectSelectionUtility.cs	PASS	框选过滤工具，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldObjectsHolder.cs	PASS	世界对象容器/查询，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldPath.cs	PASS	路径节点容器，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldPathGrid.cs	NOTE	移动难度计算：biome.impassable→1000，海洋硬隔断（TL;DR 3）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldPathing.cs	PASS	单层 A* 寻路，跨层 NotFound（文档主题五引用）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldPathPool.cs	SKIP	路径对象池
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldPawnGC.cs	PASS	世界 pawn 垃圾回收，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldPawns.cs	PASS	世界 pawn 容器/tick，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldPawnSituation.cs	SKIP	枚举：pawn 处境
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldPawnsUtility.cs	SKIP	一行扩展方法 IsWorldPawn
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldReachability.cs	PASS	按层连通域缓存，跨层不可达（文档主题五引用）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldReachabilityUtility.cs	SKIP	一行扩展方法 CanReach
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldRenderer.cs	PASS	世界渲染调度，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldRendererUtility.cs	NOTE	世界渲染模式/昼夜 shader 参数；确认深海低光照不在这层（文档主题六）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldRenderMode.cs	SKIP	枚举：None/Planet/Background
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldRoutePlanner.cs	PASS	商队路线规划 UI，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldSelectionDrawer.cs	PASS	选中框绘制，纯 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldSelector.cs	NOTE	层切换清空选中+space 层教学触发，层方案 UI 先例（文档主题六）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/WorldTerrainColliderManager.cs	PASS	世界地形射线碰撞体管理，纯渲染

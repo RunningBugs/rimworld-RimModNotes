@@ -1,0 +1,200 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HistoryAutoRecorderWorker.cs	SKIP	历史曲线记录器基类，纯虚基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HistoryAutoRecorderWorker_FreeColonists.cs	SKIP	历史记录器：自由殖民者计数，纯统计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HistoryAutoRecorderWorker_PopAdaptation.cs	SKIP	历史记录器：人口适应天数，纯统计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HistoryAutoRecorderWorker_PopIntent.cs	SKIP	历史记录器：人口意向，纯统计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HistoryAutoRecorderWorker_Prisoners.cs	SKIP	历史记录器：囚犯计数，纯统计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HistoryAutoRecorderWorker_ThreatPoints.cs	SKIP	历史记录器：威胁点数/10，纯统计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HistoryAutoRecorderWorker_WealthBuildings.cs	SKIP	历史记录器：建筑财富，纯统计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HistoryAutoRecorderWorker_WealthItems.cs	SKIP	历史记录器：物品财富，纯统计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HistoryAutoRecorderWorker_WealthPawns.cs	SKIP	历史记录器：pawn财富，纯统计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HistoryAutoRecorderWorker_WealthTotal.cs	SKIP	历史记录器：总财富，纯统计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/History.cs	PASS	历史容器（archive/记录器组/一次性标志位），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HistoryEventArgsNames.cs	SKIP	历史事件参数名常量类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HistoryEvent.cs	SKIP	历史事件 struct 定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HistoryEventDef.cs	SKIP	纯数据 Def（仅 maxRemembered 字段）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HistoryEventDefOf.cs	SKIP	DefOf 列表
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HistoryEventsManager.cs	NOTE	历史事件记录/遗忘机制；自定义海洋意识形态事件（如猎杀深海巨兽）可挂此（文档末节）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Hive.cs	NOTE	虫巢 Building：CompSpawnerPawn 刷怪+休眠唤醒，深海巢穴直接模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HiveUtility.cs	NOTE	刷巢/铺 InsectSludge/GlowPod 发光荚（深海照明风味）/EggSac
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HoldOffset.cs	SKIP	持械绘制偏移数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HoldOffsetSet.cs	SKIP	四向持械偏移数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HorrorCombatTransition.cs	PASS	Anomaly 战斗音乐切换，机制同 Relax 条，无额外海洋价值
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HorrorMonolithAdvancedTransition.cs	PASS	巨石升级音乐切换，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HorrorRelaxTransition.cs	NOTE	Undercave/Noctolith 触发恐怖音乐——深海地图氛围音乐挂点（MusicTransition 子类模式）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HorrorTensionTransition.cs	NOTE	检查 UnnaturalDarkness/DeathPall/BloodRain 切紧张音乐——深海黑暗 condition 可联动
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HostilityResponseMode.cs	SKIP	枚举（Ignore/Attack/Flee）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HostilityResponseModeUtility.cs	PASS	敌对响应模式 UI 工具，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HumanEmbryo.cs	PASS	胚胎植入/生长舱逻辑，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HumanOvum.cs	PASS	卵子授精逻辑，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HungerCategory.cs	SKIP	枚举（饥饿等级）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HungerLevelUtility.cs	PASS	饥饿等级标签/乘数工具，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HuntJobUtility.cs	PASS	狩猎击杀判定小工具，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IAbilityVerb.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IActiveTransporter.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IActivity.cs	SKIP	接口定义（Mechanitor 活动）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IApparelSource.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IArchivable.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IBeautyContainer.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IBillGiver.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IBillGiverWithTickAction.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ICommunicable.cs	SKIP	接口定义（通讯台可呼叫对象）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ICompAbilityEffectOnJumpCompleted.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IConstructible.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoApparelGender.cs	SKIP	枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoBuildingPresenceDemand.cs	NOTE	意识形态建筑存在需求+房间要求机制；海洋模因要求专属建筑可复用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoColorDef.cs	SKIP	纯数据 Def
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Ideo.cs	PASS	Ideology 主数据类，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoDescriptionMaker.cs	SKIP	纯数据类（描述语法规则包）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoDescriptionResult.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoDescriptionUtility.cs	PASS	意识形态描述文本生成，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoDevelopmentTracker.cs	PASS	意识形态发展点数/重构，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoDevelopmentUtility.cs	PASS	发展点数曲线工具，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoEditMode.cs	SKIP	枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoFiles.cs	PASS	本地意识形态文件缓存，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoFoundation.cs	PASS	意识形态基座生成；仅 InitialVeneratedAnimalsCountRange（尊崇动物）对海洋模因有边际价值
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoFoundationDef.cs	SKIP	纯数据 Def
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoFoundation_Deity.cs	PASS	神祇生成/符号，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoGenerationParms.cs	SKIP	参数 struct
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoGenerator.cs	PASS	意识形态生成器，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoIconDef.cs	SKIP	纯数据 Def
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoImpactUtility.cs	PASS	影响力图标 UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoManager.cs	PASS	意识形态管理器，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoPresetCategoryDef.cs	SKIP	纯数据 Def
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoPresetCategoryDefOf.cs	SKIP	DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoPresetDef.cs	SKIP	纯数据 Def
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoReformStage.cs	SKIP	枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoRoleInstance.cs	SKIP	数据类（角色-pawn-能力绑定）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoStyleTracker.cs	PASS	发型/纹身/风格追踪，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoSymbolPack.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoSymbolPartDef.cs	SKIP	纯数据 Def
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoUIUtility.cs	PASS	意识形态 UI 工具（2248 行），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoUtility.cs	PASS	意识形态杂项工具（含地形 StyleDominance 统计），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoWeaponClassPair.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IdeoWeaponDisposition.cs	SKIP	枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IEatingDriver.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IExpirableWorldObject.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IFixedBaseMarketValue.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IGeneResourceDrain.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IgnorePawnsInventoryMode.cs	SKIP	枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IHackable.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IHaulDestination.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IHaulEnroute.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IHaulSource.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IHideable.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IIncidentMakerQuestPart.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IIncidentTarget.cs	NOTE	事件目标接口（Tile/StoryState/GameConditionManager/IncidentTargetTags），自定义事件目标参照
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IInspectPane.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IJammedDoorDrawer.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ILordAvoidTraps.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ILordJobAssignmentsManager.cs	SKIP	接口定义（仪式角色分配）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ILordJobCandidatePool.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ILordJobOutcomePossibility.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ILordJobRole.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ImpactSoundTypeDefOf.cs	SKIP	DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ImpactSoundUtility.cs	PASS	打击音效工具，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ImplementOwnerTypeDefOf.cs	SKIP	DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/INameableWorldObject.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentCategoryDef.cs	SKIP	纯数据 Def
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentCategoryDefOf.cs	SKIP	DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentCategoryEntry.cs	SKIP	XML 数据类（类别+权重）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentCycleUtility.cs	NOTE	确定性种子化事件周期调度工具，自定义海洋事件可直接调用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentDef.cs	NOTE	事件 Def 全字段：allowed/disallowedBiomes、layer 白黑名单、mtbDaysByBiome、diseaseBiomeRecords——海底事件配置核心
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentDefOf.cs	SKIP	DefOf 列表（含 MayRequireOdyssey 的 Drought/LavaFlow）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentParms.cs	NOTE	事件参数包（points/faction/raidArrivalMode/spawnCenter 等），自定义 worker 读写面
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentParmsUtility.cs	PASS	pawn 分组参数工具，机制通用无海洋点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentPopulationEffect.cs	SKIP	枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentQueue.cs	NOTE	排队事件队列（FireTick 排序+833 tick 重试），自定义延迟事件参照
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentTargetTagDef.cs	SKIP	纯数据 Def（空类）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentTargetTagDefOf.cs	SKIP	DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_AggressiveAnimals.cs	NOTE	猎杀群事件：Scaria+永久发狂+限时停留，走 biome 动物表，海底自动变水生猎杀群
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_Alphabeavers.cs	NOTE	温度门控+边缘进入的动物事件范例（4°C 下会被温度过滤）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_AmbrosiaSprout.cs	NOTE	植物萌发事件：要求 PsychologicallyOutdoors+生长季+肥力，海底需自定义"深海菌群萌发"版
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_Ambush.cs	NOTE	伏击基类：商队目标现场生成临时战斗图——海洋格旅行伏击需定制图生成
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_Ambush_EnemyFaction.cs	NOTE	敌对派系伏击（LordJob_AssaultColony），海底旅行事件需处理
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_Ambush_ManhunterPack.cs	NOTE	猎杀群伏击（PlanetTile.Invalid 兜底找动物），同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_AnimalInsanityMass.cs	NOTE	群体发疯：按 combatPower 点数驱动图上现有动物发狂，海底自动作用于水生动物
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_AnimalInsanitySingle.cs	NOTE	单体发疯（150 点上限），同上机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_AnimaTreeSpawn.cs	NOTE	SpecialTreeSpawn 子类；extreme biome 自动拒刷机制见基类条目
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_Aurora.cs	NOTE	IsAlwaysDarkOutside 门控——永暗海底自动免疫天空事件的设计范例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_BoomshroomSprout.cs	NOTE	同 AmbrosiaSprout 模式（另查 CanEverPlantAt 温度检查）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_CaravanArrivalTributeCollector.cs	NOTE	帝国贡品官（TraderCaravan 子类），海底需潜艇化或屏蔽
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_CaravanDemand.cs	NOTE	商队勒索事件：对话树+生成攻击图，海底旅行侧需定制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_CaravanMeeting.cs	NOTE	商队路遇事件：可贸易/攻击/离开，同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_ChimeraAssault.cs	NOTE	嵌合体袭击：与 DevourerAssault 同构（EdgeWalkIn），换抵达方式即水生版
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_ColdSnap.cs	NOTE	冲突：SeasonalTemp∈(0,15) 在 4°C 海底成立会误触发，必须屏蔽
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_CrashedShipPart.cs	NOTE	坠船部件+休眠机械护卫；落点校验拒 natural roof——海底"沉船残骸"模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_CreepJoiner_Metalhorror.cs	PASS	金属恐怖寄生者加入任务门控，Anomaly 专用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_CropBlight.cs	NOTE	枯萎病按房间扩散（半径11×点数曲线），海底室内农场病害平衡参照
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker.cs	NOTE	事件基类：CanFireNow 完整过滤链（biome/layer/难度/冷却/preventIncidents），屏蔽陆生事件的总开关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_DeathPall.cs	NOTE	死亡 pall condition 事件，深海黑暗主题可借用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_DeepDrillInfestation.cs	NOTE	深钻井引虫：CompCreatesInfestations 门控+TunnelHiveSpawner，海底钻探引巢现成机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_DevourerAssault.cs	NOTE	吞噬者陆地袭击（EdgeWalkIn），与水版对照证明仅差 raidArrivalMode
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_DevourerWaterAssault.cs	NOTE	核心：EmergeFromWater 水中袭击完整模板（points×0.7+LordJob+shard）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_DiseaseAnimal.cs	NOTE	动物疾病受害者筛选（按物种体型加权），biome 发病率表在 IncidentDef 侧
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_Disease.cs	NOTE	疾病事件基类：排除休眠舱/Dryad、免疫判定、信件拼装
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_DiseaseHuman.cs	NOTE	人类疾病受害者筛选（排除生物塑形舱），海底需自配疾病表
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_EntitySwarm.cs	NOTE	Anomaly 实体群袭抽象基类（入口格+行进目的地+shard），海洋版参照
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_FarmAnimalsWanderIn.cs	NOTE	农场动物上门：硬编码 AnimalFarm 贸易标签+Wildness<0.35+温度——水生物种打标签即可复用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_Flashstorm.cs	NOTE	闪暴风：无温度检查直接注册 condition，海底应屏蔽
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_FleshbeastAttack.cs	NOTE	PitBurrow 地底钻出 fleshbeast（延迟涌出）——"海底泥沙钻出怪物"直接模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_FleshmassHeart.cs	NOTE	LargeBuildingCellFinder 大型建筑刷点框架范例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_GameEndedWanderersJoin.cs	NOTE	结局后初始小人边缘刷入（无温度检查），海底需注意进入格
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_GauranlenPodSpawn.cs	NOTE	IsGoodBiome 示范用 IncidentDef 自身 biome 名单做运行时判断
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_GhoulAttack.cs	NOTE	食尸鬼单体袭击（EdgeWalkIn 进入格），同构模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_GiveQuest.cs	NOTE	任务发放事件：quest 的 layerWhitelist/everAcceptableInSpace/onlyAllowWhitelistedQuests 门控
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_GiveQuest_Map.cs	PASS	GiveQuest 地图变体，机制同基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_GoldenCubeArrival.cs	NOTE	金方块=MeteoriteImpact 子类+指定殖民者 CubeInterest，换皮范例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_GorehulkAssault.cs	NOTE	血巨人袭击，同构模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_HarbingerTreeProvoked.cs	NOTE	先驱树被激怒spawn（Growth=0.15），特殊树框架应用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_HarbingerTreeSpawn.cs	NOTE	先驱树 spawn 格查找（多级 CanSpawnAt 回退），SpecialTreeSpawn 族
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_HateChanters.cs	NOTE	恨语者（Horax 教团）仪式围攻，EdgeWalkInHateChanters 抵达
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_HeatWave.cs	NOTE	热浪：SeasonalTemp≥20 海底天然免疫（对照寒流）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_HerdMigration.cs	NOTE	兽群迁徙：CommonalityOfCoastalAnimal 海岸钩子+温度过滤——海底刷水生迁徙群的入口
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_Infestation.cs	NOTE	侵染：上限30巢+InfestationCellFinder 需厚岩顶（海底无岩顶自动不刷，需自写 finder）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_InsectJelly.cs	NOTE	虫胶巢事件（同受 InfestationCellFinder 岩顶限制）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_LavaEmergence.cs	NOTE	图中心 spawn LavaEmergence Thing——海底热泉事件类比模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_LavaFlow.cs	NOTE	注册永久 GameCondition 的地形危害事件，同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_MakeGameCondition.cs	NOTE	GameCondition 发放总线；requireFish+waterBodyTracker.AnyBodyContainsFish 门控可直接借用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_MakeInitialDrought.cs	NOTE	旱灾（永久 condition），海底逻辑矛盾应屏蔽
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_MechCluster.cs	NOTE	机械集群空投（无温度门控），海底主要高阶威胁可保留
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_MetalhorrorImplantation.cs	NOTE	金属恐怖植入（感染路径权重），Anomaly 专用机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_MeteoriteImpact.cs	NOTE	陨石：TryFindSkyfallerCell 承载/站立校验——"海面沉降矿脉"换皮模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_NeutralGroup.cs	NOTE	中立组基类：preventNeutralVisitors+neutralArrival 层名单+边缘进入格（海底全水时静默失败）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_Nociosphere.cs	NOTE	Nociosphere 抵达（SkipTo 传送），Anomaly 专用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_ObeliskAbductor.cs	PASS	方尖碑子类（仅指定 ThingDef）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_Obelisk.cs	NOTE	方尖碑抵达：ChanceFactorNow 按已有数量×0.7 动态调权——实体影响事件权重范例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_ObeliskDuplicator.cs	PASS	方尖碑子类（仅指定 ThingDef）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_ObeliskMutator.cs	PASS	方尖碑子类（仅指定 ThingDef）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_OrbitalDebris.cs	NOTE	轨道碎片：spawn OrbitalDebrisSpawner Thing 代发——"海面漂浮残骸"类比
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_OrbitalTraderArrival.cs	NOTE	轨道贸易商：只需通电通讯台，海底贸易主通道
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_PawnsArrive.cs	NOTE	派系过滤核心：allowedArrivalTemperatureRange 同时查室外/季节温（4°C 海底筛派系）+arrival 层名单
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_PitGate.cs	NOTE	坑门 spawn（ignoreTerrainAffordance），LargeBuildingSpawnParms 框架
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_PoluxTreeSpawn.cs	NOTE	污染树 spawn（优先污染格），SpecialTreeSpawn 族
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_PsychicDrone.cs	NOTE	心灵 drone：只要求有殖民者，海底照常可用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_PsychicEmanation.cs	NOTE	心灵影响基类（互斥检查+性别化 condition）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_PsychicRitualSiege.cs	NOTE	心灵仪式围攻（RaidEnemy 子类覆写范式）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_PsychicSoothe.cs	NOTE	心灵抚慰：环境无关，海底照常
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_Raid.cs	NOTE	袭击基类：isSpace 层抵达权重特例（minSpaceSelectionWeight）+LayerDef.raidPointsFactor——海洋层照搬点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_RaidEnemy.cs	NOTE	敌袭：raidArrivalLayerWhitelist/Blacklist 派系级过滤——"只工业以上袭击"抓手
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_RaidFriendly.cs	NOTE	友军支援：要求图上>120 combatPower 活跃敌人
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_RansomDemand.cs	NOTE	赎金要求：只需通讯台，海底可用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_ResourcePodCrash.cs	NOTE	资源舱坠毁（RandomDropSpot+DropPodUtility）——海面补给舱换皮模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_Revenant.cs	NOTE	亡魂边缘进入袭击，Anomaly 专用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_RevenantEmergence.cs	NOTE	亡魂脊椎延迟孵化（物品 comp 计时），机制范例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_SeasonalFlooding.cs	NOTE	季节洪水：要求河流+春季+>-7°C，海底自动不刷；SeasonalFlood spawner 模式参考
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_SelfTame.cs	NOTE	动物自驯：对任意无派系动物生效，海底水生动物直接受益
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_ShamblerAssault.cs	NOTE	丧尸围攻（RaidEnemy 子类+DisappearsAndKills 寿命 hediff）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_ShamblerSwarmAnimals.cs	NOTE	按 biome 动物表生成丧尸本地动物——海底零改动得到"丧尸鱼群"
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_ShamblerSwarm.cs	PASS	丧尸群基类逻辑（被子类覆盖），机制已在 SwarmAnimals 条目
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_ShamblerSwarmSmall.cs	PASS	小股丧尸（2-4 只），同族机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_ShipChunkDrop.cs	NOTE	飞船碎片坠落（随时间衰减数量）——海面沉降残骸模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_ShortCircuit.cs	NOTE	短路事件：随机炸电缆——海底"电+水"风味冲突点，可保留或替换
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_SightstealerArrival.cs	PASS	窃视者到来（走 quest 脚本），机制在 Swarm 条目
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_SightstealerSwarm.cs	NOTE	窃视者群袭（畏光实体）——深海低光照风味绝配
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_SpecialTreeSpawn.cs	NOTE	特殊树 spawn 基类：isExtremeBiome 自动拒刷+DesiredTreeCountForMap 配额
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_ThrumboPasses.cs	NOTE	敲击兽路过：温度门控+exitMapAfterTick 限时停留——"洄游鱼群"模式参照
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_TraderCaravanArrival.cs	NOTE	贸易商队：边缘进入+LordJob_TradeWithColony，海底需潜艇化
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_TravelerGroup.cs	NOTE	旅行者路过：TryFindTravelDestFrom 找出口，海底同进入格问题
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_UnnaturalCorpseArrival.cs	NOTE	非自然尸体抵达（TryGetIdealColonist 选 pawn），Anomaly 专用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_VisitorGroup.cs	NOTE	访客组：75% 概率带小商人，同 NeutralGroup 进入格问题
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/IncidentWorker_VoidCuriosity.cs	NOTE	虚空好奇（情绪思想），Anomaly 引入事件

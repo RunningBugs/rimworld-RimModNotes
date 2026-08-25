@@ -1,0 +1,250 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AbilityCompProperties.cs	SKIP	comp 属性基类，无实质内容
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AcceptanceReport.cs	SKIP	接受/拒绝结果结构体，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ActiveTip.cs	PASS	悬停提示 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AddedBodyPartProps.cs	SKIP	纯数据类（假体属性）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AlternateGraphic.cs	NOTE	官方 pawn 贴图变体含 swimmingGraphicData 游泳贴图槽
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AltitudeLayer.cs	SKIP	渲染层枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Altitudes.cs	SKIP	层高度静态换算表
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AnimalNameDisplayMode.cs	SKIP	枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AnimalNameDisplayModeExtension.cs	SKIP	枚举翻译/判断扩展方法
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AnimalPenBalanceCalculator.cs	PASS	围栏畜栏系统（封闭性判定基于 Region 泛洪，算法可参考但设施面向陆地）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AnimalPenBlueprintEnclosureCalculator.cs	PASS	围栏畜栏系统（封闭性判定基于 Region 泛洪，算法可参考但设施面向陆地）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AnimalPenConnectedDistrictsCalculator.cs	PASS	围栏畜栏系统（封闭性判定基于 Region 泛洪，算法可参考但设施面向陆地）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AnimalPenEnclosureCalculator.cs	PASS	围栏畜栏系统（封闭性判定基于 Region 泛洪，算法可参考但设施面向陆地）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AnimalPenEnclosureStateCalculator.cs	PASS	围栏畜栏系统（封闭性判定基于 Region 泛洪，算法可参考但设施面向陆地）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AnimalPenGUI.cs	PASS	围栏畜栏系统（封闭性判定基于 Region 泛洪，算法可参考但设施面向陆地）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AnimalPenManager.cs	PASS	围栏畜栏系统（封闭性判定基于 Region 泛洪，算法可参考但设施面向陆地）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AnimalPenUtility.cs	PASS	围栏畜栏系统（封闭性判定基于 Region 泛洪，算法可参考但设施面向陆地）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AnimalType.cs	SKIP	枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AnimationDef.cs	PASS	pawn 动画系统（关键帧/曲线），与海洋机制无直接关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AnimationPart.cs	PASS	pawn 动画系统（关键帧/曲线），与海洋机制无直接关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AnimationUtility.cs	PASS	pawn 动画系统（关键帧/曲线），与海洋机制无直接关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AnimationWorker_Curves.cs	PASS	pawn 动画系统（关键帧/曲线），与海洋机制无直接关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AnimationWorker_Keyframes.cs	PASS	pawn 动画系统（关键帧/曲线），与海洋机制无直接关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AnimationWorker_RevenantHypnotise.cs	PASS	pawn 动画系统（关键帧/曲线），与海洋机制无直接关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AnimationWorker_RevenantSpasm.cs	PASS	pawn 动画系统（关键帧/曲线），与海洋机制无直接关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AnimationWorker_UnnaturalCorpseAwokenKilling.cs	PASS	pawn 动画系统（关键帧/曲线），与海洋机制无直接关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AnyEnum.cs	SKIP	通用枚举装箱结构
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ApparelLayerDef.cs	SKIP	纯数据 Def 类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Area.cs	PASS	区域系统基类/管理器（通用 BoolGrid 区域，无海洋特定性）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AreaManager.cs	PASS	区域系统基类/管理器（通用 BoolGrid 区域，无海洋特定性）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AreaOverlap.cs	SKIP	枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AreaSource.cs	PASS	寻路数据源基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AreaUtility.cs	PASS	区域系统基类/管理器（通用 BoolGrid 区域，无海洋特定性）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ArenaUtility.cs	PASS	竞技场模拟（Anomaly）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ArmorUtility.cs	PASS	护甲减伤计算，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AsymmetricLinkData.cs	PASS	贴图链接/附件/音量小工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AttachableThing.cs	PASS	附着物系统（火焰等附着用），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AttachmentUtility.cs	PASS	贴图链接/附件/音量小工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AudioSourceUtility.cs	PASS	贴图链接/附件/音量小工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AutoBreastfeedModeExtension.cs	SKIP	枚举翻译/判断扩展方法
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AutoBuildRoofAreaSetter.cs	NOTE	房间自动封顶逻辑，海底气密室封顶沿用屋顶系统
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AutofeedMode.cs	SKIP	枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AutomaticPauseMode.cs	SKIP	枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AutomaticPauseModeExtension.cs	SKIP	枚举翻译/判断扩展方法
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AutoSlaughterConfig.cs	PASS	自动屠宰配置/管理，通用畜牧
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/AutoSlaughterManager.cs	PASS	自动屠宰配置/管理，通用畜牧
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Autotests_RegionListers.cs	PASS	Region 注册自检测试
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BackCompatibilityConverter_0_17_AndLower.cs	PASS	旧存档迁移逻辑，与新机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BackCompatibilityConverter_0_18.cs	PASS	旧存档迁移逻辑，与新机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BackCompatibilityConverter_0_19.cs	PASS	旧存档迁移逻辑，与新机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BackCompatibilityConverter_1_0.cs	PASS	旧存档迁移逻辑，与新机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BackCompatibilityConverter_1_2.cs	PASS	旧存档迁移逻辑，与新机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BackCompatibilityConverter_1_3.cs	PASS	旧存档迁移逻辑，与新机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BackCompatibilityConverter_1_4.cs	PASS	旧存档迁移逻辑，与新机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BackCompatibilityConverter_1_5.cs	PASS	旧存档迁移逻辑，与新机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BackCompatibilityConverter.cs	PASS	旧存档迁移逻辑，与新机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BackCompatibilityConverter_Universal.cs	PASS	旧存档迁移逻辑，与新机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BackCompatibility.cs	PASS	旧存档迁移逻辑，与新机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BackstoryTranslationUtility.cs	PASS	背景故事翻译工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BaseAnimationWorker.cs	PASS	pawn 动画系统（关键帧/曲线），与海洋机制无直接关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BaseContent.cs	PASS	缺省贴图/材质常量
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Battle.cs	PASS	战斗记录聚合
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BattleLog.cs	PASS	战斗记录聚合
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BattleLogEntry_AbilityUsed.cs	PASS	战斗日志条目（语法生成），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BattleLogEntry_DamageTaken.cs	PASS	战斗日志条目（语法生成），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BattleLogEntry_Event.cs	PASS	战斗日志条目（语法生成），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BattleLogEntry_ExplosionImpact.cs	PASS	战斗日志条目（语法生成），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BattleLogEntry_ItemUsed.cs	PASS	战斗日志条目（语法生成），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BattleLogEntry_MeleeCombat.cs	PASS	战斗日志条目（语法生成），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BattleLogEntry_RangedFire.cs	PASS	战斗日志条目（语法生成），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BattleLogEntry_RangedImpact.cs	PASS	战斗日志条目（语法生成），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BattleLogEntry_StateTransition.cs	PASS	战斗日志条目（语法生成），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BeautyDrawer.cs	PASS	美观度调试显示
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BlackScreenFixer.cs	PASS	启动黑屏修复 MonoBehaviour
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BloodRainUtility.cs	NOTE	'暴露室外+游戏条件→hediff'模板，仿写'暴露海水→溺水'
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BlueprintGrid.cs	PASS	蓝图逐格索引表，通用建造基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BodyDef.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BodyPartDef.cs	NOTE	canBeVacuumBurnt 部位级真空伤害开关，可类比部位级耐压
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BodyPartDepth.cs	SKIP	枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BodyPartGroupDef.cs	SKIP	纯数据 Def 类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BodyPartHeight.cs	SKIP	枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BodyPartRecord.cs	SKIP	身体部位数据记录类，无机制逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BodyPartRemovalIntent.cs	SKIP	枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BodyPartTagDef.cs	SKIP	纯数据 Def 类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BodyPartToDrop.cs	SKIP	纯数据类（部位掉落）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Book.cs	PASS	书籍物品（阅读/研究），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BookUtility.cs	NOTE	使用 VacuumConcernTo 过滤真空暴露物品，海水暴露过滤可仿
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BoolGrid.cs	NOTE	全图逐格 bool 存储模板，海水网格参照
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BoolUnknown.cs	SKIP	枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BuildableDef.cs	NOTE	terrainAffordanceNeeded/minTechLevelToBuild/placeWorkers 等建造门槛字段，海底建造限制可用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Building.cs	NOTE	建筑基类含 IsAirtight/ExchangeVacuum（含 stuff 级气密），隔水建筑直接复用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BuildingsDamageSectionLayerUtility.cs	PASS	建筑损伤划痕渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BuildingSizeCategory.cs	SKIP	枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BuildingSource.cs	PASS	寻路数据源基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/BundleLetter.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ByteGrid.cs	NOTE	全图逐格 byte 存储模板，水位网格参照
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ByteRange.cs	SKIP	数值范围/插值结构
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CachedMaterial.cs	PASS	材质/贴图缓存
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CachedTempInfo.cs	NOTE	房间缓存同时含 temperature 与 vacuum——真空是与温度并列的房间级模拟量
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CachedTexture.cs	PASS	材质/贴图缓存
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CameraDriver.cs	PASS	相机控制，与玩法无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CameraJumper.cs	PASS	相机控制，与玩法无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CameraMapConfig_Car.cs	PASS	相机控制，与玩法无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CameraMapConfig_CarWithContinuousZoom.cs	SKIP	相机参数配置子类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CameraMapConfig_ContinuousPanAndZoom.cs	SKIP	相机参数配置子类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CameraMapConfig_ContinuousPan.cs	SKIP	相机参数配置子类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CameraMapConfig.cs	PASS	相机控制，与玩法无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CameraMapConfig_Normal.cs	SKIP	相机参数配置子类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CameraMapConfig_SmoothZoom.cs	SKIP	相机参数配置子类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CameraPanner.cs	SKIP	数值范围/插值结构
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CameraShaker.cs	PASS	相机控制，与玩法无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CameraSwooper.cs	PASS	相机控制，与玩法无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CameraZoomRange.cs	SKIP	枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CaravanPollutionUtility.cs	PASS	远行队污染伤害（世界格污染），海底无此需求
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CaseInsensitiveXMLParsing.cs	SKIP	空标记 Attribute
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CellBoolDrawer.cs	PASS	逐格渲染基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CellConnection.cs	SKIP	枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CellConnectionEnumerator.cs	SKIP	枚举位遍历器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CellConnectionExtensions.cs	SKIP	枚举翻译/判断扩展方法
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CellDrawer.cs	PASS	逐格渲染基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CellFinder.cs	PASS	寻格算法集（刷怪点/降落点选择等），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CellFinderLoose.cs	PASS	寻格算法集（刷怪点/降落点选择等），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CellFXSpawner.cs	PASS	逐格特效发射器（可泛用但无海洋特定逻辑）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CellGrid.cs	PASS	格子索引/矩形基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CellIndices.cs	PASS	格子索引/矩形基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CellIndicesUtility.cs	PASS	格子索引/矩形基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CellInspectorDrawer.cs	PASS	格子索引/矩形基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CellLine.cs	PASS	格子索引/矩形基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CellRect.cs	PASS	格子索引/矩形基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CellRenderer.cs	PASS	逐格渲染基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CellTerrain.cs	PASS	地形快照结构（含污染/雪/沙覆盖度）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ChangeImplantLevel_Probability.cs	SKIP	纯数据类（概率）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CheckJobOverrideOnDamageMode.cs	SKIP	枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ChoiceLetter.cs	PASS	选项信件基类 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ClamorDef.cs	SKIP	纯数据 Def 类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ColoredText.cs	PASS	彩色文本解析
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ColorExtension.cs	SKIP	颜色工具函数
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ColorForStuff.cs	SKIP	颜色数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ColorGenerator.cs	SKIP	随机颜色生成器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ColorGenerator_Options.cs	SKIP	随机颜色生成器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ColorGenerator_Single.cs	SKIP	随机颜色生成器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ColorGenerator_StandardApparel.cs	SKIP	随机颜色生成器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ColorGenerator_White.cs	SKIP	随机颜色生成器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ColorInt.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ColorIntUtility.cs	SKIP	颜色工具函数
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ColorLibrary.cs	SKIP	颜色工具函数
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ColorOption.cs	SKIP	颜色数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ColorsFromSpectrum.cs	SKIP	颜色工具函数
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Command_Action.cs	PASS	gizmo 命令 UI 家族，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Command_ActionWithCooldown.cs	PASS	gizmo 命令 UI 家族，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Command_ActionWithLimitedUseCount.cs	PASS	gizmo 命令 UI 家族，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Command_ColorIcon.cs	PASS	gizmo 命令 UI 家族，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Command.cs	PASS	gizmo 命令 UI 家族，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Command_PsychicRitual.cs	SKIP	空/纯样式 gizmo 子类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Command_SetBedOwnerType.cs	PASS	gizmo 命令 UI 家族，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Command_SetPlantToGrow.cs	PASS	gizmo 命令 UI 家族，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Command_Settle.cs	SKIP	空/纯样式 gizmo 子类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Command_Target.cs	PASS	gizmo 命令 UI 家族，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Command_Toggle.cs	PASS	gizmo 命令 UI 家族，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Command_VerbTarget.cs	PASS	gizmo 命令 UI 家族，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompAffectsSky.cs	NOTE	建筑级天空辉光/颜色覆盖+淡入淡出动画，深海调光工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompAIUsablePack.cs	PASS	AI 自动使用穿戴包（灭火/毒气），通用战斗道具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompAttachBase.cs	PASS	附着物系统（火焰等附着用），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompColorable_Animated.cs	PASS	建筑变色系统
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompColorable.cs	PASS	建筑变色系统
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompColorableUtility.cs	PASS	建筑变色系统
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompEquippable.cs	PASS	装备 verb 持有 comp，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompFirefoamPack.cs	PASS	AI 自动使用穿戴包（灭火/毒气），通用战斗道具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompGlower.cs	NOTE	光源 comp：监听 Vacuum 信号刷新、支持 darklight 暗光切换，深海照明先例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompHeatPusher.cs	NOTE	加热 comp（GenTemperature.PushHeat），4°C 海底常驻供暖模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompHeatPusherPowered.cs	NOTE	耗电/燃料版加热，同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompLifespan.cs	PASS	限时自毁 comp（如孢子），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompProperties_AffectsSky.cs	NOTE	CompAffectsSky 的 props（glow/skyColors/lerpDarken）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompProperties_AIUSablePack.cs	SKIP	comp props 纯数据字段
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompProperties_ColorableAnimated.cs	SKIP	comp props 纯数据字段
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompProperties.cs	SKIP	comp 属性基类，无实质内容
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompProperties_HeatPusher.cs	NOTE	heatPerSecond+工作温区字段
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompProperties_Lifespan.cs	SKIP	comp props 纯数据字段
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompProperties_TemperatureDamaged.cs	NOTE	safeTemperatureRange/damagePerTickRare 字段
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompProperties_WindSource.cs	SKIP	comp props 纯数据字段
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompressibilityDecider.cs	PASS	存档压缩相关（saveCompressible 判定/zlib），非玩法
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompressibilityDeciderUtility.cs	PASS	存档压缩相关（saveCompressible 判定/zlib），非玩法
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompressUtility.cs	PASS	存档压缩相关（saveCompressible 判定/zlib），非玩法
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompTemperatureDamaged.cs	NOTE	环境温度出安全区即掉耐久，可仿写'非耐压物深海损坏'
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompToxPack.cs	PASS	AI 自动使用穿戴包（灭火/毒气），通用战斗道具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CompWindSource.cs	NOTE	风力源极简模板（float wind），洋流发电可仿
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ConditionalStatAffecter_Child.cs	PASS	条件属性其余成员（基类/儿童/着装），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ConditionalStatAffecter_Clothed.cs	PASS	条件属性其余成员（基类/儿童/着装），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ConditionalStatAffecter.cs	PASS	条件属性其余成员（基类/儿童/着装），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ConditionalStatAffecter_InSpace.cs	NOTE	'在太空'判定=Tile.LayerDef.isSpace，海底可照写 Underwater 版本
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ConditionalStatAffecter_InSunlight.cs	NOTE	阳光条件属性（Biotech），深海无阳光环境的相关先例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ConditionalStatAffecter_NotInSpace.cs	NOTE	InSpace 取反版，同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ConditionalStatAffecter_Unclothed.cs	PASS	条件属性其余成员（基类/儿童/着装），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ConnectivitySource.cs	PASS	寻路数据源基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ContainmentUtility.cs	PASS	Anomaly 收容强度计算，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ContentFinder.cs	PASS	资源加载/来源图标
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ContentFinderRequester.cs	SKIP	资源请求标记接口实现，6 行
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ContentSource.cs	SKIP	枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ContentSourceUtility.cs	PASS	资源加载/来源图标
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/ConvertHelper.cs	PASS	XML 类型转换工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Corpse.cs	PASS	尸体 Thing（腐烂阶段/屠宰），无水下特化
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CostListForDifficulty.cs	PASS	难度相关造价表
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CostSource.cs	PASS	寻路数据源基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CoverGrid.cs	PASS	射击掩体系统，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CoverInfo.cs	PASS	射击掩体系统，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CoverUtility.cs	PASS	射击掩体系统，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CreditRecord_Role.cs	SKIP	制作名单 UI 条目类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CreditRecord_RoleTwoCols.cs	SKIP	制作名单 UI 条目类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CreditRecord_Space.cs	SKIP	制作名单 UI 条目类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CreditRecord_Text.cs	SKIP	制作名单 UI 条目类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CreditRecord_Title.cs	SKIP	制作名单 UI 条目类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CreditRecord_TitleLocalization.cs	SKIP	制作名单 UI 条目类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CreditsEntry.cs	SKIP	制作名单 UI 条目类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CreepJoinerAggressiveDef.cs	PASS	Anomaly 怪异加入者 Def 家族
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CreepJoinerBaseDef.cs	PASS	Anomaly 怪异加入者 Def 家族
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CreepJoinerBenefitDef.cs	PASS	Anomaly 怪异加入者 Def 家族
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CreepJoinerDownsideDef.cs	PASS	Anomaly 怪异加入者 Def 家族
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CreepJoinerFormKindDef.cs	PASS	Anomaly 怪异加入者 Def 家族
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CreepJoinerRejectionDef.cs	PASS	Anomaly 怪异加入者 Def 家族
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CrossRefHandler.cs	PASS	存档交叉引用解析
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CultureInfoUtility.cs	PASS	区域文化设置工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Current.cs	PASS	全局单例指针集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CurvedScaler.cs	PASS	pawn 动画系统（关键帧/曲线），与海洋机制无直接关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CurvedScalerExt.cs	PASS	pawn 动画系统（关键帧/曲线），与海洋机制无直接关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CurveKeyAnimationPart.cs	PASS	pawn 动画系统（关键帧/曲线），与海洋机制无直接关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CurveKey.cs	SKIP	曲线数据结构
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CurveMark.cs	SKIP	曲线数据结构
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CurvePoint.cs	SKIP	曲线数据结构
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CustomCursor.cs	SKIP	鼠标指针贴图切换
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/CustomMapComponent.cs	SKIP	空 MapComponent 子类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageArmorCategoryDef.cs	SKIP	纯数据 Def 类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageDefAdditionalHediff.cs	SKIP	伤害附加数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageDef.cs	NOTE	ignite*/explosion 字段：水下伤害 Def 需禁点燃、换气泡特效
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamagedMatPool.cs	PASS	受击闪红/损伤贴图渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageFactor.cs	SKIP	伤害附加数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageFlasher.cs	PASS	受击闪红/损伤贴图渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageGraphicData.cs	PASS	受击闪红/损伤贴图渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageInfo.cs	PASS	伤害信息结构，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageMultiplier.cs	SKIP	伤害附加数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageOverlay.cs	SKIP	损伤贴图枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageTuning.cs	SKIP	单常量类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageWorker_AddGlobal.cs	PASS	伤害结算 worker，通用（Frostbite 与 4°C 相关但机制无需改）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageWorker_AddInjury.cs	PASS	伤害结算 worker，通用（Frostbite 与 4°C 相关但机制无需改）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageWorker_Bite.cs	PASS	伤害结算 worker，通用（Frostbite 与 4°C 相关但机制无需改）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageWorker_Blunt.cs	PASS	伤害结算 worker，通用（Frostbite 与 4°C 相关但机制无需改）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageWorker.cs	PASS	伤害结算 worker，通用（Frostbite 与 4°C 相关但机制无需改）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageWorker_Cut.cs	PASS	伤害结算 worker，通用（Frostbite 与 4°C 相关但机制无需改）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageWorker_Extinguish.cs	PASS	伤害结算 worker，通用（Frostbite 与 4°C 相关但机制无需改）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageWorker_Flame.cs	PASS	伤害结算 worker，通用（Frostbite 与 4°C 相关但机制无需改）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/DamageWorker_Frostbite.cs	PASS	伤害结算 worker，通用（Frostbite 与 4°C 相关但机制无需改）

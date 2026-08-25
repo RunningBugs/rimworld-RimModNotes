@@ -1,0 +1,200 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Genepack.cs	PASS	基因包物品（Biotech 容器/劣化），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GeneratedLocationDef.cs	PASS	世界生成位置 Def（preciousResources 按层配置资源点），仅数据定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Gene_Resource.cs	PASS	基因资源（血原质）基类，资源条 gizmo
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GeneResourceDrainUtility.cs	PASS	基因资源消耗/补足工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GeneSet.cs	PASS	基因集合数据（复杂度/代谢统计）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GeneSetHolderBase.cs	PASS	基因持有物基类（检查面板/描述）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GeneTemplateDef.cs	SKIP	纯数据 Def（基因模板）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GeneTuning.cs	SKIP	静态调参曲线/常量
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GeneType.cs	SKIP	枚举（Endogene/Xenogene）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GeneUIUtility.cs	PASS	基因 UI 绘制（读关键部分）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GeneUtility.cs	PASS	基因生成/命名工具（读关键部分）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenGameEnd.cs	PASS	游戏结束对话框
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenGuest.cs	PASS	囚犯/奴隶释放与奴役逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenHostility.cs	PASS	敌对判定通用规则（读关键部分），无海洋类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenLabel.cs	PASS	物品标签生成（读关键部分）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenLeaving.cs	PASS	建筑/尸体摧毁掉落物逻辑（读关键部分）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenLocalDate.cs	PASS	按经度算当地日期/时刻，海洋无特殊说法
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_AlphaThrumboSighting.cs	PASS	任务点刷雷兽群
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_Ambush.cs	NOTE	埋伏触发三件套+三类埋伏（Manhunters/Mechanoids/Normal）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_Ambush_Edge.cs	PASS	边缘埋伏变体（spawnPawnsOnEdge）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_Ambush_Hidden.cs	PASS	隐藏埋伏变体（爆炸触发）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_AncientAltar.cs	PASS	遗迹祭坛散布（避水避路）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_AncientComplex.cs	NOTE	古代综合设施；AvoidWaterRoads 覆盖为 false 的示例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_AncientComplex_Mechanitor.cs	PASS	机械师版综合设施变体
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_AncientReactor.cs	PASS	遗迹反应堆（废墟+哨兵无人机）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_AncientRuins.cs	PASS	古代废墟+碎石堆/炸痕
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_AncientStockpile.cs	PASS	古代储藏室布局生成
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_AncientStockpile_Gravcore.cs	PASS	重力核心舱口×3
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_Animals.cs	NOTE	初始野生动物循环刷到 AnimalEcosystemFull；只刷水生生物的挂钩在 Biome/Spawner
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_AnimaTrees.cs	PASS	仙树散布
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_Archonexus.cs	PASS	大核心生成（要求可达图边）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ArchonexusResearchBuildings.cs	PASS	研究建筑基类（水/路视为碰撞）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ArchonexusResearchBuildings_SecondCycle.cs	PASS	二周期变体
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ArchonexusResearchBuildings_ThirdCycle.cs	PASS	三周期变体
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_Asteroid.cs	NOTE	小行星图总模板：噪声孤岛+主岛外回填Space+洞穴矿脉废墟
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_AsteroidItemStash.cs	PASS	小行星储物点（岩体内清出结构）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_BaseRuins.cs	NOTE	废墟基类：AvoidWaterRoads/MinAffordance 校验，矩形合并算法
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_BasicAsteroid.cs	NOTE	小行星变体（仅改半径 0.2）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_BurntPatches.cs	PASS	焦土斑块（烧植物+灰烬）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_CaveHives.cs	PASS	洞穴虫巢（要求洞穴格、远离派系基地）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ChopTrees.cs	PASS	据点周边砍树留桩
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ConditionCauser.cs	PASS	天气/状态控制器房间生成入口
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_CrashedMechanoidPlatform.cs	PASS	坠毁机械平台（弹坑/碎屑）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStepDefOf.cs	SKIP	DefOf 注册表
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_DownedRefugee.cs	PASS	倒地难民散布
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_Dreadmeld.cs	PASS	血肉兽巢穴（信号触发警告信）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ElevationFertility.cs	NOTE	WaterCovered 格海拔强制 0（全平）；isUnderground 强制 1
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_EscapeShip.cs	NOTE	CompTerrainPumpDry.AffectCell 抽干水的实证用法
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_FindPlayerStartSpot.cs	NOTE	起点=最大连通开阔区中央+Heavy 承载；引力船降落时跳过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_Fleshmass.cs	PASS	血肉噪声覆盖（Anomaly）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_FleshSacks.cs	PASS	血肉囊+战利品
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_Fog.cs	NOTE	初始全雾+从起点 unfog；用 NoPassClosedDoorsOrWater 寻路档位
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_FogSpace.cs	NOTE	太空图迷雾：全雾后从角落/rootsToUnfog 解开
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_FrozenRuins.cs	NOTE	EncaseStructuresInIce 冰封废墟（掩埋遗迹手法）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_FrozenTerraformer.cs	NOTE	噪声冰盖+中心废墟+哨兵无人机
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_GeothermalVents.cs	NOTE	地热口按距离衰减散布植物→深海热泉生态模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_Glaciers.cs	PASS	冰川（ScatterLumpsMineable 刷 SolidIce）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_GravshipMarker.cs	NOTE	生成降落标记 Thing（落点确认交互）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_GravshipWreckage.cs	NOTE	坠船残骸点：弹坑/碎片/尸体/机械守卫→沉船点参照
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_HarbingerTrees.cs	PASS	先驱树（Anomaly 等级决定数量）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_InsectLairCave.cs	PASS	虫巢口袋洞穴（淤泥+POI 散布，读关键部分）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_InsectLairSite.cs	PASS	虫巢入口生成
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ItemStash.cs	PASS	储物点（BaseGen storage 符号）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_Labyrinth.cs	PASS	迷宫口袋图（灰地+布局+全雾）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_LargeRuins.cs	PASS	大废墟基类（最大空矩形选取）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ManhunterPack.cs	PASS	猎杀人类兽群（Scaria+永久猎杀）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_MechanoidRelay.cs	PASS	机械中继/稳定器放置+铺古代地砖
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_MechCluster.cs	PASS	休眠机械集群
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_MetalHell.cs	PASS	金属地狱口袋图（Anomaly）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_Monolith.cs	PASS	虚空巨石+血污尸体
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_MutatorCriticalStructures.cs	NOTE	TileMutator 钩子：GenerateCriticalStructures
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_MutatorFinal.cs	NOTE	TileMutator 钩子：GeneratePostFog
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_MutatorNonCriticalStructures.cs	NOTE	TileMutator 钩子：GenerateNonCriticalStructures
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_MutatorPostElevationFertility.cs	NOTE	TileMutator 钩子：GeneratePostElevationFertility
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_MutatorPostTerrain.cs	NOTE	TileMutator 钩子：GeneratePostTerrain
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_OrbitalMechhive.cs	NOTE	太空机械蜂巢：平台+破洞+废墟+雾色（读关键部分）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_OrbitalPlatform.cs	NOTE	轨道平台：PostMapInitialized 整图设温 -75°C 的官方做法
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_OrbitalRelay.cs	PASS	轨道中继站（预制件散布，读关键部分）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_OrbitalSatellite.cs	NOTE	轨道卫星：同样 -75°C 整图温度覆盖+雾色
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_OrbitalWreck.cs	NOTE	轨道残骸：Chunks 平台+DamageHoles 破洞+FogOfWarColor
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_Outpost.cs	NOTE	前哨站：矩形水覆盖率>10% 拒绝（原版避水惯例）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_PitBurrows.cs	PASS	坑洞（Anomaly 血肉兽入口）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_PlaceCaveExit.cs	PASS	洞穴出口+清场
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_Plants.cs	PASS	野生植物逐格散布
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_Pollution.cs	PASS	按世界格污染度铺污染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_PoluxTrees.cs	PASS	波卢克斯树（按污染等级定量）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_Power.cs	NOTE	据点电力生成前 ForceSetCurSkyGlow(1f) 强制满亮度→深海低光照冲突点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_PreciousLump.cs	NOTE	贵重矿脉：要求可达图边、避开引力船降落区
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_PrisonerWillingToJoin.cs	PASS	愿加入囚犯牢房
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_RemoveTinyIslands.cs	NOTE	小岛消除算法（小可通行岛被相邻不可通行地形吞并）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ReserveGravshipArea.cs	NOTE	降落区预留+CostToPlaceAt 落点评分（Space+5/水+60/危险+80）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_Roads.cs	PASS	图内道路生成（costWater=30 避水；读关键部分）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_RockChunks.cs	NOTE	WaterCovered 直接 return：水覆盖格不刷岩块
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_RocksFromGrid.cs	NOTE	WaterCovered 直接 return：水覆盖格不生成岩石/矿脉
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ScaleElevation.cs	PASS	海拔整体缩放
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ScatterAncientFences.cs	PASS	古代围栏/铁丝网（避水避路）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ScatterAncientLandingPad.cs	PASS	古代停机坪（allowInWaterBiome=false）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ScatterAncientMechs.cs	PASS	古代机械残骸散布
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ScatterAncientTurret.cs	PASS	古代炮塔（要求天然屋顶、HasCaves）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ScatterAncientUtilityBuilding.cs	PASS	古代设施建筑（避水）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ScatterCaveDebris.cs	PASS	洞穴残骸（古床+尸体+污垢）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ScattererBestFit.cs	PASS	最佳适配散布基类（碰撞最少位置）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ScatterGeysers.cs	PASS	间歇泉数量受 Biome/Mutator 系数调整
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ScatterLayout.cs	PASS	按 LayoutThing 列表散布
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ScatterLumpsMineable.cs	NOTE	矿脉只刷在天然岩 edifice 上→海底无岩则无矿的冲突
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ScatterMechanoidRemains.cs	PASS	已废弃（Obsolete）机械残骸
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ScatterRoadDebris.cs	PASS	道路残骸（废弃车辆）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ScatterRuinsSimple.cs	PASS	简单废墟（SketchGen MonumentRuin）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ScatterShrines.cs	PASS	古代神殿（需邻天然岩）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_ScenParts.cs	NOTE	场景生成总入口 Scenario.GenerateIntoMap（海洋开局场景挂载点）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_Settlement.cs	NOTE	派系据点 BaseGen 管线（settlement 符号，帝国强制王座室/停机坪）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_SettlementPawnsLoot.cs	PASS	据点人员与战利品
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_SitePawns.cs	PASS	站点守卫+警告信
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_SleepingMechanoids.cs	PASS	沉睡机械体（CompCanBeDormant.ToSleep）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_Snow.cs	NOTE	初始积雪+Odyssey 水面结冰 ThinIce（FreezeManager.CanEverFreeze）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_Space.cs	NOTE	全图填 Space 地形并关 regionAndRoomUpdater→全图填水模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_SpecialTrees.cs	NOTE	isExtremeBiome 直接跳过特殊树（海底 Biome 屏蔽地表内容的开关）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_SurveySite.cs	PASS	引力船勘测点（SurveyScanner 预制件）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_Terrain.cs	NOTE	自然地形由 Biome terrainPatchMakers 决定；supportsRock=false 地形销毁 edifice
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_Turrets.cs	NOTE	炮塔派系过滤 techLevel>=4（工业）→工业以上袭击的现成写法
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_UndercaveInterest.cs	NOTE	地下洞穴 POI 散布模板→海底兴趣点（鲸落/沉箱）参照
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_WorkSitePawns.cs	PASS	工地工人+打手
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStep_WorkSiteStash.cs	PASS	工地物资
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenStuff.cs	PASS	物品材料（stuff）选择
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenThing.cs	PASS	物品绘制中心/列表工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenWorld.cs	PASS	世界地图鼠标取格射线
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GiveItemsToPawnUtility.cs	PASS	给 pawn 递物品的工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GiveToPackAnimalUtility.cs	PASS	驮运动物装货
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Gizmo_EnergyShieldStatus.cs	PASS	护盾能量条 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Gizmo_GrowthTier.cs	PASS	儿童成长档 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Gizmo_MechResurrectionCharges.cs	PASS	机械复活次数 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Gizmo_ProjectileInterceptorHitPoints.cs	PASS	拦截器耐久 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Gizmo_PruningConfig.cs	PASS	树精修剪配置 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Gizmo_SetFuelLevel.cs	PASS	燃料滑条 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GlobalControls.cs	PASS	右上角全局 UI（含室内/外温度读数）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GlobalControlsUtility.cs	PASS	时间/日期/FPS 等 UI 工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GlobalWorldDrawLayerDef.cs	SKIP	纯数据 Def（世界绘制层）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GoodwillSituationDef.cs	SKIP	纯数据 Def（好感情境+workerClass）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GoodwillSituationManager.cs	PASS	好感情境缓存管理
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GoodwillSituationWorker_AttackingSettlement.cs	PASS	攻打好感 worker
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GoodwillSituationWorker.cs	PASS	好感 worker 基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GoodwillSituationWorker_MemeCompatibility.cs	PASS	文化模因好感 worker
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GoodwillSituationWorker_NaturalEnemy.cs	PASS	天敌好感 worker
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GoodwillSituationWorker_PermanentEnemy.cs	PASS	永久敌对 worker
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GoodwillSituationWorker_SameIdeo.cs	PASS	同文化好感 worker
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Graphic_LinkedTransmitter.cs	PASS	电缆链接图形
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Graphic_LinkedTransmitterOverlay.cs	PASS	电缆链接覆盖层图形
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GraphicStateDefOf.cs	NOTE	含 Swimming 图形状态（游泳渲染有官方先例）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GravshipAudio.cs	PASS	引力船音效管理（读关键部分）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GravshipCapturer.cs	PASS	引力船截图渲染（读关键部分）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GravshipComponentTypeDef.cs	SKIP	纯数据 Def（船部件类型）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GravshipComponentTypeDefOf.cs	SKIP	DefOf 注册表
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GravshipLandingMarker.cs	NOTE	降落标记：落点预览/旋转/确认后 InitiateLanding
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GravshipPlacementUtility.cs	NOTE	落地恢复地形/屋顶/gasGrid→逐格环境状态随载具迁移先例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GravshipRenderer.cs	PASS	引力船渲染（读关键部分）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GravshipUtility.cs	NOTE	引力船=移动基地全套（旅行/落图/遗弃/定居）→潜艇类比核心
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GridShapeMaker.cs	PASS	不规则团块/非自然形状生成工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GroundSpawner.cs	PASS	地面钻出物（虫族突袭等）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GrowthUtility.cs	PASS	儿童成长档/生日
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GuardianShipGizmo.cs	PASS	护卫船倒计时 gizmo
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GuestStatus.cs	SKIP	枚举（Guest/Prisoner/Slave）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GuestUtility.cs	PASS	客人/奴隶工具与图标
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HackUtility.cs	PASS	骇入能力判断
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HairDef.cs	SKIP	样式 Def 子类（发型图形）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HairDefOf.cs	SKIP	DefOf 注册表
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HarbingerTree.cs	PASS	先驱树（吞尸体增殖；读关键部分）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HateChantDroneLevel.cs	SKIP	枚举（憎恶毒蜂等级）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HateChantDroneLevelUtility.cs	SKIP	枚举标签工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HaulDestinationManager.cs	PASS	存储区/搬运目标管理
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HaulSourceUtility.cs	PASS	搬运来源菜单
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HeadTypeDefOf.cs	SKIP	DefOf 注册表
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HealthAIUtility.cs	PASS	医疗 AI（就医/救援/药品选择）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HealthCardUtility.cs	PASS	健康标签页 UI（读关键部分）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Hediff_Addiction.cs	PASS	成瘾 hediff
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HediffComp_DestroyOrgan.cs	PASS	器官衰坏 comp
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HediffComp_DissolveGearOnDeath.cs	PASS	死亡溶解装备 comp
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HediffComp_ExplodeOnDeath.cs	PASS	死亡爆炸 comp
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HediffCompProperties_DestroyOrgan.cs	SKIP	纯数据 props
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HediffCompProperties_DissolveGearOnDeath.cs	SKIP	纯数据 props
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HediffCompProperties_ExplodeOnDeath.cs	SKIP	纯数据 props
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HediffCompProperties_PsychicHarmonizer.cs	SKIP	纯数据 props
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HediffCompProperties_RoyalImplant.cs	SKIP	纯数据 props
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HediffComp_PsychicHarmonizer.cs	PASS	心灵调和器 comp
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HediffComp_PsychicSuppression.cs	PASS	心灵抑制 comp（条件存在才保留）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HediffComp_RoyalImplant.cs	PASS	皇家植入体 comp
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Hediff_CoveredInFirefoam.cs	PASS	灭火泡沫覆盖 hediff
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HediffDefOf.cs	SKIP	DefOf 注册表
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HediffGiverSetDef.cs	SKIP	纯数据 Def（hediff 给予器集合）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Hediff_HeartAttack.cs	PASS	心脏病 hediff
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Hediff_High.cs	PASS	药物亢奋 hediff
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HediffOption.cs	SKIP	纯数据类（hediff+部位）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HibernatableStateDef.cs	SKIP	空 Def 定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HibernatableStateDefOf.cs	SKIP	DefOf 注册表
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HiddenItemsManager.cs	PASS	未发现物品隐藏管理
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HistoryAutoRecorder.cs	PASS	历史曲线记录器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HistoryAutoRecorderDef.cs	SKIP	纯数据 Def（记录器配置）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HistoryAutoRecorderGroup.cs	PASS	历史曲线组绘制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HistoryAutoRecorderGroupDef.cs	SKIP	纯数据 Def（记录组配置）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HistoryAutoRecorderWorker_Adaptation.cs	PASS	适应度记录 worker
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/HistoryAutoRecorderWorker_ColonistMood.cs	PASS	殖民者心情记录 worker

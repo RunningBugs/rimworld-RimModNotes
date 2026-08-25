@@ -1,0 +1,151 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/AbandonComp.cs	NOTE	放弃据点 gizmo 入口，放弃流程模板（文档§7）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/AbandonedArchotechStructures.cs	NOTE	废弃点保留特殊建筑供日后重建据点（文档§7）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/AbandonedSettlement.cs	PASS	废弃据点仅显示放弃时间，无海洋价值
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/ArchotechSettlement.cs	NOTE	放弃时把建筑移入废弃点的特殊 Settlement 子类（文档§7）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/BasicAsteroidMapParent.cs	NOTE	太空层资源点 MapParent，类比海底矿脉点（文档§7）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/BestCaravanPawnUtility.cs	PASS	商队最佳谈判者选择，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/Camp.cs	NOTE	临时营地→废弃点生命周期，海底临时作业点模板（文档§4）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanAbandonOrBanishUtility.cs	PASS	商队丢弃物品/放逐成员 UI 流程，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanArrivalAction_AttackSettlement.cs	PASS	到达动作：攻占据点，无环境逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanArrivalAction.cs	PASS	到达动作抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanArrivalAction_Enter.cs	PASS	到达动作：进图，含进入冷却检查
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanArrivalAction_OfferGifts.cs	PASS	到达动作：送礼，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanArrivalAction_Trade.cs	PASS	到达动作：交易，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanArrivalActionUtility.cs	PASS	到达动作浮窗选项组装，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanArrivalAction_VisitEscapeShip.cs	PASS	到达动作：访问逃生船，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanArrivalAction_VisitPeaceTalks.cs	PASS	到达动作：和谈，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanArrivalAction_VisitSettlement.cs	PASS	到达动作：访问据点，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanArrivalAction_VisitSite.cs	PASS	到达动作：访问站点，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanArrivalTimeEstimator.cs	NOTE	ETA 检查 LayerDef.SurfaceTiles，非地表层即时到达（文档§1/§5）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/Caravan_BabyTracker.cs	PASS	商队婴儿意识形态暴露，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/Caravan_BedsTracker.cs	PASS	商队铺位舒适度，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanBedUtility.cs	PASS	商队铺位查询扩展，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanBonusUtility.cs	PASS	商队速度加成 stat 查询，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/Caravan_CarryTracker.cs	PASS	商队驮运伤员，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanCarryUtility.cs	PASS	驮运查询扩展，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/Caravan.cs	PASS	商队主类（签名级阅读），聚合各 tracker，无海洋特有逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanDropInventoryMode.cs	SKIP	纯枚举（物品掉落模式）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanDrugPolicyUtility.cs	PASS	商队按计划服药，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanEnterMapUtility.cs	NOTE	进图落点要求 Standable+可达边缘，全水地图需处理（文档§4）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanEnterMode.cs	SKIP	纯枚举（进图模式）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanExitMapUtility.cs	NOTE	离图组队强制改到最近可通行格，海底基地组商队会被瞬移（文档§5）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/Caravan_ForageTracker.cs	NOTE	商队采集 tracker，产出物=biome.foragedFood，海底打鱼零代码（文档§6）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanFormingUtility.cs	PASS	组队 lord 管理（签名级），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/Caravan_GotoMoteRenderer.cs	PASS	商队目标点击反馈特效，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanIncidentUtility.cs	NOTE	伏击图要求 PrimaryBiome.implemented，海洋 biome 可借此屏蔽/启用（文档§4）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanInventoryUtility.cs	PASS	商队库存操作（签名级），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanItemsTabUtility.cs	PASS	商队物品页 UI，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanMaker.cs	NOTE	组商队检查 LayerDef.canFormCaravans（文档§1）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanMergeUtility.cs	PASS	商队合并（签名级），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanNameGenerator.cs	PASS	商队命名，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanNeedsTabUtility.cs	PASS	商队需求页 UI，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/Caravan_NeedsTracker.cs	PASS	商队需求满足（签名级），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanNightRestUtility.cs	PASS	夜间休息按经度时区，与世界时钟绑定，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/Caravan_PathFollower.cs	NOTE	Find.World.Impassable 硬门槛+逐格移动成本公式（文档§5）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanPawnsNeedsUtility.cs	PASS	商队食物选择评分，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanRideableUtility.cs	PASS	骑乘动物 stat 查询，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravansBattlefield.cs	NOTE	伏击战场 MapParent 生命周期+TimedDetectionRaids（文档§7）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanShuttleUtility.cs	PASS	商队载穿梭机燃料/载重，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanTendUtility.cs	PASS	商队医疗，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanThingsTabUtility.cs	PASS	商队物品页按钮 UI，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanTicksPerMoveUtility.cs	NOTE	商队基础速度换算（不含地形，地形在 WorldPathGrid）（文档§5）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/Caravan_TraderTracker.cs	PASS	商队交易 tracker，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/Caravan_Tweener.cs	PASS	商队图标位置插值，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanTweenerUtility.cs	PASS	商队图标碰撞偏移，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanUIUtility.cs	PASS	商队信息面板 UI（签名级），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanUtility.cs	NOTE	BestGotoDestNear 过滤 Impassable+CanReach（文档§5）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanVisibilityCalculator.cs	NOTE	商队可见度=体型曲线×静止 0.3，黑暗隐蔽可接此系数（文档§6）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CaravanVisitUtility.cs	PASS	商队访问据点/交易命令，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/CompassWidget.cs	PASS	世界地图指南针 UI，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/DaysUntilRotCalculator.cs	NOTE	商队食物腐烂按沿途世界格温度估算，海底低温原生受益（文档§6）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/DaysWorthOfFoodCalculator.cs	NOTE	食物天数=库存+采集加权（签名级），依赖腐烂估算（文档§6）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/DebugArena.cs	PASS	debug 斗兽场 comp，开发工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/DebugTile.cs	PASS	debug 地块高亮，开发工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/DebugWorldLine.cs	PASS	debug 世界线绘制，开发工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/DefeatAllEnemiesQuestComp.cs	PASS	任务：消灭全部敌人 comp，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/DestroyedSettlement.cs	PASS	被摧毁据点 MapParent，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/Dialog_SplitCaravan.cs	PASS	拆分商队对话框（签名级），纯 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/DistressCallUtility.cs	PASS	求救信号事件生成尸体/血迹，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/DownedRefugeeComp.cs	PASS	倒地难民任务 comp，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/EnterCooldownComp.cs	NOTE	站点进入冷却，拆图自动重启，海底打捞点防刷可挂（文档§7）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/EnterCooldownCompUtility.cs	NOTE	进入冷却查询扩展（文档§7）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/EscapeShipComp.cs	PASS	逃生船 comp，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/EscapeShip.cs	PASS	逃生船 MapParent 图标处理，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/ExpandableLandmarksUtility.cs	NOTE	landmark 图标展开体系，海底兴趣点可镜像（文档§7）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/ExpandableWorldObjectsUtility.cs	NOTE	太空层对象图标特殊展开（isSpace/fullyExpandedInSpace）（文档§1）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/FactionGiftUtility.cs	PASS	送礼换好感（签名级），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/FastTileFinder.cs	NOTE	Burst 全图 tile 查询，支持 biome/landmark/hilliness/可定居过滤（文档§5）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/FeatureWorker_Archipelago.cs	NOTE	群岛 feature：Ocean/Lake 判定+聚类（文档§3）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/FeatureWorker_Bay.cs	NOTE	海湾 feature：水域突出部（文档§3）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/FeatureWorker_Biome.cs	NOTE	biome 区域命名纯 def 驱动，深海 biome 可直接命名（文档§3）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/FeatureWorker_Cluster.cs	PASS	feature 聚类通用机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/FeatureWorker_FloodFill.cs	PASS	feature 泛洪通用机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/FeatureWorker_Island.cs	NOTE	岛屿 feature：陆地被 Ocean/Lake 包围（文档§3）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/FeatureWorker_MountainRange.cs	NOTE	山脉不跨洋（CanTraverse 排除 Ocean），海沟/海岭可仿写（文档§3）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/FeatureWorker_OuterOcean.cs	NOTE	外洋 feature：从世界边缘泛洪 Ocean/Lake 格（文档§3）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/FeatureWorker_Peninsula.cs	NOTE	半岛 feature：陆地突出部（文档§3）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/FeatureWorker_Protrusion.cs	PASS	突出部提取通用机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/FloatMenuMakerWorld.cs	PASS	世界地图右键菜单组装，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/ForagedFoodPerDayCalculator.cs	NOTE	采集量=stat 合计×biome.forageability×阵营系数（文档§6）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/FormCaravanComp.cs	PASS	据点内组商队 comp，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/GameSetupStep_Components.cs	NOTE	世界生成管线步骤：组件构建（文档§3）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/GameSetupStep_Grids.cs	NOTE	世界生成管线步骤：grid/pathGrid 生成（文档§3）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/GameSetupStep_TileElementsCore.cs	NOTE	世界生成管线步骤：features 初始化（文档§3）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/GameSetupStep_TileElementsOdyssey.cs	NOTE	世界生成管线步骤：landmarks 初始化（文档§3）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/GenPlanetMorphology.cs	NOTE	tile 集合腐蚀/膨胀/Open/Close 形态学原语，可造海沟海山（文档§3）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/GenWorldClosest.cs	NOTE	泛洪找最近可通行格，商队重定位基础（文档§5）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/GenWorldUI.cs	PASS	世界地图点击检测/UI 坐标换算，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/Gizmo_CaravanInfo.cs	PASS	商队信息 gizmo，纯 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/GlobalDrawLayer_Stars.cs	PASS	星空背景绘制，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/GlobalDrawLayer_Sun.cs	PASS	太阳背景绘制，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/GlobalRendererUtility.cs	PASS	全局 shader 时间参数，纯渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/GlobalTargetInfo.cs	PASS	全局目标信息结构（签名级），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/Gravship.cs	NOTE	整船打包搬迁：逐房间温度/真空+逐格气体随船携带，潜水母舰模板（文档§2）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/GravshipLaunch.cs	PASS	起飞点标记对象，仅显示起飞时间
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/Hilliness.cs	SKIP	纯枚举（地形起伏度）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/HillinessUtility.cs	PASS	起伏度本地化标签，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/IcosahedronGenerator.cs	PASS	二十面体球面网格生成，几何工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/ImportantPawnComp.cs	PASS	世界对象携带 pawn 的 comp 基类，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/ItemStashContentsComp.cs	PASS	物品储藏点内容 comp，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/LandmarkDensity.cs	SKIP	纯枚举（landmark 密度）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/LandmarkDensityUtility.cs	PASS	landmark 密度系数表，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/MapParent.cs	NOTE	可开图世界对象基类：CanBeSettled/MapGeneratorDef/ExtraGenStepDefs 等钩子（文档§4）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/MapParentTuning.cs	SKIP	纯常量类（侦查倒计时调参）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/MoveableArea_Allowed.cs	SKIP	gravship 允许区域数据子类（文档§2 已涵盖机制）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/MoveableArea.cs	NOTE	gravship 可携带区域基类（相对坐标+旋转还原）（文档§2）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/MoveableAreas.cs	NOTE	gravship 携带区域总表（储物/种植/畜棚等）（文档§2）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/MoveableGrowZone.cs	SKIP	gravship 种植区数据子类（文档§2 已涵盖机制）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/MoveableStockpile.cs	SKIP	gravship 储物区数据子类（文档§2 已涵盖机制）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/MoveableStorageGroup.cs	SKIP	gravship 储物组数据子类（文档§2 已涵盖机制）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/MultipleCaravansCellFinder.cs	NOTE	伏击图双出生点要求 Standable+互可达，海底受限（文档§4）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/OrbitalScannerWorldComponent.cs	NOTE	世界组件 MTB 扫描信号节奏，声呐发现兴趣点模板（文档§7）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/OverallPopulation.cs	SKIP	纯枚举（人口密度档位）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/OverallPopulationUtility.cs	PASS	人口密度系数表，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/OverallRainfall.cs	SKIP	纯枚举（降雨档位）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/OverallRainfallUtility.cs	PASS	降雨档位→年降雨量曲线，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/OverallTemperature.cs	SKIP	纯枚举（温度档位）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/OverallTemperatureUtility.cs	PASS	温度档位→纬度温度曲线，海底恒温另有机制时无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/PackedListOfLists.cs	SKIP	纯数据结构工具（偏移量压缩列表）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/PawnDiscardDecideMode.cs	SKIP	纯枚举（pawn 丢弃决策）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/PeaceTalks.cs	PASS	和谈事件对象（签名级），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/PlanetLayerConnection.cs	NOTE	层间连接带 fuelCost，海面↔海底旅行成本挂点（文档§1）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/PlanetLayer.cs	NOTE	Odyssey 多层行星核心：每层独立 tile/寻路/泛洪/绘制（文档§1）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/PlanetTile.cs	NOTE	tile 标识=tileId+layerId，跨层引用同一地理格（文档§1）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/PocketMapParent.cs	PASS	口袋地图父类（sourceMap+mapGenerator），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/PositionData.cs	SKIP	纯数据类（gravship 位置/朝向记录，文档§2 已涵盖）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/PrisonerWillingToJoinComp.cs	PASS	愿加入囚犯任务 comp，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/ResourceAsteroidMapParent.cs	NOTE	资源点小行星（图标取矿色），海底矿脉点同构（文档§7）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/RoomTemperatureVacuum.cs	NOTE	房间温度+真空度打包记录单元，可直接类比房间海水淹没状态（文档§2）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/RoutePlannerWaypoint.cs	PASS	路径规划路点对象，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SettleInEmptyTileUtility.cs	NOTE	定居合法性走 TileFinder；营地落点显式排除 IsWater 地形（文档§4）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SettleInExistingMapUtility.cs	NOTE	已有地图定居走 MapParent.CanBeSettled 钩子（文档§4）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SettlementAbandonUtility.cs	NOTE	放弃据点确认流程（文档§7）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/Settlement.cs	NOTE	Visitable 排除 isSpace 层、CanBeSettled=false 等层行为开关（文档§1/§4）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SettlementDefeatUtility.cs	NOTE	据点摧毁后按 LayerDef.DestroyedSettlementWorldObjectDef 生成废墟（文档§1）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SettlementNameGenerator.cs	PASS	据点命名，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SettlementProximityGoodwillUtility.cs	NOTE	定居邻近好感惩罚+定居确认对话框（文档§7）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/Settlement_TraderTracker.cs	PASS	据点商人库存（签名级），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SettlementUtility.cs	PASS	攻占据点流程/好感影响，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SettleUtility.cs	PASS	新建定居点+数量上限（含 gravship 落地计数），无海洋特有逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/SiteCoreBackCompat.cs	SKIP	纯数据类（站点存档兼容）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.Planet/Site.cs	NOTE	任务站点基类：SitePart 组合/GravShipCanLandOn 可覆写，海底兴趣点模板（文档§4）

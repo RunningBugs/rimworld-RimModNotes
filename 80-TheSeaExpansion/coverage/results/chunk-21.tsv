@@ -1,0 +1,200 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RaidStrategyDefOf.cs	SKIP	纯 DefOf 声明
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RaidStrategyWorker.cs	NOTE	袭击策略基类：CanUseWith 检查 TileMutatorDef.blacklistedRaidStrategies 与 layerWhitelist/layerBlacklist，海底袭击限制的现成 XML 钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RaidStrategyWorker_ImmediateAttackBreaching.cs	PASS	破墙袭击，仅组装 LordJob_AssaultColony(breachers) 与 isGoodBreacher 过滤，无环境逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RaidStrategyWorker_ImmediateAttackBreachingSmart.cs	SKIP	9 行构造函数，仅置 useAvoidGridSmart=true
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RaidStrategyWorker_ImmediateAttack.cs	PASS	立即攻击/援助殖民地的 LordJob 组装，无环境检查
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RaidStrategyWorker_ImmediateAttackFriendly.cs	PASS	友方版本，仅派系敌对性判断
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RaidStrategyWorker_ImmediateAttackSappers.cs	PASS	工兵袭击，SappersUtility pawn 过滤，无环境逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RaidStrategyWorker_ImmediateAttackSmart.cs	PASS	智能袭击，要求 faction.def.canUseAvoidGrid
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RaidStrategyWorker_PsychicRitualSiege.cs	NOTE	心灵仪式围攻：FindSiegePositionFrom 选址（Walkable+可清除建筑 Validator），海床地形 affordance 影响落点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RaidStrategyWorker_ShamblerAssault.cs	PASS	行尸袭击，仅返回 LordJob_ShamblerAssault
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RaidStrategyWorker_Siege.cs	NOTE	围攻：FindSiegePositionFrom 默认要求可建造地形(Heavy/Light)且无顶，海床需决定围攻落点语义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RaidStrategyWorker_SiegeMechanoid.cs	NOTE	机械集群围攻：MechClusterUtility.SpawnCluster 空投落 spawnCenter，海底空投仓穿水问题
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RaidStrategyWorker_StageThenAttack.cs	NOTE	集结后攻击：FindSiegePositionFrom(allowRoofed:true) 找集结点，同受海床地形影响
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RaidStrategyWorker_WithRequiredPawnKinds.cs	PASS	按 pawnGroupMakers 必备 pawnkind 过滤策略，纯生成层
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RandomSocialMode.cs	SKIP	纯枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RCellFinder.cs	NOTE	全图选格库：VacuumConcernTo 入通用判定、waterSeeker 亲水闲逛、AllowRoofedEdgeWalkIn、观星需无顶、黑暗格查找等，海洋关键文件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ReadingColumnUIUtility.cs	PASS	阅读政策 UI，纯界面
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ReadingOutcomeDoer.cs	SKIP	抽象基类，空钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ReadingOutcomeDoerGainAnomalyResearch.cs	PASS	异象研究书，只碰 ResearchManager
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ReadingOutcomeDoerGainResearch.cs	PASS	研究书进度，纯研究系统
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ReadingOutcomeDoerJoyFactorModifier.cs	PASS	小说娱乐系数，纯数值
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ReadingOutcomeDoerMentalBreak.cs	PASS	邪典书精神崩溃概率，纯数值
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ReadingOutcomeProperties.cs	SKIP	抽象属性类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ReadingPolicy.cs	SKIP	纯数据类（ThingFilter 序列化）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ReadingPolicyDatabase.cs	PASS	阅读政策库，仅 ModsConfig.OdysseyActive 门控样例，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Recipe_AddHediff.cs	PASS	通用加 hediff 手术，纯医疗
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Recipe_AdministerIngestible.cs	PASS	喂药手术，纯医疗
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Recipe_AdministerUsableItem.cs	PASS	施用物品手术，纯医疗
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Recipe_BloodTransfusion.cs	PASS	输血手术，纯医疗
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Recipe_ChangeImplantLevel.cs	PASS	植入等级调整，纯医疗
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RecipeDefGenerator.cs	PASS	隐含 RecipeDef 生成管线，无环境逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RecipeDefOf.cs	SKIP	纯 DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Recipe_ExecuteByCut.cs	PASS	处决，纯社交/医疗
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Recipe_ExtractHemogen.cs	PASS	抽血红素，纯医疗
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Recipe_ExtractOvum.cs	PASS	取卵手术，纯医疗
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Recipe_GhoulInfusion.cs	PASS	尸鬼转化，纯医疗/Anomaly
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Recipe_ImplantEmbryo.cs	PASS	胚胎植入，纯医疗
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Recipe_ImplantIUD.cs	PASS	节育器植入，纯医疗
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Recipe_ImplantXenogerm.cs	PASS	异种胚植入，纯医疗
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Recipe_InstallArtificialBodyPart.cs	PASS	人造体安装，纯医疗
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Recipe_InstallImplant.cs	PASS	植入物安装，纯医疗
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Recipe_InstallNaturalBodyPart.cs	PASS	器官移植，纯医疗
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Recipe_RemoveBodyPart.cs	PASS	截除/收割器官，纯医疗
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Recipe_RemoveBodyPart_Cut.cs	PASS	切除变体，纯医疗
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Recipe_RemoveBodyPart_CutMany.cs	PASS	多部位切除，纯医疗
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Recipe_RemoveHediff.cs	PASS	移除 hediff，纯医疗
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Recipe_RemoveImplant.cs	PASS	移除植入物，纯医疗
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Recipe_Surgery.cs	PASS	手术基类：无任何环境检查（不查屋顶/温度/真空），水下手术需自行加钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Recipe_SurgicalInspection.cs	PASS	手术探查，纯医疗
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Recipe_TerminatePregnancy.cs	PASS	终止妊娠，纯医疗
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RecipeTooltipLayout.cs	PASS	配方 tooltip UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RecordDef.cs	SKIP	Def 数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RecordDefOf.cs	SKIP	纯 DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RecordsCardUtility.cs	PASS	记录卡 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RecordsUtility.cs	PASS	击杀/倒地统计递增，纯统计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RecordType.cs	SKIP	纯枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RecordWorker.cs	SKIP	基类，按 CurJob 匹配，框架代码
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RecordWorker_TimeAsChildInColony.cs	PASS	纯统计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RecordWorker_TimeAsColonistOrColonyAnimal.cs	PASS	纯统计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RecordWorker_TimeAsPrisoner.cs	PASS	纯统计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RecordWorker_TimeAsQuestLodger.cs	PASS	纯统计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RecordWorker_TimeDowned.cs	PASS	纯统计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RecordWorker_TimeDrafted.cs	PASS	纯统计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RecordWorker_TimeGettingJoy.cs	PASS	纯统计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RecordWorker_TimeHauling.cs	PASS	纯统计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RecordWorker_TimeInBed.cs	PASS	纯统计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RecordWorker_TimeInBedForMedicalReasons.cs	PASS	纯统计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RecordWorker_TimeInMentalState.cs	PASS	纯统计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RecordWorker_TimeOnFire.cs	PASS	纯统计（读 IsBurning 状态，无环境逻辑）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RecordWorker_TimeUnderRoof.cs	NOTE	逐 pawn 逐 tick 查 Position.Roofed 的最小样板，可照抄做"水下暴露时间"统计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RecruitUtility.cs	PASS	招募派系/头衔逻辑，纯社交
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RefuelWorkGiverUtility.cs	PASS	加油燃料搜索走通用 reachability，无水体特判
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RelationshipRecord.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RelationshipRecords.cs	PASS	关系记录管理，纯数据
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RelationsUtility.cs	PASS	社交/恋爱判定，无海洋交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ReleaseAnimalToWildUtility.cs	PASS	放归动物只改 faction，无水域检查
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ReliquaryUtility.cs	PASS	圣物柜传教加成，纯意识形态
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RemoteShieldUtility.cs	PASS	机械护盾 gizmo，无环境交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RenameUIUtility.cs	PASS	重命名 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RenderSkipFlagDef.cs	SKIP	Def 基类（渲染标志位）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RenderSkipFlagDefOf.cs	SKIP	纯 DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RepairUtility.cs	PASS	修理可用性判定，无环境检查
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RequiredRitualAndBuilding.cs	SKIP	纯数据字段容器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ResearchManager.cs	PASS	研究进度管理，与地图环境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ResearchPrerequisitesUtility.cs	PASS	研究解锁分组纯计算
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ResearchProjectDefOf.cs	SKIP	纯 DefOf（含 [MayRequireOdyssey] Fishing 引用，本体只是声明）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ResearchProjectTagDefOf.cs	SKIP	纯 DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ResearchTabDef.cs	SKIP	Def 字段容器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ResearchTabDefOf.cs	SKIP	纯 DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ReservationLayerDefOf.cs	SKIP	纯 DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ResistanceInteractionData.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ResolutionUtility.cs	PASS	屏幕分辨率/UI 缩放
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ResolveParamsUtility.cs	PASS	任务参数字典工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ResourceCounter.cs	PASS	资源统计，与海无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ResourceReadout.cs	PASS	资源面板 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ResourceReadoutMode.cs	SKIP	纯枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RestCategory.cs	SKIP	纯枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RestCategoryUtility.cs	SKIP	枚举 label 翻译
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RestraintsUtility.cs	PASS	囚犯束缚判定，纯囚犯逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RestUtility.cs	NOTE	CanUseBedNow 用 HarmedByVacuum+GetVacuum 拒真空格床；选床走 GetDangerFor，海水入 Danger 体系后自动避水
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ResurrectCorpseData.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ResurrectionParams.cs	SKIP	纯参数容器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ResurrectionUtility.cs	PASS	尸体原格复活，无环境检查（边缘情况）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RetainedCaravanData.cs	PASS	远行队转移数据，PlanetTile 级，无水体判定
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RevenantState.cs	SKIP	纯枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RevenantUtility.cs	PASS	幽魂 AI 走通用 Standable/reachability
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Reward_ArchonexusMap.cs	PASS	奖励占位（方法未实现）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Reward_BestowingCeremony.cs	PASS	授勋仪式奖励，纯仪式
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Reward_CampLoot.cs	PASS	营战利品奖励占位
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Reward.cs	SKIP	抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Reward_DefinedThingDef.cs	PASS	指定物品奖励展示
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Reward_DevelopmentPoints.cs	PASS	文化发展点奖励
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Reward_Goodwill.cs	PASS	好感度奖励
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Reward_Items.cs	NOTE	物品奖励空投到贸易空投点(useTradeDropSpot)，海底空投落点语义需设计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Reward_PassageOffworld.cs	PASS	离星船票奖励占位
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Reward_Pawn.cs	NOTE	奖励 pawn 以 EdgeWalkIn/CenterDrop 抵达，海底边缘走入=走进致死海水，需拦截
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Reward_PossibleFutureReward.cs	PASS	奖励占位
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Reward_RelicInfo.cs	PASS	圣物线索奖励
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Reward_RoyalFavor.cs	PASS	皇室好感奖励
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RewardsGenerator.cs	PASS	奖励权重抽取，无环境交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RewardsGeneratorParams.cs	SKIP	纯参数 struct
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Reward_ShuttleLoot.cs	PASS	坠机战利品奖励占位
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Reward_Unknown.cs	PASS	未知奖励占位
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Reward_VisitorsHelp.cs	PASS	访客助战奖励占位
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualAttachableOutcomeEffectDef.cs	PASS	仪式奖励挂载配置 Def，无环境交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualAttachableOutcomeEffectWorker.cs	SKIP	抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualAttachableOutcomeEffectWorker_DiscoverAncientComplex.cs	PASS	远古建筑群任务生成，世界格逻辑但与海洋格无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualAttachableOutcomeEffectWorker_FarmAnimalsWanderIn.cs	NOTE	仪式奖励直接触发 FarmAnimalsWanderIn 事件，陆生动物会绕过限制进入海底，需堵
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualAttachableOutcomeEffectWorker_GauranlenPosSprout.cs	NOTE	演示"按 biome 排除仪式奖励"模式(IsGoodBiome)，海底 biome 可借此自动排除不适用奖励
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualAttachableOutcomeEffectWorker_InsectJellyTunnels.cs	NOTE	仪式奖励直接触发 Infestation_Jelly 虫巢事件，与"只工业以上袭击"冲突需屏蔽
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualAttachableOutcomeEffectWorker_NearbyFactionGoodwill.cs	NOTE	用 AllSettlementsOnLayer 找同层定居点，海底独立层无定居点时奖励静默无效
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualAttachableOutcomeEffectWorker_PsyfocusRecharge.cs	PASS	灵能专注充能，纯数值
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualAttachableOutcomeEffectWorker_RandomRecruit.cs	NOTE	生成 WandererJoins 任务，流浪者入图方式同 EdgeWalkIn 问题
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualBehaviorDef.cs	SKIP	纯 Def 数据（roles/stages）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualBehaviorWorker_AnimaLinking.cs	PASS	仙树链接仪式，纯 UI/时长
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualBehaviorWorker_ChildBirth.cs	PASS	分娩仪式，床位逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualBehaviorWorker_Conversion.cs	PASS	皈仪仪式角色校验
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualBehaviorWorker.cs	NOTE	基类 CanStartRitualNow 检查 ritual.layerWhitelist/layerBlacklist 对 PlanetLayerDef，可按地图层禁用仪式
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualBehaviorWorker_DancePartyTech.cs	PASS	舞会音效维护
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualBehaviorWorker_Duel.cs	NOTE	决斗场地按 Standable+同房间格数校验，海水区不可站则露天决斗自然不可用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualBehaviorWorker_Execution.cs	PASS	处决后送囚犯床
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualBehaviorWorker_Funeral.cs	PASS	葬礼奴隶检查
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualBehaviorWorker_GravshipLaunch.cs	NOTE	角色填充用 CanReach(Danger.Deadly)，仪式避险寻路内建，海水入 Danger 后自动正确
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualBehaviorWorker_Mutilation.cs	PASS	残毁仪式 LordJob
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualBehaviorWorker_PartyDanceDrums.cs	PASS	鼓聚会同房间判断，纯听觉
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualBehaviorWorker_PrisonerSacrifice.cs	PASS	献祭后送囚犯床
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualBehaviorWorker_Speech.cs	PASS	演讲 LordJob
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualBehaviorWorker_ThroneSpeech.cs	PASS	王座演讲 LordJob
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualBehaviorWorker_Trial.cs	PASS	审判社交计时
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualCancellationTrigger_CannotScarify.cs	PASS	割痕目标不可用时取消
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualCancellationTrigger.cs	SKIP	抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligation.cs	PASS	仪式义务数据，longitude 仅用于日期显示
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTargetFilter.cs	NOTE	目标可达性走 CanReach(NormalMaxDanger)，海水入 Danger 体系后自动正确
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTargetFilterDef.cs	NOTE	含 minUnroofedCells/unroofedCellSearchRadius 字段，Def 层通用"需 N 个无顶格"表达
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTargetWorker_Altar.cs	PASS	祭坛目标枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTargetWorker_AnimaTree.cs	PASS	仙树 psylink 检查
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTargetWorker_AnyEmptyGrave.cs	PASS	空坟墓目标
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTargetWorker_AnyGatherSpot.cs	PASS	聚集点目标枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTargetWorker_AnyGatherSpotOrAltar.cs	PASS	聚集点+祭坛组合
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTargetWorker_AnyRitualSpot.cs	PASS	RitualSpot 枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTargetWorker_AnyRitualSpotIdeogramOrAltar.cs	PASS	RitualSpot/Ideogram/祭坛组合
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTargetWorker_AnyRitualSpotOrAltar_Blinding.cs	PASS	致盲仪式需目标有眼睛
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTargetWorker_AnyRitualSpotOrAltar.cs	PASS	RitualSpot/祭坛组合基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTargetWorker_AnyRitualSpotOrAltar_Scarification.cs	PASS	割痕数量校验
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTargetWorker_CampfireParty.cs	PASS	篝火晚会燃料+同房间鼓检查，海底本不适用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTargetWorker_ChildBirth.cs	PASS	分娩床位目标
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTargetWorker_ConsumableBuilding.cs	PASS	可消耗建筑缺失提示
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTargetWorker_GraveWithTarget.cs	PASS	含目标尸体坟墓
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTargetWorker_GravshipLaunch.cs	PASS	飞船驾驶台目标校验，海底不造飞船则无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTargetWorker_IdeoBuildingOrRitualSpot.cs	PASS	文化建筑/RitualSpot 校验
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTargetWorker_LightBall.cs	PASS	灯球供电+扬声器检查
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTargetWorker_SkyLanterns.cs	NOTE	天灯仪式显式要求 minUnroofedCells 无顶格+篝火无顶，海底屋顶表征决策的直接受影响方
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTargetWorker_Thing.cs	PASS	特定 Thing 目标
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTargetWorker_ThingDef.cs	PASS	按 ThingDef 枚举目标
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTargetWorker_UnconnectedGauranlenTree.cs	PASS	未连接菇树目标
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTrigger_Blinding.cs	PASS	致盲义务重缓存
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTrigger_BlindingProperties.cs	SKIP	属性壳
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTrigger.cs	SKIP	抽象基类（Notify 钩子）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTrigger_Date.cs	PASS	按日期触发，经度算本地时间，与海洋无实质交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTrigger_DateProperties.cs	SKIP	属性壳
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTrigger_EveryMember.cs	SKIP	抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTrigger_MemberCorpseDestroyed.cs	PASS	尸体被毁触发葬礼义务
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTrigger_MemberCorpseDestroyedProperties.cs	SKIP	属性壳
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTrigger_MemberDied.cs	PASS	成员死亡触发葬礼义务
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTrigger_MemberDiedProperties.cs	SKIP	属性壳
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTriggerProperties.cs	SKIP	抽象属性基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTrigger_Scarification.cs	PASS	割痕义务重缓存
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualObligationTrigger_ScarificationProperties.cs	SKIP	属性壳
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_AtLeastOneSpectator.cs	PASS	观众质量加成
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_BuildingOfAnyDefPresent.cs	PASS	任一建筑在场加成
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_BuildingOfDefPresent.cs	PASS	指定建筑在场加成
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_BuildingOfDefUsed.cs	PASS	指定建筑被使用加成
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_BuildingsPresent.cs	NOTE	聚集区域与 Room 系统耦合(整房间 vs 18 格半径)，气密房间影响仪式质量计算范围
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp.cs	SKIP	抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_Data.cs	SKIP	抽象数据基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_DataRoleChangeParticipants.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_DataRoomStatCached.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_DataThingPresence.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_DestroyConsumableBuilding.cs	PASS	目标有 Thing 即 Applies
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_DuelistDied.cs	PASS	决斗者死亡加成

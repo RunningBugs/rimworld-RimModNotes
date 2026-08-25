@@ -1,0 +1,220 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./-BurstDirectCallInitializer.cs	SKIP	Burst 编译直接调用的生成初始化代码
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./CallBossgroupUtility.cs	NOTE	召唤 Boss 袭击工具：召唤器建筑匹配/可达/通电检查、2 天冷却、QuestPart_Bossgroup → 声呐信标召唤深海巨兽的模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./Command_CallBossgroup.cs	NOTE	机械师召唤 Boss 的 gizmo 命令，列 BossgroupDef 并检查冷却/机械族存续 → 与上条同机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./DarknessCombatUtility.cs	NOTE	黑暗战斗判定：CurSkyGlow>0.35 为亮，文化 precept 提供射击/近战明暗修正 → 海底永暗下永久生效的挂点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./Delay.cs	PASS	协程延迟工具（AfterNSeconds/AfterNTicks），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./DevWindowDrawing.cs	PASS	Dev 窗口绘制实现，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./FleckParallelizationInfo.cs	SKIP	Fleck 并行化的纯数据结构
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./FleckUtility.cs	PASS	Fleck 并行化对象池，特效渲染基础设施，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./HistoryEventUtility.cs	PASS	杀无辜动物的文化事件判定（Scaria/捕猎豁免），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./JobDriver_BreastfeedCarryToDownedMom.cs	PASS	抱婴儿给倒地母亲哺乳的 Job，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./JobDriver_BreastfeedCarryToMom.cs	PASS	抱婴儿给母亲哺乳的 Job，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./__JobReflectionRegistrationOutput__8935800066653891725.cs	SKIP	Job 反射注册的生成代码
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./LayoutWorker_AncientStockpile.cs	PASS	远古仓储布局变体（50% 门换防爆门），机制同 LayoutWorker 家族，无新增海洋价值
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./LayoutWorkerComplex_Ancient.cs	NOTE	远古综合体固定敌对阵营在虫族/机械族间随机 → 海底遗迹守卫阵营选择参考
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./LayoutWorkerComplex.cs	NOTE	遗迹综合体布局+按威胁点数(0.25~0.35)生成 ComplexThreatDef 守卫 → 海底遗迹+守卫威胁管线
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./LayoutWorkerComplex_Mechanitor.cs	NOTE	机械师遗迹：固定机械族威胁+预置机械师尸体棺材（信号驱动） → 海底沉眠机械守卫参考
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./LayoutWorker.cs	NOTE	布局生成基类管线：房间解析/合并/拆边门/随机损坏，种子取自 MapGenerator → 海底设施生成总管线
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./LayoutWorker_Labyrinth.cs	NOTE	Anomaly 迷宫：整体换材质(GrayWall/GraySurface)+Delaunator/A* 生成 → 海底洞穴迷宫可换材质复用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./LayoutWorker_OrbitalPlatform.cs	NOTE	Odyssey 轨道平台布局（15 行调 RoomLayoutGenerator） → 海底站/沉船布局直接模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./LayoutWorker_SimpleRuin.cs	PASS	简单废墟布局变体（无走廊无外门），机制同家族
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./LayoutWorker_Structure.cs	NOTE	结构布局基类：StructureLayoutDef 全 Def 驱动墙/门/灯/地板/材料 → 海底建筑群的 Def 入口
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/AllowedGameStates.cs	SKIP	枚举（调试动作允许的游戏状态）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/ByteBits.cs	SKIP	位操作小结构体
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/ComplexCurve.cs	SKIP	曲线容器工具类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/DebugActionAttribute.cs	SKIP	调试动作属性定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/DebugActionButtonResult.cs	SKIP	枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/DebugActionNode.cs	PASS	调试动作树节点，dev 工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/DebugActionType.cs	SKIP	枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/DebugActionYielderAttribute.cs	SKIP	属性定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/DebugHistogram.cs	PASS	dev 直方图工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/DebugLogsUtility.cs	PASS	dev 日志工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/DebugMenuOption.cs	SKIP	数据 struct
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/DebugMenuOptionMode.cs	SKIP	枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/DebugOutputAttribute.cs	SKIP	属性定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/DebugTables.cs	PASS	dev 表格工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/DebugTabMenu_Actions.cs	PASS	dev 动作页签
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/DebugTabMenu.cs	PASS	dev 页签基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/DebugTabMenu_Output.cs	PASS	dev 输出页签
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/DebugTabMenu_Settings.cs	PASS	dev 设置页签
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/DebugTool.cs	PASS	dev 工具基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/DebugTools.cs	PASS	dev 工具注册
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/DevGUI.cs	PASS	dev GUI 绘制库
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/Dialog_Debug.cs	PASS	dev 调试主窗口
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/Dialog_DebugOptionLister.cs	PASS	dev 选项列表窗口基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/Dialog_DebugOptionListLister.cs	PASS	dev 多级选项窗口
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/Dialog_DevCelestial.cs	PASS	dev 天象（太阳位置/光照角）调试窗口，仅开发期工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/Dialog_DevInfectionPathways.cs	PASS	dev 感染路径调试窗口
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/Dialog_DevMusic.cs	PASS	dev 音乐调试窗口
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/Dialog_DevNoiseBase.cs	PASS	dev 噪声可视化窗口基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/Dialog_DevNoiseMap.cs	PASS	dev 地图噪声可视化窗口
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/Dialog_DevNoiseWorld.cs	PASS	dev 世界噪声可视化窗口
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/Dialog_DevPalette.cs	PASS	dev 调色板窗口
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/Dialog_OptionLister.cs	PASS	dev 选项列表基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/DrawMeasureTool.cs	PASS	dev 绘制测量工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/EditWindow.cs	PASS	dev 编辑窗口基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/EditWindow_DebugInspector.cs	PASS	dev 调试检查器窗口
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/EditWindow_DefEditor.cs	PASS	dev Def 编辑器窗口
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/EditWindow_Log.cs	PASS	dev 日志窗口
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/EditWindow_TweakValues.cs	PASS	dev TweakValue 窗口
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/KeyFrameExtensions.cs	SKIP	动画关键帧扩展方法
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/MeasureTool.cs	PASS	dev 测量工具基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/MeasureWorldDistanceTool.cs	PASS	dev 世界距离测量工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/NativeArrayUtility.cs	SKIP	NativeArray 基础设施工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/NativePriorityQueue.cs	SKIP	原生优先队列数据结构
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/TableDataGetter.cs	SKIP	泛型表格数据取值器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/ThreadResultPool.cs	SKIP	线程结果池基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/TweakValue.cs	SKIP	TweakValue 属性定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/UIScaling.cs	PASS	UI 缩放工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/Window_DebugTable.cs	PASS	dev 调试表格窗口
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/Window_Dev.cs	PASS	dev 窗口基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/LudeonTK/Window_DevListing.cs	PASS	dev 列表窗口基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./MechanitorUtility.cs	PASS	机械师带宽/控制组/充电器缓存等工具，与海洋无机制类比
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./MechWorkUtility.cs	PASS	工作机械可做工种的属性面板展示，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./PerformanceBenchmarkUtility.cs	PASS	性能基准测试工具，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./ResearchUtility.cs	NOTE	起始科技按派系 startingResearchTags/meme 发放 → 海底 scenario 送潜水/气密起始科技的纯 Def 路径
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./ScenarioUtility.cs	PASS	开局儿童可选性检查，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./Screen_ArchonexusSettlementCinematics.cs	PASS	Archonexus 结局过场（黑屏淡入+文字），通用 UI 模式
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./StructureGenParams.cs	SKIP	纯数据参数类（sketch/size/faction）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./Thought_FoodEaten.cs	PASS	进食记忆心情（显示食材），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./UnitySourceGeneratedAssemblyMonoScriptTypes_v1.cs	SKIP	Unity 生成代码（80994 行程序集类型表）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Glow/ComputeGlowGridsJob.cs	NOTE	光照洪水填充 Burst job：lightBlockers 遮挡、Lerp(线性,1/d²,0.4) 衰减 → 深海光照行为/衰减改造点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Glow/GlowCellComparer.cs	SKIP	光照填充用距离比较器 struct
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Glow/GlowCell.cs	SKIP	纯数据 struct（距离+状态）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Glow/GlowCellStatus.cs	SKIP	枚举（填充状态）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Glow/GlowLight.cs	NOTE	光源结构体：TerrainDef.glowRadius/glowColor 使地形发光、植物 cavePlant 发光 → 海底发光地形/荧光植物官方路径
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Glow/GlowUniqueState.cs	SKIP	光照填充每线程状态结构
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Glow/LocalGlowArea.cs	SKIP	光照颜色缓冲区数据结构
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Grammar/GrammarRequest.cs	SKIP	语法请求数据 struct
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Grammar/GrammarResolver.cs	PASS	文本语法规则解析引擎，叙事文本用，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Grammar/GrammarUtility.cs	PASS	语法工具（符号解析），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Grammar/Rule.cs	SKIP	语法规则抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Grammar/Rule_File.cs	SKIP	文件加载规则类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Grammar/Rule_NamePerson.cs	SKIP	人名规则类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Grammar/Rule_Number.cs	SKIP	数字规则类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Grammar/RulePack.cs	SKIP	规则包数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Grammar/Rule_String.cs	SKIP	固定字符串规则类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Abs.cs	SKIP	libnoise 模块：取绝对值，纯数学
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/AbsLatitudeCurve.cs	SKIP	libnoise 模块：纬度曲线，纯数学
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Add.cs	SKIP	libnoise 模块：加法，纯数学
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Arbitrary.cs	SKIP	libnoise 模块：任意函数封装
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/AxisAsValueX.cs	SKIP	libnoise 模块：X 轴取值
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/AxisAsValueZ.cs	SKIP	libnoise 模块：Z 轴取值
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Blend.cs	SKIP	libnoise 模块：混合
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Cache.cs	SKIP	libnoise 模块：缓存
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Clamp.cs	SKIP	libnoise 模块：钳制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Const.cs	SKIP	libnoise 模块：常量
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/ConvertToIsland.cs	SKIP	libnoise 模块：转岛屿形状，纯数学
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Curve.cs	SKIP	libnoise 模块：曲线映射
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/CurveSimple.cs	SKIP	libnoise 模块：简单曲线
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/CutOff.cs	SKIP	libnoise 模块：截断
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Displace.cs	SKIP	libnoise 模块：位移
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/DistanceFromPlanetViewCenter.cs	SKIP	libnoise 模块：距星球视图中心距离
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/DistFromAxis.cs	SKIP	libnoise 模块：距轴距离
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/DistFromAxis_Directional.cs	SKIP	libnoise 模块：定向轴距
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/DistFromCone.cs	SKIP	libnoise 模块：距锥面距离
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/DistFromPointAxes.cs	SKIP	libnoise 模块：距点轴距离
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/DistFromPoint.cs	SKIP	libnoise 模块：距点距离
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/DistFromPointRects.cs	SKIP	libnoise 模块：距点集矩形距离
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Exponent.cs	SKIP	libnoise 模块：指数
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Filter.cs	SKIP	libnoise 模块：过滤
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/GradientPresets.cs	PASS	噪声渲染渐变色预设，显示工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/InverseLerp.cs	SKIP	libnoise 模块：反插值
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Invert.cs	SKIP	libnoise 模块：取反
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Max.cs	SKIP	libnoise 模块：取大
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Min.cs	SKIP	libnoise 模块：取小
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/ModuleBase.cs	SKIP	噪声模块抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Multiply.cs	SKIP	libnoise 模块：乘法
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Noise2D.cs	PASS	噪声采样封装（坐标哈希/种子），通用工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/NoiseDebugUI.cs	PASS	噪声 dev 调试 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/NoiseRenderer.cs	PASS	噪声纹理渲染工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/OneMinus.cs	SKIP	libnoise 模块：1 减
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Perlin.cs	SKIP	Perlin 噪声算法，纯数学
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Power.cs	SKIP	libnoise 模块：幂
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/PowerKeepSign.cs	SKIP	libnoise 模块：保号幂
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/QualityMode.cs	SKIP	枚举（噪声质量档）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/RidgedMultifractal.cs	SKIP	山脊多重分形噪声算法，纯数学
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Rotate.cs	SKIP	libnoise 模块：旋转
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/ScaleBias.cs	SKIP	libnoise 模块：缩放偏置
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Scale.cs	SKIP	libnoise 模块：缩放
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Select.cs	SKIP	libnoise 模块：选择
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/SmoothMin.cs	SKIP	libnoise 模块：平滑最小
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Subtract.cs	SKIP	libnoise 模块：减法
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Terrace.cs	SKIP	libnoise 模块：梯田化
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Translate.cs	SKIP	libnoise 模块：平移
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Turbulence.cs	SKIP	libnoise 模块：湍流
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Utils.cs	SKIP	内部数学工具（插值/S曲线）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Noise/Voronoi2D.cs	SKIP	Voronoi 噪声算法，纯数学
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Profile/MemoryUtility.cs	PASS	内存统计工具，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/AudioGrain_Clip.cs	SKIP	音频颗粒数据类（clip）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/AudioGrain.cs	SKIP	音频颗粒抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/AudioGrain_Folder.cs	SKIP	音频颗粒数据类（文件夹）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/AudioGrain_Silence.cs	SKIP	音频颗粒数据类（静默）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/AudioSourceMaker.cs	PASS	AudioSource 创建工具，音频引擎 plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/AudioSourcePoolCamera.cs	PASS	相机音频源池，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/AudioSourcePool.cs	PASS	音频源池，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/AudioSourcePoolWorld.cs	PASS	世界地图音频源池，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/DebugSoundEventsLog.cs	PASS	dev 声音事件日志
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/EchoFilterProperty.cs	SKIP	枚举（回声滤波属性）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/HighPassFilterProperty.cs	SKIP	枚举（高通滤波属性）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/ImpactSoundTypeDef.cs	SKIP	纯数据 Def（撞击音效类型）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/ISizeReporter.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/LowPassFilterProperty.cs	SKIP	枚举（低通滤波属性）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/MaintenanceType.cs	SKIP	枚举（sustainer 维护类型）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/MouseoverSounds.cs	PASS	鼠标悬停音效工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/PerlinMappingSyncType.cs	SKIP	枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/PitchParamType.cs	SKIP	枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/RepeatSelectMode.cs	SKIP	枚举（重复选择模式）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/ResolvedGrain_Clip.cs	SKIP	解析后颗粒数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/ResolvedGrain.cs	SKIP	解析后颗粒基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/ResolvedGrain_Silence.cs	SKIP	解析后颗粒数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/ReverbCustomPresets.cs	SKIP	混响预设静态数据
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/ReverbSetup.cs	NOTE	Unity 混响全参数封装+预设+Lerp → 水下空间感混响的 Def 化配置
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/Sample.cs	PASS	采样播放基类，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SampleOneShot.cs	PASS	单发音效，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SampleOneShotManager.cs	PASS	单发音效管理器，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SampleSustainer.cs	PASS	持续音效采样，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundContext.cs	SKIP	枚举（MapOnly/WorldOnly）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundFilter.cs	SKIP	滤波器抽象基类（SetupOn）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundFilterEcho.cs	SKIP	Def 式回声滤波器（同类机制见 SoundFilterLowPass 条目）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundFilterHighPass.cs	SKIP	Def 式高通滤波器（同类机制见 SoundFilterLowPass 条目）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundFilterLowPass.cs	NOTE	Def 式低通滤波器（cutoffFrequency+Q） → 水下闷音零代码实现路径
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundFilterReverb.cs	SKIP	Def 式混响滤波器（同类机制见 ReverbSetup 条目）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundFilterUtility.cs	PASS	禁用 AudioSource 全部滤波器的工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundInfo.cs	SKIP	声音触发信息 struct
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundParameterMapping.cs	SKIP	参数映射数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundParams.cs	SKIP	参数容器类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundParamSource_AggregateSize.cs	SKIP	参数源：聚集体型
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundParamSource_AmbientVolume.cs	SKIP	参数源：环境音量设置
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundParamSource_CameraAltitude.cs	SKIP	参数源：相机高度
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundParamSource.cs	NOTE	声音参数源抽象基类（ValueFor 单方法） → 自定义 Underwater 参数源只要继承它
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundParamSource_External.cs	SKIP	参数源：外部传入
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundParamSource_MusicPlayingFadeOut.cs	SKIP	参数源：音乐淡出
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundParamSource_OutdoorTemperature.cs	NOTE	参数源取 OutdoorTemp → 海底恒温下温度驱动环境音将恒定（冲突点）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundParamSource_Perlin.cs	SKIP	参数源：Perlin 噪声
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundParamSource_Random.cs	SKIP	参数源：随机
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundParamSource_SourceAge.cs	SKIP	参数源：声源年龄
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundParamSource_Underground.cs	NOTE	isUnderground 地图输出 1 → 照抄为 SoundParamSource_Underwater 的直接模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundParamTarget.cs	SKIP	参数目标抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundParamTarget_Pitch.cs	SKIP	参数目标：音高
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundParamTarget_PropertyEcho.cs	SKIP	参数目标：回声属性
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundParamTarget_PropertyHighPass.cs	SKIP	参数目标：高通属性
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundParamTarget_PropertyLowPass.cs	SKIP	参数目标：低通属性（可被 Underwater 参数驱动）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundParamTarget_PropertyReverb.cs	SKIP	参数目标：混响属性
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundParamTarget_Volume.cs	SKIP	参数目标：音量
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundParamUpdateMode.cs	SKIP	枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundRoot.cs	PASS	声音子系统根（池+管理器），plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundSizeAggregator.cs	PASS	音量随大小聚合，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundSlotManager.cs	PASS	音效槽位管理（防重复触发），plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SoundStarter.cs	PASS	声音播放入口，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SubSoundDef.cs	PASS	子声音 Def（颗粒+参数映射容器），机制已在 NOTE 条目覆盖
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SubSustainer.cs	SKIP	子持续音数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SustainerAggregatorUtility.cs	PASS	持续音聚合工具，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/Sustainer.cs	PASS	持续音核心类，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SustainerManager.cs	PASS	持续音管理器，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/SustainerScopeFader.cs	PASS	持续音进出范围淡入淡出，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/TimeType.cs	SKIP	枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Sound/VoicePriorityMode.cs	SKIP	枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.Utility/EnumUtility.cs	SKIP	枚举反射工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./WeaponClassDef.cs	SKIP	空 Def 类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/./WeaponClassPairDef.cs	SKIP	纯数据 Def（武器类别配对）

@@ -1,0 +1,204 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/AlwaysBerserkUtility.cs	PASS	Anomaly 狂暴触发工具（BloodRage/FrenzyField hediff→精神崩溃），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/AttackTargetFinder.cs	NOTE	攻击目标搜索：NeedNotUnderThickRoof/LOSBlockableByGas/迷雾过滤/休眠目标不自动索敌，多个可借用点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/AttackTargetReservationManager.cs	PASS	近战目标预约管理（上限=目标周边可站格数），通用机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/AttackTargetsCache.cs	PASS	按阵营缓存敌意目标，通用机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/AvoidGrid.cs	NOTE	炮塔(ai_combatDangerous)射程回避网格，逃跑/施法寻径使用；海底新防御建筑需打此 flag
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/BreachingGrid.cs	NOTE	破壁寻径：墙HP计价+Perlin噪声+危险房间回避+CustomTuning代价注入，打穿气密墙剧情的底座
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/BreachingGridDebug.cs	PASS	破壁网格调试绘制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/BreachingNoiseDebugDrawer.cs	PASS	破壁噪声调试绘制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/CastPositionFinder.cs	PASS	施法/射击站位评分（掩体/avoidGrid/最优射程），通用战斗 AI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/CastPositionRequest.cs	SKIP	纯数据 struct（施法站位请求参数）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/CorpseObsessionMentalStateUtility.cs	PASS	尸体执念精神状态的掘墓目标查找，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/DutyDef.cs	SKIP	Def 数据类（duty 配置字段）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/EnrouteManager.cs	PASS	搬运在途数量追踪，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/EnrouteUtility.cs	PASS	enroute 剩余空间计算扩展方法，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/GenAI.cs	NOTE	RandomRaidDest：袭击者优先奔向有主人的床→建筑→殖民者；海底基地卧室照常是磁石
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/GenPath.cs	PASS	路径终点模式解析（InteractionCell/ClosestTouch），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/JobSyncTracker.cs	NOTE	仪式框架：多 pawn 就位同步追踪器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Lord.cs	NOTE	SetJob 对 autoFlee 派系自动挂 PanicFlee 支路且依赖 Map.CanEverExit；海底不可离场时袭击行为树会变
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordJob.cs	NOTE	LordJob 基类；虚方法 GetWalkGrid 可让 lord 自定义可走格位图（消费方未验证）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordJob_DefendPoint.cs	PASS	防守点 LordJob，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordJob_ExitMapBest.cs	NOTE	离场体系：ExitMapBest LordJob（useAvoidGrid，可切战斗撤退）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordJob_ExitMapNear.cs	NOTE	离场体系：ExitMapNear LordJob
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordJob_TravelAndExit.cs	NOTE	离场体系：Travel→ExitMap 组合 LordJob
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordJob_Travel.cs	PASS	旅行 LordJob（受击转防守），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordMaker.cs	PASS	Lord 创建工厂，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordManager.cs	PASS	Lord 容器/tick 管理，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordToil.cs	PASS	LordToil 基类（useAvoidGrid、AllowSatisfyLongNeeds 等虚属性），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordToilData.cs	SKIP	抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordToilData_DefendPoint.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordToilData_ExitMap.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordToilData_Travel.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordToil_DefendPoint.cs	PASS	防守点 toil，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordToil_DefendSelf.cs	PASS	自卫 toil，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordToil_End.cs	SKIP	极 trivial（ShouldFail=true 空 toil）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordToil_ExitMap.cs	NOTE	离场体系：ExitMap toil 基类（locomotion/canDig）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordToil_ExitMapFighting.cs	NOTE	离场体系：战斗撤退 toil
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordToil_ExitMapNear.cs	NOTE	离场体系：指定点附近离场 toil
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordToil_ExitMapRandom.cs	NOTE	离场体系：随机离场 toil
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordToil_ExitMapTraderFighting.cs	NOTE	离场体系：商队战斗撤退 toil
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordToil_PsychicRitual.cs	NOTE	仪式框架：lord 侧仪式 toil 驱动
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordToil_Travel.cs	PASS	旅行 toil（到点发 TravelArrived memo），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/LordUtility.cs	PASS	GetLord 扩展方法，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PawnLostCondition.cs	SKIP	枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualCandidatePool.cs	NOTE	仪式框架：候选人池（ILordJobCandidatePool 实现）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitual.cs	NOTE	仪式框架：核心状态类（power/取消/成员丢失）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualGizmo.cs	NOTE	仪式框架：UI 入口（InvocationCircle 仪式列表/取消/离开 gizmo）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualGraph.cs	NOTE	仪式框架：toil 顺序图执行器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualLordToilData.cs	NOTE	仪式框架：lord toil 数据
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualParticipant.cs	SKIP	纯数据类（pawn+位置）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualRoleAssignments.cs	NOTE	仪式框架：角色分派（读类定义与核心方法）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_BloodRain.cs	NOTE	冲突：注册 BloodRain GameCondition，海底需评估
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_Brainwipe.cs	PASS	洗脑仪式 outcome，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_CarryAndGoto.cs	PASS	仪式搬人走位 toil，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_Chronophagy.cs	PASS	噬龄仪式 outcome，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil.cs	NOTE	仪式框架：PsychicRitualToil 基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_GatherForInvocation.cs	PASS	仪式聚集编排，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_GatherOfferings.cs	PASS	仪式祭品收集 toil，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_Goto.cs	NOTE	仪式框架：双阶段集合同步 toil（JobSyncTracker）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_ImbueDeathRefusal.cs	PASS	死亡拒绝仪式 outcome，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_InvokeHorax.cs	PASS	Anomaly 召唤仪式编排（读头部120行，尾部未逐行读/未验证），与海洋无直接关系
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_Multiplex.cs	NOTE	仪式框架：按角色分派子 toil
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_NeurosisPulse.cs	PASS	神经症脉冲 outcome，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_Philophagy.cs	PASS	噬能仪式 outcome（技能经验转移），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_PleasurePulse.cs	PASS	快感脉冲 outcome，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_Psychophagy.cs	PASS	噬灵仪式 outcome，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToilRunner.cs	PASS	仪式 toil 异常安全运行器，通用基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_SkipAbduction.cs	PASS	闪现绑架（对殖民者），传送机制海底可用，本身无海洋特异
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_SkipAbductionPlayer.cs	PASS	玩家闪现绑架（抓敌对 pawn），同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_SummonAnimals.cs	NOTE	冲突：发 HerdMigration/FrenziedAnimals incident，海底会刷陆生动物
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_SummonFleshbeastsCultist.cs	NOTE	冲突：PitBurrow 需 walkable 格，海底可刷性未验证
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_SummonFleshbeastsPlayer.cs	NOTE	冲突：Burrow 参数要求 Outdoors+不在建筑下，海底需评估
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_SummonPitGate.cs	NOTE	冲突：发 PitGate incident，海底需评估
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_SummonShamblers.cs	NOTE	冲突：发 ShamblerSwarm incident（蹒跚怪群）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_TargetCleanup.cs	PASS	仪式目标善后（囚犯送回床），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_VoidProvocation.cs	PASS	虚空挑衅：从 EntityCodex 挑 provocation incident 入队，机制通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/PsychicRitualToil_Wait.cs	PASS	仪式等待 toil，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/StateGraph.cs	PASS	lord 状态图容器，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TransitionAction_CheckForJobOverride.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TransitionAction_CheckGiveGift.cs	PASS	访客礼物，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TransitionAction.cs	SKIP	抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TransitionAction_Custom.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TransitionAction_EndAllJobs.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TransitionAction_EndAttackBuildingJobs.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TransitionAction_EnsureHaveExitDestination.cs	NOTE	离场体系：无目的地时补一个离场格（CellFinder.TryFindRandomPawnExitCell）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TransitionAction_GiveGift.cs	PASS	访客礼物，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TransitionAction_Letter.cs	PASS	发信件 action，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TransitionAction_Message.cs	PASS	发消息 action，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TransitionAction_SetDefendLocalGroup.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TransitionAction_SetDefendTrader.cs	PASS	商队防守点设置，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TransitionAction_WakeAll.cs	NOTE	休眠唤醒链：唤醒全员+CompCanBeDormant 建筑，可做深海巨兽惊醒
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Transition.cs	PASS	Transition 执行器，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_AcquiredTarget.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_AnyThingDamageTaken.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_BecameNonHostileToPlayer.cs	PASS	派系关系 trigger，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_BecamePlayerEnemy.cs	PASS	派系关系 trigger，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_ChanceOnPlayerHarmNPCBuilding.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_ChanceOnSignal.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_ChanceOnTickInterval.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger.cs	SKIP	抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_Custom.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TriggerData.cs	SKIP	抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TriggerData_Reason.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TriggerData_TicksPassedAfterConditionMet.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TriggerData_TicksPassed.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TriggerData_TicksPassedRitual.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_DormancyWakeup.cs	NOTE	休眠唤醒链：DormancyWakeup 信号 trigger
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_DormancyWakeupOrClamor.cs	NOTE	休眠唤醒链：唤醒或噪音 trigger
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TriggerFilter.cs	SKIP	抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TriggerFilterExtension.cs	SKIP	trivial 扩展方法
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TriggerFilter_MapExitable.cs	NOTE	离场体系：lord.Map.CanEverExit 过滤
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TriggerFilter_NoSapperSapping.cs	PASS	工兵作业中不触发，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_FractionPawnsLost.cs	NOTE	自动溃逃 trigger（autoFlee 支路使用，损失比例阈值）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_GameCondition.cs	NOTE	检测地图激活的 GameConditionDef；海底若用 GameCondition 做深海环境，lord 可原生响应
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_ImportantTraderCaravanPeopleLost.cs	PASS	商队损失 trigger，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_Memo.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_MentalState.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_NoFightingSappers.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_NoMentalState.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_NoPawnsVeryTiredAndSleeping.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_OnClamor.cs	NOTE	休眠唤醒链：ClamorDef 噪音 trigger
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_OnHumanlikeHarmAnyThing.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_OnPlayerMechHarmAnything.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_PawnCannotReachMapEdge.cs	NOTE	离场体系：成员够不到地图边缘时触发（海底不可步行离场时会常开）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_PawnCanReachMapEdge.cs	NOTE	离场体系：全员可达地图边缘才触发
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_PawnExperiencingAnomalousWeather.cs	NOTE	环境 hediff→lord 状态迁移的官方范例（BloodRage），海底可仿写水压/缺氧 trigger
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_PawnExperiencingDangerousTemperatures.cs	NOTE	低体温/中暑 hediff severity>0.15 触发；海底4°C会让无防寒外来队伍自动撤退
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_PawnHarmed.cs	PASS	通用（SignalIsHarm 判定）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_PawnKilled.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_PawnLost.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_PawnLostViolently.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_PawnsLost.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_Signal.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TriggerSignal.cs	SKIP	纯数据 struct
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/TriggerSignalType.cs	SKIP	枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_ThingDamageTaken.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_ThingsDamageTaken.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_TickCondition.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_TicksPassedAfterConditionMet.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_TicksPassedAndNoRecentHarm.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_TicksPassed.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_TicksPassedRitual.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_TicksPassedWithoutHarm.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_TicksPassedWithoutHarmOrMemos.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_TraderAndAllTraderCaravanGuardsLost.cs	PASS	商队全灭 trigger，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI.Group/Trigger_UrgentlyHungry.cs	PASS	饥饿撤退 trigger，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/HaulAIUtility.cs	PASS	搬运判定/存储查找，通用（迷雾/燃烧检查与海洋无关）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/HaulMode.cs	SKIP	枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/IAttackTarget.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/IAttackTargetSearcher.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/IJobEndable.cs	SKIP	接口定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/InsultingSpreeMentalStateUtility.cs	PASS	辱骂巡游目标查找，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JailbreakerMentalStateUtility.cs	PASS	越狱目标查找，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobCondition.cs	SKIP	枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Job.cs	NOTE	Job 有 swimming 字段（与 flying 并列），Pawn.Swimming 读它切游泳渲染；海底 pawn 水中姿态直接借用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_ActivateArchonexusCore.cs	PASS	与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_AttackMelee.cs	NOTE	Notify_PatherFailed+attackDoorIfTargetLost：够不到目标转而砸6格内挡路建筑，气密墙默认会被顺手拆
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_AttackStatic.cs	PASS	原地攻击驱动，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_BabyPassive.cs	PASS	与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_BabyPlay.cs	PASS	与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_Carried.cs	PASS	被携带状态驱动，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_CastAbility.cs	PASS	技能释放驱动，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_CastAbilityGoTo.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_CastAbilityMelee.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_CastAbilityTouch.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_CastJump.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_CastVerbOnce.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_CastVerbOnceStatic.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_CastVerbOnceStaticReserve.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver.cs	PASS	JobDriver 基类/toil 执行机（读核心部分），无海洋特异钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_DoBill.cs	PASS	制作账单驱动，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_EmancipateSlave.cs	PASS	与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_Equip.cs	PASS	装备驱动，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_ExitMapFlying.cs	NOTE	离场体系：飞行离场（生成 FlyerLeaving skyfaller），可仿写上浮离场
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_ExtractToInventory.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_FollowClose.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_Follow.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_FollowRoper.cs	PASS	牵引跟随，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_GatherDownedPawnToCell.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_Goto.cs	NOTE	离场体系：exitMapOnArrival+exitMapGrid.IsExitCell→ExitMap；Anomaly 有 Metalhorror 拦截钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_GotoMindControlled.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_HaulMechToCharger.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_HaulToAtomizer.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_HaulToCell.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_HaulToContainer.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_IdleWhileDespawned.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_Kill.cs	PASS	击杀驱动（GotoCastPosition+CastVerb 循环），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_OpenStylingStationDialog.cs	PASS	与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_PickupToHold.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_PlayStatic.cs	PASS	与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_PlayToys.cs	PASS	与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_PlayWalking.cs	PASS	与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_ReleasePrisoner.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_TakeInventory.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_UseStylingStationAutomatic.cs	PASS	与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_UseStylingStation.cs	PASS	与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_Wait.cs	PASS	等待驱动（含自动反击/灭火检查），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_WaitDowned.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_WaitMaintainPosture.cs	SKIP	trivial（空 SetInitialPosture 覆盖）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobDriver_WaitWithSleeping.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobFailReason.cs	PASS	失败原因记录，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_Carried.cs	PASS	通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_ExitMapBest.cs	NOTE	离场体系：RCellFinder.TryFindBestExitSpot（canDig 时 PassAllDestroyableThings）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_ExitMap.cs	NOTE	离场体系核心：CanEverExit=false 只认口袋图 Portal；canLeaveMapFlying+无屋顶→飞行离场；挖墙撤退
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_ExitMapFollowOverseer.cs	NOTE	离场体系：机械师跟随离场（需能组建商队）

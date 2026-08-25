@@ -35,3 +35,13 @@ mono_crash.*
 # /Source
 # GD5-analyze 的临时分析脚本与提取的源码副本:可再生,不入库
 GD5-analyze/TMP/
+
+# Python 缓存
+__pycache__/
+
+# 82-BlackHole Unity 工程缓存/中间产物（成品在 82-BlackHole/AssetBundles/）
+82-BlackHole/UnityProject/Library/
+82-BlackHole/UnityProject/UserSettings/
+82-BlackHole/UnityProject/Logs/
+82-BlackHole/UnityProject/UnityBuild/
+82-BlackHole/UnityProject/AssetBundleBuild/

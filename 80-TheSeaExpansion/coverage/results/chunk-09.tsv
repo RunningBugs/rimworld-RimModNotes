@@ -1,0 +1,200 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FactionUIUtility.cs	PASS	派系列表 UI 绘制，无海洋相关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FactionUtility.cs	PASS	派系关系/交易判定工具，无海洋相关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FeatureDef.cs	PASS	世界地图地貌特征 Def（命名规则等），机制与海洋无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FeatureWorker.cs	PASS	世界特征生成 worker 基类，与海洋无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FeedPatientUtility.cs	PASS	病人喂食判定，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FertilityGrid.cs	NOTE	肥力=地形 fertility，污染封顶0.5，edifice 可覆盖——海底种植参考（见文档七）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FillableBarRequestWithRotation.cs	SKIP	纯数据结构（四向填充条请求）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Filth.cs	NOTE	污物实体；thickness/sources/消失时间；与 FilthMaker 的真空地形拒污共同记录（见文档五）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FilthGrayFleshNoticeable.cs	PASS	Anomaly 灰肉发现信件，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FilthMaker.cs	NOTE	exposesToVacuum 地形拒绝生成污物、filthAcceptanceMask 双向匹配——淹没地形污物开关参考（见文档五）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FilthMonitor.cs	SKIP	调试统计（DebugViewSettings.logFilthSummary）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FilthProperties.cs	NOTE	污物属性数据类；rainWashes/disappearsInDays/placementMask 字段已记入文档五
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FilthRevenantSmear.cs	PASS	Anomaly 幽魂污迹发现逻辑，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FilthSourceFlags.cs	SKIP	纯枚举（污物来源位标记）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FireArrow.cs	NOTE	燃烧箭 Impact 显式检查 terrain.IsWater 不撒燃料不点火——武器级水中失效示例（见文档四）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FireBurstUtility.cs	PASS	喷火撒燃料工具，无水检查（靠易燃性兜底），无独立海洋价值
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Fire.cs	NOTE	extinguishesFire 地形 flag、真空按比例灭火伤害、雨灭火——水下灭火机制模板（见文档四）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FireUtility.cs	NOTE	GetEffectiveVacuumForFire/ChanceToStartFireIn——真空灭火判定结构可照抄为水深灭火（见文档四）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FireWatcher.cs	PASS	火势危险度统计，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FiringIncident.cs	SKIP	纯数据类（触发中的 incident 记录）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FishChance.cs	SKIP	纯数据类（鱼种+概率 XML 条目），已在钓鱼条目提及
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FishingUtility.cs	NOTE	钓鱼系统核心：鱼群再生/水体大小曲线/污染毒鱼/稀有与负面捕获——海底钓鱼经济直接可用（见文档三）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FishRepeatMode.cs	SKIP	纯枚举（捕鱼工单重复模式）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FlagDefUtility.cs	SKIP	渲染标记位工具，trivial
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FlameThrower.cs	PASS	火焰喷射器弹体；无显式水检查，靠地形易燃性兜底，已在文档四提及
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FleckDefOf.cs	SKIP	DefOf 列表；含 FishShadow/WaterSplash 等水相关 fleck，已在文档三提及
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FleckMaker.cs	PASS	特效抛射库；WaterSplash/WaterRipple 方法已记入文档三
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FleeUtility.cs	PASS	逃跑 AI 工具，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FleshbeastGroundSpawner.cs	SKIP	trivial 子类（仅换音效）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FleshbeastUtility.cs	PASS	Anomaly 血肉兽生成/爆裂工具，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FleshmassMapComponent.cs	PASS	Anomaly 血肉块延时销毁组件，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FleshTendril.cs	SKIP	纯数据类（血肉触须记录）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FleshTypeDef.cs	PASS	血肉类型 Def（伤口贴图等），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FleshTypeDefOf.cs	SKIP	DefOf 列表
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FlickUtility.cs	PASS	开关电源工具，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuAcceptanceReport.cs	SKIP	纯数据结构（菜单接受报告）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuContext.cs	PASS	右键菜单上下文，UI 基础设施，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuMakerMap.cs	PASS	右键菜单总装入口，UI 基础设施，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_Arrest.cs	PASS	右键菜单 provider（逮捕）；grep 验证无水/真空逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_BringBabyToSafety.cs	PASS	右键菜单 provider（婴儿避险）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_CaptureEntity.cs	PASS	右键菜单 provider（捕获实体）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_CapturePawn.cs	PASS	右键菜单 provider（俘虏）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_CarryDeathrestingToCasket.cs	PASS	右键菜单 provider（抬死眠者）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_CarryingPawn.cs	PASS	右键菜单 provider（扛起 pawn）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_CarryMechToCharger.cs	PASS	右键菜单 provider（抬机械体充电）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_CarryPawn.cs	PASS	右键菜单 provider（抬 pawn）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_CarryPawnToExit.cs	PASS	右键菜单 provider（抬到出口，完整读过）；无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_CarryToBiosculpterPod.cs	PASS	右键菜单 provider（抬入培育舱）；grep 验证无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_CarryToCryptosleepCasket.cs	PASS	右键菜单 provider（抬入冬眠舱）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_CarryToShuttle.cs	PASS	右键菜单 provider（抬入穿梭机，完整读过）；无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_Childcare.cs	PASS	右键菜单 provider（育儿）；grep 验证无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_CleanRoom.cs	PASS	右键菜单 provider（清洁房间）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider.cs	PASS	provider 抽象基类（完整读过），UI 基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_Deathrest.cs	PASS	右键菜单 provider（死眠）；grep 验证无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_DraftedAttack.cs	PASS	右键菜单 provider（征召攻击）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_DraftedMove.cs	PASS	右键菜单 provider（征召移动）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_DraftedRepair.cs	PASS	右键菜单 provider（征召修理）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_DraftedTend.cs	PASS	右键菜单 provider（征召治疗）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_DressOtherPawn.cs	PASS	右键菜单 provider（给他人穿衣）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_DropEquipment.cs	PASS	右键菜单 provider（丢下装备）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_EnterMapPortal.cs	PASS	右键菜单 provider（进入口袋地图传送门，完整读过）；无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_Equip.cs	PASS	右键菜单 provider（装备）；grep 验证无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_ExtinguishFires.cs	PASS	右键菜单 provider（灭火，完整读过）；无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_FromLord.cs	PASS	右键菜单 provider（Lord 来源）；grep 验证无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_FromThing.cs	PASS	右键菜单 provider（Thing 来源）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_FromZone.cs	PASS	右键菜单 provider（Zone 来源）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_GhoulRest.cs	PASS	右键菜单 provider（食尸鬼休息）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_HackAncientTerminal.cs	PASS	右键菜单 provider（黑入终端）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_HandleCorpse.cs	PASS	右键菜单 provider（处理尸体）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_Ingest.cs	PASS	右键菜单 provider（进食）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_InvokeArchotech.cs	PASS	右键菜单 provider（召唤超凡）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_LoadCaravan.cs	PASS	右键菜单 provider（装商队）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_LoadOntoPackAnimal.cs	PASS	右键菜单 provider（装上驮兽）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_Mechanitor.cs	PASS	右键菜单 provider（机械师）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_OfferHelp.cs	PASS	右键菜单 provider（提供帮助）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_OpenThing.cs	PASS	右键菜单 provider（打开容器）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_PickUpItem.cs	PASS	右键菜单 provider（拾取）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_PrisonerBloodfeed.cs	PASS	右键菜单 provider（囚犯吸血）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_PutOutFireOnPawn.cs	PASS	右键菜单 provider（扑灭人身上火）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_Relic.cs	PASS	右键菜单 provider（圣物）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_Reload.cs	PASS	右键菜单 provider（装填）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_RemoveMechlink.cs	PASS	右键菜单 provider（移除机械链接）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_RescuePawn.cs	PASS	右键菜单 provider（救援）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_ReturnSlaveToBed.cs	PASS	右键菜单 provider（押奴隶回床）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_Romance.cs	PASS	右键菜单 provider（恋爱）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_StartRitual.cs	PASS	右键菜单 provider（开始仪式）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_Strip.cs	PASS	右键菜单 provider（剥光）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_Trade.cs	PASS	右键菜单 provider（交易）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_TransferEntity.cs	PASS	右键菜单 provider（转移实体）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_Wear.cs	PASS	右键菜单 provider（穿戴）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_WorkGivers.cs	PASS	右键菜单 provider（通用工作）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuOptionProvider_Xenogerm.cs	PASS	右键菜单 provider（异种胚芽）；同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloatMenuUtility.cs	PASS	菜单工具（攻击动作/优先级装饰），UI 无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Flood.cs	NOTE	Odyssey 液体蔓延抽象基类：权重桶随机四邻蔓延、floodTerrain 替换、地基/建筑阻挡——舱室进水直接模板（见文档一）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FloorEtchingRambling.cs	PASS	地板刻字建筑，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FlyShipLeaving.cs	PASS	运输舱离地图逻辑，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FocusStrengthOffset_ArtificialBuildings.cs	PASS	冥想聚焦-人造建筑，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FocusStrengthOffset_BuildingDefs.cs	PASS	冥想聚焦-指定建筑，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FocusStrengthOffset_BuildingDefsLit.cs	PASS	冥想聚焦-发光建筑，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FocusStrengthOffset_BuildingDefsWithQuality.cs	PASS	冥想聚焦-品质建筑，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FocusStrengthOffset.cs	SKIP	抽象基类（冥想聚焦偏移）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FocusStrengthOffset_Curve.cs	SKIP	抽象基类（曲线型聚焦偏移）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FocusStrengthOffset_GraveCorpseRelationship.cs	PASS	冥想聚焦-亲属坟墓，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FocusStrengthOffset_GraveFull.cs	PASS	冥想聚焦-满坟墓，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FocusStrengthOffset_Lit.cs	PASS	冥想聚焦-照明，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FocusStrengthOffset_NearbyGraves.cs	PASS	冥想聚焦-附近坟墓，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FocusStrengthOffset_OccupiedHoldingPlatform.cs	PASS	冥想聚焦-收容平台占用，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FocusStrengthOffset_Quality.cs	PASS	冥想聚焦-品质，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FocusStrengthOffset_RoomImpressiveness.cs	PASS	冥想聚焦-房间观感，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FocusStrengthOffset_ThroneSatisfiesRequirements.cs	PASS	冥想聚焦-王座要求，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FoodKind.cs	SKIP	纯枚举（食物种类）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FoodPoisonCause.cs	SKIP	纯枚举（食物中毒原因）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FoodPoisonCauseExtension.cs	SKIP	枚举本地化扩展
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FoodPolicy.cs	PASS	食物策略数据类，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FoodPreferability.cs	SKIP	纯枚举（食物偏好等级）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FoodRestrictionDatabase.cs	PASS	食物限制数据库，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FoodTypeFlags.cs	SKIP	纯枚举（食物类型位标记）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FoodTypeFlagsExtension.cs	SKIP	枚举本地化扩展
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FoodUtility.cs	PASS	寻食/进食判定大工具类；WillIngestStackCountOf 被钓鱼产量调用（已在文档三提及），其余无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ForbidUtility.cs	PASS	禁用/允许区域判定，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FormingState.cs	SKIP	纯枚举（商队集结状态）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Frame.cs	PASS	建筑框架（建造中实体），通用建造逻辑，无海洋特异
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FuelingPortUtility.cs	PASS	发射舱燃料口工具，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/FurDef.cs	PASS	毛发样式 Def，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameComponent_Anomaly.cs	PASS	Anomaly 巨石/任务线管理组件，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameComponent_Bossgroup.cs	PASS	头领组呼叫记录组件，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameComponent_PawnDuplicator.cs	PASS	复制人组件（Anomaly），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameComponent_PsychicRitualManager.cs	PASS	灵能仪式冷却管理；layerWhitelist 模式与 GameCondition 相同（文档二已涵盖）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_Aurora.cs	NOTE	极光：SkyGaze 奖励+彩色天空，IsAlwaysDarkOutside 图上失效——海底需注意（见文档二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_BioluminescentSpores.cs	NOTE	生物荧光孢子：发光 overlay+天空色——深海正面事件可直接借鉴（见文档二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_BloodRain.cs	PASS	血雨（ForceWeather 子类），海底应屏蔽，模式已涵盖
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_ClimateCycle.cs	NOTE	气候循环：4 年周期 ±20°C 正弦温度偏移——海底恒温冲突项（见文档二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_ColdSnap.cs	NOTE	寒流：-20°C 温度偏移——海底恒温冲突项（见文档二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition.cs	NOTE	GameCondition 基类：allowUnderground/layer 过滤/requireFish/全部效果虚钩子——海底事件过滤总开关（见文档二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_DeathPall.cs	PASS	死亡阴霾（尸体复活），Anomaly 专属，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameConditionDefOf.cs	SKIP	DefOf 列表（含 Odyssey 的 GillRot/Drought/LavaFlow，已在文档提及）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_DisableElectricity.cs	NOTE	EMI 场：仅 ElectricityDisabled=true——"水下断电"事件可一行借用（见文档二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_Drought.cs	NOTE	干旱：植物生长×0.3、下雨才结束——海底无雨永不结束，必须屏蔽（见文档二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_DroughtInitial.cs	PASS	干旱前奏（4 天后升级），随 Drought 一并屏蔽
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_Flashstorm.cs	PASS	雷暴：落雷需无顶格，海底应屏蔽（见文档二提及）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_ForceWeather.cs	NOTE	强制天气基类——海底天气替换时其子类全部被 layer 过滤（见文档二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_GillRot.cs	NOTE	鳃腐病：fishPopulationOffsetFactorPerDay 削减鱼群再生——海洋主题天然适配（见文档二/三）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_GrayPall.cs	PASS	灰霾（ForceWeather 子类），模式已涵盖
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_HateChantDrone.cs	PASS	仇恨吟唱（心灵影响），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_HeatVentHeat.cs	NOTE	热排口升温：逐 tick 爬向 +15 偏移——建筑驱动温度事件模式（见文档二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_HeatWave.cs	NOTE	热浪：+17°C 温度偏移——海底恒温冲突项（见文档二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_LavaFlow.cs	NOTE	熔岩流事件：SetTempTerrain 蔓延+QueueRemoveTerrain 定时复原——临时淹水/退潮可仿（见文档一）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameConditionMaker.cs	PASS	条件创建工厂（含 Permanent 版本），工具类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameConditionManager.cs	NOTE	条件管理器：AggregateTemperatureOffset 汇总/MapBrightness/IsAlwaysDarkOutside/鱼群再生查询（见文档二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_NoSunlight.cs	NOTE	无阳光（日蚀）：SkyTarget glow=0，Permanent 即永夜——海底无光照直接注册（见文档二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_NoSunlight_Instant.cs	PASS	无阳光瞬时版子类，同上条目
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_NoxiousHaze.cs	NOTE	毒霾：污染联动、动植物密度归 0——密度因子钩子示例（见文档二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_Planetkiller.cs	PASS	行星杀手结局事件，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_PsychicEmanation.cs	PASS	心灵低语/抚慰，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_PsychicSuppression.cs	PASS	心灵抑制，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_SmokeSpewer.cs	PASS	排烟器（火山冬天子类），模式已涵盖
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_TemperatureOffset.cs	NOTE	def 驱动恒定温度偏移——可反用做海底恒温修正（见文档二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_ToxicFallout.cs	NOTE	毒尘：周期对露天 pawn 施加毒性伤害、杀露天植物——海水暴露伤害模板（见文档二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_UnnaturalDarkness.cs	NOTE	非自然黑暗：MapBrightness≈0+黑暗暴露 hediff+逐格亮度判定——深海黑暗压力可抄（见文档二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_UnnaturalHeat.cs	PASS	非自然热浪（大气加热器驱动），模式同 HeatVentHeat 已涵盖
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameConditionUtility.cs	SKIP	缓入缓出 lerp 工具，trivial
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_VolcanicAsh.cs	NOTE	火山灰：对 !Roofed pawn 周期加 hediff——暴露伤害模式第二例（见文档二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_VolcanicDebrisShower.cs	PASS	火山碎屑雨（天空坠落物），海底应屏蔽
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_VolcanicWinter.cs	NOTE	火山冬天：-7°C+动物密度减半+天暗——温度冲突项兼密度钩子（见文档二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameCondition_Windy.cs	PASS	大风（风速下限），海底无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameEnder.cs	PASS	游戏结束判定，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameRules.cs	PASS	禁用建造/设计器规则集，通用机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GameVictoryUtility.cs	PASS	胜利字幕工具，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Gas.cs	PASS	气体实体（到时自毁+旋转贴图），与液体淹没无直接复用价值
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GasProperties.cs	SKIP	纯数据类（气体属性）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GatherAnimalsAndSlavesForCaravanUtility.cs	PASS	商队集结工具，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GatheringDef.cs	PASS	聚会 Def，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GatheringDefOf.cs	SKIP	DefOf 列表
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GatheringsUtility.cs	PASS	聚会判定工具；ValidateGatheringSpot 拒绝 dangerous 地形（已在文档七提及）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GatheringWorker_Concert.cs	PASS	音乐会 worker，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GatheringWorker.cs	PASS	聚会 worker 基类，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GatheringWorker_MarriageCeremony.cs	PASS	婚礼 worker，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GatheringWorker_Party.cs	PASS	派对 worker，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GatherItemsForCaravanUtility.cs	PASS	商队物品收集工具，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GatherSpotLister.cs	SKIP	简单列表器（聚会点注册）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GauranlenTreeModeDef.cs	PASS	高岚树形态 Def，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GauranlenTreeModeDefOf.cs	SKIP	DefOf 列表
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GauranlenUtility.cs	PASS	高岚树工具（茧/荚格校验等），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenCelestial.cs	NOTE	太阳位置/日光强度纯数学（纬度+日期→0~1 glow）；海底压光走 SkyTarget 而非改这里（见文档二）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenConstruct.cs	NOTE	建造放置校验核心：terrainAffordanceNeed vs 地形 affordances——海底建筑限制的正统做法（见文档六）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenDate.cs	PASS	日期/时间常量与换算，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GenderPossibility.cs	SKIP	纯枚举（性别可能性）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GeneCategoryDefOf.cs	SKIP	DefOf 列表
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GeneCreationDialogBase.cs	PASS	基因编辑 UI 基类，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Gene_Deathrest.cs	PASS	死眠基因，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GeneDefGenerator.cs	PASS	隐含基因 Def 生成器，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GeneDefOf.cs	NOTE	含 WebbedPhalanges（蹼指）基因条目——原生"水生适应"基因挂钩点，效果实现在片外未验证（见文档七）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GeneDefWithType.cs	SKIP	纯数据结构（基因+是否异种）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GeneGizmo_DeathrestCapacity.cs	PASS	死眠容量 gizmo，UI 无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GeneGizmo_Resource.cs	PASS	基因资源条 gizmo 基类，UI 无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GeneGizmo_ResourceHemogen.cs	PASS	血原质 gizmo，UI 无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Gene_Hemogen.cs	PASS	血原质基因，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Gene_HemogenDrain.cs	PASS	血原质消耗基因，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GeneLeftChosenGroup.cs	SKIP	纯数据类（基因选择组）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/GeneMaker.cs	SKIP	基因工厂（10 行），trivial

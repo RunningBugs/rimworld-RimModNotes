@@ -1,0 +1,191 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/ISlateRef.cs	SKIP	接口定义（SlateRef 抽象），无逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/MechhiveUtility.cs	NOTE	机械巢定点袭击模板：固定机械族+EdgeDrop+canRoofPunch=false，海底高威胁事件可仿写
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/PrefixCapturedVar.cs	SKIP	XML 数据载体类（前缀捕获变量），无逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestAskerType.cs	SKIP	纯枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestGen.cs	NOTE	引擎核心；Generate() 对 !everAcceptableInSpace 任务自动加 AcceptanceRequirementNotSpace——海底图层默认排斥冲突点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestGen_Debug.cs	PASS	Debug 日志扩展，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestGen_Delay.cs	PASS	延时 QuestPart 组装，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestGen_End.cs	PASS	任务结束/好感变化组装，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestGen_Factions.cs	PASS	阵营相关 QuestPart 组装（突袭/额外阵营/好感），无环境判定
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestGen_Filter.cs	PASS	 pawn 存活/状态过滤器 QuestPart 组装，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestGen_Get.cs	NOTE	GetMap 静态版：canBeSpace 排除 isSpace 图层、mustBeInfestable 走 InfestationCellFinder
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestGen_HistoryEvents.cs	PASS	历史事件记录组装，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestGen_Lord.cs	PASS	Lord（AI 群组）QuestPart 组装，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestGen_Misc.cs	NOTE	AcceptanceRequirementLayer/NotSpace 图层门控；ResolveArrivalMode 按 CanUseOnTile 兜底到达方式
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestGen_Pawns.cs	NOTE	pawn 生成参数含 minTechLevel，按 def.techLevel 过滤——"工业+袭击"已有机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestGen_Requirements.cs	PASS	接受条件（阵营关系）组装，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestGen_Rewards.cs	PASS	奖励生成入口 GiveRewards，无环境判定
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestGen_Shuttle.cs	PASS	穿梭机生成/遣返组装，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestGen_Signal.cs	PASS	信号总线扩展方法，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestGen_Sites.cs	NOTE	GenerateSite 站点生成框架（隐藏部件/描述规则），海底站点可直接复用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestGen_Threat.cs	NOTE	Raid/RandomRaid 袭击组装；示例阵营取 TechLevel.Industrial 起步
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestGen_TransportShip.cs	PASS	运输船/ShipJob 组装，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestGenUtility.cs	PASS	信号命名/Slate 变量/语法文本解析工具，纯 plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_AddContentsToShuttle.cs	PASS	穿梭机装货节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_Add.cs	PASS	Slate 加法节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_AddHediff.cs	PASS	加 Hediff 节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_AddItemsReward.cs	PASS	物品奖励节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_AddMemoryThought.cs	PASS	加记忆想法节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_AddPassageOffworldReward.cs	PASS	离星船票奖励节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_AddPawnReward.cs	PASS	pawn 奖励节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_AddRangeToList.cs	PASS	列表批量添加节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_AddShipJob_Arrive.cs	PASS	运输船到达作业节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_AddShipJob.cs	PASS	ShipJob 基类节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_AddShipJob_FlyAway.cs	PASS	运输船飞离节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_AddShipJob_Unload.cs	PASS	运输船卸货节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_AddShipJob_Wait.cs	PASS	运输船等待节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_AddTag.cs	PASS	任务标签节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_AddToList.cs	PASS	列表添加节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_AllowDecreesForLodger.cs	PASS	寄宿者法令节点（Royalty），plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_AllSignalsActivable.cs	PASS	信号路由节点（全到齐+可激活）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_AllSignals.cs	PASS	信号路由节点（全到齐）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_AnyHiddenSitePart.cs	PASS	站点部件隐藏性分支节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_AnyPawnAlive.cs	PASS	pawn 存活过滤节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_AnySignalActivable.cs	PASS	信号路由节点（任一到+可激活）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_AnySignal.cs	PASS	信号路由节点（任一到）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_AssaultColony.cs	PASS	突袭殖民地 QuestPart 组装，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_BetrayMTB.cs	PASS	背叛计时节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_BiocodeWeapons.cs	PASS	生化绑定武器节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_CampLootReward.cs	PASS	营地战利品奖励节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_CannotRun.cs	PASS	恒失败节点，trivial
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_Chance.cs	PASS	概率分支节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_ChangeFactionGoodwill.cs	PASS	好感变化节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_ChangeGoodwillForAlivePawnsMissingFromShuttle.cs	PASS	穿梭机遗留 pawn 好感惩罚节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_ChangeHeir.cs	PASS	继承人变更节点（Royalty），plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_ChangeNeed.cs	PASS	需求值变化节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_ChildrenAllowed.cs	PASS	儿童难度开关分支节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_Clamp.cs	PASS	数值钳制节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_CreateIncidents.cs	PASS	任务期内周期触发 Incident 节点，plumbing（可作围攻潮模板但无环境判定）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode.cs	PASS	QuestNode 抽象基类（Run/TestRun 壳）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_DamageUntilDowned.cs	PASS	打到倒地节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_Delay.cs	PASS	延时节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_DestroyOrPassToWorld.cs	PASS	销毁/转世界节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_DestroyOrPassToWorldOnCleanup.cs	PASS	清理时销毁节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_DestroyWorldObject.cs	PASS	销毁世界物体节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_DisableRandomMoodCausedMentalBreaks.cs	PASS	禁随机崩溃节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_Divide.cs	PASS	Slate 除法节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_DropMonumentMarkerCopy.cs	PASS	纪念碑标记投放节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_DropPods.cs	NOTE	空投 QuestPart 组装；地形判定在 Worker 侧，本片确认节点本身无环境判断
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_End.cs	PASS	任务结束节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_EndGame.cs	PASS	游戏结束演出节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_EndGame_ShipEscape_FindShipTile.cs	NOTE	结局飞船落点要求 biome.canBuildBase && canAutoChoose；海洋 biome 设 false 即天然排除
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_Equal.cs	PASS	相等分支节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_EqualOrFail.cs	PASS	相等否则失败节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNodeEqualUtility.cs	PASS	相等比较工具，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_EvaluateSimpleCurve.cs	PASS	曲线求值节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_ExpansionActive.cs	NOTE	按 DLC/modID 分支节点，Mod 自写任务可复用同款条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_ExtraFaction.cs	PASS	额外阵营节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_FactionExists.cs	PASS	阵营存在分支节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_FactionGoodwillForMoodChange.cs	PASS	心情换好感节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_Filter_AnyColonistAlive.cs	PASS	殖民者存活过滤节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_Filter.cs	PASS	过滤器节点基类，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_Filter_DecreeNotPossible.cs	PASS	法令过滤节点（9行薄壳）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_Filter_FactionNonPlayer.cs	PASS	非玩家阵营过滤节点（9行薄壳）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GameCondition.cs	NOTE	通用施加 GameCondition 节点（可全球/单图），海底自定义状况走此入口
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GenerateMonumentMarker.cs	PASS	纪念碑标记生成节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GenerateNonBuildableMonumentRequiredResources.cs	PASS	纪念碑资源统计节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GeneratePawn.cs	PASS	pawn 生成节点（特质/生化绑定/儿童），无环境判定
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GeneratePawnRandDevelopmentStage.cs	PASS	pawn 年龄段随机节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GenerateShuttle.cs	PASS	穿梭机生成节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GenerateSite.cs	NOTE	站点生成节点；allowViolentQuests=false 时拒 wantsThreatPoints 部件，海底站点框架可用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GenerateThing.cs	PASS	物品生成节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GenerateThingSet.cs	PASS	物品组生成节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GenerateThreats.cs	NOTE	威胁生成器节点；示例阵营过滤 TechLevel.Industrial 起步
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GenerateTransportShip.cs	PASS	运输船生成节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GenerateWorldObject.cs	PASS	世界物体生成节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetAnimalKindByPoints.cs	NOTE	按 combatPower 全表选动物、不看 Biome——海洋任务复用需防陆生动物（轻微冲突）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetAnimalToHunt.cs	NOTE	猎杀任务从 map.Biome.AllWildAnimals+季节温度适宜性选动物——Biome 只列水生即自动只刷水生
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetBodySize.cs	PASS	读体型节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetColonistCountFromColonyPercentage.cs	PASS	殖民者百分比计数节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetDefaultSitePartsParams.cs	PASS	站点部件默认参数节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetDropSpot.cs	NOTE	空投点要求 Standable+!Roofed+!Fogged+可达殖民地——海水若实现为 roof 会导致找不到落点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetEventDelays.cs	PASS	事件间隔计算节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetExampleRaid.cs	NOTE	示例袭击阵营取 GetFactions(...,TechLevel.Industrial) 敌对者——工业+过滤现成
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetFaction.cs	PASS	阵营筛选节点（敌/中/盟/永久敌对等），无科技/环境维度
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetFactionOf.cs	PASS	取所属阵营节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetFieldValue.cs	PASS	反射取字段节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetFreeColonistsCount.cs	PASS	自由殖民者计数节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetHediff.cs	PASS	Hediff 选项随机节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetHivesCountFromPoints.cs	NOTE	虫害巢数=points×PointsFactorCurve/220——海底虫巢规模计算参照
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetLargestClearArea.cs	PASS	纪念碑空地查找（Heavy affordance），plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetMap.cs	NOTE	选图节点：canBeSpace/layerWhitelist/layerBlacklist/mustBeInfestable——海底图层门控直接借用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetMapOf.cs	PASS	取 pawn 所在图节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetMapWealth.cs	PASS	地图财富读取节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetMarketValue.cs	PASS	市价合计节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetMonumentRequiredResourcesString.cs	PASS	纪念碑资源文案节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetMonumentSize.cs	PASS	纪念碑尺寸节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetMonumentSketch.cs	PASS	纪念碑 Sketch 生成节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetNearbySettlement.cs	NOTE	附近定居点：图层白/黑名单+同层/邻层要求；有引力引擎则跳过可达性——潜艇模式可仿
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetNearestHomeMapOf.cs	PASS	最近自家图节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetPawnCountByPointsWeighted.cs	PASS	按点数加权人数节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetPawn.cs	PASS	世界 pawn 筛选/生成节点，无环境判定
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetPawnKindCombatPower.cs	PASS	读战斗力节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetPawnKind.cs	NOTE	anyAnimal 选项全表随机动物（可用 fleshType 限）——海洋任务需注意不按 Biome
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetPawnsWithRoyalTitle.cs	PASS	王室头衔 pawn 筛选节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetPlantPlayerCanHarvest.cs	NOTE	种植任务用世界格季节温度±15天变化选植物——海底恒温实现方式直接影响此节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetPlayerFaction.cs	PASS	取玩家阵营节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetPopIntentForQuest.cs	PASS	人口意图读取节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetRandomByCurve.cs	PASS	曲线随机节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetRandomElementByWeight.cs	PASS	加权随机元素节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetRandomElement.cs	PASS	随机元素节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetRandomFactionForSite.cs	PASS	站点阵营随机节点（敌对过滤），无环境维度
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetRandomInRangeFloat.cs	PASS	浮点区间随机节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetRandomInRangeForChallengeRating.cs	PASS	按难度星级区间随机节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetRandomInRangeInt.cs	PASS	整数区间随机节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetRandomNegativeGameCondition.cs	NOTE	硬编码8种负面状况清单+热浪/寒流温度适宜性检查——海底恒温冲突点，需 patch 或自建
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetRandomPawnKindForFaction.cs	PASS	按阵营选 pawnKind 节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetRelationsInfo.cs	PASS	亲属关系文案节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetSameQuestsCount.cs	PASS	同任务计数节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetSiteDisturbanceFactor.cs	PASS	站点扰动系数节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetSitePartDefsByTagsAndFaction.cs	PASS	按标签选站点部件节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetSiteThreatPoints.cs	PASS	站点威胁点合计节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetSiteTile.cs	NOTE	站点选地块：canSelectSpace+Odyssey 地标机制——海底遗迹/沉船站点可复用入口+自定义 Landmark
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetThingPlayerCanProduce.cs	PASS	可生产物品任务节点（查配方/材料），无环境判定
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GetWalkInSpot.cs	NOTE	步行进入点取边缘格三级降级——海底图边缘行为需验证（依赖 CellFinder）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GiveNearPawn.cs	PASS	近 pawn 给予节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GiveRewards.cs	PASS	奖励组装节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GiveRoyalFavorAndDevelopmentPoints.cs	PASS	皇室青睐+发展点节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GiveRoyalFavor.cs	PASS	皇室青睐节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GiveTechprints.cs	PASS	科技蓝图奖励节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_Greater.cs	PASS	大于分支节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GreaterOrEqual.cs	PASS	大于等于分支节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GreaterOrFail.cs	PASS	大于否则失败节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_GuardianShipDelay.cs	PASS	护卫船延时节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_HasGravEngine.cs	NOTE	"玩家有引力引擎"分支节点——潜艇/深潜器解锁可复刻此模式
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_HasRoyalTitleInCurrentFaction.cs	PASS	王室头衔分支节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_Incident.cs	PASS	通用触发 Incident 节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_Infestation.cs	NOTE	虫害任务要求 InfestationCellFinder 找到厚顶格——海底无厚顶则自动免疫虫害（设计决策点）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_InspectString.cs	PASS	检视文案节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_IsAnimal.cs	PASS	种族属性判断薄壳（Animal）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_IsFactionHostileToPlayer.cs	PASS	敌对分支节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_IsFactionLeader.cs	PASS	阵营领袖分支节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_IsFlesh.cs	PASS	种族属性判断薄壳（IsFlesh）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_IsFreeWorldPawn.cs	PASS	自由世界 pawn 分支节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_IsHumanlike.cs	PASS	种族属性判断薄壳（Humanlike）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_IsInList.cs	PASS	列表包含分支节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_IsMechanoid.cs	PASS	种族属性判断薄壳（IsMechanoid）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_IsNull.cs	PASS	空值分支节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_IsOfFaction.cs	PASS	所属阵营分支节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_IsOfRoyalFaction.cs	PASS	王室阵营分支节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_IsPermanentEnemy.cs	PASS	永久敌对分支节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_IsSet.cs	PASS	Slate 变量存在分支节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_IsTrue.cs	PASS	布尔真分支节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_IsTrueOrUnset.cs	PASS	布尔真或未设分支节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_IsZero.cs	PASS	零值分支节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_JoinPlayer.cs	PASS	pawn 加入玩家节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_Leave.cs	PASS	pawn 离场节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_LeaveOnCleanup.cs	PASS	清理时离场节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_LendColonistsToFaction.cs	PASS	外借殖民者节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_Less.cs	PASS	小于分支节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_LessOrEqual.cs	PASS	小于等于分支节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_LessOrFail.cs	PASS	小于否则失败节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_Letter.cs	PASS	信件节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_Log.cs	PASS	日志节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_LoopCount.cs	PASS	循环节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_MakeMinified.cs	PASS	物品打包节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_ManhunterPack.cs	NOTE	疯兽群走 AggressiveAnimalIncidentUtility 按地图选动物——Biome 只列水生即只刷水生（工具类内部未验证）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_Message.cs	PASS	消息节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_ModIsActive.cs	NOTE	按 modID 分支节点——Mod 自写任务脚本可用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_MoodBelow.cs	PASS	心情阈值节点，plumbing
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_Multiply.cs	PASS	Slate 乘法节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld.QuestGen/QuestNode_MultiplyRange.cs	PASS	区间乘法节点

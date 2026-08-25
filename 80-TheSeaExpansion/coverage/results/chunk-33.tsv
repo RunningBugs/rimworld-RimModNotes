@@ -1,0 +1,250 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GameComponent.cs	PASS	游戏组件抽象基类（虚方法框架）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GameComponent_DebugTools.cs	PASS	debug逐帧回调组件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GameComponent_OnetimeNotification.cs	PASS	AI核心一次性提醒信件组件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GameComponentUtility.cs	PASS	游戏组件调度器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GameConditionDef.cs	NOTE	游戏条件Def：requireFish/fishPopulationOffsetPerDay/allowUnderground/行星层白黑名单等海洋开关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Game.cs	PASS	游戏核心容器（组件/地图管理），无海洋特定机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GameDataSaveLoader.cs	PASS	存档读写器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GameFont.cs	SKIP	字体大小枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GameInfo.cs	PASS	游戏元信息（开局格/游戏时长）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GameInitData.cs	PASS	开局初始化数据载体（含mapGeneratorDef引用，本身无机制）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GameplayTipWindow.cs	PASS	加载界面提示条UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GameSetupStep.cs	PASS	开局步骤抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GameSetupStepDef.cs	SKIP	开局步骤Def数据壳
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GasGrid.cs	NOTE	气体密度网格（扩散/消散/真空加速/建筑阻隔/均压），海水淹没系统最佳模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GasType.cs	SKIP	气体类型枚举（位偏移0/8/16/24），随GasGrid一并分析
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GasTypeMask.cs	SKIP	气体位掩码枚举，随GasGrid一并分析
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GasUtility.cs	NOTE	气体对pawn/尸体的影响与免疫字段（immuneToToxGasExposure），水下暴露hediff范式
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenAdj.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenAdjFast.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenAttribute.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenClamor.cs	NOTE	声音按区域BFS传播、关门阻断，气密门隔音/水下声呐机制可借用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenClosest.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenCollection.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenColor.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenCommandLine.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Gen.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenDebug.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenDefDatabase.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Gender.cs	SKIP	性别枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenderUtility.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenDictionary.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenDraw.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenDrop.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Gene_Bloodfeeder.cs	PASS	具体基因实现，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GeneCategoryDef.cs	SKIP	基因类别Def数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Gene_ChemicalDependency.cs	PASS	具体基因实现，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Gene_Clotting.cs	PASS	具体基因实现，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Gene.cs	PASS	基因基类（PostAdd/PostRemove等虚方法框架）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Gene_Deathless.cs	PASS	具体基因实现，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GeneDef.cs	NOTE	waterCellCost字段：基因/种族可设定水中移动成本，水生基因原生挂钩点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Gene_Healing.cs	PASS	具体基因实现，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Gene_PollutionRush.cs	PASS	具体基因实现，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Gene_PsychicBonding.cs	PASS	具体基因实现，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenericConverter.cs	PASS	字符串转类型工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GeneSymbolPack.cs	SKIP	基因符号权重数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GeneticBodyType.cs	SKIP	基因体型枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GeneticTraitData.cs	SKIP	基因-特质关联数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenExplosion.cs	NOTE	爆炸参数含postExplosionSpawnThingDefWater（水格不同生成物）与产气，水下爆炸先例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenFile.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenFilePaths.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenGeneric.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenGeo.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenGrid.cs	PASS	网格边界/可行走/遮挡查询工具，无海洋特判
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenList.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenMapUI.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenMath.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenMorphology.cs	NOTE	Perlin噪声自然地形/岩壁斑块生成+形态学腐蚀膨胀，海底海山礁石生成工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenPlace.cs	PASS	通用放置逻辑（找点/堆叠），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenRadial.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenRecipe.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenScene.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenSight.cs	PASS	Bresenham视线算法，纯几何无环境判定
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenSpawn.cs	PASS	通用生成/擦除规则（SpawningWipes），建造校验走CanBuildOnTerrain
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenStep.cs	SKIP	GenStep抽象基类（Generate签名），无机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenStepDef.cs	SKIP	GenStep的Def数据壳
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenStepParams.cs	SKIP	地图生成参数数据结构
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenStep_RandomSelector.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenStep_Scatterer.cs	NOTE	散点生成基类：allowInWaterBiome+TileInfo.WaterCovered水域判定，海底散点复用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenStep_ScatterGroup.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenStep_ScatterGroupPrefabs.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenStep_ScatterThings.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenStep_TerrainPatches.cs	NOTE	随机圆形地形补丁genstep，海底沙/淤泥斑块可直接XML配置
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenStepWithParams.cs	SKIP	GenStep+参数绑定数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenString.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenTemperature.cs	NOTE	室外温度唯一来源OutdoorTemp、真空降温×0.1、腐烂率曲线，海底恒温接管点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenText.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenThreading.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenTicks.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenTypes.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenUI.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenView.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GenWorker.cs	PASS	通用工具函数库，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GetOrGenerateMapUtility.cs	NOTE	世界格到地图生成统一入口，支持追加genStep，海洋格降落生成挂点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GhostDrawer.cs	PASS	建造虚影绘制工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GhostUtility.cs	PASS	虚影贴图缓存
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Gizmo.cs	PASS	Gizmo UI框架，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GizmoGridDrawer.cs	PASS	Gizmo UI框架，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GizmoOrder.cs	SKIP	Gizmo排序常量
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GizmoRenderParms.cs	SKIP	Gizmo渲染参数结构体
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GizmoResult.cs	SKIP	Gizmo交互结果结构体
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Gizmo_RoomStats.cs	PASS	Gizmo UI框架，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Gizmo_Slider.cs	PASS	Gizmo UI框架，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GizmoState.cs	SKIP	Gizmo状态枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GlobalTextureAtlasManager.cs	PASS	全局贴图集管理
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GlowGrid.cs	NOTE	光照网格：CurSkyGlow决定室外亮度，exposesToVacuum地形强制全黑，深海黑暗机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GrammarResolverSimple.cs	PASS	语法/文本模板解析器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GrammarResolverSimpleStringExtensions.cs	PASS	语法解析字符串扩展
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_ActivityMask.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_ActivityMaskRandom.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_ActivityStaged.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_Appearances.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_Cluster.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_ClusterTight.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_Collection.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic.cs	PASS	Graphic基类（绘制虚方法框架）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GraphicDatabase.cs	PASS	贴图实例缓存
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GraphicDatabaseUtility.cs	PASS	贴图路径工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GraphicData.cs	SKIP	Def侧贴图配置数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_FadesInOut.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_Fleck.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_FleckPulse.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_FleckSplash.cs	NOTE	水花fleck渲染到SubcameraDefOf.WaterDepth水深层，水下特效渲染层参考
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_Flicker.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_Gas.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_Genepack.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_Indexed.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_Indexed_SquashNStretch.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_LinkedAsymmetric.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_LinkedCornerFiller.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_LinkedCornerOverlay.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_Linked.cs	PASS	联动贴图基类（墙/管道式连接绘制），渲染无关机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_MealVariants.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GraphicMeshSet.cs	SKIP	网格尺寸缓存数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_Mote.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_MoteRandom.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GraphicMote_RandomWithAgeSecs.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_MoteWithAgeSecs.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_MoteWithParentRotation.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_Multi_AgeSecs.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_Multi_BuildingWorking.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_Multi.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_Multi_Mote.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_PawnBodySilhouette.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_Random.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_RandomRotated.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GraphicRequest.cs	SKIP	贴图请求结构体（缓存键）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_Shadow.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_Single_AgeSecs.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_Single.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_Single_SquashNStretch.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_StackCount.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GraphicStateDef.cs	SKIP	图形状态Def数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_Terrain.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_Tiling.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GraphicUtility.cs	PASS	贴图辅助函数
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_WithPropertyBlock.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Graphic_WithPropertyBlockRandom.cs	PASS	渲染图形类，纯绘制逻辑，与海洋机制无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GridLayout.cs	PASS	UI网格布局工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GridsUtility.cs	NOTE	GetWaterBodyType/GetAffordances（地基优先）等格查询，海床地基建造判定链
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/GUIEventFilterForOSX.cs	PASS	OSX输入事件过滤
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HeadTypeDef.cs	SKIP	头型Def数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HealthTuning.cs	SKIP	健康数值常量表
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HealthUtility.cs	PASS	健康工具（伤害/治愈/最差病症查询），无溺水等海洋机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Hediff_AddedPart.cs	PASS	具体hediff实现，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Hediff_Alcohol.cs	PASS	具体hediff实现，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Hediff_BandNode.cs	PASS	具体hediff实现，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Hediff_BloodRage.cs	PASS	具体hediff实现，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/Hediff_ChemicalDependency.cs	PASS	具体hediff实现，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_AttachPoints.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_CauseMentalState.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_ChanceToRemove.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_ChangeImplantLevel.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_ChangeNeed.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_Chargeable.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp.cs	PASS	hediff组件基类（虚方法框架），无海洋机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_DamageBrain.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_DisappearsAndKills.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_DisappearsAndKills_Shambler.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_Disappears.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_DisappearsDisableable.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_DisappearsOnDeath.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_DisappearsPausable.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_DisappearsPausable_LethalInjuries.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_Discoverable.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_Disorientation.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_DrugEffectFactor.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_Effecter.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_EntropyLink.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_FleshbeastEmerge.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_GetsPermanent.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_GiveAbility.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_GiveHediff.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_GiveHediffLungRot.cs	NOTE	气体暴露按MTB曲线给肺病，水下暴露致病comp范式
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_GiveHediffsInRange.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_GiveHemogen.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_GiveLovinMTBFactor.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_GiveNeurocharge.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_GiveRandomSituationalThought.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_GrowthMode.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_HealPermanentWounds.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_Immunizable.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_ImmunizableToxic.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_Infecter.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_Invisibility.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_KillAfterDays.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_Lactating.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_LetterOnDeath.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_Link.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_MessageAboveSeverity.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_MessageAfterTicks.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_MessageBase.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_MessageOnRemoval.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_MessageStageIncreased.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_PainField.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_Pollution.cs	NOTE	按脚下格污染增减severity的最简环境暴露comp模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffComp_PregnantHuman.cs	PASS	通用hediff组件，与海洋无机制关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_AttachPoints.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_CauseMentalState.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_ChanceToRemove.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_ChangeImplantLevel.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_ChangeNeed.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_Chargeable.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties.cs	SKIP	hediff comp属性基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_DamageBrain.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_DisappearsAndKills.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_Disappears.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_DisappearsDisableable.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_DisappearsOnDeath.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_Discoverable.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_Disorientation.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_DrugEffectFactor.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_Effecter.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_EntropyLink.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_FleshbeastEmerge.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_GetsPermanent.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_GiveAbility.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_GiveHediff.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_GiveHediffLungRot.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_GiveHediffsInRange.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_GiveHemogen.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_GiveLovinMTBFactor.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_GiveNeurocharge.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_GiveRandomSituationalThought.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_GrowthMode.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_HealPermanentWounds.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_Immunizable.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_Infecter.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_Invisibility.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_KillAfterDays.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_Lactating.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_LetterOnDeath.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_Link.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_MessageAboveSeverity.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_MessageAfterTicks.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_MessageBase.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_MessageOnRemoval.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_MessageStageIncreased.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_PainField.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_Pollution.cs	PASS	hediff comp纯数据属性类（字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse/HediffCompProperties_Randomizer.cs	PASS	hediff comp纯数据属性类（字段定义）

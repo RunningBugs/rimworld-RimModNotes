@@ -1,0 +1,200 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_GravshipFacilities.cs	NOTE	起飞仪式按 gravship 设施通电状态加质量——可类比下潜仪式遍历潜水器组件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_Indoors.cs	NOTE	用 room.PsychologicallyOutdoors 判定室内给仪式质量加成——海底气密室自动受益
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_LovedOnePresent.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_NumActiveLoudspeakers.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_NumParticipantsWithTag.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_NumPlayedDrums.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_ParticipantCount.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_PawnAge.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_PawnExpectations.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_PawnSkill.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_PawnStatScaled.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_Quality.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_QualitySingleOffset.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_RitualSeatPresent.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_RitualTargetDefs.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_RoleChangeParticipants.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_RolePresentNotSubstituted.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_RoomStat.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_TargetThingStat.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeComp_WeaponUsed.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeEffectDef.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeEffectDefOf.cs	SKIP	DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeEffectWorker_AnimaTreeLinking.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeEffectWorker_Bestowing.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeEffectWorker_Blinding.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeEffectWorker_ChildBirth.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeEffectWorker_ConnectToTree.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeEffectWorker_Consumable.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeEffectWorker_Conversion.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeEffectWorker.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeEffectWorker_DanceParty.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeEffectWorker_Duel.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeEffectWorker_Execution.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeEffectWorker_FromQuality.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeEffectWorker_GiveMemoryAttended.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeEffectWorker_GiveMemoryBelievers.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeEffectWorker_GravshipLaunch.cs	NOTE	仪式质量→降落事故概率模式——可类比潜水器下潜风险仪式
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeEffectWorker_RemoveConsumableBuilding.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeEffectWorker_RoleChange.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeEffectWorker_Skylantern.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeEffectWorker_Speech.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomeEffectWorker_Trial.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualOutcomePossibility.cs	SKIP	纯数据类（仪式结局条目）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualPatternDef.cs	NOTE	layerWhitelist/Blacklist+minTechLevel+ignoreExtremeTemperatures——按层/科技/温度屏蔽仪式的挂载点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualPosition_AnimaLinkingSpot.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualPosition_BehindThingCenter.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualPosition_BesideThing.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualPosition_BesideTree.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualPosition_Cells.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualPosition_ClaimedBed.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualPosition_Copilot.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualPosition.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualPosition_DuelistStart.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualPosition_InCircle.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualPosition_InFrontThingCenter.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualPosition_Lectern.cs	SKIP	trivial：仅指定 ThingDef=Lectern
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualPosition_NearbyThing.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualPosition_OnInteractionCell.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualPosition_PreferredAdjacentCellCardinal.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualPosition_ThingDef.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualPosition_VerticalThingCenter.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualRoleAnimal.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualRoleAnimaLinker.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualRoleAssignments.cs	NOTE	PawnNotAssignableReason 极端温度拒绝参加仪式（622行）——海底4°C户外仪式的冲突点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualRoleBehavior.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualRoleBlindingTarget.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualRoleColonistConnectable.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualRoleColonist.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualRoleConvertee.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualRole.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualRoleForced.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualRoleIdeoRoleChanger.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualRole_Mother.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualRoleOrganizer.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualRolePrisoner.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualRolePrisonerOrSlave.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualRoleScarificationTarget.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualRoleTag.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualRoleWarden.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualSpectatorFilter.cs	SKIP	抽象基类（单方法签名）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualSpectatorFilter_NatureFocus.cs	SKIP	trivial 过滤器（11行）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualSpectatorFilter_WillWitnessExecution.cs	SKIP	trivial 过滤器（15行）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualStageAction_ClearTag.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualStageAction.cs	SKIP	抽象基类（空方法）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualStageAction_DropThing.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualStageAction_Message.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualStageAction_Multi.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualStageAction_ReleaseLanterns.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualStageAction_RemovePawnsFromLord.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualStageAction_SoundOneshotOnTarget.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualStageAction_StunPawns.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualStage_AnimaTreeLinking.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualStage.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualStage_InteractWithAnimal.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualStage_InteractWithPrisoner.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualStage_InteractWithRole.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualStage_OnTheThrone.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualStagePawnSecondFocus.cs	SKIP	纯数据 IExposable 类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualStageTickActionMaker.cs	SKIP	抽象基类（单方法签名）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualStage_WaitingForParticipants.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualTargetFilter_Altar.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualTargetFilter_AltarOrIdeogram.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualTargetFilter.cs	SKIP	抽象基类（方法签名）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualTargetFilterDef.cs	SKIP	纯数据 Def+Activator 工厂
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualTargetFilter_IdeoBuilding.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualTargetFilter_IdeoBuildingOrRitualSpot.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualTargetFilter_SelectedThing.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualTargetFilter_UsableThrone.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualTargetUseReport.cs	SKIP	简单 struct（bool+原因）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualUtility.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualVisualEffectComp.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualVisualEffect.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualVisualEffectDef.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RitualVisualEffectDefOf.cs	SKIP	DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RiverDef.cs	SKIP	纯数据 Def（河流分支/宽度参数）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RiverNode.cs	SKIP	纯数据节点类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoadDef.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoadDefGenStep_Bulldoze.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoadDefGenStep.cs	SKIP	抽象基类（单抽象方法）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoadDefGenStep_DryWithFallback.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoadDefGenStep_Place.cs	NOTE	道路生成桥接时 WaterOceanDeep→WaterOceanShallow 降级——海洋格通路/架桥的官方行为
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoadDefOf.cs	SKIP	DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoadPathingDef.cs	SKIP	空 Def 标记类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoadPathingDefOf.cs	SKIP	DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoadWorldLayerDef.cs	SKIP	纯数据 Def（渲染层 order+color）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoleEffect.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoleEffect_GiveThoughtOnTend.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoleEffect_HuntingRevengeChanceFactor.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoleEffect_NoMeleeWeapons.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoleEffect_NoRangedWeapons.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoleEffect_PawnStatFactor.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoleEffect_PawnStatModifier.cs	SKIP	抽象基类（8行字段定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoleEffect_PawnStatOffset.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoleEffect_ProductionQualityOffset.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoleRequirement.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoleRequirement_MinSkillAny.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoleRequirement_NotChild.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoleRequirement_SameIdeo.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoleRequirement_SupremeGender.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoofDefOf.cs	SKIP	DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_AbandonedCamp.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_AncientRacks.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_AnimalCorpses.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_Animals.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_Checkpoint_Corridor.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_ChemfuelStorage.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_ChildRoom.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_ComplexCorridor.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_ComputerRoom.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_ControlRoom.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_CorpseRoom.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_Corridor.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_CryptosleepCasket.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_CryptosleepCaskets.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_CryptosleepCaskets_Hostile.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_DeadBody.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_DeadBodyLabyrinth.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_DiningHall.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_EndlessPit.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_Etchings.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_FuelRoom.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_GrayBox.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_Harbinger.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_HermeticCrate.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_HighValueStoreRoom.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_Hydroponics.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_IndustrialStorage.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_InnerCourtyard.cs	NOTE	map.Biome.inVacuum?Space:PackedDirt 地形分支——海底Biome flag同款模式
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_InnerCourtyardRooms.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_Kitchen.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_LargeEmptyGrayBox.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_LargeGrayBox.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_LaunchPad.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_MechChargingRoom.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_NarrowHalls.cs	NOTE	同样用 Biome.inVacuum 分支露天区地形——海底遗迹内院模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_Obelisk.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_OperatingRoom.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_Orbital_Corridor.cs	NOTE	走廊墙挂 LifeSupportUnit——海底生命维持装置装饰位同款
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_Ramblings.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_ReactorCorpseRoom.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_Reactor.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_SecurityRoom_Reactor.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_SecurityRoom_Stockpile.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_ShelfedCorridor.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_SleepingFleshbeast.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_Stabilizer.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_StatueDeadlife.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_StatueTeleporter.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_Stockpile.cs	NOTE	PocketMap 遗迹入口按 stockpileType 生成战利品——沉船口袋地图范式
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_StockpileEntrance.cs	NOTE	AncientHatchExit 入口并设 PlayerStartSpot——下潜进入口袋地图的范式
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_StockpileHermeticCrateRoom.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_Terraformer.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_ToxicWaterRoom.cs	NOTE	房间内 IrregularLump 造水体+周边砾石滩涂——进水舱室直接模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_TransportRoom.cs	NOTE	气密子房间+Vacsuit战利品——海底版放潜水服的范本
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_Trees.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContents_WarehouseCorridor.cs	PASS	读过：仪式/角色/遗迹内容生成机制，类比海洋语境无交集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomContentsWorker.cs	NOTE	IsValidCellBase: exposesToVacuum地形只放有顶格——暴露海水地形的同款判定挂载点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomGenUtility.cs	NOTE	结构生成工具箱（贴边摆放/密封箱/休眠威胁集群/房间隔断）——沉船POI生成骨架
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomLayoutCellType.cs	SKIP	枚举（Empty/Floor/Wall/Door）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RoomLayoutGenerator.cs	NOTE	随机房间切分+走廊形状+自动门位的布局生成器——海底遗迹布局直接复用

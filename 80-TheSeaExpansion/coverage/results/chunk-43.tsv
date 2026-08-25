@@ -1,0 +1,203 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_ExitMapNearDutyTarget.cs	PASS	找职务点附近出口格，纯离场选址逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_ExitMapPanic.cs	PASS	恐慌离场，仅 canBash=true 配置
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_ExitMapRandom.cs	PASS	随机出口离场，无环境语义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_FightFiresNearConnectedTree.cs	PASS	连接树附近灭火，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_ForcedGoto.cs	PASS	强制走位到 mindState.forcedGotoPosition
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_Idle.cs	PASS	等待 N tick 的 Idle 作业
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_IdleError.cs	PASS	错误兜底等待作业
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_IdleForever.cs	PASS	倒地永久等待（含 Deathrest 处理）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_IdleWhileDespawned.cs	PASS	未生成时空闲作业
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_MoveToStandable.cs	PASS	征召时挪到可站立格
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_Orders.cs	PASS	征召时 Wait_Combat
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_PickupDroppedWeapon.cs	PASS	捡回掉落武器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_RunRandom.cs	PASS	随机狂奔游荡（恐慌动物用）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_UseStylingStationAutomatic.cs	PASS	自动造型台，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_WanderAnywhere.cs	PASS	随意游荡参数配置
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_Wander.cs	PASS	游荡基类：走-停交替、敌近过期等通用逻辑（含 pawn.Flying 特判）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_WanderCurrentRoom.cs	PASS	本房间游荡
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_WanderHerd.cs	PASS	兽群游荡，远离人类 15 格
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_WanderInPen.cs	PASS	栏圈内游荡
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_WanderInRoofedCellsInPen.cs	NOTE	GameCondition.pennedAnimalsSeekShelter 驱兽入棚机制，可借用作海洋灾害事件驱兽入舱
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_WanderMapEdge.cs	PASS	地图边缘游荡（离场前）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_WanderNearBreacher.cs	PASS	护送破墙者游荡
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_WanderNearConnectedTree.cs	PASS	连接树旁游荡
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_WanderNearDutyLocation.cs	PASS	职务点附近游荡
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_WanderNearFallbackLocation.cs	PASS	备用点附近游荡
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_WanderNearMaster.cs	PASS	主人附近游荡
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_WanderNearRoamingExit.cs	PASS	漫游出口附近游荡
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_WanderOwnRoom.cs	PASS	自己房间游荡
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobGiver_WanderRoped.cs	PASS	拴绳点旁游荡
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobIssueParams.cs	SKIP	纯数据结构（两字段结构体）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobQueue.cs	PASS	作业队列容器，无环境语义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobTag.cs	SKIP	纯枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/JobUtility.cs	PASS	错误恢复作业与报告文本工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/LocomotionUrgency.cs	SKIP	纯枚举定义（移动紧迫度）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalBreaker.cs	PASS	崩溃阈值/MTB 调度框架，无海洋语义（环境门控在各 Worker）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalBreakWorker_BingingDrug.cs	PASS	毒瘾狂欢崩溃权重
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalBreakWorker_Catatonic.cs	PASS	木僵崩溃加 Hediff
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalBreakWorker.cs	NOTE	基类含 layerWhitelist 按地图层过滤崩溃（:39-42），海底做成独立 layer 时可纯 Def 禁用不合语境的崩溃
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalBreakWorker_FireTerror.cs	PASS	惧火崩溃需靠近火
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalBreakWorker_HumanityBreak.cs	PASS	Anomaly 人性崩溃
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalBreakWorker_IdeoChange.cs	PASS	文化转变崩溃开关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalBreakWorker_RunWild.cs	NOTE	跑野崩溃硬编码检查 ToxicFallout/NoxiousHaze/季节温度（:13-21）——室外致死环境的官方屏蔽点，海水需 patch 同款处理
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalBreakWorker_WildDecree.cs	PASS	皇室诏令崩溃
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalFitGenerator.cs	PASS	精神失常（fit）MTB 发生器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_BabyCry.cs	PASS	婴儿哭泣特效与情绪扩散
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_BabyFit.cs	PASS	婴儿情绪状态基类（9.9 格喧哗）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_BabyGiggle.cs	PASS	婴儿笑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_BedroomTantrum.cs	PASS	卧室发脾气目标选择
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_Berserk.cs	PASS	狂暴：对一切敌对
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_BerserkWarcall.cs	PASS	战吼狂暴
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_Binging.cs	PASS	狂欢基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_BingingDrug.cs	PASS	选毒品狂欢
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_CocoonDisturbed.cs	PASS	茧被扰动敌对逻辑（虫族）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_CorpseObsession.cs	PASS	恋尸挖坟状态
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState.cs	PASS	精神状态基类（恢复计时/信件/社交模式）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_CubeSculpting.cs	PASS	Anomaly 魔方雕刻
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_EntityKiller.cs	PASS	杀实体状态
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_EntityLiberator.cs	PASS	释放实体状态
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_FireStartingSpree.cs	PASS	纵火狂欢
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_GiveUpExit.cs	PASS	放弃离场状态
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalStateHandler.cs	PASS	精神状态挂载/启动框架
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_HumanityBreak.cs	PASS	人性崩溃（自房间游荡+呓语）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_IdeoChange.cs	PASS	文化转变状态流程
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_InhumanRambling.cs	PASS	非人呓语
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_InsultingSpreeAll.cs	PASS	全员侮辱巡游目标轮换
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_InsultingSpree.cs	PASS	侮辱巡游基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_Jailbreaker.cs	PASS	劫囚诱导状态
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_Manhunter.cs	PASS	猎杀人状态敌对规则
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_MurderousRage.cs	PASS	杀人狂目标选择/换目标
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_PanicFlee.cs	PASS	恐慌逃跑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_PanicFleeFire.cs	PASS	惧火恐慌逃跑（看火计时恢复）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_Roaming.cs	PASS	漫游离场状态（边缘等待后出图）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_SadisticRageTantrum.cs	PASS	虐囚发脾气（打 7 下恢复）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_Slaughterer.cs	PASS	屠宰动物状态
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_SlaughterThing.cs	PASS	屠宰类状态基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_SlaveRebellion.cs	PASS	奴隶叛乱诱导状态
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_SocialFighting.cs	PASS	社交斗殴配对/恢复
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_TantrumAll.cs	PASS	见啥砸啥
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_Tantrum.cs	PASS	发脾气基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_TantrumRandom.cs	PASS	随机发脾气目标轮换
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_TargetedInsultingSpree.cs	PASS	定向侮辱
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_TargetedTantrum.cs	PASS	定向发脾气（≥300 价值目标）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_Terror.cs	PASS	恐惧状态（仅关社交）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalStateUtility.cs	PASS	精神状态工具（转游荡/判定崩溃）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_WanderConfused.cs	PASS	迷茫游荡
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_WanderOwnRoom.cs	PASS	回自己房间游荡
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_WanderPsychotic.cs	PASS	精神错乱游荡
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalState_WanderSad.cs	PASS	悲伤游荡
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalStateWorker_BedroomTantrum.cs	PASS	卧室发脾气前提检查
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalStateWorker_BingingDrug.cs	PASS	毒品狂欢前提检查
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalStateWorker_BingingFood.cs	PASS	食物狂欢前提检查（食物>10）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalStateWorker_CorpseObsession.cs	PASS	恋尸前提检查
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalStateWorker.cs	PASS	精神状态 Worker 基类（能力/囚犯/奴隶等门槛）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalStateWorker_EntityKiller.cs	PASS	杀实体前提
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalStateWorker_EntityLiberator.cs	PASS	释放实体前提
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalStateWorker_InsultingSpreeAll.cs	PASS	全员侮辱前提（≥2 候选）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalStateWorker_Jailbreaker.cs	PASS	劫囚前提
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalStateWorker_MurderousRage.cs	PASS	杀人狂前提
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalStateWorker_RitualBlinding.cs	PASS	仪式致盲前提
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalStateWorker_Roaming.cs	PASS	漫游前提（开局 5 天宽限+可达图边）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalStateWorker_SadisticRageTantrum.cs	PASS	虐囚前提
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalStateWorker_Slaughterer.cs	PASS	屠宰前提
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalStateWorker_SlaveRebellion.cs	PASS	奴隶叛乱前提
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalStateWorker_TantrumAll.cs	PASS	乱砸前提（≥2 目标）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalStateWorker_TargetedInsultingSpree.cs	PASS	定向侮辱前提
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalStateWorker_TargetedTantrum.cs	PASS	定向发脾气前提
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MentalStateWorker_WanderOwnRoom.cs	PASS	回房游荡前提（有室内床）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/MurderousRageMentalStateUtility.cs	PASS	杀人狂找目标工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/PathEndMode.cs	SKIP	纯枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/PathGrid.cs	NOTE	寻路成本公式：地形/建筑 pathCost+雪/(Odyssey)沙 buildup 附加+火邻罚（:120-206）；海底沉积物可抄 buildup 模式
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/PathingContext.cs	SKIP	Map+PathGrid 纯容器（21 行）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Pathing.cs	NOTE	PathGridDef.workerType 可挂自定义 PathGrid 子类、pawn.GetPathContext 选用上下文（:45-92）——水生寻路可纯扩展实现
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/PawnDuty.cs	PASS	职务数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Pawn_JobTracker.cs	PASS	作业启动/结束/抢占框架（通读公共 API），无环境语义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/PawnLocalAwareness.cs	PASS	动物局部感知（30 格+同房+LOS）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Pawn_MindState.cs	NOTE	lastSwamTick+SwimSoakingWetImmuneDuration=7500，游后 7500tick 免疫 SoakingWet 思想（:151,185,583）——海底常驻水体的湿透思想冲突点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/PawnPath.cs	PASS	路径节点容器/池
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Pawn_PathFollower.cs	NOTE	水格成本钩子 GetPawnCellBaseCostOverride（:737-744，pawn.WaterCellCost）+kindDef.moveSpeedFactorByTerrainTag（:756-766）——水生 pawn 水中移动加速的官方入口
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/PawnPathUtility.cs	PASS	路径阻挡建筑分析
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Pawn_Thinker.cs	PASS	思维树根节点获取
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/QueuedJob.cs	PASS	排队作业包装
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/RegionCostCalculator.cs	PASS	区域图 Dijkstra 成本计算（读关键部分），无环境语义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/RegionCostCalculatorWrapper.cs	PASS	区域成本缓存包装
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ReservationManager.cs	PASS	预定管理器（读类结构与 API），无环境语义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ReservationUtility.cs	PASS	预定扩展方法集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/RitualBlindingMentalStateUtility.cs	PASS	仪式致盲找目标
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/SlaughtererMentalStateUtility.cs	PASS	屠宰找动物
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/TantrumMentalStateUtility.cs	PASS	发脾气找可砸物
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/TargetIndex.cs	SKIP	纯枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/TargetScanFlags.cs	NOTE	LOSBlockableByGas 标志（:17）——视线可被环境介质阻挡的先例，浑浊海水/深海黑暗可类比（次要）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThingCountTracker.cs	PASS	在途搬运计数器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ActivityModeActive.cs	PASS	CompActivity 激活条件节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ActivityModePassive.cs	PASS	CompActivity 休眠条件节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ChancePerDay_Roam.cs	PASS	每日漫游概率节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ChancePerHour_Constant.cs	PASS	恒定 MTB 节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ChancePerHour.cs	PASS	每小时概率节点基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ChancePerHour_Forage.cs	PASS	觅食概率（Biome.forageability，海底群系为 0 则不觅食）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ChancePerHour_InsectDigChance.cs	PASS	昆虫挖掘概率（按房间大小）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ChancePerHour_Lovin.cs	PASS	滚床单概率
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ChancePerHour_Mate.cs	PASS	动物交配概率
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ChancePerHour_Nuzzle.cs	PASS	蹭人概率
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ConditionalAnimalShouldDig.cs	PASS	动物挖掘开关条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ConditionalAnimalShouldForage.cs	PASS	动物觅食开关条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ConditionalCanPickupOpportunisticWeapon.cs	PASS	捡枪条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ConditionalCapableOfWorkTag.cs	PASS	工作能力标签条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_Conditional.cs	PASS	条件节点基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ConditionalDeactivated.cs	PASS	机械族休眠条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ConditionalDoingJob.cs	PASS	正在做某作业条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ConditionalHasDuty.cs	PASS	有职务条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ConditionalHasFallbackLocation.cs	PASS	有备用点条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ConditionalHasTarget.cs	PASS	有敌目标条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ConditionalIntelligence.cs	PASS	智能等级条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ConditionalLowEnergy.cs	PASS	低电量条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ConditionalMentalStateClass.cs	PASS	精神状态类条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ConditionalMentalState.cs	PASS	指定精神状态条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ConditionalMentalStates.cs	PASS	多精神状态条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ConditionalNoConnectedThings.cs	PASS	无连接物条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ConditionalNoTarget.cs	PASS	无敌目标条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ConditionalPlayerMech.cs	PASS	玩家机械族条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ConditionalRecharging.cs	PASS	充电中条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ConditionalRequireCapacities.cs	PASS	能力需求条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ConditionalWorkMech.cs	PASS	工作机械族条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ConditionalWorkMode.cs	PASS	机械族工作模式条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ConditionalWorkModeTag.cs	PASS	机械族模式标签条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode.cs	PASS	ThinkNode 基类（树结构/优先级/深拷贝）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_FilterPriority.cs	PASS	优先级过滤节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_ForbidOutsideFlagRadius.cs	PASS	小队旗半径限制节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_JobGiver.cs	PASS	JobGiver 节点基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_Priority.cs	PASS	顺序优先级节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNodePriority.cs	PASS	优先级常量表
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_PrioritySorter.cs	PASS	优先级排序节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_QueuedJob.cs	PASS	队列作业节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_Random.cs	PASS	随机顺序节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_Subtree.cs	PASS	子树引用节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_SubtreesByTag.cs	PASS	按 insertTag 注入子树（Mod 注入思维树的标准口子）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkNode_Tagger.cs	PASS	打 JobTag 节点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkResult.cs	PASS	ThinkResult 结构
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ThinkTreeDutyHook.cs	SKIP	纯枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ToilCompleteMode.cs	SKIP	纯枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Toil.cs	PASS	Toil 基类（动作/条件列表）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ToilEffects.cs	PASS	音效/特效/进度条 Toil 扩展
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ToilFailConditions.cs	PASS	失败条件扩展集（目标失效/downed/禁忌等），无环境语义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/ToilJumpConditions.cs	PASS	跳转条件扩展集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Toils_Combat.cs	PASS	战斗 Toil（选 verb/找施放点/施放）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Toils_Effects.cs	PASS	播音效 Toil
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Toils_General.cs	PASS	通用 Toil（等待/开门/放物品栏等）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Toils_Goto.cs	PASS	移动类 Toil
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Toils_Haul.cs	PASS	搬运 Toil 集（读公共签名），无环境语义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Toils_Interact.cs	PASS	摧毁目标 Toil
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Toils_JobTransforms.cs	PASS	作业目标队列变换
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Toils_Jump.cs	PASS	Toil 跳转原语
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Toils_Recipe.cs	PASS	配方工作 Toil（读公共签名），无环境语义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Toils_ReserveAttackTarget.cs	PASS	攻击目标预定 Toil
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Toils_Reserve.cs	PASS	预定/释放 Toil 集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Toils_Rope.cs	PASS	拴绳 Toil
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Toils_StyleChange.cs	PASS	造型变更 Toil
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/TouchPathEndModeUtility.cs	PASS	触达模式/角触判定工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Verb_CastBase.cs	PASS	施放类 Verb 基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Verb_CastTargetEffectBiomutationLance.cs	PASS	生物质变异枪校验（种族/体型）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Verb_CastTargetEffect.cs	PASS	目标效果枪（触发 CompTargetEffect）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/Verb_CastTargetEffectLances.cs	PASS	精神类枪校验（心灵敏感度）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/WanderRoomUtility.cs	PASS	同房间游荡校验
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/Verse.AI/WanderUtility.cs	PASS	游荡根点工具（聚居点/兽群）

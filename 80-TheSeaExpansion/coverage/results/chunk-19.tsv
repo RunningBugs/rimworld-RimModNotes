@@ -1,0 +1,200 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_PreventInteractionSpotOverlap.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_ProximityDetector.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_ReportWorkSpeedPenalties.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_RequireNaturePsycaster.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_RitualFocus.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_RitualFocusNoArrow.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_RitualPosition.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_RitualSeat.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_ShipLandingBeacon.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_ShowCauseHediffAoE.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_ShowCompSendSignalOnPawnProximityRadius.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_ShowDeepResources.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_ShowExplosionRadius.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_ShowFacilitiesConnections.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_ShowFacilitiesRange.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_ShowInstrumentAoE.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_ShowPlantHarmRadius.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_ShowProjectileInterceptorRadius.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_ShowSpeakerConnections.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_ShowTradeBeaconRadius.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_ShowTurretRadius.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_SmokeCloudMaker.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_SpectatorPreview.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_ToxifierGenerator.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_TurretTop.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_Vent.cs	NOTE	通风口放置校验：两侧格须可通行+高亮两侧房间 → 类比海底舱室均衡阀模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_WatchArea.cs	PASS	读过：放置预览画圈/连线类，无海洋交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_WatermillGenerator.cs	NOTE	水轮机放置校验：Heavy地基+MovingFluid水格+水域互斥 → 水中流体建筑直接模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_WindTurbine.cs	NOTE	风力涡轮遮挡区预览：海底无风需禁用或改造为洋流涡轮（冲突类）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlanetLayerDef.cs	NOTE	Odyssey行星层Def：事件/袭击/抵达方式等六类白名单+isSpace+raidPointsFactor → 海底层机制借用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlanetLayerDefOf.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlanetLayerSettings.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlanetLayerSettingsDef.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlanetLayerSettingsDefOf.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlantBiomeRecord.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Plant_Boomshroom.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Plant.cs	NOTE	植物环境致死框架：真空每tick伤害+缺光枯死+见光死 → 海水杀陆生植物整套可借用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlantDestructionMode.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlantFallColors.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlantLifeStage.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlantPosIndices.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlantProperties.cs	NOTE	植物字段金库：destroyedByFlooding/vacuumResistant/mustBePermanentDarknessToSow/growMinGlow等
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Plant_Psilocap.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlantPurpose.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlantToGrowSettableUtility.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlantUtility.cs	NOTE	种植校验链+光/温/肥生长系数公式 → 海底作物数值模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlayCategory.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlayerItemAccessibilityUtility.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlayerKnowledgeDatabase.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlayerPawnsArriveMethod.cs	NOTE	抵达方式枚举仅Standing/DropPods/Gravship → 海底新抵达方式需扩展
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlayerPawnsArriveMethodExtension.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlayerPawnsDisplayOrderUtility.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaySettings.cs	NOTE	真空覆盖层开关仅在Biome.inVacuum时显示 → 海水覆盖层UI挂载点+inVacuum环境标记
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PocketMapExit.cs	NOTE	口袋地图出口MapPortal：入口双向绑定+查看入口Gizmo → 海底基地与海面舱门可复用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PodContentsType.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Policy.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pollution.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PopAdaptationEvent.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PortalContainerProxy.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PortraitsCache.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PossessionThingDefCountClass.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PowerBeam.cs	PASS	读过：电力网络建网/注册/走线绘制，与水无交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PowerConnectionMaker.cs	PASS	读过：电力网络建网/注册/走线绘制，与水无交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PowerNet.cs	PASS	读过：电力网络建网/注册/走线绘制，与水无交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PowerNetGraphics.cs	PASS	读过：电力网络建网/注册/走线绘制，与水无交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PowerNetGrid.cs	PASS	读过：电力网络建网/注册/走线绘制，与水无交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PowerNetMaker.cs	PASS	读过：电力网络建网/注册/走线绘制，与水无交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PowerNetManager.cs	PASS	读过：电力网络建网/注册/走线绘制，与水无交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PowerOverlayMats.cs	PASS	读过：电力网络建网/注册/走线绘制，与水无交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreCastAction.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Precept_Animal.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Precept_Apparel.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptApparelRequirement.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Precept_Building.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptComp_Apparel.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptComp_Apparel_Desired.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptComp_Apparel_DesiredStrong.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptComp_BedThought.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptComp.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptComp_DevelopmentPoints.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptComp_GoodwillSituation.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptComp_KnowsMemoryThought.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptComp_MentalBreak.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptComp_SelfTookMemoryThought.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptComp_SituationalThought.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptComp_Thought.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptComp_UnwillingToDo_Chance.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptComp_UnwillingToDo.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptComp_UnwillingToDo_Gendered.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptComp_UnwillingToDo_WithDef.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Precept.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptDef.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptDefOf.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Precept_GravshipLaunch.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptImpact.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptMaker.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Precept_Relic.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptRequirement_Altar.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptRequirement.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Precept_Ritual.cs	NOTE	ignoreExtremeTemperatures字段 → 海底自定义仪式需设置以绕过低温阻挡
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Precept_RitualSeat.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Precept_Role.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Precept_RoleMulti.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Precept_RoleSingle.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptsWithNoneChance.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptThingChanceClass.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptThingChance.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Precept_ThingDef.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptThingPair.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Precept_ThingStyle.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Precept_Weapon.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptWorker_Animal.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptWorker_Apparel.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptWorker_Building.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptWorker.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptWorker_Relic.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PreceptWorker_RitualSeat.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Precept_Xenotype.cs	PASS	读过：Ideology信条机制（服装/思想/角色/圣物），无环境交互
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PredatorThreat.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PrefabDef.cs	NOTE	预制件Def：Thing/地形/子预制件列表 → 海底沉船遗迹盖章数据
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PrefabDefOf.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PrefabParms.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PrefabTerrainData.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PrefabThingData.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PrefabUtility.cs	NOTE	SpawnPrefab支持阵营/概率/蓝图/HP/品质+CreatePrefab反向生成 → 海底遗迹生成工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PregnancyApproach.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PregnancyUtility.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PrepareCaravanGatherState.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PriceType.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PriceTypeUtlity.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PriceUtility.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PrisonBreakUtility.cs	NOTE	Biome.inVacuum时禁止越狱 → biome级环境标记的连带玩法影响范例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PrisonerInteractionModeDef.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PrisonerInteractionModeDefOf.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PrisonerWillingToJoinQuestUtility.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Projectile_DoomsdayRocket.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Projectile_Liquid.cs	NOTE	液体弹药命中铺filth/按概率改地形 → 喷水排污武器与地形改造弹参考
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Psycast.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsycastUtility.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicDroneLevel.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicDroneLevelUtility.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicEntropyGizmo.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicEntropySeverity.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicRitualDef_BloodRain.cs	PASS	读过：Anomaly灵能仪式Toil装配，无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicRitualDef_Brainwipe.cs	PASS	读过：Anomaly灵能仪式Toil装配，无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicRitualDef_Chronophagy.cs	PASS	读过：Anomaly灵能仪式Toil装配，无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicRitualDef.cs	PASS	读过：Anomaly灵能仪式Toil装配，无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicRitualDef_ImbueDeathRefusal.cs	PASS	读过：Anomaly灵能仪式Toil装配，无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicRitualDef_InvocationCircle.cs	PASS	读过：Anomaly灵能仪式Toil装配，无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicRitualDef_NeurosisPulse.cs	PASS	读过：Anomaly灵能仪式Toil装配，无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicRitualDefOf.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicRitualDef_Philophagy.cs	PASS	读过：Anomaly灵能仪式Toil装配，无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicRitualDef_PleasurePulse.cs	PASS	读过：Anomaly灵能仪式Toil装配，无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicRitualDef_Psychophagy.cs	PASS	读过：Anomaly灵能仪式Toil装配，无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicRitualDef_SkipAbduction.cs	PASS	读过：Anomaly灵能仪式Toil装配，无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicRitualDef_SkipAbductionPlayer.cs	PASS	读过：Anomaly灵能仪式Toil装配，无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicRitualDef_SummonAnimals.cs	PASS	读过：Anomaly灵能仪式Toil装配，无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicRitualDef_SummonFleshbeasts.cs	PASS	读过：Anomaly灵能仪式Toil装配，无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicRitualDef_SummonFleshbeastsPlayer.cs	PASS	读过：Anomaly灵能仪式Toil装配，无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicRitualDef_SummonPitGate.cs	PASS	读过：Anomaly灵能仪式Toil装配，无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicRitualDef_SummonShamblers.cs	PASS	读过：Anomaly灵能仪式Toil装配，无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicRitualDef_VoidProvocation.cs	PASS	读过：Anomaly灵能仪式Toil装配，无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicRitualRoleDef.cs	NOTE	ExtremeTemperature条件用SafeTemperatureAtCell挡仪式 → 海底4°C户外仪式冲突点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicRitualRoleDef_DeathRefusalTarget.cs	PASS	读过：Anomaly灵能仪式Toil装配，无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicRitualRoleDefOf.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PsychicRitualUtility.cs	PASS	读过：Anomaly灵能仪式Toil装配，无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Quadrum.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuadrumUtility.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QualityCategory.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QualityFactor.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QualityGenerator.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QualityRange.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QualityUtility.cs	PASS	读过，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Quest.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestEndOutcome.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestGiverTag.cs	SKIP	纯数据/枚举/DefOf定义，已扫过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestManager.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPartActivable.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_AddContentsToShuttle.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_AddGiverQuest.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_AddHediff.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_AddMemoryThought.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_AddQuest.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_AddQuest_RefugeeBetrayal.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_AddQuestRefugeeDelayedReward.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Alert.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_AllowDecreesForLodger.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_AssaultColony.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_AssaultThings.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_AssignMechToMechanitor.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_BegForItems.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_BestowingCeremony.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Bestowing_TargetChangedTitle.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_BetrayalOffer.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_BetrayMTB.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_BiocodeWeapons.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_BossgroupArrives.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Bossgroup.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_CameraJump.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPartCanDisable.cs	PASS	读过：任务信号/quest part编排机制，与海洋无关

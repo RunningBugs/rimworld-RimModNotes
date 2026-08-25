@@ -1,0 +1,9 @@
+DelaunatorSharp	SKIP	第三方 Delaunay 三角剖分数学库，非玩法机制
+Gilzoide.ManagedJobs	SKIP	Unity Job System 包装库，非玩法机制
+Ionic.Crc	SKIP	CRC 校验库，非玩法机制
+Ionic.Zlib	SKIP	压缩算法库，非玩法机制
+KTrie	SKIP	Trie 数据结构库，非玩法机制
+System.Collections.Generic	SKIP	集合 shim，非玩法机制
+Unity.Collections	SKIP	Unity 集合库 shim，非玩法机制
+Verse.Steam	SKIP	Steam SDK 对接层，非玩法机制
+Properties	SKIP	程序集元数据

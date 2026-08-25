@@ -1,0 +1,200 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobGiver_TakeCombatEnhancingDrug.cs	PASS	战斗兴奋剂 AI：库存找药+危险判定，与环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobGiver_TakeCountToInventory.cs	PASS	按数量取物入库存的通用 AI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobGiver_TakeDrugsForDrugPolicy.cs	PASS	按药物政策服药 AI，含从动物库存取药，无环境耦合
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobGiver_TakeForInventoryStock.cs	PASS	库存补足 AI，定时器+最近可达物品
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobGiver_TakeWoundedGuest.cs	PASS	绑走倒地客人 AI，依赖 TryFindBestExitSpot
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobGiver_Tantrum.cs	PASS	发脾气拆目标 AI，无环境特判
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobGiver_UnloadMyLordCarriers.cs	PASS	卸载 lord 搬运者库存 AI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobGiver_UnloadYourInventory.cs	PASS	清空自身库存 AI，一行转发
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobGiver_UnnaturalCorpseAttack.cs	PASS	Anomaly 尸体追猎缠身者 AI，CanReach 判定
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobGiver_UnnaturalCorpseIdle.cs	PASS	尸体目标死亡后待机 300tick
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobGiver_UnnaturalCorpseSkipBackup.cs	PASS	尸体瞬移后备选格逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobGiver_UnnaturalCorpseSkip.cs	PASS	尸体瞬移接近目标 AI，Standable/无门无栅栏校验
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobGiver_UnnaturalCorpseTowardVictimDirection.cs	PASS	尸体朝目标方向移动 10 格
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobGiver_UnnaturalCorpseUnstuck.cs	PASS	尸体卡死自救瞬移
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobGiver_WanderColony.cs	PASS	殖民地闲逛，参数化（半径7），校验在 Verse 侧基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobGiver_WanderControlGroupTarget.cs	PASS	机械体围绕控制组目标闲逛
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobGiver_WanderHive.cs	PASS	虫巢闲逛，围绕巢穴
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobGiver_WanderInGatheringArea.cs	PASS	集会区闲逛，allowUnroofed 参数
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobGiver_WanderOverseer.cs	PASS	机械体跟随监管者闲逛
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobGiver_Work.cs	PASS	工作分配主循环，scanner 优先级扫描，无环境逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobInBedUtility.cs	PASS	床上工作工具（保持躺卧/是否已在床位）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoinStatus.cs	SKIP	纯枚举（Undefined/JoinAsColonist/JoinAsSlave）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyCategory.cs	SKIP	纯枚举（娱乐档位）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyGiver_BuildSnowman.cs	PASS	堆雪人依赖 snowGrid 雪深，海底无雪自动失效
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyGiver.cs	NOTE	娱乐基类：GetSearchSet 统一用 VacuumConcernTo 剔除真空中娱乐目标——海水同型谓词挂钩点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyGiverDef.cs	SKIP	纯 Def 数据类（giverClass/unroofedOnly/requiresEnjoyOutdoors 等字段）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyGiverDefOf.cs	SKIP	DefOf（Play_Chess/Play_Poker）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyGiver_GoForWalk.cs	PASS	散步娱乐，走 EnjoyableOutsideNow 总闸（已被 JoyUtility 条目覆盖）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyGiver_GoSwimming.cs	NOTE	Odyssey 游泳：室外<10°C 或 inVacuum 永不触发，SwimPathFinder 寻路——海底恒温自动屏蔽/潜水娱乐模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyGiver_Ingest.cs	NOTE	进食娱乐：目标物 VacuumConcernTo 检查（:93）——海水环境过滤挂钩点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyGiver_InPrivateRoom.cs	PASS	私室娱乐（冥想室/卧室），室内逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyGiver_InteractBuilding.cs	NOTE	交互建筑娱乐基类：CanInteractWith 含 VacuumConcernTo（:89）——海水环境过滤挂钩点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyGiver_InteractBuildingInteractionCell.cs	PASS	交互格站立校验子类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyGiver_InteractBuildingSitAdjacent.cs	PASS	邻座可坐校验子类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyGiver_Meditate.cs	PASS	冥想娱乐，转发 MeditationUtility
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyGiver_PlayBilliards.cs	PASS	台球：要求建筑四周可站
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyGiver_Read.cs	PASS	读书娱乐，BookUtility
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyGiver_Skygaze.cs	NOTE	观天：weather.preventSkygaze 与 UnnaturalDarkness 可禁用——深海低光屏蔽观天的现成开关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyGiver_SocialRelax.cs	NOTE	社交放松：聚集点/椅子/座位均查 VacuumConcernTo（:54,142,158,173）——海水环境过滤挂钩点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyGiver_TakeDrug.cs	PASS	嗑药娱乐，政策/特质驱动
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyGiver_ViewArt.cs	NOTE	赏艺术：VacuumConcernTo 检查（:53）——海水环境过滤挂钩点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyGiver_VisitGrave.cs	NOTE	扫墓：VacuumConcernTo 检查（:25）——海水环境过滤挂钩点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyGiver_VisitSickPawn.cs	PASS	探望病人，SickPawnVisitUtility
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyGiver_WatchBuilding.cs	NOTE	看电视类：继承 InteractBuilding 的 VacuumConcernTo 过滤（挂钩点同基类）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyKindDef.cs	SKIP	纯 Def 数据类（头衔娱乐限制）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyKindDefOf.cs	SKIP	DefOf（Meditative/Social/Gluttonous/Reading）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyTickFullJoyAction.cs	SKIP	纯枚举（娱乐满时动作）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyToleranceSet.cs	PASS	娱乐厌倦度数值，无环境耦合
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyTunings.cs	SKIP	纯常量类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JoyUtility.cs	NOTE	EnjoyableOutsideNow：雨/GameCondition/舒适温度/inVacuum+ConcernedByVacuum 总闸——海水致死环境复用此开关即屏蔽全部户外娱乐
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JumpUtility.cs	PASS	PawnFlyer 跳跃工具，落点 WalkableBy 校验
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/KeyBindingCategoryDefOf.cs	SKIP	DefOf（按键分类）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/KeyBindingDefOf.cs	SKIP	DefOf（快捷键表）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/KidnapAIUtility.cs	PASS	绑架目标搜索：要求 CanReachMapEdge（海底地图边缘语义需注意，此处仅登记）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/KidnappedPawnsTracker.cs	PASS	被绑 pawn 移交 WorldPawns，MTB30天招募
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/KidnapUtility.cs	PASS	IsKidnapped 扩展方法
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/KnowledgeAmount.cs	SKIP	纯枚举（教程知识量）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/KnowledgeCategoryDef.cs	SKIP	纯 Def 数据类（教程分类颜色/贴图）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/KnowledgeCategoryDefOf.cs	SKIP	DefOf（Anomaly 知识分类）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LabyrinthMapComponent.cs	NOTE	口袋地图生命周期：DestroyPocketMap + SkipUtility.SkipTo 传送回源图——沉船/海沟副本参考
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LandingOutcomeDef.cs	NOTE	降落结果 Def：weight+workerClass 框架——潜水器降落事故注册点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LandingOutcomeWorker.cs	NOTE	降落结果 worker 基类：标准信件格式化（GRAVSHIP/PILOT/COPILOT 参数）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LandingOutcomeWorker_GravNausea.cs	NOTE	降落事故示例：全体血肉 pawn 加 GravNausea hediff——可类比减压病
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LandingOutcomeWorker_MinorGravshipCrash.cs	NOTE	降落事故示例：半径 5.9~11.9 内建筑 Crush 25~30——可类比舱体撞击
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LandingOutcomeWorker_OverheatedGravEngine.cs	NOTE	降落事故示例：引擎冷却 +120k~240k tick
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LandingOutcomeWorker_ThrusterBreakdown.cs	NOTE	降落事故示例：随机 2~4 推进器 DoBreakdown——可类比螺旋桨/压载故障
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Landmark.cs	SKIP	纯数据类（地标 def/name/isComboLandmark 序列化）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LandmarkDef.cs	NOTE	Odyssey 世界地标 Def：mutator 校验/海岸朝向——海洋世界地标（海沟/海山）可挂同体系
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LandmarkDefOf.cs	SKIP	DefOf（Oasis/Lake/CoastalIsland 等 Odyssey 水系地标列表）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LargeBuildingCellFinder.cs	NOTE	大型建筑选址：IsWater 格直接 0 分（:205）——全水地形海底图上事件建筑选址会全灭，必须处理
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LargeBuildingSpawnParms.cs	SKIP	纯参数结构（选址约束参数）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LastPlayedVersion.cs	PASS	版本号文件读写
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LatestVersionGetter.cs	PASS	空 MonoBehaviour 占位
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LatitudeSection.cs	SKIP	纯枚举（纬度带）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LatitudeSectionUtility.cs	PASS	纬度带随 overallTemperature 的纯计算，海底恒温由别处覆盖
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LaunchInfo.cs	SKIP	纯数据类（引力船发射信息）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LavaEmergence.cs	NOTE	熔岩蔓延完整实现：洪泛扩张+poolSize 上限+QueueRemoveTerrain 定时消退+自然地形/地基限制——海水灌入事件直接模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LavaEmergenceImmediate.cs	NOTE	熔岩立即蔓延变体（poolSize 100~150）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LavaRockIncoming.cs	NOTE	Skyfaller 落点生成蔓延事件：forcePoolSize=r²×3——"坠落物砸穿舱壁引发涌水"模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LayerConnection.cs	NOTE	Odyssey 层间连接数据（tag/fuelCost/ZoomMode）——海面↔海底多层地图的数据载体参考
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LayoutDef.cs	NOTE	布局总 Def：房间权重/workerClass/shouldDamage/noRoof/各填充参数表——海底遗迹布局定义入口
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LayoutDefOf.cs	SKIP	DefOf（AncientComplex/SpaceRuins/Mechhive 等布局列表）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LayoutFillEdgesParms.cs	SKIP	纯参数类（边缘填充）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LayoutFillInteriorParms.cs	SKIP	纯参数类（内部填充）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LayoutParms.cs	SKIP	纯参数类（def+weight）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LayoutPartParms.cs	SKIP	纯参数类（RoomPartDef 引用）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LayoutPrefabParms.cs	SKIP	纯参数类（PrefabDef 引用）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LayoutRoom.cs	NOTE	布局房间：CellRect 集合+房内合法落点搜索 TryGetRandomCellInRoom——遗迹内容放置基础
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LayoutRoomDef.cs	NOTE	房间内容 Def：铺地/sketchResolver/RoomContentsWorker 三段填充/威胁点数曲线
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LayoutRoomDefOf.cs	SKIP	DefOf（走廊/反应堆房间等）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LayoutRoomParams.cs	SKIP	纯参数结构（sketch+room）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LayoutScatterParms.cs	SKIP	纯参数类（物品散布）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LayoutScatterTerrainParms.cs	SKIP	纯参数类（地形散布）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LayoutSketch.cs	NOTE	FlushLayoutToSketch：布局→墙/门/地板实体草图转换器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LayoutStructureSketch.cs	PASS	布局草图序列化容器，无逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LayoutThing.cs	SKIP	纯数据类（thing+offset+filth）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LayoutWallAttatchmentParms.cs	SKIP	纯参数类（墙体附着物）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LayoutWorker_AncientRuins.cs	NOTE	遗迹布局 worker：GenerateRandomLayout+木墙强制换钢铁+防爆门替换——海底遗迹生成模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LayoutWorker_AncientRuins_Reactor.cs	PASS	反应堆遗迹参数变体
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LayoutWorker_AncientRuins_Terraformer.cs	PASS	地形改造器遗迹参数变体
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LayoutWorker_Mechhive.cs	PASS	机械巢布局：20%门换防爆门
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LayoutWorker_SingleRoom.cs	PASS	单房间布局变体
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LearningCategory.cs	SKIP	纯枚举（学习档位）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LearningDesireDef.cs	SKIP	纯 Def 数据类（学习欲望）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LearningDesireDefOf.cs	SKIP	DefOf（Lessontaking/Workwatching/Reading）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LearningGiver.cs	PASS	学习 giver 基类（Biotech 门控+学习需求阈值）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LearningGiver_Floordrawing.cs	PASS	地板画：Home 区域内可画格搜索
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LearningGiver_Lessontaking.cs	PASS	上课：找教师+课桌
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LearningGiver_NatureRunning.cs	NOTE	儿童亲近自然：NatureRunningUtility 找自然兴趣点——海底室外致死，儿童 AI 目标校验待查（未验证）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LearningGiver_Radiotalking.cs	PASS	无线电聊天：找通讯台
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LearningGiver_Reading.cs	PASS	读书学习
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LearningGiver_Skydreaming.cs	NOTE	儿童白日梦：要求无屋顶室外格——海底全屋顶基地该学习欲望永不满足
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LearningGiver_Workwatching.cs	PASS	观看大人工作
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LearningReadout.cs	PASS	学习助手 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LearningUtility.cs	PASS	学习速率/黑板加成计算
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LeaveQuestPartUtility.cs	PASS	任务结束 pawn 离场/换派系工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LessonAutoActivator.cs	PASS	教程自动触发器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Lesson.cs	PASS	教程基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Lesson_Instruction.cs	PASS	教程指令 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Lesson_Note.cs	PASS	教程便签 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LetterDefOf.cs	SKIP	DefOf（信件类型）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LifeStageDef.cs	SKIP	纯 Def 数据类（生命阶段）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LifeStageDefOf.cs	SKIP	DefOf（HumanlikeBaby/Child/Adult）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LifeStageWorker.cs	PASS	生命阶段 worker 基类（一行能力刷新）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LifeStageWorker_HumanlikeAdult.cs	PASS	成年：换体型/补背景故事
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LifeStageWorker_HumanlikeChild.cs	PASS	成童：换体型/发信/意识形态
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LightningBoltMeshMaker.cs	PASS	闪电网格生成（渲染）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LightningBoltMeshPool.cs	PASS	闪电网格池（渲染）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LineMeshGenerator.cs	PASS	线条网格生成（渲染）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LiquidFuel.cs	PASS	液体燃料污渍：1500tick 自干——"会消失的 Filth"写法参考，海洋无直接对应
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ListerArtificialBuildingsForMeditation.cs	PASS	冥想建筑缓存
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ListerBuildingsRepairable.cs	PASS	待修建筑列表缓存
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ListerBuildingWithTagInProximity.cs	PASS	邻近带 tag 建筑缓存
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ListerBuldingOfDefInProximity.cs	PASS	邻近指定 def 建筑缓存
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ListerFilthInHomeArea.cs	PASS	Home 区污渍列表
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ListerHaulables.cs	PASS	可搬运物列表（增量重算）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ListerMergeables.cs	PASS	可合并堆叠列表
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Listing_ResourceReadout.cs	PASS	资源面板 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LoadTransportersJobUtility.cs	PASS	装运输舱 AI 工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LocationCandidate.cs	SKIP	纯数据结构（cell+score）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LogEntryDefOf.cs	SKIP	DefOf（MeleeAttack）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_AssaultColony.cs	NOTE	强攻状态机：绑架/偷窃子图+抢够即走触发器——海底袭击行为主体，科技筛选在 IncidentWorker 侧
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_AssaultThings.cs	PASS	攻击指定物列表 lord
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_AssistColony.cs	PASS	友军助战 lord：含危险温度撤离触发器（模式已在 TradeWithColony 条目覆盖）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_BegForItems.cs	PASS	乞讨 lord（Ideology），含危险温度撤离
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_BestowingCeremony.cs	PASS	授勋典礼：含中暑/低体温 0.35 严重度撤离触发器（同类环境撤离模式）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_BossgroupAssaultColony.cs	PASS	Boss 组强攻（Anomaly）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_ChimeraAssault.cs	PASS	奇美拉潜伏/攻击双模式 lord
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_CreepJoiner.cs	PASS	怪异加入者闲逛 lord
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_DefendAndExpandHive.cs	PASS	虫巢防守扩张 lord
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_DefendAttackedTraderCaravan.cs	PASS	护卫被袭商队 lord
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_DefendBase.cs	PASS	基地防守 lord（延时后转强攻）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_DefendCerebrexCore.cs	PASS	脑核防守 lord（单 toil）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_DefendFleshmassHeart.cs	PASS	血肉心防守 lord（单 toil）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_DevourerAssault.cs	PASS	吞噬者强攻（单 toil）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_EntitySwarm.cs	PASS	实体虫群行进基类（start→dest→离图）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_EscortPawn.cs	PASS	护送 pawn lord
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_ExitOnShuttle.cs	PASS	登穿梭机离图 lord
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_FleshbeastAssault.cs	PASS	血肉兽强攻（单 toil）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_FormAndSendCaravan.cs	PASS	组建远行队大状态机
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_GorehulkAssault.cs	PASS	血巨人强攻（单 toil）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_HateChant.cs	PASS	憎恨吟唱围攻（Anomaly）：站位用 RandomClosewalkCellNear+avoidGrid，海底若启用需确认站位可用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_HiveQueen.cs	PASS	虫后 lord（StructureThreatCluster 变体）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_Joinable_Concert.cs	PASS	音乐会聚会
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_Joinable_Gathering.cs	PASS	可加入聚会基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_Joinable_MarriageCeremony.cs	PASS	婚礼 lord
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_Joinable_Party.cs	PASS	派对 lord
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_Joinable_Speech.cs	PASS	演讲仪式 lord
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_Kidnap.cs	PASS	绑架 lord（掩体→无掩体两阶段）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_LoadAndEnterPortal.cs	PASS	进传送门 lord（MapPortal）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_LoadAndEnterTransporters.cs	PASS	进运输舱 lord
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_ManTurrets.cs	PASS	操作炮塔 lord
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_MechanoidDefendBase.cs	PASS	机械族守家基类：集群全灭判定+DefeatedMechCluster 心情
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_MechanoidsDefend.cs	PASS	机械族守点 lord
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_Metalhorror.cs	PASS	金属怪形休眠/激活切换
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_PartyDanceDrums.cs	PASS	击鼓派对仪式（Ideology）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_PrisonBreak.cs	PASS	越狱 lord
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_PsychicRitual.cs	PASS	心灵仪式 lord（转发 ritualToil）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_PsychicRitualRepeating.cs	PASS	循环心灵仪式（敌方），完成后转强攻
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_ReimplantXenogerm.cs	PASS	异种胚芽重植等待 lord
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_ReturnedCaravan.cs	PASS	远行队归来拴动物 lord
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_Ritual_ChildBirth.cs	PASS	分娩仪式变体
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_Ritual.cs	PASS	仪式 lord 基类（1314 行框架，读头部字段与属性部分；与环境无耦合）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_Ritual_Duel.cs	PASS	决斗仪式：移动/攻击节拍
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_Ritual_Mutilation.cs	PASS	残害仪式变体
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_SanguophageMeeting.cs	PASS	血族会面 lord：含中暑/低体温撤离触发器（同类模式）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_ShamblerAssault.cs	PASS	丧尸强攻（单 toil，爬行攻击特判）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_ShamblerSwarm.cs	PASS	丧尸虫群
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_Siege.cs	NOTE	围攻 lord：Travel→按 blueprintPoints 建炮兵→强攻——海底保留围攻类型的合理性待玩家决策
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_SightstealerAssault.cs	PASS	窃视者强攻（单 toil）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_SightstealerSwarm.cs	PASS	窃视者虫群
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_SitePawns.cs	PASS	站点 pawn 防守 lord
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_SlaveRebellion.cs	PASS	奴隶叛乱 lord（攻击/逃跑两模式）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_SleepThenAssaultColony.cs	PASS	睡眠唤醒强攻：DormancyWakeup/Clamor 触发——"深海沉睡威胁"模板（登记）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_SleepThenMechanoidsDefend.cs	PASS	睡眠机械族防守变体
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_StageThenAttack.cs	PASS	集结后强攻 lord
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_Steal.cs	PASS	偷窃 lord（掩体→无掩体）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_StructureThreatCluster.cs	PASS	建筑威胁集群 lord：睡眠→守点→猎杀三态
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_TradeWithColony.cs	NOTE	商队 lord：causesTraderCaravanExit GameCondition/异常天气/危险温度三类撤离触发器——海洋恶劣条件挂钩点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_Venerate.cs	PASS	敬拜圣物 lord

@@ -1,0 +1,200 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_VisitColony.cs	NOTE	访客lord状态机；危险温度触发器会让访客在4°C海底撤离，边缘离场假设需注意
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_VoidAwakeningDefendStructure.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_VoidAwakeningWander.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_VoluntarilyJoinable.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_WaitForDurationThenExit.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_WaitForEscort.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordJob_WanderNest.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_AssaultColonyBossgroup.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_AssaultColonyBreaching.cs	NOTE	破墙袭击AI（BreachingGrid穿墙路径）；耐压壳被破=进水的设计挂点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_AssaultColony.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_AssaultColonyPrisoners.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_AssaultColonySappers.cs	NOTE	工兵挖墙袭击AI；与破墙同属'壳体被穿透'设计挂点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_AssaultThings.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_BestowingCeremony_MoveInPlace.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_BestowingCeremony_Perform.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_BestowingCeremony_Wait.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_ChimeraAttack.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_ChimeraStalk.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_Concert.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToilData_AssaultColonyBreaching.cs	PASS	对应袭击toil的Scribe数据类，逻辑见NOTE条目
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToilData_AssaultColonySappers.cs	PASS	对应袭击toil的Scribe数据类，逻辑见NOTE条目
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToilData_DefendFleshmassHeart.cs	SKIP	LordToil纯Scribe数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToilData_EntitySwarm.cs	SKIP	LordToil纯Scribe数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToilData_Gathering.cs	SKIP	LordToil纯Scribe数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToilData_HateChant.cs	SKIP	LordToil纯Scribe数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToilData_HateChantGeneratePositions.cs	SKIP	LordToil纯Scribe数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToilData_HuntEnemies.cs	SKIP	LordToil纯Scribe数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToilData_MarriageCeremony.cs	SKIP	LordToil纯Scribe数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToilData_PartyDanceDrums.cs	SKIP	LordToil纯Scribe数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToilData_PsychicRitualParticipantGoto.cs	SKIP	LordToil纯Scribe数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToilData_ReimplantXenogerm.cs	SKIP	LordToil纯Scribe数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToilData_SanguophageMeeting.cs	SKIP	LordToil纯Scribe数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToilData_Siege.cs	PASS	对应袭击toil的Scribe数据类，逻辑见NOTE条目
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToilData_Speech.cs	SKIP	LordToil纯Scribe数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToilData_Stage.cs	SKIP	LordToil纯Scribe数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToilData_Venerate.cs	SKIP	LordToil纯Scribe数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_DefendAndExpandHive.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_DefendBase.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_DefendFleshmassHeart.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_DefendHiveAggressively.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_DefendTraderCaravan.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_DevourerAssault.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_DoOpportunisticTaskOrCover.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_EnterShuttleOrLeave.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_EntitySwarm.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_EscortPawn.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_ExitMapAndDefendSelf.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_ExitMapAndEscortCarriers.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_FleshbeastAssault.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_Gathering.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_GorehulkAssault.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_HateChant.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_HateChantGeneratePositions.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_HiveRelated.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_HiveRelatedData.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_HuntDownColonists.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_HuntEnemies.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_KidnapCover.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_LoadAndEnterPortal.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_LoadAndEnterTransporters.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_ManClosestTurrets.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_MarriageCeremony.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_MetalhorrorActive.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_MoveInBossgroup.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_NestAssault.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_PanicFlee.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_Party.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_PartyDanceDrums.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_PrepareCaravan_CollectAnimals.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_PrepareCaravan_GatherAnimals.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_PrepareCaravan_GatherDownedPawns.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_PrepareCaravan_GatherItems.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_PrepareCaravan_Leave.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_PrepareCaravan_Pause.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_PrepareCaravan_RopeAnimals.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_PrepareCaravan_Wait.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_PrisonerEscape.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_PsychicRitualParticipantGoto.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_ReimplantXenogerm.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_ReturnedCaravan_PenAnimals.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_Ritual.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_SanguophageMeeting.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_ShamblerAssault.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_ShamblerSwarm.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_Siege.cs	NOTE	围城AI：空投建材/迫击炮/补给，海底投送与水下迫击炮是冲突点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_SightstealerAssault.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_SightstealerSwarm.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_Sleep.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_SpawnHateChantersDelayed.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_Speech.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_Stage.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_StealCover.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_TakeWoundedGuest.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_TravelAndWaitForItems.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_Venerate.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_VoidAwakeningWander.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_Wait.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_WaitForItems.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_WanderClose.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_WanderNearby.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LordToil_WanderNest.cs	PASS	群体AI duty分发薄壳，与海洋无类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/LovePartnerRelationUtility.cs	PASS	婚姻/恋爱关系机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainButtonDef.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainButtonDefOf.cs	SKIP	纯DefOf/Def骨架类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainButtonsRoot.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainButtonWorker.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainButtonWorker_ToggleMechTab.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainButtonWorker_ToggleResearchTab.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainButtonWorker_ToggleTab.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainButtonWorker_ToggleWorld.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainMenuDrawer.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainTabsRoot.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainTabWindowAnchor.cs	SKIP	纯枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainTabWindow_Animals.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainTabWindow_Architect.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainTabWindow_Assign.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainTabWindow.cs	PASS	标签页窗口基类，纯UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainTabWindow_Factions.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainTabWindow_History.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainTabWindow_Ideos.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainTabWindow_Inspect.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainTabWindow_Mechs.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainTabWindow_Menu.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainTabWindow_PawnTable.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainTabWindow_Quests.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainTabWindow_Research.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainTabWindow_Schedule.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainTabWindowUtility.cs	PASS	pawn表格刷新通知工具，纯UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainTabWindow_Wildlife.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MainTabWindow_Work.cs	PASS	主界面UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MaintainableStage.cs	SKIP	纯枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ManhunterPackGenStepUtility.cs	NOTE	猎人兽群刷怪走AggressiveAnimalIncidentUtility按tile找动物；海洋tile只刷水生物的入口
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MannableUtility.cs	PASS	操作 manned 建筑查询，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MapDrawLayer_OrbitalDebris.cs	NOTE	视差碎片背景层（Map.OrbitalDebris驱动）；深海海洋雪/背景视觉层模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MapGenCavesUtility.cs	NOTE	洞穴隧洞生成算法，isRock谓词参数化，可复用为海沟/海洞
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MapGeneratorDefOf.cs	NOTE	全部地图生成器登记（含Odyssey的Space/SpacePocket）；海洋需自建MapGeneratorDef
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MapGenTuning.cs	PASS	海拔噪声调参常量，价值低
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MapGenUtility.cs	NOTE	BiomeDef水体地形字段/constantOutdoorTemperature/inVacuum+room.Vacuum=0/ConcernedByVacuum刷点避让；本片最核心文件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MapGizmoUtility.cs	PASS	地图gizmo绘制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MapInterface.cs	NOTE	Map级waterInfo/waterBodyTracker成员存在；mapTemperature每帧更新入口
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MapMeshFlagDef.cs	SKIP	纯DefOf/Def骨架类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MapMeshFlagDefOf.cs	NOTE	地图mesh脏标记位（Gas/Pollution/Sand）；动态水面渲染层需在此扩位
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MapNoiseUtility.cs	PASS	通用噪声工具，无直接海洋类比
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MapPortal.cs	NOTE	口袋地图传送门建筑（装载UI/信件/comp准入钩子）；下潜舱直接模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MapPortalProperties.cs	NOTE	MapPortal的def数据：pocketMapGenerator/exitDef/尺寸/信件/音效
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MarriageCeremonyUtility.cs	PASS	婚姻/恋爱关系机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MarriageNameChange.cs	SKIP	纯枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MarriageSpotUtility.cs	PASS	婚姻/恋爱关系机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MassUtility.cs	PASS	负重计算，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MayRequireAnomalyAttribute.cs	SKIP	DLC依赖标记属性定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MayRequireAnyOfAttribute.cs	SKIP	DLC依赖标记属性定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MayRequireAttribute.cs	SKIP	DLC依赖标记属性定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MayRequireBiotechAttribute.cs	SKIP	DLC依赖标记属性定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MayRequireIdeologyAttribute.cs	SKIP	DLC依赖标记属性定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MayRequireOdysseyAttribute.cs	SKIP	DLC依赖标记属性定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MayRequireRoyaltyAttribute.cs	SKIP	DLC依赖标记属性定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MeatSourceCategory.cs	SKIP	纯枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MechanitorBandwidthGizmo.cs	PASS	机械族/机械师机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MechanitorControlGroup.cs	PASS	机械族/机械师机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MechanitorControlGroupGizmo.cs	PASS	机械族/机械师机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MechCarrierGizmo.cs	PASS	机械族/机械师机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MechChargeCosts.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MechClusterGenerator.cs	PASS	机械族/机械师机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MechClusterSketch.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MechClusterUtility.cs	NOTE	机械集群落点避开厚顶/屋顶/室内；全密闭海底基地会排斥机械族空投（冲突）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MechhiveTransition.cs	PASS	机械族/机械师机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Mechlink.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MechPowerCellGizmo.cs	PASS	机械族/机械师机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MechRepairUtility.cs	PASS	机械族/机械师机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MechWeightClassDefOf.cs	SKIP	纯DefOf/Def骨架类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MechWorkModeDefOf.cs	SKIP	纯DefOf/Def骨架类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MedicalCareCategory.cs	SKIP	纯枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MedicalCareUtility.cs	PASS	医疗机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MedicalRecipesUtility.cs	PASS	医疗机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Medicine.cs	PASS	医疗机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MeditationFocusDef.cs	PASS	冥想焦点辅助类（SafeEnvironmentalConditions见MeditationUtility条目）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MeditationFocusDefOf.cs	SKIP	纯DefOf/Def骨架类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MeditationFocusOffsetPerBuilding.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MeditationFocusTypeAvailabilityCache.cs	PASS	冥想焦点辅助类（SafeEnvironmentalConditions见MeditationUtility条目）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MeditationSpotAndFocus.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MeditationUtility.cs	NOTE	SafeEnvironmentalConditions环境安全链含VacuumConcernTo；海水暴露检查的同型注入点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MemeCategory.cs	SKIP	纯枚举定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MemeDef.cs	PASS	意识形态模因Def，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MemeDefOf.cs	SKIP	纯DefOf/Def骨架类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MemeGroupDef.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MemeWeight.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MemoryThoughtHandler.cs	PASS	记忆思想容器，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MentalBreakDefOf.cs	SKIP	纯DefOf/Def骨架类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MentalStateDefOf.cs	SKIP	纯DefOf/Def骨架类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MeshUtility.cs	PASS	网格顶点工具，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MessageTypeDefOf.cs	SKIP	纯DefOf/Def骨架类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MetalbloodUtility.cs	PASS	Anomaly金属恐怖/金属地狱机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MetalHellTransition.cs	PASS	Anomaly金属恐怖/金属地狱机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MetalhorrorUtility.cs	PASS	Anomaly金属恐怖/金属地狱机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Mineable.cs	NOTE	可采矿建筑基类（mineableThing/yield/wasteable）；海底矿脉直接def配置可用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MineAIUtility.cs	PASS	采矿提示/采矿Job可达性，通用逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MineStrikeManager.cs	PASS	采矿提示/采矿Job可达性，通用逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MinifiedThing.cs	PASS	物品打包机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MinifiedTree.cs	PASS	物品打包机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/MinifyUtility.cs	PASS	物品打包机制，与海洋无关

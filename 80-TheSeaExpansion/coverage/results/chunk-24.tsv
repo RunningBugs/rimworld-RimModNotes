@@ -1,0 +1,200 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SignalAction_Letter.cs	PASS	信号动作：发信件，通用信号系统，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SignalAction_Message.cs	PASS	信号动作：发消息，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SignalAction_OpenCasket.cs	PASS	信号动作：开棺材（任务用），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SignalAction_OpenDoor.cs	PASS	信号动作：开门，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SignalAction_SoundOneShot.cs	SKIP	20行：信号触发播放音效，trivial
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SignalAction_StartWick.cs	PASS	信号动作：点导火索（古代燃料节点），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SignalArgs.cs	SKIP	纯数据结构：信号参数容器（已读头部确认无逻辑）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SignalArgsNames.cs	SKIP	纯常量类：信号参数名
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SignalArgsUtility.cs	PASS	信号参数转 LookTargets 工具，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Signal.cs	SKIP	纯数据结构：tag+args 的信号体
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SignalManager.cs	PASS	信号分发中心（每帧上限3000），通用系统，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SiteGenStepUtility.cs	PASS	据点地图生成时找出生点工具，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartDef.cs	NOTE	minFactionTechLevel 字段原生支持「工业科技以上派系才可拥有据点」；gravShipsCanLandOn、forceMutators 等
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartDefOf.cs	SKIP	DefOf 清单
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartWorker_AlphaThrumboSighting.cs	SKIP	13行：仅覆盖到达信件，trivial
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartWorker_AncientAltar.cs	PASS	古代祭坛据点部件，任务逻辑，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartWorker_AncientComplex.cs	SKIP	15行：仅威胁标签处理，trivial
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartWorker_ConditionCauser_ClimateAdjuster.cs	NOTE	气候调节器据点：CompCauseGameCondition_TemperatureOffset 范围温度偏移；海底恒温实现/冲突参考
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartWorker_ConditionCauser.cs	NOTE	「世界据点→范围游戏状态」绑定管线基类（RandomizeSettings+LinkWithSite+worldRange）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartWorker_ConditionCauser_PsychicDroner.cs	PASS	心灵 drones 据点，仅描述文本差异，海洋无特殊价值
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartWorker_ConditionCauser_PsychicSuppressor.cs	PASS	心灵抑制器据点，同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartWorker_ConditionCauser_SunBlocker.cs	NOTE	遮日器据点：IsAvailable 对黑暗/穴居模因玩家豁免——深海黑暗机制与豁免逻辑直接参考
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartWorker_ConditionCauser_WeatherController.cs	NOTE	天气控制器据点：CompCauseGameCondition_ForceWeather 强制天气；海底屏蔽天气的冲突类参考
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartWorker.cs	NOTE	据点部件基类：PostMapGenerate/Tick/PostDestroy（留 AbandonedSettlement）等钩子，海底站点部件继承点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartWorker_Manhunters.cs	NOTE	兽群据点：按威胁点+格子选动物（TryGetAnimalsKind）；水生动物刷取路径（过滤细节未验证）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartWorker_MechCluster.cs	PASS	机械集群据点，最低750威胁点，机制通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartWorker_Outpost.cs	PASS	前哨站据点：威胁点→战利品曲线，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartWorker_RaidSource.cs	NOTE	袭击源据点：MTB 周期对玩家殖民地发 RaidEnemy（点数×0.6，间隔≥90000tick），海底袭击来源模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartWorker_SleepingMechanoids.cs	PASS	休眠机械体据点，机制通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartWorker_Turrets.cs	PASS	炮塔据点：按威胁点算炮塔数（2–11），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartWorker_WorkSite.cs	NOTE	资源站点抽象基类：CanSpawnOn(tile)+LootThings(tile)+派系/戒律过滤，海底资源站模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartWorker_WorkSite_Farming.cs	NOTE	农场站点：按生态 allowFarmingCamps+季节温度过滤作物战利品，海底农场门控参考
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartWorker_WorkSite_Hunting.cs	NOTE	猎场站点：按格子 AnimalDensity 门控、战利品从生态 AllWildAnimals 皮革推导，水生生物战利品推导参考
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartWorker_WorkSite_Logging.cs	NOTE	伐木站点：按 TreeDensity 门控——海底应屏蔽，门控模式参考
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartWorker_WorkSite_Mining.cs	NOTE	矿场站点：按 hilliness 3–4 级门控，深海矿区门控参考
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SitePartWorker_WorshippedTerminal.cs	SKIP	20行：崇拜终端据点，任务逻辑 trivial
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SituationalThoughtHandler.cs	PASS	情境想法缓存/刷新框架（每100tick），具体黑暗想法在 ThoughtWorker（不在本片）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SketchBuildable.cs	NOTE	ForceTerrainAffordance：sketch 落格是水时自动垫 AncientBridge/AncientHeavyBridge 地基——水面生成遗迹的原生处理
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Sketch.cs	PASS	遗迹蓝图容器（已读类定义与核心字段），通用地图生成
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SketchEntity.cs	PASS	sketch 实体抽象基类，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SketchResolverDef.cs	SKIP	纯数据 Def：sketch 解析器包装
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SketchResolverDefOf.cs	NOTE	DefOf 但清单含 Odyssey 遗迹生成器（AncientHatch/Gravship/CerebrexCore/Mechhive*），海底遗迹入口参考
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SketchTerrain.cs	PASS	sketch 地形实体，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SketchThing.cs	PASS	sketch 物品实体，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SkillDef.cs	SKIP	纯数据 Def：技能定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SkillDefOf.cs	SKIP	DefOf：12 个技能，无独立 Fishing 技能（捕鱼归 Animals）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SkillGain.cs	SKIP	纯数据类：技能+经验量
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SkillNeed_BaseBonus.cs	PASS	技能加成曲线，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SkillNeed.cs	SKIP	抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SkillNeed_Curve.cs	PASS	技能曲线，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SkillNeed_Direct.cs	PASS	技能每级直接取值，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SkillRecord.cs	PASS	技能等级/经验记录（已读头部核心常量），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SkillTuning.cs	NOTE	XpPerTickFishing=0.025：捕鱼是原生工作类型，给技能经验的速率常量
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SkillUI.cs	PASS	技能面板 UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SkipUtility.cs	PASS	Anomaly 传送（skip）工具，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SkullspikeSighting.cs	SKIP	纯数据结构：骷髅桩目击记录
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Skyfaller.cs	NOTE	空投舱完整管线：HitRoof 砸穿屋顶（RoofCollapserImmediate）+撞击爆炸+弹片；海面→海底投送/砸穿气密壳漏水玩法嫁接点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SkyfallerDrawPosUtility.cs	PASS	空投舱绘制位置曲线，表现层
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Skyfaller_FlyingPawn.cs	PASS	飞行 pawn 降落动画，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SkyfallerMaker.cs	PASS	空投舱工厂，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SkyfallerShrapnelUtility.cs	PASS	弹片散布工具（前6/后30格定向），已读，机制随 Skyfaller 条目
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SkyfallerUtility.cs	PASS	评估空投是否会砸到殖民者，袭击 AI 用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SlaughterDesignatorUtility.cs	PASS	屠宰警告工具，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SlaveInteractionModeDef.cs	SKIP	纯数据 Def（8行）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SlaveInteractionModeDefOf.cs	SKIP	DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SlaveRebellionUtility.cs	PASS	奴隶叛乱 MTB 计算（已读头部常量与曲线），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SleepingMechanoidsSitePartUtility.cs	SKIP	11行：返回 randomValue 作种子，trivial
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SlotGroup.cs	PASS	存储区组（已读核心属性），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SmokepopBelt.cs	PASS	烟雾腰带：被炮塔弹擦过放 BlindSmoke 气体，机制通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SmoothableWallUtility.cs	PASS	磨光岩壁工具，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SmoothSurfaceDesignatorUtility.cs	PASS	磨光指令工具，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SocialCardUtility.cs	PASS	社交标签页 UI（已读头部），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SocialInteractionUtility.cs	PASS	社交互动工具（已读头部），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SocialProperness.cs	PASS	社交得体性判断（监狱房间），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SolidBioDatabase.cs	PASS	固定背景故事库加载（已读核心流程），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SongDefOf.cs	SKIP	DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SoundDefOf.cs	NOTE	grep 确认含 Ambient_Space(219)、EmergeFromWater(337)、Interact_CatchFish(706)：海底环境音/水声锚点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SoundParamSource_TimeOfDay.cs	PASS	按小时给音效供参，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpaceGenUtility.cs	NOTE	Odyssey 太空图生成：GenerateHole 把区域变 TerrainDefOf.Space+掀屋顶、边缘啃洞/内部挖洞——海床地图「海水空洞」生成的头号模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Spark.cs	PASS	火花弹丸（落地引火），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpawnedPawnParams.cs	SKIP	纯数据类（14行）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpawnLocationType.cs	SKIP	枚举（Anywhere/Indoors/Outdoors）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpawnRequest.cs	PASS	分批延迟生成请求，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterDefOf.cs	SKIP	DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_AdultOnlyApparel.cs	PASS	过滤器：成人服装，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_AllowAnomalyResearch.cs	SKIP	9行：Anomaly 研究书过滤器，trivial 子类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_AllowBookAnimals.cs	SKIP	9行：技能书过滤器 trivial 子类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_AllowBookArtistic.cs	SKIP	9行：同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_AllowBookConstruction.cs	SKIP	9行：同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_AllowBookCooking.cs	SKIP	9行：同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_AllowBookCrafting.cs	SKIP	9行：同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_AllowBookIntellectual.cs	SKIP	9行：同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_AllowBookMedicine.cs	SKIP	9行：同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_AllowBookMelee.cs	SKIP	9行：同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_AllowBookMining.cs	SKIP	9行：同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_AllowBookPlants.cs	SKIP	9行：同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_AllowBookShooting.cs	SKIP	9行：同上
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_AllowBookSkill.cs	PASS	技能书过滤器抽象基类，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_AllowBookSocial.cs	SKIP	9行：技能书过滤器 trivial 子类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_AllowFemales.cs	SKIP	11行：性别过滤器 trivial 子类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_AllowGender.cs	PASS	性别过滤器抽象基类，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_AllowMainResearch.cs	SKIP	9行：研究书过滤器 trivial 子类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_AllowMales.cs	SKIP	11行：性别过滤器 trivial 子类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_AllowResearch.cs	PASS	研究书过滤器抽象基类，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_BiocodedApparel.cs	PASS	过滤器：生化绑定服装，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_BiocodedWeapons.cs	PASS	过滤器：生化绑定武器，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_Burnable.cs	PASS	过滤器：可燃物，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_Cannibal.cs	PASS	过滤器：食人（意识形态），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_Carnivore.cs	PASS	过滤器：肉食（意识形态），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_ChildOnlyApparel.cs	PASS	过滤器：儿童服装，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_CorpsesColonist.cs	PASS	过滤器：殖民者尸体，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_CorpsesEnemy.cs	PASS	过滤器：敌人尸体，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_CorpsesFriendly.cs	PASS	过滤器：友方尸体，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_CorpsesLarge.cs	PASS	过滤器：大型尸体（体型≥0.75），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_CorpsesSlave.cs	PASS	过滤器：奴隶尸体，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_CorpsesStranger.cs	PASS	过滤器：陌生人尸体，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_CorpsesUnnatural.cs	SKIP	11行：非自然尸体过滤器，trivial
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_DeadmansApparel.cs	PASS	过滤器：死者衣物，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_Fresh.cs	PASS	过滤器：新鲜度（CompRottable），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_InsectMeat.cs	PASS	过滤器：虫肉（意识形态），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_NonBiocodedApparel.cs	PASS	过滤器：非绑定服装，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_NonBiocodedWeapons.cs	PASS	过滤器：非绑定武器，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_NonBurnable.cs	PASS	过滤器：不可燃，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_NonBurnableWeapons.cs	PASS	过滤器：不可燃武器，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_NonDeadmansApparel.cs	PASS	过滤器：非死者衣物，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_NonSmeltable.cs	PASS	过滤器：不可熔炼，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_NonSmeltableWeapons.cs	PASS	过滤器：不可熔炼武器，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_PlantFood.cs	PASS	过滤器：植物性食物，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_Rotten.cs	PASS	过滤器：腐烂物，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_Smeltable.cs	PASS	过滤器：可熔炼，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_Unfinished.cs	PASS	过滤器：半成品，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpecialThingFilterWorker_Vegetarian.cs	PASS	过滤器：素食（意识形态），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpectateRectSide.cs	SKIP	枚举：旁观方位
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpectatorCellFinder.cs	PASS	仪式观众站位查找（已读核心谓词），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SpouseRelationUtility.cs	PASS	配偶关系工具（已读头部常量），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageEndTrigger_AnyPawnDead.cs	PASS	仪式阶段触发器：角色死亡，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageEndTrigger.cs	SKIP	抽象基类（18行）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageEndTrigger_DuelEnded.cs	PASS	仪式触发器：决斗结束，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageEndTrigger_DurationPercentage.cs	PASS	仪式触发器：时长百分比，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageEndTrigger_Indefinite.cs	SKIP	13行：永不触发，trivial
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageEndTrigger_Instant.cs	SKIP	13行：立即触发，trivial
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageEndTrigger_MutilatedRole.cs	PASS	仪式触发器：残毁角色，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageEndTrigger_PawnDead.cs	PASS	仪式触发器：指定角色死亡，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageEndTrigger_PawnDeliveredOrNotValid.cs	PASS	仪式触发器：pawn 送达，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageEndTrigger_PawnDown.cs	PASS	仪式触发器：角色倒地，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageEndTrigger_PawnOnTargetCell.cs	PASS	仪式触发器：pawn 到目标格，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageEndTrigger_RoleArrivedAndSpectatorsOnSubstructure.cs	PASS	仪式触发器：Odyssey 重力船登船检查，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageEndTrigger_RoleArrivedOrInTargetBed.cs	SKIP	16行：仪式触发器 trivial 子类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageEndTrigger_RolesArrived.cs	SKIP	11行：仪式触发器 trivial 子类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageEndTrigger_RolesUnarmed.cs	PASS	仪式触发器：角色徒手，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageEndTrigger_RoleTagSet.cs	PASS	仪式触发器：角色标签，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageFailTrigger.cs	SKIP	抽象基类（24行）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageFailTrigger_NoPoweredLoudspeakers.cs	PASS	仪式失败：无通电扩音器，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageFailTrigger_NoThingPresent.cs	PASS	仪式失败：附近无指定物，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageFailTrigger_PawnAlive.cs	PASS	仪式失败：pawn 存活，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageFailTrigger_PawnAsleep.cs	PASS	仪式失败：pawn 睡着，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageFailTrigger_TargetNotLit.cs	NOTE	仪式失败：目标（火盆类）CompRefuelable 无燃料即失败——「需要光源/燃料维持」机制的现成触发器参考
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageFailTrigger_TargetPawnUnreachable.cs	PASS	仪式失败：目标 pawn 不可达，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageFailTrigger_TargetThingMissing.cs	PASS	仪式失败：目标物消失，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StageFailTrigger_TargetUnpowered.cs	PASS	仪式失败：目标未通电，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StaggerHandler.cs	PASS	pawn 踉跄处理器，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StartingPawnCount.cs	SKIP	抽象数据类（21行）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatCacheEntry.cs	SKIP	纯数据结构：属性缓存条目
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatCategoryDef.cs	SKIP	纯数据 Def（10行）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatCategoryDefOf.cs	SKIP	DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatDef.cs	SKIP	纯数据 Def 类：属性显示/格式化字段（已 grep 字段清单确认）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatDefOf.cs	NOTE	grep 确认：VacuumResistance(162，真空抗性=潜水抗压模板)、FishingSpeed(241)、FishingYield(244)、ComfyTemperatureMin/Max
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatDisplayOrder.cs	SKIP	纯常量类：属性显示顺序
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatDrawEntry.cs	PASS	属性面板条目绘制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatExtension.cs	PASS	GetStatValue 扩展方法，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatModifier.cs	SKIP	纯数据类：stat+value
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatModifierQuality.cs	SKIP	纯数据类：按品质取值
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_AddedBodyPartsMass.cs	PASS	StatPart：义体质量，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Age.cs	PASS	StatPart：年龄曲线乘子，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_AgeOffset.cs	PASS	StatPart：年龄曲线偏移，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_ArtificialBuildingsNearbyOffset.cs	PASS	StatPart：附近人造建筑冥想偏移，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_BedStat.cs	PASS	StatPart：床属性乘子，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Biocoded.cs	SKIP	17行：绑定则归零，trivial
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_BiosculptingSpeedFactor.cs	PASS	StatPart：生物塑舱速度，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_BiostatTotal.cs	SKIP	抽象基类（26行）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_BlindPsychicSensitivityOffset.cs	PASS	StatPart：盲目心灵敏感偏移，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_BodySize.cs	PASS	StatPart：体型乘子，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_ContentsBeauty.cs	PASS	StatPart：内容物美观，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_CorpseCasket.cs	PASS	StatPart：棺材占用偏移，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart.cs	SKIP	抽象基类（32行）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Curve.cs	SKIP	抽象基类（33行）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Deathresting.cs	PASS	StatPart：死眠乘子，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Difficulty_ButcherYield.cs	PASS	StatPart：屠宰产量难度系数，同 FishingYield 模式但本身非海洋
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Difficulty.cs	SKIP	已 [Obsolete] 空实现
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Difficulty_FishingYield.cs	NOTE	捕鱼产量乘难度系数 fishingYieldFactor——海底食物获取的难度挂钩原生存在
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Difficulty_MiningYield.cs	SKIP	13行空实现（TransformValue 无操作）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_EnvironmentalEffects.cs	NOTE	腐坏因子=未加顶+户外+地形 extraDeteriorationFactor+雨量；给海水地形设 extraDeteriorationFactor 即可让水中物品加速腐坏
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_FertilityByGenderAge.cs	PASS	StatPart：生育力年龄曲线，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_FertilityByHediffs.cs	PASS	StatPart：生育力 hediff 因子，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Food.cs	PASS	StatPart：食物相关，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_GearAndInventoryMass.cs	PASS	StatPart：装备质量，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_GearStatFactor.cs	PASS	StatPart：装备属性乘子框架，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_GearStatOffset.cs	PASS	StatPart：装备属性偏移框架，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Genes.cs	PASS	StatPart：基因包价值，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Glow.cs	NOTE	按 glowGrid 光照曲线缩放属性（工作速度等），含黑暗模因/基因豁免——深海低光照惩罚的原生挂点

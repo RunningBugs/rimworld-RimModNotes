@@ -1,0 +1,200 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_DeliverPawnToAltar.cs	PASS	抬 pawn 到祭坛（Ideology 仪式），纯搬运逻辑，无环境语义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_DeliverPawnToCell.cs	PASS	抬 pawn 到指定格（仪式用），纯搬运
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_DevourerDigest.cs	PASS	Anomaly 吞噬者消化等待 Job，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_DisassembleMech.cs	PASS	拆解机械族（Biotech），无环境检查
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_DismissTrader.cs	PASS	赶走商人，设 traderDismissed 标记
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_DropEquipment.cs	PASS	卸下手上装备，30tick
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_DyeHair.cs	PASS	染发（Ideology 造型台），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_EatAtCannibalPlatter.cs	PASS	食人聚餐仪式（Ideology），产血迹 filth，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_EjectFuel.cs	PASS	从 CompRefuelable 排出燃料，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_EmptyThingContainer.cs	PASS	倒空容器并存放到储存区，通用物流
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_EnslaveOrReduceWillPrisoner.cs	PASS	奴役/降低囚犯意志，纯人际
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_EnterBiosculpterPod.cs	PASS	进生物塑形舱（Ideology），无环境语义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_EnterBuilding.cs	PASS	通用 Building_Enterable 进入模式（TryAcceptPawn），与海无直接关系
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_EnterCryptosleepCasket.cs	PASS	进冬眠舱，标准 enterable 流程
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_EnterPortal.cs	NOTE	MapPortal 跨图传送（DeSpawn→他图 Spawn、非口袋图自动卸货、保持征召）——海面↔海底潜水钟/竖井交通的现成模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_EnterTransporter.cs	NOTE	运输舱/穿梭机装载（TransporterUtility.InitiateLoading、CompShuttle.IsAllowed）——潜艇/深潜载具可借用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Execute.cs	PASS	处决囚犯，纯人际
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_ExecuteEntity.cs	PASS	处决收容实体（Anomaly 收容平台），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_ExecuteGuiltyColonist.cs	PASS	处决罪犯殖民者，纯人际
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_ExecuteSlave.cs	PASS	处决奴隶（Ideology），纯人际
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_ExtinguishFiresNearby.cs	NOTE	巡逻灭火（pawn.natives.TryBeatFire）——海水区应无火、气密舱内灭火开箱即用（冲突类挂点）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_ExtinguishSelf.cs	NOTE	扑灭自身火焰（150tick 销毁 Fire）——水下自燃语义冲突点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_ExtractBioferrite.cs	PASS	从收容实体抽活铁（Anomaly），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_ExtractSkull.cs	PASS	尸体取颅（Ideology），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_ExtractTree.cs	PASS	挖树成 Minified（Royalty），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_FeedBaby.cs	PASS	喂婴儿抽象基类（找椅子坐下喂），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Feed.cs	PASS	给卧床者喂食，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_FertilizeOvum.cs	PASS	受精卵（Biotech），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_FillFermentingBarrel.cs	PASS	装发酵桶，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_FillIn.cs	SKIP	trivial：RemoveBuilding 子类，填弹坑/ PitBurrow，仅重写 FinishedRemoving
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_FishAnimal.cs	NOTE	动物自主捕鱼（FishingUtility.GetCatchesFor animalFishing:true + waterBodyTracker）——水生驯养动物模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Fish.cs	NOTE	Odyssey 钓鱼全机制：Zone_Fishing、FishingUtility 产出/负面事件、waterBodyTracker 鱼群消耗、FishingSpeed——海底食物生产核心挂点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_FixBrokenDownBuilding.cs	PASS	修理故障建筑（消耗零部件），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_FleeAndCower.cs	PASS	逃跑后蜷缩（SelfDefenseUtility.ShouldStartFleeing），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_FleeAndCowerShort.cs	SKIP	trivial：Flee 子类，仅把蜷缩时长改 30tick
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Flee.cs	NOTE	逃跑至地图边缘离场（exitMapGrid.IsExitCell/OnEdge）——海底图边缘离场语义需重定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Flick.cs	PASS	扳开关（CompFlickable），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Floordrawing.cs	PASS	儿童地板涂鸦学习，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_FoodDeliver.cs	PASS	给囚犯送饭，通用物流
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_FoodFeedPatient.cs	PASS	喂病人（含金属怪感染判定），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Forage.cs	NOTE	动物觅食：仅查 terrain.natural，产出 Map.Biome.foragedFood——海底 Biome 必须配 foragedFood
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_ForceTargetWear.cs	PASS	强制他人穿衣，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_GatherAnimalBodyResources.cs	PASS	挤奶/剪毛抽象基类（CompHasGatherableBodyResource），无地形检查，水生动物可用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_GetNeuralSupercharge.cs	PASS	神经超充（Ideology），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_GetReimplanted.cs	PASS	异种胚再植入（Biotech），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_GiveSpeech.cs	PASS	王座演讲，纯社交
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_GiveToPackAnimal.cs	PASS	给驮运动物装货，通用物流
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_GiveToPawn.cs	PASS	任务给予物品，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_GoForWalk.cs	NOTE	散步娱乐 FailOn(!JoyUtility.EnjoyableOutsideNow)——只查温度天气不查海水，海底需额外屏蔽（冲突类）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_GoSwimming.cs	NOTE	游泳娱乐：job.swimming 由 Terrain.IsWater 驱动、游泳清 Heatstroke、HappyToSwimOutsideOnMap 地图开关——海底图需重定义语义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_GotoAndStandSociallyActive.cs	PASS	就位站立社交，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_GotoPatrolDest.cs	PASS	巡逻到目的地，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Hack.cs	PASS	黑入 CompHackable（Odyssey 黑客人），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_HateChant.cs	PASS	仇吟（Horax 信徒），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_HaulCorpseToPublicPlace.cs	PASS	尸体执念搬运（精神崩溃），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_HaulToPortal.cs	NOTE	向 MapPortal 装货（EnterPortalUtility.FindThingToLoad）——潜水钟物流借用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_HaulToTransporter.cs	NOTE	向运输舱装货（LoadTransportersJobUtility）——潜艇物流借用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Hunt.cs	NOTE	狩猎 Job：5000tick 上限、0.95 射程、倒地猎杀——水生猎物通用，无地形假设
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Ignite.cs	NOTE	纵火（TryStartIgnite）——海水区火不可燃的冲突挂点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Ingest.cs	PASS	进食主 Job（找餐桌/咀嚼/FinalizeIngest），无环境语义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_InspectGravEngine.cs	PASS	检查引力引擎（31 行封装 Building_GravEngine.Inspect），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_InstallImplant.cs	PASS	给他人装植入体，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_InstallRelic.cs	PASS	安放圣物（Ideology），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Insult.cs	PASS	辱骂（精神崩溃），纯人际
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_InteractAnimal.cs	PASS	动物互动抽象基类（谈话+喂食），无地形检查，水生动物可用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_InteractThing.cs	PASS	CompInteractable 通用交互，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_InterrogatePrisoner.cs	PASS	审讯囚犯（Anomaly），纯人际
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_InvestigateMonolith.cs	PASS	调查虚空巨石（Anomaly），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Kidnap.cs	SKIP	trivial：TakeAndExitMap 子类，仅加"目标倒地/睡眠"失败条件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_LayDownAwake.cs	SKIP	trivial：LayDown 子类，仅改 CanSleep/CanRest/朝向
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_LayDown.cs	PASS	睡眠/卧床主 Job（认床/爬行限制），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_LayDownDeactivated.cs	SKIP	trivial：LayDown 子类（机械族停用姿态配置）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_LayDownDormant.cs	SKIP	trivial：LayDown 子类（休眠姿态配置）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_LayDownResting.cs	SKIP	trivial：LayDownAwake 子类（仰卧姿势）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_LayEgg.cs	PASS	产蛋（CompEggLayer/CompEggContainer），无环境检查
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Lessongiving.cs	PASS	授课（Biotech 课桌），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Lessontaking.cs	PASS	听课（Biotech），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_LinkPsylinkable.cs	PASS	灵能链接（Royalty），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Lovin.cs	PASS	亲热（怀孕判定等），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Maintain.cs	PASS	CompMaintainable 维护（Odyssey），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_ManTurret.cs	PASS	操作炮塔（装弹/加油），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_MarryAdjacentPawn.cs	PASS	结婚仪式，纯人际
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Mate.cs	PASS	动物交配，无环境检查
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_MechCharge.cs	PASS	机械族充电，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Meditate.cs	NOTE	冥想主 Job（PsyfocusGainPerTick 专注物加成）；配合 Reign 可见 SafeEnvironmentalConditions 安全检查钩子——海水致死区应对接此钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_MergeIntoGaumakerPod.cs	PASS	树精母树荚合并（Ideology），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Milk.cs	SKIP	trivial：GatherAnimalBodyResources 子类（CompMilkable，400 工作量）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Mine.cs	NOTE	采矿：对 mineable 每击 80/40 伤害、MineStrikeManager——无大气检查，海底开矿开箱即用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_NatureRunning.cs	PASS	儿童自然奔跑学习（NatureRunningUtility），与海无直接关系
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_NociosphereDepart.cs	PASS	神识球离场（Anomaly），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Nuzzle.cs	PASS	动物亲昵互动，纯人际
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_OfferHelp.cs	PASS	救援后加入（JoinColonyBecauseRescuedBy），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Open.cs	PASS	开容器/墓（IOpenable），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_OperateDeepDrill.cs	NOTE	深钻：CompDeepDrill.CanDrillNow/DrillWorkDone——深海钻探直接可用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_OperateScanner.cs	PASS	扫描仪操作（CompScanner），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PaintBuilding.cs	PASS	建筑刷漆（Ideology），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PaintFloor.cs	PASS	地板刷漆（terrainGrid.SetTerrainColor），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PilotConsole.cs	NOTE	驾驶台触发 GravshipLaunch 仪式窗口——载具出发仪式化入口模板（潜艇离港可借鉴）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PlaceNoCostFrame.cs	PASS	免费框架放置（任务建筑），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PlantCut.cs	PASS	割除植物（PlantWork 子类），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PlantCut_Designated.cs	SKIP	trivial：PlantCut 子类，仅指定 CutPlant  designation
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PlantHarvest.cs	PASS	收获植物（PlantWork 子类），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PlantHarvest_Designated.cs	SKIP	trivial：PlantHarvest 子类，仅指定 HarvestPlant designation
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PlantSeed.cs	NOTE	CompPlantable 种子种植（PlantCells 限定格、CanEverPlantAt 不查地图温度）——海底农业走新植物 Def 即可
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PlantSow.cs	NOTE	播种：FailOn CanNowPlantAt/AdjacentSowBlocker——海底农业兼容，检查全在 Def 侧
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PlantWork.cs	PASS	植物工作抽象基类（收获/砍除产量结算），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PlayBilliards.cs	PASS	台球娱乐，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PlayGoldenCube.cs	PASS	金立方把玩（Anomaly），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PlayHoopstone.cs	SKIP	trivial：WatchBuilding 子类（掷石娱乐）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PlayHorseshoes.cs	SKIP	trivial：WatchBuilding 子类（掷马蹄铁娱乐）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PlayMusicalInstrument.cs	PASS	乐器演奏（SitFacingBuilding 子类），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PlayPoker.cs	SKIP	trivial：SitFacingBuilding 子类（扑克特效一行）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PredatorHunt.cs	NOTE	捕食者狩猎：被远程非目标击中会逃跑（StartFleeingBecauseOfPawnAction）——水生捕食者行为直接继承
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PrepareCaravan_CollectAnimals.cs	PASS	商队集合动物（RopeToDestination 子类），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PrepareCaravan_GatherAnimals.cs	PASS	商队聚拢动物（RopeToDestination 子类），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PrepareCaravan_GatherItems.cs	PASS	商队集货（351 行，读核心 120 行：transferables 匹配/驮兽装载），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PrepareSkylantern.cs	SKIP	trivial：GotoAndStandSociallyActive 子类（天灯节，仅加特效+拿货）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PrisonerBloodfeed.cs	PASS	血族吸血（Biotech），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PruneGauranlenTre.cs	PASS	修剪高岚树（Ideology），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_PutApparelOnOutfitStand.cs	PASS	服装上架（Odyssey 装备架），通用物流
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Radiotalking.cs	PASS	儿童通讯台学习，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Reading.cs	PASS	读书（299 行，读核心 100 行：找书/找桌/阅读计时），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_RecolorApparel.cs	PASS	服装染色（Ideology 造型台），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_RefuelAtomic.cs	PASS	原子燃料加注（Odyssey），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Refuel.cs	PASS	通用加注燃料（CompRefuelable），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Reign.cs	NOTE	王座统治冥想：FailOn MeditationUtility.SafeEnvironmentalConditions——原版"环境致死则不做静态活动"检查钩子，海水区应接入
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_RelaxAlone.cs	PASS	独自放松娱乐，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_ReleaseAnimalToWild.cs	NOTE	放生动物：找 TouchesMapEdge 的可站立格——海底边缘放生语义依赖水生移动实现
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_ReleaseEntity.cs	PASS	释放收容实体（Anomaly），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_ReleaseMechs.cs	PASS	机械携带舱释放（Biotech），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Reload.cs	PASS	可装填装备装弹，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_RemoveApparel.cs	PASS	脱衣服（可接搬运），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_RemoveBuilding.cs	PASS	拆建筑抽象基类，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_RemoveFloor.cs	PASS	拆地板（terrainGrid.RemoveTopLayer），海床地形编辑兼容
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_RemoveFoundation.cs	PASS	拆地基（terrainGrid.RemoveFoundation，Odyssey），海床地形编辑兼容
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_RemoveMechlink.cs	PASS	尸体取机械链接（Biotech），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_RemovePaintBuilding.cs	PASS	去除建筑漆，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_RemovePaintFloor.cs	PASS	去除地板漆，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_RemoveRoof.cs	PASS	拆屋顶（roofGrid.SetRoof+塌落检测）——海底图若以"露天=海水"实现则语义需注意，但 Job 本身无环境逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Repair.cs	PASS	修理建筑（逐 tick 回 HP），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_RepairMech.cs	PASS	修机械族（耗机械族电量），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_RepairMechRemote.cs	SKIP	trivial：RepairMech 子类（Remote=true+距离检查）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Replant.cs	PASS	树移栽（MinifiedTree→种植盆），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Research.cs	PASS	研究台研究，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Resurrect.cs	PASS	复活血清使用，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_ResurrectMech.cs	PASS	机械复活能力委托（35 行转发 ability job），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_ReturnedCaravan_PenAnimals.cs	PASS	商队返回动物入栏（RopeToDestination 子类），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_ReturnToGauranlenTree.cs	PASS	树精回归母树（Ideology），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_RevenantAttack.cs	PASS	亡魂攻击催眠（Anomaly，175 行读 80），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_RevenantEscape.cs	PASS	亡魂逃逸留痕（Anomaly），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_RevenantSleep.cs	PASS	亡魂休眠扫描（Anomaly），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_RevenantWander.cs	PASS	亡魂游荡（Anomaly），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Romance.cs	PASS	浪漫追求，纯人际
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_RopeRoamerToHitchingPost.cs	PASS	游荡动物拴桩（RopeToDestination 子类），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_RopeRoamerToUnenclosedPen.cs	SKIP	trivial：RopeToPen 子类（仅改到达判定）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_RopeToDestination.cs	PASS	牵动物抽象基类（154 行读 80：牵引/顺路多牵），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_RopeToPen.cs	PASS	牵动物入栏，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Sacrifice.cs	PASS	献祭仪式（Ideology），纯人际
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Scarify.cs	PASS	瘢痕仪式（Ideology），纯人际
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Seal.cs	NOTE	密封 CompSealable（Anomaly 封井口用）——通用"密封交互"模式，气闸/舱盖可借鉴 CompSealable
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_SelfDetonate.cs	PASS	自爆（燃芯 overlay 后 Kill），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_SelfShutdown.cs	PASS	机械族自关机，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Shear.cs	SKIP	trivial：GatherAnimalBodyResources 子类（CompShearable，1700 工作量）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_ShieldMech.cs	PASS	机械盾卫能力（投射 MechShield），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_SingleInteraction.cs	PASS	单次社交互动，纯人际
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_SitFacingBuilding.cs	PASS	面对建筑坐下娱乐基类，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Skydreaming.cs	NOTE	儿童白日梦：FailOn(Roofed)——海底无天空，需屏蔽/替换（冲突类）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Skygaze.cs	NOTE	观天娱乐：FailOn(Roofed/preventSkygaze/!EnjoyableOutsideNow)、AggregateSkyGazeJoyGainFactor、太空层特判——海底需屏蔽或改"观海"（冲突类）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Slaughter.cs	PASS	屠宰动物（DoExecutionByCut），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_SmoothFloor.cs	PASS	打磨地板（SetTerrain smoothedTerrain），海床地形编辑兼容
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_SmoothWall.cs	PASS	打磨岩壁（SmoothableWallUtility），海底岩壁兼容
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_SocialRelax.cs	PASS	聚集点社交放松，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Spectate.cs	PASS	观看活动，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_StandAndBeSociallyActive.cs	PASS	站立社交（FindClosePawn 24 格径向），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Strip.cs	PASS	剥装备，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_StudyInteract.cs	PASS	实体研究互动（Anomaly，171 行读 80），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_StudyItem.cs	PASS	物品研究（CompAnalyzable），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_SuppressSlave.cs	PASS	镇压奴隶（Ideology），纯人际
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_TakeAndEnterPortal.cs	NOTE	扛物/扛倒地者进传送门（EnterPortal 子类）——潜水钟救援运输借用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_TakeAndExitMap.cs	NOTE	带物从地图边缘离场（exitMapGrid.IsExitCell→ExitMap 组商队）——海底图离场路径需封或改接载具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_TakeBeerOutOfFermentingBarrel.cs	PASS	取啤酒，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_TakeBioferriteOutOfHarvester.cs	PASS	取活铁（Anomaly），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_TakeCountToInventory.cs	PASS	取定量物品入背包，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_TakeFromOtherInventory.cs	PASS	从他人背包取物，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_TakeToBed.cs	PASS	送上床/救援（189 行读 80），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_TalkCreepJoiner.cs	PASS	与怪异加入者交谈（Anomaly），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Tame.cs	PASS	驯化动物（InteractAnimal 子类+入栏判定），无地形检查，水生动物可用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_TendEntity.cs	PASS	治疗收容实体（125 行读 80），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_TendPatient.cs	PASS	治疗病人主 Job（207 行读 80：取药/路径模式），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_TradeWithPawn.cs	PASS	与人交易（开 Dialog_Trade），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Train.cs	PASS	训练动物（InteractAnimal 子类），无地形检查
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_TransferBetweenEntityHolders.cs	PASS	实体转移收容容器（Anomaly），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Uninstall.cs	SKIP	trivial：RemoveBuilding 子类（FinishedRemoving=Building.Uninstall）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_UnloadInventory.cs	PASS	卸他人背包入库存，通用物流
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_UnloadYourInventory.cs	PASS	卸自己背包入库存，通用物流
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_UnnaturalCorpseAttack.cs	PASS	非自然尸体催眠杀（Anomaly），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_UnnaturalCorpseSkip.cs	PASS	非自然尸体闪现（SkipUtility.SkipTo），与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_Unrope.cs	PASS	解缰绳，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_UseCommsConsole.cs	PASS	通讯台使用，与海无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/JobDriver_UseItem.cs	PASS	CompUsable 物品使用（准备+生效两段），与海无关

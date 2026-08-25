@@ -1,0 +1,200 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompCauseGameCondition_ForceWeather.cs	NOTE	建筑强制全图天气的 GameCondition 源；海洋可锁天气/做风暴
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompCauseGameCondition_PsychicEmanation.cs	PASS	心灵低语条件源，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompCauseGameCondition_PsychicSuppression.cs	PASS	心灵压制条件源，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompCauseGameCondition_TemperatureOffset.cs	NOTE	气温偏移条件(气候调节器)；海底恒温需在条件层屏蔽
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompCauseGameCondition_ToxicSpewer.cs	NOTE	毒气源+对 worldRange 内商队掉血；环境伤害波及旅行者的写法
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompCauseHediff_AoE.cs	NOTE	半径光环 hediff 模板(高压区/热泉区)，带供电门控
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompCauseHediff_Apparel.cs	NOTE	穿衣得绑定 hediff——潜水服/抗压甲标准做法
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompCerebexCore_Destroyed.cs	PASS	机巢核心被毁加好感，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompCerebrexCore.cs	PASS	机巢核心(稳定器/袭击MTB)，DLC 专属(大纲级阅读)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompChangeableProjectile.cs	PASS	迫击炮装弹设置，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompChimera.cs	PASS	奇美拉狂暴机制，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompCountdown.cs	SKIP	25行纯倒计时显示 comp
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompCreatesInfestations.cs	NOTE	钻探引发 infestation 的节流模式(7天冷却+10格互斥)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompDamageOnInterval.cs	PASS	按间隔自损+分阶段特效，通用工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompDarklightOverlay.cs	PASS	暗光灯火焰贴图叠加，纯视觉
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompDeathrestBindable.cs	PASS	死眠绑定建筑，DLC 专属(大纲级阅读)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompDeepDrill.cs	NOTE	深钻：deepResourceGrid 取矿+枯竭回落基底资源；海底采矿直接可用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompDeepScanner.cs	NOTE	深层扫描排除深水格(IsWater&&Impassable)——海底需可通行海床地形
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompDestroyAfterDelay.cs	SKIP	延迟自毁计时器，纯工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompDestroyAfterEffect.cs	SKIP	特效播完自毁，纯工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompDestroyHeart.cs	PASS	血肉心脏摧毁交互，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompDestroyNearbyPlantsOnSpawn.cs	PASS	生成时清周围植物，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompDevourer.cs	PASS	吞噬者消化机制，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompDisableUnnaturalCorpse.cs	PASS	异常尸体研究拆解，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompDisruptorFlare.cs	PASS	干扰闪光弹(心灵眩晕+显形)，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompDisruptorFlarePack.cs	SKIP	方法存根(NotImplementedException)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompDissolution.cs	NOTE	垃圾溶解：室外/淋雨加速、冻结停止——水下物品腐蚀判定参照
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompDissolutionEffect.cs	SKIP	抽象基类(两个虚方法)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompDissolutionEffect_Goodwill.cs	PASS	溶解降好感+报复任务，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompDissolutionEffect_Pollution.cs	NOTE	世界格污染：WaterCovered 格×waterTilePollutionFactor(水体稀释先例)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompDrawAdditionalGraphics.cs	SKIP	纯叠加贴图绘制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompDreadmeld.cs	PASS	血肉融合怪分裂生成，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompDrug.cs	PASS	药物成瘾/过量，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompDryadCocoon.cs	PASS	树精蛹转化，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompDryadHealingPod.cs	PASS	树精治疗荚，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompDryadHolder.cs	SKIP	抽象基类(容器+计时)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompEffecter.cs	SKIP	纯特效挂接
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompEggContainer.cs	PASS	蛋篮容器，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompEggLayer.cs	PASS	产蛋进度，通用(鱼类繁殖可复用但不需改)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompEmptyStateGraphic.cs	PASS	空状态替代贴图，纯视觉
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompEntityHolder.cs	SKIP	抽象基类(收容强度显示)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompEntityHolderPlatform.cs	PASS	收容平台转发，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompEquippableAbility.cs	PASS	装备给技能，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompEquippableAbilityReloadable.cs	PASS	技能装填弹药，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompExplosive.cs	PASS	爆炸引信，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompExplosivePowered.cs	PASS	电池耗尽不爆，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompFacility.cs	PASS	设施链接加成框架，通用(XML 可直接复用)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompFacilityInactiveWhenElectricityDisabled.cs	PASS	断电事件时设施失效，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompFacilityInUse.cs	PASS	使用中提高功耗+特效，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompFacilityQualityBased.cs	PASS	品质决定设施加成，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompFadesInOut.cs	SKIP	透明度淡入淡出工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompFireBurst.cs	PASS	爆炸前抛火，燃烧系(水下需上层禁火)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompFireOverlayBase.cs	SKIP	抽象基类(火焰尺寸插值)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompFireOverlay.cs	PASS	火焰贴图叠加，纯视觉
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompFleckEmitter.cs	PASS	粒子发射器，纯视觉
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompFleckEmitterLongTerm.cs	PASS	长期粒子发射器，纯视觉
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompFleshmassBase.cs	PASS	血肉基底贴图，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompFleshmass.cs	PASS	血肉块(音效+来源引用)，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompFleshmassHeartChild.cs	PASS	心脏子体联动销毁，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompFleshmassHeart.cs	PASS	血肉心脏生长循环，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompFleshmassNucleus.cs	PASS	血肉核产肉/变心脏，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompFleshmassSpitter.cs	PASS	血肉喷吐者(只打无屋顶目标)，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompFlickable.cs	PASS	电源开关，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompFloorEtching.cs	PASS	迷宫地板刻字指路，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompFloorEtchingRambling.cs	PASS	地板刻字生成文本，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompFoodPoisonable.cs	PASS	食物中毒概率，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompForbiddable.cs	PASS	禁用标记，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompGasOnDamage.cs	NOTE	受击放气(GasUtility)——水下产气冲突，需在 GasUtility 层处理
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompGasOnDestroyed.cs	NOTE	被毁放气(GasUtility)——同上水下冲突
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompGatherSpot.cs	PASS	集合点开关，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompGaumakerPod.cs	PASS	高玛树精荚，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompGenepackContainer.cs	PASS	基因库容器，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompGeneratedNames.cs	PASS	命名生成器，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompGiveHediffSeverity.cs	NOTE	同房间判定 hediff 光环(87tick 加 severity)——加压舱/减压病模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompGiveThoughtToAllMapPawnsOnDestroy.cs	PASS	被毁给全图心情，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompGleamingMonolith.cs	PASS	方尖碑变体，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompGoldenCube.cs	PASS	金魔方沉迷机制，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompGravshipFacility.cs	PASS	重力船设施(需引擎范围内)，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompGravshipShieldGenerator.cs	PASS	船盾充能(2/-1每间隔)，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompGravshipThruster.cs	NOTE	推进器必须朝室外(UsesOutdoorTemperature)+排气区无遮挡——排水阀朝向判定模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompGrayStatue.cs	PASS	灰域雕像接近触发，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompGrayStatueGas.cs	PASS	雕像放气(气体量按房间格数)，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompGrayStatueTeleporter.cs	PASS	雕像传送迷宫，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompGrowsFleshmassLump.cs	PASS	血肉团块生长，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompGrowsFleshmassTendrils.cs	PASS	血肉触手生长算法，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompHackable.cs	PASS	黑客入侵(防御值/锁定)，遗迹玩法通用(大纲级阅读)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompHackableEffecter.cs	PASS	入侵特效开关，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompHarbingerTreeConsumable.cs	PASS	先驱树吞噬尸体/物品，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompHasGatherableBodyResource.cs	NOTE	动物资源采集抽象基类(fullness+AnimalGatherYield)——采珍珠/采毒液直接继承
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompHasPawnSources.cs	PASS	物品来源 pawn 记录，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompHasSources.cs	PASS	物品来源标签，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompHatcher.cs	PASS	蛋孵化(温度损坏判 CompTemperatureRuinable)，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompHeatPusherEffecter.cs	PASS	温控特效联动，纯视觉
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompHibernatable.cs	PASS	休眠启动机制，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompHitchingSpot.cs	PASS	拴畜点，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompHoldingPlatformTarget.cs	PASS	收容平台目标(逃脱/研究)，DLC 专属(大纲级阅读)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompHunterDrone.cs	PASS	猎杀无人机自爆，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompIngredients.cs	PASS	配方原料记录(合并标签)，通用(读前80行)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompInitiatable.cs	PASS	启动延迟，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompInspectStringBlackboard.cs	SKIP	纯显示(+20%学习)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompInspectString.cs	SKIP	纯显示文本
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompInspectStringEmergence.cs	SKIP	纯显示(来源pawn)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompInspectStringGeneProcessor.cs	SKIP	纯显示(基因复杂度)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompInspectStringSchooldesk.cs	SKIP	纯显示(课桌加成)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompInspectStringStatValue.cs	SKIP	纯显示(属性值)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompInteractable.cs	NOTE	玩家手动激活基类(状态机+AcceptanceReport 全套)——拧阀门类交互直接继承(读前240行)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompInteractableFoamTurret.cs	PASS	泡沫炮塔激活，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompInteractable_GravshipShieldGenerator.cs	PASS	船盾手动开关，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompInteractableRocketswarmLauncher.cs	PASS	火箭巢手动发射，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompLabyrinthDoor.cs	PASS	迷宫卡死门，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompLaunchable.cs	PASS	运输舱发射(燃料/距离)，降落合法性在 TileFinder(本片外)(大纲级阅读)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompLaunchable_TransportPod.cs	PASS	运输舱燃料端口，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompLeaveFilthOnDestroyed.cs	PASS	被毁留污渍，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompLeavingsLetter.cs	PASS	残骸信件，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompLetterOnRevealed.cs	SKIP	8行纯属性转发
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ComplexLayoutDef.cs	SKIP	纯 Def 数据(威胁列表+奖励)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ComplexLayoutSketch.cs	SKIP	墙体材料选择，15行
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ComplexResolveParams.cs	SKIP	纯数据 struct
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ComplexThreat.cs	SKIP	纯数据类(XML 自定义加载)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ComplexThreatDef.cs	SKIP	纯 Def 数据(工人类+延迟曲线)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ComplexThreatDefOf.cs	SKIP	DefOf 声明
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ComplexThreatWorker_Ambush.cs	PASS	伏击威胁(信号触发刷怪)，家族实例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ComplexThreatWorker_CryptosleepPods.cs	PASS	休眠舱威胁，家族实例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ComplexThreatWorker.cs	NOTE	威胁基类：三级触发回退(已有物/进房/被动)+延迟换点数——沉船探索框架(读全)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ComplexThreatWorker_FuelNode.cs	PASS	燃料节点爆炸威胁，家族实例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ComplexThreatWorker_Infestations.cs	PASS	虫巢威胁(ignoreRoofedRequirement)，家族实例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ComplexThreatWorker_RaidTerminal.cs	PASS	敌对终端(黑客完成触发袭击)，家族实例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ComplexThreatWorker_SecurityCrate.cs	PASS	保险箱子威胁组合，家族实例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ComplexThreatWorker_SleepingInsects.cs	PASS	沉睡昆虫(RaceProps.Insect 过滤)，家族实例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ComplexThreatWorker_SleepingMechanoids.cs	PASS	沉睡机械族过滤，家族实例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ComplexThreatWorker_SleepingThreat.cs	NOTE	沉睡威胁基类：按 RaceProps 谓词刷怪+惊醒触发——换'水生'谓词即深海版
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ComplexUtility.cs	NOTE	SpawnRoomEnteredTrigger/SpawnRadialDistanceTrigger 静态 helper 可直接复用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompLightball.cs	PASS	仪式灯球，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompLongRangeMineralScanner.cs	PASS	远程矿扫(生成任务)，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompLootSpawn.cs	PASS	箱子生成战利品，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompLoudspeaker.cs	PASS	仪式扩音器，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompLowPowerInSpace.cs	NOTE	暴露 Room.ExposedToSpace/Vacuum/Biome.inVacuum API+按环境切功耗档——海底同款
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompMaintainable.cs	NOTE	维护三阶段+缺维护吃 Deterioration——海水腐蚀维护直接可用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompMannable.cs	NOTE	planetLayerWhitelist 按星球层禁用建筑——海洋层最省事的禁用手段
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompMechanoid.cs	PASS	机械族休眠/失活，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompMechCarrier.cs	PASS	机械运载舱(耗料放小兵)，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompMechGestatorTank.cs	PASS	机械培养舱接近触发，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompMechhiveAssembler.cs	PASS	机巢装配器按威胁点数产兵，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompMechPowerCell.cs	PASS	机械动力电池耗尽即死，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompMechRelay.cs	PASS	机械中继站失稳坠毁，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompMechRepairable.cs	PASS	自动维修开关，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompMeditationFocus.cs	PASS	冥想焦点加成，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompMelter.cs	NOTE	AmbientTemperature≥0 才融化(0.15×T/10)——海底4°C 冰缓慢融化的事实依据
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompMetalhorror.cs	PASS	金属恐怖寄生，DLC 专属(大纲级阅读)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompMetalhorrorInfectible.cs	PASS	食物传播寄生，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompMilkable.cs	PASS	挤奶(CompHasGatherableBodyResource 实例)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompMoteEmitter.cs	PASS	mote 发射器，纯视觉
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompMoteEmitterProximityScan.cs	PASS	接近扫描 mote，纯视觉
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompMoteEmitterRandomColor.cs	PASS	随机色 mote，纯视觉
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompNerveBundle.cs	PASS	神经束掉落物，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompNeuralSupercharger.cs	PASS	神经超充，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompNociosphere.cs	PASS	虚空之球(活动度/放逐)，DLC 专属(大纲级阅读)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompNoctolEyes.cs	NOTE	眼睛亮度随 HediffDefOf.LightExposure 严重度变化——光照暴露 hediff 存在的实证
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompNoiseSource.cs	PASS	噪音源半径显示，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompObelisk_Abductor.cs	PASS	绑架方尖碑(传送迷宫)，DLC 专属(大纲级阅读)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompObelisk.cs	PASS	方尖碑基类(研究进度音效)，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompObeliskDeactivationInteractor.cs	PASS	方尖碑关闭交互(需碎片)，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompObelisk_Duplicator.cs	PASS	复制方尖碑，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompObelisk_ExplodingSpawner.cs	PASS	爆炸刷怪方尖碑基类，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompObelisk_Labyrinth.cs	PASS	迷宫方尖碑(关闭迷宫)，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompObelisk_Mutator.cs	PASS	变异方尖碑；刷怪格排除 IsWater——水格不刷怪先例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompObeliskTriggerInteractor.cs	PASS	方尖碑手动触发(需研究2级)，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompOrbitalBeam.cs	PASS	轨道光束动画，纯视觉
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompOrbitalScanner.cs	PASS	轨道扫描器发现任务，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompOverseerSubject.cs	PASS	机械师带宽控制，DLC 专属(读前100行)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompOxygenPusher.cs	NOTE	★真空泵：room.Vacuum=UnsanitizedVacuum-排量(按房间格数归一)——排水阀直接模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPawnSpawnOnWakeup.cs	PASS	唤醒刷怪(可空投)，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPilotConsole.cs	NOTE	gravship 选目的地调 TileFinder.IsValidTileForNewSettlement——海洋格降落合法性钩子入口(读前120行)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPlantable.cs	PASS	手动种植物品，通用(读前120行)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPlantDamager.cs	PASS	半径伤植物，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPlantHarmRadius.cs	PASS	枯萎半径逐日扩大，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPlantPreventCutting.cs	PASS	禁止砍伐开关，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPlaysMusic.cs	SKIP	抽象基类(10行)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPlaySoundOnDestroy.cs	SKIP	纯音效
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPolluteOverTime.cs	PASS	逐日污染扩散，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPollutionPump.cs	NOTE	泵循环模板：60tick扫描半径首格+副产物产出+建筑邻近禁用——排水/滤水框架
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPorcupine.cs	PASS	豪猪反伤刺，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPowerBattery.cs	PASS	电池(自放电5W/EMP)，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPower.cs	PASS	电网基类，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPowerPlantAncientReactor.cs	PASS	古代反应堆(黑客后停机)，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPowerPlant.cs	PASS	发电机基类(燃料/故障/开关门控)，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPowerPlantElectroharvester.cs	PASS	实体发电(按收容生物体型)，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPowerPlantGravcore.cs	PASS	重力核心(必须建在地基上)——地形门控发电先例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPowerPlantSolar.cs	NOTE	输出∝skyManager.CurSkyGlow×屋顶因子——深海低光下太阳能自然归零
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPowerPlantSteam.cs	PASS	地热(需间歇泉)，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPowerPlantWater.cs	NOTE	水车：MovingFluid affordance 判定+waterInfo.GetWaterMovement 取流向——洋流发电机模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPowerPlantWind.cs	NOTE	风电 Biome.inVacuum 直接禁用——水下禁用风电的同款 flag 位
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPowerTrader.cs	PASS	用电端(开关/EMP/信号)，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPowerTransmitter.cs	SKIP	空子类(5行)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProducesBioferrite.cs	PASS	活铁产出统计，DLC 专属
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Comp_ProjectileEffecter.cs	SKIP	弹道特效挂接
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProjectileInterceptor.cs	PASS	护盾拦截(充能/冷却/HP)，通用(读前200行)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_AbilityAnimalRoar.cs	SKIP	纯数据 Props(吼叫概率曲线)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_AbilityBloodfeederBite.cs	SKIP	纯数据 Props(吸血数值)
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_AbilityBrainDamageChance.cs	SKIP	纯数据 Props(脑损伤概率)

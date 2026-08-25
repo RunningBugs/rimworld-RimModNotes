@@ -1,0 +1,200 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_CreepJoinerTracker.cs	PASS	Anomaly 爬行加入者形态/利弊追踪，扫读类定义确认与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnDiedOrDownedThoughtsKind.cs	SKIP	纯枚举（死亡/放逐/倒地等思想类别）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnDiedOrDownedThoughtsUtility.cs	PASS	pawn 死亡/倒地时给殖民者分发思想的工具类，无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_DraftController.cs	PASS	征召/开火意愿状态机，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnDrawUtility.cs	PASS	伤口锚点/绘制工具，渲染辅助
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_DrugPolicyTracker.cs	PASS	药物政策追踪，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_DuplicateTracker.cs	PASS	复制人登记（Biotech），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnExecutionKind.cs	SKIP	纯枚举（处决方式）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnExpectationsQualityOffset.cs	SKIP	纯数据类（期望等级对应的品质偏移，XML 加载）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_FilthTracker.cs	NOTE	地形 generatedFilth 让 pawn 带污垢、GameCondition.spreadsFilth 室外积污——海底软泥/赤潮可直接复用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnFirefoamDrawer.cs	PASS	灭火泡沫 overlay 渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_FlightTracker.cs	NOTE	RaceProps.canFlyInVacuum+BiomeDef.inVacuum 禁飞范式（可类比水下禁飞）；downed 落于不可行走格直接处死=落水即死先例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnFlyer.cs	PASS	跳跃/飞出 pawn 的通用飞行物载体（Pit 跳出演出复用它，已在 Pit 条目说明）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_FoodRestrictionTracker.cs	PASS	食物限制政策，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnFootprintMaker.cs	NOTE	TerrainDef.takeSplashes→走过水域触发 FleckMaker.WaterSplash；takeFootprints+雪深→脚印——涉水视觉直接可用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnGenerationContext.cs	SKIP	纯枚举（pawn 生成上下文）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnGenerationContextUtility.cs	SKIP	上述枚举的扩展方法（包含/重叠判断），trivial
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_GeneTracker.cs	NOTE	GeneDef.waterCellCost（水中移动消耗基因修正，取最小值）与 GeneDef.ignoreDarkness（黑暗适应）——水栖基因现成钩子（关键段已读）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnGenOption.cs	SKIP	纯数据类（pawnkind+权重，XML 加载）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnGenOptionWithXenotype.cs	SKIP	纯数据结构（option+xenotype+成本换算）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnGroundSpawner.cs	PASS	通用延迟地下钻出生成器（Pit/事件出场用，已在 Pit 条目提及）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnGroupKindDef.cs	SKIP	纯 Def 类（仅 workerClass 字段）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnGroupKindDefOf.cs	SKIP	纯 DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnGroupKindWorker.cs	PASS	pawn 组生成抽象基类，无环境逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnGroupKindWorker_Normal.cs	PASS	按 points 预算生成袭击 pawn；无 techLevel 过滤（科技门槛在派系层）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnGroupKindWorker_Shamblers.cs	PASS	丧尸版组生成，无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnGroupKindWorker_Trader.cs	NOTE	商队驮兽受 PrimaryBiome.IsPackAnimalAllowed(race) 过滤——海洋 biome 可借此禁陆生驮兽
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnGroupMaker.cs	PASS	pawn 组定义与生成入口（commonality/maxTotalPoints/disallowedStrategies），无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnGroupMakerParms.cs	SKIP	纯数据类（组生成参数包）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnGroupMakerUtility.cs	PASS	组选择/预算算法（读 1-200 行，其余为例示生成与 DebugOutput，海洋关键词零命中）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_GuestTracker.cs	NOTE	救援加入判定引用 SafeTemperatureRange+毒尘/毒霾（617 行）：海底 4°C 恒温下环境判定会偏移——冲突点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_GuiltTracker.cs	PASS	罪责计时器，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnHairColors.cs	SKIP	发色常量与随机选取，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_IdeoTracker.cs	PASS	意识形态归属/改宗追踪，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_InteractionsTracker.cs	PASS	社交互动触发器，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnInventoryGenerator.cs	PASS	生成随身物品；唯一亮点是药物按 faction techLevel 过滤（科技过滤范式），已在发现文档提及
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_InventoryStockTracker.cs	PASS	随身库存配额，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnKindCount.cs	SKIP	纯数据类（开局 pawn 数量配置）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnKindDefCount.cs	SKIP	纯数据类（kindDef+count，XML 加载）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnKindDefOf.cs	SKIP	纯 DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnKindDefWeight.cs	SKIP	纯数据类（kindDef+weight，XML 加载）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_LearningTracker.cs	PASS	儿童学习欲望追踪，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_MechanitorTracker.cs	PASS	机械师带宽/控制组，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_MeleeVerbs.cs	NOTE	站在某地形上的 pawn 获得 TerrainDef.tools 地形近战 verb（4% 选用、1200 tick 冷却）——水域地形攻击纯 Def 可配
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_MeleeVerbs_TerrainSource.cs	NOTE	地形 verb 载体（IVerbOwner，换地形/1200 tick 内复用失效）——与上条配套
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_MutantTracker.cs	PASS	Anomaly 突变体状态，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnNameCategory.cs	SKIP	纯枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnNameDatabaseShuffled.cs	SKIP	名字库加载，trivial
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnNameDatabaseSolid.cs	SKIP	固定名字库（玩家内容名），trivial
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnNameSlot.cs	SKIP	纯枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnNamingUtility.cs	PASS	命名对话框工具，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_NativeVerbs.cs	PASS	扑火/点火等原生 verb 容器，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_NeedsTracker.cs	PASS	需求列表容器，无环境钩子
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnNeedsUIUtility.cs	PASS	需求页 UI 排序工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnObserver.cs	PASS	恐怖观察（Anomaly terror 思想）半径 5 格扫描，与海洋无独特关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnOrCorpseStatUtility.cs	PASS	pawn/尸体属性读取转发工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_OutfitTracker.cs	PASS	服装政策，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnOverlayDrawer.cs	PASS	overlay 绘制基类（Body/Head 层）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_Ownership.cs	PASS	床/建筑所有权，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_PlayerSettings.cs	PASS	活动区/跟随/主人等玩家设置，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnPortraitIconsDrawer.cs	PASS	殖民者栏图标渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnPosture.cs	SKIP	纯枚举（姿态位标志）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnPostureUtility.cs	SKIP	姿态枚举扩展方法，trivial
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_PsychicEntropyTracker.cs	PASS	灵能熵/精神力，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnPsychicRitualRoleSelectionWidget.cs	PASS	灵能仪式角色选择 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_ReadingTracker.cs	PASS	阅读政策，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRecentMemory.cs	NOTE	lastLightTick 由 PsychGlowAt!=Dark 刷新、lastOutdoorTick 由 Room.PsychologicallyOutdoors 刷新——深海黑暗思想/室内判定的计时源头
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_RecordsTracker.cs	PASS	战绩计数器，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationDef.cs	SKIP	纯 Def 数据类（关系定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationDefOf.cs	SKIP	纯 DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_RelationsTracker.cs	PASS	亲属关系容器，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationUtility.cs	PASS	关系查询工具，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_Child.cs	PASS	亲属关系判定（子女），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_ChildInLaw.cs	PASS	亲属关系判定（儿媳/女婿），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_Cousin.cs	PASS	亲属关系判定（堂表亲），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_CousinOnceRemoved.cs	PASS	亲属关系判定（隔代表亲），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker.cs	PASS	关系 Worker 基类（implied/reflexive 等），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_ExLover.cs	PASS	前恋人关系生成概率，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_ExSpouse.cs	PASS	前配偶关系生成概率，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_Fiance.cs	PASS	未婚夫妻关系生成，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_Grandchild.cs	PASS	亲属关系判定（孙辈），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_GrandnephewOrGrandniece.cs	PASS	亲属关系判定（侄孙辈），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_Grandparent.cs	PASS	亲属关系判定（祖辈），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_GranduncleOrGrandaunt.cs	PASS	亲属关系判定（伯叔祖辈），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_GreatGrandchild.cs	PASS	亲属关系判定（曾孙辈），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_GreatGrandparent.cs	PASS	亲属关系判定（曾祖辈），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_HalfSibling.cs	PASS	亲属关系判定（半同胞），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_Kin.cs	PASS	血亲总类判定，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_Lover.cs	PASS	恋人关系生成概率，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_NephewOrNiece.cs	PASS	亲属关系判定（侄辈），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_Overseer.cs	PASS	机械师-机械体控制关系，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_Parent.cs	PASS	亲属关系判定（父母），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_ParentInLaw.cs	PASS	亲属关系判定（姻亲父母），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_SecondCousin.cs	PASS	亲属关系判定（远堂表亲），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_Sibling.cs	PASS	亲属关系判定（同胞），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_Spouse.cs	PASS	配偶关系生成概率，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_Stepchild.cs	PASS	亲属关系判定（继子女），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_Stepparent.cs	PASS	亲属关系判定（继父母），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRelationWorker_UncleOrAunt.cs	PASS	亲属关系判定（叔伯舅姨），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRenderNodeTagDefOf.cs	SKIP	纯 DefOf（渲染节点标签）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRitualRoleSelectionWidget.cs	PASS	仪式角色选择 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnRoleSelectionWidgetBase.cs	PASS	角色选择 UI 基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_RopeTracker.cs	PASS	拴绳/拴畜桩系统，与海洋无独特关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_RoyaltyTracker.cs	PASS	皇权头衔/好感/许可证，与海洋无关（仅一处天气对灵能射程的 cap 提示）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnsArrivalModeDef.cs	NOTE	到达方式 Def：minTechLevel+biome/layer 黑白名单——海洋袭击到达方式过滤的 XML 入口
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnsArrivalModeDefOf.cs	SKIP	纯 DefOf（含 EmergeFromWater/EdgeWalkInDarkness 引用）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnsArrivalModeWorker_CenterDrop.cs	PASS	中心空投到达方式，空投舱系
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnsArrivalModeWorker_ClusterDrop.cs	PASS	机械集群空投，MechCluster 选点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnsArrivalModeWorker.cs	NOTE	到达方式过滤框架：派系科技门槛、biome/layer 黑白名单、onlyAllowWhitelistedArrivalModes 锁定——"海洋只刷工业+袭击"的挂载点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnsArrivalModeWorker_EdgeDrop.cs	PASS	边缘空投，DropCellFinder 选点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnsArrivalModeWorker_EdgeDropGroups.cs	PASS	分组边缘空投
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnsArrivalModeWorker_EdgeWalkIn.cs	PASS	边缘走入（含 AllowRoofedEdgeWalkIn 屋顶检查，海底覆顶语义需注意）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnsArrivalModeWorker_EdgeWalkInDarkness.cs	NOTE	黑暗刷怪：优先 PsychGlow.Dark 的边缘格——深海低光照直接命中
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnsArrivalModeWorker_EdgeWalkInDistributed.cs	PASS	分散边缘走入
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnsArrivalModeWorker_EdgeWalkInDistributedGroups.cs	PASS	分散分组边缘走入（1~4 组）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnsArrivalModeWorker_EdgeWalkInGroups.cs	PASS	分组边缘走入
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnsArrivalModeWorker_EdgeWalkInHateChanters.cs	PASS	Anomaly 憎恶颂唱者走入（小组聚集校验）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnsArrivalModeWorker_EmergeFromWater.cs	NOTE	原版水生袭击：>50 格连通水域+可达殖民地，从水中分批现身（水雾/音效/眩晕）——海洋袭击直接复用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnsArrivalModeWorker_RandomDrop.cs	PASS	随机空投
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnsArrivalModeWorker_SpecificLocationDrop.cs	PASS	定点空投（仅袭击用）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnsArrivalModeWorkerUtility.cs	PASS	空投/分组工具函数集
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnsArriveQuestPartUtility.cs	PASS	任务 pawn 到达辅助（look target/人口判断）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnScarDrawer.cs	PASS	疤痕 overlay 绘制基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnScariaSoreDrawer.cs	PASS	Scaria 脓疮 overlay
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnsFinder.cs	PASS	全图 pawn 枚举工具；含 Find.CurrentGravship.Pawns 分支（载具 pawn 计数的先例）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnShamblerScarDrawer.cs	PASS	丧尸疤痕 overlay
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_SkillTracker.cs	PASS	技能/激情追踪，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnSkinColors.cs	PASS	肤色工具（含基因肤色列表），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_StoryTracker.cs	PASS	背景故事/外貌，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnStyleItemChooser.cs	PASS	发型/纹身风格选取，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_StyleObserverTracker.cs	PASS	风格主导度观察（Ideology），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_StyleTracker.cs	PASS	外观/换装欲望，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_SurroundingsTracker.cs	NOTE	意识形态"树木渴望"目击计数模板（2500 tick 扫描、分桶 15 条）——做"海洋亲近/幽闭"情境思想的采集端参考
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnTable_Animals.cs	PASS	动物表格排序 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnTable.cs	PASS	pawn 表格 UI 基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnTableDef.cs	SKIP	纯 Def 数据类（表格列定义）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnTableDefOf.cs	SKIP	纯 DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnTable_Mechs.cs	PASS	机械体表格排序 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnTable_PlayerPawns.cs	PASS	殖民者表格 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnTable_PlayerPawnsTimetable.cs	PASS	时间表表格 UI（空子类）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnTable_Wildlife.cs	PASS	野生动物表格排序 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnTechHediffsGenerator.cs	NOTE	义体袭击者生成：kindDef.techHediffsMoney/Tags/Chance/Required 驱动义体安装——"工业+袭击者带义体"的配置入口
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_TimetableTracker.cs	PASS	作息时间表，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_TraderTracker.cs	PASS	商人交易状态，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_TrainingTracker.cs	PASS	动物训练，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnUtility.cs	PASS	通用 pawn 工具集（1654 行，关键词扫描+扫读，海洋关键词零命中，未逐行读）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnWeaponGenerator.cs	PASS	武器按 weaponTags+weaponMoney 生成，无 techLevel 门槛（科技差异体现在 pawnkind 配置）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Pawn_WorkSettings.cs	PASS	工作优先级，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PawnWoundDrawer.cs	PASS	伤口渲染，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PermitsCardUtility.cs	PASS	皇权许可证 UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PitBurrow.cs	NOTE	兽穴坑洞：fleshbeast 队列跳出演出+12~20 天自坍塌——海底兽穴模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PitGate.cs	NOTE	口袋地图入口（MapPortal）+MTB 喷发事件+两阶段坍塌并杀死口袋地图内所有 pawn——"海沟深渊之门"完整模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PitGateIncidentDef.cs	NOTE	PitGate 事件 Def（workerClass/baseChance/持续时间/威胁点数）——与 PitGate 配套
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PitGateIncidentWorker.cs	NOTE	PitGate 事件 Worker 基类（Setup/Tick/CanFireNow）——与 PitGate 配套
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PitGateIncidentWorker_Fleshbeast.cs	NOTE	按威胁点数生成 fleshbeast 并 PawnFlyer 跳出+LordJob_FleshbeastAssault——怪物涌出事件实现样本
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_AnimalPenMarker.cs	PASS	畜栏标记放置显示
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_ArtificialBuildingsNear.cs	PASS	冥想焦点建筑半径显示
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Placeworker_AttachedToWall.cs	PASS	壁挂件放置校验
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_BandNode.cs	PASS	带宽节点不可邻近放置
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_BuildingsValidOverSubstructure.cs	NOTE	Odyssey 地基建在其他建筑下方时的合法性校验——海底耐压地基校验链一环
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_CocoonTriggerRadius.cs	PASS	茧触发半径显示
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_Conduit.cs	NOTE	仅校验电缆不可重叠，不含 IsWater/affordance 防水规则；WaterproofConduit 需在 XML Def 侧核对
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_ConnectionStrengthOffsetBuildingsNear.cs	PASS	树精连接强度建筑显示
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_Cooler.cs	PASS	空调双室温度预览+两侧空格校验
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_CoolerSimple.cs	PASS	简易制冷器房间预览
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_DeepDrill.cs	NOTE	深钻必须压深层资源（DeepDrillUtility.GetNextResource）——海底矿产直接沿用深层资源系统
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_DoorLearnOpeningSpeed.cs	PASS	门教学提示触发
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_DrawLinesToBookcasesInRoom.cs	PASS	书架连线显示
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_DrawLinesToDeathrestBuildings.cs	PASS	死眠建筑连线显示
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_DrawLinesToDeathrestCaskets.cs	PASS	死眠舱连线显示
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_DrawLinesToResearchTablesInRoom.cs	PASS	研究台连线显示
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_ElectricInhibitor.cs	PASS	电子抑制器占位校验（Anomaly 收容）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_FuelingPort.cs	PASS	加油口格显示
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_GlowRadius.cs	PASS	光照半径显示（纯视觉）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_GravshipThruster.cs	PASS	引力船推进器排除区/遮挡警告（Odyssey 专属）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_HeadOnShipBeam.cs	PASS	船梁端头部件校验（旧飞船）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_Heater.cs	PASS	加热器房间温度预览
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_InRangeOfGravEngine.cs	PASS	必须在引力引擎范围内（Odyssey 专属）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_InSubstructureFootprint.cs	NOTE	必须在 gravship 地基脚印内且不能在自然岩顶下——"海底设施依附地基范围"的校验范式
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_InvalidOverSubstructure.cs	NOTE	禁止压在地基地形上（terrainGrid.FoundationAt+IsSubstructure）——地基系统校验链一环
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_LinkToCampfire.cs	PASS	篝火范围连线显示
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_MechGestatorTop.cs	PASS	机械培育器顶部 ghost 渲染
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_MeditationOffsetBuildingsNear.cs	PASS	冥想加成建筑连线显示
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_MeditationSpot.cs	PASS	冥想点 overlay 显示
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_MonumentMarker.cs	PASS	纪念碑任务放置校验（含地形可建性）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_MultiCellDoor.cs	PASS	多格门需邻接墙校验
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_MustBeIndoors.cs	NOTE	必须在不触边房间内（room.TouchesMapEdge）——气密舱建筑的室内校验范式
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_NeedsFuelingPort.cs	PASS	必须邻接加油口校验
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_NeverAdjacentSameDef.cs	PASS	同类建筑不可邻接
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_NeverAdjacentTrap.cs	PASS	陷阱不可邻接
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_NeverAdjacentUnstandable.cs	PASS	周围必须可站立
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_NeverAdjacentUnstandableRadial.cs	PASS	径向范围必须可站立
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_NextToHopperAccepter.cs	PASS	必须邻接料斗接收方
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_NoiseSource.cs	PASS	噪音源半径显示
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_NotUnderRoof.cs	NOTE	必须无屋顶放置——海底"必须暴露于海水"类建筑的反向校验范式
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Placeworker_OnlyUnderThickRoof.cs	NOTE	必须在厚顶下（roofDef.isThickRoof）——海底"必须承压岩层下"类建筑的校验范式
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_OnSteamGeyser.cs	NOTE	建筑必须压在蒸汽泉 thing 上——海底热泉发电的"泉口+压顶建筑"两段式直接可用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_OnSubstructure.cs	NOTE	必须压在地基地形上（已 Obsolete，改用 Substructure affordance）——地基校验的旧实现参考
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_PollutionPumpArtificialBuildings.cs	PASS	污染泵与人造建筑连线显示
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/PlaceWorker_PollutionPump.cs	PASS	污染泵半径显示（抽污逻辑在 Comp，本片外）

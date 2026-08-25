@@ -1,0 +1,200 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_GrowthVatSpeedFactor.cs	PASS	生长缸速度按文化 precept 乘因子，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_HasRelic.cs	PASS	圣物容器内含物时加偏移，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Health.cs	PASS	耐久度影响价格的曲线 StatPart，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Hyperlinks.cs	PASS	信息卡超链接注入，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_IsCorpseFresh.cs	PASS	尸体新鲜度价格因子，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_IsFlesh.cs	PASS	血肉/非血肉价格因子，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_LifeStageMaxFood.cs	PASS	生命阶段食量上限因子，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Malnutrition.cs	PASS	营养不良严重度曲线因子，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_MaxChanceIfRotting.cs	PASS	腐烂时概率钳为 1，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_MetabolismTotal.cs	PASS	基因代谢合计因子，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Mood.cs	PASS	心情曲线因子，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_NaturalNotMissingBodyPartsCoverage.cs	PASS	天然部位覆盖率因子，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_NearHarbingerTree.cs	PASS	厄运树消耗中倍率，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_NotCarefullySlaughtered.cs	PASS	屠宰带伤因子，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_NoxiousHaze.cs	NOTE	暴露退化三件套之一：毒气霾暴露时退化倍率（deteriorateFromEnvironmentalEffects 模式）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Outdoors.cs	NOTE	室内/室外倍率 StatPart：OutdoorsForWork 或无顶即算室外——海底"室外"语义挂钩点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_OverseerStatOffset.cs	PASS	机械师 overseer 偏移，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Pain.cs	PASS	疼痛因子，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_PlantGrowthNutritionFactor.cs	PASS	植物生长营养因子（含野生标注），无环境维度
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_PlayerFactionLeader.cs	PASS	派系领袖偏移，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Pollution.cs	NOTE	暴露退化三件套之一：污染格上退化倍率，"泡在海水里退化"模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Quality.cs	PASS	品质等级因子表，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Quality_Offset.cs	PASS	品质等级偏移表，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_ReloadMarketValue.cs	PASS	装填弹药计入市值，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Rest.cs	PASS	疲劳等级因子，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Resting.cs	PASS	休息中因子，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_RevenantSpeed.cs	PASS	亡灵现形后加速曲线，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_RoleConversionPower.cs	PASS	文化角色感化力，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_RoomStat.cs	PASS	按房间 RoomStatDef 加成的通用 StatPart，数据驱动无新机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_ShamblerCorpse.cs	PASS	尸变体尸体倍率，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_ShamblerCrawling.cs	PASS	尸变体爬行因子，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_SightPsychicSensitivityOffset.cs	PASS	视力-心灵敏感度偏移，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Slave.cs	PASS	奴隶 ×0.75 因子，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Stuff.cs	PASS	材料 stuffPowerStat 乘算，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_TerrainMoveSpeed.cs	NOTE	证实 PawnKindDef.moveSpeedFactorByTerrainTag 机制（按地形标签修移速）——水域减速可做在 kindDef 层
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Terror.cs	PASS	奴隶恐惧度影响压制衰减，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_ToxicFallout.cs	NOTE	暴露退化三件套之一：无顶+毒尘时退化倍率，"海水浸泡退化"直接模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_Trainable.cs	PASS	训练习得因子，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_UnfinishedThingIngredientsMass.cs	PASS	半成品计入原料质量，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_WeaponTraitsMarketValueOffset.cs	PASS	剑链接武器特性市值偏移，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_WildManOffset.cs	PASS	野人偏移，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_WorkTableOutdoors.cs	NOTE	PsychologicallyOutdoors 时工作台 ×0.8——海底开放舱室工作惩罚挂钩点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_WorkTableRoomRole.cs	NOTE	工作台不在指定房间角色时乘 workTableNotInRoomRoleFactor——海底专用舱室设计参考
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_WorkTableTemperature.cs	NOTE	冲突：<9°C 或 >35°C 工作台 ×0.7——海底恒温 4°C 下露天工作台永久受罚
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_WorkTableUnpowered.cs	PASS	无电工作台 ×0.5，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatPart_WornByCorpse.cs	PASS	尸体穿过的衣服 ×0.1，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatRequest.cs	PASS	属性请求结构体，基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatsRecord.cs	PASS	袭击/死亡统计记录，基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatsReportUtility.cs	PASS	属性报告 UI 工具，基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatUtility.cs	PASS	statList 设置/读写工具，基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_CaravanRidingSpeedFactor.cs	PASS	骑乘速度说明（生命阶段），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_ColdContainmentBonus.cs	NOTE	冲突：冷藏收容加成走 ContainmentUtility——海底 4°C 恒温下恒定白送
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_ContainmentStrength.cs	NOTE	房间结构强度=墙/门HP+照明+未封顶-30+地板地形stat——"耐压壳完整度"评分模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker.cs	PASS	StatWorker 基类（值计算/说明/禁用判定管道），基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_ForagedNutritionPerDay.cs	NOTE	Odyssey Forage 训练：动物每日觅食营养=BodySize×0.6——海底放牧食物来源框架
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_LeatherAmount.cs	PASS	皮革量+超链接，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_MarketValue.cs	PASS	市值计算（pawn 品质/材料/work），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_MaxPowerOutput.cs	PASS	读 CompPowerPlant.PowerConsumption 取负，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_MeatAmount.cs	PASS	产肉量显示控制，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_Mechanitor.cs	PASS	机械师限定显示，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_MechEnergyLossPerHP.cs	PASS	机械每HP能量损耗格式化，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_MeleeArmorPenetration.cs	PASS	近战穿甲，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_MeleeAverageArmorPenetration.cs	PASS	近战平均穿甲，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_MeleeAverageDPS.cs	PASS	近战平均DPS，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_MeleeDamageAmount.cs	PASS	近战伤害量（材料乘算），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_MeleeDamageAmountTrap.cs	PASS	陷阱伤害量，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_MeleeDPS.cs	PASS	近战DPS，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_MinimumContainmentStrength.cs	PASS	最低收容强度显示控制，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_MinimumHandlingSkill.cs	PASS	野性度→最低驯兽技能曲线，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_PossibleCompOffsets.cs	PASS	CompStatOffsetBase 通用偏移管道，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_PsyfocusCost.cs	PASS	心灵专注消耗标签，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_RoomReadingBonus.cs	PASS	房间阅读加成显示控制，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_ShootingAccuracy.cs	PASS	射击精度报告（距离示例），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_SuppressionFallRate.cs	PASS	压制衰减率阈值，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_SurgerySuccessChanceFactor.cs	PASS	仅限定 Building_Bed 显示该 stat，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_Terror.cs	PASS	奴隶恐惧度读取，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_VacuumResistance.cs	NOTE	真空抗性 stat：血肉 pawn 限定，breathesAir=false 变异体直接 1.0——"水下呼吸/耐压"直接模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StatWorker_Wildness.cs	PASS	野性度显示控制，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SteadyEnvironmentEffects.cs	NOTE	每格稳定环境效果总线：雪沙积累/消融、无顶退化、terrain.heatPerTick 注热、雨中短路、Gas/Condition DoSteadyEffects——海水格持续效果挂载点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StealAIDebugDrawer.cs	PASS	偷窃 AI 调试绘制，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StealAIUtility.cs	PASS	偷窃目标选择（市值/战力阈值），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StockGenerator_Animals.cs	NOTE	动物库存：checkTemperature 用 SeasonAndOutdoorTemperatureAcceptableFor 按世界格温度过滤+tradeTags 买卖——海底商人动物货架的温度过滤点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StockGenerator_BuyExpensiveSimple.cs	PASS	收购高价简单物品，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StockGenerator_BuySingleDef.cs	PASS	收购指定 def，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StockGenerator_BuySlaves.cs	PASS	收购奴隶（空生成），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StockGenerator_BuyTradeTag.cs	PASS	按 tradeTag 收购，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StockGenerator_Category.cs	PASS	按 ThingCategoryDef 生成库存，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StockGenerator.cs	PASS	库存生成器基类（含 maxTechLevelGenerate/Buy 科技层级过滤字段）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StockGenerator_MarketValue.cs	PASS	按市值区间生成，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StockGenerator_MiscItems.cs	PASS	杂项物品生成（抽象），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StockGenerator_MultiDef.cs	PASS	多 def 生成，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StockGenerator_ReinforcedBarrels.cs	PASS	强化迫击炮弹库存（classicMortars 时跳过），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StockGenerator_SingleDef.cs	PASS	单 def 生成，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StockGenerator_Slaves.cs	PASS	奴隶库存（人口意图概率），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StockGenerator_Tag.cs	PASS	按 tradeTag 生成，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StockGenerator_Techprints.cs	PASS	科技蓝图库存，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StockGenerator_Tomes.cs	PASS	异常典籍库存（Anomaly 开关），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StockGeneratorUtility.cs	PASS	库存物品实例化工具，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorageGroup.cs	PASS	存储组（成员/设置），物流
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorageGroupUtility.cs	PASS	存储组 UI/材质工具，物流
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StoragePriority.cs	SKIP	纯枚举：存储优先级
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StoragePriorityHelper.cs	PASS	优先级标签/UI 工具，物流
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorageSettingsClipboard.cs	PASS	存储设置剪贴板，物流
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorageSettings.cs	PASS	存储过滤器/优先级设置，物流
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorageSettingsPreset.cs	SKIP	纯枚举：存储预设
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StoreUtility.cs	PASS	最佳存储格查找/搬运目标，物流
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StoryDanger.cs	SKIP	纯枚举：危险等级
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StoryDangerUtility.cs	PASS	危险等级数值映射，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StoryState.cs	PASS	每目标叙事状态（lastFireTicks/最近事件），基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp_CategoryIndividualMTBByBiome.cs	NOTE	按 incidentDef.mtbDaysByBiome 查当前格 PrimaryBiome 逐事件掷 MTB——海洋 biome 事件频率总闸门
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp_CategoryMTB.cs	PASS	类别 MTB（天数曲线修正），通用调度
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp_ClassicIntro.cs	PASS	经典开局固定事件序列，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp.cs	NOTE	comp 基类：CanFireNow 过滤+人口意图权重；props.allowedTargetTags/disallowedTargetTags 是海洋地图过滤事件的官方挂点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp_DeepDrillInfestation.cs	NOTE	每台可用深钻独立按 baseMtbDaysPerDrill/难度因子掷 MTB 触发虫害——海底钻探引怪直接模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp_Disease.cs	NOTE	疾病 MTB=biome.diseaseMtbDays×难度因子，按 biome.CommonalityOfDisease 选病种——海洋 biome 疾病谱 XML 可控
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp_DissolutionTriggered.cs	PASS	异常实体消解触发事件，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp_FactionInteraction.cs	PASS	派系互动事件（minWealth/minDanger 门槛），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp_GauranlenPodSpawn.cs	PASS	树精荚周期生成（Ideology），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp_ImportantQuest.cs	PASS	重要任务定时发放，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp_MechanitorComplexQuest.cs	PASS	机械师遗迹任务（Biotech），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp_MonolithMigration.cs	PASS	巨石迁移（Anomaly），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp_NoxiousHaze.cs	NOTE	周边污染分驱动 condition MTB+距上次触发阈值窗口——"水质/赤潮"类 condition 触发器模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp_OnOffCycle.cs	PASS	on/off 周期事件源（Randy 骨架），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties_CategoryIndividualMTBByBiome.cs	SKIP	纯数据类（category/applyCaravanVisibility 字段）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties_CategoryMTB.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties_ClassicIntro.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties.cs	NOTE	comp 属性基类：allowedTargetTags/disallowedTargetTags+enableIfAnyModActive 开关——comp 级目标过滤机制所在
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties_DeepDrillInfestation.cs	SKIP	纯数据类（baseMtbDaysPerDrill）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties_Disease.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties_DissolutionTriggered.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties_FactionInteraction.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties_GauranlenPodSpawn.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties_ImportantQuest.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties_MechanitorComplexQuest.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties_MonolithMigration.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties_NoxiousHaze.cs	SKIP	纯数据类（lastFire 阈值）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties_OnOffCycle.cs	SKIP	纯数据类（on/off 曲线字段）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties_RandomEpicQuest.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties_RandomMain.cs	NOTE	spaceMtbDayFactor=2/spaceMinSpacingDays=2/skipThreatBigIfRaidBeacon 字段定义——海洋层同款因子可加在此
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties_RandomQuest.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties_RefiringUniqueQuest.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties_ShipChunkDrop.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties_SingleMTB.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties_SingleOnceFixed.cs	SKIP	纯数据类（含 skipIfOnExtremeBiome 字段，机制见 comp）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties_ThreatsGenerator.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties_Triggered.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerCompProperties_WorkSite.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp_RandomEpicQuest.cs	PASS	随机史诗任务（on/off 周期），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp_RandomMain.cs	NOTE	关键：target.Tile.LayerDef.isSpace 时 MTB×spaceMtbDayFactor 且施最小间隔；Map_RaidBeacon tag 跳 ThreatBig——海洋层事件调控先例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp_RandomQuest.cs	PASS	随机任务（NaturalRandomQuestChooser），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp_RefiringUniqueQuest.cs	PASS	唯一任务按周期重发，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp_ShipChunkDrop.cs	NOTE	碎片掉落 MTB 随游戏年数走曲线(20→135天)——海洋"漂流残骸"事件模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp_SingleMTB.cs	PASS	单事件 MTB，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp_SingleOnceFixed.cs	NOTE	一次性定时事件支持 skipIfOnExtremeBiome（Biome.isExtremeBiome）——海洋 biome 跳过特定事件的先例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp_ThreatsGenerator.cs	PASS	委托 ThreatsGenerator 生成威胁，通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp_Triggered.cs	PASS	colonist 死亡/倒地触发事件（适应性），通用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerComp_WorkSite.cs	NOTE	Odyssey 工地任务：10天后按 BestAppearanceFrequency 缩放 MTB——海洋"打捞点/矿点"任务事件模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Storyteller.cs	PASS	叙事者核心（comps 调度/TryFire/事件目标枚举），基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerDef.cs	PASS	叙事者 Def（comps 列表/曲线字段），数据定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerDefOf.cs	SKIP	纯 DefOf 静态引用类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerUI.cs	PASS	叙事者/难度 UI；含 allowExtremeWeatherIncidents 开关（极端天气可难度层全局关闭）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerUtility.cs	PASS	威胁点数/默认参数计算（财富驱动），无环境特判
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StorytellerUtilityPopulation.cs	PASS	人口意图计算，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StoryWatcher_Adaptation.cs	PASS	适应性观察器（威胁点因子曲线），通用难度
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StoryWatcher.cs	PASS	观察器容器，基础设施
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StoryWatcher_PopAdaptation.cs	PASS	人口适应性观察器，通用难度
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StrengthWatcher.cs	PASS	殖民地战力评估（雷劈目标选择用），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StrikeRecord.cs	SKIP	internal 数据 struct：雷击记录
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StructureLayout.cs	PASS	结构布局运行时数据（房间/走廊格），生成管线
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StructureLayoutDef.cs	NOTE	结构布局 Def 可指定墙/门/地板 terrainDef/surroundingTerrainDef/散置 prefab——海底废墟生成入口
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StudyManager.cs	PASS	异常实体研究管理，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StudyNote.cs	SKIP	纯数据类：研究笔记阈值
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StudyUtility.cs	PASS	实体转移/研究工具，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StuffAppearanceDefOf.cs	SKIP	纯 DefOf 静态引用类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StuffCategoryDef.cs	SKIP	纯数据 Def：材料类别
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StuffCategoryDefOf.cs	SKIP	纯 DefOf 静态引用类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StunHandler.cs	PASS	眩晕/EMP/催眠处理，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StyleGender.cs	SKIP	纯枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StyleItemCategoryDef.cs	SKIP	纯数据 Def：造型类别
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StyleItemCategoryDefOf.cs	SKIP	纯 DefOf 静态引用类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StyleItemDef.cs	SKIP	抽象数据 Def：发型/纹身
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StyleItemFrequency.cs	SKIP	纯枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StyleItemSpawningProperties.cs	SKIP	纯数据类：造型生成频率/性别
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StyleItemTab.cs	SKIP	纯枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/StyleItemTagWeighted.cs	SKIP	纯数据类：造型标签权重
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SubcameraDefOf.cs	SKIP	纯 DefOf 静态引用类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SubcoreScannerState.cs	SKIP	纯枚举：子核心扫描仪状态
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SubPrefabData.cs	SKIP	纯数据类：布局内 prefab 放置数据
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SubstructureGrid.cs	NOTE	Odyssey 子结构地基网格：IsSubstructure 地形+GravEngine 半径连接+SubstructureSupport 上限+双色可视化——海床建筑地基/支撑机制模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SurfaceLayer.cs	NOTE	世界地表图层序列化：WaterCovered 格 elevation 可为负（海深），陆格 clamp≥1；温度/降雨/污染/TILE mutator 全量存档
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SurgeryOutcomeComp_BedAndRoomQuality.cs	PASS	床/房间品质影响手术结果，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SurgeryOutcomeComp_ClampToRange.cs	PASS	手术品质钳位，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SurgeryOutcomeComp.cs	PASS	手术结果修饰基类，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SurgeryOutcomeComp_Curve.cs	PASS	曲线修饰抽象类，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SurgeryOutcomeComp_Factor.cs	PASS	固定因子修饰，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SurgeryOutcomeComp_Inspired.cs	PASS	灵感手术修饰，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SurgeryOutcomeComp_MedicineQuality.cs	PASS	药品品质修饰，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SurgeryOutcomeComp_PatientAge.cs	PASS	病人年龄修饰，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SurgeryOutcomeComp_RecipeSuccessChance.cs	PASS	配方成功率修饰，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/SurgeryOutcomeComp_SurgeonSuccessChance.cs	PASS	医生成功率修饰，无关

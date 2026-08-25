@@ -1,0 +1,200 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AbilityCategoryDef.cs	SKIP	纯 Def 类（能力分类标签）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AbilityComp.cs	SKIP	能力组件抽象基类定义
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Ability.cs	NOTE	CanCast 三层环境门控：IsPocketMap / Biome.inVacuum+useableInVacuum / 星球层——水下禁能力的挂载点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AbilityDef.cs	SKIP	能力 Def 数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AbilityDefOf.cs	SKIP	DefOf 静态引用类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AbilityEffectDestination.cs	SKIP	枚举（能力效果落点）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AbilityGroupDef.cs	SKIP	纯 Def 类（能力分组）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Ability_RandomEffect.cs	PASS	仪式随机效果能力，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AbilityStatModifiers.cs	SKIP	数据类（能力 stat 修正列表）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AbilityUtility.cs	PASS	能力授予/移除工具，无环境逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AbstractShapeGenerator.cs	PASS	仪式布置形状生成，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ActionOnTick.cs	SKIP	仪式 tick 动作抽象基类（15 行）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ActionOnTick_ReleaseLantern.cs	PASS	仪式放天灯动作，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ActiveLessonHandler.cs	PASS	教程课程系统，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ActiveTransporter.cs	PASS	运输舱组 Thing，无海洋类比点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ActiveTransporterInfo.cs	PASS	运输舱内容物数据，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ActivityGizmo.cs	PASS	异象实体活动度滑条 UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ActivityState.cs	SKIP	枚举（异象实体活动状态）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ActivitySuppressionUtility.cs	PASS	异象活动抑制工具，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ActivityWorker.cs	PASS	异象实体活动度计算，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AdaptationEvent.cs	SKIP	枚举（适应度事件）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AddictionUtility.cs	PASS	成瘾化学品工具，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AgeInjuryUtility.cs	PASS	年龄相关伤病工具，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AggressiveAnimalIncidentUtility.cs	NOTE	猎杀事件选种管道：Biome.AllWildAnimals + IsCoastal 放行 coastal 动物 + 温度兜底——"只刷水生生物"关键文件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AITuning.cs	PASS	AI 调参常量集，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_AbandonedBaby.cs	PASS	弃婴警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_ActionDelay.cs	PASS	延迟型警报抽象基类，通用机制无海洋类比
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_ActivatorCountdown.cs	PASS	遗迹激活倒计时警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_AgeReversalDemandNear.cs	PASS	年龄逆转需求警报（Biotech），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_Analyzable.cs	PASS	异象可分析物警报抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_Analyzable_GrayFlesh.cs	PASS	异象分析警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_Analyzable_NeuralLump.cs	PASS	异象分析警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_Analyzable_RevenantFlesh.cs	PASS	异象分析警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_AnimalFilth.cs	PASS	室内动物污物警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_AnimaLinkingReady.cs	PASS	仙树链接警报（Royalty），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_AnimalPenNeeded.cs	PASS	畜栏需求警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_AnimalPenNotEnclosed.cs	PASS	畜栏未封闭警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_AnimalRoaming.cs	PASS	动物游荡警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_AwaitingMedicalOperation.cs	PASS	待手术警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_BestowerWaiting.cs	PASS	册封使者等待警报（Royalty），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_BilliardsTableOnWall.cs	PASS	台球桌贴墙警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_Biostarvation.cs	PASS	机械体生饿警报（Biotech），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_Boredom.cs	PASS	机械体无聊警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AlertBounce.cs	SKIP	内部类，警报弹跳动画
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_BrawlerHasRangedWeapon.cs	PASS	格斗者持枪警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_CannotBeUsedRoofed.cs	NOTE	canBeUsedUnderRoof 检查模式——可类比做"不能暴露于海水"建筑限制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_CaravanIdle.cs	PASS	商队闲置警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_CasketOpening.cs	PASS	休眠舱开启警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_ChessTableNoChairs.cs	PASS	娱乐建筑缺椅子警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_ColonistLeftUnburied.cs	PASS	未下葬警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_ColonistNeedsRescuing.cs	PASS	待救援警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_ColonistNeedsTend.cs	PASS	待治疗警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_ColonistsIdle.cs	PASS	殖民者闲置警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_ConnectedPawnNotAssignedToPlantCutting.cs	PASS	仙树割除指派警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_CreepJoinerTimeout.cs	PASS	异象加入者超时警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_Critical.cs	PASS	危急警报抽象基类（红色高优先级），框架件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert.cs	NOTE	警报基类：GetReport/Recalculate/requireXxx DLC 门控/点击跳转——自定义"进水/失压"警报的模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_CubeWithdrawal.cs	PASS	魔方戒断警报（Anomaly），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_CultistPsychicRitual.cs	PASS	邪教徒仪式警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_CustomCritical.cs	PASS	自定义危急警报基类，框架件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_Custom.cs	PASS	自定义警报基类，框架件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_DangerousActivity.cs	PASS	异象危险活动警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_DateRitualComing.cs	PASS	约会仪式警报（Ideology），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_DeathrestComplete.cs	PASS	死眠完成警报（Biotech），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_Digesting.cs	PASS	异象消化中警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_DisallowedBuildingInsideMonument.cs	PASS	纪念碑内违建警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_DormanyWakeUpDelay.cs	PASS	异象休眠唤醒延迟警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_EmergingPitGate.cs	PASS	巨坑门出现警报（Anomaly），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_EntityNeedsTend.cs	PASS	异象实体待处理警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_Exhaustion.cs	PASS	疲劳警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_FireInHomeArea.cs	PASS	居住区火灾警报（海底舱内火灾仍适用但无需改动）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_FuelNodeIgnition.cs	PASS	燃料节点引燃警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_GauranlenTreeWithoutProductionMode.cs	PASS	高岚树模式警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_GenebankUnpowered.cs	PASS	基因库断电警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_GhoulHypothermia.cs	PASS	食尸鬼低温警报，同 Hypothermia 族
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_Heatstroke.cs	PASS	中暑警报（4°C 海底不会触发，反向确认）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_HitchedAnimalHungryNoFood.cs	PASS	栓系动物饥饿警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_HunterHasShieldAndRangedWeapon.cs	PASS	猎人装备冲突警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_Hypothermia.cs	NOTE	SafeTemperatureRange vs AmbientTemperature——4°C 海底会持续触发，符合"室外危险"设计
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_HypothermicAnimals.cs	PASS	动物低温警报（水生动物 Def 需调好温度范围）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_IdeoBuildingDisrespected.cs	PASS	意识形态建筑警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_IdeoBuildingMissing.cs	PASS	意识形态建筑缺失警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_ImmobileCaravan.cs	PASS	商队动弹不得警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_InfestationDelay.cs	PASS	虫巢延迟警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_InhibitorBlocked.cs	PASS	异象抑制器受阻警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_InsufficientContainmentStrength.cs	PASS	收容强度不足警报（Anomaly），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_JoyBuildingNoChairs.cs	PASS	娱乐建筑缺椅子抽象基类，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_LifeThreateningHediff.cs	PASS	危及生命 hediff 警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_LowBabyFood.cs	PASS	婴儿食物警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_LowDeathrest.cs	PASS	死眠不足警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_LowFood.cs	PASS	食物不足警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_LowHemogen.cs	PASS	血原质警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_LowMedicine.cs	PASS	药品不足警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_LowOxygen.cs	NOTE	真空暴露警报：GetVacuum 按格连续值 + VacuumExposure hediff 阶段>=2——"海水暴露"警报逐行模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_MajorOrExtremeBreakRisk.cs	PASS	精神崩溃风险警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_MeatHunger.cs	PASS	异象肉食饥渴警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_MechChargerFull.cs	PASS	机械体充电桩警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_MechDamaged.cs	PASS	机械体受损警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_MechMissingBodyPart.cs	PASS	机械体缺部件警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_MechThreat.cs	PASS	机械族威胁剧本警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_MinifiedTreeAboutToDie.cs	PASS	打包树将死警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_MinorBreakRisk.cs	PASS	轻度崩溃风险警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_MonolithAutoActivating.cs	PASS	方尖碑自激活警报（Anomaly），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_MonumentMarkerMissingBlueprints.cs	PASS	纪念碑缺蓝图警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_NeedAnomalyProject.cs	PASS	异象研究项目警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_NeedBabyCribs.cs	PASS	婴儿床警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_NeedBatteries.cs	PASS	电池需求警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_NeedColonistBeds.cs	PASS	床位需求警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_NeedDefenses.cs	PASS	防御需求警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_NeedDoctor.cs	PASS	医生需求警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_NeedHoldingPlatform.cs	PASS	收容平台需求警报（Anomaly），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_NeedJoySources.cs	PASS	娱乐源需求警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_NeedMealSource.cs	PASS	食物来源警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_NeedMechChargers.cs	PASS	充电桩需求警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_NeedMeditationSpot.cs	PASS	冥想点需求警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_NeedMiner.cs	PASS	矿工需求警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_NeedResearchBench.cs	PASS	研究台需求警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_NeedResearchProject.cs	PASS	研究项目需求警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_NeedSlaveBeds.cs	PASS	奴隶床警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_NeedSlaveCribs.cs	PASS	奴隶婴儿床警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_NeedWarden.cs	PASS	狱卒需求警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_NeedWarmClothes.cs	NOTE	用 Biome.inVacuum 整体屏蔽暖衣检查——按 Biome 屏蔽警报的现成模式；含保温统计链路
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_NoBabyFeeders.cs	PASS	婴儿喂食器警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_NoBabyFoodCaravan.cs	PASS	商队婴儿食物警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_PasteDispenserNeedsHopper.cs	PASS	营养膏机料斗警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_PennedAnimalHungry.cs	PASS	栏内动物饥饿警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_PokerTableNoChairs.cs	PASS	扑克桌缺椅子警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_PollutedTerrain.cs	PASS	污染地形警报（Biotech），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_Precept.cs	PASS	戒律警报抽象基类（Ideology），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_PredatorInPen.cs	PASS	栏内捕食者警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AlertPriority.cs	SKIP	枚举（警报优先级）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_PsychicBondedSeparated.cs	PASS	心灵纽带分离警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_QuestExpiresSoon.cs	PASS	任务过期警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_ReimplantationAvailable.cs	PASS	异象再植入警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AlertReport.cs	NOTE	AlertReport 结构与 CulpritsAre 工厂——自定义警报返回值构造工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_RolesEmpty.cs	PASS	意识形态职位空缺警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_RoyalNoAcceptableFood.cs	PASS	贵族食物警报（Royalty），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_RoyalNoThroneAssigned.cs	PASS	王座未指派警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_Scenario.cs	PASS	剧本警报抽象基类，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_ShieldUserHasRangedWeapon.cs	PASS	护盾腰带装备冲突警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_ShuttleLandingBeaconUnusable.cs	PASS	穿梭机信标警报（Royalty），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_SlaveRebellionLikely.cs	PASS	奴隶叛乱警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_SlavesUnattended.cs	PASS	奴隶无人看管警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_SlavesUnsuppressed.cs	PASS	奴隶未镇压警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AlertsReadout.cs	PASS	警报栏 UI 容器，加自定义警报无需改动
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_StarvationAnimals.cs	PASS	动物饥饿警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_StarvationColonists.cs	PASS	殖民者饥饿警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_SubjectHasNowOverseer.cs	PASS	异象监管警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_TatteredApparel.cs	PASS	破衣警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_Thought.cs	PASS	心情念头警报抽象基类，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_ThroneroomInvalidConfiguration.cs	PASS	王座厅配置警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_TimedMakeFactionHostile.cs	PASS	派系敌对倒计时警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_TimedRaidsArriving.cs	PASS	定时袭击侦测警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_TitleRequiresBedroom.cs	PASS	贵族卧室需求警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_ToxicBuildup.cs	NOTE	hediff 严重度阈值(>=0.6)警报模式——"溺水/水压积累"警报的 30 行模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_ToxifierGeneratorStopped.cs	PASS	毒化发电机警报（Biotech），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_UndercaveUnstable.cs	NOTE	PitGate 崩塌倒计时警报（Anomaly 专属）——"舱段失压倒计时"模式可借鉴
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_UndignifiedBedroom.cs	PASS	卧室体面度警报（Royalty），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_UndignifiedThroneroom.cs	PASS	王座厅体面度警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_UnhappyNudity.cs	PASS	裸体不满警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_UnusableMeditationFocus.cs	PASS	冥想焦点不可用警报，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Alert_WarqueenHasLowResources.cs	PASS	战争女皇资源警报（Biotech），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AllowedThreatsGeneratorThreats.cs	SKIP	Flags 枚举（Raids/MechClusters）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AmbientSoundManager.cs	NOTE	按 BiomeDef.soundsAmbient/noAmbientWind 驱动环境音——海底氛围纯 XML 可配
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AnalysisDetails.cs	SKIP	数据类（异象分析详情）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AnalysisManager.cs	PASS	异象分析管理器，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AncientHatch.cs	NOTE	MapPortal 子类：黑客解锁+口袋地图生成——"海底沉船/海沟洞穴入口"完整模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AncientStructureGenParms.cs	SKIP	遗址生成参数数据类（海底废墟生成或可复用其 XML 字段，纯数据无逻辑）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AnimalBiomeRecord.cs	SKIP	数据类（biome+commonality，水生动物分布配置的 XML 载体）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AnimalProductionUtility.cs	PASS	产蛋/剪毛工具，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AnimationDefGenerator_Flying.cs	PASS	飞行动画生成器，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AnimationDefOf.cs	SKIP	DefOf 静态引用类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AnomalyIncidentUtility.cs	PASS	异象事件工具，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AnomalyPlaystyleDef.cs	SKIP	纯 Def 类（异象玩法风格）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AnomalyPlaystyleDefOf.cs	SKIP	DefOf 静态引用类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AnomalyUtility.cs	PASS	异象通用工具，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Apparel.cs	PASS	服装 Thing 基类，无真空/水逻辑（环境抗性走 StatDef）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ApparelGraphicRecord.cs	SKIP	struct（服装渲染记录）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ApparelGraphicRecordGetter.cs	PASS	服装渲染图获取，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ApparelLayerDefOf.cs	SKIP	DefOf 静态引用类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ApparelPolicy.cs	PASS	服装政策数据，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ApparelProperties.cs	NOTE	canBeGeneratedToSatisfyVacuumResistance/ToxicEnvironmentResistance/immuneToToxGasExposure——潜水服对标太空服的字段级先例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ApparelRequirement.cs	PASS	服装需求数据（贵族/异象），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ApparelRequirementSource.cs	SKIP	枚举（服装需求来源）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ApparelRequirementWithSource.cs	SKIP	struct（服装需求+来源）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ApparelUtility.cs	PASS	服装通用工具，无环境逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Aptitude.cs	SKIP	数据类（技能+等级）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ArchitectCategoryTab.cs	PASS	建筑菜单分类页 UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Archive.cs	PASS	信件/消息存档，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ArchivedDialog.cs	PASS	存档对话数据，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ArchonexusCountdown.cs	PASS	巨构核心结局倒计时，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Area_Allowed.cs	PASS	允许区域基类，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AreaAllowedGUI.cs	PASS	允许区域 UI，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Area_BuildRoof.cs	PASS	造屋顶区域，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Area_Home.cs	PASS	居住区域，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Area_NoRoof.cs	PASS	禁屋顶区域，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Area_PollutionClear.cs	PASS	清污区域（Biotech），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Area_SnowOrSandClear.cs	PASS	扫雪/扫沙区域，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/ArtGenerationContext.cs	SKIP	枚举（艺术品生成上下文）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AssignableUtility.cs	PASS	指派类设施通用工具，与海洋无关

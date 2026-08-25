@@ -1,0 +1,200 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Milkable.cs	PASS	挤奶资源参数，与海洋无类比价值
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_MoteEmitter.cs	NOTE	通用粒子发射器——气泡/深海微粒视觉模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_MoteEmitterProximityScan.cs	NOTE	接近扫描脉冲粒子——声呐视觉可借
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_MoteEmitterRandomColor.cs	NOTE	随机色粒子发射器（同族，浮游生物微粒）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_NeuralSupercharger.cs	PASS	神经超充器参数，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Nociosphere.cs	PASS	Anomaly 虚空之球参数，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_NoctolEyes.cs	PASS	夜行者眼睛粒子，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_NoiseSource.cs	PASS	噪音源半径，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Obelisk.cs	PASS	Anomaly 方尖碑碎石参数，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_ObeliskDeactivationInteractor.cs	PASS	方尖碑交互，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_ObeliskLabyrinth.cs	PASS	方尖碑迷宫，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_ObeliskTriggerInteractor.cs	SKIP	空绑定类（仅 compClass 赋值）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_OrbitalBeam.cs	PASS	轨道光束视觉，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_OverseerSubject.cs	PASS	机械督主臣属参数，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_OxygenPusher.cs	NOTE	Odyssey 氧气推送器：requiresPower+airPerSecondPerHundredCells=0.1，海底供氧模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_PawnSpawnOnWakeup.cs	PASS	休眠苏醒刷怪参数，通用，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Plantable.cs	PASS	种植生成植物，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_PlantDamager.cs	PASS	植物伤害半径，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_PlantHarmRadius.cs	PASS	植物危害曲线，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_PlantPreventCutting.cs	SKIP	空绑定类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_PlaySoundOnDestroy.cs	PASS	销毁播音效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_PolluteOverTime.cs	NOTE	随时间污染格子——海底污染是否成立需设计决策
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_PollutionPump.cs	NOTE	污染泵清污参数（半径9.9/3次出1袋）——清污模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_PowerBeam.cs	PASS	能量光束持续时间，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Power.cs	NOTE	shortCircuitInRain 雨中短路开关——泡水短路的最接近现成物
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_PreachHealth.cs	SKIP	空能力效果绑定类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_ProducesBioferrite.cs	PASS	活铁产量，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_ProjectileEffecter.cs	PASS	弹道特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_ProjectileInterceptor.cs	NOTE	定点弹道拦截器（EMP瘫痪/充能或血条模式）——鱼雷点防御类比
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_ProximityFuse.cs	PASS	近炸引信，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_ProximityLetter.cs	PASS	接近发信，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_PsychicRitualSpot.cs	SKIP	空绑定类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_PsychicSlaughter.cs	SKIP	空能力效果绑定类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Psylinkable.cs	PASS	灵能链接（仙树）参数，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Pushable.cs	PASS	可推动物参数，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_RadialPulse.cs	NOTE	径向脉冲环参数——声呐脉冲视觉（与运动感应联动）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_RaidEnemy.cs	PASS	召唤袭击效果参数，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_RandomAlliedMilitaryAid.cs	PASS	盟军援助点数，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Readable.cs	PASS	书籍阅读 outcome，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Rechargeable.cs	PASS	充能时间参数，通用，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Refuelable.cs	NOTE	functionsInVacuum 真空停用开关+雨天耗燃料——泡水设备停用范式
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_ReleaseGas.cs	NOTE	气体释放参数（GasType/格数/时长）——空气泡/氧气释放可借
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_ReportWorkSpeed.cs	PASS	工作速度显示，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Resurrect.cs	SKIP	空能力效果绑定类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_ResurrectMech.cs	PASS	机械复活消耗，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_RitualEffectConstantCircle.cs	PASS	仪式视觉特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_RitualEffectDrum.cs	PASS	仪式视觉特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_RitualEffectIntervalSpawnArea.cs	PASS	仪式视觉特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_RitualEffectIntervalSpawnCircle.cs	PASS	仪式视觉特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_RitualEffectIntervalSpawn.cs	PASS	仪式视觉特效基类，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_RitualEffectIntervalSpawnDividedCircle.cs	PASS	仪式视觉特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_RitualEffectLightball.cs	PASS	仪式视觉特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_RitualEffectSpawnOnPawn.cs	PASS	仪式视觉特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_RitualEffectSpawnOnRole.cs	PASS	仪式视觉特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_RitualEffectStaticAreaRandomMote.cs	PASS	仪式视觉特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_RitualHediffGiverInRoom.cs	PASS	仪式房间内给 hediff，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_RitualSeat.cs	SKIP	空绑定类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_RitualSignalSender.cs	SKIP	空绑定类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_RitualTargetEffecterSpawner.cs	PASS	仪式特效生成，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_RitualTargetMoteSpawner.cs	PASS	仪式粒子生成，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_RitualVisualEffect.cs	PASS	仪式特效基类（mote/fleck 参数），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Rottable.cs	NOTE	腐烂参数（天数/烂掉销毁/腐坏伤害）——海底4°C天然冷藏由温度自动驱动
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_RoyalImplant.cs	PASS	皇家植入体，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_SanguophageMeetingFire.cs	PASS	血族集会火堆，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Scanner.cs	NOTE	扫描仪参数（MTB+保底天数/速度stat）——海底矿扫模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_ScannerMineralsDeep.cs	NOTE	深扫描绑定（空子类，compClass=CompDeepScanner）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Schedule.cs	PASS	按时段启停，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Sealable.cs	NOTE	封堵属性（封口贴图/确认文案/destroyPortal）——弃舱封门模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_SelfhealHitpoints.cs	PASS	自修复 HP，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_SendSignalOnCountdown.cs	PASS	倒计时发信号，通用，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_SendSignalOnMotion.cs	NOTE	运动感应触发参数——水下运动告警可借
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Serum.cs	SKIP	空类+血清时长显示，无机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Shearable.cs	PASS	剪毛资源参数，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Shield.cs	NOTE	能量护盾参数（损能/重置时间/挡远程）——水下护盾弱类比
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_ShipLandingBeacon.cs	NOTE	着陆信标属性（边长范围/地形适配需求）——潜水器停泊坪模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_ShipPart.cs	SKIP	空绑定类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Shuttle.cs	PASS	穿梭机 shipDef 绑定，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_SkyfallerRandomizeDirection.cs	PASS	空降随机方向，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_SmokeCloudMaker.cs	PASS	烟雾云生成，弱（尘云），未列条目
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_SnowExpand.cs	NOTE	积雪扩张（500tick/0.12/半径55）——淤泥淤积弱类比
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_SpawnEffecterOnDestroy.cs	PASS	销毁特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_SpawnEffectersInRoom.cs	PASS	房间特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Spawner.cs	PASS	通用物品生成器，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_SpawnerFilth.cs	PASS	污物生成器，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_SpawnerHives.cs	PASS	虫巢生成参数，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_SpawnerItems.cs	PASS	物品生成器（按价值/类别），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_SpawnerPawn.cs	NOTE	巢穴刷怪全参数（points预算/间隔/lordJob）——海底生物巢穴模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_SpawnFilthOnTakeDamage.cs	PASS	受伤产污物，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_SpawnPawnOnDestroyed.cs	PASS	摧毁刷怪，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_SpawnPawnsOnDamaged.cs	PASS	受伤刷怪，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_SpawnsRevenant.cs	SKIP	空绑定类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_SpawnSubplant.cs	PASS	子植物扩散（仙草），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_SpreadSludge.cs	PASS	软泥扩散，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_StatEntry.cs	PASS	属性面板条目，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_StatOffsetBase.cs	PASS	冥想聚焦加成基类，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Statue.cs	PASS	雕像基座贴图，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_StopManhunter.cs	SKIP	空能力效果绑定类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Studiable.cs	PASS	异常研究参数，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_StudiableMonolith.cs	SKIP	空子类绑定
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_StudyUnlocks.cs	PASS	研究解锁笔记，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_StudyUnlocksMonolith.cs	SKIP	空子类绑定
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Stunnable.cs	PASS	EMP 眩晕参数，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_StunOnDamage.cs	PASS	受击眩晕，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Styleable.cs	SKIP	空绑定类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_SubstructureFootprint.cs	PASS	Odyssey 亚结构足迹显示，弱相关未列条目
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Targetable.cs	PASS	目标筛选参数，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Targetable_SingleAnimal.cs	SKIP	空子类（仅 allowWildMan 默认值）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_TargetEffect_BrainDamageChance.cs	PASS	脑损伤概率，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_TargetEffect_FleckConnecting.cs	PASS	目标特效粒子，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_TargetEffect_FleckOnTarget.cs	PASS	目标特效粒子，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_TargetEffect_GoodwillImpact.cs	PASS	好感度影响，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_TargetEffectInstallImplantInOtherPawn.cs	PASS	植入体安装，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_TargetEffect_MoteConnecting.cs	PASS	目标特效粒子，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_TargetEffect_MoteOnTarget.cs	PASS	目标特效粒子，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_TargetEffectResurrect.cs	PASS	复活特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_TargetingBeam.cs	PASS	瞄准光束，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Techprint.cs	PASS	技术蓝图，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_TempControl.cs	NOTE	温控参数（12能量/秒、目标-50~50、低保0.1）——海底制冷免费制热贵的调参点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_TemperatureRuinable.cs	NOTE	超温毁坏参数（安全温区/每度每tick累积）——温度敏感物品
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Terraformer.cs	NOTE	地形改造器（20秒/格转convertTerrainDef，半径6.9）——海底造陆模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_TerrainPump.cs	NOTE	地形泵基类（半径5.9/5天满半径）——排水节奏参数
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_TerrainPumpDry.cs	NOTE	潮湿泵（抽干水）绑定 CompTerrainPumpDry——排水直接模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_ThingContainer.cs	PASS	容器参数，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_ThrownFleckEmitter.cs	PASS	投掷物粒子，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_ThrownMoteEmitter.cs	PASS	投掷物粒子，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_ToggleDrawAffectedMeditationFoci.cs	PASS	冥想焦点显示开关，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Toxifier.cs	NOTE	污染器（半径5.9/每分钟6格）——海底污染冲突决策点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Transmute.cs	PASS	物质转化能力，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Transporter.cs	PASS	运输舱容量，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_TreeConnection.cs	PASS	仙树连接（树精），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_TurretGun.cs	PASS	炮塔武器绑定，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_UniqueWeapon.cs	PASS	命名武器类别，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_UnnaturalHealing.cs	SKIP	空能力效果绑定类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Usable.cs	NOTE	layerWhitelist/layerBlacklist 行星层门控——海底层禁用物品现成机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_Useable_CallBossgroup.cs	PASS	召唤 Boss 参数，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_UseEffectAddHediff.cs	PASS	使用加 hediff，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_UseEffectArtifact.cs	PASS	神器音效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_UseEffect.cs	PASS	使用效果基类，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_UseEffectDestroySelf.cs	PASS	使用后自毁，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_UseEffect_GainAbility.cs	PASS	获得能力，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_UseEffectGiveQuest.cs	PASS	给任务，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_UseEffectInstallImplant.cs	PASS	安装植入体，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_UseEffect_LearnSkill.cs	PASS	学技能，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_UseEffectOffsetDeathrestCapacity.cs	PASS	死眠容量，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_UseEffectPlaySound.cs	PASS	播音效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_UseEffectPlayWarmupSound.cs	PASS	播预热音效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_UsesMeditationFocus.cs	SKIP	空绑定类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_WakeUpDormant.cs	PASS	休眠唤醒信号参数，通用，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProperties_WasteProducer.cs	PASS	废料显示开关，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProximityFuse.cs	PASS	近炸引信实现，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompProximityLetter.cs	PASS	接近发信实现，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPsychicRitualSpot.cs	PASS	灵能仪式点占位检测，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPsylinkable.cs	PASS	灵能链接实现（仙树），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompPushable.cs	PASS	可推动物实现（搬运作业），无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompQuality.cs	PASS	品质 comp，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRadialPulse.cs	NOTE	扩张圆环渲染，联动 SendSignalOnMotion.Sent——声呐脉冲视觉组合
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompReadable.cs	PASS	阅读 outcome 管理，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRechargeable.cs	PASS	充能进度条实现，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRefuelable.cs	NOTE	继承 ThingComp_VacuumAware：真空中 HasFuel=false——泡水设备停用范式核心
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompReleaseGas.cs	NOTE	GasUtility.AddGas 按时长释放气体——气体网格系统可用于空气/气泡
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRelicContainer.cs	PASS	圣物容器，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompReportWorkSpeed.cs	PASS	工作速度报告显示，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRevenant.cs	PASS	Anomaly 幽灵隐形/催眠，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRevenantSpine.cs	PASS	幽灵脊椎交互，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRitualEffect_ConstantCenter.cs	PASS	仪式视觉特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRitualEffect_ConstantCircle.cs	PASS	仪式视觉特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRitualEffect_Constant.cs	PASS	仪式视觉特效基类，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRitualEffect_Drum.cs	PASS	仪式鼓特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRitualEffect_IntervalSpawnArea.cs	PASS	仪式视觉特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRitualEffect_IntervalSpawnBurst.cs	PASS	仪式视觉特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRitualEffect_IntervalSpawnCircle.cs	PASS	仪式视觉特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRitualEffect_IntervalSpawn.cs	PASS	仪式视觉特效基类，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRitualEffect_IntervalSpawnDividedCircleEffecter.cs	PASS	仪式视觉特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRitualEffect_Lightball.cs	PASS	仪式光球特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRitualEffectSpawner.cs	PASS	仪式特效生成基类，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRitualEffect_SpawnOnOrganizer.cs	PASS	仪式视觉特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRitualEffect_SpawnOnPawn.cs	PASS	仪式视觉特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRitualEffect_SpawnOnRole.cs	PASS	仪式视觉特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRitualEffect_StaticAreaRandomMote.cs	PASS	仪式视觉特效，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRitualFireOverlay.cs	PASS	仪式火焰覆盖层，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRitualHediffGiverInRoom.cs	PASS	仪式房间 hediff 实现，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRitualSeat.cs	PASS	仪式席位派系显示，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRitualSignalSender.cs	PASS	仪式目标信号，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRitualTargetEffecterSpawner.cs	PASS	仪式特效生成，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRitualTargetMoteSpawner.cs	PASS	仪式粒子生成，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRottable.cs	NOTE	腐烂速率=GenTemperature.RotRateAtTemperature(AmbientTemperature)——海底4°C自动冷藏；烂肉放 RotStink 气
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompRoyalImplant.cs	PASS	皇家植入体头衔检查，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompSanguophageMeetingFire.cs	PASS	血族集会火堆渲染，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompScanner.cs	NOTE	扫描仪 CanUseNow 屋顶禁用（CannotUseScannerRoofed）——海底若海水=屋顶则冲突
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompSchedule.cs	PASS	时段启停实现，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompSealable.cs	NOTE	MapPortal 封死：销毁口袋地图+遗留人员警告确认——弃舱封门完整范式
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompSelectProxy.cs	PASS	选中代理，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompSelfhealHitpoints.cs	PASS	自修复实现，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompSendSignalOnCountdown.cs	PASS	倒计时发信号实现，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompSendSignalOnMotion.cs	NOTE	运动感应触发实现（半径/仅人类/房间）——水下告警器可借
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompSentryDrone.cs	PASS	哨戒无人机巡逻/攻击切换，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompSerum.cs	SKIP	空类（无成员）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompShearable.cs	PASS	剪毛实现，无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompShield.cs	NOTE	能量护盾实现（能量/破盾重置/EMP）——水下护盾弱类比
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/CompShipLandingBeacon.cs	NOTE	信标围出着陆区，检查 BlockedByRoof/Terrain——停泊坪模板+屋顶冲突

@@ -1,0 +1,200 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_ChangeHeir.cs	PASS	任务部件：变更继承人，与地图环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_ChangeNeed.cs	PASS	任务部件：修改 pawn 需求值，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Choice.cs	PASS	任务选项分支逻辑，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart.cs	NOTE	QuestPart 抽象基类：SignalListenMode/Notify_QuestSignalReceived 钩子，证明 mod 可自由扩展自定义任务部件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_DamageUntilDowned.cs	PASS	任务部件：持续伤害直至倒地，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_DefendPoint.cs	PASS	防御点 lord 任务部件，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Delay.cs	PASS	任务延时部件，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_DelayedRewardDropPods.cs	PASS	延时奖励空投（空投管线已在 DropPods 条目覆盖）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_DelayRandom.cs	PASS	随机延时，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_DescriptionPart.cs	SKIP	纯文本描述部件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_DestroyThingsOrPassToWorld.cs	PASS	清理物品/传入世界，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_DestroyThingsOrPassToWorldOnCleanup.cs	PASS	清理时销毁物品，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_DestroyWorldObject.cs	PASS	销毁世界对象，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPartDialogCloseAction.cs	SKIP	纯枚举/小数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPartDialogCloseActionRegistry.cs	SKIP	对话框关闭动作注册表，trivial
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Dialog.cs	PASS	任务对话框部件，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_DisableRandomMoodCausedMentalBreaks.cs	PASS	禁用随机精神崩溃，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_DisableTradeRequest.cs	PASS	禁用贸易请求，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_DropMonumentMarkerCopy.cs	PASS	纪念碑标记复制，仅含标准重定向逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_DropPods.cs	NOTE	任务空投部件：DropPodUtility.DropThingGroupsNear + 落点要求 !Roofed，海底空投穿水/穿顶冲突点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_EndGame.cs	PASS	结束游戏部件，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_EnsureNotDowned.cs	PASS	保证 pawn 不倒地，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_EscortPawn.cs	PASS	护送 lord 部件，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_ExitOnShuttle.cs	PASS	穿梭机离场部件，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_ExtraFaction.cs	PASS	额外派系归属，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_FactionGoodwillChange.cs	PASS	派系好感变更，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_FactionGoodwillChange_ShuttleSentThings.cs	PASS	穿梭机送物好感，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_FactionGoodwillForMoodChange.cs	PASS	心情换好感，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_FactionGoodwillLocked.cs	PASS	好感锁定，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_FactionRelationChange.cs	PASS	派系关系变更，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_FactionRelationKind.cs	PASS	派系关系类型设定，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_AcceptedAfterTicks.cs	SKIP	纯信号过滤器（接受后经过 tick 数）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_AllPawnsDespawned.cs	SKIP	纯信号过滤器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_AllPawnsDestroyed.cs	SKIP	纯信号过滤器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_AllPawnsDowned.cs	SKIP	纯信号过滤器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_AllRequiredThingsLoaded.cs	SKIP	纯信号过滤器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_AllThingsHacked.cs	SKIP	纯信号过滤器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_AllThingsHackedOrDestroyed.cs	SKIP	纯信号过滤器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_AnyColonistAlive.cs	SKIP	纯信号过滤器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_AnyColonistCapableOfHacking.cs	SKIP	纯信号过滤器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_AnyColonistWithCharityPrecept.cs	SKIP	纯信号过滤器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_AnyHostileThreatToPlayer.cs	SKIP	纯信号过滤器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_AnyOnTransporterCapableOfHacking.cs	SKIP	纯信号过滤器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_AnyOnTransporter.cs	SKIP	纯信号过滤器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_AnyPawnAlive.cs	SKIP	纯信号过滤器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_AnyPawn.cs	SKIP	纯信号过滤器抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_AnyPawnHasHediff.cs	SKIP	纯信号过滤器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_AnyPawnInCombatShape.cs	SKIP	纯信号过滤器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_AnyPawnPlayerControlled.cs	SKIP	纯信号过滤器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_AnyPawnUnhealthy.cs	SKIP	纯信号过滤器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_ArgEqual.cs	SKIP	纯信号过滤器（参数比较）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_ArgNotEqual.cs	SKIP	纯信号过滤器（参数比较）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_BuiltNearSettlement.cs	SKIP	纯信号过滤器（定居点附近建造）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_CanAcceptQuest.cs	SKIP	纯信号过滤器（包装 CanAcceptQuest）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter.cs	SKIP	过滤器抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_FactionHostileToOtherFaction.cs	SKIP	纯信号过滤器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_FactionNonPlayer.cs	SKIP	纯信号过滤器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_Fail.cs	SKIP	纯信号过滤器（失败时触发）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_Hacked.cs	SKIP	纯信号过滤器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_PawnDestroyed.cs	SKIP	纯信号过滤器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_PlayerWealth.cs	SKIP	纯信号过滤器（财富阈值）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_Success.cs	SKIP	纯信号过滤器（成功时触发）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_ThingAnalyzed.cs	SKIP	纯信号过滤器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Filter_UnknownOutcome.cs	SKIP	纯信号过滤器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_GameCondition.cs	NOTE	任务触发 GameCondition：CanApplyOnMap 检查+跨玩家地图回退，海洋屏蔽气候事件的语义挂点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_GiveDiedOrDownedThoughts.cs	PASS	给予死亡/倒地想法，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_GiveHediff.cs	PASS	给予 hediff，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_GiveNearPawn.cs	NOTE	近 pawn 给予物品走 DropPodUtility.DropThingsNear(canRoofPunch:false)，同属空投穿水冲突点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_GiveRoyalFavor.cs	PASS	皇家好感奖励，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_GiveTechprints.cs	PASS	科技蓝图奖励，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_GiveToCaravan.cs	PASS	交给商队，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_GuardianShipDelay.cs	PASS	护卫船延时，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Incident.cs	NOTE	任务触发任意 IncidentDef 的通用部件（forced+CanFireNow+重定向），事件被海洋屏蔽时会静默跳过
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Infestation.cs	NOTE	任务虫害：SpawnTunnels(ignoreRoofedRequirement:true, spawnAnywhereIfNoGoodCell:true)，海底无法天然免疫，需外层拦截
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_InitiateTradeRequest.cs	PASS	发起贸易请求，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_InnerFactionFight.cs	PASS	派系内斗，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_InspectString.cs	PASS	检查信息文本，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_InvolvedFactions.cs	PASS	涉及派系列表，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_IsDead.cs	PASS	存活判定，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_IsPrisoner.cs	PASS	囚犯判定，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_JoinPlayer.cs	PASS	pawn 加入玩家，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Leave.cs	PASS	pawn 离场，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_LeavePlayer.cs	PASS	pawn 离开玩家阵营，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_LendColonistsToFaction.cs	NOTE	借出殖民者归还时走 DropPodUtility.DropThingsNear(TradeDropSpot)，同属空投穿水冲突点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Letter.cs	PASS	发信件部件，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_LinkUnnaturalCorpse.cs	PASS	非自然尸体链接（Anomaly），环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Log.cs	PASS	调试日志部件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_LookTargets.cs	PASS	镜头目标部件，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_MakeLord.cs	PASS	lord 创建抽象基类，仅含标准重定向逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_MechCluster.cs	NOTE	机械集群任务部件：FindClusterPosition+SpawnCluster(dropInPods:true)，空投入场同属穿水冲突
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_MergeOutcomes.cs	PASS	结局合并逻辑，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Message.cs	PASS	发消息部件，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_MoodBelow.cs	PASS	心情阈值监听，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_MTB.cs	PASS	MTB 触发抽象基类，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_NewColony.cs	NOTE	Archonexus 迁殖民地：MoveColonyUtility.PickNewColonyTile 世界选格，海洋格可否被选中未验证
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Notify_PlayerRaidedSomeone.cs	PASS	玩家袭击通知，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_NoWorldObject.cs	PASS	世界对象存在性监听，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_PassActivable.cs	SKIP	纯信号传递部件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_PassAllActivable.cs	SKIP	纯信号传递部件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_PassAll.cs	SKIP	纯信号传递部件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_PassAllOutMany.cs	SKIP	纯信号传递部件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_PassAllSequence.cs	SKIP	纯信号传递部件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_PassAnyActivable.cs	SKIP	纯信号传递部件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_PassAny.cs	SKIP	纯信号传递部件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_PassAnyOutMany.cs	SKIP	纯信号传递部件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Pass.cs	SKIP	纯信号传递部件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_PassOutInterval.cs	SKIP	纯信号传递部件（间隔）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_PassOutMany.cs	SKIP	纯信号传递部件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_PassOutRandom.cs	SKIP	纯信号传递部件（随机）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_PassWhileActive.cs	SKIP	纯信号传递部件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_PassWithFactionArg.cs	SKIP	纯信号传递部件（带派系参数）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_PawnJoinOffer.cs	PASS	pawn 加入提议，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_PawnKilled.cs	PASS	pawn 被杀监听，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_PawnsArrive.cs	NOTE	到达方式回退链：CanUseOnMap 不过→找 canBeBackup 模式→全不行 Log.Error 丢弃，海洋需自定义 backup 到达模式
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_PawnsAvailable.cs	PASS	pawn 可用性监听，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_PawnsKilled.cs	PASS	pawn 群体被杀监听，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_PlantsHarvested.cs	PASS	植物收获计数，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_PlayerWealth.cs	PASS	玩家财富监听，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_PlayOneShotOnCamera.cs	PASS	音效部件，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_QuestEnd.cs	PASS	任务结束部件，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_QuestEndParent.cs	PASS	父任务结束部件，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_RandomRaid.cs	NOTE	任务随机袭击：走 RaidEnemy IncidentWorker+CanFireNow，可覆盖 arrivalMode/raidStrategy，海洋袭击过滤挂点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_RecordHistoryEvent.cs	PASS	历史事件记录，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_RefugeeInteractions.cs	PASS	难民互动逻辑，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_ReimplantXenogerm.cs	PASS	异种胚芽重植 lord，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_ReleaseParalyzedAnimals.cs	PASS	释放麻痹动物，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_RemoveEquipmentFromPawns.cs	PASS	移除装备，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_RemoveMemoryThought.cs	PASS	移除记忆想法，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_ReplaceLostLeaderReferences.cs	PASS	领袖引用替换，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_RequiredShuttleThings.cs	PASS	穿梭机必需物品，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_RequirementsToAcceptBedroom.cs	PASS	接受条件：卧室要求，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_RequirementsToAcceptColonistWithTitle.cs	PASS	接受条件：头衔殖民者，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_RequirementsToAccept.cs	PASS	接受条件抽象基类（CanAccept 聚合模式见 PlanetLayer 条目）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_RequirementsToAcceptFactionRelation.cs	PASS	接受条件：派系关系，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_RequirementsToAcceptNoDanger.cs	PASS	接受条件：无危险，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_RequirementsToAcceptNoOngoingBestowingCeremony.cs	PASS	接受条件：无册封仪式，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_RequirementsToAcceptPawnOnColonyMap.cs	PASS	接受条件：pawn 在殖民地，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_RequirementsToAcceptPlanetLayer.cs	NOTE	按 PlanetLayer 白/黑名单+canBeSpace 控制任务接受，海洋层任务门控的直接模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_RequirementsToAcceptPlayerWealth.cs	PASS	接受条件：玩家财富，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_RequirementsToAcceptResearch.cs	PASS	接受条件：研究进度，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_RequirementsToAcceptThingStudied_ArchotechStructures.cs	PASS	接受条件：研究过远古结构，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_RequirementsToAcceptThingStudied.cs	PASS	接受条件：研究过某物，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_RequirementsToAcceptThroneRoom.cs	PASS	接受条件：王座室，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_RequirePawnsCurrentlyOnShuttle.cs	PASS	要求 pawn 在穿梭机上，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_ReserveFaction.cs	PASS	派系预留，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_ReservePawns.cs	PASS	pawn 预留，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_SagnuophageMeeting.cs	PASS	血肉兽会面 lord（Anomaly），环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_SendShuttleAway.cs	PASS	送走穿梭机，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_SendShuttleAwayOnCleanup.cs	PASS	清理时送走穿梭机，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_SetAllApparelLocked.cs	PASS	锁定服装，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_SetFaction.cs	PASS	设置派系，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_SetFactionHidden.cs	PASS	设置派系隐藏，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_SetQuestNotYetAccepted.cs	PASS	任务未接受标记，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_SetSitePartThreatPointsToCurrent.cs	PASS	据点威胁点数同步，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_ShuttleDelay.cs	PASS	穿梭机延时，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_ShuttleLeaveDelay.cs	PASS	穿梭机离开延时，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_SituationalThought.cs	PASS	情境想法，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Skyfaller.cs	NOTE	天降物部件：SkyfallerMaker.SpawnSkyfaller 直接砸落无屋顶检查，海底表现冲突
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_SpawnSpaceDrone.cs	NOTE	太空无人机生成：DropCellFinder.FindSafeLandingSpot 找落点，空投落点管线示例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_SpawnThing.cs	NOTE	任务生成物落点链全走 DropCellFinder（TryFindShipLandingArea→FindSafeLandingSpot→RandomDropSpot），海底落点需验证
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_SpawnWorldObject.cs	NOTE	任务据点落位用 TileFinder.TryFindNewSiteTile，海洋格是否会被选为据点未验证
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_StartDetectionRaids.cs	PASS	启动世界对象定时袭击（TimedDetectionRaids 组件），机制与海洋无直接类比
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_StartWick.cs	PASS	启动引信，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPartState.cs	SKIP	纯枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_SubquestGenerator_ArchonexusVictory.cs	PASS	子任务生成器（Archonexus），环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_SubquestGenerator.cs	PASS	子任务生成器抽象基类，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_SubquestGenerator_Gravcores.cs	PASS	Odyssey 重力核心子任务：仅当玩家有 GravEngine 建筑时生成，"按建筑门控子任务"模式可参考但无海洋直接关联
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_SubquestGenerator_RelicHunt.cs	PASS	遗物猎寻子任务生成器，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_SurpriseReinforcement.cs	PASS	突袭增援，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_ThingsProduced.cs	PASS	物品生产计数，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_ThreatsGenerator.cs	PASS	威胁事件序列生成（委托 ThreatsGenerator 工具类，本体在其他分片）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_TrackWhenExitMentalState.cs	PASS	精神崩溃退出监听，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_TradeRequestInactive.cs	PASS	贸易请求失效监听，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_TransporterPawns.cs	PASS	运输舱 pawn 抽象基类，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_TransporterPawns_Feed.cs	PASS	运输舱喂食，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_TransporterPawns_Tend.cs	PASS	运输舱治疗，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_TransporterPawns_TendWithMedicine.cs	PASS	运输舱用药治疗，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPartUtility.cs	PASS	任务部件工具类：奖励 UI 堆叠元素+结束条件快捷构造，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_Venerate.cs	PASS	瞻仰 lord，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_VisitColony.cs	PASS	访问殖民地 lord，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_WaitForDurationThenExit.cs	PASS	等待后离场，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_WaitForEscort.cs	PASS	等待护送，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_WorkDisabled.cs	PASS	禁用工作类型，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestPart_WorldObjectTimeout.cs	PASS	世界对象超时（Delay 子类），环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestScriptDef.cs	NOTE	任务 Def 本体：layerWhitelist/layerBlacklist/everAcceptableInSpace/neverPossibleInSpace，海洋层任务过滤零代码模板
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestScriptDefOf.cs	SKIP	DefOf 静态引用类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestState.cs	SKIP	纯枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestTuning.cs	SKIP	纯调参常量（曲线/阈值），与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuestUtility.cs	NOTE	任务工具类：CanAcceptQuest 聚合所有 RequirementsToAccept 部件（层门控汇总入口）；其余 pawn 记账与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QueuedCellEffecter.cs	SKIP	纯 struct（延迟特效器记录）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QueuedIncident.cs	PASS	排队事件记录（fireTick+重试），环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuickSearchFilter.cs	SKIP	纯 UI（快速搜索过滤器）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuickSearchUtility.cs	SKIP	纯 UI 工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/QuickSearchWidget.cs	SKIP	纯 UI 控件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RaidAgeRestrictionDef.cs	SKIP	纯数据 Def（袭击年龄限制）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RaidAgeRestrictionDefOf.cs	SKIP	DefOf 静态引用类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RaidAgeRestrictionWorker_Children.cs	PASS	儿童袭击限制 worker，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RaidAgeRestrictionWorker.cs	PASS	袭击年龄限制 worker 基类，环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RaidLootDistributor.cs	PASS	袭击者战利品携带分配（按体重塞背包），环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/RaidStrategyDef.cs	NOTE	袭击策略 Def：layerWhitelist/layerBlacklist 可按星球层禁用袭击策略，海洋袭击过滤的 XML 挂点

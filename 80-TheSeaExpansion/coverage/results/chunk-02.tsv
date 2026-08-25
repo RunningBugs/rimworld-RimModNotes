@@ -1,0 +1,200 @@
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AssignedMech.cs	SKIP	纯数据类：机甲指派记录（pawn+tick），IExposable
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AttachPoint.cs	SKIP	纯数据类：挂点偏移+类型
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AttachPointTracker.cs	PASS	挂点缓存查询，渲染辅助，与海洋无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AttachPointType.cs	SKIP	枚举：挂点类型
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AuthorityCategory.cs	SKIP	枚举：通讯权威度
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AutoHomeAreaMaker.cs	PASS	建筑/分区周围自动扩居住区，通用机制
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Autosaver.cs	PASS	自动存档逻辑
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Autotests_ColonyMaker.cs	PASS	调试用殖民地生成器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Autotests_RandomNumbers.cs	PASS	随机数分布自测
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AutoUndrafter.cs	PASS	自动解除征召
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/AvoidGridTuning.cs	SKIP	寻路避让网格常量
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BabyPlayDef.cs	SKIP	纯数据 Def：婴儿玩耍
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BabyPlayGiver.cs	PASS	婴儿玩耍 job 抽象基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BabyPlayGiver_PlayStatic.cs	PASS	婴儿玩耍（原地）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BabyPlayGiver_PlayToys.cs	PASS	婴儿玩耍（玩具箱）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BabyPlayGiver_PlayWalking.cs	PASS	婴儿玩耍（学步）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BabyPlayUtility.cs	PASS	婴儿玩耍收益计算
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BackstoryCategoryAndSlot.cs	SKIP	纯数据类：背景类别+槽位
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BackstoryCategoryFilter.cs	PASS	背景故事类别过滤匹配
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BackstoryDef.cs	SKIP	纯数据 Def：背景故事（技能/工作标签）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BackstorySlot.cs	SKIP	枚举：童年/成年
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BackstoryTrait.cs	SKIP	纯数据类：背景附带特质
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BandNodeState.cs	SKIP	枚举：频带调谐状态
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BaseCreepJoinerWorker.cs	PASS	异常DLC 加入者响应 worker 基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Beam.cs	PASS	光束子弹渲染，与环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BeardDef.cs	SKIP	纯数据 Def：胡须样式
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BeardDefOf.cs	SKIP	DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BeautyCategory.cs	SKIP	枚举：美观等级
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BeautyUtility.cs	PASS	美观度采样（房间/区域），无海洋特异
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BedCellSearchPattern.cs	PASS	床位格搜索模式
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BedInteractionCellSearchPattern.cs	PASS	床交互格偏移
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BedOwnerType.cs	SKIP	枚举：床主类型
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BedUtility.cs	PASS	床位槽坐标计算
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Bezier.cs	SKIP	数学库：贝塞尔插值，无类比价值
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Bill_Autonomous.cs	PASS	自主成型工单（机甲培育用）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Bill.cs	PASS	工单基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BillDialogUtility.cs	PASS	工单对话框工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Bill_Mech.cs	PASS	机甲工单
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Bill_Medical.cs	PASS	医疗工单
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Bill_Production.cs	PASS	生产工单
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Bill_ProductionMech.cs	PASS	机甲生产工单
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Bill_ProductionWithUft.cs	PASS	半成品绑定工单
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BillRepeatModeDef.cs	SKIP	纯数据 Def：工单重复模式
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BillRepeatModeDefOf.cs	SKIP	DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BillRepeatModeUtility.cs	PASS	工单重复模式菜单
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Bill_ResurrectMech.cs	PASS	机甲复活工单
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BillStack.cs	PASS	工单栈
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BillStoreModeDef.cs	SKIP	纯数据 Def：工单存放模式
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BillStoreModeDefOf.cs	SKIP	DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BillUtility.cs	PASS	工单工具函数
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeAnimalRecord.cs	SKIP	纯数据类：生态域动物记录
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeConditionMapComponent.cs	NOTE	地图生成时把 biomeMapConditions 注册为永久 GameCondition——深海永久黑暗/环境的官方注入点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeDef.cs	NOTE	生态域 Def：inVacuum/disableSkyLighting/constantOutdoorTemperature/isWaterBiome/canBuildBase/fishTypes 等海底所需开关几乎全齐
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeDefOf.cs	SKIP	DefOf：含 Ocean/Space/Orbit/Undercave 引用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeDiseaseRecord.cs	SKIP	纯数据类：生态域疾病记录
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeFishTypes.cs	NOTE	钓鱼鱼类表（淡水/咸水×普通/稀有+稀有渔获 SetMaker），海底渔获内容挂点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomePlantRecord.cs	SKIP	纯数据类：生态域植物记录
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeWorker_AridShrubland.cs	PASS	生态域世界图打分（干旱灌木）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeWorker_BorealForest.cs	PASS	生态域打分（寒带林）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeWorker_ColdBog.cs	PASS	生态域打分（寒沼）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeWorker.cs	NOTE	BiomeWorker 基类：GetScore 决定世界图生态域放置+layer 白黑名单过滤——自定义海底 worker 的继承点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeWorker_Desert.cs	PASS	生态域打分（沙漠）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeWorker_ExtremeDesert.cs	PASS	生态域打分（极旱）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeWorker_GlacialPlain.cs	PASS	生态域打分（冰原，Perlin 噪声限域先例）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeWorker_Glowforest.cs	PASS	生态域打分（荧光林）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeWorker_Grasslands.cs	PASS	生态域打分（草原）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeWorker_IceSheet.cs	PASS	生态域打分（冰盖）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeWorker_LavaField.cs	PASS	生态域打分（熔岩原）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeWorker_Ocean.cs	NOTE	Ocean worker：WaterCovered 格打 0 分否则 -100——海底生态域要在海域胜出需自定义 worker 给更高分
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeWorker_Scarlands.cs	PASS	生态域打分（伤痕之地，邻域噪声判定）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeWorker_SeaIce.cs	PASS	生态域打分（海冰，水覆+视角噪声限域，可借鉴其分布限制模式）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeWorker_Space.cs	NOTE	Space worker：限定 Orbit 层且 GetScore 恒 -100——「只由特殊层/逻辑放置的生态域」先例
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeWorker_TemperateForest.cs	PASS	生态域打分（温带林）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeWorker_TemperateSwamp.cs	PASS	生态域打分（温沼）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeWorker_TropicalRainforest.cs	PASS	生态域打分（热带雨林）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeWorker_TropicalSwamp.cs	PASS	生态域打分（热沼）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiomeWorker_Tundra.cs	PASS	生态域打分（苔原）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiosculpterPodState.cs	SKIP	枚举：生物雕塑舱状态
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BiostatsTable.cs	PASS	基因统计 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Blight.cs	PASS	植物枯萎病蔓延逻辑，通用（海底作物病害可复用但无新信息）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BlightUtility.cs	PASS	枯萎病查询工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Blueprint_Build.cs	PASS	建造蓝图（样式/材料 gizmo 为主）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Blueprint.cs	PASS	蓝图基类（转化为实体流程）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Blueprint_Door.cs	PASS	门蓝图（朝向预览）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Blueprint_Install.cs	PASS	安装蓝图（minified/重装）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Blueprint_Storage.cs	PASS	储物设施蓝图
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Blueprint_StorageWithRoomHighlight.cs	PASS	储物蓝图+房间高亮
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BodyDefOf.cs	SKIP	DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BodyPartDefOf.cs	SKIP	DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BodyPartGroupDefOf.cs	SKIP	DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BodyPartTagDefOf.cs	SKIP	DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BodyTypeDef.cs	SKIP	纯数据 Def：体型（渲染路径/伤口锚点）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BodyTypeDefOf.cs	SKIP	DefOf
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BodyTypeGraphicData.cs	SKIP	纯数据类：体型贴图
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Bombardment.cs	NOTE	轨道轰炸：高空落弹+向无厚顶格点火——海底主题冲突，建议屏蔽轨道类事件
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BookOutcomeDoer.cs	PASS	书籍效果执行器基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BookOutcomeDoerGainSkillExp.cs	PASS	书籍效果（技能经验）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BookOutcomeDoer_GiveQuest.cs	PASS	书籍效果（给任务）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BookOutcomeProperties.cs	SKIP	纯数据类：书籍效果属性基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BookOutcomeProperties_GainAnomalyResearch.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BookOutcomeProperties_GainResearch.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BookOutcomeProperties_GainSkillExp.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BookOutcomeProperties_GiveQuest.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BookOutcomeProperties_JoyFactorModifier.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BookOutcomeProperties_MentalBreak.cs	SKIP	纯数据类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BookUIUtility.cs	PASS	书籍信息 UI
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BossDef.cs	SKIP	纯数据 Def：Boss
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BossgroupDef.cs	SKIP	纯数据 Def：Boss 战（波次表）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BossGroupWave.cs	SKIP	纯数据类：Boss 战波次
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BossgroupWorker.cs	PASS	Boss 召唤战 worker（冷却/召唤条件）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BreachingTargetData.cs	SKIP	纯数据类：破墙目标记录
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BreachingUtility.cs	NOTE	袭击破墙 AI：目标选择=挡路的玩家建筑——海底外壳被凿穿=灌水的天然戏剧性，机制零改动可用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BreakdownableUtility.cs	PASS	故障状态查询扩展
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BreakdownManager.cs	PASS	故障 MapComponent（1041 tick 轮询）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BreakRiskAlertUtility.cs	PASS	精神崩溃风险预警工具
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BreastfeedMotherState.cs	SKIP	枚举
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BrieflyDespawnedUtil.cs	PASS	PawnFlyer 短暂离场判定
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BroadshieldPack.cs	PASS	便携宽带护盾部署
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BuildCopyCommandUtility.cs	PASS	建造复制命令生成
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BuildDesignatorUtility.cs	PASS	建造时电网预览
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BuildFacilityCommandUtility.cs	PASS	可链接设施建造命令
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_AncientCommsConsole.cs	PASS	古代通讯台（遗迹装饰）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_AncientCryptosleepCasket.cs	PASS	古代休眠舱（受击弹出内容物）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_AncientCryptosleepPod.cs	SKIP	薄子类：禁用交互的古代休眠舱
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_AncientHeatVent.cs	SKIP	空子类：继承 AncientVent
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_AncientMechRemains.cs	PASS	古代机甲残骸（任务信号）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_AncientVent.cs	PASS	古代通风口：按 GameCondition 开关粒子特效（遗迹+环境联动小先例）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_ArchonexusCore.cs	PASS	Archonexus 核心（结局装置）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_Art.cs	PASS	雕塑（美观显示）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_Battery.cs	PASS	电池：受火焰伤害 5% 几率引爆，与环境无关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_Bed.cs	PASS	床（分配/医疗/渲染）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_BioferriteGenerator.cs	PASS	生铁素发电机（热推器联动）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_BioferriteHarvester.cs	PASS	生铁素收割机
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_BlastingCharge.cs	PASS	遥控炸药
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_Bookcase.cs	PASS	书架
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_BurningPowerCell.cs	PASS	燃烧的机械能源 cell（遗迹危害）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_Casket.cs	PASS	容器建筑基类
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_CommsConsole.cs	PASS	通讯台（断电/EMP 检查）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_Cooler.cs	NOTE	冷机：两侧格温差驱动、向热侧 PushHeat——海底恒温下无用但机制现成；房间温控走 GenTemperature
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_CorpseCasket.cs	PASS	尸棺基类（储存设置）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_Crate.cs	PASS	板条箱（可 hack）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_CryptosleepCasket.cs	PASS	休眠舱
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_Door.cs	NOTE	门：ExchangeVacuum=开门才交换真空——气闸/水密门现成语义；开门45t/关门延迟110t
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_Electroharvester.cs	PASS	静电收割器（轨道层发电）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_Enterable.cs	PASS	可进入建筑基类（培养舱/扫描仪父类）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_FermentingBarrel.cs	PASS	发酵桶：复用通用环境温度系统（7°C 以下减速），无海洋特异
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_FirefoamPopper.cs	PASS	灭火泡沫弹（自动重建）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_FleshmassHeart.cs	PASS	血肉心脏（异常DLC 结局战）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_FleshSack.cs	PASS	血肉囊（不可开启容器）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_FrenzyInducer.cs	PASS	狂暴诱导器（范围 hediff）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_GeneAssembler.cs	PASS	基因装配台
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_GeneExtractor.cs	PASS	基因提取器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_GeothermalVent.cs	SKIP	空标记类（地热井用地形建筑）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_GibbetCage.cs	PASS	示众笼
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_Grave.cs	PASS	坟墓
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_GravEngine.cs	NOTE	引力引擎：发射前 VacuumUtility.IsRoomAirtight 全船检查+暖气(1/250格)/氧泵(1/400格)密度警告——海底「耐压完整性自检」UI 模式可整套借用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BuildingGroundSpawner.cs	PASS	地下钻出建筑：生成前用 Biome.TerrainForAffordance 修补地形（热泉/虫巢类生成模板）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_GrowthVat.cs	PASS	培养舱
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_HackableDoor.cs	PASS	可骇门
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_Heater.cs	NOTE	暖气：<20°C 满效率向房间控温（GenTemperature.ControlTemperatureTempChange）——海底 4°C 取暖直接复用
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_HoldingPlatform.cs	PASS	收容平台
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_JammedDoor.cs	PASS	卡死的门（遗迹）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_KidOutfitStand.cs	SKIP	薄子类：儿童服装架
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_LifeSupportUnit.cs	NOTE	生命维持装置：inVacuum 且房间不暴露时按面积抽低 Room.Vacuum，兼任 20°C 暖气——「排水阀/供氧机」直接克隆对象
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_MarriageSpot.cs	PASS	婚礼点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_MechCharger.cs	PASS	机甲充电桩
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_MechGestator.cs	PASS	机甲培育舱
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_MechRelay.cs	PASS	机甲中继器（Boss 战掉落物渲染）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_MultiTileDoor.cs	PASS	多格门（绘制变体，语义在 Building_Door）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_MusicalInstrument.cs	PASS	乐器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_NutrientPasteDispenser.cs	PASS	营养膏机
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_OrbitalTradeBeacon.cs	PASS	轨道交易信标（区域 BFS 划交易格）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_OutfitStand.cs	PASS	服装架
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_PassengerShuttle.cs	PASS	穿梭机（燃料/发射 comp 组装）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_PlantGrower.cs	NOTE	水培种植箱：断电每 rare tick 对植物造成 1 点 Rotting——海底断电=作物死的惩罚已内置
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_PodLauncher.cs	PASS	运输舱发射架
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_PowerSwitch.cs	PASS	电力开关
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/BuildingProperties.cs	NOTE	def.building 属性包：isAirtight/isStuffableAirtight/alwaysExchangeVacuum/canExchangeVacuum/biomeSpecific 等 XML 级气密开关——耐压墙纯 XML 可接入真空隔离系统
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_ProximityDetector.cs	PASS	隐形生物探测器
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_ResearchBench.cs	PASS	研究台（进度显示）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_Sarcophagus.cs	PASS	石棺
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_ShipComputerCore.cs	PASS	飞船电脑（结局发射）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_ShipReactor.cs	PASS	飞船反应堆
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_Skullspike.cs	PASS	颅骨桩（思想给予）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_SleepSuppressor.cs	PASS	睡眠抑制器（范围 hediff）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_SteamGeyser.cs	NOTE	间歇泉：未被压住时间歇喷蒸汽+化雪；配合 geyserCountFactor——「海底热泉发电」直接复用地热体系
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_Storage.cs	PASS	储物架
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_StylingStation.cs	PASS	造型台
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_SubcoreScanner.cs	PASS	次核心扫描仪
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_SunLamp.cs	PASS	太阳灯：实体类仅种植区联动 gizmo，光照本体在 CompGlower/ThingDef
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_SupportedDoor.cs	PASS	带门框门（绘制变体）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_TempControl.cs	NOTE	温控建筑薄基类（CompTempControl+CompPowerTrader）——自定义海底温控设备的继承点
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_Throne.cs	PASS	王座（房间要求检查）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_Trap.cs	PASS	陷阱基类（自动重装/知晓者规避）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_TrapDamager.cs	PASS	伤害陷阱
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_TrapExplosive.cs	SKIP	薄子类：爆炸陷阱（点引线）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_TrapReleaseEntity.cs	PASS	释放实体陷阱（生成敌对 pawn）
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_TrapReleaseHunter.cs	SKIP	薄子类：释放猎手机械体
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_TrapReleaseWasp.cs	SKIP	薄子类：释放蜂群机械体
+/home/lisanhu/mine/workspace/rimworld/RW/16/Source/RimWorld/Building_Turret.cs	PASS	炮塔抽象基类（目标/眩晕/禁用条件）
