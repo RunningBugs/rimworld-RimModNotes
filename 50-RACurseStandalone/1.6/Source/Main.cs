@@ -37,25 +37,99 @@ public static class CurseNames
 
 public class RACurseSAComponent : WorldComponent
 {
+    // Kept under the original save key for compatibility with saves from
+    // before activations were tracked per game-condition instance.
     private HashSet<string> curses = new();
+
+    private Dictionary<int, string> curseActivations = new();
+
+    private List<string> randomCursePool = new(CurseNames.All);
 
     public RACurseSAComponent(World world) : base(world) { }
 
-    public bool IsActive(string curse) => curses.Contains(curse);
+    public bool IsActive(string curse) => curses.Contains(curse) || curseActivations.ContainsValue(curse);
 
-    public void Activate(string curse) => curses.Add(curse);
+    public void Activate(string curse, int conditionId)
+    {
+        if (!curse.NullOrEmpty() && conditionId >= 0)
+        {
+            curseActivations[conditionId] = curse;
+        }
+    }
 
-    public bool Deactivate(string curse) => curses.Remove(curse);
+    // Returns true only when this was the final active instance of the curse.
+    public bool Deactivate(string curse, int conditionId)
+    {
+        bool wasActive = IsActive(curse);
+        if (curseActivations.TryGetValue(conditionId, out string registeredCurse) && registeredCurse == curse)
+        {
+            curseActivations.Remove(conditionId);
+        }
+        else
+        {
+            // A condition loaded from an older save has no entry keyed by its
+            // unique ID, so consume its legacy activation instead.
+            curses.Remove(curse);
+        }
+        return wasActive && !IsActive(curse);
+    }
 
-    public void Clear() => curses.Clear();
+    public bool IsActivationActive(string curse, int conditionId)
+    {
+        if (curseActivations.TryGetValue(conditionId, out string registeredCurse))
+        {
+            return registeredCurse == curse;
+        }
+        return curses.Contains(curse);
+    }
 
-    public List<string> InactiveCurses() => CurseNames.All.Where(c => !curses.Contains(c)).ToList();
+    public void Clear()
+    {
+        curses.Clear();
+        curseActivations.Clear();
+    }
+
+    public string TakeNextRandomCurse()
+    {
+        NormalizeRandomCursePool();
+        if (randomCursePool.Count == 0)
+        {
+            randomCursePool.AddRange(CurseNames.All);
+        }
+
+        string curse = randomCursePool.RandomElement();
+        randomCursePool.Remove(curse);
+        return curse;
+    }
+
+    private void NormalizeRandomCursePool()
+    {
+        if (randomCursePool == null)
+        {
+            // On migration, currently active legacy curses are the best
+            // available approximation of entries already used this round.
+            randomCursePool = CurseNames.All.Where(curse => !IsActive(curse)).ToList();
+            return;
+        }
+
+        randomCursePool = randomCursePool
+            .Where(CurseNames.All.Contains)
+            .Distinct()
+            .ToList();
+    }
 
     public override void ExposeData()
     {
         base.ExposeData();
         Scribe_Collections.Look(ref curses, "curses", LookMode.Value);
+        Scribe_Collections.Look(ref curseActivations, "curseActivations", LookMode.Value, LookMode.Value);
+        Scribe_Collections.Look(ref randomCursePool, "randomCursePool", LookMode.Value);
         curses ??= new HashSet<string>();
+        curseActivations ??= new Dictionary<int, string>();
+        if (Scribe.mode == LoadSaveMode.PostLoadInit)
+        {
+            NormalizeRandomCursePool();
+        }
     }
 }
 
@@ -85,9 +159,36 @@ public class GameCondition_Curse : GameCondition_ForceWeather
         }
     }
 
+    public override void Init()
+    {
+        base.Init();
+        if (!curseName.NullOrEmpty())
+        {
+            Component.Activate(curseName, uniqueID);
+        }
+    }
+
+    public override bool Expired
+    {
+        get
+        {
+            if (base.Expired)
+            {
+                return true;
+            }
+            World world = Find.World;
+            if (world == null || curseName.NullOrEmpty())
+            {
+                return false;
+            }
+            RACurseSAComponent component = world.GetComponent<RACurseSAComponent>();
+            return component != null && !component.IsActivationActive(curseName, uniqueID);
+        }
+    }
+
     public override void End()
     {
-        if (!curseName.NullOrEmpty() && Component.Deactivate(curseName))
+        if (!curseName.NullOrEmpty() && Component.Deactivate(curseName, uniqueID))
         {
             Find.LetterStack.ReceiveLetter("RACurseSA.CurseEnded".Translate(), "RACurseSA.CurseEndedDesc".Translate(), LetterDefOf.NeutralEvent);
         }
@@ -140,8 +241,8 @@ public class RACurseSADefOf
 // condition readout, and doubles as an activation source on its own.
 // Adding it (scenario permanent condition, dev mode, or the curse incident
 // in permanent mode) activates the linked curse; removing it lifts the curse.
-// It expires by itself as soon as the linked curse is no longer active in
-// the world component (e.g. cleared via the mod settings).
+// It expires by itself as soon as this condition's activation source is
+// cleared from the world component (e.g. via the mod settings).
 public class GameCondition_CurseDisplay : GameCondition
 {
     public string Curse => def.GetModExtension<CurseExtension>()?.curse;
@@ -154,14 +255,14 @@ public class GameCondition_CurseDisplay : GameCondition
         string curse = Curse;
         if (!curse.NullOrEmpty())
         {
-            Component.Activate(curse);
+            Component.Activate(curse, uniqueID);
         }
     }
 
     public override void End()
     {
         string curse = Curse;
-        if (!curse.NullOrEmpty() && Component.Deactivate(curse))
+        if (!curse.NullOrEmpty() && Component.Deactivate(curse, uniqueID))
         {
             Find.LetterStack.ReceiveLetter("RACurseSA.CurseEnded".Translate(), "RACurseSA.CurseEndedDesc".Translate(), LetterDefOf.NeutralEvent);
         }
@@ -183,14 +284,14 @@ public class GameCondition_CurseDisplay : GameCondition
             {
                 return base.Expired;
             }
-            return !component.IsActive(curse);
+            return !component.IsActivationActive(curse, uniqueID);
         }
     }
 }
 
 public class CurseExtension : DefModExtension
 {
-    // One of CurseNames, or "Random" to pick one of the currently inactive curses.
+    // One of CurseNames, or "Random" to draw from the current five-curse round.
     public string curse;
 }
 
@@ -214,20 +315,13 @@ public class IncidentWorker_Curse : IncidentWorker_MakeGameCondition
         string curse = def.GetModExtension<CurseExtension>()?.curse;
         if (curse.NullOrEmpty() || curse == "Random")
         {
-            List<string> candidates = Component.InactiveCurses();
-            if (candidates.Count == 0)
-            {
-                return false;
-            }
-            curse = candidates.RandomElement();
+            curse = Component.TakeNextRandomCurse();
         }
         else if (Component.IsActive(curse))
         {
             // This curse is already hanging over the colony.
             return false;
         }
-        Component.Activate(curse);
-
         NamedArgument curseDesc = ("RACurseSA." + curse + "Desc").Translate().Named("CurseDesc");
 
         if (RACurseSAMod.settings.permanentCurse)
