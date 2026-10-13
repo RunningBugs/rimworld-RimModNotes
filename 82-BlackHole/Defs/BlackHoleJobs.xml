@@ -39,6 +39,10 @@
   </DutyDef>
 
   <!-- 原版 LoadTransporters 同款：普通搬运工按 Hauling 优先级帮忙装黑洞 -->
+  <!-- emergency=true：原版紧急工作机制（Humanlike/Mechanoid 思考树都有专门的 emergency
+       JobGiver_Work 节点，排在普通工作之前）。装载一旦开始就是紧急搬运：开了 Hauling 的
+       殖民者和机械体会放下种田/做饭等普通工作先来喂黑洞；灭火/紧急救治等更靠前的
+       紧急工作仍然优先。找不到可搬的货时此 WorkGiver 直接返回空，不会卡在小人身上。 -->
   <WorkGiverDef>
     <defName>BlackHoleLoad</defName>
     <label>feed the black hole</label>
@@ -47,6 +51,8 @@
     <verb>feed</verb>
     <gerund>feeding</gerund>
     <priorityInType>110</priorityInType>
+    <emergency>true</emergency>
+    <canBeDoneByMechs>true</canBeDoneByMechs>
     <requiredCapacities>
       <li>Manipulation</li>
     </requiredCapacities>

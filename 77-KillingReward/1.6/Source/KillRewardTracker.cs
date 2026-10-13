@@ -47,6 +47,15 @@ namespace KillingReward
             }
         }
 
+        /// <summary>Dev/GodMode 调试：直接升一级并发放对应恩赐点数，当前进度清零。</summary>
+        public void DevLevelUp()
+        {
+            level++;
+            progress = 0;
+            pending++;
+            RewardNotifier.NotifyLevelUp();
+        }
+
         public bool TryConsumeReward()
         {
             if (pending <= 0)

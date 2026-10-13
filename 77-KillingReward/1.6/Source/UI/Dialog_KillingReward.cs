@@ -22,6 +22,7 @@ namespace KillingReward
         private string itemSearch = "";
         private bool selectedXenogene;
         private string geneSearch = "";
+        private string traitSearch = "";
 
         public Dialog_KillingReward()
         {
@@ -53,6 +54,15 @@ namespace KillingReward
             Text.Anchor = TextAnchor.UpperRight;
             Widgets.Label(new Rect(inRect.xMax - 300f, inRect.y + 48f, 300f, 22f), "KR_Pending".Translate() + ": " + tracker.PendingRewards);
             Text.Anchor = TextAnchor.UpperLeft;
+
+            // DEV 调试按钮：仅在 DevMode + GodMode 下显示，按一下升一级
+            if (Prefs.DevMode && DebugSettings.godMode)
+            {
+                if (Widgets.ButtonText(new Rect(inRect.x + inRect.width / 2f - 80f, inRect.y + 46f, 160f, 26f), "KR_DevLevelUp".Translate()))
+                {
+                    tracker.DevLevelUp();
+                }
+            }
 
             // 血祭进度条
             Rect barRect = new Rect(inRect.x, inRect.y + 74f, inRect.width, 22f);
@@ -440,7 +450,7 @@ namespace KillingReward
         private void DoTraitOpView(Rect inRect, KillRewardTracker tracker)
         {
             DoTwoChoiceView(inRect, "KR_PickOperation", tracker.TraitModCost, "KR_TraitOpAdd", "KR_TraitOpRemove",
-                () => view = View.TraitAdd, () => view = View.TraitRemove, View.TraitPawn);
+                delegate { traitSearch = ""; view = View.TraitAdd; }, delegate { traitSearch = ""; view = View.TraitRemove; }, View.TraitPawn);
         }
 
         private void DoTraitAddView(Rect inRect, KillRewardTracker tracker)
@@ -448,11 +458,15 @@ namespace KillingReward
             List<Trait> traits = TraitModReward.AddableTraits(selectedPawn);
             bool affordable = tracker.PendingRewards >= tracker.TraitModCost;
             Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 32f), "KR_PickTraitAdd".Translate() + " (" + selectedPawn.LabelShortCap + ")");
-            Rect listRect = new Rect(inRect.x, inRect.y + 36f, inRect.width, inRect.height - 76f);
-            Rect viewRect = new Rect(0f, 0f, listRect.width - 20f, traits.Count * 32f);
+            // 搜索框：按名称/defName 过滤（忽略大小写，支持中英文）
+            Rect searchRect = new Rect(inRect.x, inRect.y + 36f, inRect.width, 30f);
+            traitSearch = Widgets.TextField(searchRect, traitSearch);
+            List<Trait> filtered = traits.Where(t => TextSearch.Matches(t.LabelCap, traitSearch) || TextSearch.Matches(t.def.LabelCap, traitSearch) || TextSearch.Matches(t.def.defName, traitSearch)).ToList();
+            Rect listRect = new Rect(inRect.x, inRect.y + 72f, inRect.width, inRect.height - 112f);
+            Rect viewRect = new Rect(0f, 0f, listRect.width - 20f, filtered.Count * 32f);
             Widgets.BeginScrollView(listRect, ref scrollPosition, viewRect);
             float y = 0f;
-            foreach (Trait trait in traits)
+            foreach (Trait trait in filtered)
             {
                 Rect row = new Rect(0f, y, viewRect.width, 30f);
                 string label = trait.def.degreeDatas.Count > 1
@@ -483,11 +497,15 @@ namespace KillingReward
             List<Trait> traits = TraitModReward.RemovableTraits(selectedPawn);
             bool affordable = tracker.PendingRewards >= tracker.TraitModCost;
             Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 32f), "KR_PickTraitRemove".Translate() + " (" + selectedPawn.LabelShortCap + ")");
-            Rect listRect = new Rect(inRect.x, inRect.y + 36f, inRect.width, inRect.height - 76f);
-            Rect viewRect = new Rect(0f, 0f, listRect.width - 20f, traits.Count * 32f);
+            // 搜索框：按名称/defName 过滤（忽略大小写，支持中英文）
+            Rect searchRect = new Rect(inRect.x, inRect.y + 36f, inRect.width, 30f);
+            traitSearch = Widgets.TextField(searchRect, traitSearch);
+            List<Trait> filtered = traits.Where(t => TextSearch.Matches(t.LabelCap, traitSearch) || TextSearch.Matches(t.def.LabelCap, traitSearch) || TextSearch.Matches(t.def.defName, traitSearch)).ToList();
+            Rect listRect = new Rect(inRect.x, inRect.y + 72f, inRect.width, inRect.height - 112f);
+            Rect viewRect = new Rect(0f, 0f, listRect.width - 20f, filtered.Count * 32f);
             Widgets.BeginScrollView(listRect, ref scrollPosition, viewRect);
             float y = 0f;
-            foreach (Trait trait in traits)
+            foreach (Trait trait in filtered)
             {
                 Rect row = new Rect(0f, y, viewRect.width, 30f);
                 GUI.color = new Color(1f, 1f, 1f, affordable ? 1f : 0.4f);
