@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <star_Gespenst_Boss.tools.0.label>Tail</star_Gespenst_Boss.tools.0.label>
+  <star_Gespenst_Boss.tools.1.label>front left leg</star_Gespenst_Boss.tools.1.label>
+  <star_Gespenst_Boss.tools.2.label>front right leg</star_Gespenst_Boss.tools.2.label>
+  <star_Gespenst_Boss.tools.3.label>head</star_Gespenst_Boss.tools.3.label>
+  <star_Gespenst_Boss.tools.4.label>head</star_Gespenst_Boss.tools.4.label>
+
+  <star_Gespenst_Boss.label>Geschpenst Watcher</star_Gespenst_Boss.label>
+  <star_Gespenst_Boss.description>The Watcher of the Geschpenst, an unknown quadrupedal entity and animate scourge from beyond outer space. They don't know why or what their purpose is, they just invade various planetary systems and annihilate intelligent creatures.\n\nThe Geschfenst Watcher summons Reboots to inflict mental attacks with claws and sharp parts on their tails.</star_Gespenst_Boss.description>
+
+  <star_Reboot.label>reboot</star_Reboot.label>
+  <star_Reboot.description>Reboots are miniature entities summoned by Geschpenst Watchers. It is small and inferior, but it has a self-destruct function that destroys buildings, so it continues to advance while breaking formations.</star_Reboot.description>
+  <star_Reboot.tools.0.label>head</star_Reboot.tools.0.label>
+
+  <star_executor.label>star executor</star_executor.label>
+  <star_executor.description>An entity called the Executor of the Stars. Delivering psychic attacks, it uses unknown energies that penetrate the minds of creatures, either making them perceive each other as enemies, or shockingly causing chaos.</star_executor.description>
+  <star_executor.tools.0.label>left tentacle</star_executor.tools.0.label>
+  <star_executor.tools.1.label>right tentacle</star_executor.tools.1.label>
+  <star_executor.tools.2.label>head</star_executor.tools.2.label>
+
+  <star_Carnifex.label>star Carnifex</star_Carnifex.label>
+  <star_Carnifex.description>An entity that slaughters enemies with a sharp blade. It has the role of spraying a smoke screen attached to its body, covering its sight, and jumping towards enemies to purge them.</star_Carnifex.description>
+  <star_Carnifex.tools.0.label>left meteor blade</star_Carnifex.tools.0.label>
+  <star_Carnifex.tools.1.label>right meteor blade</star_Carnifex.tools.1.label>
+  <star_Carnifex.tools.2.label>head</star_Carnifex.tools.2.label>
+
+  <star_Monarch.label>star lord</star_Monarch.label>
+  <star_Monarch.description>A star lord is a giant entity that summons astral predators. Summons predators to bind enemies or create mind waves to attack the minds of enemies.</star_Monarch.description>
+  <star_Monarch.tools.0.label>head</star_Monarch.tools.0.label>
+
+  <Star_Prayer.label>Star Prayer</Star_Prayer.label>
+  <Star_Prayer.description>An object with a distorted shape. Creates an explosion of mental energy, shocking the opponent's mind.</Star_Prayer.description>
+  <Star_Prayer.tools.0.label>left tentacle</Star_Prayer.tools.0.label>
+  <Star_Prayer.tools.1.label>right tentacle</Star_Prayer.tools.1.label>
+  <Star_Prayer.tools.2.label>head</Star_Prayer.tools.2.label>
+
+  <star_blade.label>star blade</star_blade.label>
+  <star_blade.description>An object in the shape of a mega spider. It will attack with numerous troops as a vanguard unit that attacks in the forefront while inflicting mental attacks with the blades attached to its tail.</star_blade.description>
+  <star_blade.tools.0.label>Tail</star_blade.tools.0.label>
+  <star_blade.tools.1.label>head</star_blade.tools.1.label>
+  <star_blade.tools.2.label>head claw</star_blade.tools.2.label>
+
+  <star_priest.label>star priest</star_priest.label>
+  <star_priest.description>An entity in human form that uses mental weapons. Fires a weak but mental weapon to aid the Astral Force's advance.</star_priest.description>
+  <star_priest.tools.0.label>left fist</star_priest.tools.0.label>
+  <star_priest.tools.1.label>right fist</star_priest.tools.1.label>
+  <star_priest.tools.2.label>head</star_priest.tools.2.label>
+
+  <star_predator.label>star predator</star_predator.label>
+  <star_predator.description>They are weak with predatory creatures that follow the star lord, but overwhelm the enemies with their numbers.</star_predator.description>
+  <star_predator.tools.0.label>head</star_predator.tools.0.label>
+</LanguageData>

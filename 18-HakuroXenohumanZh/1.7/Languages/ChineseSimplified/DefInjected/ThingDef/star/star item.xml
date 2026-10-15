@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <star_mucus.label>star mucus</star_mucus.label>
+  <star_mucus.description>A stellar mucous membrane from a stellar host. But I don't know if this is the mucous membrane of a star... Yes, no one knows.</star_mucus.description>
+
+  <star_WoodLog.label>star remnant</star_WoodLog.label>
+  <star_WoodLog.description>They are a kind of steel flesh that came from disassembling the forces of the stars.</star_WoodLog.description>
+  <star_WoodLog.stuffProps.stuffAdjective>wooden</star_WoodLog.stuffProps.stuffAdjective>
+
+  <Geschpenst_Core.label>Geschpenst's Core</Geschpenst_Core.label>
+  <Geschpenst_Core.description>A core from a Geschpenst watcher that beats like a living heart.</Geschpenst_Core.description>
+
+  <bailiff_stone.label>bailiff stone</bailiff_stone.label>
+  <bailiff_stone.description>As if regenerating energy with a stone that emits unknown energy from the executor's body, it rotates infinitely.</bailiff_stone.description>
+
+  <ghost_tree.label>Pathfinder Seed</ghost_tree.label>
+  <ghost_tree.description>It is a seed that radiates unknown energy.</ghost_tree.description>
+  <Plant_star_fruit.label>star fruit</Plant_star_fruit.label>
+  <Plant_star_fruit.description>It is a small fruit tree that grows on the guide of the stars.</Plant_star_fruit.description>
+
+</LanguageData>

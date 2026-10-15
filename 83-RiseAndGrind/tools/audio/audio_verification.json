@@ -1,0 +1,22 @@
+{
+  "file": "Sounds/RiseAndGrind/WakeUpChinese.wav",
+  "language": "Chinese",
+  "text": "你们这个年纪是怎么睡得着的？",
+  "reference": "你们这个年纪是怎么睡得着的",
+  "text_matches_ignoring_punctuation": true,
+  "offline": true,
+  "model": "Qwen/Qwen3-ASR-1.7B-hf",
+  "revision": "bcd2b5b7f32b480ab5790554cfa8347f246a14f3",
+  "sha256": "a74519eefc0a2aa31f399bd9833bff69690f19fca2f4eb31578debd6a86fc333",
+  "waveform": {
+    "frames": 62583,
+    "sample_rate": 24000,
+    "channels": 1,
+    "subtype": "PCM_16",
+    "duration_seconds": 2.607625,
+    "rms_dbfs": -11.787791499272318,
+    "peak_dbfs": -0.9998544876801003,
+    "clipped_samples": 0,
+    "sha256": "a74519eefc0a2aa31f399bd9833bff69690f19fca2f4eb31578debd6a86fc333"
+  }
+}

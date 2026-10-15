@@ -1,10 +1,14 @@
 from pathlib import Path
+import os
 
 ROOT = Path(__file__).resolve().parents[2]
-SRC = ROOT / "1.6" / "Source"
+SOURCE_VERSION = os.environ.get("BOS_TEST_VERSION", "1.6")
+SRC = ROOT / SOURCE_VERSION / "Source"
 
 
 def read(rel):
+    if rel.startswith("1.6/Source/"):
+        rel = SOURCE_VERSION + rel[len("1.6"):]
     return (ROOT / rel).read_text(encoding="utf-8")
 
 

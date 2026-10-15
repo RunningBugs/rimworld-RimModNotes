@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Rise and Grind 爬起来肝</name>
+  <author>RunningBugs</author>
+  <packageId>RunningBugs.RiseAndGrind</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+    <li>1.7</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+    </li>
+  </modDependencies>
+  <loadAfter><li>brrainz.harmony</li></loadAfter>
+  <description>困得倒地？爬起来肝！殖民者累得睡倒时，会自动爬起来继续干活，左上角还会弹出「XXX决定爬起来继续工作。」的消息。中文附带一句「你们这个年纪是怎么睡得着的！」催起床语音，默认开启，可在模组选项中试听或关闭。其他语言暂无配音时保持安静。正常睡觉和伤病倒地不受影响。支持 RimWorld 1.6、1.7，需要 Harmony。
+
+Too tired to stand? Rise and grind! Colonists who collapse from exhaustion get back up and get on with it, with a top-left message: “XXX has decided to get back up and keep working.” Includes a Chinese wake-up scolding (“How can you sleep at your age?!”), enabled by default and available to preview or disable in mod settings. Languages without a voice stay quiet. Normal sleep and medical incapacity are unaffected. Supports RimWorld 1.6 and 1.7; requires Harmony.</description>
+</ModMetaData>

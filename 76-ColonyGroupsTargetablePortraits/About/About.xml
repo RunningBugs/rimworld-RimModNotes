@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 	<packageId>RunningBugs.ColonyGroupsTargetablePortraits</packageId>
-	<name>Colony Groups Targetable Portraits</name>
+	<name>Colony Groups Targetable Portraits [1.6-1.7]</name>
 	<author>RunningBugs</author>
 	<supportedVersions>
 		<li>1.6</li>
+	  <li>1.7</li>
 	</supportedVersions>
 
 	<modDependencies>
@@ -27,6 +28,9 @@
 	</loadAfter>
 
 	<description>
+Supports RimWorld 1.6 and 1.7 beta with the compatible Colony Groups hit-test interface.
+支持环世界1.6与1.7 beta。
+
 让 [LTO] Colony Groups 的顶部头像栏和悬停组弹窗头像支持能力选目标：激活需要选目标的技能（如异常医术）后，直接点击头像即可对该小人施法，行为与 vanilla ColonistBar 一致（校验、高亮、音效、shift 连选）。
 
 Makes [LTO] Colony Groups' top-bar portraits and hover group-popup portraits work as ability targets: while targeting an ability (e.g. Unnatural Healing), click a portrait to target that pawn, with full vanilla behavior (validation, highlight, sound, shift multi-select).

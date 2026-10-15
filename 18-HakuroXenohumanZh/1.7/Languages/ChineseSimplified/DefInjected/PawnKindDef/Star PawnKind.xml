@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <star_Gespenst_Boss.label>Geschpenst observer</star_Gespenst_Boss.label>
+  <star_Reboot.label>star Reboot</star_Reboot.label>
+
+  <star_executor.label>star executor</star_executor.label>
+  <star_Carnifex.label>star Carnifex</star_Carnifex.label>
+  <star_Monarch.label>star Monarch</star_Monarch.label>
+
+  <star_blade.label>star blade</star_blade.label>
+  <Star_Prayer.label>Star Prayer</Star_Prayer.label>
+  <star_priest.label>star priest</star_priest.label>
+  <star_predator.label>star predator</star_predator.label>
+
+</LanguageData>

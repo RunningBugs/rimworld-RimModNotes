@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <hunter_Compound_bow.label>Compound bow</hunter_Compound_bow.label>
+  <hunter_Compound_bow.description>It is a compound bow. It is a hunting bow mainly used by hunters, and shows higher performance than normal bows.</hunter_Compound_bow.description>
+  <hunter_Compound_bow.tools.0.label>limb</hunter_Compound_bow.tools.0.label>
+  <Arrow_hunter_Compound.label>greatbow arrow</Arrow_hunter_Compound.label>
+
+  <hunter_crow_bow.label>Crow bow</hunter_crow_bow.label>
+  <hunter_crow_bow.description>The Crow Bow is a mechanical crossbow. Although the range is lower than that of the compound bow, arrows can be fired in a volley and aim quickly.</hunter_crow_bow.description>
+  <hunter_crow_bow.tools.0.label>limb</hunter_crow_bow.tools.0.label>
+  <Arrow_hunter_crow_bow.label>greatbow arrow</Arrow_hunter_crow_bow.label>
+
+  <Moonlight_automatic_rifle.label>Moonlight assault submachine gun</Moonlight_automatic_rifle.label>
+  <Moonlight_automatic_rifle.description>It is a submachine gun with a near-futuristic design.\n\nA lighter weight firearm, it is designed to fire multiple rounds to keep the approaching enemy away.</Moonlight_automatic_rifle.description>
+  <Moonlight_automatic_rifle.tools.0.label>grip</Moonlight_automatic_rifle.tools.0.label>
+  <Moonlight_automatic_rifle.tools.1.label>barrel</Moonlight_automatic_rifle.tools.1.label>
+  <Bullet_automatic_rifle.label>automatic rifle bullet</Bullet_automatic_rifle.label>
+
+  <Moonlight_assault_rifle.label>Moonlight assault rifle</Moonlight_assault_rifle.label>
+  <Moonlight_assault_rifle.description>It is a composite rifle with enhanced assault rifles.\n\nIt has lower accuracy than assault rifles at long range, but has more ammo and high damage.</Moonlight_assault_rifle.description>
+  <Moonlight_assault_rifle.tools.0.label>grip</Moonlight_assault_rifle.tools.0.label>
+  <Moonlight_assault_rifle.tools.1.label>barrel</Moonlight_assault_rifle.tools.1.label>
+
+  <Moonlight_assault_EMR.label>Moonlight marksman rifle</Moonlight_assault_EMR.label>
+  <Moonlight_assault_EMR.description>This is a marksman rifle.\n\nIt has a shorter range than a sniper rifle, but has high accuracy and rate of fire.</Moonlight_assault_EMR.description>
+  <Moonlight_assault_EMR.tools.0.label>grip</Moonlight_assault_EMR.tools.0.label>
+  <Moonlight_assault_EMR.tools.1.label>barrel</Moonlight_assault_EMR.tools.1.label>
+
+  <Moonlight_acceleration_MG.label>Moonlight accelerated machine gun</Moonlight_acceleration_MG.label>
+  <Moonlight_acceleration_MG.description>It's a moonlight accelerator machine gun.\n\nA lightweight weapon of the minigun, it fires quickly despite its low ammunition, and is intended for quick response.</Moonlight_acceleration_MG.description>
+  <Moonlight_acceleration_MG.tools.0.label>grip</Moonlight_acceleration_MG.tools.0.label>
+  <Moonlight_acceleration_MG.tools.1.label>barrel</Moonlight_acceleration_MG.tools.1.label>
+
+  <Moonlight_shotgun.label>Modified repeater shotgun</Moonlight_shotgun.label>
+  <Moonlight_shotgun.description>This is a fast-firing assault shotgun.\n\nIncreased range and higher ammo than standard combat shotguns, but loses one shell.</Moonlight_shotgun.description>
+  <Moonlight_shotgun.tools.0.label>grip</Moonlight_shotgun.tools.0.label>
+  <Moonlight_shotgun.tools.1.label>barrel</Moonlight_shotgun.tools.1.label>
+  <Bullet_assault_shotgun.label>shotgun bullet</Bullet_assault_shotgun.label>
+
+  <Gun_Hunting_Rifle.label>hunter rifle</Gun_Hunting_Rifle.label>
+  <Gun_Hunting_Rifle.description>It is a hunting rifle used by Baekrang hunters. It has a scope and can easily hit long distances.</Gun_Hunting_Rifle.description>
+  <Gun_Hunting_Rifle.tools.0.label>grip</Gun_Hunting_Rifle.tools.0.label>
+  <Gun_Hunting_Rifle.tools.1.label>barrel</Gun_Hunting_Rifle.tools.1.label>
+</LanguageData>

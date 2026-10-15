@@ -5,9 +5,10 @@
 	<author>RunningBugs</author>
 	<supportedVersions>
 		<li>1.6</li>
+		<li>1.7</li>
 	</supportedVersions>
 	<description>
-适用于 RimWorld 1.6 的携带策略（Carry Policies）。
+适用于 RimWorld 1.6 和 1.7 beta 的携带策略（Carry Policies）。
 
 可以配置命名的携带策略（类似原版的药物策略），指定殖民者应当在物品栏中随身携带哪些物品。可以在「分配」选项卡中为每名殖民者单独指定策略。
 
@@ -26,7 +27,7 @@ https://github.com/lisanhu/rimworld-RimModNotes.git
 之前发布过一个ItemPolicy，做的功能也相似，但是那个UI特别简陋，且没有使用物品过滤器，导致小人可以带迫击炮建筑在身上，并在任何位置直接放下（不需要建造时间），因为已经有玩家使用这个携带建筑的功能所以也不方便取消，正好这次使用GLM 5.3写一个新版本发布出来。
 
 
-Carry policies for RimWorld 1.6.
+Carry policies for RimWorld 1.6 / 1.7 beta.
 
 Configure named carry policies (like vanilla drug policies) that specify which items colonists keep in their inventory. Assign them per colonist in the Assign tab.
 
@@ -47,4 +48,14 @@ Since some players have already started using this building-carrying behavior as
 
 
 </description>
+
+  <modDependenciesByVersion>
+    <v1.7>
+      <li>
+        <packageId>brrainz.harmony</packageId>
+        <displayName>Harmony</displayName>
+        <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      </li>
+    </v1.7>
+  </modDependenciesByVersion>
 </ModMetaData>

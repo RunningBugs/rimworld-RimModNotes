@@ -4,6 +4,6 @@
     <exclude>.claude</exclude>
     <exclude>.roo</exclude>
     <exclude>1.6/Source/obj</exclude>
-    <exclude>reference</exclude>
+    <exclude>Tests</exclude>
   </Excluded>
 </Configuration>

@@ -1,0 +1,19 @@
+{
+  "model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "revision": "0c0e3051f131929182e2c023b9537f8b1c68adfe",
+  "speaker": "Uncle_Fu",
+  "text": "你们这个年纪，是怎么睡得着的！",
+  "instruction": "用普通话大声训话，像一位着急催人起床干活的喜剧监工。带着不可思议和恨铁不成钢的情绪，重读‘这个年纪’和‘怎么睡得着’，结尾上扬质问，语速稍快，短促有力。只说给定台词，不添加词语，不带笑声。",
+  "seed": 20261015,
+  "sample_rate": 24000,
+  "channels": 1,
+  "subtype": "PCM_16",
+  "duration_seconds": 3.518666666666667,
+  "sha256": "70ba8bae8d880c442d280175796727a38567db40d373533d2f8b57b920c2dd94",
+  "packages": {
+    "qwen-tts": "0.1.1",
+    "torch": "2.11.0+cu128",
+    "transformers": "4.57.3",
+    "soundfile": "0.14.0"
+  }
+}

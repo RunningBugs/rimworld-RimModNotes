@@ -1,0 +1,87 @@
+﻿System.NullReferenceException: Object reference not set to an instance of an object
+  at _ItemPolicy.ItemPolicyUtility.FinalizeInit () [0x00028] in <b2b9b328f8024ec1a28488f9c8a015e1>:0 
+  at Verse.GameComponentUtility.FinalizeInit () [0x00017] in <d006c28bc811417ea565feda544f6d2b>:0 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+(wrapper dynamic-method) Verse.Log:Verse.Log.Error_Patch4 (string)
+Verse.GameComponentUtility:FinalizeInit ()
+(wrapper dynamic-method) Verse.Game:Verse.Game.FinalizeInit_Patch9 (Verse.Game)
+(wrapper dynamic-method) Verse.Game:Verse.Game.LoadGame_Patch7 (Verse.Game)
+(wrapper dynamic-method) Verse.SavedGameLoaderNow:Verse.SavedGameLoaderNow.LoadGameFromSaveFileNow_Patch2 (string)
+Verse.Root_Play/<>c:<Start>b__1_1 ()
+Verse.LongEventHandler:RunEventFromAnotherThread (System.Action)
+Verse.LongEventHandler/<>c:<UpdateCurrentAsynchronousEvent>b__27_0 ()
+System.Threading.ThreadHelper:ThreadStart_Context (object)
+System.Threading.ExecutionContext:RunInternal (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object,bool)
+System.Threading.ExecutionContext:Run (System.Threading.ExecutionContext,System.Threading.ContextCallback,object)
+System.Threading.ThreadHelper:ThreadStart ()
+
+Need to be fixed
+Seems to be an issue with null policies
+
+------
+
+A bug when the pawns won't pick up the items in the policy but stuck there and created the job again and again
+
+The reason is the item is a drug that is managed by the vanilla code, on function JobGiver_DropUnusedInventory.ShouldKeepDrugInInventory
+Also have to mention, if the count of the drug is 0, the pawn will not pick it up in vanilla code (thought this is managed by PUAH, but it's actually by vanilla code)
+
+The pick up part of code could be found in FloatMenuMakerMap.cs  functin AddHumanlikeOrders
+line 1506               if (!item2.def.EverHaulable || !PawnUtility.CanPickUp(pawn, item2.def) || (pawn.Map.IsPlayerHome && !JobGiver_DropUnusedInventory.ShouldKeepDrugInInventory(pawn, item2)))
+
+
+Solution: Patch that function (public static bool)
+
+
+Also want to note some codes that I have tried to debug the issue here, might be useful in future
+
+public static class DrugPolicyExt {
+        public static int Contains(this DrugPolicy policy, ThingDef def) {
+            FieldInfo field = typeof(DrugPolicy).GetField("entriesInt", BindingFlags.NonPublic | BindingFlags.Instance);
+            List<DrugPolicyEntry> entries = (List<DrugPolicyEntry>)field.GetValue(policy);
+            return entries.FindIndex(entry => entry.drug == def);
+        }
+    }
+
+if (pawn.drugs != null && pawn.drugs.CurrentPolicy != null)
+                    {
+                        int idx = pawn.drugs.CurrentPolicy.Contains(def);
+                        if (idx != -1)
+                        {
+                            // pawn.drugs.CurrentPolicy[idx].takeToInventory = count;
+                        }
+                    }
+
+
+
+=======
+
+Some code to check whether Building is in the policy
+
+// // Log.Message("def: " + def.label + "(" + def.defName + ")" + ", count: " + count + ", inventory count: " + pawn.inventory.Count(def));
+// if (def.thingClass.IsSubclassOf(typeof(Building)))
+// {
+
+// }
+// else 
+
+=======
+
+// find a bug here, sometimes, when the item is in the inventory, the job is still created
+//  this might be because a bug in the vanilla code, the pawn.inventory.Count(thing.def) is not updated (including pawn.inventory.innerContainer)
+//  so the job.count is always 0, and the job is always created
+//  Meanwhile, when saving the game, the item will appear in the inventory, but the inventory.Count and inventory.innerContainer is still not updated
+
+// Log.Message("Found " + thing.Label);
+// Log.Message("job: " + job.ToString());
+// Log.Message("job count: " + job.count);
+// Log.Message("thing position: " + thing.Position.x + ", " + thing.Position.y + ", " + thing.Position.z);
+// Log.Message("inventory count: " + pawn.inventory.Count(thing.def));
+// Log.Message("b: " + (count - pawn.inventory.Count(thing.def)));
+// Log.Message("a: " + thing.stackCount);
+
+// foreach (Thing item in pawn.inventory.innerContainer)
+// {
+//     Log.Message("item: " + item.ToString());
+//     Log.Message("item count: " + item.stackCount);
+// }

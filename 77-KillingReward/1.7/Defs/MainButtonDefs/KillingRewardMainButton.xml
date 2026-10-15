@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<MainButtonDef>
+		<defName>KillingReward</defName>
+		<label>Killing Reward</label>
+		<description>Claim boons from the dark archotech.</description>
+		<workerClass>KillingReward.MainButtonWorker_KillingReward</workerClass>
+		<iconPath>UI/Icons/KillingReward</iconPath>
+		<order>55</order>
+		<validWithoutMap>true</validWithoutMap>
+	</MainButtonDef>
+</Defs>

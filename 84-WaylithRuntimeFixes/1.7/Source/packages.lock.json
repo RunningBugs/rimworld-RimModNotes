@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net10.0": {
+      "Krafs.Publicizer": {
+        "type": "Direct",
+        "requested": "[2.3.2, )",
+        "resolved": "2.3.2",
+        "contentHash": "SPk1Bv/k8yX3L0PLNSxeYg+tLB3o9Iyd9wEBb9tFEYHqMu+/x9N8kjEbwW55B7RGEu+cm7ly/7hwRmCnVCjgVw=="
+      },
+      "Krafs.Rimworld.Ref": {
+        "type": "Direct",
+        "requested": "[1.7.4977-alpha.1, )",
+        "resolved": "1.7.4977-alpha.1",
+        "contentHash": "C6lf42pcmQX5W0o/LCzVGgrUB7cin49x+wQA0WSPdQYc7mFSn0dwDZgYcYQ63wReMLvJz83tz1vR8/ensD7AVA=="
+      },
+      "Lib.Harmony": {
+        "type": "Direct",
+        "requested": "[3.0.0-rc.2, )",
+        "resolved": "3.0.0-rc.2",
+        "contentHash": "lyxdPUBZdCD6lS7xNlf0JcQmMMGrQw+IpOIMvDwE1G/MHzVcbkFgYk6ydBhDSgErCgdhxM46szzHzjED4ptviA=="
+      }
+    }
+  }
+}

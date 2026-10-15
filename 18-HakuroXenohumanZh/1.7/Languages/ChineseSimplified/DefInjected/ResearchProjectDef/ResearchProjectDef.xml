@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 월광 섬유 -->
+  <Leliel_Cotton_Cotton.label>Lelilel cotton</Leliel_Cotton_Cotton.label>
+  <Leliel_Cotton_Cotton.description>Plant lelilel cotton that grows in dark places.</Leliel_Cotton_Cotton.description>
+  <!-- 월광 작업대 -->
+  <Research_Moonlight_table.label>Moonlight bench</Research_Moonlight_table.label>
+  <Research_Moonlight_table.description>You can make various weapons using the moonlight workbench.</Research_Moonlight_table.description>
+  <!-- 개조무기 -->
+  <Moonlight_weapon.label>Moonlight weapons</Moonlight_weapon.label>
+  <Moonlight_weapon.description>You can create weapons called moonlight weapon.</Moonlight_weapon.description>
+  <!-- 나노머신 작업대 -->
+  <nano_Fabrication.label>Nanomachine workbench</nano_Fabrication.label>
+  <nano_Fabrication.description>It is a kind of workbench for crafting equipment and weapons through nanomachines.</nano_Fabrication.description>
+  <!-- 전열 레일화기 -->
+  <erg_rifle.label>Electrothermal rail weapons</erg_rifle.label>
+  <erg_rifle.description>Make an electrothermal chemical cannon converted as a portable that accelerates and fires bullets with chemical fuel with other Electrothermal rail weapons.</erg_rifle.description>
+  <!-- 전투 파워 아머 -->
+  <Nova_knight.label>Nova knight power armor</Nova_knight.label>
+  <Nova_knight.description>It is a power armor with a medieval appearance.</Nova_knight.description>
+</LanguageData>

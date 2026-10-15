@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
   <packageId>RunningBugs.UsefulStats</packageId>
-  <name>Useful Stats 实用数据表</name>
+  <name>Useful Stats 实用数据表 [1.6-1.7]</name>
   <author>RunningBugs</author>
   <supportedVersions>
     <li>1.6</li>
+    <li>1.7</li>
   </supportedVersions>
   <description>
+Supports RimWorld 1.6 and 1.7 beta. 支持环世界1.6与1.7 beta。
+
 Adds a main-tab table for craftable item efficiency: market value per work and single-material amount per work. The first version focuses on currently craftable recipes/buildables and future unlockable recipes/buildables.
 
 添加一个主按钮数据表，用来比较可制作物品的效率：市场价值/工作量，以及单一材料数量/工作量。第一版重点显示当前可制作与将来解锁后可制作的物品。

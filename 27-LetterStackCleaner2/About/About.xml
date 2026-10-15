@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 	<packageId>RunningBugs.LetterStackCleaner2</packageId>
-	<name>Letter Stack Cleaner 2</name>
+	<name>Letter Stack Cleaner 2 [1.4, 1.5, 1.7]</name>
 	<author>RunningBugs</author>
 	<supportedVersions>
 		<li>1.4</li>
 		<li>1.5</li>
+		<li>1.7</li>
 	</supportedVersions>
 
 	<modDependencies>
@@ -25,5 +26,7 @@
 		<!-- <li>username.modname</li> -->
 	</loadAfter>
 
-	<description>This is a re-implementation of the mod Letter Stack Cleaner. I started the re-implementation due to the original mod does not support the action in World view.</description>
+	<description>Supports RimWorld 1.4, 1.5 and 1.7 beta. Release Delete to clear the letter stack in map or world view.
+
+This is a re-implementation of the mod Letter Stack Cleaner. I started the re-implementation due to the original mod does not support the action in World view.</description>
 </ModMetaData>

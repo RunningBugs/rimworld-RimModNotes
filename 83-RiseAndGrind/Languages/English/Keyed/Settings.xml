@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RAG_ReturnToWork>{0} has decided to get back up and keep working.</RAG_ReturnToWork>
+  <RAG_EnableVoice>Play wake-up voice</RAG_EnableVoice>
+  <RAG_PreviewVoice>Preview voice</RAG_PreviewVoice>
+  <RAG_EnableVoiceTooltip>Play the voice configured for the current game language when a colonist is woken from exhaustion. Languages without a voice stay silent.</RAG_EnableVoiceTooltip>
+</LanguageData>

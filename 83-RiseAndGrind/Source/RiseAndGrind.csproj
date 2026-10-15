@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RimWorldVersion Condition="'$(RimWorldVersion)' == ''">1.6</RimWorldVersion>
+    <TargetFramework Condition="'$(RimWorldVersion)' == '1.6'">net472</TargetFramework>
+    <TargetFramework Condition="'$(RimWorldVersion)' == '1.7'">net10.0</TargetFramework>
+    <AssemblyName>RiseAndGrind</AssemblyName>
+    <Version>1.0.2</Version>
+    <LangVersion>latest</LangVersion>
+    <OutputPath>../$(RimWorldVersion)/Assemblies/</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <DebugType>none</DebugType>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <RestorePackagesPath>../.build/packages</RestorePackagesPath>
+    <RimWorld17Dir Condition="'$(RimWorld17Dir)' == ''">/Data/SteamLibrary/steamapps/common/RimWorld</RimWorld17Dir>
+    <HarmonyDir Condition="'$(HarmonyDir)' == ''">/Data/SteamLibrary/steamapps/workshop/content/294100/2009463077</HarmonyDir>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(RimWorldVersion)' == '1.6'">
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4871" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(RimWorldVersion)' == '1.7'">
+    <Reference Include="Assembly-CSharp"><HintPath>$(RimWorld17Dir)/Assembly-CSharp.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityStubs"><HintPath>$(RimWorld17Dir)/UnityStubs.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Waylith"><HintPath>$(RimWorld17Dir)/Waylith.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Waylith.UnityCompat"><HintPath>$(RimWorld17Dir)/Waylith.UnityCompat.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony"><HintPath>$(HarmonyDir)/$(RimWorldVersion)/Assemblies/0Harmony.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+</Project>

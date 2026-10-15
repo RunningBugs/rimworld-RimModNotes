@@ -5,6 +5,7 @@
 	<author>RunningBugs</author>
 	<supportedVersions>
 		<li>1.5</li>
+		<li>1.7</li>
 	</supportedVersions>
 
 	<modDependencies>
@@ -15,6 +16,7 @@
 		</li>
 	</modDependencies>
 
+    <loadAfterByVersion><v1.7><li>unlimitedhugs.allowtool</li></v1.7></loadAfterByVersion>
 	<incompatibleWith>
 		<!-- <li>username.modname</li> -->
 	</incompatibleWith>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+<!-- 절제 -->
+  <Hunting_temperance.degreeDatas.0.label>temperance</Hunting_temperance.degreeDatas.0.label>
+<!-- {PAWN_nameDef}의 허기를 줄어줍니다. -->
+  <Hunting_temperance.degreeDatas.0.description>Reduces {PAWN_nameDef}'s hunger.</Hunting_temperance.degreeDatas.0.description>
+</LanguageData>

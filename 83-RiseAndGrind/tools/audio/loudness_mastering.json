@@ -1,0 +1,64 @@
+{
+  "source": "tools/audio/previous/WakeUpChinese-commanding-unamplified.wav",
+  "output": "Sounds/RiseAndGrind/WakeUpChinese.wav",
+  "filter": "acompressor=threshold=0.125:ratio=3:attack=5:release=60:makeup=4:knee=2.828:link=average:detection=rms,alimiter=limit=0.89125094:level=false:latency=true",
+  "before": {
+    "frames": 62583,
+    "sample_rate": 24000,
+    "channels": 1,
+    "subtype": "PCM_16",
+    "duration_seconds": 2.607625,
+    "rms_dbfs": -18.666352895027018,
+    "peak_dbfs": -1.9998490310736532,
+    "clipped_samples": 0,
+    "sha256": "f5e9831143ed3bc7575b56fca7ca17633a01c0d2cd5fe1ed957bd4d1c8474c0b"
+  },
+  "after": {
+    "frames": 62583,
+    "sample_rate": 24000,
+    "channels": 1,
+    "subtype": "PCM_16",
+    "duration_seconds": 2.607625,
+    "rms_dbfs": -11.787791499272318,
+    "peak_dbfs": -0.9998544876801003,
+    "clipped_samples": 0,
+    "sha256": "a74519eefc0a2aa31f399bd9833bff69690f19fca2f4eb31578debd6a86fc333"
+  },
+  "rms_gain_db": 6.8785613957547,
+  "native_backend": [
+    {
+      "path": "/home/lisanhu/mine/workspace/rimworld/tmp/rise-and-grind-audio-louder/WakeUpChinese.wav",
+      "Channels": 1,
+      "Frequency": 24000,
+      "LengthFrames": 62583,
+      "durationSeconds": 2.607625,
+      "sourcePeak": 0.89126587,
+      "sourceRms": 0.25740111571373275,
+      "sourceRmsDbfs": -11.787791499272318,
+      "outputPeak": [
+        0.89126587,
+        0.89126587
+      ],
+      "outputRms": [
+        0.22627613724757442,
+        0.22627613724757442
+      ],
+      "outputNonzeroReadValues": [
+        127921,
+        127921
+      ],
+      "outputReadValues": [
+        162816,
+        162816
+      ],
+      "maxPositionFrames": 62583,
+      "outputSampleRate": 48000,
+      "OutputChannels": 2,
+      "volume": 0.6,
+      "masterVolume": 0.4983622,
+      "nullBackend": true,
+      "tapNote": "Native voice tap is before volume/master/mix gains; proves decoded voice data, not final device output.",
+      "passed": true
+    }
+  ]
+}

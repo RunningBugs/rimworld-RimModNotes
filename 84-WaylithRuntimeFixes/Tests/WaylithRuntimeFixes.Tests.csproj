@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>WaylithRuntimeFixes.Tests</AssemblyName>
+    <PlatformTarget>x64</PlatformTarget>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RWFixSnapshot Condition="'$(RWFixSnapshot)' == ''">/home/lisanhu/mine/workspace/rimworld/RW/17/Assemblies</RWFixSnapshot>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="WaylithRuntimeFixes">
+      <HintPath>../1.7/Assemblies/WaylithRuntimeFixes.dll</HintPath>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>../.build/packages/lib.harmony/3.0.0-rc.2/lib/net10.0/0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="$(RWFixSnapshot)/Waylith.dll" Private="false" />
+    <Reference Include="$(RWFixSnapshot)/Brutal*.dll" Private="false" />
+    <Reference Include="$(RWFixSnapshot)/UnityStubs.dll" Private="false" />
+    <Reference Include="$(RWFixSnapshot)/Assembly-CSharp.dll" Private="false" />
+  </ItemGroup>
+</Project>

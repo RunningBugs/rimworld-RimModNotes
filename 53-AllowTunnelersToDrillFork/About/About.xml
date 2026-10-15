@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-    <name>TEMPORARY 1.6 Allow Tunnelers To Drill</name>
+    <name>Allow Tunnelers To Drill (1.6/1.7)</name>
     <author>Porio</author>               
     <packageId>Porio.TunnulerFix.fork</packageId>     
     <supportedVersions>                       
+		<li>1.4</li>
+		<li>1.5</li>
 		<li>1.6</li>
+		<li>1.7</li>
     </supportedVersions>
     <description>PATCH MADE BY Enduriel https://steamcommunity.com/id/Endur1el 
 
 1.5 UPDATE BY Kazamizam https://steamcommunity.com/id/Kazamizam
 
-THIS IS A TEMPORARY 1.6 VERSION OF Allow Tunnelers To Drill IT WILL BE REMOVED AS SOON AS THEY UPDATE THE MOD
+Local port of Allow Tunnelers To Drill for RimWorld 1.6 / 1.7 beta.
 
 ORIGINAL MAKER FOUND HERE https://steamcommunity.com/sharedfiles/filedetails/?id=2882915775
 AND 1.5 https://steamcommunity.com/sharedfiles/filedetails/?id=3232132812

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Shell_electricbomb.label>armor piercing shells</Shell_electricbomb.label>
+  <Shell_electricbomb.description>Armor-piercing bullets are energy-fixed ammunition-only bullets designed to pierce hard armor. Although they have a small range, they will show you their power.</Shell_electricbomb.description>
+  <Bullet_Shell_electricbomb.label>armor piercing shells</Bullet_Shell_electricbomb.label>
+
+  <Shell_energyShell.label>energy shell</Shell_energyShell.label>
+  <Shell_energyShell.description>It is a bullet for energy stationary cannons infused with magic stones. When it explodes, it creates a shockwave in a wide area.</Shell_energyShell.description>
+  <Bullet_Shell_energyShell.label>energy shell</Bullet_Shell_energyShell.label>
+
+  <Overwatch_Energy_Core.label>Overwatch Energy Core</Overwatch_Energy_Core.label>
+  <Overwatch_Energy_Core.description>The Overwatch Energy Core is a battery that uses manastones as its main fuel and makes it possible to use enormous energy. However, it is used as an energy source only in certain buildings because it can overload if used incorrectly.</Overwatch_Energy_Core.description>
+</LanguageData>  

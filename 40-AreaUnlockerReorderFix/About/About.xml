@@ -6,6 +6,7 @@
 	<supportedVersions>
 		<li>1.5</li>
 		<li>1.6</li>
+	  <li>1.7</li>
 	</supportedVersions>
 
 	<modDependencies>
@@ -30,7 +31,10 @@
 		<!-- <li>username.modname</li> -->
 	</loadAfter>
 
-	<description>
+	<description>适配 RimWorld 1.7 beta。
+Adapted for RimWorld 1.7 beta.
+
+
 本模组修复了Area Unlocker在RimWorld 1.5版本中无法排序活动区的问题
 
 This mod fixes the issue that Area Unlocker cannot reorder active areas in RimWorld 1.5

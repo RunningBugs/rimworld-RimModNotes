@@ -1,3 +1,7 @@
+## RimWorld 1.7 beta 构建
+
+新增独立 `1.7/Source/mod.csproj` net10.0，固定 Krafs.Rimworld.Ref 1.7.4977-alpha.1 / Krafs.Publicizer 2.3.2，只公开PrefabDef.things/terrain，产物 `1.7/Assemblies/Blueprint2.dll`。Lib.Harmony固定编译包3.0.0-rc.2，但当前产品没有Harmony补丁/程序集引用，游戏不需单独启用Harmony。旧1.6保留。真实捕获/放置、XML与图形剪贴板/快捷键边界见 `UPGRADE-1.7.md`；现有库仅静态会话字典，未实现本轮新增存档持久化。
+
 # Blueprint System Mod for RimWorld
 
 A mod that allows you to save and place blueprints in RimWorld using the game's built-in systems.
@@ -37,8 +41,8 @@ This mod uses RimWorld's built-in systems:
 
 ## Compatibility
 
-- **RimWorld Version**: 1.6
-- **Mod Compatibility**: High - uses only public game APIs
+- **RimWorld Version**: 1.6 / 1.7 beta
+- **Mod Compatibility**: Uses native Prefab APIs and two internal lists publicized for compilation; tested combinations only
 - **Save Game Safe**: Yes - can be added to existing saves
 
 ## Installation

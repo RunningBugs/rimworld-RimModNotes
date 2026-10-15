@@ -20,3 +20,7 @@ cd 1.6/Source && dotnet build -c Release
 ```
 
 产物输出到 `1.6/Assemblies/MouseEventThrottle.dll`。
+
+## RimWorld 1.7 beta
+
+新增独立 net10.0 构建于 `1.7/Source`，产物 `1.7/Assemblies/MouseEventThrottle.dll`，仍保留 1.6。当前 Waylith 的 ImguiDispatch 根据每帧最后鼠标位置生成 MouseDrag，并非按每个鼠标 polling event 执行 OnGUI；旧版高回报率事件积压原因和性能结果不能直接推导到 1.7。自适应限流/诊断仍保留，实际选择、窗口拖动和性能须可视比较。升级证据见 `UPGRADE-1.7.md`。

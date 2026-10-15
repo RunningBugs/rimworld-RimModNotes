@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <blood_flower.label>Blood flower</blood_flower.label>
+  <blood_flower.description>It is a blood flower that bears blood berries. It is mainly used for eating vampires when needed.</blood_flower.description>
+
+  <Blood_Mind_table.label>Blood powered workbench</Blood_Mind_table.label>
+  <Blood_Mind_table.description>It is a workbench that uses blood as power.</Blood_Mind_table.description>
+
+  <spirit_stone_well.label>spirit stone tower</spirit_stone_well.label>
+  <spirit_stone_well.description>A tower that produces spirit stones.</spirit_stone_well.description>
+
+  <high_spirit_costume.label>high spirit costume</high_spirit_costume.label>
+  <high_spirit_costume.description>These costumes were said to have been used by wizards with high ranks. They have higher performance than normal spirit costumes, but they are applied differently.</high_spirit_costume.description>
+
+  <bloodpack_manufacturing.label>Produce blood pack</bloodpack_manufacturing.label>
+  <bloodpack_manufacturing.description>Squeez blood berries to produce blood pack.</bloodpack_manufacturing.description>
+
+  <mental_weapon.label>mental weapon</mental_weapon.label>
+  <mental_weapon.description>A rudimentary staff weapon made from an ore called a spirit stone.</mental_weapon.description>
+
+  <mental_clothing.label>Mental costumes</mental_clothing.label>
+  <mental_clothing.description>These are costumes that prevent mental blockages.</mental_clothing.description>
+
+  <Ice_Excavation.label>ice shards</Ice_Excavation.label>
+  <Ice_Excavation.description>Research on ice.</Ice_Excavation.description>
+
+  <nano_blaster.label>nano blaster</nano_blaster.label>
+  <nano_blaster.description>incomplete.</nano_blaster.description>
+
+
+  <!-- 오버워치 -->
+  
+  <combat_Overwatch_system.label>spirit stone tower</combat_Overwatch_system.label>
+  <combat_Overwatch_system.description>A tower that produces spirit stones.</combat_Overwatch_system.description>
+
+  <observation_heavy_drone.label>Overwatch Enhancement System</observation_heavy_drone.label>
+  <observation_heavy_drone.description>We manufacture combat-specific drones and tactical drones.</observation_heavy_drone.description>
+
+  <observation_carrier_system.label>Overwatch Carrier System</observation_carrier_system.label>
+  <observation_carrier_system.description>You can build a medium mechanoid called the Overwatch Carrier.</observation_carrier_system.description>
+
+  <observation_Electric_generator.label>Remnants of the Overwatch system</observation_Electric_generator.label>
+  <observation_Electric_generator.description>It is the remnant of technology left over from Overwatch, and contains many skills.</observation_Electric_generator.description>
+
+  <!-- 외우주 -->
+
+  <Ghost_weapon.label>foreign cosmic gift</Ghost_weapon.label>
+  <Ghost_weapon.description>An unknown gift from outer space.</Ghost_weapon.description>
+
+  <star_song.label>The song of stars from outer space</star_song.label>
+  <star_song.description>"Seeds from outer space grow into trees, stars from outer space are singing and whispering."</star_song.description>
+
+  <!-- 화염 -->
+
+  <flame_weapon.label>phoenix feather</flame_weapon.label>
+  <flame_weapon.description>A feather that emits unknown flames, a burning bird that only appears in legends.</flame_weapon.description>
+
+  <!-- 얼음달 -->
+
+  <Ice_Moon.label>Fragments of the Ice Moon</Ice_Moon.label>
+  <Ice_Moon.description>Living, but non-living, frozen debris scattered by an asteroid impact long ago.</Ice_Moon.description>
+
+  <!-- 고대 생귀오파지 -->
+  <spirit_weapon.label>Records of Ancient Sanguiophage</spirit_weapon.label>
+  <spirit_weapon.description>The records left by those who longed for eternal life before they became the ancient Saengwiopage and the records after that.</spirit_weapon.description>
+
+  <eternal_Bionic.label>cycle of eternal life</eternal_Bionic.label>
+  <eternal_Bionic.description>This is a record of bioengineers developed (living and moving) to obtain eternal life long ago before becoming a biohazard.</eternal_Bionic.description>
+
+  <Sanguophages_Death_Nexus.label>Sanguiophage Death Nexus</Sanguophages_Death_Nexus.label>
+  <Sanguophages_Death_Nexus.description>These are the new connectors that will be connected to the Sanguiophage Death Hall.</Sanguophages_Death_Nexus.description>
+
+  <code_geass.label>blood code needle(incomplete.)</code_geass.label>
+  <code_geass.description>A code needle that activates abilities using vampire blood.</code_geass.description>
+
+  <!-- 기록서 -->
+  <magic_recordbook.label>record book</magic_recordbook.label>
+  <magic_recordbook.description>You can find a workbench where you can make various records and books, and the materials needed to make Hemera books.</magic_recordbook.description>
+
+  <magic_book_A.label>Hemera Book Level 1</magic_book_A.label>
+  <magic_book_A.description>You can craft a book that unlocks the Hemera ability.</magic_book_A.description>
+
+  <magic_book_B.label>Hemera Book Level 2</magic_book_B.label>
+  <magic_book_B.description>You can craft books that unlock new Hemera abilities.</magic_book_B.description>
+
+</LanguageData>

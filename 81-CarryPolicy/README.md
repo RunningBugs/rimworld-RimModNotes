@@ -1,6 +1,6 @@
 # CarryPolicy（携带方案）
 
-RimWorld 1.6 MOD：模仿原版成瘾品方案体系的**通用携带方案**。配置命名方案（带哪些物品、各带多少），
+RimWorld 1.6 / 1.7 beta MOD：模仿原版成瘾品方案体系的**通用携带方案**。配置命名方案（带哪些物品、各带多少），
 在原版**分配（Assign）页签**的「携带方案」列指派给小人，小人自动从地图补货并保证不被丢弃/搬走。
 
 ## 用法
@@ -35,15 +35,9 @@ UI 行内的 `≈N件` 为按普通小人的估算值；列头悬停有完整说
 
 ## 行为实现
 
-- `JobGiver_CarryPolicy`：XML 插入 Humanlike ThinkTree（原版 `JobGiver_TakeForInventoryStock` 之后），
-  遍历条目找缺口（背包现有 < 目标件数），发 `TakeInventory` 或取膏 Job；自带 2500~5000 tick 节流；
-  食物经 `WillEat` 门控（尊重食物限制）；载重不足时自动少拿。
-- 防丢弃 Harmony 补丁 ×3：
-  - `Pawn_InventoryTracker.FirstUnloadableThing`（getter postfix）：条目内且未超量 → 不卸货；
-  - `JobGiver_DropUnusedInventory.Drop`（prefix）：低偏好食物（生食/牛奶）2.5 天丢弃逻辑跳过方案条目；
-  - `JobGiver_DropUnusedInventory.ShouldKeepDrugInInventory`（postfix）：药品条目不被原版丢掉
-    （ItemPolicy 同款修复）。
-  超出目标件数的部分会被原版正常搬走，库存自动收敛到方案目标。
+- `JobGiver_CarryPolicy` XML插入Humanlike，优先取现成库存，缺少才找真实膏机。显式携带清单不受能否/愿否食用门控；使用重量/可达/预留检查。无缺口300~600 ticks短间隔，有缺口但找不到2500~5000长退避；节流表每局新建。
+- `Pawn_InventoryTracker.FirstUnloadableThing` getter Prefix：完整扫描，合并原药物/库存/食物保留量与携带配额，取最大值，不跳过后续真正需卸载货物。
+- `JobGiver_DropUnusedInventory.Drop` Prefix：不足或等于配额不丢，超额仅丢超出部分；没有第三个ShouldKeepDrug补丁。
 
 ## 构建
 
@@ -60,7 +54,11 @@ cd 1.6/Source && dotnet build CarryPolicy.csproj -c Release
 
 ## 已知边界 / 后续计划
 
-- 仅支持 1.6；
+- 支持独立1.6与1.7 beta；
 - 商队中的自动补货未实现（后续可仿 `CaravanDrugPolicyUtility`）；
 - 取膏一次一份；
 - 未特别处理 mutant `disablePolicies`（食尸鬼等仍可指派方案）。
+
+## 1.7 beta 构建与验证
+
+`1.7/Source/CarryPolicy.csproj`使用net10.0、固定Krafs.Rimworld.Ref 1.7.4977-alpha.1与Lib.Harmony 3.0.0-rc.2，产物 `1.7/Assemblies/CarryPolicy.dll`。旧1.6保持。实际验证范围/日志/API/保存重载限制见 `UPGRADE-1.7.md`。sim只为UI原型，不证明真实游戏交互；本轮不调用外部视觉服务。

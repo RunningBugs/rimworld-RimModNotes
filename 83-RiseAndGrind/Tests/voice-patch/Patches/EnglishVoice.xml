@@ -1,0 +1,18 @@
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/RiseAndGrind.WakeVoicesDef[defName="RAG_WakeVoices"]/voices</xpath>
+    <value><li><language>English</language><sound>RAG_TestEnglish</sound></li></value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs</xpath>
+    <value>
+      <SoundDef>
+        <defName>RAG_TestEnglish</defName>
+        <context>MapOnly</context>
+        <subSounds><li><onCamera>true</onCamera><grains>
+          <li Class="AudioGrain_Clip"><clipPath>RiseAndGrind/WakeUpChinese</clipPath></li>
+        </grains><volumeRange>60</volumeRange></li></subSounds>
+      </SoundDef>
+    </value>
+  </Operation>
+</Patch>

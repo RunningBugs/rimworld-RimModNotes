@@ -1,0 +1,72 @@
+[
+  {
+    "path": "unamplified commanding WAV (historical)",
+    "Channels": 1,
+    "Frequency": 24000,
+    "LengthFrames": 62583,
+    "durationSeconds": 2.607625,
+    "sourcePeak": 0.79434204,
+    "sourceRms": 0.11659565197763558,
+    "sourceRmsDbfs": -18.666352895027018,
+    "outputPeak": [
+      0.79434204,
+      0.79434204
+    ],
+    "outputRms": [
+      0.1042706574772629,
+      0.1042706574772629
+    ],
+    "outputNonzeroReadValues": [
+      127924,
+      127924
+    ],
+    "outputReadValues": [
+      162816,
+      162816
+    ],
+    "maxPositionFrames": 62583,
+    "outputSampleRate": 48000,
+    "OutputChannels": 2,
+    "volume": 0.6,
+    "masterVolume": 0.4983622,
+    "nullBackend": true,
+    "tapNote": "Native voice tap is before volume/master/mix gains; proves decoded voice data, not final device output.",
+    "passed": true,
+    "source_wav_sha256": "f5e9831143ed3bc7575b56fca7ca17633a01c0d2cd5fe1ed957bd4d1c8474c0b"
+  },
+  {
+    "path": "temporary OGG converted from the unamplified commanding WAV (historical)",
+    "Channels": 1,
+    "Frequency": 24000,
+    "LengthFrames": 62583,
+    "durationSeconds": 2.607625,
+    "sourcePeak": 0.7978821,
+    "sourceRms": 0.1173099858986395,
+    "sourceRmsDbfs": -18.61330034829693,
+    "outputPeak": [
+      0.7978821,
+      0.7978821
+    ],
+    "outputRms": [
+      0.10430345976886497,
+      0.10430345976886497
+    ],
+    "outputNonzeroReadValues": [
+      127514,
+      127514
+    ],
+    "outputReadValues": [
+      163840,
+      163840
+    ],
+    "maxPositionFrames": 62583,
+    "outputSampleRate": 48000,
+    "OutputChannels": 2,
+    "volume": 0.6,
+    "masterVolume": 0.4983622,
+    "nullBackend": true,
+    "tapNote": "Native voice tap is before volume/master/mix gains; proves decoded voice data, not final device output.",
+    "passed": true,
+    "source_wav_sha256": "f5e9831143ed3bc7575b56fca7ca17633a01c0d2cd5fe1ed957bd4d1c8474c0b"
+  }
+]

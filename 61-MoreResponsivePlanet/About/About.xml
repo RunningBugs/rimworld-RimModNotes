@@ -5,6 +5,7 @@
 	<author>RunningBugs</author>
 	<supportedVersions>
 		<li>1.6</li>
+		<li>1.7</li>
 	</supportedVersions>
 
 	<modDependencies>
@@ -24,7 +25,10 @@
 		<!-- <li>username.modname</li> -->
 	</loadAfter>
 
-	<description>
+	<description>适配 RimWorld 1.7 beta；下文的原始性能问题来自 1.6，1.7 的性能收益仍需实际交互比较。
+Adapted for RimWorld 1.7 beta; the original performance motivation below concerns 1.6. Performance gains on 1.7 still require real interaction measurements.
+
+
 In RimWorld, the Planet/World view is very laggy, especially when there are many settlements, factions, landmarks in 1.6.
 This mod tries to improve the performance of the World view.
 Core strategies:

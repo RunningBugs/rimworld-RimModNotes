@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <Operation Class="PatchOperationSequence">
+        <operations>
+            <!-- Add once on concrete defs: adding to parent and child comps duplicates inherited entries. -->
+            <li Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[not(@Abstract="True" or @Abstract="true")]/comps</xpath>
+                <value>
+                    <li><compClass>WorkbenchZone.CanCreateZone</compClass></li>
+                </value>
+            </li>
+            <!-- E.g. Brewery inherits all its original comps and has no local comps node. -->
+            <li Class="PatchOperationConditional">
+                <xpath>Defs/ThingDef[not(@Abstract="True" or @Abstract="true") and not(comps) and (thingClass="Building_WorkTable" or thingClass="Building_WorkTable_HeatPush" or thingClass="Building_WorkTableAutonomous" or thingClass="Building_MechGestator")]</xpath>
+                <match Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[not(@Abstract="True" or @Abstract="true") and not(comps) and (thingClass="Building_WorkTable" or thingClass="Building_WorkTable_HeatPush" or thingClass="Building_WorkTableAutonomous" or thingClass="Building_MechGestator")]</xpath>
+                    <value><comps><li><compClass>WorkbenchZone.CanCreateZone</compClass></li></comps></value>
+                </match>
+            </li>
+        </operations>
+    </Operation>
+</Patch>

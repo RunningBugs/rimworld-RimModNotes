@@ -1,0 +1,196 @@
+{
+  "date": "2026-10-15",
+  "mod_version": "1.0.2",
+  "game_version": "1.7.4977 rev1248",
+  "builds": {
+    "1.6": {
+      "target_framework": "net472",
+      "sha256": "239c1ce459fc22fd0813272110c614c417e693e8793b9638062d8c6bb1ad3de9",
+      "result": "0 warnings, 0 errors"
+    },
+    "1.7": {
+      "target_framework": "net10.0",
+      "sha256": "6830fd5db374ab44d8b7a68a69e2a1e236272489a704747f182d7b9950a0a0cf",
+      "result": "0 warnings, 0 errors"
+    }
+  },
+  "test_harness_sha256": "2be076d1a379e0fb9e5f70faeec119614362a42412c4dcbfb8c917621ad4e84e",
+  "cases": [
+    {
+      "case": "zh-source-v1",
+      "returncode": 0,
+      "passed": true,
+      "checks": [
+        "definitions and language selection: ChineseSimplified",
+        "native exhaustion, direct interruption, unchanged rest and draft/fire-at-will, current-language playback",
+        "voice sample creation, decoded clip data and source volume match language selection",
+        "localized return-to-work message targets the pawn without a notification sound",
+        "voice setting disables audio while retaining the localized message",
+        "voluntary sleep job remains active",
+        "actual anesthetic downing remains downed",
+        "enemy exhaustion is untouched",
+        "mental-state exhaustion preserves native behavior",
+        "already drafted pawn is untouched"
+      ],
+      "unexpected_errors": [],
+      "elapsed_seconds": 19.0,
+      "voice_sources": [
+        {
+          "Sound": "RAG_WakeUpChinese",
+          "Created": true,
+          "Samples": 62583,
+          "Frequency": 24000,
+          "Length": 2.607625,
+          "Volume": 1,
+          "IsPlaying": true,
+          "Context": "Any",
+          "OnCamera": true
+        }
+      ]
+    },
+    {
+      "case": "en-source-v1",
+      "returncode": 0,
+      "passed": true,
+      "checks": [
+        "definitions and language selection: English",
+        "native exhaustion, direct interruption, unchanged rest and draft/fire-at-will, current-language playback",
+        "voice sample creation, decoded clip data and source volume match language selection",
+        "localized return-to-work message targets the pawn without a notification sound",
+        "voice setting disables audio while retaining the localized message",
+        "voluntary sleep job remains active",
+        "actual anesthetic downing remains downed",
+        "enemy exhaustion is untouched",
+        "mental-state exhaustion preserves native behavior",
+        "already drafted pawn is untouched"
+      ],
+      "unexpected_errors": [],
+      "elapsed_seconds": 16.79,
+      "voice_sources": []
+    },
+    {
+      "case": "en-patch-source-v1",
+      "returncode": 0,
+      "passed": true,
+      "checks": [
+        "definitions and language selection: English",
+        "native exhaustion, direct interruption, unchanged rest and draft/fire-at-will, current-language playback",
+        "voice sample creation, decoded clip data and source volume match language selection",
+        "localized return-to-work message targets the pawn without a notification sound",
+        "voice setting disables audio while retaining the localized message",
+        "voluntary sleep job remains active",
+        "actual anesthetic downing remains downed",
+        "enemy exhaustion is untouched",
+        "mental-state exhaustion preserves native behavior",
+        "already drafted pawn is untouched"
+      ],
+      "unexpected_errors": [],
+      "elapsed_seconds": 18.04,
+      "voice_sources": [
+        {
+          "Sound": "RAG_TestEnglish",
+          "Created": true,
+          "Samples": 62583,
+          "Frequency": 24000,
+          "Length": 2.607625,
+          "Volume": 0.6,
+          "IsPlaying": true,
+          "Context": "MapOnly",
+          "OnCamera": true
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "1.6 compile/API checks only; no runnable 1.6 installation.",
+    "1.7 used headless null audio output. Real SampleOneShot creation, decoded clip metadata and nonzero source volume were verified; this does not prove physical device output or subjective audibility.",
+    "AudioSource.isPlaying is recorded as diagnostic evidence, not required under headless output.",
+    "Settings preview button was not exercised through the graphical UI."
+  ],
+  "audio": {
+    "sha256": "a74519eefc0a2aa31f399bd9833bff69690f19fca2f4eb31578debd6a86fc333",
+    "duration_seconds": 2.607625,
+    "rms_dbfs": -11.787791499272318,
+    "peak_dbfs": -0.9998544876801003,
+    "rms_gain_db": 6.8785613957547,
+    "clipped_samples": 0,
+    "native_voice_render_passed": true,
+    "asr_words_match": true,
+    "note": "Asset-only loudness revision after the integration runs; assemblies and PCM format/duration unchanged. Native backend and offline ASR were rerun on this exact WAV."
+  },
+  "historical_v1_0_1_cases": [
+    {
+      "case": "zh-direct-v1",
+      "returncode": 0,
+      "passed": true,
+      "checks": [
+        "definitions and language selection: ChineseSimplified",
+        "native exhaustion, direct interruption, unchanged rest and draft/fire-at-will, current-language playback",
+        "localized return-to-work message targets the pawn without a notification sound",
+        "voice setting disables audio while retaining the localized message",
+        "voluntary sleep job remains active",
+        "actual anesthetic downing remains downed",
+        "enemy exhaustion is untouched",
+        "mental-state exhaustion preserves native behavior",
+        "already drafted pawn is untouched"
+      ],
+      "unexpected_errors": [],
+      "elapsed_seconds": 20.15
+    },
+    {
+      "case": "en-direct-v1",
+      "returncode": 0,
+      "passed": true,
+      "checks": [
+        "definitions and language selection: English",
+        "native exhaustion, direct interruption, unchanged rest and draft/fire-at-will, current-language playback",
+        "localized return-to-work message targets the pawn without a notification sound",
+        "voice setting disables audio while retaining the localized message",
+        "voluntary sleep job remains active",
+        "actual anesthetic downing remains downed",
+        "enemy exhaustion is untouched",
+        "mental-state exhaustion preserves native behavior",
+        "already drafted pawn is untouched"
+      ],
+      "unexpected_errors": [],
+      "elapsed_seconds": 18.8
+    },
+    {
+      "case": "en-patch-direct-v1",
+      "returncode": 0,
+      "passed": true,
+      "checks": [
+        "definitions and language selection: English",
+        "native exhaustion, direct interruption, unchanged rest and draft/fire-at-will, current-language playback",
+        "localized return-to-work message targets the pawn without a notification sound",
+        "voice setting disables audio while retaining the localized message",
+        "voluntary sleep job remains active",
+        "actual anesthetic downing remains downed",
+        "enemy exhaustion is untouched",
+        "mental-state exhaustion preserves native behavior",
+        "already drafted pawn is untouched"
+      ],
+      "unexpected_errors": [],
+      "elapsed_seconds": 18.25
+    },
+    {
+      "case": "zh-direct-commanding-v1",
+      "returncode": 0,
+      "passed": true,
+      "checks": [
+        "definitions and language selection: ChineseSimplified",
+        "native exhaustion, direct interruption, unchanged rest and draft/fire-at-will, current-language playback",
+        "localized return-to-work message targets the pawn without a notification sound",
+        "voice setting disables audio while retaining the localized message",
+        "voluntary sleep job remains active",
+        "actual anesthetic downing remains downed",
+        "enemy exhaustion is untouched",
+        "mental-state exhaustion preserves native behavior",
+        "already drafted pawn is untouched"
+      ],
+      "unexpected_errors": [],
+      "elapsed_seconds": 18.94,
+      "purpose": "Recheck loading and playback with the revised commanding WAV."
+    }
+  ]
+}

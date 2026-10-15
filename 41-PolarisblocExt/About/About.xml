@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 	<packageId>RunningBugs.PolarisblocExt</packageId>
-	<name>天轴自用扩展 Polarisbloc Extension</name>
+	<name>天轴自用扩展 Polarisbloc Extension [1.5/1.6/1.7]</name>
 	<author>RunningBugs</author>
 	<supportedVersions>
 		<li>1.5</li>
 		<li>1.6</li>
+		<li>1.7</li>
 	</supportedVersions>
 
 	<modDependencies>
@@ -30,6 +31,8 @@
 	</loadAfter>
 
 	<description>
+1.7本地适配：保留独立科技核心提醒与通讯联系人；冷却和联系人ID现由GameComponent保存。与Core新版类似功能可同时存在，详见UPGRADE-1.7.md。
+Local1.7 adaptation retains its own tech-core reminder/contact and now persists its cooldown/contact ID. See UPGRADE-1.7.md for actual validation boundaries.
 本模组是自用的一些对于天轴模组的扩展内容，目前内容包含：
 - 在研究完成纳米修复装置后，会像人格核机会任务一样，生成一个任务，可以获取到科技核心，但是两次任务之间有一年的间隔时间
 

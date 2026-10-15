@@ -1,0 +1,42 @@
+[
+  {
+    "file": "WakeUp_Chinese_Ryan_commanding.wav",
+    "sha256": "af975927662d2753b8123841cda1387227656a2ce0996d4f81905d61dc792d39",
+    "text": "你们这个年纪是怎么睡得着的？",
+    "language": "Chinese",
+    "model": "Qwen/Qwen3-ASR-1.7B-hf",
+    "revision": "bcd2b5b7f32b480ab5790554cfa8347f246a14f3",
+    "reference_text": "你们这个年纪是怎么睡得着的",
+    "text_matches_ignoring_punctuation": true,
+    "waveform": {
+      "sample_rate": 24000,
+      "channels": 1,
+      "subtype": "PCM_16",
+      "duration_s": 2.1758333333333333,
+      "peak_dbfs": -2.0001827379579966,
+      "rms_dbfs": -26.94940158957794,
+      "clipped_samples": 0,
+      "finite": true
+    }
+  },
+  {
+    "file": "WakeUp_Chinese_Uncle_Fu_commanding.wav",
+    "sha256": "f5e9831143ed3bc7575b56fca7ca17633a01c0d2cd5fe1ed957bd4d1c8474c0b",
+    "text": "你们这个年纪是怎么睡得着的？",
+    "language": "Chinese",
+    "model": "Qwen/Qwen3-ASR-1.7B-hf",
+    "revision": "bcd2b5b7f32b480ab5790554cfa8347f246a14f3",
+    "reference_text": "你们这个年纪是怎么睡得着的",
+    "text_matches_ignoring_punctuation": true,
+    "waveform": {
+      "sample_rate": 24000,
+      "channels": 1,
+      "subtype": "PCM_16",
+      "duration_s": 2.607625,
+      "peak_dbfs": -1.9998490310736532,
+      "rms_dbfs": -18.666352895027018,
+      "clipped_samples": 0,
+      "finite": true
+    }
+  }
+]

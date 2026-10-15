@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+<!-- 헤메라 나노물질 -->
+<Hemera_Nanomaterials.label>赫梅拉纳米材料</Hemera_Nanomaterials.label> <!-- Hemera nanomaterials -->
+<!-- 오래전 크로노스 나노물질이 성질이 변환하여 생긴 백랑 종족의 전용 나노물질입니다.\n\n헤메라 나노물질은 반영생의 삶을 살게 해주는 희귀적인 물질중 하나로, 백랑 종족들이 주로 사용하는 에너지이죠.\n\n 하지만 이 유전자는 특이하게 생귀오파지같은 흡혈귀를 혐오하고 있어, 흡혈귀가 이유전자를 투입될경우 흡혈 혈액 정수 능력을 망가뜨려버려 능력도 쓰지 못하고,영원히 혈액에 갈망하여 살아가게 만들겁니다. -->
+<Hemera_Nanomaterials.description>这是由很久以前的克罗诺斯纳米材料转变而成的白狼族专用纳米材料。\n\n赫梅拉纳米材料是一种使半生命体得以生存的稀有材料之一，是白狼族主要使用的能源。\n\n但是这种基因特别讨厌像生鬼病毒那样的吸血鬼，如果吸血鬼注入这种基因，它会破坏吸血鬼的血液精华能力，使其失去能力，并永远渴望血液。</Hemera_Nanomaterials.description> <!-- It is a nanomaterial exclusively for the White Rang race, which was created by the transformation of Kronos nanomaterials long ago.\n\nHemera nanomaterial is one of the rare materials that enable semi-living life, and is the energy that the White Rang race mainly uses.\ n\n However, this gene uniquely hates vampires such as phages, so if a vampire is injected with reason electrons, it will destroy the ability to purify blood and not be able to use the ability, making it live forever craving blood. -->
+
+<!-- 헤메라 마인 유전자 -->
+<Hemera_mine.label>赫梅拉矿井基因</Hemera_mine.label> <!-- Hemera mine gene -->
+<!-- 헤메라 마인 유전자는 나노물질과 함께 쓸수 있게 만드는 흡혈귀의 유전자 물질입니다.\n\n오래전에 어떤 생귀 유전자 이식에 실패하여 버려진 여성 흡혈귀와 어떤 백랑에 의해 태어나며 생긴 유전자로, 나노물질의 힘과 생귀오파지의 힘을 동시에 사용할수 있으며 마인 능력을 가진자들은 헤메라 에너지와 헤모켄 혈액을 함께 사용하는 헤메라 능력을 사용할수 있습니다.\n\n마인 유전자는 매우 희귀적인 유전자로 하나입니다. 하지만 이 유전자 또한 생귀오파지를 혐오하고 있어. 생귀오파지의 유전자 이식을 받는순간 마인 유전자가 비활성화가 되어 나노물질의 부정을 받게 될겁니다. -->
+<Hemera_mine.description>赫梅拉矿井基因是使纳米材料能够与吸血鬼基因一起使用的吸血鬼基因物质。\n\n这是由很久以前因某个生鬼基因移植失败而被遗弃的女性吸血鬼与某个白狼所生的后代的基因，可以同时使用纳米材料和生鬼病毒的力量，拥有矿井能力的人可以使用结合赫梅拉能量和赫墨肯血液的赫梅拉能力。\n\n矿井基因是非常稀有的基因之一。但这种基因也讨厌生鬼病毒。一旦接受生鬼病毒的基因移植，矿井基因将被非激活，你将受到纳米材料的否定。</Hemera_mine.description> <!-- The Hemera Mine gene is a vampire's genetic material that makes it usable with nanomaterials.\n\nThis is a gene created by a female vampire and a white wolf who were abandoned long ago due to a failed genetic transplant. You can use the power of Ophage at the same time, and those with Mine abilities can use the Hemera ability that uses Hemera energy and Hemoken blood together.\n\nThe Mine gene is a very rare gene. But this gene also hates sanguiophages. The moment you receive the gene transfer of Sanguiophage, the Mine gene will be inactivated and you will be denied nanomaterials. -->
+
+  <!-- 헤메라 마인 증폭 -->
+  <AmplifyHemeraEnergy.label>赫梅拉矿井能量增幅</AmplifyHemeraEnergy.label> <!-- Amplify Hemera Mine Energy -->
+  <AmplifyHemeraEnergy.description>通过增幅赫梅拉矿井基因来增加赫梅拉能量的再生。</AmplifyHemeraEnergy.description> <!-- Increases Hemera energy regeneration by amplifying Hemera Mine's genes. -->
+
+  <!-- 헤메라 리버스 -->
+  <HemeraReverse.label>赫梅拉逆转</HemeraReverse.label> <!-- hemera reverse -->
+  <HemeraReverse.description>它停止了破坏赫梅拉纳米材料血液精华的纳米细胞的活动，使它们能够接受吸血鬼基因。</HemeraReverse.description> <!-- It stops the activity of nano cells that destroy the blood essence of Hemera nano materials, allowing them to accept the vampire gene. -->
+
+
+
+  <!-- 피를 빨아먹는 흡혈귀 능력입니다.\n\n흡혈귀와 똑같이 혈액을 먹어야하지만 소모 속도는 느리며 민감도가 낮습니다.\n\n다른 흡혈귀와 똑같이 혈액정수량이 바닥나면 {PAWN_nameDef}는 불행할겁니다. -->
+  <Hemera_mine.resourceDescription>这是一种吸血鬼能力，可以吸血。\n\n你需要像吸血鬼一样饮血，但消耗缓慢且较不敏感。\n\n像其他吸血鬼一样，如果{PAWN_nameDef}的血液精华耗尽，他将会感到不幸。</Hemera_mine.resourceDescription> <!-- It's a vampire ability that sucks blood.\n\nYou need to drink blood just like a vampire, but it consumes slowly and is less sensitive.\n\nLike other vampires, {PAWN_nameDef} will be unhappy if you run out of blood essence. -->
+  <!-- 헤모켄을 제공합니다. -->
+  <Hemera_mine.customEffectDescriptions>提供赫墨肯。</Hemera_mine.customEffectDescriptions> <!-- Hemoken is provided. -->
+
+  <!-- 백랑 마인 꼬리 -->
+  <Tail_mine_wolf.label>白狼恶魔尾巴</Tail_mine_wolf.label> <!-- Hakuro demon Tail -->
+  <!-- 늑대 꼬리 3개가 달린 희귀하게 생기는 꼬리입니다.\n\n마인이라고 불리는 백랑과 생귀의 혼혈 후손의 꼬리유전자는 정신 봉괴치를 감소 시키고 혈액 정수가 줄어듭니다. -->
+  <Tail_mine_wolf.description>这是一条带有3条狼尾的稀有尾巴。\n\n所谓的恶魔，是白狼和生鬼的混血后代，其尾巴基因能降低精神障碍水平并减少血液精华。</Tail_mine_wolf.description> <!-- This is a rare tail with 3 wolf tails.\n\nThe tail gene of a half-breed descendant of Hakuro and Sangui, called demon, reduces the level of mental block and decreases blood essence. -->
+
+  <!-- 헤메라 에너지 폭발 -->
+  <Hemera_Abilities_explosion.label>赫梅拉能量爆炸</Hemera_Abilities_explosion.label> <!-- Hemera energy explosion -->
+  <!-- 헤메라 에너지를 증폭시켜 지정된 위치에 에너지 폭발을 일으킵니다.\n\n-주의- 이 능력을 사용할려면 마인 유전자와 흡혈성 유전자를 가지고 있어야합니다. -->
+  <Hemera_Abilities_explosion.description>放大赫梅拉能量，在指定位置引发能量爆炸。\n\n-注意- 使用这个能力必须拥有恶魔基因和吸血性基因。</Hemera_Abilities_explosion.description> <!-- Amplifies Hemera energy to create an energy explosion at the designated location.\n\n-Note- You must have the Demon gene and to use this ability. -->
+
+  <!-- 헤메라 전자 파괴자 -->
+  <Hemera_Abilities_EMP.label>赫梅拉电子毁灭者</Hemera_Abilities_EMP.label> <!-- Hemera electrons destroyer -->
+  <!-- 백랑 희귀 마인들이 사용하는 위험적인 헤메라 전자 파괴 에너지구체입니다. 헤메라의 에너지를 펄스 형태의 구체를 던져 천천히 날라가 그 위치에 닿는 순간 거대한 전자기 펄스 폭발을 일으켜 모든 기계에 관련된것들을 망가뜨립니다.\n\n-주의- 이 능력을 사용할려면 마인 유전자를 가지고 있어야합니다. -->
+  <Hemera_Abilities_EMP.description>罕见恶魔使用的危险赫梅拉电子毁灭能量球。赫梅拉的能量以脉冲形态的球体缓缓飞行，一旦到达位置，便会引发巨大的电磁脉冲爆炸，摧毁一切与机械有关的东西。\n\n-注意- 使用这个能力必须拥有恶魔基因。</Hemera_Abilities_EMP.description> <!-- A dangerous Hemera electron destruction energy sphere used by rare demons. Hemera's energy throws a pulse-shaped sphere that slowly flies away and causes a huge electromagnetic pulse explosion. The moment it touches the location, destroying everything related to machinery.\n\n-Note- To use this ability, you must use the Demon gene. -->
+
+  <!-- 헤메라 혈흔 코드 유전자 -->
+  <Hemera_bloodstain_Ability.label>赫梅拉血迹密码基因</Hemera_bloodstain_Ability.label> <!-- hemera bloodstain code gene -->
+  <!-- 헤메라 혈흔 코드가 깃든 유전자입니다. 적용시 혈흔 코드가 적용되어 피를 이용한 능력들을 사용할수 있습니다.\n\n-주의- 이 능력을 사용할려면 마인 유전자를 가지고 있어야합니다. -->
+  <Hemera_bloodstain_Ability.description>这是携带赫梅拉血迹密码的基因。应用后，血迹密码被应用，允许你使用血液相关的能力。\n\n-警告- 使用这个能力必须拥有矿井基因。</Hemera_bloodstain_Ability.description> <!-- This is the gene that carries the Hemera bloodstain code. When applied, the bloodstain code is applied, allowing you to use abilities using blood.\n\n-Caution- To use this ability, you must have the Mine Gene. -->
+
+  <!-- 헤메라 나노 강화 코드 유전자 -->
+  <Hemera_nano_system_Ability.label>赫梅拉纳米增强密码基因</Hemera_nano_system_Ability.label> <!-- Hemera nano-enhanced code gene -->
+  <!-- 헤메라에 들어있는 나노물질을 사용자를 지원하게 만드는 명령 코드 유전자입니다. -->
+  <Hemera_nano_system_Ability.description>这是命令代码基因，使赫梅拉中的纳米材料能够支持用户。</Hemera_nano_system_Ability.description> <!-- It is the command code gene that enables the nanomaterials contained in Hemera to support the user. -->
+
+  <!-- 헤메라 클로킹 안개 -->
+  <Hemera_Transparency.label>赫梅拉隐形雾</Hemera_Transparency.label> <!-- Hemera cloaking fog -->
+  <!-- 아군들 중심으로 작은 안개를 흩뿌리면서 범위내에 있는 사람들은 사라지게 만듭니다.\n\n-주의- 이 능력을 사용할려면 마인 유전자와 흡혈성 유전자를 가지고 있어야합니다. -->
+  <Hemera_Transparency.description>围绕盟军散布细小的雾气，使范围内的人消失。\n\n-注意- 使用这个能力必须拥有恶魔基因和吸血性基因。</Hemera_Transparency.description> <!-- It scatters a small fog around allies, making those within range disappear.\n\n-note- You must have the Demon gene and to use this ability. -->
+
+  <!-- 백랑 사냥눈 -->
+  <Hakuro_Month.label>白狼猎人之眼</Hakuro_Month.label> <!-- Hakuro hunter's eye -->
+  <!-- 북극늑대의 습성을 이어받은 유전자로, 높은 동물 스텔스 능력과 도축 효율성과 높은 시력을 지니고 있어, 높은 명중률을 보여주면서 도축 효율을 보여줍니다. -->
+  <Hakuro_Month.description>这是继承北极狼行为的基因，具有高动物隐秘能力、屠宰效率和高视力，展现高命中率和屠宰效率。</Hakuro_Month.description> <!-- It is a gene that inherited the behavior of the arctic wolf, and has high animal stealth ability, slaughter efficiency, and high eyesight, showing high accuracy and slaughter efficiency. -->
+  
+  <!-- 백랑 절제 위장 -->
+  <Hakuro_temperance.label>猎人白狼节制</Hakuro_temperance.label> <!-- Hunter White Wolf Temperance -->
+  <!-- 북극늑대의 절제 방식을 이어받은 유전자입니다. 허기가 느려지는 특성을 얻게되며, 식중독 확률이 줄어듭니다. -->
+  <Hakuro_temperance.description>这是继承北极狼节制方式的基因。你会获得减缓饥饿的特性，食物中毒的几率减少。</Hakuro_temperance.description> <!-- It is a gene inherited from the articulation method of the arctic wolf. You gain the property of slowing hunger, and the chance of food poisoning is reduced. -->
+
+  <Ears_Arctic_wolf.label>白狼耳朵</Ears_Arctic_wolf.label> <!-- Hakuro ear -->
+  <Ears_Arctic_wolf.description>白狼的耳朵。</Ears_Arctic_wolf.description> <!-- Hakuro's ear. -->
+
+  <Tail_Arctic_wolf.label>白狼尾巴</Tail_Arctic_wolf.label> <!-- Hakuro Tail -->
+  <Tail_Arctic_wolf.description>白狼的尾巴增加了操纵能力。</Tail_Arctic_wolf.description> <!-- Hakuro's Tail Increases Manipulation. -->
+
+  <Hakuro_Hair.label>白狼毛发</Hakuro_Hair.label> <!-- Hakuro Hair -->
+  <Hakuro_Hair.description>白狼的毛发。</Hakuro_Hair.description> <!-- Hakuro Hair. -->
+
+  <stepontheice_Ability.label>踏冰</stepontheice_Ability.label> <!-- step on the ice -->
+  <stepontheice_Ability.description>跳起并猛击下来，制造冰浪。</stepontheice_Ability.description> <!-- Jumps up and slams down to create an ice wave. -->
+
+
+</LanguageData>

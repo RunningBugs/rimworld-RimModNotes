@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <porridge.label>Porridge</porridge.label>
+  <porridge.description>It is a porridge-like food made from grains.</porridge.description>
+
+  <Can_of_beef_stew.label>Canned Meat Soup</Can_of_beef_stew.label>
+  <Can_of_beef_stew.description>It is a canned food made with meat for preservation.</Can_of_beef_stew.description>
+
+  <star_fruit.label>star fruit</star_fruit.label>
+  <star_fruit.description>A star fruit grown from a star leaf. No one knows about the fruit of a star, and there is no record of it. When ingested, the body and mind feel connected to something, and it restores the body and stabilizes the mind. However, it must be consumed periodically, and if you do not consume it for a certain period of time, you may face an unavoidable end.</star_fruit.description>
+
+</LanguageData>

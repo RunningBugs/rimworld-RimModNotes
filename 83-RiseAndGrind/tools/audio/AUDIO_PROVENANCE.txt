@@ -1,0 +1,76 @@
+Rise and Grind / 爬起来肝 — Chinese reminder audio provenance
+Checked: 2026-10-15
+
+Current production clip: Sounds/RiseAndGrind/WakeUpChinese.wav
+Text: 你们这个年纪是怎么睡得着的！
+This is a newly synthesized rendition of the user-requested short line.
+No recording from the original meme, reference audio, or voice-cloning input
+was used. The voice is the model's standard Uncle_Fu preset, with a text
+instruction requesting an urgent, hard commanding scolding, fast delivery,
+strong emphasis, no mid-sentence pause and a short downward ending.
+The original softer 3.519-second rendition is retained in previous/.
+
+Official model:
+  Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice
+  https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice
+  Pinned revision: 0c0e3051f131929182e2c023b9537f8b1c68adfe
+  Pinned metadata confirms license: apache-2.0
+  https://huggingface.co/api/models/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/revision/0c0e3051f131929182e2c023b9537f8b1c68adfe
+
+Official software and documentation:
+  https://github.com/QwenLM/Qwen3-TTS
+  qwen-tts Python package 0.1.1
+  Upstream HEAD checked: 022e286b98fbec7e1e916cb940cdf532cd9f488e
+  https://github.com/QwenLM/Qwen3-TTS/blob/022e286b98fbec7e1e916cb940cdf532cd9f488e/LICENSE
+  The Apache-2.0 license text is included in Qwen3-TTS-LICENSE.txt.
+  Copyright 2026 The Alibaba Qwen team.
+
+Licensing basis:
+  The official model metadata and official synthesis library use Apache-2.0,
+  which allows using and redistributing the licensed material commercially.
+  Neither official source adds a separate restriction on generated speech.
+  This generated clip does not redistribute model weights or upstream code.
+  The original meme recording has not been licensed or included.
+
+Generation:
+  Use this folder's project-local .venv only; no system packages are needed.
+  uv venv .venv --python 3.12
+  uv pip install --python .venv/bin/python -r requirements.txt \
+    --extra-index-url https://download.pytorch.org/whl/cu128
+  .venv/bin/python generate_voice.py --output ../../Sounds/RiseAndGrind/WakeUpChinese.wav
+  On the original workstation, tts_shared_dependencies.pth in the task .venv
+  reads the already-installed CUDA/Torch and other runtime libraries from
+  AudioToText/.venv; that existing project environment was not modified.
+  qwen-tts, transformers 4.57.3, accelerate 1.12.0, tokenizers 0.22.2,
+  huggingface-hub 0.36.2, sox 1.5.0 and einops 0.8.2 were installed into this
+  task's own .venv. The commands above create a standalone environment when
+  reproducing the generation on another machine.
+
+Output:
+  WakeUpChinese.wav — mono, PCM signed 16-bit, original model sample rate,
+  leading/trailing silence trimmed with 50 ms padding, normalized to -2 dBFS,
+  and 5 ms fades to avoid clicks, then speech compression and peak limiting
+  to -1 dBFS. No digital speedup or pitch change.
+  WakeUpChinese.json records the exact text, instruction, model revision,
+  preset, seed, package versions, duration and SHA-256.
+  Verification: 2.607625 seconds, 24000 Hz, mono PCM16, peak -0.99985 dBFS,
+  RMS -11.78779 dBFS, no clipped samples, all samples finite.
+  Average RMS gain over the premaster: +6.87856 dB.
+  SHA-256: a74519eefc0a2aa31f399bd9833bff69690f19fca2f4eb31578debd6a86fc333
+  The unamplified commanding rendition and its metadata are retained in
+  previous/WakeUpChinese-commanding-unamplified.wav and the matching JSON.
+  loudness_mastering.json records the exact FFmpeg filter, before/after
+  measurements, hashes and actual Waylith native-backend verification.
+  Regeneration requires FFmpeg in addition to the Python dependencies.
+  Offline Qwen3-ASR-1.7B-hf at revision
+  bcd2b5b7f32b480ab5790554cfa8347f246a14f3 transcribed the clip as:
+  你们这个年纪是怎么睡得着的？
+  This exactly matches the requested words after removing punctuation.
+  The existing AudioToText project environment and cached ASR model were
+  used read-only; no additional ASR model was downloaded.
+  audio_verification.json contains these results.
+  candidates/RyanCommanding.wav is a faster 2.176-second alternative,
+  transcribed with exactly the same words, but quieter on average.
+
+This is an original AI rendition, not a claim to reproduce the meme's actor
+or exact performance. Listening review should assess the subjective delivery.

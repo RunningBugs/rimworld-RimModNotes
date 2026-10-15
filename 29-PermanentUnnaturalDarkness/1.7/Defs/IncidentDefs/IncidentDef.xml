@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <IncidentDef>
+        <defName>PermanentDarkness</defName>
+        <label>permanent darkness</label>
+        <category>Misc</category>
+        <targetTags>
+            <li>World</li>
+        </targetTags>
+        <workerClass>IncidentWorker_MakeGameCondition</workerClass>
+        <gameCondition>PermanentDarkness</gameCondition>
+        <!-- <letterLabel>Permanent Darkness Coming</letterLabel> -->
+        <!-- <letterDef>NegativeEvent</letterDef> -->
+        <durationDays>-1</durationDays>
+        <baseChance>0</baseChance>
+        <minRefireDays>0</minRefireDays>
+    </IncidentDef>
+</Defs>

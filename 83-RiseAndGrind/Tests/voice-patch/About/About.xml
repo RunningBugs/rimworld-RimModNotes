@@ -1,0 +1,8 @@
+<ModMetaData>
+  <name>Rise and Grind Test Language Patch</name>
+  <author>Local testing</author>
+  <packageId>local.riseandgrind.voicepatch</packageId>
+  <supportedVersions><li>1.7</li></supportedVersions>
+  <loadAfter><li>RunningBugs.RiseAndGrind</li></loadAfter>
+  <description>Disposable XML language-extension fixture.</description>
+</ModMetaData>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <energy_compression_blast.label>mind destroyer</energy_compression_blast.label>
+  <energy_compression_blast.description>Astral Executor's Energy Defiler Fires energy focused on destroying the minds of enemies.</energy_compression_blast.description>
+  <Bullet_Ghostenergy.label>mind destroyer</Bullet_Ghostenergy.label>
+
+  <Gun_mind_waveMonarch.label>Lord Mind Pulse</Gun_mind_waveMonarch.label>
+  <Gun_mind_waveMonarch.description>With the energy of the star lord, attack enemies with mind waves.</Gun_mind_waveMonarch.description>
+
+  <Gun_mind_wave.label>mind wave</Gun_mind_wave.label>
+  <Gun_mind_wave.description>Astral Executor's Mind Pulse Cannon.</Gun_mind_wave.description>
+ 
+ <Bullet_mind_wave.label>mind wave</Bullet_mind_wave.label>
+  <Bullet_mind_waveMonarch.label>Lord Mind Pulse</Bullet_mind_waveMonarch.label>
+
+  <star_priestGun.tools.0.label>barrel</star_priestGun.tools.0.label>
+  <star_priestGun.label>mind wave staff</star_priestGun.label>
+  <star_priestGun.description>A staff used by the Priest of the Stars that fires energy projectiles that cause mental hallucinations.</star_priestGun.description>
+
+  <star_priest_energy.tools.0.label>barrel</star_priest_energy.tools.0.label>
+  <star_priest_energy.label>mind wave energy</star_priest_energy.label>
+  <star_priest_energy.description>The energy used by the Astral Prayer to explode mental energy to destroy the minds of enemies.</star_priest_energy.description>
+
+  <Bullet_priest_energy.label>ghost hallucination</Bullet_priest_energy.label>
+  <Bullet_star_wave_cannon.label>ghost</Bullet_star_wave_cannon.label>
+</LanguageData>

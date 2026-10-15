@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <blood_wings_staff.label>Hakuro chain wing staff</blood_wings_staff.label>
+  <blood_wings_staff.description>The staff is a support weapon used for trapping or capturing fugitives.\n\nThe staff fires coalesced tentacle spheres that fall into the area and trap enemies within range.\n\nHowever, blood is required and It corrupts the blood of those who need hemogen.</blood_wings_staff.description>
+  <blood_wings_staff.tools.0.label>grip</blood_wings_staff.tools.0.label>
+  <blood_wings_staff.tools.1.label>barrel</blood_wings_staff.tools.1.label>
+  <Bullet_blood_wings.label>chain sphere</Bullet_blood_wings.label>
+
+  <blood_blade_accelerator.label>Hakuro claw sphere staff</blood_blade_accelerator.label>
+  <blood_blade_accelerator.description>It is a staff mental weapon that rapidly fires sharp claws emanating from a sphere.\n\nThis weapon is a weapon that fires claws made of blood embedded in a sphere to deliver sharp attacks. It's just a scratch, but it strikes quickly and kills slowly and painfully.\n\n But also the staff are thirsty for blood, so if someone need hemogen (like vampires) touch it , they'll ruin the blood to their bodies.</blood_blade_accelerator.description>
+  <blood_blade_accelerator.tools.0.label>grip</blood_blade_accelerator.tools.0.label>
+  <blood_blade_accelerator.tools.1.label>barrel</blood_blade_accelerator.tools.1.label>
+  <Bullet_blood_blade.label>blood claw</Bullet_blood_blade.label>
+
+  <blood_blood_wings.label>Hakuro Blood Spear Staff</blood_blood_wings.label>
+  <blood_blood_wings.description>It is a magical staff weapon that fires spears made of pure blood used by high-ranking sanguophages a long time ago.\n\nIt is implemented in the form of spears made of pure blood flowing from the staff, then fired and pierced to the ground, and a few seconds later a blood spear The blood inside causes a series of explosions, causing huge explosions.\n\nThe Blood Spear Staff is a weapon used by high-ranking Sanguophages, and at the same time destroys the user's body. Although powerful and used as an anti-tank weapon, this staff ravages the user's body and has a great hunger for blood, destroying the blood essence.</blood_blood_wings.description>
+  <blood_blood_wings.tools.0.label>grip</blood_blood_wings.tools.0.label>
+  <blood_blood_wings.tools.1.label>barrel</blood_blood_wings.tools.1.label>
+  <Bullet_blood_spear.label>blood spear</Bullet_blood_spear.label>
+
+  <shock_wave_accelerator.label>Hakuro shock wave staff</shock_wave_accelerator.label>
+  <shock_wave_accelerator.description>This staff is a unique weapon that does not use blood as a weapon, but uses blood as a power source.\n\nWhen activated, this staff fires multiple spheres of energy that explode upon contact and create a huge shockwave. These spheres of energy are slow but powerful and deliver sustained fire support. \n\nHowever, this weapon is powered by blood. Ordinary humans only feel fatigue for a short time, but it gradually destroys the body, and when used by sanguophage, it destroys the blood essence of the whole body and slowly makes them crave and kill each other.</shock_wave_accelerator.description>
+  <shock_wave_accelerator.tools.0.label>grip</shock_wave_accelerator.tools.0.label>
+  <shock_wave_accelerator.tools.1.label>barrel</shock_wave_accelerator.tools.1.label>
+  <Bullet_shock_wave.label>shock wave</Bullet_shock_wave.label>
+
+  <Hemera_flameradiation_staff.label>Hakuro sun flame staff</Hemera_flameradiation_staff.label>
+  <Hemera_flameradiation_staff.description>It is a staff weapon with a phoenix feather in the front of the staff.\n\nIt is a kind of weapon that activates the phoenix feather and emits flames. It fires flames at approaching enemies and burns them to death by striking them. .\n\nBut the phoenix's feather also affects the user. Because of that, it weakens the user's resistance to fire and will try to burn the user as well.</Hemera_flameradiation_staff.description>
+  <Hemera_flameradiation_staff.tools.0.label>grip</Hemera_flameradiation_staff.tools.0.label>
+  <Hemera_flameradiation_staff.tools.1.label>grip</Hemera_flameradiation_staff.tools.1.label>
+
+  <Hemera_sun_beam_staff.label>Hakuro sun rays staff</Hemera_sun_beam_staff.label>
+  <Hemera_sun_beam_staff.description>It is a staff that fires a sun-like beam with the energy of a phoenix feather.\n\nIt fires a sun-like beam to burn enemies, and an unknown substance flows from the beam, paralyzing various electronic devices with a similar to EMP attack. \n\nBut the phoenix's feather also affects the user. Because of that, it weakens the user's resistance to fire and will try to burn the wearer as well.</Hemera_sun_beam_staff.description>
+  <Hemera_sun_beam_staff.tools.0.label>grip</Hemera_sun_beam_staff.tools.0.label>
+
+  <Hemera_Ghost_Lamp.label>Hakuro ghost lantern</Hemera_Ghost_Lamp.label>
+  <Hemera_Ghost_Lamp.description>It is a lantern that emits human voices from the inside.\n\n'It' has the appearance of an ordinary lantern, and when shaken, it makes a sound and creates a shockwave at the intended location, making enemies there fall into hallucinations, in extreme cases, it might cause shooting nearby allies. \n\nBut since it is a mind-damaging weapon, it also touches the user's mind, making even the dull-minded people sensitive.</Hemera_Ghost_Lamp.description>
+  <Hemera_Ghost_Lamp.tools.0.label>grip</Hemera_Ghost_Lamp.tools.0.label>
+  <Hemera_Ghost_Lamp.tools.1.label>barrel</Hemera_Ghost_Lamp.tools.1.label>
+  <Bullet_Hemera_Ghost.label>ghost hallucination</Bullet_Hemera_Ghost.label>
+
+  <Magic_PyroBall_staff.label>Hakuro ghost staff</Magic_PyroBall_staff.label>
+  <Magic_PyroBall_staff.description>It is a kind of staff with many heroic spirits.\n\nThe spirit energy contained in the ghost staff fires and gives hallucinations to enemies.\n\nHowever, the heroic spirits on the staff affect not only the enemies but also the wearer.</Magic_PyroBall_staff.description>
+  <Magic_PyroBall_staff.tools.0.label>grip</Magic_PyroBall_staff.tools.0.label>
+  <Magic_PyroBall_staff.tools.1.label>barrel</Magic_PyroBall_staff.tools.1.label>
+  <spirit_PyroBall_staff.label>magic PyroBall</spirit_PyroBall_staff.label>
+
+  <Magic_flame_staff.label>spirit stone fire staff</Magic_flame_staff.label>
+  <Magic_flame_staff.description>It is a staff weapon that materializes and fires burning fireballs with spirit stones.\n\nThis staff can be implemented with simple mental power. It has a slower casting time than other staffs, but it fires several fireballs to inflict fatal attacks on enemies.\n\ It is made so that even ordinary users can easily use it by adjusting it with a small amount of spirit stone, so anyone can use it.</Magic_flame_staff.description>
+  <Magic_flame_staff.tools.0.label>grip</Magic_flame_staff.tools.0.label>
+  <Magic_flame_staff.tools.1.label>barrel</Magic_flame_staff.tools.1.label>
+  <Bullet_flame_staff.label>flame</Bullet_flame_staff.label>
+
+  <Magic_spirit_stone_staff.label>spirit stone staff</Magic_spirit_stone_staff.label>
+  <Magic_spirit_stone_staff.description>It is a staff weapon that fires magical energy through the spirit stone.\n\nThrough the staff, it launches butterflies with sharp wings.\n\nIt can be controlled with a small amount of spirit stone so that even ordinary users can use it easily, so anyone can use it.</Magic_spirit_stone_staff.description>
+  <Magic_spirit_stone_staff.tools.0.label>grip</Magic_spirit_stone_staff.tools.0.label>
+  <Magic_spirit_stone_staff.tools.1.label>barrel</Magic_spirit_stone_staff.tools.1.label>
+  <spirit_stone_staff.label>magic blade</spirit_stone_staff.label>
+
+  <Hemera_fireball_staff.label>Hemera fireball staff</Hemera_fireball_staff.label>
+  <Hemera_fireball_staff.description>It is a weapon that fires a kind of huge burning sphere, and is a weapon of destruction with the power to destroy the enemy's camp in an instant.\n\n The Fireball Staff casts a spirit and slowly flies a huge flame of flame to the location, then slowly The moment it falls to the ground, it creates a huge explosion that blows away the area in an instant.\n\nBut at a cost. As soon as you pick it up, the flames show your body a flame that will not go out, so if the flames are engulfed, you must immediately throw away the weapon.</Hemera_fireball_staff.description>
+  <Hemera_fireball_staff.tools.0.label>grip</Hemera_fireball_staff.tools.0.label>
+  <Hemera_fireball_staff.tools.1.label>barrel</Hemera_fireball_staff.tools.1.label>
+  <Bullet_fireball_staff.label>fireball</Bullet_fireball_staff.label>
+
+  <Hemera_Ghost_accelerator.label>Hakuro ghost staff</Hemera_Ghost_accelerator.label>
+  <Hemera_Ghost_accelerator.description>It is a kind of staff with many heroic spirits.\n\nThe spirit energy contained in the ghost staff fires and gives hallucinations to enemies.\n\nHowever, the heroic spirits on the staff affect not only the enemies but also the wearer.</Hemera_Ghost_accelerator.description>
+  <Hemera_Ghost_accelerator.tools.0.label>grip</Hemera_Ghost_accelerator.tools.0.label>
+  <Hemera_Ghost_accelerator.tools.1.label>barrel</Hemera_Ghost_accelerator.tools.1.label>
+  <Bullet_Ghost_staff.label>ghost</Bullet_Ghost_staff.label>
+
+  <Gun_arailgun.label>Electrothermal chemical cannon</Gun_arailgun.label>
+  <Gun_arailgun.description>It is a cannon weapon mounted on a snowfield tank. Shoot at high speed and strike enemies, and is mainly used in armored warfare.</Gun_arailgun.description>
+  <Gun_arailgun.tools.0.label>barrel</Gun_arailgun.tools.0.label>
+  <Bullet_arailgun.label>arailgun</Bullet_arailgun.label>
+
+  <Gun_ERG_Turret.label>charge ERG turret</Gun_ERG_Turret.label>
+  <Gun_ERG_Turret.description>A turret armed with a line rail firearm, designed to deter approaching enemies.</Gun_ERG_Turret.description>
+
+  <Hemera_energy.label>Hemera energy</Hemera_energy.label>
+  <Hemera_explosion.label>Hemra energy explosion</Hemera_explosion.label>
+  <Hemera_Restriction.label>Hemera restriction</Hemera_Restriction.label>
+  <Hemera_EMP.label>Hemera Mecha paralysis shell</Hemera_EMP.label>
+  <Hemera_bloodsucking_spear.label>Blood sucking spear</Hemera_bloodsucking_spear.label>
+
+  <Hemera_ice_crystal_staff.label>spirit stone ice crystal staff</Hemera_ice_crystal_staff.label>
+  <Hemera_ice_crystal_staff.description>It is a staff type that fires frozen ice crystals through the spirit stone.\n\nSpray small but sharp ice crystals with the spirit stone, and freeze the target.\n\nControl it with a small amount of the spirit stone to make it normal. It is designed so that users can use it easily, so anyone can use it.</Hemera_ice_crystal_staff.description>
+  <Hemera_ice_crystal_staff.tools.0.label>grip</Hemera_ice_crystal_staff.tools.0.label>
+  <Hemera_ice_crystal_staff.tools.1.label>barrel</Hemera_ice_crystal_staff.tools.1.label>
+  <Bullet_ice_staff.label>ice</Bullet_ice_staff.label>
+
+  <Hemera_frost_flame_staff.label>ice Frost Flame Staff</Hemera_frost_flame_staff.label>
+  <Hemera_frost_flame_staff.description>It is a staff weapon that strikes in all directions with an ice weapon, causing frost.\n\nLike a flamethrower, it fires a sharp blade of frost straight ahead, freezing and slowing the attacked creatures.</Hemera_frost_flame_staff.description>
+  <Hemera_frost_flame_staff.tools.0.label>grip</Hemera_frost_flame_staff.tools.0.label>
+  <Hemera_frost_flame_staff.tools.1.label>barrel</Hemera_frost_flame_staff.tools.1.label>
+
+
+  <Hemera_ice_spear_staff.label>ice spear staff</Hemera_ice_spear_staff.label>
+  <Hemera_ice_spear_staff.description>Ice Spear is a special staff that uses steam floating through a spirit stone to create a sharp spear of ice, then accelerates gravity and launches it towards the enemy.\n\nAt first glance, Ice Spear looks like ordinary sharp ice. However, the power of the fast-flying spear is equivalent to that of an ironclad shell fired by a tank. It has the power to pierce through even the hardest tank or power armor armor in an instant and tear the target inside.</Hemera_ice_spear_staff.description>
+  <Hemera_ice_spear_staff.tools.0.label>grip</Hemera_ice_spear_staff.tools.0.label>
+  <Hemera_ice_spear_staff.tools.1.label>barrel</Hemera_ice_spear_staff.tools.1.label>
+  <Bullet_ice_spear.label>ice spear</Bullet_ice_spear.label>
+
+  <Hemera_ice_shooting_star_staff.label>ice shooting star staff</Hemera_ice_shooting_star_staff.label>
+  <Hemera_ice_shooting_star_staff.description>This is a howitzer staff weapon designed to launch frozen blocks of ice into the sky and strike them at the location.\n\nWhen cast, this weapon creates a huge block of ice and accelerates gravity to fire it as a howitzer. It's slow, but the moment it touches the ground, it creates a huge ice explosion.</Hemera_ice_shooting_star_staff.description>
+  <Hemera_ice_shooting_star_staff.tools.0.label>grip</Hemera_ice_shooting_star_staff.tools.0.label>
+  <Hemera_ice_shooting_star_staff.tools.1.label>barrel</Hemera_ice_shooting_star_staff.tools.1.label>
+  <Bullet_ice_shooting_star.label>shooting star</Bullet_ice_shooting_star.label>
+
+  <ice_gauntlets.label>ice gauntlets</ice_gauntlets.label>
+  <ice_gauntlets.description>A gauntlet-type weapon that is frozen everywhere. A powerful one-hit weapon that freezes opponents with powerful attacks.</ice_gauntlets.description>
+  <ice_gauntlets.tools.0.label>punch</ice_gauntlets.tools.0.label>
+  <ice_gauntlets.tools.1.label>Uppercut</ice_gauntlets.tools.1.label>
+
+  <ice_Warhammer.label>cold warhammer</ice_Warhammer.label>
+  <ice_Warhammer.description>It is a Warhammer-type weapon whose front part is made of frozen ice stones.\n\nThe frozen hammer strikes down enemies and counterattacks with the sharp edged weapon attached to the back of the hammer.</ice_Warhammer.description>
+  <ice_Warhammer.tools.0.label>blade</ice_Warhammer.tools.0.label>
+  <ice_Warhammer.tools.1.label>handle</ice_Warhammer.tools.1.label>
+  <ice_Warhammer.tools.2.label>handle</ice_Warhammer.tools.2.label>
+
+</LanguageData>

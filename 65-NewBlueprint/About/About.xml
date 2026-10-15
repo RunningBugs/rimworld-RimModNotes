@@ -4,6 +4,7 @@
     <author>RunningBugs</author>
     <supportedVersions>
         <li>1.6</li>
+        <li>1.7</li>
     </supportedVersions>
     <packageId>RunningBugs.blueprint2</packageId>
     <description>
@@ -40,7 +41,7 @@
 [/list]
 
 [h2]Requirements[/h2]
-[p]RimWorld >= 1.6 - Uses the vanilla Prefab system for maximum compatibility[/p]
+[p]RimWorld 1.6 / 1.7 - Uses the vanilla Prefab system for maximum compatibility[/p]
 
 [h2]Localization[/h2]
 [p]English, Chinese Simplified, and Chinese Traditional translations included[/p]
@@ -83,7 +84,7 @@
 [/list]
 
 [h2]要求[/h2]
-[p]RimWorld >= 1.6 - 使用原版新增的Prefab系统以获得最佳兼容性[/p]
+[p]RimWorld 1.6 / 1.7 - 使用原版新增的Prefab系统以获得最佳兼容性[/p]
 
 [h2]本地化[/h2]
 [p]已包含英语、简体中文和繁体中文翻译[/p]

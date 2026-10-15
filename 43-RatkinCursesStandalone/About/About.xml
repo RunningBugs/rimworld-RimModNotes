@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 	<packageId>RunningBugs.RatkinCursesStandalone</packageId>
-	<name>鼠鼠异常诅咒特辑 Ratkin Curses Standalone</name>
+	<name>鼠鼠诅咒 Ratkin Curses [1.5/1.6/1.7]</name>
 	<author>Feng Xinzi, RunningBugs</author>
 	<supportedVersions>
 		<li>1.5</li>
 		<li>1.6</li>
+		<li>1.7</li>
 	</supportedVersions>
 
 	<modDependencies>
@@ -25,7 +26,15 @@
 		<!-- <li>username.modname</li> -->
 	</loadAfter>
 
-	<description>
+	<modDependenciesByVersion>
+        <v1.7>
+            <li><packageId>brrainz.harmony</packageId><displayName>Harmony</displayName></li>
+            <li><packageId>ludeon.rimworld.anomaly</packageId><displayName>Anomaly</displayName></li>
+        </v1.7>
+    </modDependenciesByVersion>
+    <description>
+1.7本地适配保留本项目独立Wounded诅咒、世界状态和Def，不合并其他诅咒项目。实际使用Anomaly的GrayPall天气和肉兽音效，1.7明确依赖Anomaly。验证范围见UPGRADE-1.7.md。
+Local1.7 adaptation retains this standalone Wounded curse and requires Anomaly for its actual GrayPall weather/sound. See UPGRADE-1.7.md for validation scope.
 鼠鼠异常里的诅咒现在可以设置为永久游戏状态了，并且不是随机的
 
 The curses in Ratkin Anomaly+ can now be set as permanent game states, and are no longer random

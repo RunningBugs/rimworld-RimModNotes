@@ -5,6 +5,7 @@
 	<author>RunningBugs</author>
 	<supportedVersions>
 		<li>1.4</li>
+		<li>1.7</li>
 	</supportedVersions>
 
 	<modDependencies>
@@ -14,6 +15,16 @@
 			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3052467818</steamWorkshopUrl>
 		</li>
 	</modDependencies>
+
+    <loadAfterByVersion>
+        <v1.7><li>brrainz.harmony</li><li>nimrag.scenariosearchbar</li></v1.7>
+    </loadAfterByVersion>
+    <modDependenciesByVersion>
+        <v1.7>
+            <li><packageId>brrainz.harmony</packageId><displayName>Harmony</displayName><steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl></li>
+            <li><packageId>nimrag.scenariosearchbar</packageId><displayName>Scenario Searchbars</displayName><steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3579415129</steamWorkshopUrl></li>
+        </v1.7>
+    </modDependenciesByVersion>
 
 	<incompatibleWith>
 		<!-- <li>username.modname</li> -->

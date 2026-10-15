@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <bloodsucking_spear_code.label>blood spear code</bloodsucking_spear_code.label>
+  <bloodsucking_spear_code.description>It is a cord needle containing the Blood Spear code that is inserted into the neck and enables the use of abilities for a certain period of time.\n\nThe code needle can only be used by vampire genes, and when used by ordinary humans, the ability is opened, but the use is disabled. Impossible.</bloodsucking_spear_code.description>
+
+  <blood_moon_Geis.label>blood moon code</blood_moon_Geis.label>
+  <blood_moon_Geis.description>The Bloodmoon code needle is inserted into the neck and sends a code to open the corresponding ability for a certain period of time.\n\nThis code needle can only be used by vampire genes, and when used by ordinary humans, the ability is opened but cannot be used.</blood_moon_Geis.description>
+
+</LanguageData>

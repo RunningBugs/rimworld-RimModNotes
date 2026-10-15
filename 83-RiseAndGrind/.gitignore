@@ -1,0 +1,5 @@
+.build/
+.venv/
+Source/obj/
+Tests/obj/
+Tests/bin/

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Waylith Runtime Fixes [1.7]</name>
+  <author>RunningBugs</author>
+  <packageId>RunningBugs.WaylithRuntimeFixes</packageId>
+  <supportedVersions><li>1.7</li></supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+    </li>
+  </modDependencies>
+  <loadAfter><li>brrainz.harmony</li></loadAfter>
+  <description>针对 RimWorld 1.7 Waylith 的两处已验证缺陷：渲染线程出错后，等待渲染空闲时能够转发错误；CPU 纹理对象被回收后，修正遗漏的内存统计扣减。此补丁不会恢复失败的 GPU，也不属于通用卡顿、显存不足或内存泄漏修复。未知引擎构建会跳过相应补丁并记录原因。
+
+Fixes two verified RimWorld 1.7 Waylith defects: propagates render-thread failures during idle waits, and balances CPU texture-memory accounting when pixel objects are collected. Does not recover a failed GPU or promise a general performance or memory-leak fix. Unsupported engine builds are skipped with a diagnostic message.</description>
+</ModMetaData>

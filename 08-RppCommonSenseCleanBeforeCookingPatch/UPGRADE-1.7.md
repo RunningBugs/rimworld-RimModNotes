@@ -1,0 +1,15 @@
+# Misc. Robots++ Clean Before Work Patch：1.7调查记录
+
+状态：blocked，未升级。仅新增记录，原1.4标签/DLL/Source及旧CommonSense引用未改，没有新增1.7支持。
+
+packageId RunningBugs.RppCommonSenseCleanBeforeWorkPatch，发布ID3113647118。必需alaestor.miscrobots.plusplus（Workshop747645520）未安装，同07依赖证据见logs/08-RppCommonSenseCleanBeforeCookingPatch/dependencies.json。没有实际RPP_Bot_/OmniBot可验证清洁资格、工作设置和烹饪前动作。
+
+另一个上游avilmask.commonsense确已安装于Workshop1561769193，About只声明1.0~1.6、无1.7目录；默认会回退1.6/Assemblies/CommonSense.dll。已实际反编译该安装DLL的CommonSense.Utility，日志目录内CommonSense.Utility.installed-1.6.cs确认IncapableOfCleaning(Pawn)与CleaningDef仍存在，但这不证明整个旧上游在本机1.7会正确初始化/调用。安装DLL与Source内旧编译引用的哈希/一致性见reference-match.json，不能继续盲用随MOD附带的旧DLL作1.7上游证据。
+
+唯一Harmony目标CommonSense.Utility.IncapableOfCleaning(Pawn)返回bool，Postfix仅原结果true且defName前缀RPP_Bot_时，按race/intelligence>=ToolUser、玩家派系、WorkTypeIsDisabled(CleaningDef)、IsBurning、workSettings非空/WorkIsActive重新判断；有意降低Humanlike门槛并去掉mental状态检查，原结果false时不改。所有可发现游戏API为Pawn/ThingDef.race/RaceProperties.intelligence/Faction.OfPlayer/WorkTypeIsDisabled/IsBurning/Pawn_WorkSettings.WorkIsActive，第三方实际调用为CleaningDef公开属性getter及名称式Harmony目标，无transpiler。上游动作/机器人工作链缺失，因此无法完成语义验证。
+
+旧基线静态API元数据存api-references-baseline.json，包含第三方/游戏/Harmony引用；该审查不是1.7重编译。HugsLib是未用模板引用，若恢复执行可只在独立1.7工程删掉；本次保持旧工程。未编译、未执行单元或游戏测试，build.log明确SKIPPED。
+
+解除阻塞需实际可用于1.7的RPP及Common Sense，核验Utility签名/清洁动作调用链及真实OmniBot工作资格，再采用实际安装DLL匹配引用（或匹配NuGet）；真实工作前清扫及不可清扫机器人对照不能用仿制Pawn/假依赖替代。
+
+安装的1.6 Utility.IncapableOfCleaning已经采用intelligence>=ToolUser，并新增workSettings.Initialized条件；旧补丁注释所说Humanlike降级部分已与这个上游不同，若未来继续迁移需重新判断补丁是否冗余及初始化/mental状态条件，不机械覆写上游新增防护。旧DLL实际引用的是get_CleaningDef，与安装公开属性getter一致，未发现字段变属性这一问题。

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<packageId>RunningBugs.PDE.DontStarve</packageId>
+	<name>无尽黑暗扩展 饥荒 DontStarve [1.7]</name>
+	<author>RunningBugs, 德国猎</author>
+	<supportedVersions>
+		<li>1.7</li>
+	</supportedVersions>
+
+	<modDependencies>
+		<li>
+			<packageId>runningbugs.permanentdarkness</packageId>
+			<displayName>无尽黑暗 Permanent Darkness</displayName>
+			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3225237583</steamWorkshopUrl>
+			<downloadUrl></downloadUrl>
+		</li>
+	</modDependencies>
+
+	<incompatibleWith>
+		<!-- <li>username.modname</li> -->
+	</incompatibleWith>
+
+	<loadAfter>
+		<li>runningbugs.permanentdarkness</li>
+	</loadAfter>
+
+	<description>为无尽黑暗添加萤火虫与可携带灯笼。本根包为1.7导出；旧1.5/1.6完整封存在backup。游戏功能验证范围见UPGRADE-1.7.md。
+Adds fireflies and portable lanterns to Permanent Darkness. This exported root package targets1.7; archived1.5/1.6 content remains untouched in backup. See UPGRADE-1.7.md for actual validation scope.</description>
+</ModMetaData>

@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <RootNamespace>WaylithRuntimeFixes</RootNamespace>
+    <AssemblyName>WaylithRuntimeFixes</AssemblyName>
+    <Version>0.1.0</Version>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <OutputPath>../Assemblies/</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <DebugType>none</DebugType>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <PublicizerRuntimeStrategies>IgnoresAccessChecksTo</PublicizerRuntimeStrategies>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.7.4977-alpha.1" />
+    <PackageReference Include="Krafs.Publicizer" Version="2.3.2" PrivateAssets="all" />
+    <PackageReference Include="Lib.Harmony" Version="3.0.0-rc.2" />
+    <Publicize Include="Waylith:Waylith.Rendering.TexturePixelData._trackedBytes" />
+    <Publicize Include="Waylith:Waylith.Rendering.TexturePixelData._currentCpuBytes" />
+    <Publicize Include="Waylith:Waylith.Rendering.RenderThread._failure" />
+    <Publicize Include="Waylith:Waylith.Rendering.RenderThread._idle" />
+    <Publicize Include="Waylith:Waylith.Rendering.RenderThread._active" />
+  </ItemGroup>
+</Project>

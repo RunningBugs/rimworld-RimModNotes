@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Overwatch_Marker_drone.label>Overwatch Marker Drone</Overwatch_Marker_drone.label>
+  <Overwatch_Marker_drone.description>Craft a marker drone.</Overwatch_Marker_drone.description>
+
+  <Overwatch_Ward_drone.label>overwatch guardian drone</Overwatch_Ward_drone.label>
+  <Overwatch_Ward_drone.description>Craft a Guardian Drone.</Overwatch_Ward_drone.description>
+
+  <Overwatch_missile_drone.label>Overwatch Missile Drone</Overwatch_missile_drone.label>
+  <Overwatch_missile_drone.description>Build missile drones.</Overwatch_missile_drone.description>
+
+  <Overwatch_Guard_drone.label>overwatch guard drone</Overwatch_Guard_drone.label>
+  <Overwatch_Guard_drone.description>Craft a Guard Drone.</Overwatch_Guard_drone.description>
+
+  <Overwatch_heavy_drone.label>Overwatch Armored Drone</Overwatch_heavy_drone.label>
+  <Overwatch_heavy_drone.description>Craft a heavy armored drone.</Overwatch_heavy_drone.description>
+
+  <Overwatch_heavy_missile_drone.label>Overwatch Heavy Missile Drone</Overwatch_heavy_missile_drone.label>
+  <Overwatch_heavy_missile_drone.description>Craft a Heavy Missile Drone.</Overwatch_heavy_missile_drone.description>
+
+  <Overwatch_Commander_drone.label>overwatch commander drone</Overwatch_Commander_drone.label>
+  <Overwatch_Commander_drone.description>Build a Commander Drone.</Overwatch_Commander_drone.description>
+
+  <Overwatch_sniper_drone.label>Overwatch Sniper Drone</Overwatch_sniper_drone.label>
+  <Overwatch_sniper_drone.description>Craft a sniper drone.</Overwatch_sniper_drone.description>
+
+  <Overwatch_stealth_drone.label>overwatch stealth drone</Overwatch_stealth_drone.label>
+  <Overwatch_stealth_drone.description>Build a stealth drone.</Overwatch_stealth_drone.description>
+
+
+
+  <Overwatch_defense_carrier.label>overwatch defense carrier</Overwatch_defense_carrier.label>
+  <Overwatch_defense_carrier.description>Build an Overwatch Defense Carrier.</Overwatch_defense_carrier.description>
+  
+  <Overwatch_drone_carrier.label>overwatch drone carrier</Overwatch_drone_carrier.label>
+  <Overwatch_drone_carrier.description>Build an Overwatch drone carrier.</Overwatch_drone_carrier.description>
+  
+  
+  
+  <Resurrect_Overwatch_light_drone.label>Overwatch drone revival</Resurrect_Overwatch_light_drone.label>
+  <Resurrect_Overwatch_light_drone.description>Revives Overwatch mini-drones at the cost of a handful of resources.</Resurrect_Overwatch_light_drone.description>
+
+  <Resurrect_Overwatch_heavy_drone.label>Overwatch Heavy Drone Revival</Resurrect_Overwatch_heavy_drone.label>
+  <Resurrect_Overwatch_heavy_drone.description>Consumes resources to revive Overwatch Heavy Drones.</Resurrect_Overwatch_heavy_drone.description>
+
+  <Resurrect_Overwatch_carrier.label>Overwatch Carrier Resurrection</Resurrect_Overwatch_carrier.label>
+  <Resurrect_Overwatch_carrier.description>Consumes resources to revive the Overwatch Carrier.</Resurrect_Overwatch_carrier.description>
+
+
+</LanguageData>

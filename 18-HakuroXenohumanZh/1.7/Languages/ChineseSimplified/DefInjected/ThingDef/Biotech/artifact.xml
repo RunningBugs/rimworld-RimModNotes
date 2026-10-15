@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Blood_Mind_table.label>Blood powered workbench</Blood_Mind_table.label>
+  <Blood_Mind_table.description>It is a workbench that uses blood as power.\n\nIt is known as a place where equipment used by demons, who are mixed races of sangui and hakuro, are made. And blood berries are squeezed and manufactured to make blood packs.</Blood_Mind_table.description>
+  <Blood_Mind_table.comps.0.fuelLabel>Hemogen</Blood_Mind_table.comps.0.fuelLabel>
+
+  <blood_power_accelerator_system.label>Blood power accelerator system</blood_power_accelerator_system.label>
+  <blood_power_accelerator_system.description>It is a facility that accelerates the blood-powered workbench.\n\nIt is made with ancient sanguophages technology, and helps you craft equipment faster.</blood_power_accelerator_system.description>
+
+  <Ice_Moon_Fragment.label>Fragments of the Ice Moon</Ice_Moon_Fragment.label>
+  <Ice_Moon_Fragment.description>It is a facility that accelerates the blood-powered workbench.\n\nIt is made with ancient sanguophages technology, and helps you craft equipment faster.</Ice_Moon_Fragment.description>
+
+
+  <void_energy_processor.label>Void gene processor</void_energy_processor.label>
+  <void_energy_processor.description>Similar to a gene processor, but self-powered, requiring no electricity, and enhanced with more efficient void energy materials, increasing complexity.</void_energy_processor.description>
+
+  <void_tower.label>Void tower</void_tower.label>
+  <void_tower.description>A mysterious tower imbued with unknown power. This tower, which has the unknown power to generate electricity, calms people who lie down by attaching a nearby medical bed.</void_tower.description>
+</LanguageData>

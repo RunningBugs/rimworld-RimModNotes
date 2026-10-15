@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Hemera_bloodsucking_spear_code.label>血矛密码</Hemera_bloodsucking_spear_code.label> <!-- blood spear code -->
+  <Hemera_bloodsucking_spear_code.description>插入血线针后，能够使用血矛。</Hemera_bloodsucking_spear_code.description> <!-- I plugged in the blood cord needle and was able to use the blood spear. -->
+
+  <Hemera_blood_moon_Geis.label>血月密码</Hemera_blood_moon_Geis.label> <!-- blood moon code -->
+  <Hemera_blood_moon_Geis.description>通过插入血月线针，解锁了能力密码。</Hemera_blood_moon_Geis.description> <!-- The ability code has been unlocked by inserting a Bloodmoon cord needle. -->
+
+  <blood_code.label>代码针</blood_code.label> <!-- code needle -->
+  <blood_code.description>代码针。</blood_code.description> <!-- code needle. -->
+  <blood_code.stages.1.label>撤回</blood_code.stages.1.label> <!-- withdrawal -->
+
+  <hediff_marker_aiming_system.label>标记瞄准系统</hediff_marker_aiming_system.label> <!-- marker aiming system -->
+  <hediff_marker_aiming_system.description>作为远程辅助系统支持标记瞄准系统。</hediff_marker_aiming_system.description> <!-- It supports the marker aiming system as a remote assist system. -->
+
+  <Hemera_blood_moon_side_effects.label>血月副作用</Hemera_blood_moon_side_effects.label> <!-- blood moon side effects -->
+  <Hemera_blood_moon_side_effects.description>使用血月的副作用，导致全身出现异常。</Hemera_blood_moon_side_effects.description> <!-- As a side effect of using Blood Moon, abnormalities occurred throughout the body. -->
+
+  <aim_marker.label>标记目标</aim_marker.label> <!-- marker target -->
+  <aim_marker.description>已标记目标。</aim_marker.description> <!-- A marker has been targeted. -->
+
+  <hediff_drone_Kauyon.label>隐匿战术</hediff_drone_Kauyon.label> <!-- concealment tactics -->
+  <hediff_drone_Kauyon.description>通过隐形来隐藏自己，从远处狩猎敌人。</hediff_drone_Kauyon.description> <!-- It hides itself by cloaking itself to hunt enemies from a distance. -->
+
+  <hediff_drone_Montka.label>近距离火力战术</hediff_drone_Montka.label> <!-- close range fire tactics -->
+  <hediff_drone_Montka.description>快速冲入并释放全部火力以消灭敌人。</hediff_drone_Montka.description> <!-- Rush in quickly and unleash all your firepower to wipe out your enemies. -->
+
+  <receive_overwatch.label>防御接收战术</receive_overwatch.label> <!-- defensive reception tactics -->
+  <receive_overwatch.description>发生在前线接待设施的防御战斗，提高机械体的防御力。</receive_overwatch.description> <!-- It is a defensive battle that occurs at the frontline reception facility and increases the defense power of the mechanoid. -->
+
+  <hediff_Stim_Pack.label>机甲加速</hediff_Stim_Pack.label> <!-- mecha acceleration -->
+  <hediff_Stim_Pack.description>加速机甲战斗。</hediff_Stim_Pack.description> <!-- Accelerates the mechanoids' battles. -->
+
+  <detection_semaphore.label>位置暴露</detection_semaphore.label> <!-- location exposure -->
+  <detection_semaphore.description>暴露探路者信标发现的生物。</detection_semaphore.description> <!-- Exposes creatures spotted by Pathfinder beacons. -->
+
+  <Hemera_blood_armor.label>血甲</Hemera_blood_armor.label> <!-- blood armor -->
+  <Hemera_blood_armor.description>用血甲覆盖全身，抵挡所有攻击。</Hemera_blood_armor.description> <!-- Covers your body in blood armor to deflect all attacks. -->
+
+  <Hemera_blood_fast.label>血液冲击</Hemera_blood_fast.label> <!-- blood charge -->
+  <Hemera_blood_fast.description>血晶包裹你的武器，造成更多伤害。</Hemera_blood_fast.description> <!-- Crystals of blood envelop your weapon, dealing more damage. -->
+
+  <Hediff_hemeraover.label>赫梅拉能量下降</Hediff_hemeraover.label> <!-- Hemera Energy Down -->
+  <Hediff_hemeraover.description>赫梅拉能量下降，对身体产生负面影响。</Hediff_hemeraover.description> <!-- Hemera energy drops and negatively affects the body. -->
+</LanguageData>

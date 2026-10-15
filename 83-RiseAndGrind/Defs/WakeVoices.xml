@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RiseAndGrind.WakeVoicesDef>
+    <defName>RAG_WakeVoices</defName>
+    <voices>
+      <li><language>ChineseSimplified</language><sound>RAG_WakeUpChinese</sound></li>
+      <li><language>ChineseTraditional</language><sound>RAG_WakeUpChinese</sound></li>
+    </voices>
+  </RiseAndGrind.WakeVoicesDef>
+  <SoundDef>
+    <defName>RAG_WakeUpChinese</defName>
+    <context>Any</context>
+    <slot>RAG_WakeVoice</slot>
+    <maxVoices>1</maxVoices>
+    <subSounds>
+      <li>
+        <onCamera>true</onCamera>
+        <grains>
+          <li Class="AudioGrain_Clip"><clipPath>RiseAndGrind/WakeUpChinese</clipPath></li>
+        </grains>
+        <volumeRange>100</volumeRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+</Defs>

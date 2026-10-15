@@ -6,6 +6,7 @@
 	<supportedVersions>
 		<li>1.5</li>
 		<li>1.6</li>
+		<li>1.7</li>
 	</supportedVersions>
 
 	<modDependencies>
@@ -25,7 +26,10 @@
 		<!-- <li>username.modname</li> -->
 	</loadAfter>
 
-	<description>
+	<description>适配 RimWorld 1.7 beta。
+Adapted for RimWorld 1.7 beta.
+
+
 This mod changes the behavior of how letters are drawned in the game.
 It limits the number of letter slots to a fixed number, which can be configured in the mod settings.
 The extra letters will be bundled into a single letter button, so you won't miss any important messages.

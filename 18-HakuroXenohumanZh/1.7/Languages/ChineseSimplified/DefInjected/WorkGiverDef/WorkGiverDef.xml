@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Moonlight_table_bench.label>crafting equipment</Moonlight_table_bench.label>
+  <Moonlight_table_bench.verb>produce</Moonlight_table_bench.verb>
+  <Moonlight_table_bench.gerund>produce</Moonlight_table_bench.gerund>
+  <nano_machine_Fabrication_bench.label>equipment produce</nano_machine_Fabrication_bench.label>
+  <nano_machine_Fabrication_bench.verb>produce</nano_machine_Fabrication_bench.verb>
+  <nano_machine_Fabrication_bench.gerund>produce</nano_machine_Fabrication_bench.gerund>
+</LanguageData>

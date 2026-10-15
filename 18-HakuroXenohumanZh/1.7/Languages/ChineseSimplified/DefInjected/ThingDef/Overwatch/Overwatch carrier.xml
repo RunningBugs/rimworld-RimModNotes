@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Overwatch_defense_carrier.label>Overwatch defense carrier</Overwatch_defense_carrier.label>
+  <Overwatch_defense_carrier.description>The Overwatch Defense Carrier is an Overwatch mechanoid that has a kind of armored vehicle position rather than an Overwatch drone appearance. It specializes in transporting resources and protecting allies, and takes the lead in protecting settlers with strong defense and cannons.</Overwatch_defense_carrier.description>
+
+  <Overwatch_drone_carrier.label>overwatch drone carrier</Overwatch_drone_carrier.label>
+  <Overwatch_drone_carrier.description>The Overwatch Drone Carrier is a carrier with a production armored vehicle position that produces defense drones. It ejects the produced defense drones to compete in volume battles and supports the firepower of allies with defense turrets.</Overwatch_drone_carrier.description>
+
+  <Overwatch_defense_drone.label>Overwatch guardian drone</Overwatch_defense_drone.label>
+  <Overwatch_defense_drone.description>The drones of the defense carrier ejected from the drone carrier share the appearance of the guardian drone, but their performance is poor because they are drones that are immediately crafted and launched.</Overwatch_defense_drone.description>
+  
+</LanguageData>

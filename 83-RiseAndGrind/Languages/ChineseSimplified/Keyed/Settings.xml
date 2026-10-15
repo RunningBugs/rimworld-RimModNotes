@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RAG_ReturnToWork>{0}决定爬起来继续工作。</RAG_ReturnToWork>
+  <RAG_EnableVoice>播放催起床语音</RAG_EnableVoice>
+  <RAG_PreviewVoice>试听语音</RAG_PreviewVoice>
+  <RAG_EnableVoiceTooltip>殖民者疲劳睡倒后被叫醒时，播放当前游戏语言配置的语音。未配置语音的语言保持安静。</RAG_EnableVoiceTooltip>
+</LanguageData>

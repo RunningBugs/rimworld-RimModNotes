@@ -2,6 +2,6 @@
 <Configuration>
   <Excluded>
     <exclude>1.6/Source/obj</exclude>
-    <exclude>Tests/unit</exclude>
+    <exclude>Tests</exclude>
   </Excluded>
 </Configuration>

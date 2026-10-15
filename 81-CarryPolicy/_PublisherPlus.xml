@@ -4,5 +4,6 @@
     <exclude>.zcode</exclude>
     <exclude>1.6/Source/obj</exclude>
     <exclude>sim/__pycache__</exclude>
+    <exclude>Tests</exclude>
   </Excluded>
 </Configuration>

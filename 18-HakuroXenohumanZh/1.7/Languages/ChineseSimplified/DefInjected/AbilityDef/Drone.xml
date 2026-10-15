@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- marker system -->
+  <marker_system.label>标记系统</marker_system.label>
+  <marker_system.description>在指定目标后，在敌人身上留下标记，增加伤害。</marker_system.description>
+
+  <!-- Sentinel Guard -->
+  <sentinel_Guard.label>哨兵守卫</sentinel_Guard.label>
+  <sentinel_Guard.description>机械生物和盟友受到类似远程护盾的保护。</sentinel_Guard.description>
+
+  <!-- drone jetpack -->
+  <Drone_sprangen.label>无人机喷气背包</Drone_sprangen.label>
+  <Drone_sprangen.description>无人机通过附加的推进器飞行。</Drone_sprangen.description>
+  <Drone_sprangen.verbProperties.label>无人机喷气背包</Drone_sprangen.verbProperties.label>
+
+  <!-- drone cloaking -->
+  <drone_stealth.label>无人机隐形</drone_stealth.label>
+  <drone_stealth.description>无人机进入隐形模式并悄悄前进。</drone_stealth.description>
+
+  <!-- drone shockwave -->
+  <drone_stun_blast.label>无人机冲击波</drone_stun_blast.label>
+  <drone_stun_blast.description>强制引爆隐形无人机的冲击波，产生巨大的冲击波，使电子设备瘫痪并使所有生物昏迷。</drone_stun_blast.description>
+
+  <!-- Tactics - Montka - -->
+  <Commander_drone_Montka.label>战术 - Montka -</Commander_drone_Montka.label>
+  <Commander_drone_Montka.description>通过精确、瞬间的攻击迅速伏击并消灭所有敌人。</Commander_drone_Montka.description>
+
+  <!-- Tactics - Kauyon - -->
+  <Commander_drone_Kauyon.label>战术 - Kauyon -</Commander_drone_Kauyon.label>
+  <Commander_drone_Kauyon.description>通过准确、强大的远程火力伏击并击杀敌人。</Commander_drone_Kauyon.description>
+
+  <!-- shield pack -->
+  <Commander_shield_system.label>护盾背包</Commander_shield_system.label>
+  <Commander_shield_system.description>发射内置在指挥无人机中的小型护盾背包，保护盟友。</Commander_shield_system.description>
+
+  <!-- Mecha Steam Pack -->
+  <Commander_Stim_Pack.label>机甲蒸汽背包</Commander_Stim_Pack.label>
+  <Commander_Stim_Pack.description>部署一个能为指挥无人机中的机甲提供能量的信标。</Commander_Stim_Pack.description>
+
+  <!-- location detection beacon -->
+  <location_detection_beacon.label>位置探测信标</location_detection_beacon.label>
+  <location_detection_beacon.description>部署一个能为指挥无人机中的机甲提供能量的信标。</location_detection_beacon.description>
+
+  <!-- Tox Shell -->
+  <drone_Shell_Tox.label>毒气弹</drone_Shell_Tox.label>
+  <drone_Shell_Tox.description>发射内置在迫击炮无人机中的毒气弹。</drone_Shell_Tox.description>
+
+  <!-- Smoke Shell -->
+  <drone_Shell_Smoke.label>烟雾弹</drone_Shell_Smoke.label>
+  <drone_Shell_Smoke.description>发射迫击炮无人机内置的烟雾弹。</drone_Shell_Smoke.description>
+
+  <!-- EMP Shell -->
+  <drone_Shell_EMP.label>EMP弹</drone_Shell_EMP.label>
+  <drone_Shell_EMP.description>发射迫击炮无人机内置的EMP迫击炮弹。</drone_Shell_EMP.description>
+
+</LanguageData>

@@ -1,5 +1,7 @@
 # Rimworld Mod Template Monodevelop and Linux
 
+RimWorld 1.7 uses the separate `1.7/Source/mod.csproj` and .NET 10 SDK. See [UPGRADE-1.7.md](UPGRADE-1.7.md) for pinned dependencies and validation status; the framework requirements below describe the retained older template/version.
+
 This repository is generated from github template [https://github.com/Rimworld-Mods/Template](https://github.com/Rimworld-Mods/Template)
 
 The original template is targeting Windows and not straightforward for a Linux environment. I have made some changes to make it more friendly to Linux users.

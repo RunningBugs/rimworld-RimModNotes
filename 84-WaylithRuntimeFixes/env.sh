@@ -1,0 +1,9 @@
+export RW_FIX_PROJECT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+export NUGET_PACKAGES="$RW_FIX_PROJECT_DIR/.build/packages"
+export NUGET_HTTP_CACHE_PATH="$RW_FIX_PROJECT_DIR/.build/http-cache"
+export NUGET_SCRATCH="$RW_FIX_PROJECT_DIR/.build/scratch"
+export NUGET_PLUGINS_CACHE_PATH="$RW_FIX_PROJECT_DIR/.build/plugins-cache"
+export DOTNET_CLI_HOME="$RW_FIX_PROJECT_DIR/.build/cli-home"
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export DOTNET_NOLOGO=1
+export RW_FIX_DOTNET="${RW_FIX_DOTNET:-/home/lisanhu/.dotnet/dotnet}"

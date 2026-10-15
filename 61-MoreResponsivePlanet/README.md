@@ -1,3 +1,7 @@
+## 本轮 RimWorld 1.7 beta 适配
+
+保留1.6版本，新增独立 `1.7/Source` net10.0 构建，固定 Krafs.Rimworld.Ref 1.7.4977-alpha.1 / Lib.Harmony 3.0.0-rc.2。实际功能验证范围、Waylith截图/输入/线程风险见 `UPGRADE-1.7.md`。旧模板中的 .NET Framework 要求只适用于旧版本；1.7 运行于 Waylith/.NET10。编译成功不代表可视拖拽、截图或性能已通过。
+
 # Rimworld Mod Template Monodevelop and Linux
 
 This repository is generated from github template [https://github.com/Rimworld-Mods/Template](https://github.com/Rimworld-Mods/Template)

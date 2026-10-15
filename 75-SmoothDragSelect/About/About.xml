@@ -5,6 +5,7 @@
 	<author>RunningBugs</author>
 	<supportedVersions>
 		<li>1.6</li>
+		<li>1.7</li>
 	</supportedVersions>
 
 	<modDependencies>
@@ -16,7 +17,10 @@
 		</li>
 	</modDependencies>
 
-	<description>修复鼠标拖拽（如按住左键框选）时游戏卡顿的问题，支持高回报率鼠标。
+	<description>1.7 beta 说明：Waylith 已按帧合并鼠标输入，本模组保留自适应 MouseDrag 限流与诊断；原 Unity 下的性能收益不能直接推导到 1.7，需在实际交互环境比较。
+1.7 beta note: Waylith coalesces mouse input per frame. Adaptive MouseDrag throttling and diagnostics remain available; the old Unity performance results do not establish a benefit on 1.7.
+
+修复鼠标拖拽（如按住左键框选）时游戏卡顿的问题，支持高回报率鼠标。
 
 原因：鼠标拖动时每秒产生大量 MouseDrag/MouseMove 事件，Unity 的 IMGUI 对每个事件都完整执行一遍界面树（殖民者栏、主按钮、窗口栈、各 MOD 窗口）。帧率越低，每帧积压的事件越多，形成恶性循环。挂在 OnGUI 上的 FPS 计数会因此显示虚高数值（如 900+），并非真实渲染帧率。
 

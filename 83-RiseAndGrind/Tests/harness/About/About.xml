@@ -1,0 +1,8 @@
+<ModMetaData>
+  <name>Rise and Grind Integration Tests</name>
+  <author>Local testing</author>
+  <packageId>local.riseandgrind.tests</packageId>
+  <supportedVersions><li>1.7</li></supportedVersions>
+  <loadAfter><li>brrainz.harmony</li><li>RunningBugs.RiseAndGrind</li></loadAfter>
+  <description>Isolated integration tests. Never publish or enable in a normal colony.</description>
+</ModMetaData>

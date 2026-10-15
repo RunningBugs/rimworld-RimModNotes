@@ -5,6 +5,7 @@
 	<author>RunningBugs</author>
 	<supportedVersions>
 		<li>1.6</li>
+		<li>1.7</li>
 	</supportedVersions>
 
 	<modDependencies>
@@ -45,6 +46,9 @@
 	</incompatibleWith>
 
 	<description>
+适配 RimWorld 1.6 / 1.7 beta；仅对实际存在的目标启用对应补丁，逐项验证与未测边界见 UPGRADE-1.7.md。
+Adapted for RimWorld 1.6 / 1.7 beta; each target is detected separately. Per-group validation and remaining limits are recorded in UPGRADE-1.7.md.
+
 一组针对常用 RimWorld 模组的运行时兼容补丁。每个补丁都在启动时动态检测：如果目标模组/类型/方法不存在，对应补丁会被静默跳过。
 
 当前补丁：

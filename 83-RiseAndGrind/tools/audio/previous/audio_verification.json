@@ -1,0 +1,19 @@
+{
+  "text": "你们这个年纪是怎么睡得着的？",
+  "language": null,
+  "words": null,
+  "model": "Qwen/Qwen3-ASR-1.7B-hf",
+  "revision": "bcd2b5b7f32b480ab5790554cfa8347f246a14f3",
+  "reference_text": "你们这个年纪是怎么睡得着的",
+  "text_matches_ignoring_punctuation": true,
+  "waveform": {
+    "sample_rate": 24000,
+    "channels": 1,
+    "subtype": "PCM_16",
+    "duration_s": 3.518666666666667,
+    "peak_dbfs": -2.0001827379579966,
+    "rms_dbfs": -18.69654911902322,
+    "clipped_samples": 0,
+    "finite": true
+  }
+}

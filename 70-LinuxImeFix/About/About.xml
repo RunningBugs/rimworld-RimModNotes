@@ -5,6 +5,7 @@
 	<author>RunningBugs</author>
 	<supportedVersions>
 		<li>1.6</li>
+		<li>1.7</li>
 	</supportedVersions>
 
 	<modDependencies>
@@ -23,14 +24,14 @@
 本 MOD 用于修复 Linux 下 RimWorld 文本框无法直接使用 IBus 输入法的问题。
 
 [h2] 功能 [/h2]
-- 支持 Linux 版 RimWorld 1.6。
+- 支持 Linux 版 RimWorld 1.6 / 1.7。
 - 支持基于 IBus 的输入法，包括通过 IBus 使用的 Rime。
 - 支持 RimWorld 的 IMGUI TextField/TextArea 文本框。
 - 在游戏内显示预编辑/候选词窗口，支持光标跟随、UI 缩放、屏幕边缘处理和顶层绘制。
 - 支持 Backspace 等组词编辑键。
 
 [h2] 运行环境 [/h2]
-- Linux 版 RimWorld 1.6
+- Linux 版 RimWorld 1.6 / 1.7
 - Harmony
 - 桌面会话中正在运行的 IBus
 - 对应语言的 IBus 输入引擎，例如 IBus Rime
@@ -39,14 +40,14 @@
 Fixes direct IBus input in RimWorld text fields on Linux.
 
 [h2] Features [/h2]
-- Supports RimWorld 1.6 on Linux.
+- Supports RimWorld 1.6 / 1.7 on Linux.
 - Works with IBus-based input methods, including Rime through IBus.
 - Supports RimWorld IMGUI TextField/TextArea input.
 - Shows an in-game preedit/candidate window with cursor following, UI scaling support, screen-edge handling, and top-layer rendering.
 - Supports composition editing keys such as Backspace.
 
 [h2] Requirements [/h2]
-- Linux version of RimWorld 1.6
+- Linux version of RimWorld 1.6 / 1.7
 - Harmony
 - IBus running in the desktop session
 - An IBus input engine for your language, such as Rime via IBus

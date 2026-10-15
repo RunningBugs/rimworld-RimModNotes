@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 	<packageId>RunningBugs.AnotherAllowTool</packageId>
-	<name>Another Allow Tool (1.6)</name>
+	<name>Another Allow Tool (1.6/1.7)</name>
 	<author>RunningBugs</author>
 	<supportedVersions>
 		<li>1.6</li>
+		<li>1.7</li>
 	</supportedVersions>
 
 	<modDependencies>
@@ -24,7 +25,10 @@
 		<!-- <li>username.modname</li> -->
 	</loadAfter>
 
-	<description>
+	<description>适配 RimWorld 1.7 beta。
+Adapted for RimWorld 1.7 beta.
+
+
 This is another allow tool implementation that aims to implement a subset of functions in the good old allow tool and remove the dependency to HugsLib.
 
 The reason to remove HugsLib dependency is because Allow Tool will have to wait for HugsLib update for a new RimWorld version first. Also, some of the functions are already implemented in the base game, so in Another Allow Tool, we are trying to remove this dependency and only implement a subset of the functions that seem to still be useful.

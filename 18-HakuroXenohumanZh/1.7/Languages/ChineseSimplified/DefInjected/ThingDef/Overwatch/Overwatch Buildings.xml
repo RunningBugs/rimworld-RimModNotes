@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+   
+  <Overwatch_guard_turret.label>Overwatch Guardian Machine Turret</Overwatch_guard_turret.label>
+  <Overwatch_guard_turret.description>The Guardian Machine Turret is a basic defensive turret used in the Overwatch system. It fires bullets with high stopping power and minimizes damage to turrets.\n\nGuardian turrets are the main turrets used in the Overwatch system, and are used to block enemy advances with blocking cannons.</Overwatch_guard_turret.description>
+  <Overwatch_guard_turret.comps.2.fuelLabel>Shots until barrel change</Overwatch_guard_turret.comps.2.fuelLabel>
+  <Overwatch_guard_turret.comps.2.fuelGizmoLabel>Barrel durability</Overwatch_guard_turret.comps.2.fuelGizmoLabel>
+  <Overwatch_guard_turret.comps.2.outOfFuelMessage>Needs new barrel</Overwatch_guard_turret.comps.2.outOfFuelMessage>
+
+  <Bullet_Overwatch_guard_turret.label>stop bullet</Bullet_Overwatch_guard_turret.label>
+  <Gun_Overwatch_guard_turret.label>Guardian Cannon</Gun_Overwatch_guard_turret.label>
+  <Gun_Overwatch_guard_turret.description>A turret with low-powered cannons on each side.</Gun_Overwatch_guard_turret.description>
+
+  <Overwatch_rocket_turret.label>Overwatch Guardian Rocket Turret</Overwatch_rocket_turret.label>
+  <Overwatch_rocket_turret.description>It is a turret that fires small missiles included in the Overwatch system. Because it fires in a howitzer, it ignores the defense of the low-angle shield.\n\nGuardian rocket turrets are used to protect the base by hitting air or ground targets before being restored. has been used After being restored, ground strikes were possible, but instead, anti-aircraft defense capabilities were lost.</Overwatch_rocket_turret.description>
+  <Overwatch_rocket_turret.comps.4.fuelLabel>Rockets</Overwatch_rocket_turret.comps.4.fuelLabel>
+  <Overwatch_rocket_turret.comps.4.fuelGizmoLabel>Rockets</Overwatch_rocket_turret.comps.4.fuelGizmoLabel>
+  <Overwatch_rocket_turret.comps.4.outOfFuelMessage>Missing rockets</Overwatch_rocket_turret.comps.4.outOfFuelMessage>
+
+  <Proj_Overwatch_rocket.label>rocket</Proj_Overwatch_rocket.label>
+  <Gun_Overwatch_rocket_turret_Top.label>Overwatch Rocket Battery</Gun_Overwatch_rocket_turret_Top.label>
+  <Gun_Overwatch_rocket_turret_Top.description>A rocket cannon that fires missiles in a howitzer.</Gun_Overwatch_rocket_turret_Top.description>
+
+  <Overwatch_Defense_Barrier.label>Overwatch Defense Barrier</Overwatch_Defense_Barrier.label>
+  <Overwatch_Defense_Barrier.description>The Overwatch Defense Barrier is a barrier created by restoring the remnants of Overwatch's defense barrier, which was abandoned long ago, and protects allies from enemy bullets.\n\nOverwatch Defense Barrier is the first of the vanished Overwatch systems to be restored, and is widely used here and there. This is a heavily used barrier. For that reason, it is used for cover in industries and border areas.</Overwatch_Defense_Barrier.description>
+
+  <accelerating_machine_gun.label>Moonlight Accelerated Submachine Gun Holder</accelerating_machine_gun.label>
+  <accelerating_machine_gun.description>The Moonlight Accelerated Submachine Gun fires bullets from the defensive decoy cradle, slowing the advance of enemies.</accelerating_machine_gun.description>
+  <Bullet_accelerating_machine.label>moonlight bullet</Bullet_accelerating_machine.label>
+  <Gun_accelerating_machine.label>Moonlight Accelerated Cannon Battery</Gun_accelerating_machine.label>
+  <Gun_accelerating_machine.description>A battery of moonlight accelerated submachine guns.</Gun_accelerating_machine.description>
+
+  <Overwatch_electric_energy_cannon.label>Overwatch Thermal Energy Cannon</Overwatch_electric_energy_cannon.label>
+  <Overwatch_electric_energy_cannon.description>The Thermal Energy Static Cannon is an energy cannon found among the tech wreckage of Overwatch. It is a railgun-type weapon that converts energy into kinetic energy and fires it. It fires a long range that is lower than that of a mortar, but fires a long range in a howitzer. Instead of fuel, it consumes the energy contained in the Overwatch Energy Core.</Overwatch_electric_energy_cannon.description>
+  <Overwatch_electric_energy_cannon.comps.0.fuelLabel>energy core</Overwatch_electric_energy_cannon.comps.0.fuelLabel>
+  <Overwatch_electric_energy_cannon.comps.0.fuelGizmoLabel>amount of energy</Overwatch_electric_energy_cannon.comps.0.fuelGizmoLabel>
+  <Overwatch_electric_energy_cannon.comps.0.outOfFuelMessage>Requires a new energy core</Overwatch_electric_energy_cannon.comps.0.outOfFuelMessage>
+  <Overwatch_energy_cannon_Top.label>Overwatch Front Thermal Energy Cannon</Overwatch_energy_cannon_Top.label>
+  <Overwatch_energy_cannon_Top.description>A howitzer-type line railgun battery.</Overwatch_energy_cannon_Top.description>
+
+  <Overwatch_antitype_generator.label>Overwatch Large Energy Generator</Overwatch_antitype_generator.label>
+  <Overwatch_antitype_generator.description>It is a large generator that produces a lot of power by refining energy cores.\n\nOverwatch large generators are used as the only generators that can extract huge amounts of energy by refining Overwatch energy cores.</Overwatch_antitype_generator.description>
+
+  <Overwatch_stone_generator.label>Overwatch Mini Energy Generator</Overwatch_stone_generator.label>
+  <Overwatch_stone_generator.description>The Overwatch Mini Energy Generator is a portable generator that produces little power.\n\nThe Overwatch Mini Energy Generator is a portable generator used for outposts or when you need to stay in one place for a while. produces.</Overwatch_stone_generator.description>
+
+</LanguageData>

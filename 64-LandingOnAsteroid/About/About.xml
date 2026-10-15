@@ -5,6 +5,7 @@
 	<author>RunningBugs</author>
 	<supportedVersions>
 		<li>1.6</li>
+		<li>1.7</li>
 	</supportedVersions>
 
 	<modDependencies>
@@ -25,7 +26,10 @@
 		<!-- <li>username.modname</li> -->
 	</loadAfter>
 
-	<description>
+	<description>适配 RimWorld 1.7 beta。
+Adapted for RimWorld 1.7 beta.
+
+
 In RimWorld 1.6, we are still not able to start our colony on an asteroid.
 This mod makes it possible to select an asteroid as the starting tile.
 In the left top corner of the world view, after clicking on generating world, you can see the view orbital button.

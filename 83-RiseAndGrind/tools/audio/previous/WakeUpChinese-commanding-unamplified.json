@@ -1,0 +1,23 @@
+{
+  "model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "revision": "0c0e3051f131929182e2c023b9537f8b1c68adfe",
+  "speaker": "Uncle_Fu",
+  "language": "Chinese",
+  "text": "你们这个年纪是怎么睡得着的！",
+  "instruction": "用标准普通话急促、强硬地大声训斥，像严厉的监工突然拍桌喝令所有人立刻起床干活。带怒气和不容反驳的命令感，声音要凶、硬、亮，字头咬紧，爆发力强。一口气快速说完，语速很快，总时长约两秒半，句中不要停顿。重音砸在‘这个年纪’和‘怎么睡得着’，末尾‘的’短促向下收住。不要温柔劝说，不要疑问式上扬，不要拖长元音，不要笑声或额外词语。",
+  "seed": 20261015,
+  "max_new_tokens": 128,
+  "generation_parameters": "Pinned model generation_config.json defaults",
+  "sample_rate": 24000,
+  "channels": 1,
+  "subtype": "PCM_16",
+  "duration_seconds": 2.607625,
+  "postprocessing": "Trim silence with 50 ms padding; peak normalize -2 dBFS; 5 ms fades. No speed or pitch modification.",
+  "sha256": "f5e9831143ed3bc7575b56fca7ca17633a01c0d2cd5fe1ed957bd4d1c8474c0b",
+  "packages": {
+    "qwen-tts": "0.1.1",
+    "torch": "2.11.0+cu128",
+    "transformers": "4.57.3",
+    "soundfile": "0.14.0"
+  }
+}

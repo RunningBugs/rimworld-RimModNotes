@@ -39,6 +39,12 @@ GD5-analyze/TMP/
 # Python 缓存
 __pycache__/
 
+# 1.7 library build sidecars are not MOD runtime assets.
+/*/1.7/Assemblies/*.deps.json
+/*/1.7/Assemblies/*.pdb
+# Unused copy of the legacy RASL build reference.
+/51-RACursePatch/1.7/Source/RASL.dll
+
 # 82-BlackHole Unity 工程缓存/中间产物（成品在 82-BlackHole/AssetBundles/）
 82-BlackHole/UnityProject/Library/
 82-BlackHole/UnityProject/UserSettings/

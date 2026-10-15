@@ -1,8 +1,8 @@
 # AGENTS.md
 
-- 仅支持 RimWorld 1.6。参考源码：`~/mine/workspace/rimworld/RW/16/Source`（反编译原版）。
+- 支持 RimWorld 1.6 与 1.7 beta；保留独立版本目录。1.6参考源码：`~/mine/workspace/rimworld/RW/16/Source`；1.7为真实固定快照 `~/mine/workspace/rimworld/RW/17/Source`。
 - 构建：`cd 1.6/Source && dotnet build CarryPolicy.csproj -c Release` → `1.6/Assemblies/CarryPolicy.dll`。
-  NuGet 用 `Krafs.Rimworld.Ref 1.6.*`（不要 beta 版）、`Lib.Harmony 2.3.1.1`。
+  旧1.6 NuGet保持 `Krafs.Rimworld.Ref 1.6.*`、`Lib.Harmony 2.3.1.1`。1.7按用户本轮beta授权，独立 `1.7/Source/CarryPolicy.csproj` net10.0，锁定 `Krafs.Rimworld.Ref 1.7.4977-alpha.1`、`Lib.Harmony 3.0.0-rc.2`；只在项目隔离cache构建，不改全局环境。
 - 命名空间 `_CarryPolicy`（防与类名 CarryPolicy 撞）。
 - 结构：`About/`（元数据）、`Common/`（Defs/Patches/双语 Languages，1.5+ 自动加载）、
   `1.6/Assemblies`（产物）、`1.6/Source`（源码）、`sim/`（imgui-sim UI 原型，不参与游戏加载）。

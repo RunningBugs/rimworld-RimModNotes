@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 	<packageId>RunningBugs.RimFlix.AnimeShows</packageId>
-	<name>RimFlix Anime Shows 动漫电视秀</name>
+	<name>RimFlix 动漫电视秀 [1.6/1.7]</name>
 	<author>RunningBugs</author>
 	<supportedVersions>
 		<li>1.6</li>
+		<li>1.7</li>
 	</supportedVersions>
 	<modDependencies>
 		<li>
@@ -18,8 +19,8 @@
 		<li>aznplucky.RimFlix</li>
 	</loadAfter>
 	<description>
-Anime-style TV shows for RimFlix (Continued). Ships placeholder loops (blob mascot, starry sky) as working examples; drop your own images into Textures/Shows to make real shows. Load after RimFlix.
+RimFlix (Continued) 的本地电视节目包，支持1.6/1.7。本包实际包含hypnosis片段的3种电视尺寸版本：显像管、平板和巨屏各60帧，帧间隔0.25秒。保留tools/make_show.sh制作流程与完整画面等比缩放、补黑边规则。请在RimFlix之后加载；本轮没有修改上游。实际接口/内容验证和渲染未测范围见UPGRADE-1.7.md。
 
-RimFlix (Continued) 的动漫风电视节目包。自带可播放的占位节目（弹跳团子、星空闪烁）作为示例；把你自己收集的图片放进 Textures/Shows 即可制作真正的节目。请在 RimFlix 之后加载。
+Local TV shows for RimFlix (Continued),1.6/1.7: three hypnosis loops for tube, flat and mega televisions,60frames each at0.25seconds/frame. See UPGRADE-1.7.md for actual content/interface validation and rendering boundaries.
 	</description>
 </ModMetaData>

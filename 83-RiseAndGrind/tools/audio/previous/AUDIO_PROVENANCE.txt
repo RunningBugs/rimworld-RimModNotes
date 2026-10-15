@@ -1,0 +1,63 @@
+Rise and Grind / 爬起来肝 — Chinese reminder audio provenance
+Checked: 2026-10-15
+
+Text: 你们这个年纪，是怎么睡得着的！
+This is a newly synthesized rendition of the user-requested short line.
+No recording from the original meme, reference audio, or voice-cloning input
+was used. The voice is the model's standard Uncle_Fu preset, with a text
+instruction requesting an exasperated, comic foreman's delivery.
+
+Official model:
+  Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice
+  https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice
+  Pinned revision: 0c0e3051f131929182e2c023b9537f8b1c68adfe
+  Pinned metadata confirms license: apache-2.0
+  https://huggingface.co/api/models/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice/revision/0c0e3051f131929182e2c023b9537f8b1c68adfe
+
+Official software and documentation:
+  https://github.com/QwenLM/Qwen3-TTS
+  qwen-tts Python package 0.1.1
+  Upstream HEAD checked: 022e286b98fbec7e1e916cb940cdf532cd9f488e
+  https://github.com/QwenLM/Qwen3-TTS/blob/022e286b98fbec7e1e916cb940cdf532cd9f488e/LICENSE
+  The Apache-2.0 license text is included in Qwen3-TTS-LICENSE.txt.
+  Copyright 2026 The Alibaba Qwen team.
+
+Licensing basis:
+  The official model metadata and official synthesis library use Apache-2.0,
+  which allows using and redistributing the licensed material commercially.
+  Neither official source adds a separate restriction on generated speech.
+  This generated clip does not redistribute model weights or upstream code.
+  The original meme recording has not been licensed or included.
+
+Generation:
+  Use this folder's project-local .venv only; no system packages are needed.
+  uv venv .venv --python 3.12
+  uv pip install --python .venv/bin/python -r requirements.txt \
+    --extra-index-url https://download.pytorch.org/whl/cu128
+  .venv/bin/python generate_voice.py
+  On the original workstation, tts_shared_dependencies.pth in the task .venv
+  reads the already-installed CUDA/Torch and other runtime libraries from
+  AudioToText/.venv; that existing project environment was not modified.
+  qwen-tts, transformers 4.57.3, accelerate 1.12.0, tokenizers 0.22.2,
+  huggingface-hub 0.36.2, sox 1.5.0 and einops 0.8.2 were installed into this
+  task's own .venv. The commands above create a standalone environment when
+  reproducing the generation on another machine.
+
+Output:
+  WakeUp_Chinese.wav — mono, PCM signed 16-bit, original model sample rate,
+  leading/trailing silence trimmed with 80 ms padding, normalized to -2 dBFS,
+  and 5 ms fades to avoid clicks.
+  WakeUp_Chinese.json records the exact text, instruction, model revision,
+  preset, seed, package versions, duration and SHA-256.
+  Verification: 3.518667 seconds, 24000 Hz, mono PCM16, peak -2.00018 dBFS,
+  RMS -18.69655 dBFS, no clipped samples, all samples finite.
+  Offline Qwen3-ASR-1.7B-hf at revision
+  bcd2b5b7f32b480ab5790554cfa8347f246a14f3 transcribed the clip as:
+  你们这个年纪是怎么睡得着的？
+  This exactly matches the requested words after removing punctuation.
+  The existing AudioToText project environment and cached ASR model were
+  used read-only; no additional ASR model was downloaded.
+  audio_verification.json contains these results.
+
+This is an original AI rendition, not a claim to reproduce the meme's actor
+or exact performance. Listening review should assess the subjective delivery.

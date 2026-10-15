@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <blood_hardening.label>硬化</blood_hardening.label> <!-- hardening -->
+  <blood_hardening.description>增强身体以减少所受的伤害。</blood_hardening.description> <!-- Strengthens the body to reduce damage taken. -->
+
+  <blood_mind_control.label>精神控制</blood_mind_control.label> <!-- mind control -->
+  <blood_mind_control.description>你获得了操纵对手精神的能力，但作为回报，你的部分精神被封锁。</blood_mind_control.description> <!-- You gain the ability to manipulate your opponent's mind, but in return, part of your mind is blocked. -->
+
+  <star_fog.label>星际向导的迷雾</star_fog.label> <!-- Mist of the Pathfinder -->
+  <star_fog.labelNoun>星际向导的迷雾</star_fog.labelNoun> <!-- Mist of the Pathfinder -->
+  <star_fog.description>来自星际向导的迷雾开始影响附近的生物。</star_fog.description> <!-- The mist from the Astral Guide has begun to affect nearby creatures. -->
+
+  <execution_mode.label>执行模式</execution_mode.label> <!-- execution mode -->
+  <execution_mode.description>激活流星之刃，以最大化抵御所有攻击。</execution_mode.description> <!-- Activates the meteor blade to maximize resistance to all attacks. -->
+
+  <Hediff_star_fruit.label>心灵之海</Hediff_star_fruit.label> <!-- sea ​​of ​​mind -->
+  <Hediff_star_fruit.description>感觉像是心灵在海上行走。</Hediff_star_fruit.description> <!-- I feel like my mind is walking on the sea. -->
+
+  <Hediff_spiritAddiction.label>与外界的连接</Hediff_spiritAddiction.label> <!-- connection with the outside world -->
+  <Hediff_spiritAddiction.description>这是由星际向导制造的未知力量制造的果实。摄入后，它与某物连接，治愈身心，并恢复身体。然而，如果不及时摄入果实，身心会逐渐分离，逐渐发狂，最终死亡。</Hediff_spiritAddiction.description> <!-- It is a fruit made by an unknown power made by the guide of the stars. When ingested, it connects with something, heals the body and mind, and restores the body. However, if the fruit is not consumed in time, the body and mind are gradually separated, gradually going mad, and eventually dying. -->
+  <Hediff_spiritAddiction.stages.1.label>有什么东西在看着你</Hediff_spiritAddiction.stages.1.label> <!-- something looking at you -->
+</LanguageData>

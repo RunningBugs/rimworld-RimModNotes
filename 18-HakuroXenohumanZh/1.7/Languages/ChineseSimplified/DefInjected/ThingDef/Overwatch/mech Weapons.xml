@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Gun_Wardrone.tools.0.label>barrel</Gun_Wardrone.tools.0.label>
+  <Gun_Wardrone.label>guardian rifle</Gun_Wardrone.label>
+  <Gun_Wardrone.description>A gun turret that uses ammo similar to that of a standard rifle.</Gun_Wardrone.description>
+
+  <Gun_escort_rifle.tools.0.label>barrel</Gun_escort_rifle.tools.0.label>
+  <Gun_escort_rifle.label>escort gun</Gun_escort_rifle.label>
+  <Gun_escort_rifle.description>An escort gun used by support drones.</Gun_escort_rifle.description>
+  <Gun_missilerone.tools.0.label>barrel</Gun_missilerone.tools.0.label>
+
+  <Gun_missilerone.label>missile battery</Gun_missilerone.label>
+  <Gun_missilerone.description>A missile battery used by missile drones.</Gun_missilerone.description>
+  <Bullet_missilerone.label>missile</Bullet_missilerone.label>
+
+  <Gun_ER_Snipe.tools.0.label>barrel</Gun_ER_Snipe.tools.0.label>
+  <Gun_ER_Snipe.label>Heat Rail Sniper Rifle</Gun_ER_Snipe.label>
+  <Gun_ER_Snipe.description>A lightweight sniper rifle for the Sniper Drone's front rail.</Gun_ER_Snipe.description>
+
+  <Gun_ER_machine_gun.tools.0.label>barrel</Gun_ER_machine_gun.tools.0.label>
+  <Gun_ER_machine_gun.label>Heat Rail Small Autocannon</Gun_ER_machine_gun.label>
+  <Gun_ER_machine_gun.description>It is an autocannon used by large drones or armored vehicles. A weapon that fires accelerating armor-piercing bullets, destroying enemy armor at high speed.</Gun_ER_machine_gun.description>
+
+  <observation_Scope.label>aiming light source</observation_Scope.label>
+  <observation_Scope.description>It is a marker aiming light device.\n\nIncreases the marker aiming range, and takes aim at an enemy to create a flash blast that takes away the sight of enemies.</observation_Scope.description>
+  <observation_Scope.tools.0.label>grip</observation_Scope.tools.0.label>
+  <observation_Scope.tools.1.label>barrel</observation_Scope.tools.1.label>
+
+  <observation_equipment.label>observation equipment</observation_equipment.label>
+  <observation_equipment.description>This is a support observation device.\n\nFor support of mechanists, this device strengthens marker range and increases the mechanoid's bandwidth. Although it has no combat power, it causes a flash explosion at enemies aimed with observation devices to blind them.</observation_equipment.description>
+  <observation_equipment.tools.0.label>grip</observation_equipment.tools.0.label>
+  <observation_equipment.tools.1.label>barrel</observation_equipment.tools.1.label>
+  <flash_explosion.label>glare</flash_explosion.label>
+
+  <Gun_medium_missile_launcher.tools.0.label>barrel</Gun_medium_missile_launcher.tools.0.label>
+  <Gun_medium_missile_launcher.label>medium missile launcher</Gun_medium_missile_launcher.label>
+  <Gun_medium_missile_launcher.description>A missile launcher used by heavy armored drones, specialized in anti-tank warfare or anti-bunker warfare.</Gun_medium_missile_launcher.description>
+  <Bullet_missile_launcher.label>missile</Bullet_missile_launcher.label>
+
+  <Overwatch_tactical_submachinegun.label>moonlight tactical submachine gun</Overwatch_tactical_submachinegun.label>
+  <Overwatch_tactical_submachinegun.description>A tactical submachine gun for mechanists.\n\n A submachine gun used by combat mechanists. It has a bandwidth-enhancing feature so you can fight alongside mechs.</Overwatch_tactical_submachinegun.description>
+  <Overwatch_tactical_submachinegun.tools.0.label>grip</Overwatch_tactical_submachinegun.tools.0.label>
+  <Overwatch_tactical_submachinegun.tools.1.label>barrel</Overwatch_tactical_submachinegun.tools.1.label>
+
+  <Overwatch_Tactical_Carbine.label>moonlight tactical carbine</Overwatch_Tactical_Carbine.label>
+  <Overwatch_Tactical_Carbine.description>A combat carbine for mechanists.\n\nThis carbine fires 2 rounds at once, and is also equipped with a device to increase bandwidth.</Overwatch_Tactical_Carbine.description>
+  <Overwatch_Tactical_Carbine.tools.0.label>grip</Overwatch_Tactical_Carbine.tools.0.label>
+  <Overwatch_Tactical_Carbine.tools.1.label>barrel</Overwatch_Tactical_Carbine.tools.1.label>
+
+  <Gun_highanglegun.label>airburst elevation gun</Gun_highanglegun.label>
+  <Gun_highanglegun.description>A type of mortar weapon that fires at high angles.</Gun_highanglegun.description>
+  <Gun_highanglegun.tools.0.label>grip</Gun_highanglegun.tools.0.label>
+  <Gun_highanglegun.tools.1.label>barrel</Gun_highanglegun.tools.1.label>
+
+
+</LanguageData>

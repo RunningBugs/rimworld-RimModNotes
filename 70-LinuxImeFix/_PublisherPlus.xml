@@ -3,5 +3,7 @@
   <Excluded>
     <exclude>1.6/Source/obj</exclude>
     <exclude>test_ime</exclude>
+    <exclude>tests</exclude>
+    <exclude>Tests</exclude>
   </Excluded>
 </Configuration>

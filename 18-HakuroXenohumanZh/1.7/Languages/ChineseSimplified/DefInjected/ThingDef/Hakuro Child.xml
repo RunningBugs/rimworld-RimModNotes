@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Apparel_winter_petticoat.label>winter petticoat</Apparel_winter_petticoat.label>
+  <Apparel_winter_petticoat.description>It is a children's clothing with a shoulder cape, and was mainly worn by Baekrang children.</Apparel_winter_petticoat.description>
+
+  <Apparel_winter_earmuffs.label>children winter earmuffs</Apparel_winter_earmuffs.label>
+  <Apparel_winter_earmuffs.description>These are children's winter earmuffs worn by children.</Apparel_winter_earmuffs.description>
+
+  <Apparel_HakurohParka_children.label>children moonlight parka</Apparel_HakurohParka_children.label>
+  <Apparel_HakurohParka_children.description>It is a parka made with the design of moonlight, and it is a parka worn by Baekrang children in the cold snowfield.</Apparel_HakurohParka_children.description>
+
+  <Apparel_desert_manteau.label>children desert cloak</Apparel_desert_manteau.label>
+  <Apparel_desert_manteau.description>A desert cape that can withstand high temperatures. It is a desert cape worn by Baekrang children in hot areas.</Apparel_desert_manteau.description>
+
+
+</LanguageData>

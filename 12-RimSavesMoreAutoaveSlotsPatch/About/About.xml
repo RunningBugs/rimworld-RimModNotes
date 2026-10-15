@@ -7,7 +7,28 @@
 		<li>1.4</li>
 		<li>1.5</li>
 		<li>1.6</li>
+		<li>1.7</li>
 	</supportedVersions>
+
+	<modDependenciesByVersion>
+		<v1.7>
+			<li>
+				<packageId>brrainz.harmony</packageId>
+				<displayName>Harmony</displayName>
+				<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077</steamWorkshopUrl>
+			</li>
+			<li>
+				<packageId>arandomkiwi.rimsaves</packageId>
+				<displayName>RimSaves</displayName>
+				<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=1713367505</steamWorkshopUrl>
+			</li>
+			<li>
+				<packageId>mlie.moreautosaveslots</packageId>
+				<displayName>More Autosave Slots (Continued)</displayName>
+				<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3410766209</steamWorkshopUrl>
+			</li>
+		</v1.7>
+	</modDependenciesByVersion>
 
 	<modDependencies>
 		<li>
@@ -27,5 +48,7 @@
 		<li>arandomkiwi.rimsaves</li>
 	</loadAfter>
 
-	<description>Template</description>
+	<description>RimWorld 1.7 beta compatibility patch for RimSaves and More Autosave Slots (Continued). Keeps autosave names and slot rotation within the current RimSaves folder.
+
+RimWorld 1.7 beta 的 RimSaves 与 More Autosave Slots (Continued) 兼容补丁，让自动存档命名和槽位轮换按当前 RimSaves 文件夹独立进行。</description>
 </ModMetaData>

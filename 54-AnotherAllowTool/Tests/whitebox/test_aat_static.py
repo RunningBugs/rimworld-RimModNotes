@@ -9,16 +9,20 @@ instantiate in an external unit-test runner.
 from __future__ import annotations
 
 import re
+import os
 import unittest
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = ROOT / "1.6" / "Source"
+SOURCE_VERSION = os.environ.get("AAT_TEST_VERSION", "1.6")
+SOURCE = ROOT / SOURCE_VERSION / "Source"
 COMMON = ROOT / "Common"
 
 
 def read(rel: str) -> str:
+    if rel.startswith("1.6/Source/"):
+        rel = SOURCE_VERSION + rel[len("1.6"):]
     return (ROOT / rel).read_text(encoding="utf-8")
 
 

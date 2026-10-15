@@ -2,6 +2,7 @@
 <Configuration>
   <Excluded>
     <exclude>Source/obj</exclude>
+    <exclude>Tests</exclude>
     <exclude>UnityBuild</exclude>
     <exclude>UnityProject</exclude>
   </Excluded>

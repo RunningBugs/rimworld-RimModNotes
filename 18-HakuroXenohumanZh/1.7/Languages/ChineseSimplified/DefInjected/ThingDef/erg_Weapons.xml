@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+<!-- 전열 화학 레일 라이플 -->
+  <erg_rifle.label>Electrothermal chemical rail rifle</erg_rifle.label>
+<!-- 전열 화학 레일 라이플입니다.\n\n레일건와 다른 원리로 화학으로 탄을 가속시켜 피해를 극대화 시킵니다. -->
+  <erg_rifle.description>It is an electrothermal chemical rail rifle.\n\nIt uses a different principle from railguns to maximize damage by accelerating bullets with chemicals.</erg_rifle.description>
+  <erg_rifle.tools.0.label>grip</erg_rifle.tools.0.label>
+  <erg_rifle.tools.1.label>barrel</erg_rifle.tools.1.label>
+<!-- 전열 레일 경기관총 -->
+  <erg_LMG.label> light machine gun</erg_LMG.label>
+<!-- 전열 레일 경기관총입니다.\n\n여러발을 쏘기위해 위력을 줄어 놓았으며, 사방으로 탄환들을 빠르게 가속합니다. -->
+  <erg_LMG.description>Line rail light machine gun.\n\nPower reduced for multiple shots, rapidly accelerating bullets in all directions.</erg_LMG.description>
+  <erg_LMG.tools.0.label>grip</erg_LMG.tools.0.label>
+  <erg_LMG.tools.1.label>barrel</erg_LMG.tools.1.label>
+<!-- 전열 권총 -->
+  <erg_Handgun.label>Electrothermal chemical rail pistol</erg_Handgun.label>
+<!-- 전열 레일 권총입니다.\n\n보조무기로 만들어진 권총류 무기로, 보조무기로 만들어 놓았지만 성능을 쓸만합니다. -->
+  <erg_Handgun.description>It's a line rail pistol.\n\nIt's a pistol-type weapon made as a secondary weapon. It's made as a secondary weapon, but its performance is usable.</erg_Handgun.description>
+  <erg_Handgun.tools.0.label>grip</erg_Handgun.tools.0.label>
+  <erg_Handgun.tools.1.label>barrel</erg_Handgun.tools.1.label>
+<!-- 전열 레일 고폭 산탄소총 -->
+  <erg_Shotgun.label>Electrothermal chemical Rail Shotgun</erg_Shotgun.label>
+<!-- 고속 탄환을 가속 발사하는 전열 화학포 산탄총입니다.\n\n전열 화학을 통하여 빠르게 탄환을 가속하는 탄으로 산탄총 형식으로 발사하는 무기로, 한번에 여러발을 발사합니다. -->
+  <erg_Shotgun.description>An electrothermal chemical shotgun that accelerates high-velocity bullets.\n\nA shotgun-type weapon that fires bullets that rapidly accelerate bullets through electrothermal chemistry, and fires multiple shots at once.(i guess this is called future america )</erg_Shotgun.description>
+  <erg_Shotgun.tools.0.label>grip</erg_Shotgun.tools.0.label>
+  <erg_Shotgun.tools.1.label>barrel</erg_Shotgun.tools.1.label>
+<!-- 전열 레일 대물 저격총 -->
+  <erg_Anti_materiel_Rifle.label> anti-materiel sniper rifle</erg_Anti_materiel_Rifle.label>
+<!-- 전열 레일 대물 저격총입니다.\n\n단단한 아머와 전차류를 뚫기 위해 만들어진 대물 저격총으로, 철갑탄을 가속시켜 빠르게 날아가는 동시에 맞는 대상의 피해를 극대화 시킵니다. -->
+  <erg_Anti_materiel_Rifle.description>It is an Electrothermal rail anti-materiel sniper rifle .\n\nAn anti-tank sniper rifle designed to pierce hard armor and tank types. It accelerates armor-piercing bullets to fly quickly while maximizing damage to targets hit.</erg_Anti_materiel_Rifle.description>
+  <erg_Anti_materiel_Rifle.tools.0.label>grip</erg_Anti_materiel_Rifle.tools.0.label>
+  <erg_Anti_materiel_Rifle.tools.1.label>barrel</erg_Anti_materiel_Rifle.tools.1.label>
+<!-- 전열 건스피어 -->
+  <erg_gun_spear.label>Electrothermal chemical rail Gun Spear</erg_gun_spear.label>
+<!-- 전열 건스피어입니다.\n\n창과 전열 레일총기를 합쳐진 무기로, 근거리전으로 개조되어 근접전이 가능한 무기로 만들어졌으며 창 앞부분에 달린 레일 총기류로 접근하거나 근거리 총기류를 가진 적을 견제할수 있습니다. -->
+  <erg_gun_spear.description>It is a Electrothermal chemical rail Gun Spear.\n\nIt is a weapon that combines a spear and a line rail gun. It has been modified to be a close-range weapon and can be used for close-range combat. The rail gun attached to the front of the spear can be used to approach or block enemies with short-range guns.</erg_gun_spear.description>
+  <erg_gun_spear.tools.0.label>grip</erg_gun_spear.tools.0.label>
+  <erg_gun_spear.tools.1.label>barrel</erg_gun_spear.tools.1.label>
+  <erg_gun_spear.tools.2.label>barrel</erg_gun_spear.tools.2.label>
+<!-- 전열 레일 고폭 산탄소총 -->
+  <erg_barrel_accelerator.label>Electrothermal chemical Rail Shotgun</erg_barrel_accelerator.label>
+<!-- 고속 탄환을 가속 발사하는 전열 화학포 산탄총입니다.\n\n전열 화학을 통하여 빠르게 탄환을 가속하는 탄으로 산탄총 형식으로 발사하는 무기로, 한번에 여러발을 발사합니다. -->
+  <erg_barrel_accelerator.description>An electrothermal chemical shotgun that accelerates high-velocity bullets.\n\nA shotgun-type weapon that fires bullets that rapidly accelerate bullets through electrothermal chemistry, and fires multiple shots at once.(i guess this is called future america )</erg_barrel_accelerator.description>
+  <erg_barrel_accelerator.tools.0.label>grip</erg_barrel_accelerator.tools.0.label>
+  <erg_barrel_accelerator.tools.1.label>barrel</erg_barrel_accelerator.tools.1.label>
+
+
+  <Bullet_ERG.label>ERG bullet</Bullet_ERG.label>
+  <Bullet_ERG_LMG.label>ERG LMG bullet</Bullet_ERG_LMG.label>
+  <Bullet_AP_ERG.label>ERG AP bullet</Bullet_AP_ERG.label>
+  <Bullet_HE_ERG.label>HE ERG bullet</Bullet_HE_ERG.label>
+
+</LanguageData>

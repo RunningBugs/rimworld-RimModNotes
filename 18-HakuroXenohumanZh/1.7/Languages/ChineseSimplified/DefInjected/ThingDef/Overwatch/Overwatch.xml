@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Overwatch_Marker_drone.tools.0.label>head</Overwatch_Marker_drone.tools.0.label>
+  <Overwatch_Marker_drone.label>Overwatch Marker Drone</Overwatch_Marker_drone.label>
+  <Overwatch_Marker_drone.description>A drone with a marker system attached. Use escort rifles to support allies and use the marker aiming system to target dangerous targets for more damage.</Overwatch_Marker_drone.description>
+
+  <Overwatch_Ward_drone.tools.0.label>head</Overwatch_Ward_drone.tools.0.label>
+  <Overwatch_Ward_drone.label>overwatch guardian drone</Overwatch_Ward_drone.label>
+  <Overwatch_Ward_drone.description>It is basically an escort drone used in many places. Drones that use rifle turrets have a bit more toughness than other drones.</Overwatch_Ward_drone.description>
+
+  <Overwatch_missile_drone.tools.0.label>head</Overwatch_missile_drone.tools.0.label>
+  <Overwatch_missile_drone.label>Overwatch Missile Drone</Overwatch_missile_drone.label>
+  <Overwatch_missile_drone.description>A drone that fires 3 small missiles. It fires small missiles and has an anti-tank role that deals explosive damage.</Overwatch_missile_drone.description>
+
+  <Overwatch_Guard_drone.tools.0.label>head</Overwatch_Guard_drone.tools.0.label>
+  <Overwatch_Guard_drone.label>overwatch guard drone</Overwatch_Guard_drone.label>
+  <Overwatch_Guard_drone.description>It is a support drone that specializes in supporting defense rather than combat. Has no combat power, but shields allies or repairs friendly mechanoids via remote repair.</Overwatch_Guard_drone.description>
+
+  <Overwatch_heavy_drone.label>Overwatch Heavy Drone</Overwatch_heavy_drone.label>
+  <Overwatch_heavy_drone.description>This is a heavy combat drone. Defend the position with a drone with a shield that can attack from a distance, high strength, and high defense.</Overwatch_heavy_drone.description>
+  <Overwatch_heavy_missile_drone.label>Overwatch Heavy Missile Drone</Overwatch_heavy_missile_drone.label>
+  <Overwatch_heavy_missile_drone.description>This is a heavy combat drone. It is a drone with a shield that can attack from a distance, high toughness, and high defense.</Overwatch_heavy_missile_drone.description>
+
+  <Overwatch_Commander_drone.tools.0.label>head</Overwatch_Commander_drone.tools.0.label>
+  <Overwatch_Commander_drone.label>overwatch commander drone</Overwatch_Commander_drone.label>
+  <Overwatch_Commander_drone.description>Tactical drone with built-in Commander AI. It has a variety of command systems and is supported by ejection with a built-in combat command system and tactical devices.</Overwatch_Commander_drone.description>
+
+  <Overwatch_sniper_drone.tools.0.label>head</Overwatch_sniper_drone.tools.0.label>
+  <Overwatch_sniper_drone.label>Overwatch Sniper Drone</Overwatch_sniper_drone.label>
+  <Overwatch_sniper_drone.description>It is a sniper drone that follows mecha nighters and supports them with firepower. Equipped with a target sighting system and a front rail sniper rifle, it is specialized for fire support and taking out dangerous targets from a distance.</Overwatch_sniper_drone.description>
+
+  <Overwatch_stealth_drone.tools.0.label>head</Overwatch_stealth_drone.tools.0.label>
+  <Overwatch_stealth_drone.label>overwatch stealth drone</Overwatch_stealth_drone.label>
+  <Overwatch_stealth_drone.description>Stealth tactical drone. After switching to stealth mode, hide between enemies and create a shockwave that paralyzes power lines and exposes the location by installing a beacon.</Overwatch_stealth_drone.description>
+
+  <Overwatch_AoE_Shield_Heavy_Drone.tools.0.label>head</Overwatch_AoE_Shield_Heavy_Drone.tools.0.label>
+  <Overwatch_AoE_Shield_Heavy_Drone.label>Overwatch AoE Shield Heavy Drone</Overwatch_AoE_Shield_Heavy_Drone.label>
+  <Overwatch_AoE_Shield_Heavy_Drone.description>Heavy support drone with wide area shield system. It has no combat purpose, but a device attached to the drone's fuselage creates a large shield that blocks enemy bullets.</Overwatch_AoE_Shield_Heavy_Drone.description>
+
+  <Overwatch_elevation_drone.tools.0.label>head</Overwatch_elevation_drone.tools.0.label>
+  <Overwatch_elevation_drone.label>Overwatch Support Mortar Drone</Overwatch_elevation_drone.label>
+  <Overwatch_elevation_drone.description>A mortar drone exclusively for the Mechanator. It supports allies by firing poison gas, smoke, and EMP mortars from a long distance with the rocket launcher attached to the head.</Overwatch_elevation_drone.description>
+
+  <drone_stun_blast.label>EMP</drone_stun_blast.label>
+</LanguageData>

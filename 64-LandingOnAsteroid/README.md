@@ -1,3 +1,7 @@
+## RimWorld 1.7 beta
+
+保留1.6，新增 `1.7/Source` net10.0，产物 `1.7/Assemblies/LandingOnAsteroid.dll`。使用固定 Krafs.Rimworld.Ref 1.7.4977-alpha.1 / Lib.Harmony 3.0.0-rc.2；实际小行星地图与起始流程验证范围见 `UPGRADE-1.7.md`。以下历史模板的Framework要求只对应旧版。
+
 # Rimworld Mod Template Monodevelop and Linux
 
 This repository is generated from github template [https://github.com/Rimworld-Mods/Template](https://github.com/Rimworld-Mods/Template)
