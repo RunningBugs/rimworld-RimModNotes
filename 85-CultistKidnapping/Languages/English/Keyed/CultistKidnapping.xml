@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <CK_Name>Cultist Kidnapping</CK_Name>
+  <CK_Description>After a successful skip abduction, the invoker carries the victim away while the other cultists escort them. If interrupted, the nearest capable cultist takes over.</CK_Description>
+  <CK_EnableRepeat>Send another skip abduction raid after a successful kidnapping</CK_EnableRepeat>
+  <CK_EnableRepeatTip>Each successful escape with a victim can trigger another raid. Disabling this cancels pending follow-up raids; cultists still attempt to carry victims away.</CK_EnableRepeatTip>
+  <CK_Interval>Next raid: {0}–{1} days after kidnapping</CK_Interval>
+  <CK_IntervalTip>A random whole number of days, from 1 to 30. Changes apply to future kidnappings. Each map has at most one pending follow-up. If vanilla currently prevents the raid, it retries hourly.</CK_IntervalTip>
+  <CK_Reset>Restore defaults (enabled, 3–5 days)</CK_Reset>
+  <CK_Pursuit>The cultists are carrying {PAWN_nameDef} away! Stop the carrier before they leave the map.</CK_Pursuit>
+</LanguageData>

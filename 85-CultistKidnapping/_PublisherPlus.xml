@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <Excluded>
+    <exclude>.build</exclude>
+    <exclude>.venv</exclude>
+    <exclude>.git</exclude>
+    <exclude>.gitignore</exclude>
+    <exclude>AGENTS.md</exclude>
+    <exclude>Tests</exclude>
+    <exclude>docs</exclude>
+    <exclude>tools</exclude>
+    <exclude>test.sh</exclude>
+    <exclude>1.5/Source/obj</exclude>
+    <exclude>1.5/Source/bin</exclude>
+    <exclude>1.6/Source/obj</exclude>
+    <exclude>1.6/Source/bin</exclude>
+    <exclude>1.7/Source/obj</exclude>
+    <exclude>1.7/Source/bin</exclude>
+  </Excluded>
+</Configuration>

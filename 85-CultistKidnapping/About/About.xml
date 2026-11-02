@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>邪教徒绑架 Cultist Kidnapping</name>
+  <author>RunningBugs</author>
+  <packageId>RunningBugs.CultistKidnapping</packageId>
+  <supportedVersions><li>1.5</li><li>1.6</li><li>1.7</li></supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+    </li>
+    <li><packageId>Ludeon.RimWorld.Anomaly</packageId><displayName>Anomaly</displayName></li>
+  </modDependencies>
+  <loadAfter><li>brrainz.harmony</li><li>Ludeon.RimWorld.Anomaly</li></loadAfter>
+  <description>适用于 RimWorld 1.5、1.6 和 1.7，需要 Anomaly 和 Harmony。
+由 GPT-6.1 SOL 和 CODEX 制作。
+
+邪教徒的折跃绑架仪式成功后，仪式发起人会优先抱起被折跃的小人撤离，其他邪教徒围绕搬运者护卫。搬运被中断时，最近且能够搬运、能够到达地图边缘的邪教徒会接替。暂时没有可用搬运者时，其余人会在受害者附近作战并持续尝试，不会因普通的伤亡撤退判定直接放弃。
+
+只有真正带着受害者离开地图后，才算绑架成功。使用原版的绑架登记、通知、心情、关系和任务信号等流程，受害者也会进入原版被绑架小人的后续机制。
+
+默认在成功绑走后 3–5 天，再来一波折跃绑架袭击。如果下一波又成功绑走，继续安排下一波。殖民者和奴隶被绑走都会触发这一规则。模组选项中可以关闭连袭，或将间隔调整为 1–30 天的整数范围。关闭会取消等待中的后续袭击。每张地图最多等待一波；原版条件暂不允许袭击时，每小时重试。
+
+只修改敌对邪教徒的折跃绑架，不修改玩家自己的仪式或其它邪教仪式。状态支持存读档，可加入现有存档；移除前请结束正在进行的绑架撤离。
+
+模组以 MIT 许可证开源发布：
+https://github.com/lisanhu/rimworld-RimModNotes.git
+
+
+For RimWorld 1.5, 1.6 and 1.7. Requires Anomaly and Harmony.
+Made with GPT-6.1 SOL and CODEX.
+
+After a successful cultist skip abduction, the invoker carries the victim toward the map edge while the other cultists escort them. If interrupted, the nearest cultist who can carry the victim and reach an exit takes over. When no carrier is currently available, the survivors defend the victim's position and keep trying. Ordinary casualty-based fleeing does not end the attempt.
+
+The victim must actually leave the map with a carrier to count as kidnapped. Vanilla handles kidnapping registration, letters, thoughts, relationships, quest signals and subsequent opportunities involving kidnapped pawns.
+
+By default, another skip abduction raid follows 3–5 days after each successful kidnapping, including kidnapped slaves. Further successes continue the chain. Mod settings can disable follow-up raids or adjust the interval to an integer range of 1–30 days. Disabling cancels pending follow-ups. Each map has at most one pending follow-up; temporary vanilla restrictions cause hourly retries.
+
+Only hostile cultist skip abduction is changed. Player rituals and other cultist rituals retain their original behavior. Supports saving and loading and can be added to an existing save. Finish any active kidnapping pursuit before removing the mod.
+
+Published under the MIT license:
+https://github.com/lisanhu/rimworld-RimModNotes.git</description>
+</ModMetaData>

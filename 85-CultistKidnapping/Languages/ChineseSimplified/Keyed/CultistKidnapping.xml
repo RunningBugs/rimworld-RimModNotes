@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <CK_Name>邪教徒绑架</CK_Name>
+  <CK_Description>折跃绑架仪式成功后，仪式发起人会抱起受害者撤离，其他邪教徒负责护卫。搬运被中断时，最近且有能力搬运、离图的邪教徒会接替。</CK_Description>
+  <CK_EnableRepeat>成功绑走后，再次派出折跃绑架袭击</CK_EnableRepeat>
+  <CK_EnableRepeatTip>每次成功带着受害者出图后，都可以触发下一波。关闭会取消等待中的后续袭击；邪教徒仍会尝试搬运受害者撤离。</CK_EnableRepeatTip>
+  <CK_Interval>成功绑走后 {0}–{1} 天再次袭击</CK_Interval>
+  <CK_IntervalTip>随机取区间内的整数天数，可设为 1–30 天。修改间隔对之后的绑架生效。每张地图最多等待一波后续袭击；原版条件暂不允许袭击时，每小时重试。</CK_IntervalTip>
+  <CK_Reset>恢复默认（启用，3–5 天）</CK_Reset>
+  <CK_Pursuit>邪教徒正准备带走{PAWN_nameDef}！请在搬运者离开地图前阻止他们。</CK_Pursuit>
+</LanguageData>

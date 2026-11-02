@@ -1,0 +1,8 @@
+<ModMetaData>
+  <name>Cultist Kidnapping Integration Tests</name>
+  <author>Local testing</author>
+  <packageId>local.cultistkidnapping.tests</packageId>
+  <supportedVersions><li>1.7</li></supportedVersions>
+  <loadAfter><li>RunningBugs.CultistKidnapping</li></loadAfter>
+  <description>Disposable game integration tests. Do not enable in a player's colony.</description>
+</ModMetaData>

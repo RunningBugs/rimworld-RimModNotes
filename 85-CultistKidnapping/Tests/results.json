@@ -1,0 +1,102 @@
+{
+  "version": "1.7.4995 rev309",
+  "assembly_sha256": "56399b6144d9f1695f9c53d054dc82972f7ab35e68d1a19a7129f2f5860ccd21",
+  "mod_sha256": "6ac752d0eee2a72c26517c6cb8533827d37915e016d593b6474248ab5c899c83",
+  "results": [
+    {
+      "phase": "start",
+      "returncode": 0,
+      "timed_out": false,
+      "seconds": 14.19,
+      "errors": [],
+      "native": {
+        "phase": "start",
+        "passed": true,
+        "checks": [
+          "Anomaly and cult faction loaded",
+          "game loaded the 1.7 assembly selected by LoadFolders",
+          "production outcome patch installed",
+          "fresh settings default to enabled with a 3–5 day interval",
+          "vanilla outcome teleported the selected victim and applied coma",
+          "ritual hands off to pursuit at a tick boundary",
+          "invoker takes priority over a nearer guard",
+          "guards use vanilla Escort focused on the carrier",
+          "native Kidnap job picks up the victim",
+          "teleporting and picking up do not schedule a follow-up raid",
+          "an interrupted Kidnap job is selected and resumed",
+          "downed carrier drops the victim and the nearest capable guard takes over",
+          "escort retargets to the replacement carrier",
+          "pursuit has no casualty-based flee transition",
+          "a killed invoker does not cancel the pursuit",
+          "saved an active native carrying job"
+        ],
+        "error": null
+      }
+    },
+    {
+      "phase": "resume",
+      "returncode": 0,
+      "timed_out": false,
+      "seconds": 20.75,
+      "errors": [],
+      "native": {
+        "phase": "resume",
+        "passed": true,
+        "checks": [
+          "save reload restored the exact victim, carrier and native Kidnap job",
+          "native walking and ExitMap registered the victim in the cult's kidnapped tracker",
+          "actual kidnapping schedules the next raid within the configured 3–5 days",
+          "vanilla kidnapping was registered exactly once",
+          "disabling follow-ups cancels the pending raid",
+          "another success cannot postpone the earlier pending raid",
+          "saved a pending follow-up raid"
+        ],
+        "error": null
+      }
+    },
+    {
+      "phase": "repeat",
+      "returncode": 0,
+      "timed_out": false,
+      "seconds": 16.25,
+      "errors": [],
+      "native": {
+        "phase": "repeat",
+        "passed": true,
+        "checks": [
+          "follow-up countdown survived save reload",
+          "due follow-up created a real vanilla psychic ritual siege",
+          "follow-up uses skip abduction specifically and consumes its timer",
+          "second victim is an actual colony slave",
+          "vanilla outcome teleported the selected victim and applied coma",
+          "the follow-up raid's native Kidnap job carries a slave off-map",
+          "successful slave kidnapping continues the raid chain"
+        ],
+        "error": null
+      }
+    }
+  ],
+  "builds": [
+    {
+      "game_version": "1.5",
+      "framework": "net472",
+      "build": "passed, zero warnings/errors",
+      "sha256": "b817ec863e5b6c10cd618a5bc27e1d4b038acbe69b1ea2470830b49077f043d2",
+      "native_game_tested": false
+    },
+    {
+      "game_version": "1.6",
+      "framework": "net472",
+      "build": "passed, zero warnings/errors",
+      "sha256": "fb4c135cf53d802be490ff5b6c617941d8ba5d8b709b6ac069859a666363ee9d",
+      "native_game_tested": false
+    },
+    {
+      "game_version": "1.7",
+      "framework": "net10.0",
+      "build": "passed, zero warnings/errors",
+      "sha256": "6ac752d0eee2a72c26517c6cb8533827d37915e016d593b6474248ab5c899c83",
+      "native_game_tested": true
+    }
+  ]
+}

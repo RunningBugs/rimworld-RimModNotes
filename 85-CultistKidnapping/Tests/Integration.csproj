@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>CultistKidnapping.Tests</AssemblyName>
+    <OutputPath>../.build/testing/harness/Assemblies/</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <DebugType>none</DebugType>
+    <RimWorldDir Condition="'$(RimWorldDir)' == ''">/Data/SteamLibrary/steamapps/common/RimWorld</RimWorldDir>
+    <HarmonyPath Condition="'$(HarmonyPath)' == ''">/Data/SteamLibrary/steamapps/workshop/content/294100/2009463077/1.7/Assemblies/0Harmony.dll</HarmonyPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CultistKidnapping"><HintPath>../1.7/Assemblies/CultistKidnapping.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="$(RimWorldDir)/Assembly-CSharp.dll" Private="false" />
+    <Reference Include="$(RimWorldDir)/UnityStubs.dll" Private="false" />
+    <Reference Include="$(RimWorldDir)/Waylith.dll" Private="false" />
+    <Reference Include="$(RimWorldDir)/Waylith.UnityCompat.dll" Private="false" />
+    <Reference Include="0Harmony"><HintPath>$(HarmonyPath)</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+</Project>

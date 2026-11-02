@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><RimWorldVersion>1.5</RimWorldVersion></PropertyGroup>
+  <Import Project="../../Source/Build.props" />
+</Project>

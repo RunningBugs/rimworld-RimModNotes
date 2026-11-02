@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <DutyDef>
+    <defName>CK_AbductVictim</defName>
+    <thinkNode Class="ThinkNode_Priority">
+      <subNodes>
+        <li Class="CultistKidnapping.JobGiver_AbductVictim" />
+        <li Class="JobGiver_WanderNearDutyLocation"><wanderRadius>2</wanderRadius></li>
+      </subNodes>
+    </thinkNode>
+  </DutyDef>
+</Defs>
