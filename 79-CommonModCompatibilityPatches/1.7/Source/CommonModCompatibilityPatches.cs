@@ -54,6 +54,7 @@ public static class CommonCompatibilityBootstrap
         applied += Apply(TacticalGroupsBillPawnRestrictionCompatibility.TryApply);
         applied += Apply(AllowToolPartyHuntWorldSettingsCompatibility.TryApply);
         applied += Apply(ListerHaulablesSharedScanCursorCompatibility.TryApply);
+        applied += Apply(BetterPawnControlStaleAssignLinksCompatibility.TryApply);
 
         Log.Message($"[CommonModCompatibilityPatches] Applied {applied} compatibility patch group(s).".Colorize(Color.green));
     }
@@ -1074,6 +1075,93 @@ internal static class VbeVideoPathEscapingCompatibility
         if (Uri.TryCreate(__result, UriKind.Absolute, out Uri uri) && uri.IsFile)
         {
             __result = uri.AbsoluteUri;
+        }
+    }
+}
+
+internal static class BetterPawnControlStaleAssignLinksCompatibility
+{
+    public const string PackageId = "VouLT.BetterPawnControl";
+    public const string ForkPackageId = "VouLT.BetterPawnControl.forked";
+    private const int StaleAssignLinksWarningId = 82038141;
+    private static FieldInfo linksField;
+    private static FieldInfo colonistField;
+
+    public static bool TryApply(Harmony harmony)
+    {
+        if (!ModDetection.AnyActive(PackageId, ForkPackageId))
+        {
+            return false;
+        }
+
+        Type linkType = AccessTools.TypeByName("BetterPawnControl.AssignLink");
+        Type managerType = AccessTools.TypeByName("BetterPawnControl.Manager`1");
+        Type storageType = AccessTools.TypeByName("BetterPawnControl.DataStorage");
+        if (linkType == null || managerType == null || storageType == null)
+        {
+            return false;
+        }
+
+        linksField = AccessTools.Field(managerType.MakeGenericType(linkType), "links");
+        colonistField = AccessTools.Field(linkType, "colonist");
+        MethodInfo guestTarget = AccessTools.Method(typeof(Pawn_GuestTracker), nameof(Pawn_GuestTracker.SetGuestStatus), new[] { typeof(Faction), typeof(GuestStatus) });
+        MethodInfo storageTarget = AccessTools.Method(storageType, "ExposeData", Type.EmptyTypes);
+        if (linksField == null || !linksField.IsStatic || !typeof(IList).IsAssignableFrom(linksField.FieldType)
+            || colonistField == null || colonistField.FieldType != typeof(Pawn)
+            || guestTarget == null || storageTarget == null)
+        {
+            return false;
+        }
+
+        harmony.Patch(guestTarget, prefix: new HarmonyMethod(typeof(BetterPawnControlStaleAssignLinksCompatibility), nameof(GuestStatusPrefix)));
+        harmony.Patch(storageTarget, postfix: new HarmonyMethod(typeof(BetterPawnControlStaleAssignLinksCompatibility), nameof(ExposeDataPostfix)));
+        return true;
+    }
+
+    // BPC keeps AssignLinks after the referenced pawn has disappeared. In 1.7
+    // its SetGuestStatus postfix binds to Pawn.Equals(Pawn), which dereferences
+    // a null argument and aborts QuestPart_Leave before the pawn can leave.
+    // Remove only orphaned cached assignments; keep BPC's original callback,
+    // valid policy links and the vanilla quest/faction logic unchanged.
+    public static void GuestStatusPrefix()
+    {
+        if (Scribe.mode == LoadSaveMode.Inactive)
+        {
+            RemoveStaleAssignLinks();
+        }
+    }
+
+    public static void ExposeDataPostfix()
+    {
+        // References are legitimately still null in LoadingVars. Do not prune
+        // until every cross-reference has been resolved, including other maps.
+        if (Scribe.mode == LoadSaveMode.PostLoadInit)
+        {
+            RemoveStaleAssignLinks();
+        }
+    }
+
+    private static void RemoveStaleAssignLinks()
+    {
+        if (linksField.GetValue(null) is not IList links)
+        {
+            return;
+        }
+
+        int removed = 0;
+        for (int i = links.Count - 1; i >= 0; i--)
+        {
+            object link = links[i];
+            if (link == null || colonistField.GetValue(link) == null)
+            {
+                links.RemoveAt(i);
+                removed++;
+            }
+        }
+
+        if (removed > 0)
+        {
+            Log.WarningOnce($"[CommonModCompatibilityPatches] Removed {removed} orphaned Better Pawn Control assignment link(s) with no pawn; preserved all valid assignments and the original guest-status callback so quest departure signals can complete.", StaleAssignLinksWarningId);
         }
     }
 }
@@ -2547,4 +2635,3 @@ internal static class ListerHaulablesSharedScanCursorCompatibility
         target.AddRange(source);
     }
 }
-

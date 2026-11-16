@@ -1,0 +1,11 @@
+.vs/
+.vscode/
+**/bin/
+**/obj/
+.build/
+.venv/
+__pycache__/
+.pytest_cache/
+*.deps.json
+*.pdb
+dist/

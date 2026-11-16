@@ -1,0 +1,17 @@
+.vs/
+.vscode/
+**/bin/
+**/obj/
+.build/
+.venv/
+__pycache__/
+.pytest_cache/
+*.deps.json
+*.pdb
+dist/
+UnityProject/Library/
+UnityProject/UserSettings/
+UnityProject/Logs/
+UnityProject/UnityBuild/
+UnityProject/AssetBundleBuild/
+UnityBuild/

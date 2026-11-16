@@ -32,6 +32,8 @@ class MetadataTests(unittest.TestCase):
             "OskarPotocki.VanillaFactionsExpanded.Core",
             "Nals.DynamicPortraits",
             "Solaris.RatkinRaceMod",
+            "VouLT.BetterPawnControl",
+            "VouLT.BetterPawnControl.forked",
         ]:
             self.assertNotIn(package_id, deps)
             self.assertIn(package_id, load_after)
@@ -42,6 +44,34 @@ class MetadataTests(unittest.TestCase):
         self.assertIn("RunningBugs.AllowToolBugfix", incompatible)
         self.assertIn("RunningBugs.ReservationEventBugfix", incompatible)
         self.assertIn("RunningBugs.ReplaceStuffBugfix", incompatible)
+
+
+class BetterPawnControl17Tests(unittest.TestCase):
+    def test_patch_is_registered_and_optional(self) -> None:
+        src = read("1.7/Source/CommonModCompatibilityPatches.cs")
+        self.assertIn("Apply(BetterPawnControlStaleAssignLinksCompatibility.TryApply)", src)
+        group = src.split("internal static class BetterPawnControlStaleAssignLinksCompatibility", 1)[1]
+        group = group.split("internal static class ModDetection", 1)[0]
+        self.assertIn("ModDetection.AnyActive(PackageId, ForkPackageId)", group)
+        self.assertIn('AccessTools.TypeByName("BetterPawnControl.AssignLink")', group)
+        self.assertIn("nameof(Pawn_GuestTracker.SetGuestStatus)", group)
+        self.assertIn('AccessTools.Method(storageType, "ExposeData", Type.EmptyTypes)', group)
+        self.assertNotIn("harmony.Patch(typeof(Pawn)", group)
+
+    def test_pruning_waits_for_resolved_references_and_preserves_valid_entries(self) -> None:
+        src = read("1.7/Source/CommonModCompatibilityPatches.cs")
+        group = src.split("internal static class BetterPawnControlStaleAssignLinksCompatibility", 1)[1]
+        group = group.split("internal static class ModDetection", 1)[0]
+        self.assertIn("Scribe.mode == LoadSaveMode.PostLoadInit", group)
+        self.assertIn("Scribe.mode == LoadSaveMode.Inactive", group)
+        self.assertIn("link == null || colonistField.GetValue(link) == null", group)
+        self.assertIn("links.RemoveAt(i)", group)
+        self.assertNotIn("links.Clear()", group)
+        self.assertNotIn("harmony.Unpatch", group)
+
+    def test_legacy_16_is_not_changed_for_a_17_only_bug(self) -> None:
+        self.assertNotIn("BetterPawnControlStaleAssignLinksCompatibility",
+                         read("1.6/Source/CommonModCompatibilityPatches.cs"))
 
 
 class PatchSourceTests(unittest.TestCase):

@@ -20,6 +20,11 @@ namespace ResearchPrerequisites
     {
         public const int Count = 3;
 
+        public static bool IsActive(ResearchCategory category)
+        {
+            return category == ResearchCategory.Normal || ModsConfig.AnomalyActive;
+        }
+
         public static ResearchCategory Of(KnowledgeCategoryDef category)
         {
             if (category == null)
@@ -51,9 +56,9 @@ namespace ResearchPrerequisites
             switch (category)
             {
                 case ResearchCategory.AnomalyBasic:
-                    return KnowledgeCategoryDefOf.Basic;
+                    return ModsConfig.AnomalyActive ? KnowledgeCategoryDefOf.Basic : null;
                 case ResearchCategory.AnomalyAdvanced:
-                    return KnowledgeCategoryDefOf.Advanced;
+                    return ModsConfig.AnomalyActive ? KnowledgeCategoryDefOf.Advanced : null;
                 default:
                     return null;
             }

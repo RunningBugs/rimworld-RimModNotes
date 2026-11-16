@@ -26,6 +26,10 @@ public static class Mod81Checks
         Require(DefDatabase<PawnTableDef>.GetNamed("Assign").columns.Any(c => c.workerClass.FullName == "_CarryPolicy.PawnColumnWorker_CarryPolicy"),
             "Actual Assign table XML contains the carry policy column.");
         Type utility = assembly.GetType("_CarryPolicy.CarryPolicyUtility", true), dbType = assembly.GetType("_CarryPolicy.CarryPolicyDatabase", true);
+        Type modHandleType = assembly.GetType("_CarryPolicy.CarryPolicyModHandle", true);
+        Mod modHandle = LoadedModManager.GetMod(modHandleType);
+        Require(modHandle != null && !modHandle.SettingsCategory().NullOrEmpty(), "Mod handle and Mod Settings category are registered.");
+        Require(dbType.GetField("CrossSavePoliciesProvider").GetValue(null) != null, "CrossSavePoliciesProvider is wired at startup.");
         object db = Current.Game.GetComponent(dbType); Require(db != null, "Actual per-Game policy database is registered.");
         var policies = (IList)dbType.GetField("policies").GetValue(db); var originals = policies.Cast<object>().ToList();
         IDictionary assignments = (IDictionary)dbType.GetField("assignments").GetValue(db);

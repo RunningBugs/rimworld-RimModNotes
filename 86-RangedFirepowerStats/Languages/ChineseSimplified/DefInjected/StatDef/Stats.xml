@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <RFS_WeaponMax.label>远程最大 DPS</RFS_WeaponMax.label>
+  <RFS_WeaponMax.description>护甲前的持续主伤害。点击属性查看按 tick 计算的完整周期和逐格数值；信息卡底部可打开当前小人、当前天气的对比表。无指定小人的武器属性以理想精度作比较。</RFS_WeaponMax.description>
+  <RFS_WeaponAverage.label>远程期望 DPS</RFS_WeaponAverage.label>
+  <RFS_WeaponAverage.description>护甲前的持续主伤害。点击属性查看按 tick 计算的完整周期和逐格数值；信息卡底部可打开当前小人、当前天气的对比表。无指定小人的武器属性以理想精度作比较。</RFS_WeaponAverage.description>
+  <RFS_WeaponSpecialist.label>射击专家 DPS（理想精度）</RFS_WeaponSpecialist.label>
+  <RFS_WeaponSpecialist.description>护甲前的持续主伤害。点击属性查看按 tick 计算的完整周期和逐格数值；信息卡底部可打开当前小人、当前天气的对比表。无指定小人的武器属性以理想精度作比较。</RFS_WeaponSpecialist.description>
+  <RFS_WeaponTrigger.label>专家＋乱开枪 DPS（理想精度）</RFS_WeaponTrigger.label>
+  <RFS_WeaponTrigger.description>护甲前的持续主伤害。点击属性查看按 tick 计算的完整周期和逐格数值；信息卡底部可打开当前小人、当前天气的对比表。无指定小人的武器属性以理想精度作比较。</RFS_WeaponTrigger.description>
+  <RFS_PawnCurrent.label>远程 DPS</RFS_PawnCurrent.label>
+  <RFS_PawnCurrent.description>护甲前的持续主伤害。点击属性查看按 tick 计算的完整周期和逐格数值；信息卡底部可打开当前小人、当前天气的对比表。无指定小人的武器属性以理想精度作比较。</RFS_PawnCurrent.description>
+  <RFS_PawnSpecialist.label>射击专家 DPS</RFS_PawnSpecialist.label>
+  <RFS_PawnSpecialist.description>护甲前的持续主伤害。点击属性查看按 tick 计算的完整周期和逐格数值；信息卡底部可打开当前小人、当前天气的对比表。无指定小人的武器属性以理想精度作比较。</RFS_PawnSpecialist.description>
+  <RFS_PawnTrigger.label>专家＋乱开枪 DPS</RFS_PawnTrigger.label>
+  <RFS_PawnTrigger.description>护甲前的持续主伤害。点击属性查看按 tick 计算的完整周期和逐格数值；信息卡底部可打开当前小人、当前天气的对比表。无指定小人的武器属性以理想精度作比较。</RFS_PawnTrigger.description>
+  <RFS_TurretMax.label>远程最大 DPS</RFS_TurretMax.label>
+  <RFS_TurretMax.description>护甲前的持续主伤害。点击属性查看按 tick 计算的完整周期和逐格数值；信息卡底部可打开当前小人、当前天气的对比表。无指定小人的武器属性以理想精度作比较。</RFS_TurretMax.description>
+  <RFS_TurretWeapon.label>武器远程 DPS</RFS_TurretWeapon.label>
+  <RFS_TurretWeapon.description>护甲前的持续主伤害。点击属性查看按 tick 计算的完整周期和逐格数值；信息卡底部可打开当前小人、当前天气的对比表。无指定小人的武器属性以理想精度作比较。</RFS_TurretWeapon.description>
+  <RFS_TurretCurrent.label>远程 DPS</RFS_TurretCurrent.label>
+  <RFS_TurretCurrent.description>护甲前的持续主伤害。点击属性查看按 tick 计算的完整周期和逐格数值；信息卡底部可打开当前小人、当前天气的对比表。无指定小人的武器属性以理想精度作比较。</RFS_TurretCurrent.description>
+  <RFS_ResourceMax.label>每资源最大伤害</RFS_ResourceMax.label>
+  <RFS_ResourceMax.description>护甲前的持续主伤害。点击属性查看按 tick 计算的完整周期和逐格数值；信息卡底部可打开当前小人、当前天气的对比表。无指定小人的武器属性以理想精度作比较。</RFS_ResourceMax.description>
+  <RFS_ResourceAverage.label>每资源期望伤害</RFS_ResourceAverage.label>
+  <RFS_ResourceAverage.description>护甲前的持续主伤害。点击属性查看按 tick 计算的完整周期和逐格数值；信息卡底部可打开当前小人、当前天气的对比表。无指定小人的武器属性以理想精度作比较。</RFS_ResourceAverage.description>
+</LanguageData>

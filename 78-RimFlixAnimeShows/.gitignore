@@ -1,0 +1,15 @@
+.vs/
+.vscode/
+**/bin/
+**/obj/
+.build/
+.venv/
+__pycache__/
+.pytest_cache/
+*.deps.json
+*.pdb
+dist/
+Defs/ShowDefs/
+Textures/Shows/
+tools/rimflix-tmp/
+assets_src/

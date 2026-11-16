@@ -37,6 +37,8 @@
 		<li>Kota.InventoryTab</li>
 		<li>fxz.glitterworlddestroyer.mk5</li>
 		<li>DerekBickley.LTOColonyGroupsFinal</li>
+		<li>VouLT.BetterPawnControl</li>
+		<li>VouLT.BetterPawnControl.forked</li>
 	</loadAfter>
 
 	<incompatibleWith>
@@ -82,6 +84,7 @@ Adapted for RimWorld 1.6 / 1.7 beta; each target is detected separately. Per-gro
 - [LTO] Colony Groups：用等价的空安全实现替换账单配置窗口"按分组指定工人"下拉选项的生成——分组中混入动物/机械族（原版不给它们创建 skills 追踪器）或残留 null 小人时，原 postfix 会在每次渲染 Dialog_BillConfig 时抛出 NullReferenceException 刷红字；现在跳过这些非法条目，正常分组的选项不受影响。
 - Allow Tool：读档过程中（HugsLib 的 WorldLoaded 回调尚未执行、WorldSettings 仍为 null）跳过 Party Hunt 行为检查，避免 JobDriver_Wait 的 postfix 反复抛出 NullReferenceException，导致读档后小人被原版置为"无工作"状态。
 - 原版搬运周期重算（ListerHaulables）：原版的重算游标是所有地图共享的 static 字段，多张地图同时 tick 时（第二定居点、奥德赛口袋地图、任务地图）游标每 tick 多跳，每张地图只能重算到部分存储组；其余组里"应被搬去更优存储"的物品永远得不到重算，永远不会被搬走（Allow Tool 的紧急搬运标记也会因此被自己清理掉）。补丁在每次 tick 前后换入/存回按地图独立的游标，原方法（及其他模组对它的补丁）照常运行。
+- Better Pawn Control（仅 1.7）：读档完成及访客身份变化前清理人物引用已丢失的策略缓存，避免难民到期离开时调用 Pawn.Equals(null)、抛出空引用并打断任务；保留正常策略和原有默认分配逻辑，不在引用尚未解析的读档阶段清理。
 
 目标模组列在 loadAfter 而非依赖中，因此即使部分目标模组未安装，本模组也可以保持启用。
 
@@ -120,6 +123,7 @@ Current patches:
 - [LTO] Colony Groups: replace the bill-config worker dropdown generation with a null-safe equivalent — when a pawn group contains an animal or mechanoid (vanilla never creates a skills tracker for them) or a stale null pawn entry, the original postfix throws a NullReferenceException on every Dialog_BillConfig render; the unsafe entries are now skipped and valid groups keep their options.
 - Allow Tool: skip the Party Hunt behavior check while a save is still loading (HugsLib's WorldLoaded callback has not run yet and WorldSettings is null), so the JobDriver_Wait postfix no longer throws repeated NullReferenceExceptions that make vanilla leave the pawn jobless after loading.
 - Vanilla haulable periodic rescan (ListerHaulables): the vanilla rescan cursors are static fields shared by all maps, so with two or more maps ticking (second settlement, Odyssey pocket map, quest site) the shared cursor advances multiple steps per tick and each map only ever rescans a fraction of its slot groups; items in the remaining groups that newly gained a better storage are never re-evaluated and never get hauled (Allow Tool's Haul Urgently marks on them are then removed by its own cleanup). The patch swaps per-map cursor state in/out around each tick, leaving the original method (and other mods' patches on it) running unchanged.
+- Better Pawn Control (1.7 only): remove orphaned assignment-cache entries after loading and before guest-status changes, preventing Pawn.Equals(null) from throwing and interrupting refugee departure quests. Valid policies and the original default-assignment callback are preserved; unresolved references are never pruned during early loading.
 
 Target mods are listed under loadAfter, not as dependencies, so this mod can stay enabled even when some target mods are not installed.
 </description>

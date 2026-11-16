@@ -20,4 +20,15 @@ For non-food items the amount is a plain item count.</CarryCountDesc>
 	<CarrySelectedCount>{0} selected</CarrySelectedCount>
 	<AddSelectedCarryItems>Add selected</AddSelectedCarryItems>
 	<AlreadyInCarryList>added</AlreadyInCarryList>
+	<CarryPolicySettingsCategory>Carry Policy</CarryPolicySettingsCategory>
+	<CrossSaveCarryPoliciesDesc>Configure the default carry policies copied into new saves (the policy marked with * becomes the new save's default). Existing saves are never modified.
+
+Items from currently unloaded mods are kept in grey and will restore automatically once those mods are enabled again.</CrossSaveCarryPoliciesDesc>
+	<CrossSaveCarryPoliciesSummary>Saved cross-save policies: {0} (default: {1})</CrossSaveCarryPoliciesSummary>
+	<CrossSaveCarryPoliciesSummaryEmpty>No custom cross-save policies configured yet (new saves will start with one empty default policy).</CrossSaveCarryPoliciesSummaryEmpty>
+	<ConfigureCrossSaveCarryPolicies>Configure default carry policies</ConfigureCrossSaveCarryPolicies>
+	<CrossSaveCarryPolicyTitle>Manage default carry policies</CrossSaveCarryPolicyTitle>
+	<CrossSaveCarryPolicyTip>Configure default carry lists copied into new saves (existing saves are untouched). Food amounts are in portions: 1 portion = 1 meal for an average adult.</CrossSaveCarryPolicyTip>
+	<CarryPolicyMissingThing>Unloaded: {0}</CarryPolicyMissingThing>
+	<CarryPolicyMissingShort>unloaded</CarryPolicyMissingShort>
 </LanguageData>

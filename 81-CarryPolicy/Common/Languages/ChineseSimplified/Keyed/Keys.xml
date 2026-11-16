@@ -20,4 +20,15 @@
 	<CarrySelectedCount>已选 {0} 项</CarrySelectedCount>
 	<AddSelectedCarryItems>添加所选</AddSelectedCarryItems>
 	<AlreadyInCarryList>已添加</AlreadyInCarryList>
+	<CarryPolicySettingsCategory>携带方案 Carry Policy</CarryPolicySettingsCategory>
+	<CrossSaveCarryPoliciesDesc>配置新存档默认自带的携带方案列表（带 * 的为新存档默认方案）。这些方案仅在创建新存档时自动写入，不会修改已有存档。
+
+若清单中包含当前未启用的模组物品，会以灰色保留；重新启用对应模组后会自动恢复。</CrossSaveCarryPoliciesDesc>
+	<CrossSaveCarryPoliciesSummary>当前跨存档方案数量：{0}（默认：{1}）</CrossSaveCarryPoliciesSummary>
+	<CrossSaveCarryPoliciesSummaryEmpty>当前尚未自定义跨存档方案（新存档将创建 1 条空白的「默认携带方案」）。</CrossSaveCarryPoliciesSummaryEmpty>
+	<ConfigureCrossSaveCarryPolicies>设置跨存档默认携带方案</ConfigureCrossSaveCarryPolicies>
+	<CrossSaveCarryPolicyTitle>管理跨存档默认携带方案</CrossSaveCarryPolicyTitle>
+	<CrossSaveCarryPolicyTip>配置新存档默认自带的携带方案，不会修改已有存档。食物数量单位是「份」而非「个」：1份=普通小人一顿的量。</CrossSaveCarryPolicyTip>
+	<CarryPolicyMissingThing>未加载：{0}</CarryPolicyMissingThing>
+	<CarryPolicyMissingShort>未加载</CarryPolicyMissingShort>
 </LanguageData>

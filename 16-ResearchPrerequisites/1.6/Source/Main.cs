@@ -8,7 +8,7 @@ namespace ResearchPrerequisites
     {
         static Start()
         {
-            new Harmony("com.runningbugs.researchprerequisites").PatchAll();
+            new Harmony("com.runningbugs.researchprerequisites").PatchAll(typeof(Start).Assembly);
         }
     }
 }

@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <RFS_Title>远程火力数据 · DPS 逐格表</RFS_Title>
+  <RFS_Open>DPS 逐格表</RFS_Open>
+  <RFS_OpenDescription>按当前小人属性与天气，比较普通、射击专家及专家＋乱开枪的逐格 DPS。</RFS_OpenDescription>
+  <RFS_Current>当前</RFS_Current>
+  <RFS_Specialist>射击专家</RFS_Specialist>
+  <RFS_SpecialistTriggerHappy>专家＋乱开枪</RFS_SpecialistTriggerHappy>
+  <RFS_Unavailable>不适用</RFS_Unavailable>
+  <RFS_AtRange>{0} 格</RFS_AtRange>
+  <RFS_Cycle>{0} × {1} 发 ÷（预热 {2}＋连发 {3}＋冷却 {4}＋调度 {5} tick）× 60 ＝ {6} DPS（射击检查每 {7} tick）</RFS_Cycle>
+  <RFS_Interval>标称两发间隔：{0} tick（Verb 读取值 {1}）。小人的姿态与装备更新顺序使第一段间隔少 1 tick；其余间隔至少 1 tick。</RFS_Interval>
+  <RFS_IdealShooter>未指定小人：以理想射手精度比较，普通瞄准时间为 100%，专家情景按已加载职位/特性定义计算。选择真实小人后才会计入乱开枪的精度惩罚。</RFS_IdealShooter>
+  <RFS_StandardConditions>使用当前装备、健康、基因、技能等属性；信息卡口径为体型 1 的站立目标、晴天、无遮蔽/烟雾。当前天气请打开逐格表。</RFS_StandardConditions>
+  <RFS_TableAssumptions>逐格表：体型 1、站立的标准目标，计入当前天气和射手属性；不含掩体、烟雾、护甲和目标明暗。下方真实目标行按其位置调用原版射击报告。</RFS_TableAssumptions>
+  <RFS_Limitations>护甲前主伤害，不含索敌、补弹和附加伤害。计入 1.7 射击检查调度（随镜头缩放/可见性变化）；小人首段连发扣 1 tick，其余间隔至少 1 tick。</RFS_Limitations>
+  <RFS_TurretTiming>炮塔以平均预热＋冷却＋连发间隔计算持续潜力；不含最多 14 tick 的索敌扫描等待和补弹工作。不是实测墙钟 DPS。</RFS_TurretTiming>
+  <RFS_Unsupported>爆炸、散布和弹丸机制决定具体的单目标期望伤害；可读取的主伤害理论值单独显示。</RFS_Unsupported>
+  <RFS_Fuel>每单位弹药资源的最大主伤害：{0}。计入资源补充倍率和每发/每梭消耗。</RFS_Fuel>
+  <RFS_OpenHint>点击信息卡底部的“DPS 逐格表”打开并排对比。</RFS_OpenHint>
+  <RFS_StatRow>{0} 格：{1}（命中 {2}）</RFS_StatRow>
+  <RFS_NoMap>无地图，采用晴天</RFS_NoMap>
+  <RFS_IdealOption>理想射手（未指定小人）</RFS_IdealOption>
+  <RFS_Weather>天气：{0}；命中倍率 ×{1}</RFS_Weather>
+  <RFS_Distance>距离/格</RFS_Distance>
+  <RFS_Hit>命中率</RFS_Hit>
+  <RFS_Shooter>射手：{0}</RFS_Shooter>
+  <RFS_Weapon>武器：{0}</RFS_Weapon>
+  <RFS_TargetRoof>标准目标在屋顶下</RFS_TargetRoof>
+  <RFS_Refresh>刷新</RFS_Refresh>
+  <RFS_Copy>复制表格</RFS_Copy>
+  <RFS_Copied>DPS 表格已复制，可粘贴到电子表格。</RFS_Copied>
+  <RFS_ClearTarget>清除真实目标</RFS_ClearTarget>
+  <RFS_SelectTarget>选择真实目标</RFS_SelectTarget>
+  <RFS_TargetHint>可选：指定地图小人，按原版射击报告计算（含掩体、烟雾、体型、姿势、明暗）。逐格表仍采用标准目标。</RFS_TargetHint>
+  <RFS_Column>命中率                       DPS</RFS_Column>
+  <RFS_NeedIdeology>启用 Ideology 后可比较射击专家情景。</RFS_NeedIdeology>
+  <RFS_GraphOpen>查看折线图</RFS_GraphOpen>
+  <RFS_GraphTitle>远程火力数据 · 折线图</RFS_GraphTitle>
+  <RFS_GraphLinkName>命中率 / DPS 折线图</RFS_GraphLinkName>
+  <RFS_ShooterGraphLinkName>射击精度折线图</RFS_ShooterGraphLinkName>
+  <RFS_GraphDps>期望 DPS</RFS_GraphDps>
+  <RFS_GraphHit>命中率</RFS_GraphHit>
+  <RFS_GraphShooter>射手精度系数</RFS_GraphShooter>
+  <RFS_GraphHover>将鼠标移到图上，可查看对应距离的各条曲线数值。</RFS_GraphHover>
+  <RFS_GraphHoverRow>{0}：命中 {1}，DPS {2}</RFS_GraphHoverRow>
+  <RFS_GraphReference>晴天参考条件，与信息卡内的逐格表一致。DPS 为护甲前主伤害。</RFS_GraphReference>
+  <RFS_GraphSnapshot>沿用逐格表快照：体型 1、站立目标，{0}；不含掩体、烟雾、护甲和明暗偏移。DPS 为护甲前主伤害。</RFS_GraphSnapshot>
+  <RFS_GraphRoofed>目标有屋顶</RFS_GraphRoofed>
+  <RFS_GraphUnroofed>目标无屋顶</RFS_GraphUnroofed>
+  <RFS_GraphShooterNote>仅绘制射手精度，与原版射击精度表一致；不含武器精度、目标条件和天气。</RFS_GraphShooterNote>
+</LanguageData>

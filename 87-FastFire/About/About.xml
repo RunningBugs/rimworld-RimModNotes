@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Fast Fire 火焰性能优化</name>
+  <author>RunningBugs</author>
+  <packageId>RunningBugs.FastFire</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+    <li>1.7</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+  </loadAfter>
+  <description>大幅优化地图上出现几千甚至上万火苗时的 TPS 与帧率，提供两种模式可在模组设置中随时切换（支持即时热迁移，不丢火苗、不坏档）。
+
+【模式说明】
+1. 极限性能模式（默认推荐）：地面静火采用紧凑的网格化仿真引擎（SoA 数组 + 15-tick 分桶 + O(1) 换尾删除），仅在殖民者/AI 实际需要作为目标交互时按需物化代理火苗；附着在角色身上的火保持原版逻辑。彻底消除实体膨胀与暴雨灭火时的 O(N²) 卡顿，大幅降低内存与存档体积。
+2. 兼容模式：保留全部地面 Fire 实体以最大化兼容重度魔改火焰的第三方模组，同时剥离五大性能黑洞：
+   - 光照聚合：4×4 区块共享聚合光源，消除上万个独立 CompGlower 对 GlowGrid 与光照网格重建的灾难性开销；
+   - 合批渲染：地面火焰脱离 DynamicDrawManager，采用视野裁剪 + GPU Instancing / 动态合批网格绘制，并对过量 FireGlow 粒子节流；
+   - 寻路防抖：O(1) 火焰寻路代价位图 + 延迟合并增量通知，防止 PathFinder 全图缓存频繁失效重建；
+   - 聚合音效：仅在镜头周围维护最多 4 个区块聚合火焰声源，取代每帧遍历全部火苗；
+   - 15-tick 分桶调度与批处理卸载，兼顾无雪早退、易燃度缓存与 AI/警报空间加速。
+
+两种模式均完整保留原版灭火工作、右键优先灭火、水跳过、泡沫弹出器/泡沫包/泡沫炮塔、水弹、雨/真空灭火、蔓延、烧毁地板与物品、发热、角色着火与逃离等全部互动。开发者模式下提供一键全图生成 10000+ 大小随机火焰的调试按钮用于测试性能与效果。
+
+MIT 开源：https://github.com/lisanhu/rimworld-RimModNotes.git
+
+Significantly improves TPS and FPS when thousands or tens of thousands of fires are burning on a map, with two switchable modes in Mod Settings (supports live migration without losing fires).
+
+[Modes]
+1. Extreme Performance Mode (Recommended Default): Simulates static ground fires in a compact grid engine (SoA arrays + 15-tick buckets + O(1) swap-remove) and materializes proxy Fire things only on demand when colonists or AI target them; pawn-attached fires stay vanilla. Eliminates Thing bloat and O(N^2) mass-extinguish freezes while shrinking memory and save size.
+2. Compatible Mode: Keeps real Fire Thing instances for maximum third-party mod compatibility while decoupling the five major bottlenecks:
+   - Cluster Lighting: 4x4 chunk glower aggregation instead of 10,000 individual CompGlowers flooding GlowGrid and section meshes;
+   - Batched Rendering: Bypasses DynamicDrawManager with camera-culled GPU instanced / batched rendering and FireGlow fleck throttling;
+   - Pathing Debounce: O(1) fire danger bitmap + coalesced incremental updates so PathFinder grids are not invalidated every tick;
+   - Clustered Audio: Maintains up to 4 camera-local fire sustainers instead of iterating 10,000 reporters per frame;
+   - 15-tick bucketed updates, batch despawn cleanup, snow early-out, flammability caching, and spatial AI/alert acceleration.
+
+Both modes preserve all vanilla fire interactions: firefighting jobs, right-click prioritize extinguishing, Waterskip, firefoam poppers/packs/turrets, water splashes, rain/vacuum extinguishing, fire spread, floor/item burning, heat generation, pawn ignition and fleeing. Includes a Dev Mode debug action to spawn 10,000+ varied-size fires across the map for benchmarking.
+
+Published under MIT: https://github.com/lisanhu/rimworld-RimModNotes.git</description>
+</ModMetaData>

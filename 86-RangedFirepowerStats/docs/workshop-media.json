@@ -1,0 +1,91 @@
+[
+  {
+    "file": "Preview.png",
+    "source": ".build/testing/cases/media-cover-final/SaveData/graph-dps.png",
+    "kind": "native screenshot, lossless PNG",
+    "size": [
+      1024,
+      1024
+    ],
+    "bytes": 485800,
+    "sha256": "f3266819728366e444b41b12e7a42a4bf9bf33988c732ead845ae2f6133ae85f"
+  },
+  {
+    "file": "01-Info-Page.jpg",
+    "caption": "信息页面与独立数据分类",
+    "source": ".build/testing/cases/media-wide-final/SaveData/info-overview.png",
+    "kind": "native screenshot, JPEG",
+    "size": [
+      1600,
+      1000
+    ],
+    "quality": 96,
+    "bytes": 688287,
+    "sha256": "945903b05bb6bbfa12d869286ffad2198b1f99242dcfaa8e7acf1670361e1fd7"
+  },
+  {
+    "file": "02-Range-Table.jpg",
+    "caption": "右侧逐格表及图表超链接",
+    "source": ".build/testing/cases/media-wide-final/SaveData/pawn-card.png",
+    "kind": "native screenshot, JPEG",
+    "size": [
+      1600,
+      1000
+    ],
+    "quality": 96,
+    "bytes": 657098,
+    "sha256": "4da62261fb514d404c2f43c2b3c895cf44c05d2a1abd1fdddd90a9a5c77fb57a"
+  },
+  {
+    "file": "03-Precision-Link.jpg",
+    "caption": "原版射击精度说明及曲线链接",
+    "source": ".build/testing/cases/media-wide-final/SaveData/accuracy-card.png",
+    "kind": "native screenshot, JPEG",
+    "size": [
+      1600,
+      1000
+    ],
+    "quality": 96,
+    "bytes": 623789,
+    "sha256": "034d15036cf79a784607c8ec22adaa52050f4e7dda994ed64168a67cb787559a"
+  },
+  {
+    "file": "04-DPS-Comparison.jpg",
+    "caption": "当前天气下的三情景逐格对比",
+    "source": ".build/testing/cases/media-wide-final/SaveData/table.png",
+    "kind": "native screenshot, JPEG",
+    "size": [
+      1600,
+      1000
+    ],
+    "quality": 96,
+    "bytes": 554243,
+    "sha256": "f96f210ae4013bb8bcf737bc8d5c588c66a7b402ec80822d1edb435b60837111"
+  },
+  {
+    "file": "05-DPS-Curves.jpg",
+    "caption": "DPS 折线图与悬停读数",
+    "source": ".build/testing/cases/media-wide-final/SaveData/graph-dps.png",
+    "kind": "native screenshot, JPEG",
+    "size": [
+      1600,
+      1000
+    ],
+    "quality": 96,
+    "bytes": 495191,
+    "sha256": "dd82bd8cdf78ecd1ee5f2686fe35c308408327763b04a8aab67b8d601590f9e8"
+  },
+  {
+    "file": "06-Accuracy-Curves.jpg",
+    "caption": "命中率折线图",
+    "source": ".build/testing/cases/media-wide-final/SaveData/graph-accuracy.png",
+    "kind": "native screenshot, JPEG",
+    "size": [
+      1600,
+      1000
+    ],
+    "quality": 96,
+    "bytes": 491913,
+    "sha256": "ba4e79586c505aed9b6aa8b65744981254c9c895fb4f82ba02737baf407f9320"
+  }
+]

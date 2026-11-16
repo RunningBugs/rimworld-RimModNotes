@@ -15,45 +15,94 @@ namespace ResearchPrerequisites
             {
                 return;
             }
+            ResearchCategory category = ResearchCategories.Of(project);
+            if (!ResearchCategories.IsActive(category))
+            {
+                return;
+            }
             ResearchQueue queue = ResearchQueue.Instance;
             if (queue == null)
             {
                 return;
             }
-            List<ResearchProjectDef> list = queue.QueueFor(ResearchCategories.Of(project));
-            ResearchProjectDef current = Find.ResearchManager.GetProject(project.knowledgeCategory);
+            queue.SanitizeQueue(category);
+            ResearchProjectDef current = Find.ResearchManager.GetProject(ResearchCategories.ToVanillaDef(category));
+            List<ResearchProjectDef> list = queue.QueueFor(category);
+            if (current != null && (list.Count == 0 || list[0] != current))
+            {
+                queue.MoveToHead(current);
+            }
             if (list.Count == 0 && current == null)
             {
                 return;
             }
 
-            float y = rect.y + __result;
-            if ((list.Count > 0 || current != null) && Widgets.ButtonText(new Rect(rect.x, y, rect.width, Text.LineHeight), "ClearResearchQueue".Translate()))
+            float y = rect.y + __result + 6f;
+            const float clearButtonHeight = 24f;
+            if (Widgets.ButtonText(new Rect(rect.x, y, rect.width, clearButtonHeight), "ClearResearchQueue".Translate()))
             {
-                // 清空队列并停止当前研究(StopProject 会经 StopProjectPatch 再次清队,为无害 no-op)
-                queue.ClearQueue(ResearchCategories.Of(project));
+                queue.ClearQueue(category);
                 if (current != null)
                 {
                     Find.ResearchManager.StopProject(current);
                 }
-                __result = y - rect.y + Text.LineHeight;
+                __result = y - rect.y + clearButtonHeight + 4f;
                 return;
             }
-            y += Text.LineHeight;
-            Widgets.Label(new Rect(rect.x, y, rect.width, Text.LineHeight), "CurrentResearchQueue".Translate());
-            y += Text.LineHeight;
-            // 队列包含当前研究(队首):单段绘制,进行中的项加粗 + 箭头标记。
-            foreach (ResearchProjectDef p in list)
+            y += clearButtonHeight + 4f;
+
+            KnowledgeCategoryDef vanillaCat = ResearchCategories.ToVanillaDef(category);
+            string header = (ModsConfig.AnomalyActive && vanillaCat != null)
+                ? "CurrentResearchQueueCategory".Translate(vanillaCat.LabelCap).ToString()
+                : "CurrentResearchQueue".Translate().ToString();
+            float headerHeight = Mathf.Max(Text.LineHeight, Text.CalcHeight(header, rect.width));
+            Widgets.Label(new Rect(rect.x, y, rect.width, headerHeight), header);
+            y += headerHeight + 2f;
+
+            ResearchProjectDef toRemove = null;
+            for (int i = 0; i < list.Count; i++)
             {
+                ResearchProjectDef p = list[i];
                 if (p == null)
                 {
                     continue;
                 }
-                string text = p == current
+                bool isCurrent = p == current;
+                string text = isCurrent
                     ? "<b>→ " + p.LabelCap + " (" + "InProgress".Translate() + ")</b>"
-                    : p.LabelCap;
-                Widgets.Label(new Rect(rect.x + 10f, y, rect.width - 10f, Text.LineHeight), text);
-                y += Text.LineHeight;
+                    : (i + 1) + ". " + p.LabelCap;
+                float textX = rect.x + 6f;
+                float removeReserve = isCurrent ? 0f : 22f;
+                float textWidth = Mathf.Max(40f, rect.width - 6f - removeReserve);
+                float rowHeight = Mathf.Max(Text.LineHeight, Text.CalcHeight(text, textWidth));
+                Widgets.Label(new Rect(textX, y, textWidth, rowHeight), text);
+                if (!isCurrent)
+                {
+                    Rect removeRect = new Rect(rect.xMax - 20f, y + (rowHeight - 18f) / 2f, 18f, 18f);
+                    TooltipHandler.TipRegion(removeRect, "ResearchQueueRemoveTip".Translate());
+                    if (Widgets.ButtonImage(removeRect, TexButton.CloseXSmall))
+                    {
+                        toRemove = p;
+                    }
+                }
+                y += rowHeight;
+
+                if (i == 0 && current == null && !p.CanStartNow)
+                {
+                    string waitText = "ResearchQueueWaitingCondition".Translate(ResearchQueueController.GetWaitingReason(p));
+                    float waitX = rect.x + 14f;
+                    float waitWidth = Mathf.Max(40f, rect.width - 14f);
+                    float waitHeight = Mathf.Max(Text.LineHeight, Text.CalcHeight(waitText, waitWidth));
+                    using (new TextBlock(ColoredText.SubtleGrayColor))
+                    {
+                        Widgets.Label(new Rect(waitX, y, waitWidth, waitHeight), waitText);
+                    }
+                    y += waitHeight;
+                }
+            }
+            if (toRemove != null)
+            {
+                ResearchQueueController.RemoveFromQueueAndAdvance(toRemove);
             }
             __result = y - rect.y;
         }

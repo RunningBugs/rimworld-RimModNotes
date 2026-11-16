@@ -1,3 +1,7 @@
+> 当前修复：1.7.4980 rev60，真实旧负/新正及Dubs右下角1.5倍验证通过。最新结果见本文件末节及维护工作区ime-4980/REPORT.md；前述4977/4979是历史证据。
+
+> **当前修复：2026-10-16，1.7.4979 rev109 候选框置顶已完成真实窗口遮挡、主菜单/地图、1/1.5缩放、Dubs右下角及输入/失焦回归。** 证据见本文最后一节及维护工作区 `ime-topmost/REPORT.md`；较早版本证据保留为历史。
+
 > 主代理游戏验证：`mod70-dubs-ibus-x11-v1`，进程/加载检查 通过，真实功能断言 通过。证据：`/home/lisanhu/mine/workspace/rimworld/tmp/update-1-7/testing/cases/mod70-dubs-ibus-x11-v1`。与原版基线相同的无窗口 0×0 分辨率错误不计作 MOD 新增错误。验证范围以断言及下文限制为准。
 
 > 主代理游戏验证：`mod70-ibus-x11-v5`，进程/加载检查 通过，真实功能断言 通过。证据：`/home/lisanhu/mine/workspace/rimworld/tmp/update-1-7/testing/cases/mod70-ibus-x11-v5`。与原版基线相同的无窗口 0×0 分辨率错误不计作 MOD 新增错误。验证范围以断言及下文限制为准。
@@ -90,3 +94,58 @@ v4 `mod70-ibus-x11-v4` 在等待真实Rime部署完成后，实际nihao→非空
 主代理实际GUI最终复核：mod70-ibus-x11-v5/ime-game-v5整个结果true，exit0(35.04s)、零ERROR（console与Player.log）；真实D-Bus/Rime候选5、nihao+Space提交你好、Shift+x为你好x、BackSpace回你好。Shift同一帧两物理边沿均真实到达IBus，未fake提交/焦点；HOME不改、物理用户.config映射项目夹具。部署3tasks成功之后9.5ms才发首键，UI/native焦点稳定1in/0out。其他platform/选区/candidate像素、Dubs GUI另列范围。
 
 实际Dubs GUI最终验证：ime-dubs-v1/mod70-dubs-ibus-x11-v1，全部输入/候选/真实Shift/退格与部署先后断言true、exit0、console零ERROR。field来源明确actual DubsMintMenus.DubGUI.InputField，不以只注册代替输入。Code/输入库不再修改；像素定位、选区、Wayland/SteamDeck以及每帧多次完整tap仍未覆盖。
+
+## 2026-10-16：1.7.4979 rev109 候选框被游戏窗口遮挡
+
+本节为新修复，前文 rev1248 证据保留历史版本标记。当前真实程序集快照为工作区 `ime-topmost/baseline/`，来源与哈希在 `ime-topmost/baseline.json`。已直接核对现装 `RimWorld.dll` 的 `ImguiDispatch.Dispatch`、`UnityStubs.dll` 的 `GUI.ProcessPendingWindows` 与绘制接口、`Waylith.UnityCompat.dll` 的 `UnityWorld.DispatchOnGUI`：GUI.depth仍排序MonoBehaviour，但全部OnGUI结束后才统一执行GUI.Window回调。旧独立候选renderer即使depth为-10000，也早于游戏窗口绘制。
+
+仅修改1.7 managed实现：移除独立GameObject/MonoBehaviour/depth路径，统一在公开 `GUI.ProcessPendingWindows` 的具体Harmony Postfix中完成最终焦点检查，再仅在Repaint绘制现有候选框。复用原候选数据、尺寸与锚点计算；显式设置完整UIScale矩阵（比例1也不继承最后窗口的矩阵），finally恢复matrix/color/font。最终keyboardControl已清空或转移时，即使该pass较早见过输入框，也清空候选锚点和组合状态，Reset/FocusOut各一次；中间pass仍由同一个有效TextEditor持焦时保留组合。旧版、native C/.so与IBus ABI不改，无新增依赖/Publicizer/内部引擎反射。
+
+暂存工程：工作区 `ime-topmost/stage/70-LinuxImeFix/`。隔离命令与记录：
+
+- `bash scripts/dotnet.sh restore <stage>/Tests/Unit/Unit.csproj --configfile .nuget/nuget.config`；`bash scripts/dotnet.sh build <stage>/Tests/Unit/Unit.csproj -c Release --no-restore`：0 warning / 0 error，产品 `1.7/Assemblies/LinuxImeFix.dll` SHA256 `d8571268dd9516e8458e38e82c546916d66368ffae93ce36ae8c5b44ecdff129`。日志 `ime-topmost/build/unit-restore.log`、`managed-build.log`。
+- `RW17_IME_TEST_ASSEMBLIES=<workspace>/ime-topmost/baseline bash scripts/dotnet.sh run --project <stage>/Tests/Unit/Unit.csproj -c Release --no-build --no-restore`：既有实际managed提交/按键/真实InputSystem modifier/Dubs元数据回归通过，新增实际TextEditor中间pass持焦、最终失焦/切换清空及重复调用不重置；Layout跳过绘制由Repaint guard/结构检查确认；native委托仅为进程内记录sink，不连接IBus。日志 `ime-topmost/build/unit-tests.log`。同一新回归替换为原产品DLL时严格失败于最终焦点锚点未清空（`focus-before.log`），之后恢复新DLL重跑通过；只替换了测试输出目录中的DLL。
+- `.venv/bin/python <stage>/Tests/1.7/source_invariant_tests.py`：15项结构检查通过，移除“负depth可证明置顶”的旧错误断言，日志 `ime-topmost/build/source-invariants.log`。结构检查不代表可视验证。
+- `Tests/1.7/Mod70Checks.cs` 更新为核对准确的最终窗口Postfix且没有独立renderer；旧两UIRoot目标不再冒充正确入口。独立checks构建结果在 `ime-topmost/build/checks-build.log`。
+
+### 本轮真实游戏结果（主代理完成）
+
+当前 **1.7.4979 rev109**；原版无窗口地图基线exit 0 / 18.14秒，仅原版0×0分辨率ERROR。以下图形进程均正常退出、无超时、console与Player.log无ERROR。真实Rime部署完成后才发首键，专用Xvfb/XTest、bwrap私有HOME/.config映射与/tmp、独立D-Bus/IBus，不注入候选、提交或native焦点。
+
+| 用例 | 场景 | 结果 |
+| --- | --- | --- |
+| [old-v2](/home/lisanhu/mine/workspace/rimworld/tmp/update-1-7/ime-topmost/testing/cases/old-v2/result.json) | 旧DLL负对照：地图Widgets，1倍 | exit 0 / 72.43s / 零ERROR |
+| [fixed](/home/lisanhu/mine/workspace/rimworld/tmp/update-1-7/ime-topmost/testing/cases/fixed/result.json) | 修复DLL：地图Widgets，1倍 | exit 0 / 79.13s / 零ERROR |
+| [menu-150-v3](/home/lisanhu/mine/workspace/rimworld/tmp/update-1-7/ime-topmost/testing/cases/menu-150-v3/result.json) | 修复DLL：主菜单Widgets，1.5倍 | exit 0 / 29.81s / 零ERROR |
+| [dubs-edge-150-v2](/home/lisanhu/mine/workspace/rimworld/tmp/update-1-7/ime-topmost/testing/cases/dubs-edge-150-v2/result.json) | 修复DLL：地图实际Dubs输入框，1.5倍右下角 | exit 0 / 116.17s / 零ERROR |
+
+所有四轮均真实nihao组合→Space提交“你好”→Shift切Latin+x得到“你好x”→Backspace回“你好”；组合中隐藏实际输入框后键盘/native焦点清空、候选锚点清空，Reset/FocusOut各一次；恢复输入框后用真实点击重获焦并重新组合。Dubs场景调用实际九参数InputField，没有替代上游stub。
+
+旧负对照候选选中行取样100%为不透明窗口底色、0%蓝色；修复后地图1倍蓝色97.21%、主菜单1.5倍97.44%，提交/失焦后0%蓝色且100%恢复底色；可重跑 `ime-topmost/scripts/check_pixels.py` 的负/正对照断言。已逐张查看原生候选截图：修复后全部五行位于窗口上方；Dubs右下角截图中候选向左夹入屏幕并在输入框上方显示，1600×1000内完整可见。量化结果 `ime-topmost/pixel-comparison.json`，完整输入/日志/截图索引 `ime-topmost/verification.json` 与 `ime-topmost/REPORT.md`。
+
+本轮运行时Harmony已是3.0.0-rc.3，实际0Harmony SHA与独立快照见 `ime-topmost/dependency-sha256.json`；编译仍固定原Lib.Harmony3.0.0-rc.2，其程序集引用同为3.0.0.0，当前真实加载/补丁及输入/图形用例通过，不冒称新旧包字节相同。没有复制Harmony或游戏程序集到产品。
+
+试验失败原样保留并明确不计通过：首轮Vulkan文件名、软件渲染自动退出超时、缩放低分辨率回退、公开GUI坐标与实际命中转换差异及窗口重居中导致的测试点击过期，均在最终fixture中修正；生产DLL自首次修复后始终为d8571268dd9516e8458e38e82c546916d66368ffae93ce36ae8c5b44ecdff129。额外第二次Shift切回中文的旧DLL试验未达目标，本轮仍不宣称该边界通过。自定义额外平移/旋转矩阵、原生Wayland/SteamDeck、完整选区/光标替换与候选鼠标选择不在本轮通过范围。
+
+
+> 2026-10-16 10:16补充：PID namespace图形测试曾把客体PID23误登记给宿主Steam，已经用户确认重启Steam清除状态，问题测试入口已暂停。Steam随后自动更新游戏至1.7.4980 rev60；上文验证属于4979 rev109，不代表新构建已复验。事件及恢复证据见维护工作区rimsort/process-review-20261016/review.json；MOD DLL未因此改动。
+
+## 2026-10-16：1.7.4980 rev60 热身调用者绕过候选绘制hook
+
+用户实际日志中IBus已连接、真实候选表有5项且visible=1、preedit可见并成功提交中文，但Repaint栈为RunPendingWindows→ImguiDispatch.Dispatch，没有旧ProcessPendingWindows补丁层。本轮只读比较4979/4980真实DLL：窗口顺序、事件rawType、窗口group退出和最终焦点处理没有相应语义变化；ProcessPendingWindows仍为14字节IL的小try/finally，实际Dispatch为480字节IL。
+
+工作区 `ime-4980/probe` 在真实4980 DLL和snapshot自带 `.NET 10.0.10-waylithclr.dev` 下，使用原版runtimeconfig及 `DOTNET_TieredCompilation=0` 复现：先热身真实Dispatch，再patch小方法；直接调用小方法postfix=1，已热身Dispatch的100次调用中小方法postfix=0。改patch实际Dispatch后100/100命中。默认tiered模式对照中小hook可命中100/100，说明先前冷/tiered成功不足以保证优化caller。此处记录明确的离线运行模式，不声称检查过用户进程内JIT状态。复现命令/原始结果为 `ime-4980/probe/README.md`、`waylith-product.log`、`system-optimized.log`、`waylith-default.log`；当前baseline来源和哈希见 `ime-4980/baseline.json`。
+
+最小新1.7修改：将唯一绘制/焦点Postfix移到精确 `RimWorldWaylith.Imgui.ImguiDispatch.Dispatch(Vector2,bool)`，用Harmony已有AccessTools解析，移除旧小方法hook，不新增renderer/依赖/Publicizer。Postfix每pass完成FrameEndRefresh，仅原始drawing参数为true才调用DrawCandidateWindow，后者继续要求Repaint。EndPass已恢复屏幕drawList并清空clip/groups，而frameActive/drawingEnabled到外层EndFrame才关闭，因此这里仍可追加候选绘制。实际候选Core的数据/位置/样式和native桥不改；最多三条新绘制诊断只含候选数量、矩形与UI缩放，不包含候选或提交文本。旧版本和native C/.so字节保留。
+
+产物 `1.7/Assemblies/LinuxImeFix.dll` SHA256 `af52a2a24ca4629064e3fdf2260d8b9198115f15b2d3e2617d48f5eb2fc574be`。固定原NuGet版本，`bash scripts/dotnet.sh build ime-4980/stage/70-LinuxImeFix/Tests/Unit/Unit.csproj -c Release --no-restore`、独立checks、离线Probe均0warning/0error。当前真实snapshot的有效managed回归通过，17项结构约束通过；日志在 `ime-4980/probe/product-build.log`、`product-unit.log`、`product-invariants.log`、`checks-build.log`。
+
+同一Waylith离线probe还用真实product hook类注册，验证FrameEndRefresh 100/100、Layout不进绘制、drawing=false而rawType=Repaint也不进绘制，实际drawing=true时生产Draw入口1次，NativeBridge.loadAttempted=false。真实CPU ImGui的GUI.Window先生成4个magenta顶点，测试专用Dispatch后置叠加4个blue顶点，8Vtx/12Idx中最后为blue；EndPass后frameActive/drawingEnabled=true、target=null、clip/groups=0。这证明调用边界和native命令顺序，**不代表生产候选Core/字体/像素或真实输入法已在本轮通过**。没有启动游戏、Bootstrap/EngineApplication.Run、Steam、IBus或图形设备；没有读取运行中游戏内存。
+
+主代理当前4980真实图形复核完成：`ime-4980/testing/ime-oldwarm2`旧负对照实际收到5项可见候选，候选截图蓝色0%/窗口底色100%，随后失焦清理也因旧hook未调用而失败（游戏正常退出）；`ime-newwarm`新补丁在同样全优化/当前快照中完整通过，五行候选覆盖窗口，蓝色97.21%，提交/隐藏后0%。实际输入nihao→Space你好、Shift+x→你好x、Backspace→你好，隐藏正在组合的字段后Reset/FocusOut各一次、物理重聚焦后重新组合全部通过，exit0 / 22.98秒。
+
+`ime-dubswarm2`使用真实DubsMintMenus九参数InputField、地图右下角、1.5倍UIScale、1920×1200；五行候选在输入框上方且向左夹入屏幕，物理矩形[1494,901.5,420,195]完整，蓝色97.47%、提交/隐藏后0%；同一完整输入/焦点断言通过，exit0 / 62.78秒。截图均已实际查看。两次分辨率不足导致UIScale回退的布局试验正常退出并排除，不为通过而改产品/断言。
+
+完整game均在新验证的独立user/pid/net/ipc/mnt namespace、Steam目录/runtime/shared memory隔离、私有tmp/Xvfb/D-Bus/IBus下执行；runner再次核对namespace，真实SteamManager.Initialized=false，原版缺Steam对话保留在probe下方。宿主Steam日志没有新增测试PID登记，先前两个不安全入口继续封禁。没有修改宿主IBus或用户配置/存档/Steam。当前console与Player.log无ERROR/Exception；菜单5条已归因警告，地图退出另有321条原生Persistent allocation警告（未输入候选的前一布局试验已有312条），保留原日志，本轮未定位这些警告，不声称零警告。完整记录`ime-4980/REPORT.md`、`verification.json`、`pixel-comparison.json`、`pixel-edge.json`、`steam-isolation-evidence.json`。
+
+完整备份与抽样恢复验证为`backups/update-1-7/20261016T041609Z-ime-4980`。当前DLL已由主代理受控回写真实本地MOD路径，source/Tests/记录与产物匹配；未提交/推送/上传。未覆盖原生Wayland/SteamDeck、完整选择区/光标/候选鼠标及任意597 MOD组合，未来beta私有Dispatch目标仍需重核。

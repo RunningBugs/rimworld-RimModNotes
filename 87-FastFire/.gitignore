@@ -1,0 +1,9 @@
+.build/
+.venv/
+**/bin/
+**/obj/
+dist/
+__pycache__/
+.pytest_cache/
+*.deps.json
+*.pdb

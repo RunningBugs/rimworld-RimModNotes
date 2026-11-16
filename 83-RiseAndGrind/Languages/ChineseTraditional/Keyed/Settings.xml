@@ -4,4 +4,6 @@
   <RAG_EnableVoice>播放催起床語音</RAG_EnableVoice>
   <RAG_PreviewVoice>試聽語音</RAG_PreviewVoice>
   <RAG_EnableVoiceTooltip>殖民者疲勞睡倒後被叫醒時，播放目前遊戲語言設定的語音。未設定語音的語言保持安靜。</RAG_EnableVoiceTooltip>
+  <RAG_PreventCollapse>阻止非精神崩潰時精疲力竭倒地</RAG_PreventCollapse>
+  <RAG_PreventCollapseTooltip>開啟後，非精神崩潰狀態下符合喚醒條件的殖民者不會因精力耗盡而突然倒地（精神崩潰狀態下仍會正常因精疲力竭倒地）。</RAG_PreventCollapseTooltip>
 </LanguageData>

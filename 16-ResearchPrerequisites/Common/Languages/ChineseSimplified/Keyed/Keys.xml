@@ -5,8 +5,14 @@
     <FinishProjectWithLetter>研究项目结束时以信件通知而非窗口</FinishProjectWithLetter>
     <FinishProjectWithLetterDesc>研究项目结束时以信件通知而非窗口,当DubsMintMenus激活时,这项设置将忽略</FinishProjectWithLetterDesc>
     <ResearchAddToQueue>加入研究队列</ResearchAddToQueue>
+    <ResearchRemoveFromQueue>移出研究队列</ResearchRemoveFromQueue>
     <ResearchJumpQueueFront>插队到队首</ResearchJumpQueueFront>
-    <ResearchQueueButtonTip>点击加入队尾;按住 Ctrl 点击插队到队首</ResearchQueueButtonTip>
+    <ResearchQueueButtonTip>点击加入研究队列（自动包含未完成前置）；按住 Ctrl 点击插队到队首</ResearchQueueButtonTip>
+    <ResearchQueueButtonInQueueTip>点击移出研究队列（含依赖此项目的排队项）；按住 Ctrl 点击插队到队首</ResearchQueueButtonInQueueTip>
     <CurrentResearchQueue>当前研究队列:</CurrentResearchQueue>
+    <CurrentResearchQueueCategory>当前研究队列 ({0}):</CurrentResearchQueueCategory>
     <ClearResearchQueue>清空研究队列</ClearResearchQueue>
+    <ResearchQueueWaitingCondition>等待条件：{0}</ResearchQueueWaitingCondition>
+    <ResearchQueueWaitingGeneric>条件未满足</ResearchQueueWaitingGeneric>
+    <ResearchQueueRemoveTip>从研究队列中移除（同时移除依赖此项的排队研究）</ResearchQueueRemoveTip>
 </LanguageData>

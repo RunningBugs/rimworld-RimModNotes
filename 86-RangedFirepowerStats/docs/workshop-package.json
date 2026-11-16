@@ -1,0 +1,93 @@
+{
+  "packageId": "RunningBugs.RangedFirepowerStats",
+  "publisherplus_equivalent": true,
+  "configuration": "_PublisherPlus.xml",
+  "files": [
+    {
+      "path": "1.7/Assemblies/RangedFirepowerStats.dll",
+      "bytes": 48640,
+      "sha256": "11575efefe507d7efa6117584dd50ccf5786288654db6317e728f4be23e59803"
+    },
+    {
+      "path": "About/01-Info-Page.jpg",
+      "bytes": 688287,
+      "sha256": "945903b05bb6bbfa12d869286ffad2198b1f99242dcfaa8e7acf1670361e1fd7"
+    },
+    {
+      "path": "About/02-Range-Table.jpg",
+      "bytes": 657098,
+      "sha256": "4da62261fb514d404c2f43c2b3c895cf44c05d2a1abd1fdddd90a9a5c77fb57a"
+    },
+    {
+      "path": "About/03-Precision-Link.jpg",
+      "bytes": 623789,
+      "sha256": "034d15036cf79a784607c8ec22adaa52050f4e7dda994ed64168a67cb787559a"
+    },
+    {
+      "path": "About/04-DPS-Comparison.jpg",
+      "bytes": 554243,
+      "sha256": "f96f210ae4013bb8bcf737bc8d5c588c66a7b402ec80822d1edb435b60837111"
+    },
+    {
+      "path": "About/05-DPS-Curves.jpg",
+      "bytes": 495191,
+      "sha256": "dd82bd8cdf78ecd1ee5f2686fe35c308408327763b04a8aab67b8d601590f9e8"
+    },
+    {
+      "path": "About/06-Accuracy-Curves.jpg",
+      "bytes": 491913,
+      "sha256": "ba4e79586c505aed9b6aa8b65744981254c9c895fb4f82ba02737baf407f9320"
+    },
+    {
+      "path": "About/About.xml",
+      "bytes": 3274,
+      "sha256": "ff66803ad23b5bf5596a5f624a28678026d7e642aa9c4c9c0879bff24adaf2c2"
+    },
+    {
+      "path": "About/Preview.png",
+      "bytes": 485800,
+      "sha256": "f3266819728366e444b41b12e7a42a4bf9bf33988c732ead845ae2f6133ae85f"
+    },
+    {
+      "path": "About/PublishedFileId.txt",
+      "bytes": 11,
+      "sha256": "478eccda816d0a7440d7b17a29937f23c1d864d6f5e2fe439f1f7fd1c93ce074"
+    },
+    {
+      "path": "Defs/Stats.xml",
+      "bytes": 9827,
+      "sha256": "ea4f2161ca2e28d00f4e711871f94a5888ad8ddcfea537730291ef3ecc928c37"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1065,
+      "sha256": "895b20070ce64b62f769c01ff582c4fac893fc8e5c0e1d990b84f8d6d81edba8"
+    },
+    {
+      "path": "Languages/ChineseSimplified/DefInjected/StatCategoryDef/Categories.xml",
+      "bytes": 145,
+      "sha256": "815f97178cdf3b3cb476d64b4230111f4135e4b74dbbd2d988998b19ac2a01c6"
+    },
+    {
+      "path": "Languages/ChineseSimplified/DefInjected/StatDef/Stats.xml",
+      "bytes": 4339,
+      "sha256": "d9ffe0b7396aa1419deedec28105fbe85e66c83ccfbb8dc754d6781c5d184a34"
+    },
+    {
+      "path": "Languages/ChineseSimplified/Keyed/Inspector.xml",
+      "bytes": 4548,
+      "sha256": "e0ce33d95279fa3feeb3daa00c406b6cd9c3c53e77c22dbfa4102ec38f8f3a84"
+    },
+    {
+      "path": "Languages/English/Keyed/Inspector.xml",
+      "bytes": 4640,
+      "sha256": "44ccb75df41fb5e1af09b728cd8879b6041d9b6be2a150912e56f1619704b1c1"
+    },
+    {
+      "path": "LoadFolders.xml",
+      "bytes": 102,
+      "sha256": "31a52fae84b77cca04b3824817e773978224ea5826b83b306b4927b65b7188e2"
+    }
+  ],
+  "bytes": 4072912
+}

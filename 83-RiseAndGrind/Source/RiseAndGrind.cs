@@ -12,10 +12,12 @@ namespace RiseAndGrind
     public sealed class Settings : ModSettings
     {
         public bool enableVoice = true;
+        public bool preventCollapseWhenNotInMentalState = false;
 
         public override void ExposeData()
         {
             Scribe_Values.Look(ref enableVoice, "enableVoice", true);
+            Scribe_Values.Look(ref preventCollapseWhenNotInMentalState, "preventCollapseWhenNotInMentalState", false);
             base.ExposeData();
         }
     }
@@ -38,6 +40,8 @@ namespace RiseAndGrind
             listing.Begin(inRect);
             listing.CheckboxLabeled("RAG_EnableVoice".Translate(), ref Settings.enableVoice,
                 "RAG_EnableVoiceTooltip".Translate());
+            listing.CheckboxLabeled("RAG_PreventCollapse".Translate(), ref Settings.preventCollapseWhenNotInMentalState,
+                "RAG_PreventCollapseTooltip".Translate());
             var voice = WakeVoicesDef.CurrentVoice;
             if (voice != null)
             {
@@ -99,10 +103,15 @@ namespace RiseAndGrind
             && !pawn.Drafted && !pawn.Deathresting && pawn.drafter != null
             && pawn.ageTracker.CurLifeStage.canVoluntarilySleep;
 
+        private static bool CanWakeBeforeCollapse(Pawn pawn) => pawn != null
+            && pawn.Spawned && pawn.IsColonist && (pawn.HostFaction == null || pawn.IsSlave)
+            && !pawn.Dead && !pawn.Downed && !pawn.Drafted && !pawn.Deathresting
+            && pawn.drafter != null && pawn.ageTracker.CurLifeStage.canVoluntarilySleep;
+
         public static void Prefix(Pawn ___pawn, out Check __state)
         {
-            // Collapse may recover a mental state. Remember eligibility before that happens.
-            __state = new Check { eligible = CanWake(___pawn), previousJob = ___pawn.CurJob };
+            // Collapse may recover a mental state; allow mental-state colonists in Prefix and require CanWake in Postfix.
+            __state = new Check { eligible = CanWakeBeforeCollapse(___pawn), previousJob = ___pawn.CurJob };
         }
 
         public static void Postfix(Pawn ___pawn, Check __state)
@@ -123,6 +132,21 @@ namespace RiseAndGrind
 
             if (RiseAndGrindMod.Settings.enableVoice)
                 WakeVoicesDef.CurrentVoice?.PlayOneShotOnCamera(___pawn.Map);
+        }
+    }
+
+    [HarmonyPatch(typeof(Need_Rest), "CanInvoluntarilySleep")]
+    public static class PreventExhaustionCollapse
+    {
+        public static bool Prefix(Pawn pawn, ref bool __result)
+        {
+            if (RiseAndGrindMod.Settings?.preventCollapseWhenNotInMentalState == true
+                && WakeOnExhaustion.CanWake(pawn))
+            {
+                __result = false;
+                return false;
+            }
+            return true;
         }
     }
 }

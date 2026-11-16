@@ -15,8 +15,13 @@ public static class Mod70Checks
  public const string PackageId="RunningBugs.LinuxImeFix";
  public static void Run(Map map)
  {
-  foreach(var target in new[] { AccessTools.Method(typeof(Widgets),nameof(Widgets.TextField),new[] { typeof(Rect),typeof(string) }), AccessTools.Method(typeof(Widgets),nameof(Widgets.TextArea),new[] { typeof(Rect),typeof(string),typeof(bool) }), AccessTools.Method(typeof(DevGUI),nameof(DevGUI.TextField),new[] { typeof(Rect),typeof(string) }), AccessTools.Method(typeof(UIRoot_Play),nameof(UIRoot_Play.UIRootOnGUI)), AccessTools.Method(typeof(UIRoot_Entry),nameof(UIRoot_Entry.UIRootOnGUI)) })
+  foreach(var target in new[] { AccessTools.Method(typeof(Widgets),nameof(Widgets.TextField),new[] { typeof(Rect),typeof(string) }), AccessTools.Method(typeof(Widgets),nameof(Widgets.TextArea),new[] { typeof(Rect),typeof(string),typeof(bool) }), AccessTools.Method(typeof(DevGUI),nameof(DevGUI.TextField),new[] { typeof(Rect),typeof(string) }) })
    if(Harmony.GetPatchInfo(target)?.Owners.Contains("com.RunningBugs.LinuxImeFix")!=true) throw new Exception("Mod70: concrete text/focus target not patched: "+target);
+  var overlay=AccessTools.TypeByName("LinuxImeFix.ImguiDispatch_Dispatch_Patch");
+  var pending=AccessTools.Method(AccessTools.TypeByName("RimWorldWaylith.Imgui.ImguiDispatch"),"Dispatch",new[] { typeof(Vector2),typeof(bool) });
+  if(overlay==null || Harmony.GetPatchInfo(pending)?.Postfixes.Count(p=>p.owner=="com.RunningBugs.LinuxImeFix" && p.PatchMethod.DeclaringType==overlay && p.PatchMethod.Name=="Postfix")!=1
+   || AccessTools.TypeByName("LinuxImeFix.CandidateWindowRenderer")!=null || AccessTools.TypeByName("LinuxImeFix.GUI_ProcessPendingWindows_Patch")!=null)
+   throw new Exception("Mod70: require one specific final-window postfix and no independent candidate renderer");
   var native=AccessTools.TypeByName("LinuxImeFix.NativeBridge");
   var dubs=AccessTools.TypeByName("DubsMintMenus.DubGUI");
   var optional=AccessTools.TypeByName("LinuxImeFix.DubsMintMenus_InputField_Patch");

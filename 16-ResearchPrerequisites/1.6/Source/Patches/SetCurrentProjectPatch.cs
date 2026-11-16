@@ -18,7 +18,17 @@ namespace ResearchPrerequisites
             {
                 return;
             }
-            ResearchQueue.Instance?.MoveToHead(proj);
+            if (!Find.ResearchManager.IsCurrentProject(proj))
+            {
+                return;
+            }
+            ResearchQueue queue = ResearchQueue.Instance;
+            if (queue == null)
+            {
+                return;
+            }
+            queue.MoveToHead(proj);
+            queue.SetLastAttemptedHead(ResearchCategories.Of(proj), proj);
         }
     }
 }

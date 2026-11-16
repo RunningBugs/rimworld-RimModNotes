@@ -1,0 +1,13 @@
+{
+  "verified": true,
+  "publisherplus_configuration": "_PublisherPlus.xml",
+  "publisherplus_semantics": "OrdinalIgnoreCase relative path prefix; configuration file always omitted",
+  "files_equal": true,
+  "sha256_equal": true,
+  "files": 17,
+  "bytes": 4072912,
+  "dist_excluded_from_publisherplus": true,
+  "dist_gitignored": true,
+  "published_file_id": 3838056458,
+  "remote_bytes_equal": true
+}

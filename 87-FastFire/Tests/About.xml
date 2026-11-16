@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>FastFire integration checks</name>
+  <author>RunningBugs</author>
+  <packageId>local.fastfire.tests</packageId>
+  <supportedVersions><li>1.7</li></supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>RunningBugs.FastFire</packageId>
+      <displayName>Fast Fire</displayName>
+    </li>
+  </modDependencies>
+  <loadAfter><li>RunningBugs.FastFire</li></loadAfter>
+</ModMetaData>

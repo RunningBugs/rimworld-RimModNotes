@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>RangedFirepowerStats integration checks</name>
+  <author>RunningBugs</author>
+  <packageId>local.rangedfirepowerstats.tests</packageId>
+  <supportedVersions><li>1.7</li></supportedVersions>
+  <modDependencies><li><packageId>RunningBugs.RangedFirepowerStats</packageId><displayName>RangedFirepowerStats</displayName></li></modDependencies>
+  <loadAfter><li>RunningBugs.RangedFirepowerStats</li></loadAfter>
+</ModMetaData>

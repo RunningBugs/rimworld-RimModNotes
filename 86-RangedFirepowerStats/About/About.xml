@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>远程火力数据 Ranged Firepower Stats</name>
+  <author>RunningBugs</author>
+  <packageId>RunningBugs.RangedFirepowerStats</packageId>
+  <supportedVersions><li>1.7</li></supportedVersions>
+  <modDependencies>
+    <li><packageId>brrainz.harmony</packageId><displayName>Harmony</displayName><steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl></li>
+  </modDependencies>
+  <loadAfter><li>brrainz.harmony</li></loadAfter>
+  <description>适用于 RimWorld 1.7，需要 Harmony。射击专家对比需要 Ideology。
+由 GPT-6 和 CODEX 制作。
+
+独立的远程 DPS 信息模组：武器理论最大/期望 DPS、小人实际属性 DPS、炮塔 DPS 与每单位弹药资源的伤害。根据武器实例的预热、冷却、连发数量与两发间隔计算，计入射手的瞄准时间、远程冷却倍率，以及 1.7 随镜头变化的射击检查间隔。
+
+所有本模组属性集中在独立的“远程火力数据”分类，方便与原版战斗数据分开查看。
+
+增加射击专家、射击专家＋乱开枪对比。计算只读，不改变小人的信仰、职位或特性。原版乱开枪特性的射击精度惩罚同样参与计算。
+
+选择持枪小人或炮塔，点击“DPS 逐格表”；也可以从信息卡底部打开。表格显示每一格距离的命中率和 DPS，使用当前小人的属性和当前天气，可切换目标是否有屋顶，并可查看真实目标的原版射击报告结果。武器信息卡可选择地图上的小人进行比较。
+
+表格旁的“查看折线图”链接会打开独立窗口，可切换命中率/期望 DPS，并通过鼠标悬停查看三种情景的逐格数值。信息卡的 DPS 与原版射击精度说明后也提供图表链接。
+
+数值为持续射击的护甲前主伤害估算，不含寻找目标、换弹、搬运弹药与其他工作延迟。无射手的武器属性以理想命中精度作比较。爆炸、强制散布及特殊射击的单目标期望值取决于具体射击机制。
+
+MIT 开源：https://github.com/lisanhu/rimworld-RimModNotes.git
+
+For RimWorld 1.7. Requires Harmony; specialist comparisons require Ideology.
+Made with GPT-6 and CODEX.
+
+Standalone ranged DPS statistics for weapons, pawns and turrets, including damage per ammunition resource. Uses actual weapon burst count, burst interval, warmup, cooldown, shooter aiming delay and ranged cooldown factor. Adds shooting specialist and specialist + trigger-happy comparisons without changing pawns.
+
+Open the per-cell table from an armed pawn/turret gizmo or an info card. Compare current pawn stats under current weather, target roof conditions and a selected real target. Weapon cards can choose a map pawn. Values estimate sustained pre-armor primary damage; ammunition work, target acquisition and extra damage effects are excluded. Single-target expectations for explosions, forced scatter and special attacks depend on their specific mechanics.
+
+All added stats are grouped under a separate Ranged Firepower Stats category. Links beside the table and after info-card precision tables open a line-chart window, with accuracy/DPS modes and per-distance hover values.
+
+Published under MIT.</description>
+</ModMetaData>

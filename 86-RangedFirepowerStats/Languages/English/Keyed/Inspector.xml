@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <RFS_Title>Ranged Firepower Stats — DPS by range</RFS_Title>
+  <RFS_Open>DPS range table</RFS_Open>
+  <RFS_OpenDescription>Compare sustained ranged damage using this pawn's current stats and weather.</RFS_OpenDescription>
+  <RFS_Current>Current</RFS_Current>
+  <RFS_Specialist>Shooting specialist</RFS_Specialist>
+  <RFS_SpecialistTriggerHappy>Specialist + trigger-happy</RFS_SpecialistTriggerHappy>
+  <RFS_Unavailable>N/A</RFS_Unavailable>
+  <RFS_AtRange>{0} cells</RFS_AtRange>
+  <RFS_Cycle>{0} × {1} shots / ({2} aim + {3} burst + {4} cooldown + {5} scheduling ticks) × 60 = {6} DPS (attack check: {7} ticks)</RFS_Cycle>
+  <RFS_Interval>Nominal inter-shot interval: {0} ticks (verb value: {1}). Pawn stance/equipment tick ordering shortens the first gap by one tick; later gaps have a one-tick minimum.</RFS_Interval>
+  <RFS_IdealShooter>No pawn: ideal shooter accuracy, normal aim 100%, specialist aim from loaded role/trait defs. Trigger-happy accuracy penalties require choosing a real pawn.</RFS_IdealShooter>
+  <RFS_StandardConditions>Current equipment, health, genes, skills and stats; standard standing body-size-1 target, clear weather, no cover/smoke. Open the table for current weather.</RFS_StandardConditions>
+  <RFS_TableAssumptions>Standard standing body-size-1 target; current weather and shooter stats. No cover, smoke, armor or darkness offsets in this distance-only table. The selected-target row uses vanilla ShotReport for its actual position.</RFS_TableAssumptions>
+  <RFS_Limitations>Primary pre-armor damage; no acquisition, rearming or extra damage. Includes 1.7 attack-check cadence (camera-dependent). Pawn first-gap overlap: −1 tick; later gaps ≥1 tick.</RFS_Limitations>
+  <RFS_TurretTiming>Turret timing uses mean warmup plus cooldown and burst gaps. Excludes the up-to-14-tick target scan wait and ammunition work; sustained potential, not measured wall-clock DPS.</RFS_TurretTiming>
+  <RFS_Unsupported>Exact single-target expectations depend on explosion, scatter and projectile mechanics. Available primary burst damage is shown separately.</RFS_Unsupported>
+  <RFS_Fuel>Maximum primary damage per ammunition resource: {0}. Uses fuel multiplier and fuel consumed per shot/burst.</RFS_Fuel>
+  <RFS_OpenHint>Use the DPS range table button at the bottom of this card for a comparison table.</RFS_OpenHint>
+  <RFS_StatRow>{0} cells: {1} ({2} hit)</RFS_StatRow>
+  <RFS_NoMap>no map — clear reference</RFS_NoMap>
+  <RFS_IdealOption>Ideal shooter (no pawn)</RFS_IdealOption>
+  <RFS_Weather>Weather: {0}; accuracy ×{1}</RFS_Weather>
+  <RFS_Distance>Cells</RFS_Distance>
+  <RFS_Hit>Hit</RFS_Hit>
+  <RFS_Shooter>Shooter: {0}</RFS_Shooter>
+  <RFS_Weapon>Weapon: {0}</RFS_Weapon>
+  <RFS_TargetRoof>Standard target is roofed</RFS_TargetRoof>
+  <RFS_Refresh>Refresh</RFS_Refresh>
+  <RFS_Copy>Copy table</RFS_Copy>
+  <RFS_Copied>DPS table copied (tab-separated).</RFS_Copied>
+  <RFS_ClearTarget>Clear selected target</RFS_ClearTarget>
+  <RFS_SelectTarget>Select real target</RFS_SelectTarget>
+  <RFS_TargetHint>Optional: choose a map pawn for a vanilla ShotReport estimate, including cover, smoke, body size, posture and darkness. Values below remain the standard distance comparison.</RFS_TargetHint>
+  <RFS_Column>Hit chance                  DPS</RFS_Column>
+  <RFS_NeedIdeology>Enable Ideology to compare shooting specialists.</RFS_NeedIdeology>
+  <RFS_GraphOpen>View line chart</RFS_GraphOpen>
+  <RFS_GraphTitle>Ranged Firepower Stats — Range curves</RFS_GraphTitle>
+  <RFS_GraphLinkName>accuracy / DPS line chart</RFS_GraphLinkName>
+  <RFS_ShooterGraphLinkName>shooting accuracy line chart</RFS_ShooterGraphLinkName>
+  <RFS_GraphDps>Expected DPS</RFS_GraphDps>
+  <RFS_GraphHit>Hit chance</RFS_GraphHit>
+  <RFS_GraphShooter>Shooter accuracy factor</RFS_GraphShooter>
+  <RFS_GraphHover>Hover over the plot to inspect the values at each distance.</RFS_GraphHover>
+  <RFS_GraphHoverRow>{0}: {1} hit, {2} DPS</RFS_GraphHoverRow>
+  <RFS_GraphReference>Clear-weather reference, matching the info-card distance table. DPS is primary damage before armor.</RFS_GraphReference>
+  <RFS_GraphSnapshot>Same snapshot as the range table. Standing body-size-1 target, {0}; no cover, smoke, armor or darkness offsets. DPS is primary damage before armor.</RFS_GraphSnapshot>
+  <RFS_GraphRoofed>roofed target</RFS_GraphRoofed>
+  <RFS_GraphUnroofed>unroofed target</RFS_GraphUnroofed>
+  <RFS_GraphShooterNote>Shooter accuracy only, matching the native accuracy table. Weapon accuracy, target conditions and weather are excluded.</RFS_GraphShooterNote>
+</LanguageData>

@@ -1,3 +1,14 @@
 .zcode/
 sim/__pycache__/
 sim/out/
+.vs/
+.vscode/
+**/bin/
+**/obj/
+.build/
+.venv/
+__pycache__/
+.pytest_cache/
+*.deps.json
+*.pdb
+dist/

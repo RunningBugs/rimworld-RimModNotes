@@ -5,8 +5,14 @@
     <FinishProjectWithLetter>Send a Letter to inform finishing project instead of a window</FinishProjectWithLetter>
     <FinishProjectWithLetterDesc>Send a Letter to inform finishing project instead of a window. This option will be ignored if DubsMintMenus mod is active.</FinishProjectWithLetterDesc>
     <ResearchAddToQueue>Add to research queue</ResearchAddToQueue>
+    <ResearchRemoveFromQueue>Remove from queue</ResearchRemoveFromQueue>
     <ResearchJumpQueueFront>Jump to queue front</ResearchJumpQueueFront>
-    <ResearchQueueButtonTip>Click to append to queue; hold Ctrl and click to jump to the front</ResearchQueueButtonTip>
+    <ResearchQueueButtonTip>Click to append to queue (with unfinished prerequisites); hold Ctrl and click to jump to the front</ResearchQueueButtonTip>
+    <ResearchQueueButtonInQueueTip>Click to remove from queue (along with queued dependents); hold Ctrl and click to jump to the front</ResearchQueueButtonInQueueTip>
     <CurrentResearchQueue>Current research queue:</CurrentResearchQueue>
+    <CurrentResearchQueueCategory>Current research queue ({0}):</CurrentResearchQueueCategory>
     <ClearResearchQueue>Clear research queue</ClearResearchQueue>
+    <ResearchQueueWaitingCondition>Waiting: {0}</ResearchQueueWaitingCondition>
+    <ResearchQueueWaitingGeneric>requirements not met</ResearchQueueWaitingGeneric>
+    <ResearchQueueRemoveTip>Remove from research queue (along with queued projects that depend on it)</ResearchQueueRemoveTip>
 </LanguageData>

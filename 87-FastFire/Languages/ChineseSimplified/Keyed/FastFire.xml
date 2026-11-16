@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <FastFire_SettingsCategory>Fast Fire 火焰性能优化</FastFire_SettingsCategory>
+  <FastFire_ModeSection>运行模式（支持局内即时无损切换）</FastFire_ModeSection>
+  <FastFire_Mode_ExtremeGrid>极限性能模式（网格引擎 · 推荐）</FastFire_Mode_ExtremeGrid>
+  <FastFire_Mode_ExtremeGridDesc>地面静火由紧凑内存网格直接仿真，殖民者/AI 仅在需要目标交互时按需物化代理火苗；附着在角色身上的火焰保持原版。内存、存档和暴雨批量灭火速度最快。</FastFire_Mode_ExtremeGridDesc>
+  <FastFire_Mode_Compatible>兼容模式（实体管线解耦）</FastFire_Mode_Compatible>
+  <FastFire_Mode_CompatibleDesc>保留全图所有地面 Fire 实体，同时剥离单火光照、逐火绘制、寻路震荡、逐火音效和 TickList 开销，适合搭配重度魔改火焰的第三方模组。</FastFire_Mode_CompatibleDesc>
+  <FastFire_Mode_Vanilla>原版对照模式（仅用于性能测试对比）</FastFire_Mode_Vanilla>
+  <FastFire_Mode_VanillaDesc>临时关闭本模组全部优化，恢复原版每朵火苗独立运作的行为，方便测试同一场景下开启前后的 TPS / FPS 差距。</FastFire_Mode_VanillaDesc>
+
+  <FastFire_ModulesSection>优化子系统开关</FastFire_ModulesSection>
+  <FastFire_EnableClusterLighting>区块聚合光照（4×4 分块共享光源）</FastFire_EnableClusterLighting>
+  <FastFire_EnableClusterLightingDesc>将每朵火苗的独立 CompGlower 合并为 4×4 区块共享光源，消除 GlowGrid 计算风暴与光照网格反复重建。</FastFire_EnableClusterLightingDesc>
+  <FastFire_EnableBatchedRendering>合批渲染与粒子节流</FastFire_EnableBatchedRendering>
+  <FastFire_EnableBatchedRenderingDesc>脱离 DynamicDrawManager，仅对视野内可见火焰做合批/GPU Instancing 绘制，并在大量火焰时节流多余 FireGlow 粒子。</FastFire_EnableBatchedRenderingDesc>
+  <FastFire_EnablePathingDebounce>寻路代价位图与合并防抖</FastFire_EnablePathingDebounce>
+  <FastFire_EnablePathingDebounceDesc>使用 O(1) 位图统计邻近火苗寻路惩罚，并每 15 tick 合并批量刷新 PathFinder，防止大火蔓延时每帧整图重建寻路网格。</FastFire_EnablePathingDebounceDesc>
+  <FastFire_EnableAudioAggregation>镜头周边聚合音效</FastFire_EnableAudioAggregation>
+  <FastFire_EnableAudioAggregationDesc>取消全图上万朵火苗每 tick 维持与每帧求体积和，仅在镜头周围维护最多 4 个区域聚合火焰声源。</FastFire_EnableAudioAggregationDesc>
+  <FastFire_EnableAiSpatialAccel>AI / 警报 / 融雪 / 易燃度缓存加速</FastFire_EnableAiSpatialAccel>
+  <FastFire_EnableAiSpatialAccelDesc>使用区块密度加速野生动物避火、居家火警、火险统计与灭火搜索；无雪地图跳过 89 格融雪扫描并缓存静态物易燃度。</FastFire_EnableAiSpatialAccelDesc>
+
+  <FastFire_DebugCountLabel>调试生成目标火焰数：{0}</FastFire_DebugCountLabel>
+  <FastFire_DebugSpawnedMsg>已生成 {0} 朵大小随机的火焰（当前地图总火数：{1}，模式：{2}，耗时：{3} ms）</FastFire_DebugSpawnedMsg>
+  <FastFire_DebugClearedMsg>已清除当前地图全部 {0} 朵火焰</FastFire_DebugClearedMsg>
+  <FastFire_FireLabel>火</FastFire_FireLabel>
+  <FastFire_BurningStatus>正在燃烧 ({0}%)</FastFire_BurningStatus>
+</LanguageData>

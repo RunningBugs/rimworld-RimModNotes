@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using RimWorld;
 using Verse;
+using Verse.Sound;
 
 namespace ResearchPrerequisites
 {
@@ -37,7 +39,7 @@ namespace ResearchPrerequisites
             {
                 return cachedDefsWithMissingMemes;
             }
-            if (Faction.OfPlayer.ideos?.PrimaryIdeo == null)
+            if (Find.World == null || Faction.OfPlayerSilentFail?.ideos?.PrimaryIdeo == null)
             {
                 return cachedDefsWithMissingMemes;
             }
@@ -67,8 +69,12 @@ namespace ResearchPrerequisites
             return cachedDefsWithMissingMemes;
         }
 
-        private static void DoBeginResearch(ResearchProjectDef projectToStart)
+        private static void DoBeginResearch(ResearchProjectDef projectToStart, bool playStartSound)
         {
+            if (playStartSound)
+            {
+                SoundDefOf.ResearchStart.PlayOneShotOnCamera();
+            }
             Find.ResearchManager.SetCurrentProject(projectToStart);
             TutorSystem.Notify_Event("StartResearchProject");
             if ((!ModsConfig.AnomalyActive || ResearchCategories.Of(projectToStart) == ResearchCategory.Normal) && !ColonistsHaveResearchBench)
@@ -77,16 +83,21 @@ namespace ResearchPrerequisites
             }
         }
 
-        public static void AttemptBeginResearch(ResearchProjectDef projectToStart)
+        public static void AttemptBeginResearch(
+            ResearchProjectDef projectToStart,
+            Action beforeBegin = null,
+            bool playStartSound = false,
+            ResearchCategory? expectedAutoStartCategory = null)
         {
-            if (projectToStart == null)
+            if (projectToStart == null || projectToStart.IsFinished || !projectToStart.CanStartNow)
             {
                 return;
             }
             List<(BuildableDef, List<string>)> list = ComputeUnlockedDefsThatHaveMissingMemes(projectToStart);
             if (!list.Any())
             {
-                DoBeginResearch(projectToStart);
+                beforeBegin?.Invoke();
+                DoBeginResearch(projectToStart, playStartSound);
                 return;
             }
             StringBuilder stringBuilder = new StringBuilder();
@@ -99,18 +110,40 @@ namespace ResearchPrerequisites
                     .Append(items.ToCommaList())
                     .Append(")");
             }
+            SoundDefOf.Tick_Low.PlayOneShotOnCamera();
             Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation(stringBuilder.ToString(), delegate
             {
-                DoBeginResearch(projectToStart);
+                if (projectToStart.IsFinished || !projectToStart.CanStartNow)
+                {
+                    return;
+                }
+                if (expectedAutoStartCategory.HasValue)
+                {
+                    ResearchQueue q = ResearchQueue.Instance;
+                    ResearchCategory expectedCat = expectedAutoStartCategory.Value;
+                    if (q == null || q.PeekHead(expectedCat) != projectToStart)
+                    {
+                        return;
+                    }
+                    if (Find.ResearchManager.GetProject(ResearchCategories.ToVanillaDef(expectedCat)) != null)
+                    {
+                        return;
+                    }
+                }
+                beforeBegin?.Invoke();
+                DoBeginResearch(projectToStart, playStartSound);
             }));
         }
 
-        /// <summary>
-        /// 每个知识类别上次实际尝试启动的队首,按 ResearchCategory 枚举值索引。
-        /// 玩家在 meme 确认弹窗取消后,同一队首不再每 tick 重复弹窗,
-        /// 直到队首变化(完成/入队/插队/清空)才恢复自动尝试。
-        /// </summary>
-        private static readonly ResearchProjectDef[] LastAttemptedHead = new ResearchProjectDef[ResearchCategories.Count];
+        public static void AdvanceAllActiveCategories()
+        {
+            AdvanceCategory(ResearchCategory.Normal);
+            if (ModsConfig.AnomalyActive)
+            {
+                AdvanceCategory(ResearchCategory.AnomalyBasic);
+                AdvanceCategory(ResearchCategory.AnomalyAdvanced);
+            }
+        }
 
         /// <summary>
         /// 推进一个类别:槽位被占用则自愈"当前研究 = 队首"不变量;
@@ -119,7 +152,7 @@ namespace ResearchPrerequisites
         /// </summary>
         public static void AdvanceCategory(ResearchCategory category)
         {
-            if (category != ResearchCategory.Normal && !ModsConfig.AnomalyActive)
+            if (!ResearchCategories.IsActive(category))
             {
                 return;
             }
@@ -136,13 +169,13 @@ namespace ResearchPrerequisites
                 {
                     queue.MoveToHead(current);
                 }
-                LastAttemptedHead[(int)category] = current;
+                queue.SetLastAttemptedHead(category, current);
                 return;
             }
             ResearchProjectDef head = queue.PeekHead(category);
             if (head == null)
             {
-                LastAttemptedHead[(int)category] = null;
+                queue.SetLastAttemptedHead(category, null);
                 return;
             }
             if (!head.CanStartNow)
@@ -150,20 +183,64 @@ namespace ResearchPrerequisites
                 // 队首卡住:保留队列等待,不记录,解锁后自动启动。
                 return;
             }
-            if (LastAttemptedHead[(int)category] == head)
+            if (queue.GetLastAttemptedHead(category) == head)
             {
-                // 已尝试过且被玩家取消,等待队首变化。
+                // 已尝试过且被玩家取消,等待队列变化或显式操作。
                 return;
             }
-            LastAttemptedHead[(int)category] = head;
-            AttemptBeginResearch(head);
+            queue.SetLastAttemptedHead(category, head);
+            AttemptBeginResearch(head, playStartSound: false, expectedAutoStartCategory: category);
         }
 
         /// <summary>
-        /// 插队到队首并尽快启动:将项目及其未完成的前置整体插到队首,
-        /// 链首可开始则立即开始。被挤下的当前研究留在队列中
-        /// (进度由原版按项目保存),之后按队列顺序自动恢复。
-        /// 可立即开始的项目其前置链就是自身,本入口涵盖全部插队场景。
+        /// 将项目及其未完成前置按类别加入各自队尾，并立即尝试推进空闲类别。
+        /// 显式点击入队时清除对应空闲类别的弹窗取消屏蔽，以便玩家重新确认。
+        /// </summary>
+        public static void EnqueueAndAdvance(ResearchProjectDef project)
+        {
+            ResearchQueue queue = ResearchQueue.Instance;
+            if (queue == null || project == null)
+            {
+                return;
+            }
+            List<ResearchProjectDef> chain = ResearchQueue.CollectDependencyChain(project);
+            if (chain.Count == 0)
+            {
+                return;
+            }
+            queue.Enqueue(project);
+            for (int c = 0; c < ResearchCategories.Count; c++)
+            {
+                ResearchCategory cat = (ResearchCategory)c;
+                if (!ResearchCategories.IsActive(cat))
+                {
+                    continue;
+                }
+                if (Find.ResearchManager.GetProject(ResearchCategories.ToVanillaDef(cat)) == null)
+                {
+                    queue.ClearLastAttemptedHead(cat);
+                }
+            }
+            AdvanceAllActiveCategories();
+        }
+
+        public static void RemoveFromQueueAndAdvance(ResearchProjectDef project)
+        {
+            ResearchQueue queue = ResearchQueue.Instance;
+            if (queue == null || project == null)
+            {
+                return;
+            }
+            if (queue.RemoveFromQueue(project))
+            {
+                AdvanceAllActiveCategories();
+            }
+        }
+
+        /// <summary>
+        /// 插队到队首并尽快启动:将项目及其未完成前置按各自类别拆链插队。
+        /// 链首可开始时直接抢占并启动(若有缺失模因确认弹窗，则先确认再抢占队列与当前研究，取消时不破坏原队列)；
+        /// 链首暂不可开始且当前研究正在进行时，把插队链插在当前研究之后立即待命。
         /// </summary>
         public static void JumpChainToFrontAndStart(ResearchProjectDef project)
         {
@@ -172,21 +249,121 @@ namespace ResearchPrerequisites
             {
                 return;
             }
-            ResearchCategory category = ResearchCategories.Of(project);
-            queue.JumpChainToFront(project);
-            ResearchProjectDef head = queue.PeekHead(category);
-            if (head == null || !head.CanStartNow)
+            List<ResearchProjectDef> chain = ResearchQueue.CollectDependencyChain(project);
+            if (chain.Count == 0)
             {
-                // 链上暂无可开始项目(如缺科技印花/研究台),链已排在队首待命。
                 return;
             }
-            if (Find.ResearchManager.GetProject(ResearchCategories.ToVanillaDef(category)) == head)
+            for (int c = 0; c < ResearchCategories.Count; c++)
             {
-                // 链首已在研究中,无需动作。
-                return;
+                ResearchCategory cat = (ResearchCategory)c;
+                if (!ResearchCategories.IsActive(cat))
+                {
+                    continue;
+                }
+                List<ResearchProjectDef> slice = ResearchQueue.ExtractCategorySlice(chain, cat);
+                if (slice.Count == 0)
+                {
+                    continue;
+                }
+                ResearchProjectDef head = slice[0];
+                ResearchProjectDef current = Find.ResearchManager.GetProject(ResearchCategories.ToVanillaDef(cat));
+                if (current == head)
+                {
+                    queue.JumpCategorySliceToFront(cat, slice);
+                    queue.SetLastAttemptedHead(cat, head);
+                    continue;
+                }
+                if (head.CanStartNow)
+                {
+                    List<ResearchProjectDef> capturedSlice = slice;
+                    ResearchCategory capturedCat = cat;
+                    ResearchProjectDef capturedHead = head;
+                    AttemptBeginResearch(
+                        capturedHead,
+                        beforeBegin: delegate
+                        {
+                            queue.JumpCategorySliceToFront(capturedCat, capturedSlice);
+                            queue.SetLastAttemptedHead(capturedCat, capturedHead);
+                        },
+                        playStartSound: true);
+                }
+                else if (current == null)
+                {
+                    queue.JumpCategorySliceToFront(cat, slice);
+                    queue.ClearLastAttemptedHead(cat);
+                }
+                else
+                {
+                    queue.InsertCategorySliceAfterCurrent(cat, current, slice);
+                }
             }
-            LastAttemptedHead[(int)category] = head;
-            AttemptBeginResearch(head);
+        }
+
+        public static string GetWaitingReason(ResearchProjectDef project)
+        {
+            if (project == null)
+            {
+                return string.Empty;
+            }
+            if (!project.PrerequisitesCompleted)
+            {
+                List<string> missing = new List<string>();
+                if (project.prerequisites != null)
+                {
+                    for (int i = 0; i < project.prerequisites.Count; i++)
+                    {
+                        ResearchProjectDef prereq = project.prerequisites[i];
+                        if (prereq != null && !prereq.IsFinished)
+                        {
+                            missing.Add(prereq.LabelCap);
+                        }
+                    }
+                }
+                if (project.hiddenPrerequisites != null)
+                {
+                    for (int i = 0; i < project.hiddenPrerequisites.Count; i++)
+                    {
+                        ResearchProjectDef prereq = project.hiddenPrerequisites[i];
+                        if (prereq != null && !prereq.IsFinished && !prereq.IsHidden)
+                        {
+                            missing.Add(prereq.LabelCap);
+                        }
+                    }
+                }
+                return missing.Count > 0
+                    ? "PrerequisitesNotCompleted".Translate() + " (" + missing.ToCommaList() + ")"
+                    : "PrerequisitesNotCompleted".Translate().ToString();
+            }
+            if (!project.TechprintRequirementMet)
+            {
+                return "InsufficientTechprintsApplied".Translate(project.TechprintsApplied, project.TechprintCount);
+            }
+            if ((!ModsConfig.AnomalyActive || project.knowledgeCategory == null) && !project.PlayerHasAnyAppropriateResearchBench)
+            {
+                return "MissingRequiredResearchFacilities".Translate();
+            }
+            if (project.requiredResearchBuilding != null && !project.PlayerHasAnyAppropriateResearchBench)
+            {
+                return "MissingRequiredResearchFacilities".Translate();
+            }
+            if (!project.PlayerMechanitorRequirementMet)
+            {
+                return "MissingRequiredMechanitor".Translate();
+            }
+            if (!project.InspectionRequirementsMet)
+            {
+                return "MissingGravEngineInspection".Translate();
+            }
+            if (!project.AnalyzedThingsRequirementsMet && project.requiredAnalyzed != null && project.requiredAnalyzed.Count > 0)
+            {
+                return "NotStudied".Translate(project.requiredAnalyzed[0].LabelCap);
+            }
+            if (project.IsHidden)
+            {
+                return "UnknownResearch".Translate();
+            }
+            return "ResearchQueueWaitingGeneric".Translate();
         }
     }
 }

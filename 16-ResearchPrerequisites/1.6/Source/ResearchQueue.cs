@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using RimWorld;
 using Verse;
@@ -9,6 +10,9 @@ namespace ResearchPrerequisites
         private List<ResearchProjectDef> normalQueue = new List<ResearchProjectDef>();
         private List<ResearchProjectDef> anomalyBasicQueue = new List<ResearchProjectDef>();
         private List<ResearchProjectDef> anomalyAdvancedQueue = new List<ResearchProjectDef>();
+
+        // 每个知识类别上次实际尝试启动的队首(不存档，跟随每局 GameComponent 生命周期，避免跨存档泄漏)
+        private readonly ResearchProjectDef[] lastAttemptedHead = new ResearchProjectDef[ResearchCategories.Count];
 
         public ResearchQueue(Game game)
         {
@@ -29,62 +33,342 @@ namespace ResearchPrerequisites
             }
         }
 
-        public void Enqueue(ResearchProjectDef project)
+        public ResearchProjectDef GetLastAttemptedHead(ResearchCategory category)
         {
-            if (project == null || project.IsFinished || project.IsHidden)
-            {
-                return;
-            }
-            List<ResearchProjectDef> queue = QueueFor(ResearchCategories.Of(project));
-            AddWithPrerequisites(queue, project);
-            DistinctInPlace(queue);
+            return lastAttemptedHead[(int)category];
         }
 
-        /// <summary>
-        /// 将项目及其所有未完成的前置(含隐藏前置,按依赖顺序)整体插入队首,
-        /// 队列中已有的同项会被提前。用于不能立即开始的项目尽快启动。
-        /// 返回插入链的长度。
-        /// </summary>
-        public int JumpChainToFront(ResearchProjectDef project)
+        public void SetLastAttemptedHead(ResearchCategory category, ResearchProjectDef project)
+        {
+            lastAttemptedHead[(int)category] = project;
+        }
+
+        public void ClearLastAttemptedHead(ResearchCategory category)
+        {
+            lastAttemptedHead[(int)category] = null;
+        }
+
+        public bool Contains(ResearchProjectDef project)
         {
             if (project == null)
             {
+                return false;
+            }
+            ResearchCategory category = ResearchCategories.Of(project);
+            SanitizeQueue(category);
+            return QueueFor(category).Contains(project);
+        }
+
+        /// <summary>
+        /// 按拓扑依赖顺序收集 project 及其所有未完成的前置(含隐藏前置)。
+        /// 使用 visited 集合防护环状依赖，保证不会栈溢出且同一前置只出现一次。
+        /// </summary>
+        public static List<ResearchProjectDef> CollectDependencyChain(ResearchProjectDef project)
+        {
+            List<ResearchProjectDef> chain = new List<ResearchProjectDef>();
+            if (project == null || project.IsFinished || project.IsHidden)
+            {
+                return chain;
+            }
+            HashSet<ResearchProjectDef> visited = new HashSet<ResearchProjectDef>();
+            CollectChainDfs(project, visited, chain);
+            return chain;
+        }
+
+        private static void CollectChainDfs(ResearchProjectDef project, HashSet<ResearchProjectDef> visited, List<ResearchProjectDef> chain)
+        {
+            if (project == null || project.IsFinished || !visited.Add(project))
+            {
+                return;
+            }
+            if (project.prerequisites != null)
+            {
+                for (int i = 0; i < project.prerequisites.Count; i++)
+                {
+                    CollectChainDfs(project.prerequisites[i], visited, chain);
+                }
+            }
+            if (project.hiddenPrerequisites != null)
+            {
+                for (int i = 0; i < project.hiddenPrerequisites.Count; i++)
+                {
+                    CollectChainDfs(project.hiddenPrerequisites[i], visited, chain);
+                }
+            }
+            chain.Add(project);
+        }
+
+        /// <summary>
+        /// 按类别拆分前置链后，将每个未完成项目追加到其自身所属类别的队列尾部。
+        /// 跨类别前置(如异象科技依赖普通电力)会正确路由到各自槽位队列。
+        /// </summary>
+        public void Enqueue(ResearchProjectDef project)
+        {
+            List<ResearchProjectDef> chain = CollectDependencyChain(project);
+            if (chain.Count == 0)
+            {
+                return;
+            }
+            for (int i = 0; i < chain.Count; i++)
+            {
+                ResearchProjectDef item = chain[i];
+                ResearchCategory cat = ResearchCategories.Of(item);
+                if (!ResearchCategories.IsActive(cat))
+                {
+                    continue;
+                }
+                SanitizeQueue(cat);
+                List<ResearchProjectDef> queue = QueueFor(cat);
+                if (!queue.Contains(item))
+                {
+                    queue.Add(item);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 将项目及其所有未完成的前置(含隐藏前置)按依赖顺序插入各自所属类别队列的队首。
+        /// 队列中已有的同项会被提前。返回依赖链总长度。
+        /// </summary>
+        public int JumpChainToFront(ResearchProjectDef project)
+        {
+            List<ResearchProjectDef> chain = CollectDependencyChain(project);
+            if (chain.Count == 0)
+            {
                 return 0;
             }
-            List<ResearchProjectDef> queue = QueueFor(ResearchCategories.Of(project));
-            List<ResearchProjectDef> chain = new List<ResearchProjectDef>();
-            AddWithPrerequisites(chain, project);
-            // 菱形依赖(同一前置被多条路径引用)会在递归中重复加入,先去重;
-            // DistinctInPlace 保留首次出现的位置,不破坏依赖顺序。
-            DistinctInPlace(chain);
-            queue.RemoveAll(chain.Contains);
-            queue.InsertRange(0, chain);
+            for (int c = 0; c < ResearchCategories.Count; c++)
+            {
+                ResearchCategory cat = (ResearchCategory)c;
+                if (!ResearchCategories.IsActive(cat))
+                {
+                    continue;
+                }
+                List<ResearchProjectDef> slice = ExtractCategorySlice(chain, cat);
+                if (slice.Count > 0)
+                {
+                    JumpCategorySliceToFront(cat, slice);
+                }
+            }
             return chain.Count;
+        }
+
+        public static List<ResearchProjectDef> ExtractCategorySlice(List<ResearchProjectDef> chain, ResearchCategory category)
+        {
+            List<ResearchProjectDef> slice = new List<ResearchProjectDef>();
+            for (int i = 0; i < chain.Count; i++)
+            {
+                if (ResearchCategories.Of(chain[i]) == category)
+                {
+                    slice.Add(chain[i]);
+                }
+            }
+            return slice;
+        }
+
+        public void JumpCategorySliceToFront(ResearchCategory category, List<ResearchProjectDef> slice)
+        {
+            if (slice == null || slice.Count == 0)
+            {
+                return;
+            }
+            SanitizeQueue(category);
+            List<ResearchProjectDef> queue = QueueFor(category);
+            for (int i = 0; i < slice.Count; i++)
+            {
+                queue.Remove(slice[i]);
+            }
+            queue.InsertRange(0, slice);
+        }
+
+        /// <summary>
+        /// 当某类别当前研究正在进行且插队链首暂时无法开始时，保持当前研究在队首(index 0)，
+        /// 把插队链放到 index 1 紧随其后，既不中断当前研究也不违反"当前研究 = 队首"不变量。
+        /// </summary>
+        public void InsertCategorySliceAfterCurrent(ResearchCategory category, ResearchProjectDef current, List<ResearchProjectDef> slice)
+        {
+            if (slice == null || slice.Count == 0)
+            {
+                return;
+            }
+            SanitizeQueue(category);
+            List<ResearchProjectDef> queue = QueueFor(category);
+            if (current == null || current.IsFinished)
+            {
+                JumpCategorySliceToFront(category, slice);
+                return;
+            }
+            queue.Remove(current);
+            List<ResearchProjectDef> tailSlice = new List<ResearchProjectDef>(slice.Count);
+            for (int i = 0; i < slice.Count; i++)
+            {
+                ResearchProjectDef item = slice[i];
+                queue.Remove(item);
+                if (item != current)
+                {
+                    tailSlice.Add(item);
+                }
+            }
+            queue.Insert(0, current);
+            queue.InsertRange(1, tailSlice);
+        }
+
+        /// <summary>
+        /// 从队列中移除指定项目(不移除当前正在研究的项目)，同时移除所有排队中直接或间接依赖它的项目，
+        /// 避免留下永远无法满足前置的孤立阻塞项。返回是否有队列发生变动。
+        /// </summary>
+        public bool RemoveFromQueue(ResearchProjectDef project)
+        {
+            if (project == null)
+            {
+                return false;
+            }
+            bool anyRemoved = false;
+            for (int c = 0; c < ResearchCategories.Count; c++)
+            {
+                ResearchCategory cat = (ResearchCategory)c;
+                if (!ResearchCategories.IsActive(cat))
+                {
+                    continue;
+                }
+                SanitizeQueue(cat);
+                List<ResearchProjectDef> queue = QueueFor(cat);
+                ResearchProjectDef current = Find.ResearchManager.GetProject(ResearchCategories.ToVanillaDef(cat));
+                int removed = queue.RemoveAll(p => p != current && TransitivelyDependsOn(p, project));
+                if (removed > 0)
+                {
+                    anyRemoved = true;
+                    if (current == null)
+                    {
+                        lastAttemptedHead[c] = null;
+                    }
+                }
+            }
+            return anyRemoved;
+        }
+
+        private static bool TransitivelyDependsOn(ResearchProjectDef candidate, ResearchProjectDef target)
+        {
+            if (candidate == null || target == null)
+            {
+                return false;
+            }
+            if (candidate == target)
+            {
+                return true;
+            }
+            HashSet<ResearchProjectDef> visited = new HashSet<ResearchProjectDef>();
+            return DependsOnDfs(candidate, target, visited);
+        }
+
+        private static bool DependsOnDfs(ResearchProjectDef node, ResearchProjectDef target, HashSet<ResearchProjectDef> visited)
+        {
+            if (node == null || !visited.Add(node))
+            {
+                return false;
+            }
+            if (node == target)
+            {
+                return true;
+            }
+            if (node.prerequisites != null)
+            {
+                for (int i = 0; i < node.prerequisites.Count; i++)
+                {
+                    if (DependsOnDfs(node.prerequisites[i], target, visited))
+                    {
+                        return true;
+                    }
+                }
+            }
+            if (node.hiddenPrerequisites != null)
+            {
+                for (int i = 0; i < node.hiddenPrerequisites.Count; i++)
+                {
+                    if (DependsOnDfs(node.hiddenPrerequisites[i], target, visited))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         public void ClearQueue(ResearchCategory category)
         {
             QueueFor(category).Clear();
+            lastAttemptedHead[(int)category] = null;
         }
 
-        /// <summary>
-        /// 弹出队首所有已完成/为 null 的项。
-        /// </summary>
-        public void PopFinishedHeads(ResearchCategory category)
+        public void ClearAllQueues()
         {
-            List<ResearchProjectDef> queue = QueueFor(category);
-            while (queue.Count > 0 && (queue[0] == null || queue[0].IsFinished))
+            for (int c = 0; c < ResearchCategories.Count; c++)
             {
-                queue.RemoveAt(0);
+                ClearQueue((ResearchCategory)c);
             }
         }
 
         /// <summary>
-        /// 弹出已完成队首后返回新队首。只查看,不启动、不移除。
+        /// 清理队列中的 null、已完成、跨类别错位项与重复项。
+        /// </summary>
+        public void SanitizeQueue(ResearchCategory category)
+        {
+            List<ResearchProjectDef> queue = QueueFor(category);
+            queue.RemoveAll(p => p == null || p.IsFinished || ResearchCategories.Of(p) != category);
+            DistinctInPlace(queue);
+        }
+
+        /// <summary>
+        /// 清理并弹出已完成/无效项，同时兼容旧版本遗留在错误类别队列中的项。
+        /// </summary>
+        private void SanitizeAndMigrateAll()
+        {
+            List<ResearchProjectDef>[] buckets =
+            {
+                new List<ResearchProjectDef>(),
+                new List<ResearchProjectDef>(),
+                new List<ResearchProjectDef>()
+            };
+            for (int c = 0; c < ResearchCategories.Count; c++)
+            {
+                List<ResearchProjectDef> source = QueueFor((ResearchCategory)c);
+                for (int i = 0; i < source.Count; i++)
+                {
+                    ResearchProjectDef p = source[i];
+                    if (p == null || p.IsFinished)
+                    {
+                        continue;
+                    }
+                    ResearchCategory realCat = ResearchCategories.Of(p);
+                    if (ResearchCategories.IsActive(realCat))
+                    {
+                        buckets[(int)realCat].Add(p);
+                    }
+                }
+            }
+            for (int c = 0; c < ResearchCategories.Count; c++)
+            {
+                List<ResearchProjectDef> target = QueueFor((ResearchCategory)c);
+                target.Clear();
+                target.AddRange(buckets[c]);
+                DistinctInPlace(target);
+            }
+        }
+
+        /// <summary>
+        /// 清理队列中所有已完成/为 null/非本类别的项。
+        /// </summary>
+        public void PopFinishedHeads(ResearchCategory category)
+        {
+            SanitizeQueue(category);
+        }
+
+        /// <summary>
+        /// 清理无效项后返回队首。只查看,不启动、不移除。
         /// </summary>
         public ResearchProjectDef PeekHead(ResearchCategory category)
         {
-            PopFinishedHeads(category);
+            SanitizeQueue(category);
             List<ResearchProjectDef> queue = QueueFor(category);
             return queue.Count > 0 ? queue[0] : null;
         }
@@ -95,41 +379,19 @@ namespace ResearchPrerequisites
         /// </summary>
         public void MoveToHead(ResearchProjectDef project)
         {
-            if (project == null)
-            {
-                return;
-            }
-            List<ResearchProjectDef> queue = QueueFor(ResearchCategories.Of(project));
-            queue.Remove(project);
-            queue.Insert(0, project);
-        }
-
-        private static void AddWithPrerequisites(List<ResearchProjectDef> queue, ResearchProjectDef project)
-        {
             if (project == null || project.IsFinished)
             {
                 return;
             }
-            if (project.PrerequisitesCompleted && project.TechprintRequirementMet)
+            ResearchCategory category = ResearchCategories.Of(project);
+            if (!ResearchCategories.IsActive(category))
             {
-                queue.Add(project);
                 return;
             }
-            if (project.prerequisites != null)
-            {
-                foreach (ResearchProjectDef prereq in project.prerequisites)
-                {
-                    AddWithPrerequisites(queue, prereq);
-                }
-            }
-            if (project.hiddenPrerequisites != null)
-            {
-                foreach (ResearchProjectDef prereq in project.hiddenPrerequisites)
-                {
-                    AddWithPrerequisites(queue, prereq);
-                }
-            }
-            queue.Add(project);
+            SanitizeQueue(category);
+            List<ResearchProjectDef> queue = QueueFor(category);
+            queue.Remove(project);
+            queue.Insert(0, project);
         }
 
         private static void DistinctInPlace(List<ResearchProjectDef> queue)
@@ -144,12 +406,7 @@ namespace ResearchPrerequisites
         /// </summary>
         public override void GameComponentTick()
         {
-            ResearchQueueController.AdvanceCategory(ResearchCategory.Normal);
-            if (ModsConfig.AnomalyActive)
-            {
-                ResearchQueueController.AdvanceCategory(ResearchCategory.AnomalyBasic);
-                ResearchQueueController.AdvanceCategory(ResearchCategory.AnomalyAdvanced);
-            }
+            ResearchQueueController.AdvanceAllActiveCategories();
         }
 
         public override void ExposeData()
@@ -162,6 +419,11 @@ namespace ResearchPrerequisites
             normalQueue ??= new List<ResearchProjectDef>();
             anomalyBasicQueue ??= new List<ResearchProjectDef>();
             anomalyAdvancedQueue ??= new List<ResearchProjectDef>();
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
+            {
+                SanitizeAndMigrateAll();
+                Array.Clear(lastAttemptedHead, 0, lastAttemptedHead.Length);
+            }
         }
     }
 }

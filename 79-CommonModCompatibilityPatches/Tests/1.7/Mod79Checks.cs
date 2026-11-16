@@ -26,7 +26,7 @@ public static class Mod79Checks
   Check(Find.CurrentMap==map && Current.ProgramState==ProgramState.Playing,"current disposable playing map");
   var assembly=Product("CommonCompatibilityBootstrap").Assembly;
   var groups=assembly.GetTypes().Where(t=>t.Name.EndsWith("Compatibility")&&t.GetMethod("TryApply",Flags)!=null).ToArray();
-  Check(groups.Length==30,"all thirty groups retained");
+   Check(groups.Length==31,"all thirty legacy groups plus Better Pawn Control retained");
   var ledger=new List<object>();
   foreach(var g in groups)
   {
@@ -35,7 +35,7 @@ public static class Mod79Checks
    if(g.Name=="QualityBuilderNullMapCompatibility")packages.AddRange(new[]{"hatti.qualitybuilder.fork","hatti.qualitybuilder"});
    bool enabled=packages.Count==0||packages.Any(Active);
    var patched=Harmony.GetAllPatchedMethods().Where(m=>{var p=Harmony.GetPatchInfo(m);return p!=null&&p.Prefixes.Concat(p.Postfixes).Concat(p.Transpilers).Concat(p.Finalizers).Any(x=>x.owner==Owner&&x.PatchMethod.DeclaringType==g);}).ToArray();
-   int expected=g.Name switch {"InvokeHoraxOfferingCompatibility"=>2,"GoodwillSituationManagerThreadSafetyCompatibility"=>2,"RimStoryMassFuneralCompatibility"=>2,"TacticalGroupsColonyGroupIdCollisionCompatibility"=>5,_=>1};
+    int expected=g.Name switch {"InvokeHoraxOfferingCompatibility"=>2,"GoodwillSituationManagerThreadSafetyCompatibility"=>2,"RimStoryMassFuneralCompatibility"=>2,"BetterPawnControlStaleAssignLinksCompatibility"=>2,"TacticalGroupsColonyGroupIdCollisionCompatibility"=>5,_=>1};
    if(enabled)Check(patched.Length>=expected,"active group must register every concrete target, not silently/partially skip: "+g.Name);
    else
    {

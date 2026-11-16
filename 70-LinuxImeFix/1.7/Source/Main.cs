@@ -21,7 +21,6 @@ public static class Start
         if (LinuxImeUtility.IsLinux && Waylith.EngineApplication.Instance?.Headless == false)
         {
             NativeBridge.Load();
-            CandidateWindowRenderer.EnsureExists();
             Log.Message("[LinuxImeFix] Linux IME patches active.".Colorize(Color.green));
         }
         else
@@ -224,10 +223,11 @@ public static class LinuxImeUtility
 
     // Stored candidate window anchor positions (in UI-screen coordinates via UI.GUIToScreenPoint).
     // Calculated during FinishTextField when GUI group stack is correct.
-    // Used by DrawCandidateWindow in UIRootOnGUI postfix (drawn on top of everything).
+    // Used at the end of Waylith's GUI dispatch, once every game window has drawn.
     private static Vector2 storedAnchorBelow; // position below text field (cursor X, rect.yMax)
     private static Vector2 storedAnchorAbove; // position above text field (cursor X, rect.yMin)
     private static bool hasStoredAnchor;
+    private static int overlayRepaintLogs;
 
     public static TextFieldState PrepareTextField(Rect rect, string text)
     {
@@ -536,21 +536,26 @@ public static class LinuxImeUtility
     }
 
     /// <summary>
-    /// Called from UIRootOnGUI postfix — draws on top of all other UI.
+    /// Called after Waylith's GUI dispatch, during the repaint pass only.
     /// Uses anchor positions stored during FinishTextField.
     /// </summary>
     public static void DrawCandidateWindow()
     {
-        if (!IsLinux || !NativeBridge.IsReady || !hasStoredAnchor) return;
+        if (!IsLinux || !NativeBridge.IsReady || !hasStoredAnchor || Event.current?.rawType != EventType.Repaint) return;
 
+        Matrix4x4 oldMatrix = GUI.matrix;
         GameFont oldFont = Text.Font;
         Color oldColor = GUI.color;
         try
         {
+            // Anchors are in UI-screen space, independent of the last window's matrix.
+            GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity,
+                new Vector3(Prefs.UIScale, Prefs.UIScale, 1f));
             DrawCandidateWindowCore();
         }
         finally
         {
+            GUI.matrix = oldMatrix;
             Text.Font = oldFont;
             GUI.color = oldColor;
         }
@@ -665,6 +670,11 @@ public static class LinuxImeUtility
             GUI.color = Color.white;
             y += lineHeight;
         }
+        if (overlayRepaintLogs < 3)
+        {
+            overlayRepaintLogs++;
+            Log.Message($"[LinuxImeFix] Candidate overlay repaint {overlayRepaintLogs}: candidates={candidates.Count}, rect={windowRect}, UI scale={Prefs.UIScale}");
+        }
     }
 
     public static void FrameEndRefresh()
@@ -674,10 +684,10 @@ public static class LinuxImeUtility
             sawFocusedTextFieldThisFrame = false;
             return;
         }
-        if (!sawFocusedTextFieldThisFrame)
+        if (!sawFocusedTextFieldThisFrame || GUIUtility.keyboardControl != focusedControl)
         {
             // Unity/RimWorld invokes OnGUI multiple times per frame/event. Some passes
-            // can reach UIRootOnGUI without re-rendering the focused TextField, even
+            // can finish without re-rendering the focused TextField, even
             // though GUIUtility.keyboardControl still points at its TextEditor. Do not
             // Reset/FocusOut in that case: it clears IBus/Rime preedit immediately,
             // causing the candidate window to flash for one pass and leaving Space
@@ -811,60 +821,19 @@ public static class DubsMintMenus_InputField_Patch
     }
 }
 
-[HarmonyPatch(typeof(UIRoot_Play), nameof(UIRoot_Play.UIRootOnGUI))]
-public static class UIRoot_Play_Patch
+[HarmonyPatch]
+public static class ImguiDispatch_Dispatch_Patch
 {
-    public static void Postfix() => LinuxImeUtility.FrameEndRefresh();
-}
+    public static MethodBase TargetMethod() => AccessTools.Method(
+        AccessTools.TypeByName("RimWorldWaylith.Imgui.ImguiDispatch"),
+        "Dispatch", new[] { typeof(Vector2), typeof(bool) })
+        ?? throw new MissingMethodException("Waylith GUI dispatch target not found");
 
-[HarmonyPatch(typeof(UIRoot_Entry), nameof(UIRoot_Entry.UIRootOnGUI))]
-public static class UIRoot_Entry_Patch
-{
-    public static void Postfix() => LinuxImeUtility.FrameEndRefresh();
-}
-
-/// <summary>
-/// MonoBehaviour that draws the candidate window in its own OnGUI call.
-/// GUI.depth controls draw order: lower depth = drawn later = on top.
-/// This ensures the candidate window is always above other UI.
-/// </summary>
-public class CandidateWindowRenderer : MonoBehaviour
-{
-    private static CandidateWindowRenderer instance;
-
-    public static void EnsureExists()
+    public static void Postfix(bool __1)
     {
-        if (instance != null) return;
-        var go = new GameObject("LinuxImeFix_CandidateWindowRenderer");
-        instance = go.AddComponent<CandidateWindowRenderer>();
-        DontDestroyOnLoad(go);
-    }
-
-    void OnGUI()
-    {
-        Matrix4x4 oldMatrix = GUI.matrix;
-        Color oldColor = GUI.color;
-        try
-        {
-            // Lower depth draws later/on top in Unity IMGUI. Do not restore this
-            // after drawing: RimWorld/Unity appear to use the final GUI.depth when
-            // ordering controls across OnGUI callers, and restoring it caused the
-            // candidate window to fall behind later UI.
-            GUI.depth = -10000;
-            // Apply the same UIScale matrix that RimWorld uses (UI.ApplyUIScale).
-            // Without this, coordinates stored during UIRootOnGUI (in UI space)
-            // won't match the drawing space in this separate OnGUI call.
-            if (Prefs.UIScale != 1f)
-            {
-                GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity,
-                    new Vector3(Prefs.UIScale, Prefs.UIScale, 1f));
-            }
-            LinuxImeUtility.DrawCandidateWindow();
-        }
-        finally
-        {
-            GUI.matrix = oldMatrix;
-            GUI.color = oldColor;
-        }
+        // ProcessPendingWindows can already be inlined into this warmed caller.
+        // EndPass has balanced groups, but the draw list remains active until EndFrame.
+        LinuxImeUtility.FrameEndRefresh();
+        if (__1) LinuxImeUtility.DrawCandidateWindow();
     }
 }

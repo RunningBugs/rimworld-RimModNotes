@@ -17,6 +17,9 @@ public class CarryPolicyEntry : IExposable
 	// UI 编辑缓冲（不存档）
 	public string countBuffer;
 
+	// 跨存档配置中当前未加载 Mod 的物品 defName（仅跨存档 ModSettings 使用）
+	public string unloadedDefName;
+
 	public bool IsFood => thing != null && thing.IsNutritionGivingIngestible;
 
 	public void ExposeData()
@@ -36,6 +39,10 @@ public class CarryPolicy : Policy
 
 	public CarryPolicyEntry EntryFor(ThingDef def)
 	{
+		if (def == null)
+		{
+			return null;
+		}
 		return entries.FirstOrDefault(e => e.thing == def);
 	}
 
@@ -61,6 +68,7 @@ public class CarryPolicy : Policy
 		entries = carryPolicy.entries.Select(e => new CarryPolicyEntry
 		{
 			thing = e.thing,
+			unloadedDefName = e.unloadedDefName,
 			count = e.count
 		}).ToList();
 	}
@@ -68,6 +76,8 @@ public class CarryPolicy : Policy
 
 public class CarryPolicyDatabase : GameComponent
 {
+	public static Func<IEnumerable<CarryPolicy>> CrossSavePoliciesProvider;
+
 	public List<CarryPolicy> policies = new List<CarryPolicy>();
 
 	public Dictionary<Pawn, CarryPolicy> assignments = new Dictionary<Pawn, CarryPolicy>();
@@ -75,6 +85,8 @@ public class CarryPolicyDatabase : GameComponent
 	// JobGiver_CarryPolicy 的节流表（不存档）。必须随 GameComponent 每局新建，
 	// 不能 static——绝对 tick 跨存档存活会让老档的大 tick 值使新档长期不补货
 	public readonly Dictionary<Pawn, int> nextCheckTick = new Dictionary<Pawn, int>();
+
+	private bool initializedFromCrossSave;
 
 	public List<CarryPolicy> AllPolicies => policies;
 
@@ -86,12 +98,79 @@ public class CarryPolicyDatabase : GameComponent
 	{
 	}
 
-	public static CarryPolicyDatabase Instance => Current.Game.GetComponent<CarryPolicyDatabase>();
+	public static CarryPolicyDatabase Instance => Current.Game?.GetComponent<CarryPolicyDatabase>();
+
+	public override void StartedNewGame()
+	{
+		base.StartedNewGame();
+		InitializeNewGamePoliciesIfNeeded();
+	}
 
 	public override void ExposeData()
 	{
+		if (Scribe.mode == LoadSaveMode.Saving && assignments != null)
+		{
+			foreach (Pawn key in assignments.Keys.ToList())
+			{
+				if (key == null || key.Destroyed || assignments[key] == null)
+				{
+					assignments.Remove(key);
+				}
+			}
+		}
 		Scribe_Collections.Look(ref policies, "carryPolicies", LookMode.Deep);
 		Scribe_Collections.Look(ref assignments, "carryAssignments", LookMode.Reference, LookMode.Reference);
+		if (Scribe.mode == LoadSaveMode.PostLoadInit)
+		{
+			policies ??= new List<CarryPolicy>();
+			policies.RemoveAll((CarryPolicy p) => p == null);
+			assignments ??= new Dictionary<Pawn, CarryPolicy>();
+			foreach (Pawn key in assignments.Keys.ToList())
+			{
+				if (key == null || key.Destroyed || assignments[key] == null || !policies.Contains(assignments[key]))
+				{
+					assignments.Remove(key);
+				}
+			}
+		}
+	}
+
+	private void InitializeNewGamePoliciesIfNeeded()
+	{
+		if (initializedFromCrossSave || policies.Count > 0)
+		{
+			return;
+		}
+		initializedFromCrossSave = true;
+		IEnumerable<CarryPolicy> templates = CrossSavePoliciesProvider?.Invoke();
+		if (templates == null)
+		{
+			return;
+		}
+		foreach (CarryPolicy template in templates)
+		{
+			if (template == null)
+			{
+				continue;
+			}
+			CarryPolicy copy = MakeNewPolicy();
+			copy.label = template.label.NullOrEmpty() ? "UnnamedPolicy".Translate().ToString() : template.label;
+			if (template.entries == null)
+			{
+				continue;
+			}
+			foreach (CarryPolicyEntry entry in template.entries)
+			{
+				if (entry?.thing != null)
+				{
+					copy.entries.Add(new CarryPolicyEntry
+					{
+						thing = entry.thing,
+						count = entry.count
+					});
+				}
+			}
+		}
 	}
 
 	public CarryPolicy MakeNewPolicy()
@@ -115,6 +194,10 @@ public class CarryPolicyDatabase : GameComponent
 
 	public CarryPolicy DefaultCarryPolicy()
 	{
+		if (policies.Count == 0 && Current.Game?.InitData != null)
+		{
+			InitializeNewGamePoliciesIfNeeded();
+		}
 		if (policies.Count == 0)
 		{
 			MakeNewPolicy().label = "DefaultCarryPolicy".Translate();
@@ -132,19 +215,23 @@ public class CarryPolicyDatabase : GameComponent
 
 	public AcceptanceReport TryDelete(CarryPolicy policy)
 	{
-		foreach (Pawn item in assignments.Keys.ToList())
+		if (assignments.Count > 0)
 		{
-			if (assignments[item] != policy)
+			HashSet<Pawn> aliveColonyPawns = new HashSet<Pawn>(PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive);
+			foreach (Pawn item in assignments.Keys.ToList())
 			{
-				continue;
-			}
-			if (item == null || item.Destroyed)
-			{
-				assignments.Remove(item);
-			}
-			else
-			{
-				return "CarryPolicyInUse".Translate(item.LabelShortCap);
+				if (assignments[item] != policy)
+				{
+					continue;
+				}
+				if (item == null || item.Destroyed || item.Dead || !aliveColonyPawns.Contains(item))
+				{
+					assignments.Remove(item);
+				}
+				else
+				{
+					return "CarryPolicyInUse".Translate(item.LabelShortCap);
+				}
 			}
 		}
 		if (!policies.Remove(policy))

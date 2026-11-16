@@ -25,8 +25,18 @@ namespace ResearchPrerequisites
             {
                 return;
             }
-            queueButtonRect = startButRect.RightPart(0.4f);
-            startButRect = startButRect.LeftPart(0.58f);
+            // 原版 startButRect 仅占左侧栏中间约 50%+20px，双按钮直接切分会导致文字严重挤压。
+            // 当其仍处于原版居中位置(x >= 40)时，扩展到整行可用宽度再左右分栏。
+            Rect rowRect = startButRect;
+            if (startButRect.x >= 40f)
+            {
+                float panelWidth = Mathf.Max(startButRect.xMax, startButRect.x * 4f);
+                rowRect = new Rect(4f, startButRect.y, panelWidth - 8f, startButRect.height);
+            }
+            const float gap = 6f;
+            float startWidth = Mathf.Floor((rowRect.width - gap) * 0.52f);
+            startButRect = new Rect(rowRect.x, rowRect.y, startWidth, rowRect.height);
+            queueButtonRect = new Rect(startButRect.xMax + gap, rowRect.y, rowRect.xMax - (startButRect.xMax + gap), rowRect.height);
         }
 
         public static void Postfix(MainTabWindow_Research __instance)
@@ -36,25 +46,31 @@ namespace ResearchPrerequisites
             {
                 return;
             }
+            ResearchQueue queue = ResearchQueue.Instance;
+            bool inQueue = queue != null && queue.Contains(project);
             bool jump = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
-            string label = jump ? "ResearchJumpQueueFront".Translate() : "ResearchAddToQueue".Translate();
-            TooltipHandler.TipRegion(queueButtonRect, "ResearchQueueButtonTip".Translate());
+            string label = jump
+                ? "ResearchJumpQueueFront".Translate()
+                : (inQueue ? "ResearchRemoveFromQueue".Translate() : "ResearchAddToQueue".Translate());
+            string tip = inQueue ? "ResearchQueueButtonInQueueTip".Translate() : "ResearchQueueButtonTip".Translate();
+            TooltipHandler.TipRegion(queueButtonRect, tip);
             if (Widgets.ButtonText(queueButtonRect, label))
             {
-                ResearchQueue queue = ResearchQueue.Instance;
                 if (queue == null)
                 {
                     return;
                 }
-                if (!jump)
+                if (jump)
                 {
-                    queue.Enqueue(project);
-                    ResearchQueueController.AdvanceCategory(ResearchCategories.Of(project));
+                    ResearchQueueController.JumpChainToFrontAndStart(project);
+                }
+                else if (inQueue)
+                {
+                    ResearchQueueController.RemoveFromQueueAndAdvance(project);
                 }
                 else
                 {
-                    // 可立即开始的项目其前置链就是自身,统一走链式插队
-                    ResearchQueueController.JumpChainToFrontAndStart(project);
+                    ResearchQueueController.EnqueueAndAdvance(project);
                 }
             }
         }

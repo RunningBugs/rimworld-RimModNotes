@@ -16,14 +16,15 @@
 - Prefix 保存原资格和原 Job；Postfix 只处理刚创建的 `LayDown` 且 `startInvoluntarySleep=true`，调用 `pawn.jobs.EndCurrentJob(JobCondition.InterruptForced)` 起身。
 - 不再调用 `drafter.Drafted=true/false`。完整征召流程会清队列、重置自由开火、通知跟随动物等；本 Mod 不额外执行这些副作用。征召按钮音效由 UI 点击流程播放，并非 setter 自带。
 - 不补休息值、不改作息与工作优先级。原版重新选任务，工作时段通常继续工作，睡觉或自由时段可能重新睡觉；后续仍可能疲劳睡倒。
-- 正常睡眠、伤病／麻醉倒地、婴儿、精神状态、已征召、敌人和囚犯不处理。保留 `CanWake` 和原版任务可中断性检查。
+- 正常睡眠、伤病／麻醉倒地、婴儿、未恢复的精神状态、已征召、敌人和囚犯不处理；原本处于精神崩溃的小人若因精疲力竭倒地并由原版恢复精神状态，会在 Postfix 通过 `CanWake` 触发起身。保留 `CanWake` 和原版任务可中断性检查。
 - 已知边界：喂婴儿的原版收尾流程可能先安置婴儿，再执行排队的疲劳睡眠；这种延后睡眠不接管。
 - 起身消息用 `RAG_ReturnToWork`，带姓名并绑定小人；使用 `MessageTypeDefOf.SilentInput`，自身没有提示音。语音关闭后消息照常显示，原版疲劳倒地通知及其声音仍保留。
+- 模组选项 `preventCollapseWhenNotInMentalState`（默认 `false`）：通过 `Need_Rest.CanInvoluntarilySleep` Prefix 阻止满足 `CanWake` 条件且未处于精神崩溃状态的殖民者因精疲力竭倒地；处于精神崩溃状态时仍允许正常倒地。
 
 ## 容易回归的游戏逻辑
 
 - `startInvoluntarySleep` 会在躺下后第一次真正睡眠的 tick 被清除，不能靠普通周期扫描这个标志判断所有睡倒；现有 Postfix 的时机有意义。
-- 原版疲劳倒地可能使精神状态恢复。必须在 Prefix 保存资格，不能只在 Postfix 判断精神状态，否则可能叫醒原本应排除的小人。
+- 原版疲劳倒地可能使精神状态恢复：Prefix 检查除精神状态外的原有资格（避免把原本的婴儿/倒地/已征召/非殖民者放行），Postfix 通过 `CanWake` 确认倒地后已恢复玩家控制权再起身；若精神状态未因倒地恢复（`recoverFromCollapsingExhausted=false`），仍不唤醒。
 - Job 使用对象池：结束任务后，新任务可能复用同一对象。不要仅凭 Job 引用是否变化判断起身成功；当前实现还检查强制睡眠标志及征召状态。
 - 不要为“防止马上睡回去”新增 `lastDisturbanceTick` 设置；它会额外禁止约 400 tick 内入睡，改变原有语义。
 - `Messages.Message` 的最后一个 bool 是 `historical`，不是静音开关；`NeutralEvent` 有提示音，静音消息应选 `SilentInput`。

@@ -79,16 +79,23 @@ public static class Mod83Checks
             m.PackageId.Equals(PackageId, StringComparison.OrdinalIgnoreCase));
         var assembly = mod.assemblies.loadedAssemblies.Single(a => a.GetName().Name == "RiseAndGrind");
         var wake = assembly.GetType("RiseAndGrind.WakeOnExhaustion", true);
+        var prevent = assembly.GetType("RiseAndGrind.PreventExhaustionCollapse", true);
         var canWake = wake.GetMethod("CanWake");
         var interval = AccessTools.Method(typeof(Need_Rest), nameof(Need_Rest.NeedInterval));
+        var canInvoluntarilySleep = AccessTools.Method(typeof(Need_Rest), "CanInvoluntarilySleep");
         Require(Harmony.GetPatchInfo(interval)?.Prefixes.Any(p => p.PatchMethod.DeclaringType == wake) == true &&
             Harmony.GetPatchInfo(interval)?.Postfixes.Any(p => p.PatchMethod.DeclaringType == wake) == true,
             "actual NeedInterval prefix/postfix registered");
+        Require(Harmony.GetPatchInfo(canInvoluntarilySleep)?.Prefixes.Any(p => p.PatchMethod.DeclaringType == prevent) == true,
+            "actual CanInvoluntarilySleep prefix registered");
 
         var settings = assembly.GetType("RiseAndGrind.RiseAndGrindMod", true).GetField("Settings").GetValue(null);
         var voiceEnabled = settings.GetType().GetField("enableVoice");
+        var preventCollapse = settings.GetType().GetField("preventCollapseWhenNotInMentalState");
         var oldSetting = voiceEnabled.GetValue(settings);
+        var oldPrevent = preventCollapse.GetValue(settings);
         Require((bool)oldSetting, "fresh settings default voice to enabled");
+        Require(!(bool)oldPrevent, "fresh settings default preventCollapseWhenNotInMentalState to disabled");
         var voicesType = assembly.GetType("RiseAndGrind.WakeVoicesDef", true);
         var database = typeof(DefDatabase<>).MakeGenericType(voicesType);
         var voices = database.GetMethod("GetNamed", new[] { typeof(string), typeof(bool) })
@@ -242,18 +249,62 @@ public static class Mod83Checks
             Require(mental.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Wander_Sad,
                 forced: true, forceWake: true), "actual mental state starts");
             Require(mental.InMentalState && !(bool)canWake.Invoke(null, new object[] { mental }),
-                "mental-state colonist is ineligible before collapse");
+                "mental-state colonist is not player-controlled before collapse");
             mental.mindState.lastDisturbanceTick = Find.TickManager.TicksGame - 1000;
             Collapse(mental);
-            Require(DraftCalls.Count == 0 && VoiceCalls.Count == 0 && VoiceSamples.Count == 0 && !WakeMessages.Any(),
-                "mental-state exhaustion does not trigger automatic waking");
-            Passed.Add("mental-state exhaustion preserves native behavior");
+            Require(!mental.InMentalState && DraftCalls.Count == 0 && !mental.Drafted &&
+                CollapseInterruptions.SequenceEqual(new[] { JobCondition.InterruptForced }) &&
+                mental.CurJob?.startInvoluntarySleep != true,
+                "mental-state exhaustion recovery triggers automatic waking");
+            Require(VoiceCalls.SequenceEqual(expectedVoice == null ? Array.Empty<string>() : new[] { expectedVoice }),
+                "mental-state recovery wake uses current language voice or silence");
+            Require(SoundCalls.All(sound => sound == "Message_NegativeEvent" || sound == "Message_SituationResolved" || sound == expectedVoice),
+                "mental-state recovery wake produces no drafting sound or extra message sound");
+            CheckWakeMessage(mental);
+            Passed.Add("mental-state exhaustion recovery wakes colonist back to work");
+
+            var unrecoveredMental = NewPawn();
+            bool prevRecover = MentalStateDefOf.Wander_Sad.recoverFromCollapsingExhausted;
+            MentalStateDefOf.Wander_Sad.recoverFromCollapsingExhausted = false;
+            try
+            {
+                Require(unrecoveredMental.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Wander_Sad,
+                    forced: true, forceWake: true), "non-recovering mental state starts");
+                unrecoveredMental.mindState.lastDisturbanceTick = Find.TickManager.TicksGame - 1000;
+                Collapse(unrecoveredMental);
+                Require(unrecoveredMental.InMentalState && DraftCalls.Count == 0 && VoiceCalls.Count == 0 &&
+                    VoiceSamples.Count == 0 && !WakeMessages.Any() && unrecoveredMental.CurJob?.startInvoluntarySleep == true,
+                    "still-active mental state after collapse does not trigger waking");
+                Passed.Add("unrecovered mental-state exhaustion remains native sleep");
+            }
+            finally
+            {
+                MentalStateDefOf.Wander_Sad.recoverFromCollapsingExhausted = prevRecover;
+            }
 
             var drafted = NewPawn(); drafted.drafter.Drafted = true;
             Require(!(bool)canWake.Invoke(null, new object[] { drafted }), "drafted colonist is ineligible");
             Select(drafted); drafted.needs.rest.NeedInterval();
             Require(DraftCalls.Count == 0 && VoiceCalls.Count == 0 && VoiceSamples.Count == 0 && !WakeMessages.Any(), "drafted colonist is not toggled");
             Passed.Add("already drafted pawn is untouched");
+
+            preventCollapse.SetValue(settings, true);
+            var saneNoCollapse = NewPawn();
+            Select(saneNoCollapse);
+            for (var count = 0; count < 1000; count++) saneNoCollapse.needs.rest.NeedInterval();
+            Require(Collapses.Count == 0 && CollapseInterruptions.Count == 0 && VoiceCalls.Count == 0 && !WakeMessages.Any(),
+                "preventCollapseWhenNotInMentalState blocks exhaustion collapse for sane colonists");
+            Passed.Add("preventCollapseWhenNotInMentalState prevents sane exhaustion collapse");
+
+            var mentalWithPrevent = NewPawn();
+            Require(mentalWithPrevent.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Wander_Sad,
+                forced: true, forceWake: true), "mental state starts with prevent setting enabled");
+            mentalWithPrevent.mindState.lastDisturbanceTick = Find.TickManager.TicksGame - 1000;
+            Collapse(mentalWithPrevent);
+            Require(!mentalWithPrevent.InMentalState && CollapseInterruptions.SequenceEqual(new[] { JobCondition.InterruptForced }),
+                "mental-state colonist still collapses normally and recovers even when preventCollapseWhenNotInMentalState is enabled");
+            CheckWakeMessage(mentalWithPrevent);
+            Passed.Add("preventCollapseWhenNotInMentalState still allows mental-state collapse");
         }
         finally
         {
@@ -265,6 +316,7 @@ public static class Mod83Checks
             observer.Unpatch(makeSample, sampleObserver);
             foreach (var pawn in pawns) if (!pawn.Destroyed) pawn.Destroy(DestroyMode.Vanish);
             voiceEnabled.SetValue(settings, oldSetting);
+            preventCollapse.SetValue(settings, oldPrevent);
             Rand.PopState();
         }
     }

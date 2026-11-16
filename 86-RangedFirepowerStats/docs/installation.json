@@ -1,0 +1,9 @@
+{
+  "project": "/home/lisanhu/mine/workspace/rimworld/RimModNotes/86-RangedFirepowerStats",
+  "runtime": "/home/lisanhu/mine/workspace/rimworld/RimModNotes/86-RangedFirepowerStats/dist/RangedFirepowerStats",
+  "game_link": "/Data/SteamLibrary/steamapps/common/RimWorld/Mods/86-RangedFirepowerStats",
+  "packageId": "RunningBugs.RangedFirepowerStats",
+  "replaced_active_entries": 1,
+  "config_backup": "/home/lisanhu/mine/workspace/rimworld/RimModNotes/86-RangedFirepowerStats/.build/backups/package-rename-20261112-035922/ModsConfig.xml",
+  "assembly_sha256": "11575efefe507d7efa6117584dd50ccf5786288654db6317e728f4be23e59803"
+}

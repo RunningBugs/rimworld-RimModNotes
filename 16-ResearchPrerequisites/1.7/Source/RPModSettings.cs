@@ -60,28 +60,27 @@ public class RPModSettingsUI : Mod
 [StaticConstructorOnStartup]
 public static class Patch_FinishProject
 {
-    private static bool ActualDoComplete = false;
-
     private static RPModSettings GetSettings()
     {
         return LoadedModManager.GetMod<RPModSettingsUI>()?.GetSettings<RPModSettings>() ?? null;
     }
 
-    public static void Prefix(ref bool doCompletionDialog)
+    public static void Prefix(ref bool doCompletionDialog, out bool __state)
     {
-        ActualDoComplete = doCompletionDialog;
+        __state = doCompletionDialog;
         if (!(GetSettings()?.DubsMintMenusMod ?? false) && Scribe.mode == LoadSaveMode.Inactive && (GetSettings()?.FinishProjectWithLetter ?? false))
         {
             doCompletionDialog = false;
         }
     }
 
-    public static void Postfix(ResearchProjectDef proj)
+    public static void Postfix(ResearchProjectDef proj, bool __state)
     {
-        if (!(GetSettings()?.DubsMintMenusMod ?? false) && Scribe.mode == LoadSaveMode.Inactive && ActualDoComplete && (GetSettings()?.FinishProjectWithLetter ?? false))
+        if (proj != null && !(GetSettings()?.DubsMintMenusMod ?? false) && Scribe.mode == LoadSaveMode.Inactive && __state && (GetSettings()?.FinishProjectWithLetter ?? false))
         {
-            string text = "ResearchFinished".Translate(proj.LabelCap + "\n\n" + proj.description);
-            Find.LetterStack.ReceiveLetter("ResearchFinished".Translate(proj.LabelCap), text, LetterDefOf.NeutralEvent, null, 0, true);
+            string title = "ResearchFinished".Translate(proj.LabelCap);
+            string text = title + "\n\n" + proj.description;
+            Find.LetterStack.ReceiveLetter(title, text, LetterDefOf.NeutralEvent, null, 0, true);
         }
     }
 }

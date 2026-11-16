@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <FastFire_SettingsCategory>Fast Fire</FastFire_SettingsCategory>
+  <FastFire_ModeSection>Optimization Mode (Live Hot-Switch Supported)</FastFire_ModeSection>
+  <FastFire_Mode_ExtremeGrid>Extreme Performance Mode (Grid Engine - Recommended)</FastFire_Mode_ExtremeGrid>
+  <FastFire_Mode_ExtremeGridDesc>Simulates static ground fires in compact dense arrays and materializes proxy Fire things on demand only when pawns or AI target them; pawn-attached fires remain vanilla. Fastest TPS, lowest memory, and instant mass-extinguish.</FastFire_Mode_ExtremeGridDesc>
+  <FastFire_Mode_Compatible>Compatible Mode (Decoupled Thing Pipelines)</FastFire_Mode_Compatible>
+  <FastFire_Mode_CompatibleDesc>Keeps real Fire Thing instances across the map for maximum compatibility with heavily modded fire behaviors while decoupling lighting, rendering, pathing, audio, and TickList overhead.</FastFire_Mode_CompatibleDesc>
+  <FastFire_Mode_Vanilla>Vanilla Baseline Mode (Benchmark Comparison Only)</FastFire_Mode_Vanilla>
+  <FastFire_Mode_VanillaDesc>Temporarily disables optimizations to restore vanilla behavior so you can directly compare TPS/FPS on the same burning map.</FastFire_Mode_VanillaDesc>
+
+  <FastFire_ModulesSection>Optimization Subsystems</FastFire_ModulesSection>
+  <FastFire_EnableClusterLighting>Clustered Fire Lighting (4x4 Chunk Glowers)</FastFire_EnableClusterLighting>
+  <FastFire_EnableClusterLightingDesc>Merges individual fire CompGlowers into 4x4 chunk glowers, eliminating GlowGrid combine storms and constant lighting mesh rebuilds.</FastFire_EnableClusterLightingDesc>
+  <FastFire_EnableBatchedRendering>Batched Fire Rendering &amp; Glow Fleck Throttling</FastFire_EnableBatchedRendering>
+  <FastFire_EnableBatchedRenderingDesc>Bypasses DynamicDrawManager with camera-culled instanced/batched drawing and throttles excess FireGlow flecks when fire counts are high.</FastFire_EnableBatchedRenderingDesc>
+  <FastFire_EnablePathingDebounce>Pathing Danger Bitmap &amp; Coalesced Debounce</FastFire_EnablePathingDebounce>
+  <FastFire_EnablePathingDebounceDesc>Replaces 9-neighbor thing-list scans with an O(1) fire danger bitmap and batches PathFinder updates every 15 ticks.</FastFire_EnablePathingDebounceDesc>
+  <FastFire_EnableAudioAggregation>Camera-Local Clustered Audio</FastFire_EnableAudioAggregation>
+  <FastFire_EnableAudioAggregationDesc>Maintains at most 4 aggregated fire sustainers near the camera instead of ticking and summing 10,000 reporters every frame.</FastFire_EnableAudioAggregationDesc>
+  <FastFire_EnableAiSpatialAccel>AI / Alert / Snow / Flammability Acceleration</FastFire_EnableAiSpatialAccel>
+  <FastFire_EnableAiSpatialAccelDesc>Uses chunk density counters for animal fleeing, home-area alerts, fire watcher, and firefighting; skips snow radial scans when snow-free and caches static flammability.</FastFire_EnableAiSpatialAccelDesc>
+
+  <FastFire_DebugCountLabel>Debug Spawn Target Fires: {0}</FastFire_DebugCountLabel>
+  <FastFire_DebugSpawnedMsg>Spawned {0} varied-size fires (map total: {1}, mode: {2}, took: {3} ms)</FastFire_DebugSpawnedMsg>
+  <FastFire_DebugClearedMsg>Cleared all {0} fires on the current map</FastFire_DebugClearedMsg>
+  <FastFire_FireLabel>Fire</FastFire_FireLabel>
+  <FastFire_BurningStatus>Burning ({0}%)</FastFire_BurningStatus>
+</LanguageData>

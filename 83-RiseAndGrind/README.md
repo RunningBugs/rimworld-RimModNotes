@@ -12,10 +12,11 @@
 
 - 不补充休息值、不消除疲劳惩罚，之后仍可能再次睡倒。
 - 只处理当次刚创建的强制睡眠任务，不打断正常睡眠。
-- 只处理已生成、玩家可控、未倒地、未征召、有征召控制器且能主动睡觉的殖民者（包含可控奴隶）。婴儿、敌人、囚犯、精神状态、死亡、伤病或麻醉倒地、死亡休眠不处理。正在着火等原版不允许中断任务的情况也不处理。
+- 只处理已生成、玩家可控、未倒地、未征召、有征召控制器且能主动睡觉的殖民者（包含可控奴隶）；若殖民者处于精神崩溃状态并因精疲力竭倒地后解除崩溃，同样会立即被叫起来继续工作。婴儿、敌人、囚犯、仍处于未解除的特殊精神状态、死亡、伤病或麻醉倒地、死亡休眠不处理。正在着火等原版不允许中断任务的情况也不处理。
 - 直接调用原版的当前任务中断接口，不切换征召状态、不额外清空队列和优先工作、不重置自由开火、不通知跟随动物，也不播放征召按钮音效。
 - 成功唤醒时在左上角显示「XXX决定爬起来继续工作。」；英文显示「XXX has decided to get back up and keep working.」。消息可定位小人，本身无提示音，关闭语音后仍显示。
 - 中文语音默认开启，可在「选项 → 模组选项 → Rise and Grind 爬起来肝」试听或关闭。试听不受自动播放开关影响，也可在主菜单使用。
+- 模组选项另提供「阻止非精神崩溃时精疲力竭倒地」（默认关闭）：开启后，非精神崩溃状态下符合唤醒条件的殖民者不会触发因精疲力竭倒地；精神崩溃状态下仍会正常倒地。
 - 仅当前可见地图上的唤醒播放语音；同一语音槽正在播放时不会叠加。
 - 简繁中文使用同一段普通话；其他语言无对应配置时静默，不回退到中文。
 - 内置语音使用完整播放音量，并跟随游戏的主音量与界面音量；自动播放仍只限当前可见地图。
@@ -101,8 +102,8 @@ dotnet build Source/RiseAndGrind.csproj -c Release -p:RimWorldVersion=1.7
 
 ## English
 
-When a controllable colonist collapses from exhaustion, this mod directly interrupts that sleep job. Vanilla AI chooses the next job using the existing schedule and work priorities. Drafting state, fire-at-will, and prioritized work are not reset. It does not refill rest or prevent future collapses. Normal sleep, medical incapacity, babies, and mental states are excluded.
+When a controllable colonist collapses from exhaustion, this mod directly interrupts that sleep job. Colonists who collapse from exhaustion out of a mental break and recover are also woken up to keep working. Vanilla AI chooses the next job using the existing schedule and work priorities. Drafting state, fire-at-will, and prioritized work are not reset. It does not refill rest or prevent future collapses. Normal sleep, medical incapacity, babies, and unrecovered mental states are excluded.
 
 A silent message in the top-left reads “XXX has decided to get back up and keep working.” Chinese translations are included. The message still appears when the voice option is disabled.
 
-The optional voice is on by default. Simplified and Traditional Chinese share a Mandarin clip. Languages without an explicit mapping are silent. Translation mods can add standard SoundDefs and patch `RAG_WakeVoices/voices` as shown above, using exact game language folder names. No C# is required.
+The optional voice is on by default. Simplified and Traditional Chinese share a Mandarin clip. Languages without an explicit mapping are silent. Translation mods can add standard SoundDefs and patch `RAG_WakeVoices/voices` as shown above, using exact game language folder names. No C# is required. An optional setting (off by default) also lets you prevent eligible colonists from collapsing from exhaustion while not in a mental break, while still allowing mental-break collapses as normal.

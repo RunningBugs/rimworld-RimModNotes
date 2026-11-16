@@ -1,0 +1,72 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework Condition="'$(RimWorldVersion)' == '1.7'">net10.0</TargetFramework>
+    <TargetFramework Condition="'$(RimWorldVersion)' != '1.7'">net472</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PlatformTarget>x64</PlatformTarget>
+    <AssemblyName>FastFire</AssemblyName>
+    <Version>1.0.0</Version>
+    <OutputPath>../Assemblies/</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <DebugType>none</DebugType>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <RestorePackagesWithLockFile>false</RestorePackagesWithLockFile>
+    <PublicizerRuntimeStrategies>IgnoresAccessChecksTo</PublicizerRuntimeStrategies>
+    <DefineConstants Condition="'$(RimWorldVersion)' == '1.6'">$(DefineConstants);RW16</DefineConstants>
+    <DefineConstants Condition="'$(RimWorldVersion)' == '1.7'">$(DefineConstants);RW17</DefineConstants>
+    <RimWorld17Dir Condition="'$(RimWorld17Dir)' == ''">/Data/SteamLibrary/steamapps/common/RimWorld</RimWorld17Dir>
+    <HarmonyDir Condition="'$(HarmonyDir)' == ''">/Data/SteamLibrary/steamapps/workshop/content/294100/2009463077</HarmonyDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../../Source/*.cs" />
+    <PackageReference Include="Krafs.Publicizer" Version="2.3.2" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(RimWorldVersion)' == '1.6'">
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4871" />
+    <Reference Include="0Harmony">
+      <HintPath>$(HarmonyDir)/1.6/Assemblies/0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(RimWorldVersion)' == '1.7'">
+    <Reference Include="Assembly-CSharp"><HintPath>$(RimWorld17Dir)/Assembly-CSharp.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityStubs"><HintPath>$(RimWorld17Dir)/UnityStubs.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Waylith"><HintPath>$(RimWorld17Dir)/Waylith.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Waylith.UnityCompat"><HintPath>$(RimWorld17Dir)/Waylith.UnityCompat.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="0Harmony">
+      <HintPath>$(HarmonyDir)/1.7/Assemblies/0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Publicize Include="Assembly-CSharp:RimWorld.WorkGiver_FightFires" />
+    <Publicize Include="Assembly-CSharp:RimWorld.Fire.ticksSinceSpawn" />
+    <Publicize Include="Assembly-CSharp:RimWorld.Fire.ticksSinceSpread" />
+    <Publicize Include="Assembly-CSharp:RimWorld.Fire.ticksUntilSmoke" />
+    <Publicize Include="Assembly-CSharp:RimWorld.Fire.flammabilityMax" />
+    <Publicize Include="Assembly-CSharp:RimWorld.FireWatcher.map" />
+    <Publicize Include="Assembly-CSharp:RimWorld.FireWatcher.fireDanger" />
+    <Publicize Include="Assembly-CSharp:Verse.DynamicDrawManager.map" />
+    <Publicize Include="Assembly-CSharp:Verse.DynamicDrawManager.drawThings" />
+    <Publicize Include="Assembly-CSharp:Verse.CompGlower.glowOnInt" />
+    <Publicize Include="Assembly-CSharp:Verse.GlowGrid.litGlowers" />
+    <Publicize Include="Assembly-CSharp:Verse.TickManager.tickListNormal" />
+    <Publicize Include="Assembly-CSharp:Verse.ListerThings.listsByDef" />
+    <Publicize Include="Assembly-CSharp:Verse.ListerThings.listsByGroup" />
+    <Publicize Include="Assembly-CSharp:Verse.ListerThings.stateHashByGroup" />
+    <Publicize Include="Assembly-CSharp:Verse.ThingOwner`1.innerList" />
+    <Publicize Include="Assembly-CSharp:Verse.PathFinder.map" />
+    <Publicize Include="Assembly-CSharp:Verse.PathFinder.workQueue" />
+    <Publicize Include="Assembly-CSharp:Verse.SimpleBoolPathFinderDataSource.map" />
+    <Publicize Include="Assembly-CSharp:Verse.SimpleBoolPathFinderDataSource.data" />
+    <Publicize Include="Assembly-CSharp:Verse.PhysicalInteractionReservationManager.reservations" />
+    <Publicize Include="Assembly-CSharp:Verse.Graphic_Collection.subGraphics" />
+    <Publicize Include="Assembly-CSharp:Verse.AI.CastPositionFinder.req" />
+  </ItemGroup>
+</Project>

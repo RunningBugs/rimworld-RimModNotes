@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Defs>
+  <StatCategoryDef>
+    <defName>RFS_RangedFirepower</defName>
+    <label>Ranged Firepower Stats</label>
+    <displayOrder>49</displayOrder>
+    <displayAllByDefault>true</displayAllByDefault>
+  </StatCategoryDef>
+  <StatDef>
+    <defName>RFS_WeaponMax</defName>
+    <workerClass>RangedFirepowerStats.StatWorker_Dps</workerClass>
+    <label>maximum ranged DPS</label>
+    <description>Sustained primary damage before armor. Select this stat for the tick-based calculation and per-cell values. Open the DPS range table to compare the current pawn under current weather. Without a pawn, weapon entries assume ideal shooter accuracy.</description>
+    <category>RFS_RangedFirepower</category>
+    <defaultBaseValue>0</defaultBaseValue>
+    <minValue>0</minValue>
+    <toStringStyle>FloatTwo</toStringStyle>
+    <forInformationOnly>true</forInformationOnly>
+    <neverDisabled>true</neverDisabled>
+    <cacheable>false</cacheable>
+    <displayPriorityInCategory>5100</displayPriorityInCategory>
+  </StatDef>
+  <StatDef>
+    <defName>RFS_WeaponAverage</defName>
+    <workerClass>RangedFirepowerStats.StatWorker_Dps</workerClass>
+    <label>average ranged DPS</label>
+    <description>Sustained primary damage before armor. Select this stat for the tick-based calculation and per-cell values. Open the DPS range table to compare the current pawn under current weather. Without a pawn, weapon entries assume ideal shooter accuracy.</description>
+    <category>RFS_RangedFirepower</category>
+    <defaultBaseValue>0</defaultBaseValue>
+    <minValue>0</minValue>
+    <toStringStyle>FloatTwo</toStringStyle>
+    <forInformationOnly>true</forInformationOnly>
+    <neverDisabled>true</neverDisabled>
+    <cacheable>false</cacheable>
+    <displayPriorityInCategory>5099</displayPriorityInCategory>
+  </StatDef>
+  <StatDef>
+    <defName>RFS_WeaponSpecialist</defName>
+    <workerClass>RangedFirepowerStats.StatWorker_Dps</workerClass>
+    <label>specialist ranged DPS (ideal)</label>
+    <description>Sustained primary damage before armor. Select this stat for the tick-based calculation and per-cell values. Open the DPS range table to compare the current pawn under current weather. Without a pawn, weapon entries assume ideal shooter accuracy.</description>
+    <category>RFS_RangedFirepower</category>
+    <defaultBaseValue>0</defaultBaseValue>
+    <minValue>0</minValue>
+    <toStringStyle>FloatTwo</toStringStyle>
+    <forInformationOnly>true</forInformationOnly>
+    <neverDisabled>true</neverDisabled>
+    <cacheable>false</cacheable>
+    <displayPriorityInCategory>5098</displayPriorityInCategory>
+  </StatDef>
+  <StatDef>
+    <defName>RFS_WeaponTrigger</defName>
+    <workerClass>RangedFirepowerStats.StatWorker_Dps</workerClass>
+    <label>specialist + trigger-happy DPS (ideal)</label>
+    <description>Sustained primary damage before armor. Select this stat for the tick-based calculation and per-cell values. Open the DPS range table to compare the current pawn under current weather. Without a pawn, weapon entries assume ideal shooter accuracy.</description>
+    <category>RFS_RangedFirepower</category>
+    <defaultBaseValue>0</defaultBaseValue>
+    <minValue>0</minValue>
+    <toStringStyle>FloatTwo</toStringStyle>
+    <forInformationOnly>true</forInformationOnly>
+    <neverDisabled>true</neverDisabled>
+    <cacheable>false</cacheable>
+    <displayPriorityInCategory>5097</displayPriorityInCategory>
+  </StatDef>
+  <StatDef>
+    <defName>RFS_PawnCurrent</defName>
+    <workerClass>RangedFirepowerStats.StatWorker_Dps</workerClass>
+    <label>ranged DPS</label>
+    <description>Sustained primary damage before armor. Select this stat for the tick-based calculation and per-cell values. Open the DPS range table to compare the current pawn under current weather. Without a pawn, weapon entries assume ideal shooter accuracy.</description>
+    <category>RFS_RangedFirepower</category>
+    <defaultBaseValue>0</defaultBaseValue>
+    <minValue>0</minValue>
+    <toStringStyle>FloatTwo</toStringStyle>
+    <forInformationOnly>true</forInformationOnly>
+    <neverDisabled>true</neverDisabled>
+    <cacheable>false</cacheable>
+    <displayPriorityInCategory>5096</displayPriorityInCategory>
+  </StatDef>
+  <StatDef>
+    <defName>RFS_PawnSpecialist</defName>
+    <workerClass>RangedFirepowerStats.StatWorker_Dps</workerClass>
+    <label>shooting specialist DPS</label>
+    <description>Sustained primary damage before armor. Select this stat for the tick-based calculation and per-cell values. Open the DPS range table to compare the current pawn under current weather. Without a pawn, weapon entries assume ideal shooter accuracy.</description>
+    <category>RFS_RangedFirepower</category>
+    <defaultBaseValue>0</defaultBaseValue>
+    <minValue>0</minValue>
+    <toStringStyle>FloatTwo</toStringStyle>
+    <forInformationOnly>true</forInformationOnly>
+    <neverDisabled>true</neverDisabled>
+    <cacheable>false</cacheable>
+    <displayPriorityInCategory>5095</displayPriorityInCategory>
+  </StatDef>
+  <StatDef>
+    <defName>RFS_PawnTrigger</defName>
+    <workerClass>RangedFirepowerStats.StatWorker_Dps</workerClass>
+    <label>specialist + trigger-happy DPS</label>
+    <description>Sustained primary damage before armor. Select this stat for the tick-based calculation and per-cell values. Open the DPS range table to compare the current pawn under current weather. Without a pawn, weapon entries assume ideal shooter accuracy.</description>
+    <category>RFS_RangedFirepower</category>
+    <defaultBaseValue>0</defaultBaseValue>
+    <minValue>0</minValue>
+    <toStringStyle>FloatTwo</toStringStyle>
+    <forInformationOnly>true</forInformationOnly>
+    <neverDisabled>true</neverDisabled>
+    <cacheable>false</cacheable>
+    <displayPriorityInCategory>5094</displayPriorityInCategory>
+  </StatDef>
+  <StatDef>
+    <defName>RFS_TurretMax</defName>
+    <workerClass>RangedFirepowerStats.StatWorker_Dps</workerClass>
+    <label>maximum ranged DPS</label>
+    <description>Sustained primary damage before armor. Select this stat for the tick-based calculation and per-cell values. Open the DPS range table to compare the current pawn under current weather. Without a pawn, weapon entries assume ideal shooter accuracy.</description>
+    <category>RFS_RangedFirepower</category>
+    <defaultBaseValue>0</defaultBaseValue>
+    <minValue>0</minValue>
+    <toStringStyle>FloatTwo</toStringStyle>
+    <forInformationOnly>true</forInformationOnly>
+    <neverDisabled>true</neverDisabled>
+    <cacheable>false</cacheable>
+    <displayPriorityInCategory>5093</displayPriorityInCategory>
+  </StatDef>
+  <StatDef>
+    <defName>RFS_TurretWeapon</defName>
+    <workerClass>RangedFirepowerStats.StatWorker_Dps</workerClass>
+    <label>weapon ranged DPS</label>
+    <description>Sustained primary damage before armor. Select this stat for the tick-based calculation and per-cell values. Open the DPS range table to compare the current pawn under current weather. Without a pawn, weapon entries assume ideal shooter accuracy.</description>
+    <category>RFS_RangedFirepower</category>
+    <defaultBaseValue>0</defaultBaseValue>
+    <minValue>0</minValue>
+    <toStringStyle>FloatTwo</toStringStyle>
+    <forInformationOnly>true</forInformationOnly>
+    <neverDisabled>true</neverDisabled>
+    <cacheable>false</cacheable>
+    <displayPriorityInCategory>5092</displayPriorityInCategory>
+  </StatDef>
+  <StatDef>
+    <defName>RFS_TurretCurrent</defName>
+    <workerClass>RangedFirepowerStats.StatWorker_Dps</workerClass>
+    <label>ranged DPS</label>
+    <description>Sustained primary damage before armor. Select this stat for the tick-based calculation and per-cell values. Open the DPS range table to compare the current pawn under current weather. Without a pawn, weapon entries assume ideal shooter accuracy.</description>
+    <category>RFS_RangedFirepower</category>
+    <defaultBaseValue>0</defaultBaseValue>
+    <minValue>0</minValue>
+    <toStringStyle>FloatTwo</toStringStyle>
+    <forInformationOnly>true</forInformationOnly>
+    <neverDisabled>true</neverDisabled>
+    <cacheable>false</cacheable>
+    <displayPriorityInCategory>5091</displayPriorityInCategory>
+  </StatDef>
+  <StatDef>
+    <defName>RFS_ResourceMax</defName>
+    <workerClass>RangedFirepowerStats.StatWorker_Dps</workerClass>
+    <label>maximum damage per resource</label>
+    <description>Sustained primary damage before armor. Select this stat for the tick-based calculation and per-cell values. Open the DPS range table to compare the current pawn under current weather. Without a pawn, weapon entries assume ideal shooter accuracy.</description>
+    <category>RFS_RangedFirepower</category>
+    <defaultBaseValue>0</defaultBaseValue>
+    <minValue>0</minValue>
+    <toStringStyle>FloatTwo</toStringStyle>
+    <forInformationOnly>true</forInformationOnly>
+    <neverDisabled>true</neverDisabled>
+    <cacheable>false</cacheable>
+    <displayPriorityInCategory>5090</displayPriorityInCategory>
+  </StatDef>
+  <StatDef>
+    <defName>RFS_ResourceAverage</defName>
+    <workerClass>RangedFirepowerStats.StatWorker_Dps</workerClass>
+    <label>damage per resource</label>
+    <description>Sustained primary damage before armor. Select this stat for the tick-based calculation and per-cell values. Open the DPS range table to compare the current pawn under current weather. Without a pawn, weapon entries assume ideal shooter accuracy.</description>
+    <category>RFS_RangedFirepower</category>
+    <defaultBaseValue>0</defaultBaseValue>
+    <minValue>0</minValue>
+    <toStringStyle>FloatTwo</toStringStyle>
+    <forInformationOnly>true</forInformationOnly>
+    <neverDisabled>true</neverDisabled>
+    <cacheable>false</cacheable>
+    <displayPriorityInCategory>5089</displayPriorityInCategory>
+  </StatDef>
+</Defs>

@@ -15,7 +15,7 @@
     </li>
   </modDependencies>
   <loadAfter><li>brrainz.harmony</li></loadAfter>
-  <description>困得倒地？爬起来肝！殖民者累得睡倒时，会自动爬起来继续干活，左上角还会弹出「XXX决定爬起来继续工作。」的消息。中文附带一句「你们这个年纪是怎么睡得着的！」催起床语音，默认开启，可在模组选项中试听或关闭。其他语言暂无配音时保持安静。正常睡觉和伤病倒地不受影响。支持 RimWorld 1.6、1.7，需要 Harmony。
+  <description>困得倒地？爬起来肝！殖民者累得睡倒时，会自动爬起来继续干活，左上角还会弹出「XXX决定爬起来继续工作。」的消息。中文附带一句「你们这个年纪是怎么睡得着的！」催起床语音，默认开启，可在模组选项中试听或关闭。其他语言暂无配音时保持安静。模组选项另提供「阻止非精神崩溃时精疲力竭倒地」（默认关闭），开启后正常状态的殖民者不会因精力耗尽突然倒地，精神崩溃时仍会正常倒地。正常睡觉和伤病倒地不受影响。支持 RimWorld 1.6、1.7，需要 Harmony。
 
-Too tired to stand? Rise and grind! Colonists who collapse from exhaustion get back up and get on with it, with a top-left message: “XXX has decided to get back up and keep working.” Includes a Chinese wake-up scolding (“How can you sleep at your age?!”), enabled by default and available to preview or disable in mod settings. Languages without a voice stay quiet. Normal sleep and medical incapacity are unaffected. Supports RimWorld 1.6 and 1.7; requires Harmony.</description>
+Too tired to stand? Rise and grind! Colonists who collapse from exhaustion get back up and get on with it, with a top-left message: “XXX has decided to get back up and keep working.” Includes a Chinese wake-up scolding (“How can you sleep at your age?!”), enabled by default and available to preview or disable in mod settings. Languages without a voice stay quiet. An optional setting (off by default) can also prevent eligible colonists from collapsing from exhaustion when not in a mental break, while still allowing collapses during mental breaks. Normal sleep and medical incapacity are unaffected. Supports RimWorld 1.6 and 1.7; requires Harmony.</description>
 </ModMetaData>

@@ -1,0 +1,53 @@
+{
+  "published_file_id": 3838056458,
+  "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3838056458",
+  "result": "OK",
+  "needs_legal_agreement": false,
+  "title": "\u8FDC\u7A0B\u706B\u529B\u6570\u636E Ranged Firepower Stats",
+  "visibility": "k_ERemoteStoragePublishedFileVisibilityPublic",
+  "bytes": 4072912,
+  "banned": false,
+  "preview_url": "https://images.steamusercontent.com/ugc/15308117475964620816/C69FCDE4C5FA5D39A8CA66B4963CF432F7D83094/",
+  "gallery": [
+    {
+      "Index": 0,
+      "FileName": "01-Info-Page.jpg",
+      "Url": "https://images.steamusercontent.com/ugc/15570520942313848872/AFA0696C75819D6B45EF639EFA0FDBF57B1D9F6B/",
+      "Type": "k_EItemPreviewType_Image"
+    },
+    {
+      "Index": 1,
+      "FileName": "02-Range-Table.jpg",
+      "Url": "https://images.steamusercontent.com/ugc/9314705871052845344/281FCF003538203DE298545C29778D06D06589DA/",
+      "Type": "k_EItemPreviewType_Image"
+    },
+    {
+      "Index": 2,
+      "FileName": "03-Precision-Link.jpg",
+      "Url": "https://images.steamusercontent.com/ugc/16553343226339869338/CB8DE77CE0C68B3C7B1C3BFA796F17AB922E8D35/",
+      "Type": "k_EItemPreviewType_Image"
+    },
+    {
+      "Index": 3,
+      "FileName": "04-DPS-Comparison.jpg",
+      "Url": "https://images.steamusercontent.com/ugc/17834363138463218770/DBCA88F99D45BDFDBC6897D5E5F2B00A7C47CECB/",
+      "Type": "k_EItemPreviewType_Image"
+    },
+    {
+      "Index": 4,
+      "FileName": "05-DPS-Curves.jpg",
+      "Url": "https://images.steamusercontent.com/ugc/17763791024826456290/28BB8210350C2A61B467AF1B762AFD21CFAE931D/",
+      "Type": "k_EItemPreviewType_Image"
+    },
+    {
+      "Index": 5,
+      "FileName": "06-Accuracy-Curves.jpg",
+      "Url": "https://images.steamusercontent.com/ugc/16366161537770798019/2CF210FD8D67F0E7C64970CFDFE568A304C156B0/",
+      "Type": "k_EItemPreviewType_Image"
+    }
+  ],
+  "required_items": [
+    2009463077
+  ],
+  "verified_utc": "2026-11-11T20:16:55.5865387Z"
+}

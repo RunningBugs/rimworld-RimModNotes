@@ -7,17 +7,22 @@ public static class Program
 {
  public static void Main()
  {
-  const string snapshot="/home/lisanhu/mine/workspace/rimworld/RW/17/Assemblies";
+  string snapshot=Environment.GetEnvironmentVariable("RW17_IME_TEST_ASSEMBLIES")??"/home/lisanhu/mine/workspace/rimworld/RW/17/Assemblies";
   AssemblyLoadContext.Default.Resolving+=(c,n)=>File.Exists(Path.Combine(snapshot,n.Name+".dll"))?c.LoadFromAssemblyPath(Path.Combine(snapshot,n.Name+".dll")):null;
   AssemblyLoadContext.Default.LoadFromAssemblyPath(Path.Combine(snapshot,"UnityStubs.dll"));
   AssemblyLoadContext.Default.LoadFromAssemblyPath(Path.Combine(snapshot,"Assembly-CSharp.dll"));
+  Console.WriteLine("Actual game assemblies: "+snapshot);
   Checks.Run();
  }
 }
 public static class Checks
 {
  private static readonly System.Collections.Generic.List<(int key,int state)> forwarded=new();
+ private static int resets,focusOuts;
  public static int CaptureKey(int key,int code,int state) { forwarded.Add((key,state)); return 0; }
+ public static int Ready() => 1;
+ public static void CaptureReset() => resets++;
+ public static void CaptureFocusOut() => focusOuts++;
  [MethodImpl(MethodImplOptions.NoInlining)]
  public static void Run()
  {
@@ -68,6 +73,7 @@ public static class Checks
   finally { available.SetValue(null,oldAvailable); process.SetValue(null,oldProcess); UnityEngine.InputSystem.InputSystem.ResetAllInput(); UnityEngine.GUIUtility.keyboardControl=oldControl; }
   Console.WriteLine("PASS: same-frame real raw Shift down/up, held release/repress and cleared-edge/repeated-OnGUI control; 8 actual UnityStubs raw modifier transitions with focused text control, masks, dual Shift and duplicate suppression; managed capture sink, no IBus connection");
   Console.WriteLine("PASS: 6 actual commit boundary/Unicode/selection cases; 8 actual IBus key conversion cases; no native init or desktop D-Bus calls");
+  CheckFinalFocus();
   // Optional compatibility must be inactive when absent, then resolve the real
   // installed upstream contract without running DubGUI's graphical initializer.
   if(LinuxImeFix.DubsMintMenus_InputField_Patch.Prepare() || LinuxImeFix.DubsMintMenus_InputField_Patch.TargetMethod()!=null)
@@ -83,5 +89,58 @@ public static class Checks
   if(!exact.GetParameters()[8].IsOptional || exact.GetParameters()[8].Name!="ghost" || exact.GetParameters()[2].Name!="buff")
    throw new Exception("Actual Dubs field/ref-buff semantic contract changed");
   Console.WriteLine("PASS: absent optional Dubs gate and actual installed Dubs1.7 nine-argument metadata target; no fake upstream or GUI/native bridge execution");
+ }
+
+ private static void CheckFinalFocus()
+ {
+  var flags=BindingFlags.NonPublic|BindingFlags.Static;
+  var utility=typeof(LinuxImeFix.LinuxImeUtility); var native=typeof(LinuxImeFix.NativeBridge);
+  var saved=new System.Collections.Generic.Dictionary<FieldInfo,object>();
+  foreach(var name in new[] { "focusedControl","sawFocusedTextFieldThisFrame","hasStoredAnchor","composing","lastCursorX","lastCursorY","shiftDown","controlDown","altDown" })
+  { var field=utility.GetField(name,flags); saved.Add(field,field.GetValue(null)); }
+  foreach(var name in new[] { "available","pIsReady","pReset","pFocusOut" })
+  { var field=native.GetField(name,flags); saved.Add(field,field.GetValue(null)); }
+  var oldEvent=UnityEngine.Event.current; int oldControl=UnityEngine.GUIUtility.keyboardControl;
+  try
+  {
+   foreach(var pair in new[] { ("pIsReady",nameof(Ready)),("pReset",nameof(CaptureReset)),("pFocusOut",nameof(CaptureFocusOut)) })
+   { var field=native.GetField(pair.Item1,flags); field.SetValue(null,Delegate.CreateDelegate(field.FieldType,typeof(Checks).GetMethod(pair.Item2))); }
+   native.GetField("available",flags).SetValue(null,true); resets=focusOuts=0;
+   UnityEngine.Event.current=new UnityEngine.Event { type=UnityEngine.EventType.Layout,rawType=UnityEngine.EventType.Layout };
+   const int control=19001;
+   UnityEngine.GUIUtility.keyboardControl=control;
+   var editor=(UnityEngine.TextEditor)UnityEngine.GUIUtility.GetStateObject(typeof(UnityEngine.TextEditor),control);
+   editor.controlID=control; editor.position=new UnityEngine.Rect(10,10,100,24);
+   utility.GetField("focusedControl",flags).SetValue(null,control);
+   utility.GetField("hasStoredAnchor",flags).SetValue(null,true);
+   utility.GetField("sawFocusedTextFieldThisFrame",flags).SetValue(null,false);
+   LinuxImeFix.LinuxImeUtility.FrameEndRefresh();
+   if(resets!=0 || focusOuts!=0 || !(bool)utility.GetField("hasStoredAnchor",flags).GetValue(null))
+    throw new Exception("An unchanged focused editor lost composition during an intermediate GUI pass");
+   foreach(int finalControl in new[] { 0,control+1 })
+   {
+    utility.GetField("focusedControl",flags).SetValue(null,control);
+    utility.GetField("hasStoredAnchor",flags).SetValue(null,true);
+    utility.GetField("sawFocusedTextFieldThisFrame",flags).SetValue(null,true);
+    utility.GetField("composing",flags).SetValue(null,true);
+    UnityEngine.GUIUtility.keyboardControl=finalControl;
+    int before=resets;
+    LinuxImeFix.LinuxImeUtility.FrameEndRefresh();
+    if(resets!=before+1 || focusOuts!=resets || (int)utility.GetField("focusedControl",flags).GetValue(null)!=0
+     || (bool)utility.GetField("hasStoredAnchor",flags).GetValue(null) || (bool)utility.GetField("composing",flags).GetValue(null))
+     throw new Exception("Final GUI focus loss/switch left an IME candidate anchor or failed to reset exactly once");
+    LinuxImeFix.LinuxImeUtility.FrameEndRefresh();
+    if(resets!=before+1 || focusOuts!=resets) throw new Exception("Repeated GUI pass replayed a cleared focus edge");
+   }
+   // A layout/input pass must not enter the candidate drawing path.
+   utility.GetField("hasStoredAnchor",flags).SetValue(null,true);
+   LinuxImeFix.LinuxImeUtility.DrawCandidateWindow();
+   Console.WriteLine("PASS: actual TextEditor focus preserved between GUI passes; layout drawing skipped; final focus loss and switch clear composition/anchor exactly once; managed native sinks only");
+  }
+  finally
+  {
+   foreach(var entry in saved) entry.Key.SetValue(null,entry.Value);
+   UnityEngine.Event.current=oldEvent; UnityEngine.GUIUtility.keyboardControl=oldControl;
+  }
  }
 }

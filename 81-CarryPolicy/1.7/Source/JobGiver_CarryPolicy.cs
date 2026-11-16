@@ -35,6 +35,7 @@ public class JobGiver_CarryPolicy : ThinkNode_JobGiver
 		// 已超重的小人不再补货（与原版 JobGiver_PackFood 的门控一致；同时覆盖取膏路径无载重检查的问题）
 		if (MassUtility.IsOverEncumbered(pawn))
 		{
+			ScheduleNextCheck(pawn, longCooldown: false);
 			return null;
 		}
 		CarryPolicy carryPolicy = CarryPolicyUtility.CurrentPolicyFor(pawn);

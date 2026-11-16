@@ -1,5 +1,13 @@
 .build/
 .venv/
+**/.venv/
 Source/obj/
 Tests/obj/
 Tests/bin/
+**/bin/
+**/obj/
+__pycache__/
+.pytest_cache/
+*.deps.json
+*.pdb
+dist/

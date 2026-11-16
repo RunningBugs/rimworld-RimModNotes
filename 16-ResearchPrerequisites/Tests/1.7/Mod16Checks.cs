@@ -28,7 +28,7 @@ public static class Mod16Checks
         object Call(string name, params object[] args) => queueType.GetMethod(name).Invoke(queue, args);
         void Control(string name, params object[] args) => controller.GetMethod(name).Invoke(null, args);
         var oldLists = Enumerable.Range(0, 3).Select(i => List(i).ToArray()).ToArray();
-        var attempted = (ResearchProjectDef[])controller.GetField("LastAttemptedHead", BindingFlags.Static | BindingFlags.NonPublic).GetValue(null);
+        var attempted = (ResearchProjectDef[])queueType.GetField("lastAttemptedHead", Private).GetValue(queue);
         var oldAttempted = attempted.ToArray();
         var oldManager = Current.Game.researchManager;
         var oldLetters = Find.LetterStack.LettersListForReading.ToArray();
@@ -42,7 +42,7 @@ public static class Mod16Checks
         var oldHidden = Find.EntityCodex.debug_UnhideAllResearch;
         try
         {
-            foreach (var method in new[] { "SetCurrentProject", "StopProject", "FinishProject" })
+            foreach (var method in new[] { "SetCurrentProject", "StopProject", "FinishProject", "ResetAllProgress" })
                 Require(Harmony.GetPatchInfo(typeof(ResearchManager).GetMethod(method))?.Postfixes.Any(p => p.PatchMethod.DeclaringType?.Assembly == assembly) == true, "Actual " + method + " postfix missing");
             foreach (var method in new[] { "DrawStartButton", "DrawContentSource" })
                 Require(Harmony.GetPatchInfo(typeof(MainTabWindow_Research).GetMethod(method, Private)) != null, "Actual research UI patch missing: " + method);
@@ -64,10 +64,19 @@ public static class Mod16Checks
             Require(manager.GetProject() == a && List(0)[0] == a, "Actual advance did not start first prerequisite and retain queue head");
             manager.SetCurrentProject(other);
             Require(List(0).SequenceEqual(new[] { other, a, b, c, h, goal }), "Actual vanilla SetCurrentProject postfix did not preserve queued projects");
+            manager.StopProject(a);
+            Require(manager.GetProject() == other && List(0).SequenceEqual(new[] { other, a, b, c, h, goal }), "Stopping non-current project must not clear active queue");
             List(0).Remove(other); queue.GameComponentTick();
             Require(List(0)[0] == other, "Actual GameComponentTick did not self-heal existing research head");
+            Control("RemoveFromQueueAndAdvance", b);
+            Require(List(0).SequenceEqual(new[] { other, a, c, h }), "Removing B must remove transitive dependent goal while preserving current and independent items");
             manager.StopProject(other);
             Require(manager.GetProject() == null && List(0).Count == 0, "Actual StopProject did not clear matching queue");
+            var cyc1 = Def("Cyc1"); var cyc2 = Def("Cyc2");
+            cyc1.prerequisites = new() { cyc2 }; cyc2.prerequisites = new() { cyc1 };
+            Call("Enqueue", cyc2);
+            Require(List(0).SequenceEqual(new[] { cyc1, cyc2 }), "Cyclic prerequisites must not stack-overflow");
+            List(0).Clear();
             var blocked = Def("Blocked");
             // A nonexistent required facility cannot exist on any map, making the block deterministic.
             blocked.requiredResearchBuilding = new ThingDef { defName = "RW17Mod16AbsentBench" };
@@ -76,9 +85,15 @@ public static class Mod16Checks
             Require(manager.GetProject() == null && List(0).SequenceEqual(new[] { blocked, other }), "Blocked head must stay queued without skipping to the later project");
             blocked.requiredResearchBuilding = null; queue.GameComponentTick();
             Require(manager.GetProject() == blocked && List(0)[0] == blocked, "Actual tick did not retry after head became startable");
+            var blockedJump = Def("BlockedJump");
+            blockedJump.requiredResearchBuilding = new ThingDef { defName = "RW17Mod16AbsentBench" };
+            Control("JumpChainToFrontAndStart", blockedJump);
+            queue.GameComponentTick();
+            Require(manager.GetProject() == blocked && List(0).SequenceEqual(new[] { blocked, blockedJump, other }), "Blocked jump while active research runs must keep current at head and place jump chain right after");
             Control("JumpChainToFrontAndStart", other);
-            Require(manager.GetProject() == other && List(0).SequenceEqual(new[] { other, blocked }), "Actual jump did not preempt and preserve previous research");
-            manager.StopProject(other); attempted[0] = null;
+            Require(manager.GetProject() == other && List(0).SequenceEqual(new[] { other, blocked, blockedJump }), "Actual jump did not preempt and preserve previous research");
+            manager.ResetAllProgress();
+            Require(manager.GetProject() == null && List(0).Count == 0, "ResetAllProgress must clear queues");
             List(0).Add(a); List(0).Add(b); progress[a] = 100f; List(0).Insert(0, null);
             Require(Call("PeekHead", Cat(0)) == b && List(0).SequenceEqual(new[] { b }), "Completed/null head removal failed");
             Call("Enqueue", a); Require(List(0).SequenceEqual(new[] { b }), "Completed project should not enqueue");
@@ -87,11 +102,24 @@ public static class Mod16Checks
             Require(categories.GetMethod("ToVanillaDef").Invoke(null, new[] { Cat(0) }) == null, "Normal category conversion changed");
             if (ModsConfig.AnomalyActive)
             {
+                var normPre = Def("CrossNorm");
                 var basic = Def("Basic"); basic.baseCost = 0f; basic.knowledgeCost = 100f; basic.knowledgeCategory = KnowledgeCategoryDefOf.Basic;
+                basic.prerequisites = new() { normPre };
                 var advanced = Def("Advanced"); advanced.baseCost = 0f; advanced.knowledgeCost = 100f; advanced.knowledgeCategory = KnowledgeCategoryDefOf.Advanced;
-                Call("Enqueue", basic); Call("Enqueue", advanced); queue.GameComponentTick();
-                Require(manager.GetProject(KnowledgeCategoryDefOf.Basic) == basic && manager.GetProject(KnowledgeCategoryDefOf.Advanced) == advanced && manager.GetProject() == b, "Three category slots failed isolation or tick start");
-                manager.StopProject(basic); Require(List(1).Count == 0 && List(2).SequenceEqual(new[] { advanced }), "Stopping basic cleared another category");
+                advanced.prerequisites = new() { basic };
+                Control("EnqueueAndAdvance", advanced);
+                Require(List(0).SequenceEqual(new[] { b, normPre }) && List(1).SequenceEqual(new[] { basic }) && List(2).SequenceEqual(new[] { advanced }), "Cross-category prerequisites must route into their respective category queues");
+                Control("JumpChainToFrontAndStart", advanced);
+                Require(manager.GetProject() == normPre && List(0).SequenceEqual(new[] { normPre, b }) && List(1).SequenceEqual(new[] { basic }) && List(2).SequenceEqual(new[] { advanced }), "Cross-category jump must preempt normal root while staging Basic/Advanced heads");
+                manager.FinishProject(normPre, false, null, false);
+                queue.GameComponentTick();
+                Require(manager.GetProject() == b && manager.GetProject(KnowledgeCategoryDefOf.Basic) == basic && manager.GetProject(KnowledgeCategoryDefOf.Advanced) == null, "Finishing cross-category Normal prerequisite must auto-start Basic without starting Advanced early");
+                manager.FinishProject(basic, false, null, false);
+                queue.GameComponentTick();
+                Require(manager.GetProject(KnowledgeCategoryDefOf.Advanced) == advanced, "Finishing Basic prerequisite must auto-start Advanced");
+                manager.StopProject(basic);
+                manager.StopProject(advanced);
+                Require(List(1).Count == 0 && List(2).Count == 0, "Stopping Anomaly slots must clean their respective queues");
             }
             var show = assembly.GetType("ResearchPrerequisites.DrawStartButtonPatch").GetMethod("ShouldShowQueueButton", BindingFlags.Static | BindingFlags.NonPublic);
             Require(!(bool)show.Invoke(null, new object[] { null }) && !(bool)show.Invoke(null, new[] { a }) && !(bool)show.Invoke(null, new[] { b }) && (bool)show.Invoke(null, new[] { other }), "Actual queue button null/completed/current/other eligibility failed");

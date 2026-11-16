@@ -33,3 +33,14 @@ expansion-common79-core-v2：16.84秒，8 active组/9真实targets注册与核�
 
 
 主代理已回写至实际本地目录：/home/lisanhu/mine/workspace/rimworld/RimModNotes/79-CommonModCompatibilityPatches。回写后 expansion-local-selfuse-final 使用实际本地新1.7路径再次验证，相关检查通过且正常退出、无超时；Headless仅基线0x0 ERROR，渲染组合无ERROR。原始文件保留与显式清单哈希均复验；本轮未commit/push/Workshop发布。完整结果见 /home/lisanhu/mine/workspace/rimworld/tmp/update-1-7/expansion/REPORT-1.7.md。
+
+## Better Pawn Control 任务离开空引用修复（2026-11-16）
+
+- 环境：实际游戏 `1.7.5005 rev1082`，当前启用工坊 `VouLT.BetterPawnControl`（1541460369）的 `v1.6/Assemblies/BetterPawnControl.dll`，并非本地 fork。
+- 根因：失效人物引用留下 `AssignLink.colonist == null`。BPC 的 `Pawn_GuestTracker_SetGuestStatus.Postfix` 调用 `Pawn.Equals(Pawn)`，1.7 实现不接受 null，打断 `QuestPart_Leave -> MakePawnsLeave -> MakePawnLeave -> SetFaction -> SetGuestStatus`。
+- 新增第 31 组 `BetterPawnControlStaleAssignLinksCompatibility`：动态检测原版/fork 包和实际类型、字段及方法；在原生 `Pawn_GuestTracker.SetGuestStatus(Faction, GuestStatus)` 的 prefix 清理空人物缓存，在 BPC `DataStorage.ExposeData()` 的 PostLoadInit postfix 清理读档遗留。LoadingVars/ResolvingCrossRefs/Saving 不清理，避免误删尚未解析的跨地图引用。只删除空记录或空 colonist，不清空列表、不改有效策略、不禁用 BPC 原回调，也不全局修改 Pawn.Equals。
+- 保留旧 1.6 源码/DLL 字节；About 双语说明和两个 BPC loadAfter 条目同步更新。生产项目仍使用原有固定 Ref/Harmony/Publicizer，Release 构建 0 warnings / 0 errors。新 DLL SHA256：`dd4c0bcc2ecf9fbad4eecebae0ad928a307698b88ad73cbe8a5ad96745993d13`。
+- `Tests/BetterPawnControl` 使用实际游戏和工坊 DLL、独立 Mods/SaveData/XDG 目录执行真实进程。active-v2 的 16 项断言通过：先用未改工坊回调复现异常，再验证真实 ExposeData 的 PostLoadInit 清理、早期读档不清理、有效策略对象/顺序/内容不变、原默认策略分支继续执行、重复调用幂等，以及真实已接受 Quest 的离开信号最终创建 `LordJob_ExitMapBest`。absent-v1 的 4 项断言确认无 BPC 程序集时无注册且 TryApply 返回 false。两次都正常退出、无 ERROR；32 项静态白盒检查通过。
+- 首次 active-v1 测试夹具未接受任务，且信号未使用 `Quest{id}.` 前缀，被原版正确过滤；修正夹具为真实 accepted 状态和合法任务信号后通过，未放宽退出 Lord 的业务断言，生产代码未因该测试失败而变化。
+- 测试和备份：`/tmp/opencode/rw-bpc-quest-fix-20261116/`，含 before-sha256、active-v1/v2、absent-v1、构建产物及日志。未宣称已覆盖用户全部 Mod 组合或整个实际存档的运行。
+- 用户另要求直接修好存档：从最新 `赤裸1020#§#秘密花园-奥伦-3.rws` 另存 `赤裸1020#§#秘密花园-奥伦-3-季辉任务已修复.rws`。仅删除一条空人物 AssignLink，并把 Quest77 已到期的离开 Delay 从 Disabled 恢复 Enabled；不改截止时间、不强制成功、不推进/回滚时间。其余 XML 语义整体一致，原存档哈希不变；报告为备份目录中的 `save-repair-report.json`。

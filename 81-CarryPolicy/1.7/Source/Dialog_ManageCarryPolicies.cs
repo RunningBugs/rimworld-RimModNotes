@@ -6,7 +6,7 @@ using Verse;
 
 namespace _CarryPolicy;
 
-public class Dialog_ManageCarryPolicies : Dialog_ManagePolicies<CarryPolicy>
+public abstract class Dialog_ManageCarryPoliciesBase : Dialog_ManagePolicies<CarryPolicy>
 {
 	private const float EntryRowHeight = 35f;
 
@@ -51,49 +51,21 @@ public class Dialog_ManageCarryPolicies : Dialog_ManagePolicies<CarryPolicy>
 
 	private List<ThingCategoryDef> Categories => cachedCategories ??= AvailableCategories().ToList();
 
-	protected override string TitleKey => "CarryPolicyTitle";
-
-	protected override string TipKey => "CarryPolicyTip";
-
 	public override Vector2 InitialSize => new Vector2(Mathf.Min(Screen.width - 50f, 1000f), 720f);
 
-	public Dialog_ManageCarryPolicies(CarryPolicy policy)
+	protected Dialog_ManageCarryPoliciesBase(CarryPolicy policy)
 		: base(policy)
 	{
 	}
 
-	protected override CarryPolicy CreateNewPolicy()
-	{
-		return CarryPolicyDatabase.Instance.MakeNewPolicy();
-	}
-
-	protected override CarryPolicy GetDefaultPolicy()
-	{
-		return CarryPolicyDatabase.Instance.DefaultCarryPolicy();
-	}
-
-	protected override void SetDefaultPolicy(CarryPolicy policy)
-	{
-		CarryPolicyDatabase.Instance.SetDefault(policy);
-	}
-
-	protected override AcceptanceReport TryDeletePolicy(CarryPolicy policy)
-	{
-		return CarryPolicyDatabase.Instance.TryDelete(policy);
-	}
-
-	protected override List<CarryPolicy> GetPolicies()
-	{
-		return CarryPolicyDatabase.Instance.AllPolicies;
-	}
-
 	protected override void DoContentsRect(Rect rect)
 	{
-		// 切换方案时清空右栏勾选，避免残留选择误加到别的方案
+		// 切换方案时清空右栏勾选并取消输入框焦点，避免残留选择或输入缓冲串到别的方案
 		if (SelectedPolicy != lastSelectedPolicy)
 		{
 			lastSelectedPolicy = SelectedPolicy;
 			checkedDefs.Clear();
+			UI.UnfocusCurrentControl();
 		}
 		float num = Mathf.Min(LeftColumnWidth, rect.width * 0.6f);
 		Rect rect2 = new Rect(rect.x, rect.y, num, rect.height);
@@ -137,6 +109,7 @@ public class Dialog_ManageCarryPolicies : Dialog_ManagePolicies<CarryPolicy>
 			Widgets.EndScrollView();
 			if (list != null)
 			{
+				UI.UnfocusCurrentControl();
 				foreach (int item in list.OrderByDescending((int x) => x))
 				{
 					SelectedPolicy.entries.RemoveAt(item);
@@ -145,6 +118,7 @@ public class Dialog_ManageCarryPolicies : Dialog_ManagePolicies<CarryPolicy>
 		}
 		if (Widgets.ButtonText(rect4, "ClearAllCarryEntries".Translate()))
 		{
+			UI.UnfocusCurrentControl();
 			SelectedPolicy.entries.Clear();
 		}
 	}
@@ -177,11 +151,33 @@ public class Dialog_ManageCarryPolicies : Dialog_ManagePolicies<CarryPolicy>
 			Widgets.DrawLightHighlight(rect);
 		}
 		var (x, deleteX, nameWidth, countX, hintX, infoX) = CalculateEntryColumns(rect);
+		if (entry.thing == null)
+		{
+			GUI.color = Color.grey;
+			Text.Anchor = TextAnchor.MiddleLeft;
+			Rect missingRect = new Rect(x + IconSize, rect.y, nameWidth + InfoButtonSize, rect.height).ContractedBy(4f);
+			Widgets.Label(missingRect, "CarryPolicyMissingThing".Translate(entry.unloadedDefName ?? "?"));
+			Text.Anchor = TextAnchor.MiddleCenter;
+			Widgets.Label(new Rect(countX, rect.y, CountFieldWidth, rect.height), entry.count.ToString("0.##"));
+			Text.Anchor = TextAnchor.MiddleLeft;
+			Widgets.Label(new Rect(hintX, rect.y, HintWidth, rect.height), "CarryPolicyMissingShort".Translate());
+			GUI.color = Color.white;
+			if (Widgets.ButtonImage(new Rect(deleteX, rect.y + (rect.height - 18f) / 2f, 18f, 18f), TexButton.CloseXSmall))
+			{
+				result = true;
+			}
+			Text.Anchor = TextAnchor.UpperLeft;
+			return result;
+		}
 		Text.Anchor = TextAnchor.MiddleLeft;
 		Widgets.ThingIcon(new Rect(x, rect.y + (rect.height - IconSize) / 2f, IconSize, IconSize), entry.thing);
 		Rect rect2 = new Rect(x + IconSize, rect.y, nameWidth, rect.height).ContractedBy(4f);
 		Widgets.Label(rect2, entry.thing.LabelCap);
-		Widgets.InfoCardButton(new Rect(infoX, rect.y + (rect.height - InfoButtonSize) / 2f, InfoButtonSize, InfoButtonSize), entry.thing);
+		// 主菜单下 Current.Game 为 null，原版 Dialog_InfoCard/StatWorker 会空引用报错；仅在局内绘制信息卡按钮
+		if (Current.Game != null)
+		{
+			Widgets.InfoCardButton(new Rect(infoX, rect.y + (rect.height - InfoButtonSize) / 2f, InfoButtonSize, InfoButtonSize), entry.thing);
+		}
 		// 食物按「份」（float，0.1 步进）；其他物品按「件」，只接受整数
 		if (entry.IsFood)
 		{
@@ -227,7 +223,7 @@ public class Dialog_ManageCarryPolicies : Dialog_ManagePolicies<CarryPolicy>
 		{
 			currentCategory = Categories.FirstOrDefault() ?? ThingCategoryDefOf.Root;
 		}
-		Widgets.Dropdown(rect5, this, (Dialog_ManageCarryPolicies d) => d.currentCategory, GenerateCategoryMenu, currentCategory.LabelCap, null, currentCategory.LabelCap, null, null, paintable: false);
+		Widgets.Dropdown(rect5, this, (Dialog_ManageCarryPoliciesBase d) => d.currentCategory, GenerateCategoryMenu, currentCategory.LabelCap, null, currentCategory.LabelCap, null, null, paintable: false);
 		searchWidget.OnGUI(rect6, RefreshOptions);
 		Widgets.DrawMenuSection(rect3);
 		Rect rect7 = rect3.ContractedBy(1f);
@@ -312,7 +308,7 @@ public class Dialog_ManageCarryPolicies : Dialog_ManagePolicies<CarryPolicy>
 			select c;
 	}
 
-	private IEnumerable<Widgets.DropdownMenuElement<ThingCategoryDef>> GenerateCategoryMenu(Dialog_ManageCarryPolicies dialog)
+	private IEnumerable<Widgets.DropdownMenuElement<ThingCategoryDef>> GenerateCategoryMenu(Dialog_ManageCarryPoliciesBase dialog)
 	{
 		foreach (ThingCategoryDef item in dialog.Categories)
 		{
@@ -349,5 +345,85 @@ public class Dialog_ManageCarryPolicies : Dialog_ManagePolicies<CarryPolicy>
 			select d).ToList();
 		cachedOptionsKey = text;
 		return cachedOptions;
+	}
+}
+
+public class Dialog_ManageCarryPolicies : Dialog_ManageCarryPoliciesBase
+{
+	protected override string TitleKey => "CarryPolicyTitle";
+
+	protected override string TipKey => "CarryPolicyTip";
+
+	public Dialog_ManageCarryPolicies(CarryPolicy policy)
+		: base(policy)
+	{
+	}
+
+	protected override CarryPolicy CreateNewPolicy()
+	{
+		return CarryPolicyDatabase.Instance.MakeNewPolicy();
+	}
+
+	protected override CarryPolicy GetDefaultPolicy()
+	{
+		return CarryPolicyDatabase.Instance.DefaultCarryPolicy();
+	}
+
+	protected override void SetDefaultPolicy(CarryPolicy policy)
+	{
+		CarryPolicyDatabase.Instance.SetDefault(policy);
+	}
+
+	protected override AcceptanceReport TryDeletePolicy(CarryPolicy policy)
+	{
+		return CarryPolicyDatabase.Instance.TryDelete(policy);
+	}
+
+	protected override List<CarryPolicy> GetPolicies()
+	{
+		return CarryPolicyDatabase.Instance.AllPolicies;
+	}
+}
+
+public class Dialog_ManageDefaultCarryPolicies : Dialog_ManageCarryPoliciesBase
+{
+	protected override string TitleKey => "CrossSaveCarryPolicyTitle";
+
+	protected override string TipKey => "CrossSaveCarryPolicyTip";
+
+	public Dialog_ManageDefaultCarryPolicies()
+		: base(CarryPolicyModHandle.Settings.DefaultCarryPolicy())
+	{
+	}
+
+	public override void PreClose()
+	{
+		base.PreClose();
+		CarryPolicyModHandle.Instance?.WriteSettings();
+	}
+
+	protected override CarryPolicy CreateNewPolicy()
+	{
+		return CarryPolicyModHandle.Settings.MakeNewPolicy();
+	}
+
+	protected override CarryPolicy GetDefaultPolicy()
+	{
+		return CarryPolicyModHandle.Settings.DefaultCarryPolicy();
+	}
+
+	protected override void SetDefaultPolicy(CarryPolicy policy)
+	{
+		CarryPolicyModHandle.Settings.SetDefault(policy);
+	}
+
+	protected override AcceptanceReport TryDeletePolicy(CarryPolicy policy)
+	{
+		return CarryPolicyModHandle.Settings.TryDelete(policy);
+	}
+
+	protected override List<CarryPolicy> GetPolicies()
+	{
+		return CarryPolicyModHandle.Settings.defaultPolicies;
 	}
 }
