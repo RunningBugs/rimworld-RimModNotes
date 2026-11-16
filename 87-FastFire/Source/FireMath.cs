@@ -147,18 +147,15 @@ internal static class FireMath
             }
         }
 
-        if (!hasFireBulwark)
+        for (int i = 0; i < thingList.Count; i++)
         {
-            for (int i = 0; i < thingList.Count; i++)
+            Thing thing = thingList[i];
+            if (thing.def.category != ThingCategory.Pawn && (!hasFireBulwark || thing.FireBulwark))
             {
-                Thing thing = thingList[i];
-                if (thing.def.category != ThingCategory.Pawn)
+                float flamm = GetThingFlammabilityFast(thing);
+                if (flamm >= 0.01f)
                 {
-                    float flamm = GetThingFlammabilityFast(thing);
-                    if (flamm >= 0.01f)
-                    {
-                        num = Mathf.Max(num, flamm);
-                    }
+                    num = Mathf.Max(num, flamm);
                 }
             }
         }

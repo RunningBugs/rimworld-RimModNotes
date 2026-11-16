@@ -240,10 +240,25 @@ public sealed class GameChecks(Map map) : MapComponent(map)
             turret.SetFaction(Faction.OfPlayer);
             IntVec3 turretFireCell = new IntVec3(69, 0, 69);
             FireUtility.TryStartFireIn(turretFireCell, map, 0.8f, null);
+            FireUtility.TryStartFireIn(turretFireCell + IntVec3.East, map, 0.8f, null);
             LocalTargetInfo turretTarget = turret.TryFindNewTarget();
             Require(turretTarget.IsValid && turretTarget.Cell == turretFireCell,
                 $"{tag}: FoamTurret TryFindNewTarget locks onto fire");
+            var foamProj = (Projectile_Liquid)GenSpawn.Spawn(ThingDef.Named("Proj_Foam"), turretFireCell, map);
+            AccessTools.Method(typeof(Projectile_Liquid), "Impact").Invoke(foamProj, new object[] { null, false });
+            Require(!turretFireCell.ContainsStaticFire(map) && !(turretFireCell + IntVec3.East).ContainsStaticFire(map),
+                $"{tag}: Projectile_Liquid (Proj_Foam) extinguishes fires on impact");
             turret.Destroy();
+            comp.ClearAllFiresForDebug();
+
+            // 2f2. Flammable FireBulwark building (Wooden Wall) catches fire & DebugSpawn merges cleanly
+            IntVec3 woodWallCell = new IntVec3(64, 0, 64);
+            Thing woodWall = GenSpawn.Spawn(ThingMaker.MakeThing(ThingDefOf.Wall, ThingDefOf.WoodLog), woodWallCell, map);
+            Require(FireUtility.ChanceToStartFireIn(woodWallCell, map) > 0f && FireUtility.TryStartFireIn(woodWallCell, map, 0.3f, null),
+                $"{tag}: flammable FireBulwark building (Wood Wall) can ignite");
+            DebugThingPlaceHelper.DebugSpawn(ThingDefOf.Fire, woodWallCell);
+            Require(woodWallCell.ContainsStaticFire(map), $"{tag}: DebugSpawn on burning cell keeps single valid fire");
+            woodWall.Destroy();
             comp.ClearAllFiresForDebug();
 
             Apparel pack = (Apparel)ThingMaker.MakeThing(ThingDef.Named("Apparel_FirefoampopPack"));

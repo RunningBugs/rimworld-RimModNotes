@@ -1015,6 +1015,28 @@ internal static class Patch_WaterSplash_Impact
     }
 }
 
+[HarmonyPatch(typeof(Projectile_Liquid), "DoImpact")]
+internal static class Patch_Projectile_Liquid_DoImpact
+{
+    public static void Postfix(Projectile_Liquid __instance, IntVec3 cell)
+    {
+        if (!FastFireMod.Settings.UseGridEngine || __instance.DamageDef != DamageDefOf.Extinguish)
+        {
+            return;
+        }
+        Map map = __instance.Map;
+        if (map == null || !cell.InBounds(map))
+        {
+            return;
+        }
+        FireMapComponent comp = map.GetComponent<FireMapComponent>();
+        if (comp != null && comp.GridFireCount > 0 && comp.HasGridFireAt(cell))
+        {
+            comp.ApplyExtinguishDamageGridAt(cell, __instance.def.projectile.GetDamageAmount(null));
+        }
+    }
+}
+
 [HarmonyPatch(typeof(Building_TurretFoam), nameof(Building_TurretFoam.TryFindNewTarget))]
 internal static class Patch_Building_TurretFoam_TryFindNewTarget
 {
@@ -1189,5 +1211,38 @@ internal static class Patch_DebugToolsGeneral_DestroyAllFire
         }
         comp.ClearAllFiresForDebug();
         return false;
+    }
+}
+
+[HarmonyPatch(typeof(DebugThingPlaceHelper), nameof(DebugThingPlaceHelper.DebugSpawn))]
+internal static class Patch_DebugThingPlaceHelper_DebugSpawn
+{
+    public static bool Prefix(ThingDef def, IntVec3 c)
+    {
+        if (def != ThingDefOf.Fire || !FastFireMod.Settings.UseGridEngine)
+        {
+            return true;
+        }
+        Map map = Find.CurrentMap;
+        if (map == null || !c.InBounds(map))
+        {
+            return true;
+        }
+        FireMapComponent comp = map.GetComponent<FireMapComponent>();
+        if (comp == null)
+        {
+            return true;
+        }
+        if (comp.HasGridFireAt(c))
+        {
+            comp.GrowGridFireSizeAt(c, 0.1f);
+            return false;
+        }
+        if (!c.ContainsStaticFire(map))
+        {
+            comp.TryAddGridFire(c, FireMath.MinFireSize, null);
+            return false;
+        }
+        return true;
     }
 }

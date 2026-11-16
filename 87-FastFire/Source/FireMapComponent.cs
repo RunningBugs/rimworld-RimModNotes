@@ -372,6 +372,23 @@ public sealed class FireMapComponent : MapComponent, IDisposable
         }
     }
 
+    public void GrowGridFireSizeAt(IntVec3 cell, float delta)
+    {
+        if (!cell.InBounds(map))
+        {
+            return;
+        }
+        int idx = map.cellIndices.CellToIndex(cell);
+        if (staticFireAtCell[idx] != 1)
+        {
+            return;
+        }
+        float oldSize = gridFireSize[idx];
+        float newSize = Mathf.Clamp(oldSize + delta, FireMath.MinFireSize, FireMath.MaxFireSize);
+        gridFireSize[idx] = newSize;
+        UpdateStaticFireSizeDelta(cell, oldSize, newSize);
+    }
+
     public Fire MaterializeProxyFireAt(IntVec3 cell)
     {
         int idx = map.cellIndices.CellToIndex(cell);
@@ -443,6 +460,19 @@ public sealed class FireMapComponent : MapComponent, IDisposable
         if (thingFireAtCell[idx] == fire)
         {
             return;
+        }
+        if (staticFireAtCell[idx] == 1)
+        {
+            bool prevSuppress = suppressPathDirty;
+            suppressPathDirty = true;
+            try
+            {
+                ExtinguishGridFireAt(idx, pos);
+            }
+            finally
+            {
+                suppressPathDirty = prevSuppress;
+            }
         }
 
         staticFireAtCell[idx] = 2;
@@ -532,9 +562,16 @@ public sealed class FireMapComponent : MapComponent, IDisposable
             }
         }
 
-        if (!suppressPathDirty && FastFireMod.Settings.UsePathingDebounce)
+        if (!suppressPathDirty)
         {
-            MarkPathDirtyAround(pos);
+            if (FastFireMod.Settings.UsePathingDebounce)
+            {
+                MarkPathDirtyAround(pos);
+            }
+            else if (FastFireMod.Settings.UseGridEngine)
+            {
+                RecalcPathCostsImmediateAround(pos);
+            }
         }
     }
 
@@ -566,9 +603,16 @@ public sealed class FireMapComponent : MapComponent, IDisposable
             }
         }
 
-        if (!suppressPathDirty && FastFireMod.Settings.UsePathingDebounce)
+        if (!suppressPathDirty)
         {
-            MarkPathDirtyAround(pos);
+            if (FastFireMod.Settings.UsePathingDebounce)
+            {
+                MarkPathDirtyAround(pos);
+            }
+            else if (FastFireMod.Settings.UseGridEngine)
+            {
+                RecalcPathCostsImmediateAround(pos);
+            }
         }
     }
 
@@ -706,6 +750,18 @@ public sealed class FireMapComponent : MapComponent, IDisposable
                     pathDirtyFlags[idx] = 1;
                     pathDirtyCells.Add(idx);
                 }
+            }
+        }
+    }
+
+    private void RecalcPathCostsImmediateAround(IntVec3 center)
+    {
+        for (int i = 0; i < 9; i++)
+        {
+            IntVec3 c = center + GenAdj.AdjacentCellsAndInside[i];
+            if ((uint)c.x < (uint)sizeX && (uint)c.z < (uint)sizeZ)
+            {
+                map.pathing.RecalculatePerceivedPathCostAt(c);
             }
         }
     }
