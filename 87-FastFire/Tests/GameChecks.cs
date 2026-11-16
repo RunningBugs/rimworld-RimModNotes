@@ -174,19 +174,22 @@ public sealed class GameChecks(Map map) : MapComponent(map)
                 $"{tag}: right-click ordered ExtinguishFiresNearby extinguished multiple fires");
 
             // 2c. JobDriver_Wait standing adjacent auto-beat fire
-            pawn.drafter.Drafted = false;
+            pawn.drafter.Drafted = true;
+            pawn.stances.CancelBusyStanceHard();
             pawn.jobs.StopAll();
             pawn.Position = new IntVec3(56, 0, 58);
             pawn.Notify_Teleported();
             IntVec3 adjWaitFire = new IntVec3(57, 0, 58);
             map.areaManager.Home[adjWaitFire] = false;
             FireUtility.TryStartFireIn(adjWaitFire, map, 0.25f, null);
-            pawn.jobs.StartJob(JobMaker.MakeJob(JobDefOf.Wait), JobCondition.InterruptForced);
+            pawn.jobs.StartJob(JobMaker.MakeJob(JobDefOf.Wait_Combat), JobCondition.InterruptForced);
             deadline = Find.TickManager.TicksGame + 600;
             while (adjWaitFire.ContainsStaticFire(map) && Find.TickManager.TicksGame < deadline)
             {
                 yield return null;
             }
+            pawn.drafter.Drafted = false;
+            pawn.jobs.StopAll();
             Require(!adjWaitFire.ContainsStaticFire(map), $"{tag}: idle pawn standing next to fire auto-beats it out");
 
             // 2d. DamageDefOf.Extinguish explosion (Firefoam Popper / Waterskip / Foam Turret impact)
@@ -275,11 +278,32 @@ public sealed class GameChecks(Map map) : MapComponent(map)
             Require(attached != null && attached.parent == pawn, $"{tag}: pawn-attached fire stays vanilla Fire attachment");
             attached.Destroy();
 
-            // 2i. FireWatcher danger observation
+            // 2i. FireWatcher danger observation & WeatherDecider large-fire rain trigger
             FireUtility.TryStartFireIn(new IntVec3(55, 0, 65), map, 1.5f, null);
             AccessTools.Method(typeof(FireWatcher), "UpdateObservations").Invoke(map.fireWatcher, null);
-            Require(map.fireWatcher.FireDanger >= 1.9f && map.fireWatcher.FireDanger < 50f,
-                $"{tag}: FireWatcher accurately tracks fire danger ({map.fireWatcher.FireDanger:F2})");
+            Require(map.fireWatcher.FireDanger >= 1.9f && map.fireWatcher.FireDanger < 50f && !map.fireWatcher.LargeFireDangerPresent,
+                $"{tag}: FireWatcher accurately tracks small fire danger ({map.fireWatcher.FireDanger:F2})");
+
+            var rainDef = DefDatabase<WeatherDef>.GetNamed("Rain");
+            var commonalityMethod = AccessTools.Method(typeof(WeatherDecider), "CurrentWeatherCommonality");
+            float rainWeightBefore = (float)commonalityMethod.Invoke(map.weatherDecider, new object[] { rainDef });
+
+            for (int fx = 50; fx < 60; fx++)
+            {
+                for (int fz = 50; fz < 56; fz++)
+                {
+                    FireUtility.TryStartFireIn(new IntVec3(fx, 0, fz), map, 1.75f, null);
+                }
+            }
+            AccessTools.Method(typeof(FireWatcher), "UpdateObservations").Invoke(map.fireWatcher, null);
+            Require(map.fireWatcher.LargeFireDangerPresent && map.fireWatcher.FireDanger > 90f,
+                $"{tag}: LargeFireDangerPresent triggers above 90 danger ({map.fireWatcher.FireDanger:F2})");
+            if (rainWeightBefore > 0f)
+            {
+                float rainWeightAfter = (float)commonalityMethod.Invoke(map.weatherDecider, new object[] { rainDef });
+                Require(rainWeightAfter >= rainWeightBefore * 14.9f,
+                    $"{tag}: WeatherDecider boosts rain weight 15x on large fire ({rainWeightBefore:F3} -> {rainWeightAfter:F3})");
+            }
             comp.ClearAllFiresForDebug();
         }
 

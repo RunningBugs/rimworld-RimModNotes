@@ -596,7 +596,7 @@ internal static class Patch_FireWatcher_UpdateObservations
 {
     public static bool Prefix(FireWatcher __instance)
     {
-        if (!FastFireMod.Settings.UseAiSpatialAccel)
+        if (!FastFireMod.Settings.UseAiSpatialAccel && !FastFireMod.Settings.UseGridEngine)
         {
             return true;
         }
@@ -631,7 +631,7 @@ internal static class Patch_Alert_FireInHomeArea_GetReport
 {
     public static bool Prefix(ref AlertReport __result)
     {
-        if (!FastFireMod.Settings.UseAiSpatialAccel)
+        if (!FastFireMod.Settings.UseAiSpatialAccel && !FastFireMod.Settings.UseGridEngine)
         {
             return true;
         }
