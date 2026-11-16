@@ -313,6 +313,41 @@ public sealed class GameChecks(Map map) : MapComponent(map)
         int benchFireCount = comp.TotalStaticFireCount;
         Require(benchFireCount >= 10000, $"benchmark map has {benchFireCount} fires (>= 10000)");
 
+        // Regression test: zoom way out past all map borders + late-game ticksGame (overflow safety in DrawBatchedFires)
+        FieldInfo ticksGameField = AccessTools.Field(typeof(TickManager), "ticksGameInt");
+        int savedTick = Find.TickManager.TicksGame;
+        try
+        {
+            foreach (int testTick in new[] { savedTick, 2_000_000, int.MaxValue - 50 })
+            {
+                ticksGameField.SetValue(Find.TickManager, testTick);
+                Find.CameraDriver.SetRootPosAndSize(map.Center.ToVector3Shifted(), 180f);
+                if (Render) yield return null;
+                else comp.DrawBatchedFires();
+
+                Find.CameraDriver.SetRootPosAndSize(new Vector3(-40f, 0f, -40f), 100f);
+                if (Render) yield return null;
+                else comp.DrawBatchedFires();
+
+                Find.CameraDriver.SetRootPosAndSize(new Vector3(map.Size.x + 40f, 0f, map.Size.z + 40f), 100f);
+                if (Render) yield return null;
+                else comp.DrawBatchedFires();
+            }
+            if (Render)
+            {
+                ticksGameField.SetValue(Find.TickManager, 2_000_000);
+                Find.CameraDriver.SetRootPosAndSize(map.Center.ToVector3Shifted(), 130f);
+                for (int f = 0; f < 5; f++) yield return null;
+                ScreenCapture.CaptureScreenshot(Path.Combine(GenFilePaths.SaveDataFolderPath, "fires-zoomout.png"));
+                for (int f = 0; f < 2; f++) yield return null;
+            }
+        }
+        finally
+        {
+            ticksGameField.SetValue(Find.TickManager, savedTick);
+        }
+        Require(true, "DrawBatchedFires handles extreme zoom-out, off-map camera, and high ticksGame without IndexOutOfRange");
+
         // Let's also render screenshots & measure real frame time (MapUpdate + GlowGrid + DrawDynamicThings) if --render is set!
         double? extremeRenderMsPerFrame = null;
         double? compatRenderMsPerFrame = null;

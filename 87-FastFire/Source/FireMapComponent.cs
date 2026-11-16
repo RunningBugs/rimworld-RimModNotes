@@ -298,7 +298,7 @@ public sealed class FireMapComponent : MapComponent, IDisposable
         }
 
         int currentTick = Find.TickManager != null ? Find.TickManager.TicksGame : 0;
-        int bucket = (currentTick + Rand.RangeInclusive(1, BucketCount - 1)) % BucketCount;
+        int bucket = (int)(unchecked((uint)(currentTick + Rand.RangeInclusive(1, BucketCount - 1))) % (uint)BucketCount);
         gridBucketId[idx] = (byte)bucket;
         gridSlotInBucket[idx] = gridBuckets[bucket].Count;
         gridBuckets[bucket].Add(idx);
@@ -451,7 +451,7 @@ public sealed class FireMapComponent : MapComponent, IDisposable
         if (FastFireMod.Settings.IsActive && !compatLocator.ContainsKey(fire.thingIDNumber))
         {
             int currentTick = Find.TickManager != null ? Find.TickManager.TicksGame : 0;
-            int bucket = (currentTick + Rand.RangeInclusive(1, BucketCount - 1)) % BucketCount;
+            int bucket = (int)(unchecked((uint)(currentTick + Rand.RangeInclusive(1, BucketCount - 1))) % (uint)BucketCount);
             int slot = compatBuckets[bucket].Count;
             compatBuckets[bucket].Add(fire);
             compatLocator[fire.thingIDNumber] = ((byte)bucket, slot);
@@ -755,7 +755,7 @@ public sealed class FireMapComponent : MapComponent, IDisposable
         }
 
         int ticksGame = Find.TickManager.TicksGame;
-        int bucket = ticksGame % BucketCount;
+        int bucket = (int)(unchecked((uint)ticksGame) % (uint)BucketCount);
 
         // Tick grid fires (ExtremeGrid mode)
         List<int> gBucket = gridBuckets[bucket];
@@ -1345,16 +1345,16 @@ public sealed class FireMapComponent : MapComponent, IDisposable
         {
             viewRect = viewRect.Encapsulate(WorldComponent_GravshipController.GravshipRenderBounds);
         }
-        viewRect.ClipInsideMap(map);
-        if (viewRect.IsEmpty)
+        viewRect = viewRect.ClipInsideMap(map);
+        if (viewRect.IsEmpty || viewRect.minX >= sizeX || viewRect.minZ >= sizeZ || viewRect.maxX < 0 || viewRect.maxZ < 0)
         {
             return;
         }
 
-        int minCx = viewRect.minX >> AiChunkShift;
-        int maxCx = viewRect.maxX >> AiChunkShift;
-        int minCz = viewRect.minZ >> AiChunkShift;
-        int maxCz = viewRect.maxZ >> AiChunkShift;
+        int minCx = Math.Clamp(viewRect.minX >> AiChunkShift, 0, aiChunkW - 1);
+        int maxCx = Math.Clamp(viewRect.maxX >> AiChunkShift, 0, aiChunkW - 1);
+        int minCz = Math.Clamp(viewRect.minZ >> AiChunkShift, 0, aiChunkH - 1);
+        int maxCz = Math.Clamp(viewRect.maxZ >> AiChunkShift, 0, aiChunkH - 1);
 
         int ticksGame = Find.TickManager.TicksGame;
         float altitude = ThingDefOf.Fire.Altitude;
@@ -1432,11 +1432,12 @@ public sealed class FireMapComponent : MapComponent, IDisposable
                             seed = f.thingIDNumber;
                         }
 
-                        int num = ticksGame + Mathf.Abs(seed ^ 0x80FD52);
-                        int num2 = num / 15;
-                        int subIdx = Mathf.Abs(num2 ^ (seed * 391)) % subCount;
+                        uint uSeed = unchecked((uint)seed);
+                        uint num = unchecked((uint)ticksGame) + ((uSeed ^ 0x80FD52u) & 0x7FFFFFFFu);
+                        uint num2 = num / 15u;
+                        int subIdx = (int)((num2 ^ unchecked(uSeed * 391u)) % (uint)subCount);
                         float drawScale = Mathf.Min(fireSize / 1.2f, 1.2f);
-                        IntVec3 pat = radialPattern[num2 % radialLen];
+                        IntVec3 pat = radialPattern[(int)(num2 % (uint)radialLen)];
                         float jx = pat.x * invMaxRadius * fireSize;
                         float jz = pat.z * invMaxRadius * fireSize;
                         float cxPos = x + 0.5f + jx;
@@ -2478,7 +2479,7 @@ public sealed class FireMapComponent : MapComponent, IDisposable
                 Find.TickManager.tickListNormal.DeregisterThing(f);
                 if (!compatLocator.ContainsKey(f.thingIDNumber))
                 {
-                    int bucket = (Find.TickManager.TicksGame + Rand.RangeInclusive(1, BucketCount - 1)) % BucketCount;
+                    int bucket = (int)(unchecked((uint)(Find.TickManager.TicksGame + Rand.RangeInclusive(1, BucketCount - 1))) % (uint)BucketCount);
                     compatLocator[f.thingIDNumber] = ((byte)bucket, compatBuckets[bucket].Count);
                     compatBuckets[bucket].Add(f);
                 }
